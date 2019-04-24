@@ -10,8 +10,8 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
-
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="{{ URL::asset('images/Eiffage_2400_02_black_RGB.png') }}" type="image/png" sizes="66x66">
     <!-- Fontfaces CSS-->
     <link href="{{ asset("css/font-face.css") }}" rel="stylesheet" media="all">
     <link href="{{ asset("vendor/font-awesome-4.7/css/font-awesome.min.css") }}" rel="stylesheet" media="all">

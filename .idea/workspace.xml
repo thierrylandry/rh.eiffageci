@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/personne/lister_personne.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -517,7 +509,7 @@
       <workItem from="1556100631055" duration="7259000" />
       <workItem from="1556299473655" duration="9000" />
       <workItem from="1556530508128" duration="3102000" />
-      <workItem from="1556612664882" duration="33660000" />
+      <workItem from="1556612664882" duration="33809000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -540,11 +532,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556619950626</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mise à jour 2">
+      <created>1556651134668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556651134668</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52136000" />
+    <option name="totallyTimeSpent" value="52285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
@@ -586,7 +585,8 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Commit image Eiffage" />
     <MESSAGE value="mise à jour 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour 1" />
+    <MESSAGE value="mise à jour 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

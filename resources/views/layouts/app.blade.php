@@ -32,7 +32,7 @@
 
     <!-- Main CSS-->
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet" media="all">
-
+    <link href="{{ asset("css/jquery.dataTables.min.css") }}" rel="stylesheet" media="all">
 </head>
 
 <body class="animsition">
@@ -42,13 +42,31 @@
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             @include('layouts.bar')
+            <!-- MAIN CONTENT-->
+                <div class="main-content">
+                    <div class="section__content section__content--p30">
+                        <div class="container-fluid">
+                            <div class="agile-grid"  style="background-color: #FFFFFF;@yield('pour_register') margin: 5px">
 
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                                @endif()
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger">{{Session::get('error')}}</div>
+                                @endif()
+                                @yield('content')
+                            </div>
             @yield('page')
+                        </div>
+                    </div>
+                </div>
+                <!-- END MAIN CONTENT-->
+                <!-- END PAGE CONTAINER-->
         </div>
     </div>
 
-<!-- Jquery JS-->
-<script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
+    <!-- Jquery JS-->
+    <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
 <!-- Bootstrap JS-->
 <script src="{{ asset("vendor/bootstrap-4.1/popper.min.js") }}"></script>
 <script src="{{ asset("vendor/bootstrap-4.1/bootstrap.min.js") }}"></script>
@@ -67,9 +85,14 @@
 <script src="{{ asset("vendor/chartjs/Chart.bundle.min.js") }}"></script>
 <script src="{{ asset("vendor/select2/select2.min.js") }}">
 </script>
+    <script src="{{ asset("js/bootstrap.js") }}"></script>
+    <script src="{{ asset("js/bootstrap-select.js") }}"></script>
+    <script src="{{ asset("js/dataTables.min.js") }}"></script>
+    <script src="{{ asset("js/dataTables.checkboxes.js") }}"></script>
 
 <!-- Main JS-->
 <script src="{{ asset("js/main.js") }}"></script>
+    <!-- Jquery JS-->
 
 </body>
 

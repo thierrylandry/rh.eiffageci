@@ -125,9 +125,22 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
+                <li class="@yield('tableau_de_bord') has-sub">
                     <a class="js-arrow" href="index.html">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
+                </li>
+                <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
+                    <a class="js-arrow " href="#">
+                        <i class="fas fa-user open" ></i>PERSONNES</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
+                        <li class="@yield('Ajouter_personne')">
+                            <a href="{{route('Ajouter_personne')}}">Ajouter</a>
+                        </li>
+                        <li class="@yield('lister_personne')">
+                            <a href="{{route('lister_personne')}}">Lister</a>
+                        </li>
+
+                    </ul>
                 </li>
                 <li>
                     <a href="chart.html">

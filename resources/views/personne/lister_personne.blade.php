@@ -1,0 +1,124 @@
+@extends('layouts.app')
+@section('lister_personne')
+    active
+@endsection
+@section('lister_personne_block')
+    style="display: block;"
+@endsection
+@section('page')
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1">PERSONNE-LISTE</h2>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- DATA TABLE -->
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">All Properties</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <div class="rs-select2--light rs-select2--sm">
+                    <select class="js-select2" name="time">
+                        <option selected="selected">Today</option>
+                        <option value="">3 Days</option>
+                        <option value="">1 Week</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <button class="au-btn-filter">
+                    <i class="zmdi zmdi-filter-list"></i>filters</button>
+            </div>
+            <div class="table-data__tool-right">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>add item</button>
+                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                    <select class="js-select2" name="type">
+                        <option selected="selected">Export</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2" id="table_employe">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>NOM</th>
+                    <th>PRENOM</th>
+                    <th>DATE DE NAISSANCE</th>
+                    <th>SEXE</th>
+                    <th>NATIONNALITE</th>
+                    <th>SITUATION MATRIMONIAL</th>
+                    <th>ENFANT</th>
+                    <th>CNPS</th>
+                    <th>POINTURE</th>
+                    <th>ENTITE</th>
+                    <th>CONTACT</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>
+    <script src="{{ asset("js/jquery.min.js") }}"></script>
+    <script src="{{ asset("js/dataTables.min.js") }}"></script>
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#rendu_img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }else{
+                $('#rendu_img').attr('src','images/user.png');
+            }
+        }
+
+        $("#photo").change(function() {
+            readURL(this);
+        });
+        $("#reset").click(function() {
+            $('#rendu_img').attr('src','images/user.png');
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+        var table= $('#table_employe').DataTable({
+            language: {
+                url: "{{ asset('public/js/French.json')}}"
+            },
+            "ordering":true,
+            "responsive": true,
+            "createdRow": function( row, data, dataIndex){
+
+            },
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -1 }
+            ]
+        }).column(0).visible(false);
+        //table.DataTable().draw();
+        } );
+    </script>
+@endsection

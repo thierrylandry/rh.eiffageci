@@ -18,3 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/Ajouter_personne',[
+    'as'=>'Ajouter_personne',
+    'uses'=>'PersonneController@ajouter_personne',
+
+]);
+Route::get('/lister_personne',[
+    'as'=>'lister_personne',
+    'uses'=>'PersonneController@lister_personne',
+
+]);
+Route::post('/enregistrer_personne',[
+    'as'=>'enregistrer_personne',
+    'uses'=>'PersonneController@enregistrer_personne',
+
+]);

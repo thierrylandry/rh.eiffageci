@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableDefinition extends Migration
+class CreateTableSociete extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTableDefinition extends Migration
      */
     public function up()
     {
-        Schema::create('definition', function (Blueprint $table) {
+
+        Schema::create('societe', function (Blueprint $table) {
+            //
             $table->bigIncrements('id');
-            $table->string('libelle');
-            $table->double('salCategoriel',7,3);
+            $table->string('libellesoc');
             $table->timestamps();
         });
     }
@@ -28,6 +29,7 @@ class CreateTableDefinition extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('definition');
+
+        Schema::dropIfExists('societe');
     }
 }

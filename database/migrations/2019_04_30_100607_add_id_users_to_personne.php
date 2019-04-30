@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdServiceToUsers extends Migration
+class AddIdUsersToPersonne extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class AddIdServiceToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('personne', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('id_service')->nullable();
-
-            $table->foreign('id_service')->references('id')->on('services');
+            $table->integer('id_createur');
+            $table->integer('id_modificateur');
         });
     }
 
@@ -28,9 +27,10 @@ class AddIdServiceToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('personne', function (Blueprint $table) {
             //
-            $table->removeColumn('id_service');
+            $table->dropColumn('id_createur');
+            $table->dropColumn('id_modificateur');
         });
     }
 }

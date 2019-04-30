@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableTypespermis extends Migration
+class AddIdSocieteToSociete extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTableTypespermis extends Migration
      */
     public function up()
     {
-        Schema::create('typespermis', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('qualification');
-            $table->timestamps();
+        Schema::table('personne', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('id_societe')->nullable();
         });
     }
 
@@ -27,6 +26,9 @@ class CreateTableTypespermis extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typespermis');
+        Schema::table('personne', function (Blueprint $table) {
+            //
+            $table->dropColumn('personne');
+        });
     }
 }

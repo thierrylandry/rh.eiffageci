@@ -15,7 +15,7 @@ class AddRibToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->string('rib');
+            $table->string('rib')->nullable();
         });
     }
 

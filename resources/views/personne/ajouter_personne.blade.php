@@ -14,6 +14,14 @@
         </div>
     </div>
     </br>
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+        </div>
+        <div class="table-data__tool-right">
+            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
+        </div>
+    </div>
     <form action="{{route('enregistrer_personne')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
   <div class="row">
@@ -134,7 +142,7 @@
                               <label for="text-input" class=" form-control-label">Nombre d'enfant*</label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" required>
+                              <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" value="0" required>
                               <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
@@ -231,11 +239,9 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="societe" id="disabledSelect" class="form-control">
-                                  <option value="0">Expatriés PHB</option>
-                                  <option value="1">Expatriés DIR. CI</option>
-                                  <option value="2" selected>Locaux EGC CI</option>
-                                  <option value="3">SPIE Fondations</option>
-                                  <option value="4">Sous - Traitant</option>
+                                  @foreach($societes as $societe)
+                                      <option value="{{$societe->id}}">{{$societe->libellesoc}}</option>
+                                      @endforeach
                               </select>
                           </div>
                       </div>
@@ -255,10 +261,10 @@
   </div>
     <div class="card-footer pull-right">
         <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Submit
+            <i class="fa fa-dot-circle-o"></i> Enregistrer
         </button>
         <button type="reset" class="btn btn-danger btn-sm" id="reset">
-            <i class="fa fa-ban"></i> Reset
+            <i class="fa fa-ban"></i> Réinitialiser
         </button>
     </div>
     </form>

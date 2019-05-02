@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFonctionServiceToPersonne extends Migration
+class AddSitmatToPersonne extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,7 @@ class AddFonctionServiceToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->string('fonction')->nullable();
-            $table->string('service')->nullable();
+            $table->integer('situationmat')->nullable();
         });
     }
 
@@ -29,8 +28,7 @@ class AddFonctionServiceToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->removeColumn('fonction');
-            $table->removeColumn('service');
+            $table->removeColumn('situationmat');
         });
     }
 }

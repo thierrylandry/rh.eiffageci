@@ -34,3 +34,18 @@ Route::post('/enregistrer_personne',[
     'uses'=>'PersonneController@enregistrer_personne',
 
 ]);
+Route::get('/supprimer_personne/{slug}',[
+    'as'=>'supprimer_personne',
+    'uses'=>'PersonneController@supprimer_personne',
+
+]);
+Route::get('/detail_personne/{slug}',[
+    'as'=>'detail_personne',
+    'uses'=>'PersonneController@detail_personne',
+
+]);
+Route::post('/modifier_personne',[
+    'as'=>'modifier_personne',
+    'uses'=>'PersonneController@modifier_personne',
+
+]);

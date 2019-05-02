@@ -15,7 +15,7 @@ class AddRhToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->string('rh');
+            $table->string('rh')->nullable();
 
         });
     }
@@ -30,8 +30,6 @@ class AddRhToPersonne extends Migration
         Schema::table('personne', function (Blueprint $table) {
             //
             $table->removeColumn('rh');
-            $table->removeColumn('fonction');
-            $table->removeColumn('service');
         });
     }
 }

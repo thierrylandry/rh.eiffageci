@@ -38,8 +38,8 @@
                     <i class="zmdi zmdi-filter-list"></i>filters</button>
             </div>
             <div class="table-data__tool-right">
-                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                    <i class="zmdi zmdi-plus"></i>add item</button>
+                <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
                 <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                     <select class="js-select2" name="type">
                         <option selected="selected">Export</option>
@@ -54,23 +54,54 @@
             <table class="table table-data2" id="table_employe">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>NOM</th>
-                    <th>PRENOM</th>
-                    <th>DATE DE NAISSANCE</th>
+                    <th>slug</th>
+                    <th>PHOTO</th>
+                    <th>NOM & PRENOM</th>
                     <th>SEXE</th>
                     <th>NATIONNALITE</th>
-                    <th>SITUATION MATRIMONIAL</th>
-                    <th>ENFANT</th>
-                    <th>CNPS</th>
-                    <th>POINTURE</th>
                     <th>ENTITE</th>
+                    <th>SOCIETE</th>
                     <th>CONTACT</th>
-                    <th></th>
+                    <th>ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
-
+    @foreach($personnes as $personne)
+                <tr class="tr-shadow">
+                    <td>{{$personne->slug}}</td>
+                    <td>@if($personne->image!='')
+                            <img src="{{Storage::url('app/images/'.$personne->image)}}" id="rendu_img"style=";height: 100px;width:100px;-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);" class="fa fa-user"/>
+                            @else
+                            <img src="{{URL::asset('images/user.png')}}" id="rendu_img"style=";height: 100px; width:100px" class="fa fa-user" />
+                        @endif
+                    </td>
+                    <td>{{$personne->nom.' '.$personne->prenom}}</td>
+                    <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
+                    <td>{{$personne->nationalite}}</td>
+                    <td>
+                        @if($personne->entite==0)
+                            PHB
+                            @else
+                            DIRECTION CI
+                        @endif
+                    </td>
+                    <td>@foreach($societes as $societe)
+                            @if($personne->id_societe==$societe->id)
+                                {{$societe->libellesoc}}
+                            @endif
+                                @endforeach</td>
+                    <td>{{$personne->email}} {{$personne->contact}}</td>
+                    <td> <div class="table-data-feature">
+                            <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                            <i class="zmdi zmdi-more"></i>
+                            </a>
+                            <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+    @endforeach
                 </tbody>
             </table>
         </div>

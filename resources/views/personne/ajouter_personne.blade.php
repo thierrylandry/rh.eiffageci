@@ -228,8 +228,8 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
-                                  <option value="0">PHB</option>
-                                  <option value="1">DIRECTION CI</option>
+                                  <option value="1">PHB</option>
+                                  <option value="2">DIRECTION CI</option>
                               </select>
                           </div>
                       </div>

@@ -120,22 +120,22 @@
                                 <div class="form-check">
                                     <div class="radio">
                                         <label for="radio1" class="form-check-label ">
-                                            <input type="radio"  name="sit" value="1" class="form-check-input" {{isset($personne)&& $personne->situationmat==1 ? 'checked':''}}>Célibataire
+                                            <input type="radio"  name="sit" value="1" class="form-check-input" {{isset($personne)&& $personne->matrimonial==1 ? 'checked':''}}>Célibataire
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label for="radio2" class="form-check-label ">
-                                            <input type="radio"  name="sit" value="2" class="form-check-input" {{isset($personne)&& $personne->situationmat==2 ? 'checked':''}}>Marié(e)
+                                            <input type="radio"  name="sit" value="2" class="form-check-input" {{isset($personne)&& $personne->matrimonial==2 ? 'checked':''}}>Marié(e)
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label for="radio3" class="form-check-label ">
-                                            <input type="radio"  name="sit" value="3" class="form-check-input" {{isset($personne)&& $personne->situationmat==3 ? 'checked':''}}>Divorcé(e)
+                                            <input type="radio"  name="sit" value="3" class="form-check-input" {{isset($personne)&& $personne->matrimonial==3 ? 'checked':''}}>Divorcé(e)
                                         </label>
                                     </div>
                                     <div class="radio">
                                         <label for="radio3" class="form-check-label ">
-                                            <input type="radio"  name="sit" value="4" class="form-check-input" {{isset($personne)&& $personne->situationmat==4 ? 'checked':''}}>Veuf(ve)
+                                            <input type="radio"  name="sit" value="4" class="form-check-input" {{isset($personne)&& $personne->matrimonial==4 ? 'checked':''}}>Veuf(ve)
                                         </label>
                                     </div>
                                 </div>

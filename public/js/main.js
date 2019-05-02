@@ -1,5 +1,595 @@
 
 (function ($) {
+
+  if($('#json_eff_globaux').val() !=null){
+    var json_eff_globaux= JSON.parse($('#json_eff_globaux').val()) ;
+  }else{
+    json_eff_globaux= Array();
+  }
+
+  if($('#json_entite').val()!=null){
+    var json_entite= JSON.parse($('#json_entite').val()) ;
+  }else{
+    json_entite= Array();
+  }
+
+  if($('#json_h_f').val()!=null){
+    var json_h_f= JSON.parse($('#json_h_f').val()) ;
+  }else{
+    json_h_f= Array();
+  }
+  (function ($) {
+    // USE STRICT
+    "use strict";
+
+    try {
+      //bar chart
+      var ctx = document.getElementById("bilan");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          defaultFontFamily: 'Poppins',
+          data: {
+            labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre","Octobre","Novembre","Decembre"],
+            datasets: [
+              {
+                label: "Entrées",
+                data: [5, 4, 5, 11, 19, 11, 4,2,1,3,1,1,0],
+                borderColor: "rgba(0, 123, 255, 0.9)",
+                borderWidth: "0",
+                backgroundColor: "rgba(0, 123, 255, 0.5)",
+                fontFamily: "Poppins"
+              },
+              {
+                label: "Sorties",
+                data: [0, 0, 0, 2, 1, 2, 0,1,1,2,0,1,0],
+                borderColor: "rgba(0,0,0,0.09)",
+                borderWidth: "0",
+                backgroundColor: "#EF261C",
+                fontFamily: "Poppins"
+              }
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontFamily: "Poppins"
+
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: "Poppins"
+                }
+              }]
+            }
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("effectif_globaux");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                datasets: [{
+                   data: json_eff_globaux,
+            backgroundColor: [
+          "#138AD5",
+          "#E3370D",
+          "#08A451",
+          "#6E08A4",
+          "#13B1EC"
+        ],
+            hoverBackgroundColor: [
+          "#138AD5",
+          "#E3370D",
+          "#08A451",
+          "#6E08A4",
+          "#13B1EC"
+        ]
+
+      }],
+        labels: [
+          "Expatriés PHB",
+          "Expatriés DIR. CI",
+          "Locaux EGC CI",
+          "SPIE Fondations",
+          "Sous - Traitant"
+        ]
+      },
+        options: {
+          legend: {
+            position: 'top',
+                labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("effectif_locaux");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                datasets: [{
+                  data: json_entite,
+            backgroundColor: [
+          "#138AD5",
+          "#E3370D"
+        ],
+            hoverBackgroundColor: [
+          "#138AD5",
+          "#E3370D"
+        ]
+
+      }],
+        labels: [
+          "DIRECTION CI",
+          "PHB",
+        ]
+      },
+        options: {
+          legend: {
+            position: 'top',
+                labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("repartition_h_f");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: json_h_f,
+              backgroundColor: [
+                "#E3370D",
+                "#138AD5"
+
+              ],
+              hoverBackgroundColor: [
+                "#E3370D",
+                "#138AD5"
+
+              ]
+
+            }],
+            labels: [
+              "FEMME",
+              "HOMME"
+
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("tranche_age");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [20, 48,25,8],
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+              ]
+
+            }],
+            labels: [
+              "Moins de 30 ans",
+              "30 - 39 ans",
+              "40 - 49 ans",
+              "50 ans et +",
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("anciennete_locaux");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [1, 7,51,12,9],
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ]
+
+            }],
+            labels: [
+              "> 3 mois",
+              "3 à 6 mois",
+              "7 à 10 mois",
+              "11 à 12 mois",
+              "> 12 mois",
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("qualification_contractuel");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [8, 16,5,50,2],
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ]
+
+            }],
+            labels: [
+              "Cadres",
+              "Agents de Maitrise",
+              "Employés",
+              "Ouvriers",
+              "Stagiaires",
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("nationalite");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [5, 69,1,1,1,3],
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC",
+                "#EC9A13"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC",
+                "#EC9A13"
+              ]
+
+            }],
+            labels: [
+              "Burkina Faso",
+              "Côte d'Ivoire",
+              "France",
+              "Guinée",
+              "Niger",
+              "Togo",
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+
+      //pie chart
+      var ctx = document.getElementById("service_personnel");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: [12, 9,2,5,17,7,8,20],
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC",
+                "#EC9A13",
+                "#0B306A",
+                "#6A2B0B"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC",
+                "#EC9A13",
+                "#0B306A",
+                "#6A2B0B"
+              ]
+
+            }],
+            labels: [
+              "ADMINISTRATION PHB",
+              "DIRECTION CI",
+              "ETUDES METHODES ",
+              "HSE",
+              "MATERIEL",
+              "QUALITE",
+              "SERVICES GENERAUX",
+              "TRAVAUX",
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    try {
+
+      // polar chart
+      var ctx = document.getElementById("polarChart");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: 'polarArea',
+          data: {
+            datasets: [{
+              data: [15, 18, 9, 6, 19],
+              backgroundColor: [
+                "rgba(0, 123, 255,0.9)",
+                "rgba(0, 123, 255,0.8)",
+                "rgba(0, 123, 255,0.7)",
+                "rgba(0,0,0,0.2)",
+                "rgba(0, 123, 255,0.5)"
+              ]
+
+            }],
+            labels: [
+              "Green",
+              "Green",
+              "Green",
+              "Green"
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    try {
+
+      // single bar chart
+      var ctx = document.getElementById("singelBarChart");
+      if (ctx) {
+        ctx.height = 150;
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
+            datasets: [
+              {
+                label: "My First dataset",
+                data: [40, 55, 75, 81, 56, 55, 40],
+                borderColor: "rgba(0, 123, 255, 0.9)",
+                borderWidth: "0",
+                backgroundColor: "rgba(0, 123, 255, 0.5)"
+              }
+            ]
+          },
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontFamily: "Poppins"
+
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: "Poppins"
+                }
+              }]
+            }
+          }
+        });
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  })(jQuery);
+  // les mains js
   // USE STRICT
   "use strict";
 
@@ -875,29 +1465,29 @@
 
   try {
     //bar chart
-    var ctx = document.getElementById("bilan");
+    var ctx = document.getElementById("barChart");
     if (ctx) {
       ctx.height = 200;
       var myChart = new Chart(ctx, {
         type: 'bar',
         defaultFontFamily: 'Poppins',
         data: {
-          labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre","Octobre","Novembre","Decembre"],
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
           datasets: [
             {
-              label: "Entrées",
-              data: [5, 4, 5, 11, 19, 11, 4,2,1,3,1,1,0],
+              label: "My First dataset",
+              data: [65, 59, 80, 81, 56, 55, 40],
               borderColor: "rgba(0, 123, 255, 0.9)",
               borderWidth: "0",
               backgroundColor: "rgba(0, 123, 255, 0.5)",
               fontFamily: "Poppins"
             },
             {
-              label: "Sorties",
-              data: [0, 0, 0, 2, 1, 2, 0,1,1,2,0,1,0],
+              label: "My Second dataset",
+              data: [28, 48, 40, 19, 86, 27, 90],
               borderColor: "rgba(0,0,0,0.09)",
               borderWidth: "0",
-              backgroundColor: "#EF261C",
+              backgroundColor: "rgba(0,0,0,0.07)",
               fontFamily: "Poppins"
             }
           ]
@@ -1108,391 +1698,32 @@
   try {
 
     //pie chart
-    var ctx = document.getElementById("effectif_globaux");
+    var ctx = document.getElementById("pieChart");
     if (ctx) {
       ctx.height = 200;
       var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
           datasets: [{
-            data: [6, 2, 80, 27,23],
+            data: [45, 25, 20, 10],
             backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-                "#13B1EC"
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
             ],
             hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC"
+              "rgba(0, 123, 255,0.9)",
+              "rgba(0, 123, 255,0.7)",
+              "rgba(0, 123, 255,0.5)",
+              "rgba(0,0,0,0.07)"
             ]
 
           }],
           labels: [
-            "Expatriés PHB",
-            "Expatriés DIR. CI",
-            "Locaux EGC CI",
-            "SPIE Fondations",
-              "Sous - Traitant"
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("effectif_locaux");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [9, 71],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D"
-            ]
-
-          }],
-          labels: [
-            "DIRECTION CI",
-            "PHB",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("repartition_h_f");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [57, 23],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D"
-            ]
-
-          }],
-          labels: [
-            "HOMME",
-            "FEMME",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("tranche_age");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [20, 48,25,8],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-            ]
-
-          }],
-          labels: [
-            "Moins de 30 ans",
-            "30 - 39 ans",
-            "40 - 49 ans",
-            "50 ans et +",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("anciennete_locaux");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [1, 7,51,12,9],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC"
-            ]
-
-          }],
-          labels: [
-            "> 3 mois",
-            "3 à 6 mois",
-            "7 à 10 mois",
-            "11 à 12 mois",
-            "> 12 mois",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-try {
-
-    //pie chart
-    var ctx = document.getElementById("qualification_contractuel");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [8, 16,5,50,2],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC"
-            ]
-
-          }],
-          labels: [
-            "Cadres",
-            "Agents de Maitrise",
-            "Employés",
-            "Ouvriers",
-            "Stagiaires",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("nationalite");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [5, 69,1,1,1,3],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC",
-                "#EC9A13"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC",
-              "#EC9A13"
-            ]
-
-          }],
-          labels: [
-            "Burkina Faso",
-            "Côte d'Ivoire",
-            "France",
-            "Guinée",
-            "Niger",
-            "Togo",
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-try {
-
-    //pie chart
-    var ctx = document.getElementById("service_personnel");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [12, 9,2,5,17,7,8,20],
-            backgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC",
-                "#EC9A13",
-              "#0B306A",
-                "#6A2B0B"
-            ],
-            hoverBackgroundColor: [
-              "#138AD5",
-              "#E3370D",
-              "#08A451",
-              "#6E08A4",
-              "#13B1EC",
-              "#EC9A13",
-              "#0B306A",
-              "#6A2B0B"
-            ]
-
-          }],
-          labels: [
-            "ADMINISTRATION PHB",
-            "DIRECTION CI",
-            "ETUDES METHODES ",
-            "HSE",
-            "MATERIEL",
-            "QUALITE",
-            "SERVICES GENERAUX",
-            "TRAVAUX",
+            "Green",
+            "Green",
+            "Green"
           ]
         },
         options: {
@@ -1612,32 +1843,32 @@ try {
 
 
 (function ($) {
-    // USE STRICT
-    "use strict";
-    $(".animsition").animsition({
-      inClass: 'fade-in',
-      outClass: 'fade-out',
-      inDuration: 900,
-      outDuration: 900,
-      linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
-      loading: true,
-      loadingParentElement: 'html',
-      loadingClass: 'page-loader',
-      loadingInner: '<div class="page-loader__spin"></div>',
-      timeout: false,
-      timeoutCountdown: 5000,
-      onLoadEvent: true,
-      browser: ['animation-duration', '-webkit-animation-duration'],
-      overlay: false,
-      overlayClass: 'animsition-overlay-slide',
-      overlayParentElement: 'html',
-      transition: function (url) {
-        window.location.href = url;
-      }
-    });
-  
-  
-  })(jQuery);
+  // USE STRICT
+  "use strict";
+  $(".animsition").animsition({
+    inClass: 'fade-in',
+    outClass: 'fade-out',
+    inDuration: 900,
+    outDuration: 900,
+    linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
+    loading: true,
+    loadingParentElement: 'html',
+    loadingClass: 'page-loader',
+    loadingInner: '<div class="page-loader__spin"></div>',
+    timeout: false,
+    timeoutCountdown: 5000,
+    onLoadEvent: true,
+    browser: ['animation-duration', '-webkit-animation-duration'],
+    overlay: false,
+    overlayClass: 'animsition-overlay-slide',
+    overlayParentElement: 'html',
+    transition: function (url) {
+      window.location.href = url;
+    }
+  });
+
+
+})(jQuery);
 (function ($) {
   // USE STRICT
   "use strict";
@@ -1667,7 +1898,7 @@ try {
 
   // Europe Map
   try {
-    
+
     var vmap1 = $('#vmap1');
     if(vmap1[0]) {
       vmap1.vectorMap( {
@@ -1686,7 +1917,7 @@ try {
 
   // USA Map
   try {
-    
+
     var vmap2 = $('#vmap2');
 
     if(vmap2[0]) {
@@ -1700,12 +1931,12 @@ try {
         selectedColor: null,
         hoverColor: null,
         colors: {
-            mo: '#001BFF',
-            fl: '#001BFF',
-            or: '#001BFF'
+          mo: '#001BFF',
+          fl: '#001BFF',
+          or: '#001BFF'
         },
         onRegionClick: function ( event, code, region ) {
-            event.preventDefault();
+          event.preventDefault();
         }
       });
     }
@@ -1716,7 +1947,7 @@ try {
 
   // Germany Map
   try {
-    
+
     var vmap3 = $('#vmap3');
     if(vmap3[0]) {
       vmap3.vectorMap( {
@@ -1725,20 +1956,20 @@ try {
         borderColor: '#fff',
         backgroundColor: '#fff',
         onRegionClick: function ( element, code, region ) {
-            var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
+          var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
 
-            alert( message );
+          alert( message );
         }
       });
     }
-    
+
   } catch (error) {
     console.log(error);
   }
-  
+
   // France Map
   try {
-    
+
     var vmap4 = $('#vmap4');
     if(vmap4[0]) {
       vmap4.vectorMap( {
@@ -1777,10 +2008,10 @@ try {
   } catch (error) {
     console.log(error);
   }
-  
+
   // Brazil Map
   try {
-    
+
     var vmap6 = $('#vmap6');
     if(vmap6[0]) {
       vmap6.vectorMap( {
@@ -1789,8 +2020,8 @@ try {
         borderColor: '#fff',
         backgroundColor: '#fff',
         onRegionClick: function ( element, code, region ) {
-            var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
-            alert( message );
+          var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
+          alert( message );
         }
       });
     }
@@ -1820,8 +2051,8 @@ try {
             });
           }
         }, {
-            offset: 'bottom-in-view'
-          });
+          offset: 'bottom-in-view'
+        });
 
       });
     });
@@ -1837,7 +2068,7 @@ try {
   try {
     var jscr1 = $('.js-scrollbar1');
     if(jscr1[0]) {
-      const ps1 = new PerfectScrollbar('.js-scrollbar1');      
+      const ps1 = new PerfectScrollbar('.js-scrollbar1');
     }
 
     var jscr2 = $('.js-scrollbar2');
@@ -1883,7 +2114,7 @@ try {
     for (var i = 0; i < menu.length; i++) {
       $(menu[i]).on('click', function (e) {
         e.preventDefault();
-        $('.js-right-sidebar').removeClass("show-sidebar");        
+        $('.js-right-sidebar').removeClass("show-sidebar");
         if (jQuery.inArray(this, menu) == sub_menu_is_showed) {
           $(this).toggleClass('show-dropdown');
           sub_menu_is_showed = -1;
@@ -1913,28 +2144,28 @@ try {
   }
 
   var wW = $(window).width();
-    // Right Sidebar
-    var right_sidebar = $('.js-right-sidebar');
-    var sidebar_btn = $('.js-sidebar-btn');
+  // Right Sidebar
+  var right_sidebar = $('.js-right-sidebar');
+  var sidebar_btn = $('.js-sidebar-btn');
 
-    sidebar_btn.on('click', function (e) {
-      e.preventDefault();
-      for (var i = 0; i < menu.length; i++) {
-        menu[i].classList.remove("show-dropdown");
-      }
-      sub_menu_is_showed = -1;
-      right_sidebar.toggleClass("show-sidebar");
-    });
+  sidebar_btn.on('click', function (e) {
+    e.preventDefault();
+    for (var i = 0; i < menu.length; i++) {
+      menu[i].classList.remove("show-dropdown");
+    }
+    sub_menu_is_showed = -1;
+    right_sidebar.toggleClass("show-sidebar");
+  });
 
-    $(".js-right-sidebar, .js-sidebar-btn").click(function (event) {
-      event.stopPropagation();
-    });
+  $(".js-right-sidebar, .js-sidebar-btn").click(function (event) {
+    event.stopPropagation();
+  });
 
-    $("body,html").on("click", function () {
-      right_sidebar.removeClass("show-sidebar");
+  $("body,html").on("click", function () {
+    right_sidebar.removeClass("show-sidebar");
 
-    });
- 
+  });
+
 
   // Sublist Sidebar
   try {
@@ -2002,7 +2233,7 @@ try {
   "use strict";
 
   try {
-    
+
     $('[data-toggle="tooltip"]').tooltip();
 
   } catch (error) {
@@ -2020,7 +2251,7 @@ try {
         $(this).parent().parent().parent().toggleClass('show-chat-box');
       });
     });
-    
+
 
   } catch (error) {
     console.log(error);

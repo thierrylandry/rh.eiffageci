@@ -4,13 +4,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="overview-wrap">
-                            <h2 class="title-1">overview</h2>
-                            <button class="au-btn au-btn-icon au-btn--blue">
-                                <i class="zmdi zmdi-plus"></i>add item</button>
+                            <h2 class="title-1">Tableau de bord</h2>
                         </div>
+
                     </div>
                 </div>
-
+                </br>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="au-card m-b-30">
@@ -88,7 +87,7 @@
                     <div class="col-lg-4">
                         <div class="au-card m-b-30">
                             <div class="au-card-inner">
-                                <h3 class="title-2 m-b-40">Bilan Entrées ET Sorties EGC CI</h3>
+                                <h3 class="title-2 m-b-40">Bilan Entrées et Sorties EGC CI</h3>
                                 <canvas id="bilan"></canvas>
                             </div>
                         </div>
@@ -101,5 +100,8 @@
                         </div>
                     </div>
                 </div>
+<input type="text" value="{{$json_eff_globaux}}" id="json_eff_globaux">
+<input type="text" value="{{$json_entite}}" id="json_entite">
+<input type="text" value="{{$json_h_f}}" id="json_h_f">
 
 @endsection

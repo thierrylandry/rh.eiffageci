@@ -19,6 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/tableau_de_bord',[
+    'as'=>'tableau_de_bord',
+    'uses'=>'homeController@tableau_de_bord',
+
+]);
+
+Route::get('/Ajouter_personne',[
+    'as'=>'Ajouter_personne',
+    'uses'=>'PersonneController@ajouter_personne',
+
+]);
+
 Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',

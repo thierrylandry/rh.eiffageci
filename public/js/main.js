@@ -875,29 +875,29 @@
 
   try {
     //bar chart
-    var ctx = document.getElementById("barChart");
+    var ctx = document.getElementById("bilan");
     if (ctx) {
       ctx.height = 200;
       var myChart = new Chart(ctx, {
         type: 'bar',
         defaultFontFamily: 'Poppins',
         data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre","Octobre","Novembre","Decembre"],
           datasets: [
             {
-              label: "My First dataset",
-              data: [65, 59, 80, 81, 56, 55, 40],
+              label: "Entrées",
+              data: [5, 4, 5, 11, 19, 11, 4,2,1,3,1,1,0],
               borderColor: "rgba(0, 123, 255, 0.9)",
               borderWidth: "0",
               backgroundColor: "rgba(0, 123, 255, 0.5)",
               fontFamily: "Poppins"
             },
             {
-              label: "My Second dataset",
-              data: [28, 48, 40, 19, 86, 27, 90],
+              label: "Sorties",
+              data: [0, 0, 0, 2, 1, 2, 0,1,1,2,0,1,0],
               borderColor: "rgba(0,0,0,0.09)",
               borderWidth: "0",
-              backgroundColor: "rgba(0,0,0,0.07)",
+              backgroundColor: "#EF261C",
               fontFamily: "Poppins"
             }
           ]
@@ -1108,32 +1108,391 @@
   try {
 
     //pie chart
-    var ctx = document.getElementById("pieChart");
+    var ctx = document.getElementById("effectif_globaux");
     if (ctx) {
       ctx.height = 200;
       var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
           datasets: [{
-            data: [45, 25, 20, 10],
+            data: [6, 2, 80, 27,23],
             backgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+                "#13B1EC"
             ],
             hoverBackgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC"
             ]
 
           }],
           labels: [
-            "Green",
-            "Green",
-            "Green"
+            "Expatriés PHB",
+            "Expatriés DIR. CI",
+            "Locaux EGC CI",
+            "SPIE Fondations",
+              "Sous - Traitant"
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+
+    //pie chart
+    var ctx = document.getElementById("effectif_locaux");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [9, 71],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D"
+            ]
+
+          }],
+          labels: [
+            "DIRECTION CI",
+            "PHB",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+
+    //pie chart
+    var ctx = document.getElementById("repartition_h_f");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [57, 23],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D"
+            ]
+
+          }],
+          labels: [
+            "HOMME",
+            "FEMME",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+
+    //pie chart
+    var ctx = document.getElementById("tranche_age");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [20, 48,25,8],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+            ]
+
+          }],
+          labels: [
+            "Moins de 30 ans",
+            "30 - 39 ans",
+            "40 - 49 ans",
+            "50 ans et +",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+
+    //pie chart
+    var ctx = document.getElementById("anciennete_locaux");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [1, 7,51,12,9],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC"
+            ]
+
+          }],
+          labels: [
+            "> 3 mois",
+            "3 à 6 mois",
+            "7 à 10 mois",
+            "11 à 12 mois",
+            "> 12 mois",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+try {
+
+    //pie chart
+    var ctx = document.getElementById("qualification_contractuel");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [8, 16,5,50,2],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC"
+            ]
+
+          }],
+          labels: [
+            "Cadres",
+            "Agents de Maitrise",
+            "Employés",
+            "Ouvriers",
+            "Stagiaires",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+
+    //pie chart
+    var ctx = document.getElementById("nationalite");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [5, 69,1,1,1,3],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC",
+                "#EC9A13"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC",
+              "#EC9A13"
+            ]
+
+          }],
+          labels: [
+            "Burkina Faso",
+            "Côte d'Ivoire",
+            "France",
+            "Guinée",
+            "Niger",
+            "Togo",
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          responsive: true
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+try {
+
+    //pie chart
+    var ctx = document.getElementById("service_personnel");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [12, 9,2,5,17,7,8,20],
+            backgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC",
+                "#EC9A13",
+              "#0B306A",
+                "#6A2B0B"
+            ],
+            hoverBackgroundColor: [
+              "#138AD5",
+              "#E3370D",
+              "#08A451",
+              "#6E08A4",
+              "#13B1EC",
+              "#EC9A13",
+              "#0B306A",
+              "#6A2B0B"
+            ]
+
+          }],
+          labels: [
+            "ADMINISTRATION PHB",
+            "DIRECTION CI",
+            "ETUDES METHODES ",
+            "HSE",
+            "MATERIEL",
+            "QUALITE",
+            "SERVICES GENERAUX",
+            "TRAVAUX",
           ]
         },
         options: {

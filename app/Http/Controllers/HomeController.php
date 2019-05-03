@@ -49,6 +49,7 @@ class HomeController extends Controller
         $groupe_by_entite = DB::table('personne')
             ->select(DB::raw('count(personne.id) as nb'))
             ->groupBy('personne.entite')
+            ->orderBy('entite', 'desc')
             ->get();
 
         $effectiflocaux= Array();
@@ -56,7 +57,6 @@ class HomeController extends Controller
             $effectiflocaux[]=$group->nb;
         endforeach;
         $json_entite=json_encode($effectiflocaux);
-
 
 
         //repartition homme femme

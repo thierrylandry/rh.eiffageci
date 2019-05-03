@@ -100,8 +100,8 @@
                         </div>
                     </div>
                 </div>
-<input type="text" value="{{isset($json_eff_globaux)?$json_eff_globaux:''}}" id="json_eff_globaux">
-<input type="text" value="{{isset($json_entite)?$json_entite:''}}" id="json_entite">
-<input type="text" value="{{isset($json_h_f)?$json_h_f:''}}" id="json_h_f">
+<input type="hidden" value="{{isset($json_eff_globaux)?$json_eff_globaux:''}}" id="json_eff_globaux">
+<input type="hidden" value="{{isset($json_entite)?$json_entite:''}}" id="json_entite">
+<input type="hidden" value="{{isset($json_h_f)?$json_h_f:''}}" id="json_h_f">
 
 @endsection

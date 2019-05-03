@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tableau_de_bord');
 });
 
 Auth::routes();

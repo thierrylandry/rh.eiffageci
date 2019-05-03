@@ -110,9 +110,9 @@
 
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Situation matrimoniale </label>
+                              <label for="text-input" class=" form-control-label">Situation matrimoniale</label>
                           </div>
-                          <div class="col col-md-9">
+                          <div class="col col-md-8">
                               <div class="form-check">
                                   <div class="radio">
                                       <label for="radio1" class="form-check-label ">

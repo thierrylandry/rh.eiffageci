@@ -119,8 +119,8 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <img src="{{ URL::asset('images/Eiffage_2400_02_black_RGB.png') }}"/>
-        </a><h1>PRO-RH</h1>
+            <img src="{{ URL::asset('images/icon/Eiffage_2400_02_black_RGB.png') }}"/>
+        </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">

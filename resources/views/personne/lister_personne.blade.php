@@ -79,7 +79,7 @@
                     <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
                     <td>{{$personne->nationalite}}</td>
                     <td>
-                        @if($personne->entite==0)
+                        @if($personne->entite==1)
                             PHB
                             @else
                             DIRECTION CI

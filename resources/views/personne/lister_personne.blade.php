@@ -55,7 +55,6 @@
                 <thead>
                 <tr>
                     <th>slug</th>
-                    <th>PHOTO</th>
                     <th>NOM & PRENOM</th>
                     <th>SEXE</th>
                     <th>NATIONNALITE</th>
@@ -69,12 +68,6 @@
     @foreach($personnes as $personne)
                 <tr class="tr-shadow">
                     <td>{{$personne->slug}}</td>
-                    <td>@if($personne->image!='')
-                            <img src="{{Storage::url('app/images/'.$personne->image)}}" id="rendu_img"style=";height: 100px;width:100px;-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);" class="fa fa-user"/>
-                            @else
-                            <img src="{{URL::asset('images/user.png')}}" id="rendu_img"style=";height: 100px; width:100px" class="fa fa-user" />
-                        @endif
-                    </td>
                     <td>{{$personne->nom.' '.$personne->prenom}}</td>
                     <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
                     <td>{{$personne->nationalite}}</td>
@@ -139,6 +132,7 @@
             language: {
                 url: "{{ asset('public/js/French.json')}}"
             },
+            "order": [[ 1, "desc" ]],
             "ordering":true,
             "responsive": true,
             "createdRow": function( row, data, dataIndex){

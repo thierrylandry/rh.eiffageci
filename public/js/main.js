@@ -90,45 +90,45 @@
       if (ctx) {
         ctx.height = 200;
         var myChart = new Chart(ctx, {
-              type: 'pie',
-              data: {
-                datasets: [{
-                   data: json_eff_globaux,
-            backgroundColor: [
-          "#138AD5",
-          "#E3370D",
-          "#08A451",
-          "#6E08A4",
-          "#13B1EC"
-        ],
-            hoverBackgroundColor: [
-          "#138AD5",
-          "#E3370D",
-          "#08A451",
-          "#6E08A4",
-          "#13B1EC"
-        ]
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: json_eff_globaux,
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D",
+                "#08A451",
+                "#6E08A4",
+                "#13B1EC"
+              ]
 
-      }],
-        labels: [
-          "Expatriés PHB",
-          "Expatriés DIR. CI",
-          "Locaux EGC CI",
-          "SPIE Fondations",
-          "Sous - Traitant"
-        ]
-      },
-        options: {
-          legend: {
-            position: 'top',
-                labels: {
-              fontFamily: 'Poppins'
-            }
-
+            }],
+            labels: [
+              "Expatriés PHB",
+              "Expatriés DIR. CI",
+              "Locaux EGC CI",
+              "SPIE Fondations",
+              "Sous - Traitant"
+            ]
           },
-          responsive: true
-        }
-      });
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
       }
 
 
@@ -142,36 +142,36 @@
       if (ctx) {
         ctx.height = 200;
         var myChart = new Chart(ctx, {
-              type: 'pie',
-              data: {
-                datasets: [{
-                  data: json_entite,
-            backgroundColor: [
-          "#138AD5",
-          "#E3370D"
-        ],
-            hoverBackgroundColor: [
-          "#138AD5",
-          "#E3370D"
-        ]
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: json_entite,
+              backgroundColor: [
+                "#138AD5",
+                "#E3370D"
+              ],
+              hoverBackgroundColor: [
+                "#138AD5",
+                "#E3370D"
+              ]
 
-      }],
-        labels: [
-          "DIRECTION CI",
-          "PHB",
-        ]
-      },
-        options: {
-          legend: {
-            position: 'top',
-                labels: {
-              fontFamily: 'Poppins'
-            }
-
+            }],
+            labels: [
+              "DIRECTION CI",
+              "PHB",
+            ]
           },
-          responsive: true
-        }
-      });
+          options: {
+            legend: {
+              position: 'top',
+              labels: {
+                fontFamily: 'Poppins'
+              }
+
+            },
+            responsive: true
+          }
+        });
       }
 
 
@@ -2106,7 +2106,7 @@
   // USE STRICT
   "use strict";
 
-  // Dropdown 
+  // Dropdown
   try {
     var menu = $('.js-item-menu');
     var sub_menu_is_showed = -1;

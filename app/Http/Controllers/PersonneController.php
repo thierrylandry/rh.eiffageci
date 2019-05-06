@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Metier\Json\Famille;
 use App\Personne;
 use App\Societe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -19,7 +21,7 @@ class PersonneController extends Controller
     }
     public function lister_personne()
     {
-$personnes= Personne::all();
+$personnes= Personne::orderBy('id', 'desc')->get();
         $societes=Societe::all();
         return view('personne/lister_personne',compact('personnes','societes'));
     }
@@ -67,6 +69,30 @@ $personnes= Personne::all();
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
+
+        $familles = new Collection();
+
+
+
+        for($i = 0; $i <= count($request->input("nom_famille"))-1; $i++ )
+        {
+            $famille = new Famille();
+
+            if( !empty($request->input("nom_famille")[$i]) || !empty($request->input("num_p")[$i])  ){
+
+                $famille->nom_prenom = $request->input("nom_famille")[$i];
+                $famille->lien_parente = $request->input("lien")[$i];
+                $famille->type_p = $request->input("type_p")[$i];
+                $famille->num_p= $request->input("num_p")[$i];
+                $famille->date_exp= $request->input("date_exp")[$i];
+                $familles->add($famille);
+            }
+
+        }
+
+        $raw = $request->except("_token", "nom_famille", "lien", "type_p","num_p");
+        $raw["famille"] = json_encode($familles->toArray());
+        $personne->familles=$raw["famille"];
         if($request->file('photo')){
             $personne->image=$personne->slug.'.'.$request->file('photo')->getClientOriginalExtension();
 
@@ -96,7 +122,8 @@ $personnes= Personne::all();
     {
         $societes=Societe::all();
         $personne= Personne::where('slug','=',$slug)->get()->first();
-        return view('personne/detail_personne',compact('personne','societes'));
+        $familles= json_decode($personne->familles);
+        return view('personne/detail_personne',compact('personne','societes','familles'));
     }
     public function modifier_personne(Request $request){
 
@@ -142,6 +169,31 @@ $personnes= Personne::all();
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
+
+        $familles = new Collection();
+
+
+
+        for($i = 0; $i <= count($request->input("nom_famille"))-1; $i++ )
+        {
+            $famille = new Famille();
+
+            if( !empty($request->input("nom_famille")[$i]) || !empty($request->input("num_p")[$i])  ){
+
+                $famille->nom_prenom = $request->input("nom_famille")[$i];
+                $famille->lien_parente = $request->input("lien")[$i];
+                $famille->type_p = $request->input("type_p")[$i];
+                $famille->num_p= $request->input("num_p")[$i];
+                $famille->date_exp= $request->input("date_exp")[$i];
+                $familles->add($famille);
+            }
+
+        }
+
+        $raw = $request->except("_token", "nom", "lien", "type_p","num_p");
+        $raw["famille"] = json_encode($familles->toArray());
+        $personne->familles=$raw["famille"];
+
         if($request->file('photo')){
             $personne->image=$personne->slug.'.'.$request->file('photo')->getClientOriginalExtension();
 

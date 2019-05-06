@@ -141,11 +141,13 @@
                           <div class="col col-md-3">
                               <label for="text-input" class=" form-control-label">Nombre d'enfant*</label>
                           </div>
+                          <!--fin-->
                           <div class="col-12 col-md-9">
                               <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" value="0" required>
                               <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
+
                   <div class="row form-group">
                       <div class="col col-md-3">
                           <label for="text-input" class=" form-control-label">E - mail *</label>
@@ -259,6 +261,126 @@
           </div>
       </div>
   </div>
+        </br>
+        <div class="row">
+            <div class="col-sm-12"   >
+                <div class="card" style="height: 100% !important" >
+                    <div class="card-header">
+                        <strong>Famille </strong> ressencement des membres
+                    </div>
+                    <div class="card-body card-block">
+                    Ajouter un membre
+                    <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addfamille">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                    </br>
+                    </br>
+                    <div id="familles" class="form-inline">
+
+                        <div class=" form-control-label">
+                            <label for="titre_c[]">Nom et prénom </label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="nom_famille[]" class="titre_c form-control" placeholder="" value="{{ old('fullname_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">Lien de parenté</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="lien[]" class="type_c form-control input-field">
+
+                                    <option value="CONJ"> CONJOINT</option>
+                                    <option value="ENF">ENFANT</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">type de pièce</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="type_p[]" class="type_c form-control input-field">
+                                    <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="PSP">CARTE NATIONNAL D'IDENTITE</option>
+                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control-label">
+                            <label for="observation_c[]">N°pièce</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="num_p[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Date d'expiration</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr width="100%" color="blue">
+                    </div>
+                    <div id="familletemplate" class="row clearfix" style="display: none">
+
+                        <div class=" form-control-label">
+                            <label for="titre_c[]">Nom et prénom </label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="nom_famille[]" class="titre_c form-control" placeholder="" value="{{ old('fullname_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">Lien de parenté</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="lien[]" class="type_c form-control input-field">
+
+                                    <option value="CONJ"> CONJOINT</option>
+                                    <option value="ENF">ENFANT</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">type de pièce</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="type_p[]" class="type_c form-control input-field">
+                                    <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="PSP">PASSEPORT</option>
+                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control-label">
+                            <label for="observation_c[]">N°pièce</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="num_p[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Date d'expiration</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr width="100%" color="blue">
+                    </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     <div class="card-footer pull-right">
         <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enregistrer
@@ -276,10 +398,31 @@
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#rendu_img').attr('src', e.target.result);
+                    console.log(input.files[0]);
+                    console.log(input.files[0].type);
+                    if(input.files[0].type=="image/jpeg" || input.files[0].type=="image/png" ){
+                        if(input.files[0].size<=1000024){
+
+                            console.log('cool');
+                            $('#rendu_img').attr('src', e.target.result);
+                        }else{
+                            alert('trop volumineux');
+
+                            input.value='';
+                            $('#rendu_img').attr('src','images/user.png');
+                        }
+                    }else{
+                        alert('le ficher doit être de type jpeg ou png exclusivement');
+
+                        input.value='';
+                        $('#rendu_img').attr('src','images/user.png');
+                    }
+
+
                 }
 
                 reader.readAsDataURL(input.files[0]);
+
             }else{
                 $('#rendu_img').attr('src','images/user.png');
             }
@@ -290,6 +433,11 @@
         });
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
+        });
+    </script>
+    <script type="application/javascript">
+        $("#addfamille").click(function (e) {
+            $($("#familletemplate").html()).appendTo($("#familles"));
         });
     </script>
 @endsection

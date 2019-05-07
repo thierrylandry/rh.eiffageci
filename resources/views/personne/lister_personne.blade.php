@@ -16,42 +16,15 @@
 <div class="row">
     <div class="col-md-12">
         <!-- DATA TABLE -->
-        <div class="table-data__tool">
-            <div class="table-data__tool-left">
-                <div class="rs-select2--light rs-select2--md">
-                    <select class="js-select2" name="property">
-                        <option selected="selected">All Properties</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                    </select>
-                    <div class="dropDownSelect2"></div>
-                </div>
-                <div class="rs-select2--light rs-select2--sm">
-                    <select class="js-select2" name="time">
-                        <option selected="selected">Today</option>
-                        <option value="">3 Days</option>
-                        <option value="">1 Week</option>
-                    </select>
-                    <div class="dropDownSelect2"></div>
-                </div>
-                <button class="au-btn-filter">
-                    <i class="zmdi zmdi-filter-list"></i>filters</button>
-            </div>
+        <div class="table-data__tool  pull-right">
+
             <div class="table-data__tool-right">
                 <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                     <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
-                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                    <select class="js-select2" name="type">
-                        <option selected="selected">Export</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                    </select>
-                    <div class="dropDownSelect2"></div>
-                </div>
             </div>
         </div>
         <div class="table-responsive table-responsive-data2">
-            <table class="table table-data2" id="table_employe">
+            <table class="table  table-earning" id="table_employe">
                 <thead>
                 <tr>
                     <th>slug</th>
@@ -70,7 +43,11 @@
                     <td>{{$personne->slug}}</td>
                     <td>{{$personne->nom.' '.$personne->prenom}}</td>
                     <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
-                    <td>{{$personne->nationalite}}</td>
+                    <td>@foreach($payss as $pays)
+                            @if($pays->id==$personne->nationalite)
+                            {{$pays->nom_fr_fr}}
+                            @endif
+                        @endforeach</td>
                     <td>
                         @if($personne->entite==1)
                             PHB
@@ -88,6 +65,9 @@
                             <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                             <i class="zmdi zmdi-more"></i>
                             </a>
+                            <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
+                                <i class="zmdi zmdi-folder-person"></i>
+                            </a>
                             <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                 <i class="zmdi zmdi-delete"></i>
                             </a>
@@ -103,6 +83,15 @@
 </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
+
+    <script src="{{ asset("js/dataTables.checkboxes.js") }}"></script>
+    <script src="{{ asset("js/dataTables.buttons.min.js") }}"></script>
+    <script src="{{ asset("js/buttons.flash.min.js") }}"></script>
+    <script src="{{ asset("js/jszip.min.js") }}"></script>
+    <script src="{{ asset("js/dataTable.pdfmaker.js") }}"></script>
+    <script src="{{ asset("js/vfs_fonts.js") }}"></script>
+    <script src="{{ asset("js/buttons.html5.min.js") }}"></script>
+    <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         function readURL(input) {
 
@@ -129,6 +118,10 @@
     <script>
         $(document).ready(function() {
         var table= $('#table_employe').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
             language: {
                 url: "{{ asset('public/js/French.json')}}"
             },

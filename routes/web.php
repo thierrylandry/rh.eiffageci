@@ -61,3 +61,13 @@ Route::post('/modifier_personne',[
     'uses'=>'PersonneController@modifier_personne',
 
 ]);
+Route::get('/document_administratif/{slug}',[
+    'as'=>'document_administratif',
+    'uses'=>'PersonneController@document_administratif',
+
+]);
+Route::post('/import_fichier',[
+    'as'=>'import_fichier',
+    'uses'=>'PersonneController@import_fichier',
+
+]);

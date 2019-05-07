@@ -19,7 +19,7 @@ class CreateTablePersonnes extends Migration
             $table->string('prenom');
             $table->date('datenaissance');
             $table->string('sexe');
-            $table->string('nationalite');
+            $table->integer('nationalite');
             $table->integer('matrimonial');
             $table->integer('enfant')->nullable();
             $table->string('cnps')->nullable();

@@ -107,8 +107,15 @@
                                 <label for="text-input" class=" form-control-label">Nationalité*</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="nationnalite" placeholder="Nationalité" class="form-control" value="{{isset($personne)? $personne->nationalite:''}}" required>
-                                <small class="form-text text-muted">Une chaine de caractère</small>
+                                <select name="nationnalite" id="nationnalite" required class="form-control">
+                                    @foreach($payss as $pays)
+                                    @if($personne->nationalite==$pays->id)
+                                        <option value="{{$pays->id}}" selected> {{$pays->nom_fr_fr}}</option>
+                                        @else
+                                            <option value="{{$pays->id}}"> {{$pays->nom_fr_fr}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Metier\Json\Famille;
+use App\Pays;
 use App\Personne;
 use App\Societe;
 use Illuminate\Http\Request;
@@ -10,20 +11,27 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
+use App\UploadHandler;
 class PersonneController extends Controller
 {
     //
     public function ajouter_personne()
     {
         $societes=Societe::all();
-        return view('personne/ajouter_personne',compact('societes'));
+        $payss=Pays::all();
+        return view('personne/ajouter_personne',compact('societes','payss'));
     }
     public function lister_personne()
     {
-$personnes= Personne::orderBy('id', 'desc')->get();
+        $personnes= Personne::orderBy('id', 'desc')->get();
         $societes=Societe::all();
-        return view('personne/lister_personne',compact('personnes','societes'));
+        $payss=Pays::all();
+        return view('personne/lister_personne',compact('personnes','societes','payss'));
+    }
+    public function document_administratif($slug)
+    {
+        $personne= Personne::where('slug','=',$slug);
+        return view('personne/document_administratif',compact('personne'));
     }
 
     public function enregistrer_personne(Request $request){
@@ -123,7 +131,8 @@ $personnes= Personne::orderBy('id', 'desc')->get();
         $societes=Societe::all();
         $personne= Personne::where('slug','=',$slug)->get()->first();
         $familles= json_decode($personne->familles);
-        return view('personne/detail_personne',compact('personne','societes','familles'));
+        $payss=Pays::all();
+        return view('personne/document_administratif',compact('personne','societes','familles','payss'));
     }
     public function modifier_personne(Request $request){
 
@@ -206,6 +215,10 @@ $personnes= Personne::orderBy('id', 'desc')->get();
         $personne->save();
 
         return redirect()->route('lister_personne')->with('success',"La personne a été mise à jour avec succès");
+
+    }
+
+    public function import_fichier(Request $request){
 
     }
 

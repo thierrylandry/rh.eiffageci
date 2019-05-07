@@ -103,8 +103,12 @@
                               <label for="text-input" class=" form-control-label">Nationalité*</label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="text" id="text-input" name="nationnalite" placeholder="Nationalité" class="form-control" required>
-                              <small class="form-text text-muted">Une chaine de caractère</small>
+                              <select name="nationnalite" id="nationnalite" required class="form-control">
+                                  @foreach($payss as $pays)
+
+                                       <option value="{{$pays->id}}"> {{$pays->nom_fr_fr}}</option>
+                                  @endforeach
+                              </select>
                           </div>
                       </div>
 
@@ -301,7 +305,7 @@
                             <div class="form-group col-sm-12">
                                 <select type="text" name="type_p[]" class="type_c form-control input-field">
                                     <option value="CC"> CARTE CONSULAIRE</option>
-                                    <option value="PSP">CARTE NATIONNAL D'IDENTITE</option>
+                                    <option value="PSP">PASSEPORT</option>
                                     <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
                                 </select>
                             </div>
@@ -391,9 +395,11 @@
     </div>
     </form>
     <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
+    <script src="{{ asset("js/select2.full.js") }}">
+    </script>
     <script>
+        $('#nationnalite').select2({ placeholder: 'Select an option'});
         function readURL(input) {
-
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 

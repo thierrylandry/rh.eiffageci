@@ -20,6 +20,5 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-       'http://localhost:8080/rh.eiffageci/import_fichier ',
     ];
 }

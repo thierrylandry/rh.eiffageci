@@ -66,8 +66,19 @@ Route::get('/document_administratif/{slug}',[
     'uses'=>'PersonneController@document_administratif',
 
 ]);
-Route::post('/import_fichier',[
-    'as'=>'import_fichier',
-    'uses'=>'PersonneController@import_fichier',
+Route::post('/save_document',[
+    'as'=>'save_document',
+    'uses'=>'PersonneController@save_document',
+
+]);
+
+Route::get('/download_doc/{slug}',[
+    'as'=>'download_doc',
+    'uses'=>'PersonneController@download_doc',
+
+]);
+Route::get('/test/{slug}',[
+    'as'=>'test',
+    'uses'=>'PersonneController@test',
 
 ]);

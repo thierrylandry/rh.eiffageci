@@ -6,7 +6,6 @@
     style="display: block;"
 @endsection
 @section('page')
-
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
@@ -15,6 +14,15 @@
         </div>
     </div>
     </br>
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+        </div>
+        <div class="table-data__tool-right">
+            <a href="{{back()->getTargetUrl()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-long-arrow-return"></i>PRECEDANT</a>
+
+        </div>
+    </div>
     <form action="{{route('save_document')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
@@ -38,7 +46,7 @@
                                             @endforeach> <span class="au-checkmark"></span></label></td>
                             <td> @foreach($doc_admins as $doc)
                                     @if($doc->type_doc==$list->id && $doc->pj!="")
-                                       <a href="{{route('download_doc',[''.$doc->pj])}}">{{ $doc->pj}}</a>
+                                       <a target="_blank" href="{{route('download_doc',[$personne->slug,str_replace('.','_',$doc->pj)])}}">{{ $doc->pj}}</a>
 
                                     @endif
                                 @endforeach <input type="file" name="pj_{{$list->id}}"/></td>

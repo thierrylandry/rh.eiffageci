@@ -6,10 +6,74 @@
     style="display: block;"
     @endsection
 @section('page')
+    <style>
+        .steps-form-2 {
+            display: table ;
+            width: 100%;
+            position: relative; }
+        .steps-form-2 .steps-row-2 {
+            display: table-row; }
+        .steps-form-2 .steps-row-2:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 2px;
+            background-color: #7283a7; }
+        .steps-form-2 .steps-row-2 .steps-step-2 {
+            display: table-cell;
+            text-align: center;
+            position: relative; }
+        .steps-form-2 .steps-row-2 .steps-step-2 p {
+            margin-top: 0.5rem; }
+        .steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+            width: 250px;
+            height: 70px;
+            border: 2px solid #59698D;
+            background-color: white !important;
+            color: #59698D !important;
+            border-radius: 50%;
+            padding: 22px 18px 15px 18px;
+            margin-top: -22px; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+            border: 2px solid #4285F4;
+            color: #4285F4 !important;
+            background-color: white !important; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+            font-size: 1.7rem; }
+
+    </style>
+
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
                 <h2 class="title-1">PERSONNE-AJOUTER</h2>
+            </div>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Etape 1</strong></h2>
+
+            <!-- Stepper -->
+            <div class="steps-form-2">
+                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+                    <div class="steps-step-2 active" >
+                        <button href="#step-1" type="button"  class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Basic Information"><i class="fa fa-user" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="steps-step-2">
+                        <button disabled type="button" style="background-color: gainsboro!important;" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Personal Data"><i class="fa fa-folder" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="steps-step-2">
+                        <button href="#step-3" type="button" style="background-color: gainsboro !important;" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Terms and Conditions"><i class="fa fa-file-text" aria-hidden="true"></i></button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

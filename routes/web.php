@@ -66,13 +66,18 @@ Route::get('/document_administratif/{slug}',[
     'uses'=>'PersonneController@document_administratif',
 
 ]);
+Route::get('/document_administratif_new_user',[
+    'as'=>'document_administratif_new_user',
+    'uses'=>'PersonneController@save_document_new_user',
+
+]);
 Route::post('/save_document',[
     'as'=>'save_document',
     'uses'=>'PersonneController@save_document',
 
 ]);
 
-Route::get('/download_doc/{slug}',[
+Route::get('/download_doc/{slug}/{pj}',[
     'as'=>'download_doc',
     'uses'=>'PersonneController@download_doc',
 

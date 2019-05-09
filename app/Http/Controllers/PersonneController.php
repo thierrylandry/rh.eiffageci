@@ -10,6 +10,7 @@ use App\Personne;
 use App\Societe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -36,6 +37,14 @@ class PersonneController extends Controller
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
         return view('personne/document_administratif',compact('personne','list_administratif','doc_admins'));
+    }
+    public function document_administratif_new_user()
+    {
+
+        $personne= Personne::orderBy('id', 'desc')->get()->first();
+        $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
+        $list_administratif= Liste_Administratif::all();
+        return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins'));
     }
 
     public function enregistrer_personne(Request $request){
@@ -117,7 +126,7 @@ class PersonneController extends Controller
 
         $personne->save();
 
-        return redirect()->route('Ajouter_personne')->with('success',"La personne a été ajoutée avec succès");
+        return redirect()->route('document_administratif_new_user')->with('success',"La personne a été ajoutée avec succès");
 
     }
     public function supprimer_personne($slug)
@@ -249,10 +258,10 @@ class PersonneController extends Controller
                 }
                 if(isset($parameters['pj_'.$list->id])){
                     $doc->existance=1;
-                    $doc->pj=$personne->slug.'_'.mb_strimwidth($list->libelle,0, 24, "...").$request->file('pj_'.$list->id)->getClientOriginalExtension();
+                    $doc->pj=$list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension();
 
                     $path = Storage::putFileAs(
-                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), $personne->slug.'_'.mb_strimwidth($list->libelle,0, 24, "...").$request->file('pj_'.$list->id)->getClientOriginalExtension()
+                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), $list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension()
                     );
                 }else{
                 }
@@ -263,10 +272,56 @@ class PersonneController extends Controller
         return redirect()->route('lister_personne')->with('success',"Les documents ont été ajouté");
 
     }
-    public function download_doc($namefile){
-        $slug=explode($namefile,'_');
-        dd($slug);
-        return Storage::download('document/'.$slug[0].'/'.$namefile);
+    public function save_document_new_user(Request $request){
+
+        $parameters=$request->except(['_token']);
+        $personne= Personne::where('slug','=',$parameters['slug'])->get()->first();
+        $liste_administratif=Liste_Administratif::all();
+//$lesdoc=Administratif::where('id_personne','=',$personne->id)->delete();
+
+        foreach($liste_administratif as $list):
+
+            $test_existe_doc=Administratif::find($list->id);
+            if($test_existe_doc!=null){
+                $doc=$test_existe_doc;
+            }else{
+                $doc=new Administratif();
+            }
+
+
+            if(isset($parameters['existance_'.$list->id]) || isset($parameters['pj_'.$list->id])){
+                $doc->type_doc=$list->id;
+                $doc->id_personne=$personne->id;
+                if(isset($parameters['existance_'.$list->id]) && $parameters['existance_'.$list->id]==1){
+                    $doc->existance=1;
+                }else{
+                    $doc->existance=null;
+                }
+                if(isset($parameters['pj_'.$list->id])){
+                    $doc->existance=1;
+                    $doc->pj=$list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension();
+
+                    $path = Storage::putFileAs(
+                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), $list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension()
+                    );
+                }else{
+                }
+                $doc->save();
+            }
+        endforeach;
+
+        return redirect()->route('contrat_new_user')->with('success',"Les documents ont été ajouté");
+
+    }
+        public function contrat_new_user(){
+
+    return view('contrat/contrat_new_user');
+    }
+    public function download_doc($slug,$namefile){
+        $namefile=str_replace('_','.',$namefile);
+        // dd($namefile);
+     //   dd('document/'.$slug.'/'.$namefile);
+        return Storage::download('document/'.$slug.'/'.$namefile);
     }
     public function test($test){
         dd($test);

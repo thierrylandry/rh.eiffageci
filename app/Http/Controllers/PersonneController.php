@@ -44,6 +44,7 @@ class PersonneController extends Controller
         $personne= Personne::orderBy('id', 'desc')->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
+
         return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins'));
     }
 
@@ -258,10 +259,10 @@ class PersonneController extends Controller
                 }
                 if(isset($parameters['pj_'.$list->id])){
                     $doc->existance=1;
-                    $doc->pj=$list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension();
+                    $doc->pj=Str::ascii($list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension());
 
                     $path = Storage::putFileAs(
-                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), $list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension()
+                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id),Str::ascii( $list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension())
                     );
                 }else{
                 }
@@ -275,7 +276,9 @@ class PersonneController extends Controller
     public function save_document_new_user(Request $request){
 
         $parameters=$request->except(['_token']);
+
         $personne= Personne::where('slug','=',$parameters['slug'])->get()->first();
+
         $liste_administratif=Liste_Administratif::all();
 //$lesdoc=Administratif::where('id_personne','=',$personne->id)->delete();
 
@@ -299,10 +302,10 @@ class PersonneController extends Controller
                 }
                 if(isset($parameters['pj_'.$list->id])){
                     $doc->existance=1;
-                    $doc->pj=$list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension();
+                    $doc->pj=Str::ascii($list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension());
 
                     $path = Storage::putFileAs(
-                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), $list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension()
+                        'document'.DIRECTORY_SEPARATOR .$personne->slug,$request->file('pj_'.$list->id), Str::ascii($list->libelle.'.'.$request->file('pj_'.$list->id)->getClientOriginalExtension())
                     );
                 }else{
                 }
@@ -321,7 +324,7 @@ class PersonneController extends Controller
         $namefile=str_replace('_','.',$namefile);
         // dd($namefile);
      //   dd('document/'.$slug.'/'.$namefile);
-        return Storage::download('document/'.$slug.'/'.$namefile);
+        return Storage::download('document/'.$slug.'/'. Str::ascii($namefile,'fr'));
     }
     public function test($test){
         dd($test);

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/los migrations/2019_04_24_153843_create_table_services.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_24_153843_create_table_services.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_110724_create_table_type_contrat.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_110724_create_table_type_contrat.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -497,7 +492,7 @@
       <workItem from="1557219353220" duration="27272000" />
       <workItem from="1557302417566" duration="28997000" />
       <workItem from="1557390196417" duration="21407000" />
-      <workItem from="1557475655940" duration="17175000" />
+      <workItem from="1557475655940" duration="17256000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -590,11 +585,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557424667946</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="mise à jour  10">
+      <created>1557512186817</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1557512186817</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211425000" />
+    <option name="totallyTimeSpent" value="211506000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -694,7 +696,8 @@
     <MESSAGE value="mise à jour  7" />
     <MESSAGE value="mise à jour  8" />
     <MESSAGE value="mise à jour  9" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  9" />
+    <MESSAGE value="mise à jour  10" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -61,3 +61,39 @@ Route::post('/modifier_personne',[
     'uses'=>'PersonneController@modifier_personne',
 
 ]);
+Route::get('/document_administratif/{slug}',[
+    'as'=>'document_administratif',
+    'uses'=>'PersonneController@document_administratif',
+
+]);
+Route::get('/document_administratif_new_user',[
+    'as'=>'document_administratif_new_user',
+    'uses'=>'PersonneController@document_administratif_new_user',
+
+]);
+Route::post('/save_document',[
+    'as'=>'save_document',
+    'uses'=>'PersonneController@save_document',
+
+]);
+Route::post('/save_document_new_user',[
+    'as'=>'save_document_new_user',
+    'uses'=>'PersonneController@save_document_new_user',
+
+]);
+
+Route::get('/download_doc/{slug}/{pj}',[
+    'as'=>'download_doc',
+    'uses'=>'PersonneController@download_doc',
+
+]);
+Route::get('/test/{slug}',[
+    'as'=>'test',
+    'uses'=>'PersonneController@test',
+
+]);
+Route::get('/contrat_new_user',[
+    'as'=>'contrat_new_user',
+    'uses'=>'ContratController@contrat_new_user',
+
+]);

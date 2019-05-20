@@ -6,10 +6,74 @@
     style="display: block;"
     @endsection
 @section('page')
+    <style>
+        .steps-form-2 {
+            display: table ;
+            width: 100%;
+            position: relative; }
+        .steps-form-2 .steps-row-2 {
+            display: table-row; }
+        .steps-form-2 .steps-row-2:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 2px;
+            background-color: #7283a7; }
+        .steps-form-2 .steps-row-2 .steps-step-2 {
+            display: table-cell;
+            text-align: center;
+            position: relative; }
+        .steps-form-2 .steps-row-2 .steps-step-2 p {
+            margin-top: 0.5rem; }
+        .steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #59698D;
+            background-color: white !important;
+            color: #59698D !important;
+            border-radius: 100%;
+            padding: 22px 18px 15px 18px;
+            margin-top: -22px; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+            border: 2px solid #4285F4;
+            color: #4285F4 !important;
+            background-color: white !important; }
+        .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+            font-size: 1.7rem; }
+
+    </style>
+
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
                 <h2 class="title-1">PERSONNE-AJOUTER</h2>
+            </div>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Etape 1</strong></h2>
+
+            <!-- Stepper -->
+            <div class="steps-form-2">
+                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+                    <div class="steps-step-2 active" >
+                        <button href="#step-1" type="button"  class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Basic Information"><i class="fa fa-user" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="steps-step-2">
+                        <button disabled type="button" style="background-color: gainsboro!important;" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Personal Data"><i class="fa fa-folder" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="steps-step-2">
+                        <button href="#step-3" type="button" style="background-color: gainsboro !important;" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Terms and Conditions"><i class="fa fa-file-text" aria-hidden="true"></i></button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -103,8 +167,12 @@
                               <label for="text-input" class=" form-control-label">Nationalité*</label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="text" id="text-input" name="nationnalite" placeholder="Nationalité" class="form-control" required>
-                              <small class="form-text text-muted">Une chaine de caractère</small>
+                              <select name="nationnalite" id="nationnalite" required class="form-control">
+                                  @foreach($payss as $pays)
+
+                                       <option value="{{$pays->id}}"> {{$pays->nom_fr_fr}}</option>
+                                  @endforeach
+                              </select>
                           </div>
                       </div>
 
@@ -141,11 +209,13 @@
                           <div class="col col-md-3">
                               <label for="text-input" class=" form-control-label">Nombre d'enfant*</label>
                           </div>
+                          <!--fin-->
                           <div class="col-12 col-md-9">
                               <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" value="0" required>
                               <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
+
                   <div class="row form-group">
                       <div class="col col-md-3">
                           <label for="text-input" class=" form-control-label">E - mail *</label>
@@ -235,7 +305,7 @@
                       </div>
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Société</label>
+                              <label for="text-input" class=" form-control-label">Unité</label>
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="societe" id="disabledSelect" class="form-control">
@@ -247,18 +317,153 @@
                       </div>
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Pointure </label>
+                              <label for="text-input" class=" form-control-label">Pointure chaussure </label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="number" min="0" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
-                              <small class="form-text text-muted">une chaine de caractère</small>
+                              <input type="number" min="35" max="50" value="35" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
                           </div>
                       </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Taille t-shirt </label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                          <select class="form-control " name="taille">
+                              <option value="XS">XS</option>
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                              <option value="XL">XL</option>
+                              <option value="XXL">XXL</option>
+                              <option value="XXXL">XXXL</option>
+                          </select>
+                      </div>
+                  </div>
 
               </div>
           </div>
       </div>
   </div>
+        </br>
+        <div class="row">
+            <div class="col-sm-12"   >
+                <div class="card" style="height: 100% !important" >
+                    <div class="card-header">
+                        <strong>Famille </strong> ressencement des membres
+                    </div>
+                    <div class="card-body card-block">
+                    Ajouter un membre
+                    <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addfamille">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                    </br>
+                    </br>
+                    <div id="familles" class="form-inline">
+
+                        <div class=" form-control-label">
+                            <label for="titre_c[]">Nom et prénom </label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="nom_famille[]" class="titre_c form-control" placeholder="" value="{{ old('fullname_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">Lien de parenté</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="lien[]" class="type_c form-control input-field">
+
+                                    <option value="CONJ"> CONJOINT</option>
+                                    <option value="ENF">ENFANT</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">type de pièce</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="type_p[]" class="type_c form-control input-field">
+                                    <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="PSP">PASSEPORT</option>
+                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control-label">
+                            <label for="observation_c[]">N°pièce</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="num_p[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Date d'expiration</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr width="100%" color="blue">
+                    </div>
+                    <div id="familletemplate" class="row clearfix" style="display: none">
+
+                        <div class=" form-control-label">
+                            <label for="titre_c[]">Nom et prénom </label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="nom_famille[]" class="titre_c form-control" placeholder="" value="{{ old('fullname_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">Lien de parenté</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="lien[]" class="type_c form-control input-field">
+
+                                    <option value="CONJ"> CONJOINT</option>
+                                    <option value="ENF">ENFANT</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class=" form-control-label">
+                            <label for="observation_c[]">type de pièce</label>
+                            <div class="form-group col-sm-12">
+                                <select type="text" name="type_p[]" class="type_c form-control input-field">
+                                    <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="PSP">PASSEPORT</option>
+                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-control-label">
+                            <label for="observation_c[]">N°pièce</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="text" name="num_p[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Date d'expiration</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <hr width="100%" color="blue">
+                    </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     <div class="card-footer pull-right">
         <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Enregistrer
@@ -269,17 +474,40 @@
     </div>
     </form>
     <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
+    <script src="{{ asset("js/select2.full.js") }}">
+    </script>
     <script>
+        $('#nationnalite').select2({ placeholder: 'Select an option'});
         function readURL(input) {
-
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#rendu_img').attr('src', e.target.result);
+                    console.log(input.files[0]);
+                    console.log(input.files[0].type);
+                    if(input.files[0].type=="image/jpeg" || input.files[0].type=="image/png" ){
+                        if(input.files[0].size<=1000024){
+
+                            console.log('cool');
+                            $('#rendu_img').attr('src', e.target.result);
+                        }else{
+                            alert('trop volumineux');
+
+                            input.value='';
+                            $('#rendu_img').attr('src','images/user.png');
+                        }
+                    }else{
+                        alert('le ficher doit être de type jpeg ou png exclusivement');
+
+                        input.value='';
+                        $('#rendu_img').attr('src','images/user.png');
+                    }
+
+
                 }
 
                 reader.readAsDataURL(input.files[0]);
+
             }else{
                 $('#rendu_img').attr('src','images/user.png');
             }
@@ -290,6 +518,11 @@
         });
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
+        });
+    </script>
+    <script type="application/javascript">
+        $("#addfamille").click(function (e) {
+            $($("#familletemplate").html()).appendTo($("#familles"));
         });
     </script>
 @endsection

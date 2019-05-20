@@ -116,6 +116,19 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label for="text-input" class=" form-control-label">Type de contrat :</label>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" name="couverture_maladie">
+                                <option value="80">80</option>
+                                <option value="80R">80R</option>
+                                <option value="100">100</option>
+                                <option value="100M">100M</option>
+                            </select>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -125,49 +138,36 @@
 
                 <div class="">
                     <div class="row form-group">
-                        <div class="col col-md-3">
+                        <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de debut :</label>
                         </div>
                         <div class="form-group">
                             <input type="date" name="dateDebitC" class="form-control" required/>
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Durée en terme de mois :</label>
-                        </div>
-                        <div class="slidecontainer">
-                            <input type="range" min="1" list="tickmarks" max="100" value="50" class="slider">
-                            <datalist id="tickmarks">
-                                <option value="0" label="0%">
-                                <option value="10" label="10%">
-                                <option value="20" label="20%">
-                                <option value="30" label="30%">
-                                <option value="40" label="40%">
-                                <option value="50" label="50%">
-                                <option value="60" label="50%">
-                                <option value="70" label="50%">
-                                <option value="80" label="50%">
-                                <option value="90" label="50%">
-                                <option value="100" label="100%">
-                            </datalist>
-                        </div>
 
-                    </div>
                     <div class="row form-group">
-                        <div class="col col-md-3">
+                        <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" required/>
+                            <input type="date" name="dateFinC" class="form-control"  required/>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3">
+                        <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de rupture d'essaie :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" required/>
+                            <input type="date" name="daterupEssaie" class="form-control"  required/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Date depart définitif :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="daterupEssaie" class="form-control"  required/>
                         </div>
                     </div>
 

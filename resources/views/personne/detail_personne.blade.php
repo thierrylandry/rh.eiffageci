@@ -258,11 +258,26 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Pointure </label>
+                                <label for="text-input" class=" form-control-label">Pointure chaussure </label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" id="text-input" name="pointure" placeholder="Pointure" class="form-control" value="{{isset($personne)? $personne->pointure:''}}">
-                                <small class="form-text text-muted">un nombre entier</small>
+                                <input type="number" min="35" max="50" value="35" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Taille t-shirt </label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select class="form-control " name="taille">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="XXXL">XXXL</option>
+                                </select>
                             </div>
                         </div>
 

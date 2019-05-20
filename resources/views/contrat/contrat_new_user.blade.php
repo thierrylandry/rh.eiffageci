@@ -31,7 +31,7 @@
             opacity: 1 !important;
             filter: alpha(opacity=100) !important; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
-            width: 250px;
+            width: 70px;
             height: 70px;
             border: 2px solid #59698D;
             background-color: white !important;
@@ -82,32 +82,54 @@
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
 
         <div class="row">
-            <div class="col-lg-12">
-                <div class="top-campaign">
+            <div class="col-sm-5 top-campaign ">
+
+                <div class="">
                     <div class="row form-group">
-                        <div class="col col-md-3">
+                        <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Matricule :</label>
                         </div>
-                        <div class="col-12 col-md-9">
+                        <div class="form-group">
                             <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3">
+                        <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Service :</label>
                         </div>
-                        <div class="col-12 col-md-9">
-                            <select class="form-controle" required>
-                                    <option>SELECTIONNER UN SERVICE</option>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option>SELECTIONNER UN SERVICE</option>
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
+                        <div class="col-md-3">
+                            <label for="text-input" class=" form-control-label">Couverture maladie:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" name="couverture_maladie">
+                                <option value="80">80</option>
+                                <option value="80R">80R</option>
+                                <option value="100">100</option>
+                                <option value="100M">100M</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-5 top-campaign ">
+
+                <div class="">
+                    <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Date de debut :</label>
                         </div>
-                        <div class="col-12 col-md-9">
-                            <input type="date" name="dateDebitC" required/>
+                        <div class="form-group">
+                            <input type="date" name="dateDebitC" class="form-control" required/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -136,7 +158,7 @@
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
-                        <div class="col-12 col-md-9">
+                        <div class="form-group">
                             <input type="date" name="dateFinC" required/>
                         </div>
                     </div>
@@ -144,19 +166,14 @@
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Date de rupture d'essaie :</label>
                         </div>
-                        <div class="col-12 col-md-9">
+                        <div class="form-group">
                             <input type="date" name="dateFinC" required/>
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Couverture maladie:</label>
-                        </div>
-                        <div class="form-control">
-                            <input type="text" name="couvertureMaladie" required/>
-                        </div>
-                    </div>
-                    </div>
+
+                </div>
+
+
             </div>
         </div>
         <div class="card-footer pull-right">

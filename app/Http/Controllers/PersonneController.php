@@ -68,6 +68,7 @@ class PersonneController extends Controller
         $entite=$parameters['entite'];
         $societe=$parameters['societe'];
         $pointure=$parameters['pointure'];
+        $taille=$parameters['taille'];
 
         $date= new \DateTime(null);
 
@@ -90,6 +91,7 @@ class PersonneController extends Controller
         $personne->entite=$entite;
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
+        $personne->taille=$taille;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
 
         $familles = new Collection();
@@ -169,6 +171,7 @@ class PersonneController extends Controller
         $entite=$parameters['entite'];
         $societe=$parameters['societe'];
         $pointure=$parameters['pointure'];
+        $taille=$parameters['taille'];
 
         $date= new \DateTime(null);
 
@@ -191,6 +194,7 @@ class PersonneController extends Controller
         $personne->entite=$entite;
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
+        $personne->taille=$taille;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
 
         $familles = new Collection();

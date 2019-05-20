@@ -31,12 +31,12 @@
             opacity: 1 !important;
             filter: alpha(opacity=100) !important; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
-            width: 250px;
+            width: 70px;
             height: 70px;
             border: 2px solid #59698D;
             background-color: white !important;
             color: #59698D !important;
-            border-radius: 50%;
+            border-radius: 100%;
             padding: 22px 18px 15px 18px;
             margin-top: -22px; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
@@ -305,7 +305,7 @@
                       </div>
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Société</label>
+                              <label for="text-input" class=" form-control-label">Unité</label>
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="societe" id="disabledSelect" class="form-control">
@@ -317,13 +317,28 @@
                       </div>
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Pointure </label>
+                              <label for="text-input" class=" form-control-label">Pointure chaussure </label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="number" min="0" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
-                              <small class="form-text text-muted">une chaine de caractère</small>
+                              <input type="number" min="35" max="50" value="35" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
                           </div>
                       </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Taille t-shirt </label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                          <select class="form-control " name="taille">
+                              <option value="XS">XS</option>
+                              <option value="S">S</option>
+                              <option value="M">M</option>
+                              <option value="L">L</option>
+                              <option value="XL">XL</option>
+                              <option value="XXL">XXL</option>
+                              <option value="XXXL">XXXL</option>
+                          </select>
+                      </div>
+                  </div>
 
               </div>
           </div>

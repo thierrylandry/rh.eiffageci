@@ -150,12 +150,21 @@
                         </div>
                     </div>
 
+
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
                             <input type="date" name="dateFinC" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Date de fin de la période d'éssaie :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="periode_essaie" class="form-control" required/>
                         </div>
                     </div>
 

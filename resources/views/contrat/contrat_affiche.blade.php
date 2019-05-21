@@ -77,9 +77,14 @@
         </div>
     </div>
     </br>
-    <form action="{{route('save')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    @if(isset($contrat))
+    <form action="{{route('update_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        @else
+            <form action="{{route('save_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                @endif
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
+        <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
 
         <div class="row">
             <div class="col-sm-5 top-campaign ">
@@ -90,7 +95,7 @@
                             <label for="text-input" class=" form-control-label">Matricule :</label>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" required>
+                            <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" value="{{isset($contrat)?$contrat->matricule:''}}" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -101,7 +106,7 @@
                             <select class="form-control" name="service" required>
                                 <option value="">SELECTIONNER UN SERVICE</option>
                                 @foreach($services as $service)
-                                    <option value="{{$service->id}}">{{$service->libelle}}</option>
+                                    <option {{isset($contrat) && $contrat->id_service==$service->id?'selected':''}} value="{{$service->id}}">{{$service->libelle}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -156,6 +161,14 @@
                         </div>
                         <div class="form-group">
                             <input type="date" name="dateFinC" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Date de fin de la période d'éssaie :</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="periode_essaie" class="form-control" required/>
                         </div>
                     </div>
                     <div class="row form-group">

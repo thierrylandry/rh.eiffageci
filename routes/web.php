@@ -102,7 +102,12 @@ Route::post('/save_contrat',[
     'uses'=>'ContratController@save_contrat',
 
 ]);
-Route::post('/affiche_contrat',[
+Route::post('/update_contrat',[
+    'as'=>'update_contrat',
+    'uses'=>'ContratController@update_contrat',
+
+]);
+Route::get('/affiche_contrat/{id}',[
     'as'=>'affiche_contrat',
     'uses'=>'ContratController@affiche_contrat',
 

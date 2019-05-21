@@ -320,10 +320,7 @@ class PersonneController extends Controller
         return redirect()->route('contrat_new_user')->with('success',"Les documents ont été ajouté");
 
     }
-        public function contrat_new_user(){
 
-    return view('contrat/contrat_new_user');
-    }
     public function download_doc($slug,$namefile){
         $namefile=str_replace('_','.',$namefile);
         // dd($namefile);

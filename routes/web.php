@@ -97,3 +97,18 @@ Route::get('/contrat_new_user',[
     'uses'=>'ContratController@contrat_new_user',
 
 ]);
+Route::post('/save_contrat',[
+    'as'=>'save_contrat',
+    'uses'=>'ContratController@save_contrat',
+
+]);
+Route::post('/affiche_contrat',[
+    'as'=>'affiche_contrat',
+    'uses'=>'ContratController@affiche_contrat',
+
+]);
+Route::get('/lister_contrat/{slug}',[
+    'as'=>'lister_contrat',
+    'uses'=>'ContratController@lister_contrat',
+
+]);

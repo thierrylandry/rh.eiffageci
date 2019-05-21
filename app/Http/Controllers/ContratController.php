@@ -18,11 +18,13 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         return view('contrat/contrat_new_user',compact('personne','services','typecontrats'));
     }
-    public function affiche_contrat($slug){
-        $personne= Personne::where('slug','=',$slug)->get()->first();
+    public function affiche_contrat($id){
+        $contrat= Contrat::find($id);
+        $personne= Personne::find($contrat->id_personne);
+
         $services = Services::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats'));
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat'));
     }
 
     public function lister_contrat($slug){
@@ -31,25 +33,33 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         $contrats = Contrat::where('id_personne','=',$personne->id)->get();
 
+
         return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats'));
     }
 
     public function update_contrat( Request $request){
-        dd("mise a jours");
+
         $parameters=$request->except(['_token']);
         $slug=$parameters["slug"];
+        $id_contrat=$parameters["id_contrat"];
         $matricule=$parameters["matricule"];
         $couverture_maladie=$parameters["couverture_maladie"];
         $dateDebutC=$parameters["dateDebutC"];
         $dateFinC= $parameters["dateFinC"];
         $type_de_contrat= $parameters["type_de_contrat"];
         $periode_essaie= $parameters["periode_essaie"];
+        $ruptureEssai= $parameters["ruptureEssai"];
+        $departdefinitif= $parameters["departdefinitif"];
+        $dateInduction= $parameters["dateInduction"];
 
-        $contrat= new Contrat();
+        $contrat=  Contrat::find($id_contrat);
 
         $contrat->matricule=$matricule;
         $contrat->periode_essaie=$periode_essaie;
         $contrat->couvertureMaladie=$couverture_maladie;
+        $contrat->ruptureEssaie=$ruptureEssai;
+        $contrat->departdefinitif=$departdefinitif;
+        $contrat->dateInduction=$dateInduction;
         $contrat->dateDebutC=$dateDebutC;
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
@@ -61,10 +71,11 @@ $services = Services::all();
         $contrat->save();
 
 
-        return redirect()->route('lister_personne')->with('success',"Le contrat  a été ajoutée avec succès");
+        return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat  a été modifié avec succès");
     }
     public function save_contrat( Request $request){
         $parameters=$request->except(['_token']);
+
         $slug=$parameters["slug"];
         $matricule=$parameters["matricule"];
         $couverture_maladie=$parameters["couverture_maladie"];
@@ -89,6 +100,6 @@ $services = Services::all();
         $contrat->save();
 
 
-        return redirect()->route('lister_personne')->with('success',"Le contrat  a été ajoutée avec succès");
+        return redirect()->route('lister_personne')->with('success',"Le contrat  a été ajouté avec succès");
     }
 }

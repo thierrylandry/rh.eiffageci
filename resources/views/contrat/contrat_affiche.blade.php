@@ -55,28 +55,25 @@
         </div>
     </div>
     </br>
+
     <div class="row">
-        <div class="col-sm-12">
-            <h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Etape 3</strong></h2>
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h4 class="title-1">  {{"MATRICULE : ".$personne->matricule." NOM : ". $personne->nom." ".$personne->prenom}}</h4>
+            </div>
+            <div class="table-data__tool  pull-right">
+                <div class="table-data__tool-right">
 
-            <!-- Stepper -->
-            <div class="steps-form-2">
-                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
-                    <div class="steps-step-2 active" >
-                        <button href="#step-1" type="button" style="background-color: gainsboro !important;"  class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Basic Information"><i class="fa fa-user" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="steps-step-2">
-                        <button disabled type="button" style="background-color: gainsboro!important;" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Personal Data"><i class="fa fa-folder" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="steps-step-2">
-                        <button href="#step-3" type="button"  class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Terms and Conditions"><i class="fa fa-file-text" aria-hidden="true"></i></button>
-                    </div>
-
-                </div>
+                    <a href="{{url()->previous()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
+                </div>&nbsp;
             </div>
         </div>
+
     </div>
+
     </br>
+
     @if(isset($contrat))
     <form action="{{route('update_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @else
@@ -87,7 +84,7 @@
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
 
         <div class="row">
-            <div class="col-sm-5 top-campaign ">
+            <div class="col-sm-6 top-campaign ">
 
                 <div class="">
                     <div class="row form-group">
@@ -117,10 +114,10 @@
                         </div>
                         <div class="col-md-3">
                             <select class="form-control" name="couverture_maladie">
-                                <option value="80">80</option>
-                                <option value="80R">80R</option>
-                                <option value="100">100</option>
-                                <option value="100M">100M</option>
+                                <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
+                                <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
+                                <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>
+                                <option value="100M" {{isset($contrat) && $contrat->couvertureMaladie=="100M"?'selected':''}}>100M</option>
                             </select>
                         </div>
                     </div>
@@ -133,7 +130,7 @@
                                 <option value="">SELECTIONNER</option>
                                 @foreach($typecontrats as $typecontrat)
 
-                                    <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
+                                    <option value="{{$typecontrat->id}}"  {{isset($contrat) && $contrat->id_type_contrat==$typecontrat->id?'selected':''}}>{{$typecontrat->libelle}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -143,7 +140,7 @@
 
 
             </div>
-            <div class="col-sm-5 top-campaign ">
+            <div class="col-sm-6 top-campaign ">
 
                 <div class="">
                     <div class="row form-group">
@@ -151,7 +148,7 @@
                             <label for="text-input" class=" form-control-label">Date de debut :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateDebutC" class="form-control" required/>
+                            <input type="date" name="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
                         </div>
                     </div>
 
@@ -160,7 +157,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control"/>
+                            <input type="date" name="dateFinC" class="form-control" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -168,7 +165,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin de la période d'éssaie :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="periode_essaie" class="form-control" required/>
+                            <input type="date" name="periode_essaie" class="form-control" value="{{isset($contrat)?$contrat->periode_essaie:''}}" required/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -176,7 +173,7 @@
                             <label for="text-input" class=" form-control-label">Date de rupture d'essaie :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="ruptureEssai" class="form-control" />
+                            <input type="date" name="ruptureEssai" value="{{isset($contrat)?$contrat->ruptureEssaie:''}}" class="form-control" />
                         </div>
                     </div>
                     <div class="row form-group">
@@ -184,7 +181,7 @@
                             <label for="text-input" class=" form-control-label">Date depart définitif :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="departdefinitif" class="form-control"  />
+                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat)?$contrat->departDefinitif:''}}" />
                         </div>
                     </div>
                     <div class="row form-group">
@@ -192,7 +189,7 @@
                             <label for="text-input" class=" form-control-label">Date d'induction:</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateInduction" class="form-control"/>
+                            <input type="date" name="dateInduction" value="{{isset($contrat)?$contrat->dateInduction:''}}" class="form-control"/>
                         </div>
                     </div>
 

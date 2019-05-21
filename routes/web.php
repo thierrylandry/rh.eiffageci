@@ -116,4 +116,8 @@ Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
 
+]);Route::get('/rupture_contrat/{id}',[
+    'as'=>'rupture_contrat',
+    'uses'=>'ContratController@rupture_contrat',
+
 ]);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableServices extends Migration
+class AddPeriodeEssai extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTableServices extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('libelle');
-            $table->timestamps();
+        Schema::table('contrat', function (Blueprint $table) {
+            //
+            $table->date('periode_essaie')->nullable();
         });
     }
 
@@ -27,6 +26,9 @@ class CreateTableServices extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::table('contrat', function (Blueprint $table) {
+            //
+            $table->removeColumn('periode_essaie');
+        });
     }
 }

@@ -18,7 +18,7 @@ class CreateTableContrat extends Migration
             $table->string('matricule')->nullable();
             $table->date('datedebutc')->nullable();
             $table->date('datefinc')->nullable();
-            $table->date('couvertureMaladie')->nullable();
+            $table->string('couvertureMaladie')->nullable();
             $table->timestamps();
         });
     }

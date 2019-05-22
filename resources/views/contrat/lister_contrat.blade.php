@@ -20,11 +20,11 @@
                 <div class="table-data__tool-right">
 
                     <a href="{{url()->previous()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>Retour</a>
+                        <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('contrat_new_user2',['slug'=>$personne->slug])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN CONTRAT</a>
                 </div>
             </div>
@@ -33,11 +33,12 @@
                     <thead>
                     <tr>
                         <th>slug</th>
-                        <th>TYPE CONTRAT</th>
-                        <th>COUVERTURE MALADIE</th>
+                        <th class="">TYPE </br>CONTRAT</th>
+                        <th>COUVERTURE </br>MALADIE</th>
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
+                        <th>PERIODE </br> ESSAIE</th>
                         <th>TIMELINE</th>
                         <th>ACTION</th>
                     </tr>
@@ -61,7 +62,8 @@
                                 {{$contrat->datedebutc}}
                             </td>
                             <td>{{$contrat->datefinc}}</td>
-                            <td>									<div class="card-body ">
+                            <td>{{$contrat->periode_essaie}}</td>
+                            <td>									<div class=" ">
                                     @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
                                     <div class="progress mb-3">
 
@@ -73,7 +75,7 @@
                                         <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
                                              aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
                                     </div>
-@elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
+@elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
                                     <div class="progress mb-3">
                                         <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
                                              aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
@@ -86,12 +88,17 @@
 @endif
                                 </div></td>
                             <td> <div class="table-data-feature">
-                                    <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+
+                                    <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
+                                    </a>
+                                    <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                        <i class="zmdi zmdi-minus-circle-outline"></i>
                                     </a>
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                         <i class="zmdi zmdi-delete"></i>
                                     </a>
+
                                 </div>
                             </td>
                         </tr>

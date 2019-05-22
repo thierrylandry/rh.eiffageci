@@ -97,6 +97,11 @@ Route::get('/contrat_new_user',[
     'uses'=>'ContratController@contrat_new_user',
 
 ]);
+Route::get('/contrat_new_user2/{slug}',[
+    'as'=>'contrat_new_user2',
+    'uses'=>'ContratController@contrat_new_user2',
+
+]);
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
@@ -115,5 +120,31 @@ Route::get('/affiche_contrat/{id}',[
 Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
+
+]);Route::get('/rupture_contrat/{id}',[
+    'as'=>'rupture_contrat',
+    'uses'=>'ContratController@rupture_contrat',
+
+]);
+
+
+Route::get('/Ajouter_partenaire',[
+    'as'=>'Ajouter_partenaire',
+    'uses'=>'PersonneController@Ajouter_partenaire',
+
+]);
+Route::get('/lister_partenaire',[
+    'as'=>'lister_partenaire',
+    'uses'=>'PartenaireController@lister_partenaire',
+
+]);
+Route::get('/detail_partenaire/{id}',[
+    'as'=>'detail_partenaire',
+    'uses'=>'PartenaireController@detail_partenaire',
+
+]);
+Route::post('/modifier_partenaire',[
+    'as'=>'modifier_partenaire',
+    'uses'=>'PartenaireController@modifier_partenaire',
 
 ]);

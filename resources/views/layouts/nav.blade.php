@@ -142,6 +142,16 @@
 
                     </ul>
                 </li>
+                <li class="@yield('Ajouter_partenaire') @yield('lister_partenaire') has-sub">
+                    <a class="js-arrow " href="#">
+                        <i class="fas fa-user open" ></i>PARTENAIRES</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('lister_partenaire_block') @yield('lister_partenaire_block')>
+                        <li class="@yield('lister_partenaire')">
+                            <a href="{{route('lister_partenaire')}}">Lister</a>
+                        </li>
+
+                    </ul>
+                </li>
 
             </ul>
         </nav>

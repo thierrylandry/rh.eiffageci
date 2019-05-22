@@ -30,9 +30,9 @@ class HomeController extends Controller
     {
 
         $groupe_by_societe = DB::table('personne')
-                            ->rightJoin('societe','societe.id','=','personne.id_societe')
-                            ->groupBy('societe.id')
-                            ->select('libellesoc',DB::raw('count(personne.id) as nb'))
+                            ->rightJoin('unite','unite.id_unite','=','personne.id_societe')
+                            ->groupBy('unite.id_unite')
+                            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
                             ->get();
 
 

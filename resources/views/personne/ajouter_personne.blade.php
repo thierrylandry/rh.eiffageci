@@ -320,7 +320,7 @@
                           <div class="col-12 col-md-9">
                               <select name="societe" id="disabledSelect" class="form-control">
                                   @foreach($societes as $societe)
-                                      <option value="{{$societe->id}}">{{$societe->libellesoc}}</option>
+                                      <option value="{{$societe->id}}">{{$societe->libelleUnite}}</option>
                                       @endforeach
                               </select>
                           </div>

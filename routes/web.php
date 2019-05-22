@@ -148,3 +148,8 @@ Route::post('/modifier_partenaire',[
     'uses'=>'PartenaireController@modifier_partenaire',
 
 ]);
+Route::get('/effectif',[
+    'as'=>'effectif',
+    'uses'=>'EffectifController@effectif',
+
+]);

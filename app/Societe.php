@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Societe extends Model
 {
-    protected  $table="societe";
+    protected  $table="unite";
     protected $fillable= ['id','libellesoc'];
 }

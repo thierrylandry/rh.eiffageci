@@ -18,6 +18,12 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         return view('contrat/contrat_new_user',compact('personne','services','typecontrats'));
     }
+    public function contrat_new_user2($slug){
+        $personne= Personne::where('slug', $slug)->get()->first();
+        $services = Services::all();
+        $typecontrats= Typecontrat::all();
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats'));
+    }
     public function affiche_contrat($id){
         $contrat= Contrat::find($id);
         $personne= Personne::find($contrat->id_personne);

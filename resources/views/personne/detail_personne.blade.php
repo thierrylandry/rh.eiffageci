@@ -210,7 +210,17 @@
                                 <label for="text-input" class=" form-control-label">Rhesus Sanguin </label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="rh" placeholder="Rhesus Sanguin" value="{{isset($personne)? $personne->rh:''}}" class="form-control">
+                                <select class="form-control" name="rh">
+                                    <option value="">SELECTIONNER</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O-">O-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="B+">B+</option>
+                                    <option value="A+">A+</option>
+                                    <option value="AB+">AB+</option>
+                                </select>
 
                             </div>
                         </div>

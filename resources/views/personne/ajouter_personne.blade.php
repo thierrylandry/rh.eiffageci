@@ -125,10 +125,20 @@
                           <label for="text-input" class=" form-control-label">Date de naissance*</label>
                       </div>
                       <div class="col-12 col-md-9">
-                          <input type="date" id="text-input" name="datenaissance"  class="form-control" required>
+                          <input type="date" id="datenaissancet" name="datenaissance"  class="form-control" required>
 
                       </div>
+
                   </div>
+                  <div class="row form-group">
+
+                      <div class="col-12 col-md-9">
+                          <p id="age" style="color: red">   </p>
+
+                      </div>
+
+                  </div>
+
       </div>
              </div>
       </div>
@@ -216,25 +226,6 @@
                           </div>
                       </div>
 
-                  <div class="row form-group">
-                      <div class="col col-md-3">
-                          <label for="text-input" class=" form-control-label">E - mail *</label>
-                      </div>
-                      <div class="col-12 col-md-9">
-                          <input type="email" id="email" name="email" placeholder="E - mail" class="form-control" required>
-
-                      </div>
-                  </div>
-                  <div class="row form-group">
-                      <div class="col col-md-3">
-                          <label for="text-input" class=" form-control-label">Contact *</label>
-                      </div>
-                      <div class="col-12 col-md-9">
-                          <input type="text" min="0" id="contact" name="contact" placeholder="Contact" class="form-control" required>
-                          <small class="form-text text-muted">+225 XX XX XX XX ; +(XXX) XX XX XX XX</small>
-                      </div>
-                  </div>
-
               </div>
 
           </div>
@@ -288,17 +279,13 @@
                               <label for="text-input" class=" form-control-label">Fonction  </label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <input type="text" id="text-input" name="fonction"  placeholder="fonction" class="form-control">
+                              <select name="fonction" id="fonction" required class="form-control">
+                                  <option vzlue="">SELECTIONNER</option>
+                                  @foreach($fonctions as $fonction)
 
-                          </div>
-                      </div>
-                      <div class="row form-group">
-                          <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Service </label>
-                          </div>
-                          <div class="col-12 col-md-9">
-                              <input type="text" id="text-input" name="service" placeholder="Service" class="form-control">
-                              <small class="form-text text-muted">Une chaine de caractère</small>
+                                      <option value="{{$fonction->id}}"> {{$fonction->libelle}}</option>
+                                  @endforeach
+                              </select>
                           </div>
                       </div>
 
@@ -309,7 +296,8 @@
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
                                   <option value="1">PHB</option>
-                                  <option value="2">DIRECTION CI</option>
+                                  <option value="2">SPIE</option>
+                                  <option value="3">DIRECTION CI</option>
                               </select>
                           </div>
                       </div>
@@ -318,13 +306,22 @@
                               <label for="text-input" class=" form-control-label">Unité</label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <select name="societe" id="disabledSelect" class="form-control">
+                              <select name="societe" id="societe"  onchange="getval()" class="form-control">
                                   @foreach($societes as $societe)
                                       <option value="{{$societe->id}}">{{$societe->libelleUnite}}</option>
                                       @endforeach
                               </select>
                           </div>
                       </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Sureté</label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                         <label> Oui : <input type="radio" name="surete" id="sureteOui" value='1' /></label>
+                         <label> Non : <input type="radio" name="surete" value='0' id="sureteNon" checked/></label>
+                      </div>
+                  </div>
                       <div class="row form-group">
                           <div class="col col-md-3">
                               <label for="text-input" class=" form-control-label">Pointure chaussure </label>
@@ -359,7 +356,91 @@
             <div class="col-sm-12"   >
                 <div class="card" style="height: 100% !important" >
                     <div class="card-header">
-                        <strong>Famille </strong> ressencement des membres
+                        <strong>Pièces </strong>
+                    </div>
+                    <div class="card-body card-block">
+                        Ajouter une pièce
+                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addpiece">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        </button>
+                        </br>
+                        </br>
+                        <div id="pieces" class="form-inline">
+
+                            <div class=" form-control-label">
+                                <label for="observation_c[]">type de pièce</label>
+                                <div class="form-group col-sm-12">
+                                    <select type="text" name="type_p_piece[]" class="type_c form-control input-field">
+                                        <option value="CC"> CARTE CONSULAIRE</option>
+                                        <option value="CR">CARTE DE RESIDENTS</option>
+                                        <option value="VIS">VISA</option>
+                                        <option value="PSP">PASSEPORT</option>
+                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-control-label">
+                                <label for="observation_c[]">N°pièce</label>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-line">
+                                        <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-control-label">
+                                <label for="observation_c[]">Date d'expiration</label>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-line">
+                                        <input type="date" name="date_exp_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr width="100%" color="blue">
+                        </div>
+                        <div id="piecetemplate" class="row clearfix" style="display: none">
+                            <div class=" form-control-label">
+                                <label for="observation_c[]">type de pièce</label>
+                                <div class="form-group col-sm-12">
+                                    <select type="text" name="type_p_piece[]" class="type_c form-control input-field">
+                                        <option value="CC"> CARTE CONSULAIRE</option>
+                                        <option value="CR">CARTE DE RESIDENTS</option>
+                                        <option value="VIS">VISA</option>
+                                        <option value="PSP">PASSEPORT</option>
+                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-control-label">
+                                <label for="observation_c[]">N°pièce</label>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-line">
+                                        <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-control-label">
+                                <label for="observation_c[]">Date d'expiration</label>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-line">
+                                        <input type="date" name="date_exp_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr width="100%" color="blue">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12"   >
+                <div class="card" style="height: 100% !important" >
+                    <div class="card-header">
+                        <strong>Familles </strong>
                     </div>
                     <div class="card-body card-block">
                     Ajouter un membre
@@ -394,6 +475,8 @@
                             <div class="form-group col-sm-12">
                                 <select type="text" name="type_p[]" class="type_c form-control input-field">
                                     <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="CR">CARTE DE RESIDENTS</option>
+                                    <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
                                     <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
                                 </select>
@@ -444,6 +527,8 @@
                             <div class="form-group col-sm-12">
                                 <select type="text" name="type_p[]" class="type_c form-control input-field">
                                     <option value="CC"> CARTE CONSULAIRE</option>
+                                    <option value="CR">CARTE DE RESIDENTS</option>
+                                    <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
                                     <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
                                 </select>
@@ -487,6 +572,20 @@
     <script src="{{ asset("js/select2.full.js") }}">
     </script>
     <script>
+        function getval()
+        {
+            d = document.getElementById("societe").value;
+            //alert(d);
+        }
+
+
+
+        $("#datenaissancet").change(function(e){
+            var dob = new Date($('#datenaissancet').val());
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $('#age').html('Age : '+age+' Ans');
+        });
         $('#nationnalite').select2({ placeholder: 'Select an option'});
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -534,5 +633,6 @@
         $("#addfamille").click(function (e) {
             $($("#familletemplate").html()).appendTo($("#familles"));
         });
+
     </script>
 @endsection

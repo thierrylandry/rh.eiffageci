@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrat;
+use App\Definition;
 use App\Personne;
 use App\Services;
 use App\Typecontrat;
@@ -16,7 +17,8 @@ class ContratController extends Controller
         $personne= Personne::orderBy('id', 'desc')->get()->first();
 $services = Services::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_new_user',compact('personne','services','typecontrats'));
+        $definitions = Definition::all();
+        return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions'));
     }
     public function contrat_new_user2($slug){
         $personne= Personne::where('slug', $slug)->get()->first();
@@ -29,8 +31,9 @@ $services = Services::all();
         $personne= Personne::find($contrat->id_personne);
 
         $services = Services::all();
+        $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat'));
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions'));
     }
 
     public function lister_contrat($slug){
@@ -57,6 +60,9 @@ $services = Services::all();
         $ruptureEssai= $parameters["ruptureEssai"];
         $departdefinitif= $parameters["departdefinitif"];
         $dateInduction= $parameters["dateInduction"];
+        $id_definition= $parameters["id_definition"];
+        $email= $parameters["email"];
+        $contact= $parameters["contact"];
 
         $contrat=  Contrat::find($id_contrat);
 
@@ -73,6 +79,9 @@ $services = Services::all();
         $personne = Personne::where('slug','=',$slug)->get()->first();
         $personne->matricule=$matricule;
         $contrat->id_personne=$personne->id;
+        $contrat->id_definition=$id_definition;
+        $contrat->email=$email;
+        $contrat->contact=$contact;
 
         $contrat->save();
 
@@ -89,7 +98,9 @@ $services = Services::all();
        $dateFinC= $parameters["dateFinC"];
        $type_de_contrat= $parameters["type_de_contrat"];
        $periode_essaie= $parameters["periode_essaie"];
-
+        $email= $parameters["email"];
+        $contact= $parameters["contact"];
+        $id_definition= $parameters["id_definition"];
         $contrat= new Contrat();
 
         $contrat->matricule=$matricule;
@@ -102,6 +113,9 @@ $services = Services::all();
         $personne = Personne::where('slug','=',$slug)->get()->first();
         $personne->matricule=$matricule;
         $contrat->id_personne=$personne->id;
+        $contrat->email=$email;
+        $contrat->contact=$contact;
+        $contrat->id_definition=$id_definition;
 
         $contrat->save();
 

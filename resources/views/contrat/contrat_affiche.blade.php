@@ -89,9 +89,22 @@
                 <div class="">
                     <div class="row form-group">
                         <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Définition :</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="id_definition" required>
+                                <option value="">SELECTIONNER</option>
+                                @foreach($definitions as $definition)
+                                    <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}} value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Matricule :</label>
                         </div>
-                        <div class="form-group">
+                        <div class="col-sm-9">
                             <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" value="{{isset($contrat)?$contrat->matricule:''}}" required>
                         </div>
                     </div>
@@ -99,7 +112,7 @@
                         <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Service :</label>
                         </div>
-                        <div class="form-group">
+                        <div class="col-md-9">
                             <select class="form-control" name="service" required>
                                 <option value="">SELECTIONNER UN SERVICE</option>
                                 @foreach($services as $service)
@@ -112,7 +125,7 @@
                         <div class="col-md-3">
                             <label for="text-input" class=" form-control-label">Couverture maladie:</label>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-9">
                             <select class="form-control" name="couverture_maladie">
                                 <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
                                 <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
@@ -125,7 +138,7 @@
                         <div class="col-md-3">
                             <label for="text-input" class=" form-control-label">Type de contrat :</label>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-9">
                             <select class="form-control" name="type_de_contrat" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($typecontrats as $typecontrat)
@@ -133,6 +146,24 @@
                                     <option value="{{$typecontrat->id}}"  {{isset($contrat) && $contrat->id_type_contrat==$typecontrat->id?'selected':''}}>{{$typecontrat->libelle}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">E - mail *</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="email" id="email" name="email" placeholder="E - mail" class="form-control" value="{{isset($contrat)?$contrat->email:''}}" required>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Contact *</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="contact" name="contact" placeholder="Contact" class="form-control" value="{{isset($contrat)?$contrat->contact:''}}" required>
+
                         </div>
                     </div>
 
@@ -162,7 +193,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-4">
-                            <label for="text-input" class=" form-control-label">Date de fin de la période d'éssaie :</label>
+                            <label for="text-input" class=" form-control-label">Date de fin de la période d'éssai :</label>
                         </div>
                         <div class="form-group">
                             <input type="date" name="periode_essaie" class="form-control" value="{{isset($contrat)?$contrat->periode_essaie:''}}" required/>
@@ -170,7 +201,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-4">
-                            <label for="text-input" class=" form-control-label">Date de rupture d'essaie :</label>
+                            <label for="text-input" class=" form-control-label">Date de rupture d'essai :</label>
                         </div>
                         <div class="form-group">
                             <input type="date" name="ruptureEssai" value="{{isset($contrat)?$contrat->ruptureEssaie:''}}" class="form-control" />

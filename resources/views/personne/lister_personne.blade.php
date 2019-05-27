@@ -32,9 +32,9 @@
                         <th>NOM & PRENOM</th>
                         <th>SEXE</th>
                         <th>NATIONNALITE</th>
+                        <th>FONCTION</th>
                         <th>ENTITE</th>
                         <th>SOCIETE</th>
-                        <th>CONTACT</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -50,6 +50,9 @@
                                     @endif
                                 @endforeach</td>
                             <td>
+                               {{$personne->libelle}}
+                            </td>
+                            <td>
                                 @if($personne->entite==1)
                                     PHB
                                 @else
@@ -57,11 +60,10 @@
                                 @endif
                             </td>
                             <td>@foreach($societes as $societe)
-                                    @if($personne->id_societe==$societe->id)
-                                        {{$societe->libellesoc}}
+                                    @if($personne->id_societe==$societe->id_unite)
+                                        {{$societe->libelleUnite}}
                                     @endif
                                 @endforeach</td>
-                            <td>{{$personne->email}} {{$personne->contact}}</td>
                             <td> <div class="table-data-feature">
                                     <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>

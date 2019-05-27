@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Administratif;
+use App\Fonction;
 use App\Liste_Administratif;
 use App\Metier\Json\Famille;
+use App\Metier\Json\Piece;
 use App\Pays;
 use App\Personne;
 use App\Societe;
@@ -22,11 +24,15 @@ class PersonneController extends Controller
     {
         $societes=Societe::all();
         $payss=Pays::all();
-        return view('personne/ajouter_personne',compact('societes','payss'));
+        $fonctions =Fonction::orderBy('id', 'ASC')->get();
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions'));
     }
     public function lister_personne()
     {
-        $personnes= Personne::orderBy('id', 'desc')->get();
+        $personnes= DB::table('personne')
+            ->leftjoin('fonctions','fonctions.id','=','personne.fonction')
+            ->select('personne.id','personne.nom','personne.prenom','sexe','entite','id_societe','personne.slug','fonctions.libelle','nationalite')
+            ->orderBy('id', 'desc')->get();
         $societes=Societe::all();
         $payss=Pays::all();
         return view('personne/lister_personne',compact('personnes','societes','payss'));
@@ -58,17 +64,17 @@ class PersonneController extends Controller
         $nationnalite=$parameters['nationnalite'];
         $sit=$parameters['sit'];
         $nb_enf=$parameters['nb_enf'];
-        $email=$parameters['email'];
-        $contact=$parameters['contact'];
+       // $email=$parameters['email'];
+        //$contact=$parameters['contact'];
         $cnps=$parameters['cnps'];
         $rib=$parameters['rib'];
         $rh=$parameters['rh'];
         $fonction=$parameters['fonction'];
-        $service=$parameters['service'];
         $entite=$parameters['entite'];
         $societe=$parameters['societe'];
         $pointure=$parameters['pointure'];
         $taille=$parameters['taille'];
+        $surete=$parameters['surete'];
 
         $date= new \DateTime(null);
 
@@ -81,23 +87,43 @@ class PersonneController extends Controller
         $personne->nationalite=$nationnalite;
         $personne->matrimonial=$sit;
         $personne->enfant=$nb_enf;
-        $personne->email=$email;
-        $personne->contact=$contact;
+
         $personne->cnps=$cnps;
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->service=$service;
         $personne->entite=$entite;
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
+        $personne->surete=$surete;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
 
+
+
+//les pieces jointes _piece
+        $pieces = new Collection();
+        for($i = 0; $i <= count($request->input("num_p_piece"))-1; $i++ )
+        {
+            $piece = new Piece();
+
+            if( !empty($request->input("date_exp_piece")[$i]) || !empty($request->input("num_p_piece")[$i])  ){
+                $piece->type_p_piece = $request->input("type_p_piece")[$i];
+                $piece->num_p_piece= $request->input("num_p_piece")[$i];
+                $piece->date_exp_piece= $request->input("date_exp_piece")[$i];
+                $pieces->add($piece);
+            }
+
+        }
+
+        $raw = $request->except("_token", "type_p","num_p",'date_exp');
+      //  dd($raw);
+        $var["piece"] = json_encode($pieces->toArray());
+        $personne->pieces=$var["piece"];
+
+        //les familles
+
         $familles = new Collection();
-
-
-
         for($i = 0; $i <= count($request->input("nom_famille"))-1; $i++ )
         {
             $famille = new Famille();
@@ -147,8 +173,10 @@ class PersonneController extends Controller
         $societes=Societe::all();
         $personne= Personne::where('slug','=',$slug)->get()->first();
         $familles= json_decode($personne->familles);
+        $pieces= json_decode($personne->pieces);
         $payss=Pays::all();
-        return view('personne/detail_personne',compact('personne','societes','familles','payss'));
+        $fonctions =Fonction::orderBy('id', 'ASC')->get();
+        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces'));
     }
     public function modifier_personne(Request $request){
 
@@ -161,17 +189,15 @@ class PersonneController extends Controller
         $nationnalite=$parameters['nationnalite'];
         $sit=$parameters['sit'];
         $nb_enf=$parameters['nb_enf'];
-        $email=$parameters['email'];
-        $contact=$parameters['contact'];
         $cnps=$parameters['cnps'];
         $rib=$parameters['rib'];
         $rh=$parameters['rh'];
         $fonction=$parameters['fonction'];
-        $service=$parameters['service'];
         $entite=$parameters['entite'];
         $societe=$parameters['societe'];
         $pointure=$parameters['pointure'];
         $taille=$parameters['taille'];
+        $surete=$parameters['surete'];
 
         $date= new \DateTime(null);
 
@@ -184,23 +210,38 @@ class PersonneController extends Controller
         $personne->nationalite=$nationnalite;
         $personne->matrimonial=$sit;
         $personne->enfant=$nb_enf;
-        $personne->email=$email;
-        $personne->contact=$contact;
         $personne->cnps=$cnps;
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->service=$service;
         $personne->entite=$entite;
         $personne->id_societe=$societe;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
-        $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
+        $personne->surete=$surete;
 
         $familles = new Collection();
 
+//les pieces jointes _piece
+        $pieces = new Collection();
+        for($i = 0; $i <= count($request->input("num_p_piece"))-1; $i++ )
+        {
+            $piece = new Piece();
 
+            if( !empty($request->input("date_exp_piece")[$i]) || !empty($request->input("num_p_piece")[$i])  ){
+                $piece->type_p_piece = $request->input("type_p_piece")[$i];
+                $piece->num_p_piece= $request->input("num_p_piece")[$i];
+                $piece->date_exp_piece= $request->input("date_exp_piece")[$i];
+                $pieces->add($piece);
+            }
 
+        }
+
+        $raw = $request->except("_token", "type_p","num_p",'date_exp');
+        //  dd($raw);
+        $var["piece"] = json_encode($pieces->toArray());
+        $personne->pieces=$var["piece"];
+//les familles
         for($i = 0; $i <= count($request->input("nom_famille"))-1; $i++ )
         {
             $famille = new Famille();

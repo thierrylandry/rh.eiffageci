@@ -15,8 +15,8 @@ class AddFonctionServiceToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->string('fonction')->nullable();
-            $table->string('service')->nullable();
+            $table->integer('fonction')->nullable();
+            $table->integer('service')->nullable();
         });
     }
 

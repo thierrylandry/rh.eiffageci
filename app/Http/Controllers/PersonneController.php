@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Administratif;
+use App\Contrat;
 use App\Fonction;
 use App\Liste_Administratif;
 use App\Metier\Json\Famille;
 use App\Metier\Json\Piece;
 use App\Pays;
 use App\Personne;
+use App\Services;
 use App\Societe;
+use App\Typecontrat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +39,19 @@ class PersonneController extends Controller
         $societes=Societe::all();
         $payss=Pays::all();
         return view('personne/lister_personne',compact('personnes','societes','payss'));
+    }
+    public function fiche_personnel($slug)
+    {
+        $societes=Societe::all();
+        $personne= Personne::where('slug','=',$slug)->get()->first();
+        $familles= json_decode($personne->familles);
+        $pieces= json_decode($personne->pieces);
+        $payss=Pays::all();
+        $fonctions =Fonction::orderBy('id', 'ASC')->get();
+        $services = Services::all();
+        $typecontrats= Typecontrat::all();
+        $contrats = Contrat::where('id_personne','=',$personne->id)->get();
+        return view('personne/fiche_personnel',compact('personne','societes','familles','payss','fonctions','pieces','services','typecontrats','contrats'));
     }
     public function document_administratif($slug)
     {

@@ -61,6 +61,11 @@ Route::post('/modifier_personne',[
     'uses'=>'PersonneController@modifier_personne',
 
 ]);
+Route::get('/fiche_personnel/{slug}',[
+    'as'=>'fiche_personnel',
+    'uses'=>'PersonneController@fiche_personnel',
+
+]);
 Route::get('/document_administratif/{slug}',[
     'as'=>'document_administratif',
     'uses'=>'PersonneController@document_administratif',
@@ -151,5 +156,12 @@ Route::post('/modifier_partenaire',[
 Route::get('/effectif',[
     'as'=>'effectif',
     'uses'=>'EffectifController@effectif',
+
+]);
+//pour le salaire
+
+Route::get('/salaires',[
+    'as'=>'salaires',
+    'uses'=>'SalaireController@salaires',
 
 ]);

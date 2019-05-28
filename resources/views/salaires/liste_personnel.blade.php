@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('lister_personne')
+@section('salaires')
     active
 @endsection
 @section('lister_personne_block')
@@ -30,11 +30,6 @@
                     <tr>
                         <th>slug</th>
                         <th>NOM & PRENOM</th>
-                        <th>SEXE</th>
-                        <th>NATIONNALITE</th>
-                        <th>FONCTION</th>
-                        <th>ENTITE</th>
-                        <th>SOCIETE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -43,43 +38,10 @@
                         <tr class="tr-shadow">
                             <td>{{$personne->slug}}</td>
                             <td>{{$personne->nom.' '.$personne->prenom}}</td>
-                            <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
-                            <td>@foreach($payss as $pays)
-                                    @if($pays->id==$personne->nationalite)
-                                        {{$pays->nom_fr_fr}}
-                                    @endif
-                                @endforeach</td>
-                            <td>
-                               {{$personne->libelle}}
-                            </td>
-                            <td>
-                                @if($personne->entite==1)
-                                    PHB
-                                @else
-                                    DIRECTION CI
-                                @endif
-                            </td>
-                            <td>@foreach($societes as $societe)
-                                    @if($personne->id_societe==$societe->id_unite)
-                                        {{$societe->libelleUnite}}
-                                    @endif
-                                @endforeach</td>
+
                             <td> <div class="table-data-feature">
                                     <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="zmdi zmdi-more"></i>
-                                    </a>
-                                    <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
-                                        <i class="zmdi zmdi-attachment-alt"></i>
-                                    </a>
-                                    <a href="{{route('lister_contrat',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
-                                        <i class="zmdi zmdi-folder-person"></i>
-                                    </a>
-
-                                    <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                                        <i class="zmdi zmdi-delete"></i>
+                                        <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </td>

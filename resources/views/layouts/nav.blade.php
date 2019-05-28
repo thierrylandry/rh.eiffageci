@@ -142,6 +142,10 @@
 
                     </ul>
                 </li>
+                <li class="@yield('salaires')  has-sub">
+                    <a class="js-arrow " href="{{route('salaires')}}">
+                        <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>
+                </li>
                 <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
                     <a class="js-arrow " href="{{route('effectif')}}">
                         <i class="fas fa-users" ></i>EFFECTIFS</a>

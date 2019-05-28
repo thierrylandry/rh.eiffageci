@@ -202,14 +202,14 @@
                             <div class="col-12 col-md-9">
                                 <select class="form-control" name="rh">
                                     <option value="">SELECTIONNER</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B-">B-</option>
-                                    <option value="O-">O-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="B+">B+</option>
-                                    <option value="A+">A+</option>
-                                    <option value="AB+">AB+</option>
+                                    <option value="AB-" {{isset($personne)&& $personne->rh="AB-"?'selected':''}}>AB-</option>
+                                    <option value="A-" {{isset($personne)&& $personne->rh="A-"?'selected':''}}>A-</option>
+                                    <option value="B-" {{isset($personne)&& $personne->rh="B-"?'selected':''}}>B-</option>
+                                    <option value="O-" {{isset($personne)&& $personne->rh="O-"?'selected':''}}>O-</option>
+                                    <option value="O+" {{isset($personne)&& $personne->rh="O+"?'selected':''}}>O+</option>
+                                    <option value="B+" {{isset($personne)&& $personne->rh="B+"?'selected':''}}>B+</option>
+                                    <option value="A+" {{isset($personne)&& $personne->rh="A+"?'selected':''}}>A+</option>
+                                    <option value="AB+" {{isset($personne)&& $personne->rh="AB+"?'selected':''}}>AB+</option>
                                 </select>
 
                             </div>
@@ -267,7 +267,7 @@
                                 <label for="text-input" class=" form-control-label">Pointure chaussure </label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="35" max="50" value="35" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
+                                <input type="number" min="35" max="50" value="{{isset($personne)? $personne->pointure:''}}" id="text-input" name="pointure" placeholder="Pointure" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -276,13 +276,13 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <select class="form-control " name="taille">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="XXXL">XXXL</option>
+                                    <option value="XS" {{isset($personne) && $personne->taille=="XS"? $personne->taille:''}}>XS</option>
+                                    <option value="S" {{isset($personne) && $personne->taille=="S"? $personne->taille:''}}>S</option>
+                                    <option value="M" {{isset($personne) && $personne->taille=="M"? $personne->taille:''}}>M</option>
+                                    <option value="L" {{isset($personne) && $personne->taille=="L"? $personne->taille:''}}>L</option>
+                                    <option value="XL" {{isset($personne) && $personne->taille=="XL"? $personne->taille:''}}>XL</option>
+                                    <option value="XXL" {{isset($personne) && $personne->taille=="XXL"? $personne->taille:''}}>XXL</option>
+                                    <option value="XXXL" {{isset($personne) && $personne->taille=="XXXL"? $personne->taille:''}}>XXXL</option>
                                 </select>
                             </div>
                         </div>

@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h4 class="title-1">  {{"MATRICULE : ".$personne->matricule." NOM : ". $personne->nom." ".$personne->prenom}}</h4>
+                <h4 class="title-1">  {{" NOM : ". $personne->nom." ".$personne->prenom}}</h4>
             </div>
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">

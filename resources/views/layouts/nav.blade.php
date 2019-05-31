@@ -142,18 +142,10 @@
 
                     </ul>
                 </li>
-                <li class="@yield('Ajouter_invites') @yield('lister_invites') has-sub">
-                    <a class="js-arrow " href="#">
+                <li class="@yield('invite') has-sub">
+                    <a class="js-arrow " href="{{route("invite")}}">
                         <i class="fa fa-user-secret" ></i>INVITES</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
-                        <li class="@yield('Ajouter_invites')">
-                            <a href="{{route('Ajouter_personne')}}">Ajouter</a>
-                        </li>
-                        <li class="@yield('lister_invites')">
-                            <a href="{{route('lister_personne')}}">Lister</a>
-                        </li>
 
-                    </ul>
                 </li>
 
                 <li class="@yield('salaires')  has-sub">
@@ -172,6 +164,20 @@
                     <a class="js-arrow " href="">
                         <i class="fas fa-user-times" ></i>SANCTIONS</a>
                 </li>
+                <li class="@yield('repertoire') @yield('fin_contrat')  has-sub">
+                    <a class="js-arrow " href="#">
+                        <i class="fa fa-list" ></i>ETATS</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('etats')>
+                        <li class="@yield('repertoire')">
+                             <a href="{{route('repertoire')}}"><i class="fa fa-phone-square" aria-hidden="true"></i> Repertoire</a>
+                        </li>
+                        <li class="@yield('fin_contrat')">
+                            <a href="{{route('fin_contrat')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat</a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </div>

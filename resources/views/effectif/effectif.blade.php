@@ -15,74 +15,161 @@ style="display: block;"
     </div>
     </br>
     <div class="row">
-        <div class="col-md-12">
-            <!-- DATA TABLE -->
+        <div class="col-sm-6">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
             <div class="table-responsive table-responsive-data2">
-                <form action="{{route('modifier_partenaire')}}" method="post"  class="form-horizontal">
-                    @csrf
-                    <input type="hidden" id="text-input" name="id_partenaire" placeholder="Nom" value="{{isset($partenaire)? $partenaire->id:''}}" class="form-control" required>
+                <table class="table  table-earning" id="table_employe">
+                    <thead>
+                    <tr>
+                        <th>PHB</th>
+                        <th>EFFECTIF</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card" style="height: 100% !important">
-                                <div class="card-body" >
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="text-input" class=" form-control-label">Nom *</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="nom" placeholder="Nom" value="EIFFAGE GENIE CIVIL CI" class="form-control" readonly required>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="text-input" class=" form-control-label">Effectif *</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="number" id="text-input" name="effectif" placeholder="Effectif" class="form-control" value="40" required>
-                                        </div>
-                                    </div>
-                                </div>
+                            <tr class="tr-shadow">
+                                <td>EXPATRIE</td>
+                                <td>{{count($effectif_phb_exp)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>LOCAUX</td>
+                                <td>{{count($effectif_phb_locaux)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>HOMME</td>
+                                <td>{{count($effectif_phb_homme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>FEMME</td>
+                                <td>{{count($effectif_phb_femme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>TOTAL PHB</td>
+                                <td>{{count($effEiffage)}}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+            <!--fdgfgfdf-->
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>DIRECTION CI</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="tr-shadow">
+                                <td>EXPATRIE</td>
+                                <td>{{count($effectif_dir_exp)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>LOCAUX</td>
+                                <td>{{count($effectif_dir_locaux)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>HOMME</td>
+                                <td>{{count($effectif_dir_homme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>FEMME</td>
+                                <td>{{count($effectif_dir_femme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>TOTAL DIRECTION CI</td>
+                                <td>{{count($effectif_dir)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--fdgfgfdf-->
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>SPIE FONDATIONS</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="tr-shadow">
+                                <td>EXPATRIE</td>
+                                <td>{{count($effectif_spie_exp)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>LOCAUX</td>
+                                <td>{{count($effectif_spie_locaux)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>HOMME</td>
+                                <td>{{count($effectif_spie_homme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>FEMME</td>
+                                <td>{{count($effectif_spie_femme)}}</td>
+                            </tr>
+                            <tr class="tr-shadow">
+                                <td>TOTAL PHB</td>
+                                <td>{{count($effspietotal)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--fdgfgfdf-->
+        </div>
+
+
+            <div class="col-lg-6">
+                <h3>Autre partenaire</h3>
+                <form action="{{route('modifier_effectif')}}" method="post"  class="form-horizontal">
+                    @csrf
+                    @foreach($effectifs as  $effectif)
+                <div class="card" style="height: 100% !important">
+                    <div class="card-body" >
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <input type="hidden" id="text-input" name="id_partenaire" placeholder="Nom" value="{{isset($effectif)? $effectif->id:''}}" class="form-control" readonly required>
+
+                                <label for="text-input" class=" form-control-label">Nom *</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="nom" placeholder="Nom" value="{{isset($effectif)? $effectif->nom:''}}" class="form-control" readonly required>
                             </div>
                         </div>
-
-                        @foreach($effectifs as  $effectif)
-                            <div class="col-lg-4">
-                                <div class="card" style="height: 100% !important">
-                                    <div class="card-body" >
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label">Nom *</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="nom" placeholder="Nom" value="{{isset($effectif)? $effectif->nom:''}}" class="form-control" readonly required>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label">Effectif *</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="number" id="text-input" name="effectif" placeholder="Effectif" class="form-control" value="{{isset($effectif)? $effectif->effectif:''}}" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Effectif *</label>
                             </div>
-                            @endforeach
+                            <div class="col-12 col-md-9">
+                                <input type="number" id="text-input" name="effectif" placeholder="Effectif" class="form-control" value="{{isset($effectif)? $effectif->effectif:''}}" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer pull-right">
-                        <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="zmdi zmdi-edit"></i> Modifier
-                        </button>
-                        <button type="reset" class="btn btn-danger btn-sm" id="reset">
-                            <i class="fa fa-ban"></i> Réinitialiser
-                        </button>
-                    </div>
-                </form>
+                </div>
+                    @endforeach
+                    <input type="submit" class="btn btn-success pull-right" value="ENREGISTRER" />
+                    </form>
             </div>
-            <!-- END DATA TABLE -->
-        </div>
+
+
     </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
@@ -95,51 +182,4 @@ style="display: block;"
     <script src="{{ asset("js/vfs_fonts.js") }}"></script>
     <script src="{{ asset("js/buttons.html5.min.js") }}"></script>
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
-    <script>
-        function readURL(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#rendu_img').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }else{
-                $('#rendu_img').attr('src','images/user.png');
-            }
-        }
-
-        $("#photo").change(function() {
-            readURL(this);
-        });
-        $("#reset").click(function() {
-            $('#rendu_img').attr('src','images/user.png');
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            var table= $('#table_employe').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-                language: {
-                    url: "{{ asset('public/js/French.json')}}"
-                },
-
-                "ordering":true,
-                "responsive": true,
-                "createdRow": function( row, data, dataIndex){
-
-                },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 },
-                    { responsivePriority: 2, targets: -1 }
-                ]
-            }).column(0).visible(false);
-            //table.DataTable().draw();
-        } );
-    </script>
 @endsection

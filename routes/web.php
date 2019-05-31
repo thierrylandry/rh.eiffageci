@@ -148,9 +148,9 @@ Route::get('/detail_partenaire/{id}',[
     'uses'=>'PartenaireController@detail_partenaire',
 
 ]);
-Route::post('/modifier_partenaire',[
-    'as'=>'modifier_partenaire',
-    'uses'=>'PartenaireController@modifier_partenaire',
+Route::post('/modifier_effectif',[
+    'as'=>'modifier_effectif',
+    'uses'=>'EffectifController@modifier_effectif',
 
 ]);
 Route::get('/effectif',[
@@ -178,5 +178,25 @@ Route::get('/Ajouter_salaire/{slug}',[
 Route::post('/enregistrer_salaire',[
     'as'=>'enregistrer_salaire',
     'uses'=>'SalaireController@enregistrer_salaire',
+
+]);
+//etat
+
+Route::get('/repertoire',[
+    'as'=>'repertoire',
+    'uses'=>'EtatsController@repertoire',
+
+]);
+//invite
+
+Route::get('/invite',[
+    'as'=>'invite',
+    'uses'=>'InviterController@invite',
+
+]);
+//fin contrat
+Route::get('/fin_contrat',[
+    'as'=>'fin_contrat',
+    'uses'=>'EtatsController@fin_contrat',
 
 ]);

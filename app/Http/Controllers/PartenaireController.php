@@ -31,12 +31,11 @@ class PartenaireController extends Controller
         $effectif=$parameters['effectif'];
         $id_partenaire=$parameters['id_partenaire'];
         $partenaire= Partenaire::find($id_partenaire);
-        $partenaire->nom=$nom;
         $partenaire->effectif=$effectif;
 
         $partenaire->save();
 
-        return redirect()->route('lister_partenaire')->with('success',"Le partenaire a été modifié avec succès");
+        return redirect()->route('effectif')->with('success',"Le partenaire a été modifié avec succès");
 
     }
 }

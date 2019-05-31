@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" afterPath="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" afterPath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,7 +138,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestion_invite.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gestion_invite.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -152,6 +152,16 @@
                 <marker date="1559318820372" expanded="true" signature="6789:6865" ph="..." />
                 <marker date="1559318820372" expanded="true" signature="7151:7169" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajouter_salaire.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="64" column="145" selection-start-line="64" selection-start-column="145" selection-end-line="64" selection-end-column="145" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -203,7 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_21_094244_create_table_type_contrat.php" />
         <option value="$PROJECT_DIR$/app/Typecontrat.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_10_112910_create_table_contrat_.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_21_145102_add_periode_essai.php" />
@@ -254,6 +263,7 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/InviterController.php" />
         <option value="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
       </list>
     </option>
   </component>
@@ -346,6 +356,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salaires" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,7 +661,7 @@
       <workItem from="1559033408854" duration="21071000" />
       <workItem from="1559063393710" duration="1554000" />
       <workItem from="1559066265438" duration="33000" />
-      <workItem from="1559293994635" duration="18734000" />
+      <workItem from="1559293994635" duration="19470000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -813,11 +845,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559318690551</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="mise à jour  24">
+      <created>1559318838648</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1559318838648</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340167000" />
+    <option name="totallyTimeSpent" value="340903000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -929,7 +968,8 @@
     <MESSAGE value="mise à jour  21" />
     <MESSAGE value="mise à jour  22" />
     <MESSAGE value="mise à jour  23" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  23" />
+    <MESSAGE value="mise à jour  24" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  24" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -938,14 +978,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Personne.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="234" selection-start-line="10" selection-start-column="234" selection-end-line="10" selection-end-column="234" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1353,6 +1385,14 @@
             <marker date="1559318820372" expanded="true" signature="6789:6865" ph="..." />
             <marker date="1559318820372" expanded="true" signature="7151:7169" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="64" column="145" selection-start-line="64" selection-start-column="145" selection-end-line="64" selection-end-column="145" />
+          <folding />
         </state>
       </provider>
     </entry>

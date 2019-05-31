@@ -59,10 +59,10 @@
                             </div>
                         </div><div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Salisure</label>
+                                <label for="text-input" class=" form-control-label">Salissure</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value="" id="salissure" name="salissure" placeholder="Salisure" class="form-control" required>
+                                <input type="number" min="0" onchange="calculsal()"  value="" id="salissure" name="salissure" placeholder="Salissure" class="form-control" required>
                             </div>
                         </div>
                         <div class="row form-group">

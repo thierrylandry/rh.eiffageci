@@ -165,3 +165,18 @@ Route::get('/salaires',[
     'uses'=>'SalaireController@salaires',
 
 ]);
+Route::get('/liste_salaire/{slug}',[
+    'as'=>'liste_salaire',
+    'uses'=>'SalaireController@liste_salaire',
+
+]);
+Route::get('/Ajouter_salaire/{slug}',[
+    'as'=>'Ajouter_salaire',
+    'uses'=>'SalaireController@Ajouter_salaire',
+
+]);
+Route::post('/enregistrer_salaire',[
+    'as'=>'enregistrer_salaire',
+    'uses'=>'SalaireController@enregistrer_salaire',
+
+]);

@@ -9,10 +9,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PERSONNE-LISTE </h2>
+                <h2 class="title-1">{{"MATRICULE : ".$personne->matricule." NOM : ". $personne->nom." ".$personne->prenom}}  SALAIRES-LISTE </h2>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
@@ -20,32 +21,46 @@
 
 
                 <div class="table-data__tool-right">
-                    <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
+                    <a href="{{route('Ajouter_salaire',['slug'=>$personne->slug])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>AJOUTER UN SALAIRE</a>
                 </div>
             </div>
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_employe">
                     <thead>
                     <tr>
-                        <th>slug</th>
-                        <th>NOM & PRENOM</th>
-                        <th>ACTION</th>
+                        <th>id</th>
+                        <th>SURSALAIRE</th>
+                        <th>TRANSPORT</th>
+                        <th>LOGEMENT</th>
+                        <th>SALISSURE</th>
+                        <th>TENUE DE TRAVAIL</th>
+                        <th>SALAIRE BRUTE</th>
+                        <th>RETENUE</th>
+                        <th>SALAIRE NET</th>
+                        <th>DATE DEBUT</th>
+                        <th>DATE FIN</th>
+                        <th>PERIODE DE CONTRAT</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @if( isset($personnes))
-                    @foreach($personnes as $personne)
-                        <tr class="tr-shadow">
-                            <td>{{$personne->slug}}</td>
-                            <td>{{$personne->nom.' '.$personne->prenom}}</td>
+                    @if( isset($salaires))
+                    @foreach($salaires as $salaire)
 
-                            <td> <div class="table-data-feature">
-                                    <a href="{{route('liste_salaire',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </td>
+                        <tr class="tr-shadow">
+                            <td>{{$salaire->id}}</td>
+                            <td>{{$salaire->sursalaire}}</td>
+                            <td>{{$salaire->transport}}</td>
+                            <td>{{$salaire->logement}}</td>
+                            <td>{{$salaire->salissure}}</td>
+                            <td>{{$salaire->tenueTravail}}</td>
+                            <td>{{$salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail}}</td>
+                            <td>{{$salaire->retenue}}</td>
+                            <td>{{($salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail)-$salaire->retenue}}</td>
+                           <td>{{$salaire->dateDebutS}}</td>
+                            <td>{{$salaire->dateFin}}</td>
+                            <td>{{"Du ".$salaire->datedebutc." à ".$salaire->datefinc }}</td>
+
                         </tr>
                     @endforeach
                         @endif

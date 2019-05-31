@@ -142,6 +142,20 @@
 
                     </ul>
                 </li>
+                <li class="@yield('Ajouter_invites') @yield('lister_invites') has-sub">
+                    <a class="js-arrow " href="#">
+                        <i class="fa fa-user-secret" ></i>INVITES</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
+                        <li class="@yield('Ajouter_invites')">
+                            <a href="{{route('Ajouter_personne')}}">Ajouter</a>
+                        </li>
+                        <li class="@yield('lister_invites')">
+                            <a href="{{route('lister_personne')}}">Lister</a>
+                        </li>
+
+                    </ul>
+                </li>
+
                 <li class="@yield('salaires')  has-sub">
                     <a class="js-arrow " href="{{route('salaires')}}">
                         <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>

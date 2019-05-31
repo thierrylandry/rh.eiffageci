@@ -2,66 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rh.eiffageci.iml" afterPath="$PROJECT_DIR$/.idea/rh.eiffageci.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Administratif.php" afterPath="$PROJECT_DIR$/app/Administratif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Contrat.php" afterPath="$PROJECT_DIR$/app/Contrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Definition.php" afterPath="$PROJECT_DIR$/app/Definition.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Effectif.php" afterPath="$PROJECT_DIR$/app/Effectif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Fonction.php" afterPath="$PROJECT_DIR$/app/Fonction.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/EffectifController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/EffectifController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SalaireController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SalaireController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Liste_Administratif.php" afterPath="$PROJECT_DIR$/app/Liste_Administratif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Pays.php" afterPath="$PROJECT_DIR$/app/Pays.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services.php" afterPath="$PROJECT_DIR$/app/Services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Typecontrat.php" afterPath="$PROJECT_DIR$/app/Typecontrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/UploadHandler.php" afterPath="$PROJECT_DIR$/app/UploadHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_24_153843_create_table_services.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_24_153843_create_table_services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_26_110724_create_table_type_contrat.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_110724_create_table_type_contrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_26_163540_create_table_administratif.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_163540_create_table_administratif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_094032_add_id_societe_to_societe.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_094032_add_id_societe_to_societe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_094210_create_table_societe.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_094210_create_table_societe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_101356_add_id_personne_to_users.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_101356_add_id_personne_to_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_120642_add_contact_andemail_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_120642_add_contact_andemail_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_164144_add_slug_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_164144_add_slug_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_172045_add_image_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_172045_add_image_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_06_150437_add_familles_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_06_150437_add_familles_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_07_085147_create_table_to_pays.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_07_085147_create_table_to_pays.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_07_185316_create_table_liste_administratif.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_07_185316_create_table_liste_administratif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_08_112101_add_id_personne_toadministratif.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_08_112101_add_id_personne_toadministratif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_10_112910_create_table_contrat_.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_10_112910_create_table_contrat_.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_10_145251_add_rupture_essaie_depart_definitif.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_10_145251_add_rupture_essaie_depart_definitif.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_20_142146_add_taille_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_20_142146_add_taille_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_21_145102_add_periode_essai.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_21_145102_add_periode_essai.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_21_162723_add_date_induction.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_21_162723_add_date_induction.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_105057_create_table_fonction.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_105057_create_table_fonction.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_113401_add_surete_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_113401_add_surete_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_120121_add_pieces_to_personne.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_120121_add_pieces_to_personne.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_164412_create_table_definition.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_164412_create_table_definition.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_164620_add_id_definition_to_contrat.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_164620_add_id_definition_to_contrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_170916_add_email_to_contrat.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_170916_add_email_to_contrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_05_27_171057_add_contact_to_contrat.php" afterPath="$PROJECT_DIR$/database/migrations/2019_05_27_171057_add_contact_to_contrat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Liste_administratifSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/Liste_administratifSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Liste_definitionSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/Liste_definitionSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Liste_fonctions.php" afterPath="$PROJECT_DIR$/database/seeds/Liste_fonctions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_24_151453_add_id_service_to_users.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_24_151453_add_id_service_to_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_24_154716_create_table_roles.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_24_154716_create_table_roles.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_24_155612_create_table_users_roles.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_24_155612_create_table_users_roles.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_111444_create_table_definition.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_111444_create_table_definition.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_120515_create_table_categorie.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_120515_create_table_categorie.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_141708_create_table_medical.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_141708_create_table_medical.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_144852_create_table_typespermis.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_144852_create_table_typespermis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_152551_create_table_permis.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_152551_create_table_permis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_153316_create_table_type_diplome.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_153316_create_table_type_diplome.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_162854_create_table_diplome.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_162854_create_table_diplome.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_165338_create_table_employe.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_165338_create_table_employe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_170544_create_table_passage.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_170544_create_table_passage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_171134_create_table_recrutement.php" afterPath="$PROJECT_DIR$/los migrations/2019_04_26_171134_create_table_recrutement.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/salaires/liste_personnel.blade.php" afterPath="$PROJECT_DIR$/resources/views/salaires/liste_personnel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/effectif/effectif.blade.php" afterPath="$PROJECT_DIR$/resources/views/effectif/effectif.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" afterPath="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" afterPath="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/salaires/liste_salaire.blade.php" afterPath="$PROJECT_DIR$/resources/views/salaires/liste_salaire.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,6 +35,42 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - rh_eiffage@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - rh_eiffage@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - rh_eiffage@localhost [2]" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="personne" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -96,16 +79,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="liste_personnel.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/salaires/liste_personnel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -126,31 +99,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <file leaf-file-name="liste_salaire.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/salaires/liste_salaire.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2873">
-              <caret line="178" column="21" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="21" />
+            <state relative-caret-position="68">
+              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SalaireController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SalaireController.php">
+      <file leaf-file-name="effectif.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/effectif/effectif.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="70" column="35" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+            <state relative-caret-position="234">
+              <caret line="33" column="137" selection-start-line="33" selection-start-column="137" selection-end-line="33" selection-end-column="137" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Contrat.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Contrat.php">
+      <file leaf-file-name="EffectifController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EffectifController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            <state relative-caret-position="221">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajouter_personne.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="298" column="52" selection-start-line="298" selection-start-column="52" selection-end-line="298" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail_personne.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="239" column="52" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -173,16 +166,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2448">
-              <caret line="159" column="46" selection-start-line="159" selection-start-column="46" selection-end-line="159" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -198,7 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Liste_Administratif.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/Liste_administratifSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
@@ -219,8 +201,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/effectif/lister_effectif.blade.php" />
         <option value="$PROJECT_DIR$/app/Effectif.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/EffectifController.php" />
-        <option value="$PROJECT_DIR$/resources/views/effectif/effectif.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_27_105057_create_table_fonction.php" />
         <option value="$PROJECT_DIR$/app/Fonction.php" />
         <option value="$PROJECT_DIR$/database/seeds/Liste_fonctions.php" />
@@ -229,7 +209,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_05_27_120121_add_pieces_to_personne.php" />
         <option value="$PROJECT_DIR$/app/Metier/Json/Piece.php" />
         <option value="$PROJECT_DIR$/app/Personne.php" />
-        <option value="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_27_164412_create_table_definition.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_27_164620_add_id_definition_to_contrat.php" />
         <option value="$PROJECT_DIR$/app/Definition.php" />
@@ -241,7 +220,6 @@
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/lister_personne.blade.php" />
@@ -249,6 +227,11 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SalaireController.php" />
         <option value="$PROJECT_DIR$/resources/views/salaires/liste_personnel.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/salaires/liste_salaire.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/effectif/effectif.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/EffectifController.php" />
       </list>
     </option>
   </component>
@@ -664,7 +647,7 @@
       <workItem from="1559033408854" duration="21071000" />
       <workItem from="1559063393710" duration="1554000" />
       <workItem from="1559066265438" duration="33000" />
-      <workItem from="1559293994635" duration="329000" />
+      <workItem from="1559293994635" duration="2301000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -820,11 +803,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558979715348</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="mise à jour  20">
+      <created>1559294374065</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1559294374065</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321762000" />
+    <option name="totallyTimeSpent" value="323734000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -845,20 +835,20 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19549266" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1787649" sideWeight="0.4892704" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27378437" sideWeight="0.4701258" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
@@ -932,7 +922,8 @@
     <MESSAGE value="mise à jour  15" />
     <MESSAGE value="mise à jour  16" />
     <MESSAGE value="mise à jour  17" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  17" />
+    <MESSAGE value="mise à jour  20" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  20" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -941,20 +932,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22981">
-          <caret line="547" column="22" selection-start-line="547" selection-start-column="22" selection-end-line="547" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partenaire/lister_partenaire.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="106" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/effectif/lister_effectif.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/partenaire/detail_partenaire.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -983,20 +960,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="35" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EffectifController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/effectif/effectif.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="150" selection-start-line="41" selection-start-column="150" selection-end-line="41" selection-end-column="150" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,25 +1030,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/da473c50-f4b0-45dc-85d0-1a7a4ba1242e/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Personne.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="234" selection-start-line="10" selection-start-column="234" selection-end-line="10" selection-end-column="234" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="570" column="69" selection-start-line="570" selection-start-column="69" selection-end-line="570" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -1204,13 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="424" column="50" selection-start-line="424" selection-start-column="50" selection-end-line="424" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -1306,6 +1249,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/salaires/liste_salaire.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="239" column="52" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="298" column="52" selection-start-line="298" selection-start-column="52" selection-end-line="298" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/effectif/effectif.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="33" column="137" selection-start-line="33" selection-start-column="137" selection-end-line="33" selection-end-column="137" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/da473c50-f4b0-45dc-85d0-1a7a4ba1242e/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0f819e7c-de3e-45ca-ae82-18f11d127f33/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EffectifController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
           <folding />
         </state>
       </provider>

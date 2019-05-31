@@ -31,7 +31,7 @@ style="display: block;"
                                             <label for="text-input" class=" form-control-label">Nom *</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="nom" placeholder="Nom" value="{{isset($partenaire)? $partenaire->nom:''}}" class="form-control" readonly required>
+                                            <input type="text" id="text-input" name="nom" placeholder="Nom" value="EIFFAGE GENIE CIVIL CI" class="form-control" readonly required>
                                         </div>
                                     </div>
                                     <div class="row form-group">

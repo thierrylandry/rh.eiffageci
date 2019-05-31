@@ -2,14 +2,14 @@
 @section('salaires')
     active
 @endsection
-@section('lister_personne_block')
+@section('salaires_block')
     style="display: block;"
 @endsection
 @section('page')
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">{{"MATRICULE : ".$personne->matricule." NOM : ". $personne->nom." ".$personne->prenom}}  SALAIRES-LISTE </h2>
+                <h2 class="title-1">{{" NOM : ". $personne->nom." ".$personne->prenom}}  SALAIRES-LISTE </h2>
             </div>
         </div>
     </div>

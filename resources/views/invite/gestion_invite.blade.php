@@ -93,7 +93,7 @@
             <!-- DATA TABLE -->
 
             <div class="table-responsive table-responsive-data2">
-                <table class="table  table-earning" id="table_repertoire">
+                <table class="table   table-earning" id="table_repertoire">
                     <thead>
                     <tr>
                         <th>NOM</th>

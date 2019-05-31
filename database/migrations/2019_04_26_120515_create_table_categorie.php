@@ -16,6 +16,7 @@ class CreateTableCategorie extends Migration
         Schema::create('categorie', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('libelle');
+            $table->double('salCategoriel');
             $table->unsignedBigInteger('id_definition');
             $table->foreign('id_definition')->references('id')->on('definition');
             $table->timestamps();

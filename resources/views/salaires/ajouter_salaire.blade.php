@@ -37,6 +37,14 @@
                     <div class="col-sm-6">
                         <div class="row form-group">
                             <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Salaire catégoriel</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="number" min="0" onchange="calculsal()"  value=""  name="salCategoriel" id="salCategoriel" placeholder="Salaire catégoriel" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Sursalaire</label>
                             </div>
                             <div class="col-12 col-md-9">
@@ -73,16 +81,17 @@
                                 <input type="number" min="0" onchange="calculsal()"  value="" id="tenueTravail" name="tenueTravail" placeholder="Tenue de travail" class="form-control" required>
                             </div>
                         </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Retenue</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value="" id="retenue" name="retenue" placeholder="Retenue" class="form-control" required>
-                            </div>
-                        </div>
+
                     </div>
                 <div class="col-sm-6">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Retenue</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number" min="0" onchange="calculsal()"  value="" id="retenue" name="retenue" placeholder="Retenue" class="form-control" required>
+                        </div>
+                    </div>
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Salaire brut</label>
@@ -150,6 +159,10 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         function calculsal(){
+            var salCategoriel=$("#salCategoriel").val();
+            if(salCategoriel==""){
+                salCategoriel=0;
+            }
             var sursalaire=$("#sursalaire").val();
             if(sursalaire==""){
                 sursalaire=0;
@@ -174,7 +187,7 @@
             if(retenue==""){
                 retenue=0;
             }
-            var salebrute= parseFloat(sursalaire)+parseFloat(transport)+parseFloat(logement)+parseFloat(salissure)+parseFloat(tenueTravail);
+            var salebrute= parseFloat(salCategoriel)+parseFloat(sursalaire)+parseFloat(transport)+parseFloat(logement)+parseFloat(salissure)+parseFloat(tenueTravail);
             $("#salebrute").val(salebrute);
             var salenet= parseFloat(salebrute)- parseFloat(retenue);
             $("#salenet").val(salenet);

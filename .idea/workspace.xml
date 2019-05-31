@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_120515_create_table_categorie.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" afterPath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
     </list>
@@ -95,7 +96,7 @@
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="invite" />
+        <option name="myItemId" value="contrat" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -159,8 +160,18 @@
       <file leaf-file-name="ajouter_salaire.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="64" column="145" selection-start-line="64" selection-start-column="145" selection-end-line="64" selection-end-column="145" />
+            <state relative-caret-position="153">
+              <caret line="42" column="188" selection-start-line="42" selection-start-column="188" selection-end-line="42" selection-end-column="188" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2019_04_26_120515_create_table_categorie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -213,7 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Typecontrat.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_10_112910_create_table_contrat_.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_21_145102_add_periode_essai.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_21_162723_add_date_induction.php" />
@@ -264,6 +274,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/InviterController.php" />
         <option value="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php" />
       </list>
     </option>
   </component>
@@ -471,7 +482,39 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="los migrations" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -661,7 +704,7 @@
       <workItem from="1559033408854" duration="21071000" />
       <workItem from="1559063393710" duration="1554000" />
       <workItem from="1559066265438" duration="33000" />
-      <workItem from="1559293994635" duration="19470000" />
+      <workItem from="1559293994635" duration="21897000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -852,11 +895,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559318838648</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="mise à jour  25">
+      <created>1559319880085</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1559319880085</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340903000" />
+    <option name="totallyTimeSpent" value="343330000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -969,7 +1019,8 @@
     <MESSAGE value="mise à jour  22" />
     <MESSAGE value="mise à jour  23" />
     <MESSAGE value="mise à jour  24" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  24" />
+    <MESSAGE value="mise à jour  25" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  25" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -978,13 +1029,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_30_100607_add_id_users_to_personne.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_26_110724_create_table_type_contrat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1388,10 +1432,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="64" column="145" selection-start-line="64" selection-start-column="145" selection-end-line="64" selection-end-column="145" />
+        <state relative-caret-position="153">
+          <caret line="42" column="188" selection-start-line="42" selection-start-column="188" selection-end-line="42" selection-end-column="188" />
           <folding />
         </state>
       </provider>

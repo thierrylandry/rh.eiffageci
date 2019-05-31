@@ -194,6 +194,11 @@ Route::get('/invite',[
     'uses'=>'InviterController@invite',
 
 ]);
+Route::post('/save_invite',[
+    'as'=>'save_invite',
+    'uses'=>'InviterController@save_invite',
+
+]);
 //fin contrat
 Route::get('/fin_contrat',[
     'as'=>'fin_contrat',

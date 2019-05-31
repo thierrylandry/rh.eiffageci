@@ -15,4 +15,12 @@ public function invite(){
 
     return view('invite/gestion_invite',compact('invietes'));
 }
+public function save_invite( Request $request){
+    dd($request);
+    $invietes= Invite::all();
+
+
+
+    return view('invite/gestion_invite',compact('invietes'));
+}
 }

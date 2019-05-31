@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/los migrations/2019_04_26_120515_create_table_categorie.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" afterPath="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
     </list>
@@ -160,8 +159,8 @@
       <file leaf-file-name="ajouter_salaire.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="42" column="188" selection-start-line="42" selection-start-column="188" selection-end-line="42" selection-end-column="188" />
+            <state relative-caret-position="102">
+              <caret line="39" column="103" selection-start-line="39" selection-start-column="103" selection-end-line="39" selection-end-column="103" />
               <folding />
             </state>
           </provider>
@@ -273,8 +272,8 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/InviterController.php" />
         <option value="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_26_120515_create_table_categorie.php" />
+        <option value="$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php" />
       </list>
     </option>
   </component>
@@ -704,7 +703,7 @@
       <workItem from="1559033408854" duration="21071000" />
       <workItem from="1559063393710" duration="1554000" />
       <workItem from="1559066265438" duration="33000" />
-      <workItem from="1559293994635" duration="21897000" />
+      <workItem from="1559293994635" duration="21966000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -902,11 +901,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559319880085</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="mise à jour  26">
+      <created>1559322462524</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1559322462524</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343330000" />
+    <option name="totallyTimeSpent" value="343399000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -995,7 +1001,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit" />
     <MESSAGE value="Commit image Eiffage" />
     <MESSAGE value="mise à jour 1" />
     <MESSAGE value="mise à jour 2" />
@@ -1020,7 +1025,8 @@
     <MESSAGE value="mise à jour  23" />
     <MESSAGE value="mise à jour  24" />
     <MESSAGE value="mise à jour  25" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  25" />
+    <MESSAGE value="mise à jour  26" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise à jour  26" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1442,8 +1448,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/salaires/ajouter_salaire.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="42" column="188" selection-start-line="42" selection-start-column="188" selection-end-line="42" selection-end-column="188" />
+        <state relative-caret-position="102">
+          <caret line="39" column="103" selection-start-line="39" selection-start-column="103" selection-end-line="39" selection-end-column="103" />
           <folding />
         </state>
       </provider>

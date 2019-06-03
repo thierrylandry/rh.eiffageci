@@ -129,6 +129,16 @@
                     <a class="js-arrow" href="{{route('tableau_de_bord')}}">
                         <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
                 </li>
+                <li class="@yield('utilisateur') has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="zmdi zmdi-settings"></i>PARAMETRE</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')>
+                        <li class="@yield('utilisateur')">
+                            <a href="{{route('utilisateur')}}">Utilisateurs</a>
+                        </li>
+
+                    </ul>
+                </li>
                 <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
                     <a class="js-arrow " href="#">
                         <i class="fas fa-user open" ></i>PERSONNES</a>

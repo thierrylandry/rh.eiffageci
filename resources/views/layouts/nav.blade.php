@@ -129,6 +129,7 @@
                     <a class="js-arrow" href="{{route('tableau_de_bord')}}">
                         <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
                 </li>
+                @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
                 <li class="@yield('utilisateur') has-sub">
                     <a class="js-arrow" href="#">
                         <i class="zmdi zmdi-settings"></i>PARAMETRE</a>
@@ -139,6 +140,8 @@
 
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
                 <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
                     <a class="js-arrow " href="#">
                         <i class="fas fa-user open" ></i>PERSONNES</a>
@@ -152,28 +155,39 @@
 
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Invites'))
                 <li class="@yield('invite') has-sub">
                     <a class="js-arrow " href="{{route("invite")}}">
                         <i class="fa fa-user-secret" ></i>INVITES</a>
 
                 </li>
-
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Salaires'))
                 <li class="@yield('salaires')  has-sub">
                     <a class="js-arrow " href="{{route('salaires')}}">
                         <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Effectifs'))
                 <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
                     <a class="js-arrow " href="{{route('effectif')}}">
                         <i class="fas fa-users" ></i>EFFECTIFS</a>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Conges'))
                 <li class="@yield('') @yield('') has-sub">
                     <a class="js-arrow " href="">
                         <i class="fas fa-calendar-alt" ></i>CONGES</a>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Sanctions'))
                 <li class="@yield('') @yield('') has-sub">
                     <a class="js-arrow " href="">
                         <i class="fas fa-user-times" ></i>SANCTIONS</a>
                 </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Etats'))
                 <li class="@yield('repertoire') @yield('fin_contrat')  has-sub">
                     <a class="js-arrow " href="#">
                         <i class="fa fa-list" ></i>ETATS</a>
@@ -187,6 +201,7 @@
 
                     </ul>
                 </li>
+                    @endif
 
             </ul>
         </nav>

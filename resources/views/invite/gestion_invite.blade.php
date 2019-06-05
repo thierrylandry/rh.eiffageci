@@ -16,6 +16,10 @@
     <div class="table-data__tool  pull-right">
         <div class="table-data__tool-right">
 
+            @if(isset($invite))
+                <a href="{{route('invite')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <i class="zmdi zmdi-plus"></i>Ajouter</a>
+            @endif
             <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
         </div>&nbsp;
@@ -30,68 +34,80 @@
                     <strong>Ajouter un invité</strong>
                 </div>
                 <div class="card-body" >
-                    <form meethod="post" action="{{route("save_invite")}}">
+                    @if(isset($invite))
+                    <form method="post" action="{{route("modifier_invite")}}">
+                        @else
+                            <form method="post" action="{{route("save_invite")}}">
+                        @endif
+                        @csrf
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Nom *</label>
                         </div>
+                        <input type="hidden" id="id" name="id" placeholder="id" class="form-control" value="{{isset($invite)?$invite->id:''}}" required>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="nom" placeholder="Nom" class="form-control" required>
+                            <input type="text" id="text-input" name="nom" placeholder="Nom" class="form-control" value="{{isset($invite)?$invite->nom:''}}" required>
                             <small class="form-text text-muted">une chaine de caractère</small>
                         </div>
                     </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Prénoms *</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" value="{{isset($invite)?$invite->prenoms:''}}" required>
+                                <small class="form-text text-muted">une chaine de caractère</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Entreprise</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="entreprise" placeholder="entreprise" class="form-control" value="{{isset($invite)?$invite->entreprise:''}}" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Surete</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select class="form-control" name="surete">
+                                    <option value="1" {{isset($invite) && $invite->surete==1?'selected':''}}>OUI</option>
+                                    <option value="2" {{isset($invite) && $invite->surete==2?'selected':''}}>NON</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Contact</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" value="{{isset($invite)?$invite->contact:''}}" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">E - mail</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="email" placeholder="E - mail" class="form-control" value="{{isset($invite)?$invite->email:''}}" required>
+                                <small class="form-text text-muted">une chaine de caractère</small>
+                            </div>
+                        </div>
+                        <div class="card-footer pull-right">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i>@if(isset($invite)) {{"Modifier"}} @else {{"Enregistrer"}}@endif
+                            </button>
+                        </div>
                     </form>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Prénoms *</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" required>
-                            <small class="form-text text-muted">une chaine de caractère</small>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Entreprise</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Surete</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <select class="form-control">
-                                <option value="1">OUI</option>
-                                <option value="2">NON</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Contact</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">E - mail</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="email" placeholder="E - mail" class="form-control" required>
-                            <small class="form-text text-muted">une chaine de caractère</small>
-                        </div>
-                    </div>
+
                     </div>
                 </div>
         </div>
         <div class="col-md-12">
             <!-- DATA TABLE -->
-
+</br>
             <div class="table-responsive table-responsive-data2">
                 <table class="table   table-earning" id="table_repertoire">
                     <thead>
@@ -106,19 +122,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($invietes as $inviete)
+                    @foreach($invites as $invite)
                         <tr class="tr-shadow">
-                            <td>{{$inviete->nom}}</td>
-                            <td>{{$inviete->prenoms}}</td>
-                            <td>{{$inviete->entreprise}}</td>
-                            <td>@if($inviete->surete==1)
+                            <td>{{$invite->nom}}</td>
+                            <td>{{$invite->prenoms}}</td>
+                            <td>{{$invite->entreprise}}</td>
+                            <td>@if($invite->surete==1)
                                 OUI
                                     @else
                                     NON
                                 @endif</td>
-                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$inviete->contact}}</td>
-                            <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$inviete->email}}</td>
-                            <td><i class="fa Example of anchor fa-anchor" aria-hidden="true"></i><a href="#">Ajouter passage</a> </td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
+                            <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$invite->email}}</td>
+                            <td><a href="{{route("pmodifier_invite",['id'=>$invite->id])}}"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a> <a href="{{route("supprimer_invite",['id'=>$invite->id])}}" class="supprimerinvite"><i class="fa fa-trash" aria-hidden="true"></i></a>  <a href="{{route("passage_invite",['id'=>$invite->id])}}"><i class="fa Example of anchor fa-anchor" aria-hidden="true"></i>Passages</a> </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -141,6 +157,10 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         $(document).ready(function() {
+            $('.supprimerinvite').click( function (e) {
+                //   table.row('.selected').remove().draw( false );
+                if(confirm("Voulez vous supprimer liinvité? Attention la suppression de l'inviter entrainera la suppression en cascade de tout ses passages")){}else{e.preventDefault(); e.returnValue = false; return false; }
+            } );
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
                 buttons: [

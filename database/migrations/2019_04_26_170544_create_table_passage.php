@@ -15,8 +15,8 @@ class CreateTablePassage extends Migration
     {
         Schema::create('passage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('dateArrive');
-            $table->date('dateDepart');
+            $table->date('dateArrive')->nullable();
+            $table->date('dateDepart')->nullable();
             $table->unsignedBigInteger('id_invite');
             $table->foreign('id_invite')->references('id')->on('invite');
             $table->timestamps();

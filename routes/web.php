@@ -16,198 +16,256 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('erreur', [
+    'as'=>'erreur',
+    'uses'=>'ErreurController@erreur'
 
+]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
     'uses'=>'homeController@tableau_de_bord',
-
-])->middleware('auth');
-
-Route::get('/Ajouter_personne',[
-    'as'=>'Ajouter_personne',
-    'uses'=>'PersonneController@ajouter_personne',
-
-])->middleware('auth');
+])->middleware('auth')->middleware('roles');
 
 Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 
-])->middleware('auth');
+Route::get('/Ajouter_personne',[
+    'as'=>'Ajouter_personne',
+    'uses'=>'PersonneController@ajouter_personne',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/lister_personne',[
     'as'=>'lister_personne',
     'uses'=>'PersonneController@lister_personne',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/enregistrer_personne',[
     'as'=>'enregistrer_personne',
     'uses'=>'PersonneController@enregistrer_personne',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_personne/{slug}',[
     'as'=>'supprimer_personne',
     'uses'=>'PersonneController@supprimer_personne',
-
-])->middleware('auth');
+    'roles' => ['sdd','dfsd']
+])->middleware('auth')->middleware('roles');
 Route::get('/detail_personne/{slug}',[
     'as'=>'detail_personne',
     'uses'=>'PersonneController@detail_personne',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/modifier_personne',[
     'as'=>'modifier_personne',
     'uses'=>'PersonneController@modifier_personne',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/fiche_personnel/{slug}',[
     'as'=>'fiche_personnel',
     'uses'=>'PersonneController@fiche_personnel',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/document_administratif/{slug}',[
     'as'=>'document_administratif',
     'uses'=>'PersonneController@document_administratif',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/document_administratif_new_user',[
     'as'=>'document_administratif_new_user',
     'uses'=>'PersonneController@document_administratif_new_user',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_document',[
     'as'=>'save_document',
     'uses'=>'PersonneController@save_document',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_document_new_user',[
     'as'=>'save_document_new_user',
     'uses'=>'PersonneController@save_document_new_user',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 
 Route::get('/download_doc/{slug}/{pj}',[
     'as'=>'download_doc',
     'uses'=>'PersonneController@download_doc',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/test/{slug}',[
     'as'=>'test',
     'uses'=>'PersonneController@test',
-
-])->middleware('auth');
+    'roles' => ['sdd','dfsd']
+])->middleware('auth')->middleware('roles');
 Route::get('/contrat_new_user',[
     'as'=>'contrat_new_user',
     'uses'=>'ContratController@contrat_new_user',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/contrat_new_user2/{slug}',[
     'as'=>'contrat_new_user2',
     'uses'=>'ContratController@contrat_new_user2',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/update_contrat',[
     'as'=>'update_contrat',
     'uses'=>'ContratController@update_contrat',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/affiche_contrat/{id}',[
     'as'=>'affiche_contrat',
     'uses'=>'ContratController@affiche_contrat',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
-
+    'roles' => ['Personnes']
 ])->middleware('auth');Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',
     'uses'=>'ContratController@rupture_contrat',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 
 
 Route::get('/Ajouter_partenaire',[
     'as'=>'Ajouter_partenaire',
     'uses'=>'PersonneController@Ajouter_partenaire',
-
-])->middleware('auth');
+    'roles' => ['Effectifs']
+])->middleware('auth')->middleware('roles');
 Route::get('/lister_partenaire',[
     'as'=>'lister_partenaire',
     'uses'=>'PartenaireController@lister_partenaire',
-
-])->middleware('auth');
+    'roles' => ['Effectifs']
+])->middleware('auth')->middleware('roles');
 Route::get('/detail_partenaire/{id}',[
     'as'=>'detail_partenaire',
     'uses'=>'PartenaireController@detail_partenaire',
-
-])->middleware('auth');
+    'roles' => ['Effectifs']
+])->middleware('auth')->middleware('roles');
 Route::post('/modifier_effectif',[
     'as'=>'modifier_effectif',
     'uses'=>'EffectifController@modifier_effectif',
-
-])->middleware('auth');
+    'roles' => ['Effectifs']
+])->middleware('auth')->middleware('roles');
 Route::get('/effectif',[
     'as'=>'effectif',
     'uses'=>'EffectifController@effectif',
-
-])->middleware('auth');
+    'roles' => ['Effectifs']
+])->middleware('auth')->middleware('roles');
 //pour le salaire
 
 Route::get('/salaires',[
     'as'=>'salaires',
     'uses'=>'SalaireController@salaires',
-
-])->middleware('auth');
+    'roles' => ['Salaires']
+])->middleware('auth')->middleware('roles');
 Route::get('/liste_salaire/{slug}',[
     'as'=>'liste_salaire',
     'uses'=>'SalaireController@liste_salaire',
-
-])->middleware('auth');
+    'roles' => ['Salaires']
+])->middleware('auth')->middleware('roles');
 Route::get('/Ajouter_salaire/{slug}',[
     'as'=>'Ajouter_salaire',
     'uses'=>'SalaireController@Ajouter_salaire',
-
-])->middleware('auth');
+    'roles' => ['Salaires']
+])->middleware('auth')->middleware('roles');
 Route::post('/enregistrer_salaire',[
     'as'=>'enregistrer_salaire',
     'uses'=>'SalaireController@enregistrer_salaire',
-
-])->middleware('auth');
+    'roles' => ['Salaires']
+])->middleware('auth')->middleware('roles');
 //etat
 
 Route::get('/repertoire',[
     'as'=>'repertoire',
     'uses'=>'EtatsController@repertoire',
-
-])->middleware('auth');
+    'roles' => ['Etats']
+])->middleware('auth')->middleware('roles');
 //invite
 
 Route::get('/invite',[
     'as'=>'invite',
     'uses'=>'InviterController@invite',
-
-])->middleware('auth');
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::get('/pmodifier_invite/{id}',[
+    'as'=>'pmodifier_invite',
+    'uses'=>'InviterController@pmodifier_invite',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_invite/{id}',[
+    'as'=>'supprimer_invite',
+    'uses'=>'InviterController@supprimer_invite',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_invite',[
     'as'=>'save_invite',
     'uses'=>'InviterController@save_invite',
-
-])->middleware('auth');
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::post('/modifier_invite',[
+    'as'=>'modifier_invite',
+    'uses'=>'InviterController@modifier_invite',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::get('/passage_invite/{id}',[
+    'as'=>'passage_invite',
+    'uses'=>'InviterController@passage_invite',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::post('/enregistrer_passage',[
+    'as'=>'enregistrer_passage',
+    'uses'=>'InviterController@enregistrer_passage',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
 //fin contrat
 Route::get('/fin_contrat',[
     'as'=>'fin_contrat',
     'uses'=>'EtatsController@fin_contrat',
-
-])->middleware('auth');
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
  //parametre création des utilisateurs
 Route::get('/utilisateur',[
     'as'=>'utilisateur',
     'uses'=>'UserController@utilisateur',
-
-])->middleware('auth');
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/voir_utilisateur',[
+    'as'=>'voir_utilisateur',
+    'uses'=>'UserController@voir_utilisateur',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_utilisateur',[
+    'as'=>'supprimer_utilisateur',
+    'uses'=>'UserController@supprimer_utilisateur',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/save_user',[
+    'as'=>'save_user',
+    'uses'=>'UserController@save_user',
+    'roles' => ['Parametrages']
+])->middleware('auth')->middleware('roles');
+Route::get('/modifier_utilisateur/{id}',[
+    'as'=>'modifier_utilisateur',
+    'uses'=>'UserController@modifier_utilisateur',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_utilisateur/{id}',[
+    'as'=>'supprimer_utilisateur',
+    'uses'=>'UserController@supprimer_utilisateur',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/modifier_user',[
+    'as'=>'modifier_user',
+    'uses'=>'UserController@modifier_user',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');

@@ -32,12 +32,10 @@ class PersonneController extends Controller
     }
     public function lister_personne()
     {
-        $personnes= DB::table('personne')
-            ->leftjoin('fonctions','fonctions.id','=','personne.fonction')
-            ->select('personne.id','personne.nom','personne.prenom','sexe','entite','id_societe','personne.slug','fonctions.libelle','nationalite')
-            ->orderBy('id', 'desc')->get();
-        $societes=Societe::all();
-        $payss=Pays::all();
+        $personnes= Personne::with("fonction","pays","societe")
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
         return view('personne/lister_personne',compact('personnes','societes','payss'));
     }
     public function fiche_personnel($slug)

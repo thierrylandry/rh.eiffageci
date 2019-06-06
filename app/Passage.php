@@ -11,6 +11,6 @@ class Passage extends Model
     protected $fillable= ['id','dateArrive','dateDepart','id_invite'];
     public function invite()
     {
-        return $this->belongsTo('App\Invite');
+        return $this->belongsTo('App\Invite','id_invite');
     }
 }

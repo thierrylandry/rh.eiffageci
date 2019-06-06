@@ -28,6 +28,11 @@ Route::get('/tableau_de_bord',[
     'uses'=>'homeController@tableau_de_bord',
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/global',[
+    'as'=>'global',
+    'uses'=>'homeController@globale',
+])->middleware('auth')->middleware('roles');
+
 Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',
@@ -225,6 +230,21 @@ Route::get('/passage_invite/{id}',[
 Route::post('/enregistrer_passage',[
     'as'=>'enregistrer_passage',
     'uses'=>'InviterController@enregistrer_passage',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::get('/pmodifier_passage/{id}',[
+    'as'=>'pmodifier_passage',
+    'uses'=>'InviterController@pmodifier_passage',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::post('/modifier_passage',[
+    'as'=>'modifier_passage',
+    'uses'=>'InviterController@modifier_passage',
+    'roles' => ['Invites']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_passage/{id}',[
+    'as'=>'supprimer_passage',
+    'uses'=>'InviterController@supprimer_passage',
     'roles' => ['Invites']
 ])->middleware('auth')->middleware('roles');
 //fin contrat

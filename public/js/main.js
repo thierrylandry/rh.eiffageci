@@ -1,11 +1,7 @@
 
 (function ($) {
 
-  if($('#json_eff_globaux').val() !=null){
-    var json_eff_globaux= JSON.parse($('#json_eff_globaux').val()) ;
-  }else{
-    json_eff_globaux= Array();
-  }
+
 
   if($('#json_entite').val()!=null){
     var json_entite= JSON.parse($('#json_entite').val()) ;
@@ -35,10 +31,10 @@
             datasets: [
               {
                 label: "Entrées",
-                data: [5, 4, 5, 11, 19, 11, 4,2,1,3,1,1,0],
+                data: DATA,
                 borderColor: "rgba(0, 123, 255, 0.9)",
                 borderWidth: "0",
-                backgroundColor: "rgba(0, 123, 255, 0.5)",
+                backgroundColor: "#44a7ea",
                 fontFamily: "Poppins"
               },
               {
@@ -93,7 +89,7 @@
           type: 'pie',
           data: {
             datasets: [{
-              data: json_eff_globaux,
+              data: effectifglobaux,
               backgroundColor: [
                 "#138AD5",
                 "#E3370D",

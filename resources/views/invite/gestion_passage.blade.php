@@ -17,7 +17,7 @@
         <div class="table-data__tool-right">
 
             @if(isset($passage))
-                <a href="{{route('invite')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <a href="{{ URL::previous() }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                     <i class="zmdi zmdi-plus"></i>Ajouter</a>
             @endif
             <a href="{{route('invite')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -31,11 +31,11 @@
 
             <div class="card" style="height: 100% !important">
                 <div class="card-header">
-                    <strong>Ajouter un invité</strong>
+                    <strong>Ajouter un passage</strong>
                 </div>
                 <div class="card-body" >
                     @if(isset($passage))
-                        <form method="post" action="{{route("modifier_invite")}}">
+                        <form method="post" action="{{route("modifier_passage")}}">
                             @else
                                 <form method="post" action="{{route("enregistrer_passage")}}">
                                     @endif
@@ -71,7 +71,7 @@
                                                 <label for="text-input" class=" form-control-label">Objectif</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="objectif" placeholder="objectif" class="form-control" value="{{isset($passage)?$passage->obectif:''}}">
+                                                <input type="text" id="text-input" name="objectif" placeholder="objectif" class="form-control" value="{{isset($passage)?$passage->objectif:''}}">
                                             </div>
                                         </div>
                                         <div class="card-footer pull-right">
@@ -93,20 +93,21 @@
                 <table class="table   table-earning" id="table_repertoire">
                     <thead>
                     <tr>
+                        <th>N°</th>
                         <th>DATE D'ARRIVEE</th>
                         <th>DATE DE DEPART</th>
                         <th>OBJECTIF</th>
+                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($invite->passages() as $passage)
+                    @foreach($invite->passages()->get() as $passage)
                         <tr class="tr-shadow">
+                            <td>{{$loop->index + 1}}</td>
                             <td>{{$passage->dateArrive}}</td>
                             <td>{{$passage->dateDepart}}</td>
-                            <td>{{$invite->objectif}}</td>
-                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
-                            <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$invite->email}}</td>
-                            <td><a href="{{route("pmodifier_invite",['id'=>$invite->id])}}"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a> <a href="{{route("supprimer_invite",['id'=>$invite->id])}}" class="supprimerinvite"><i class="fa fa-trash" aria-hidden="true"></i></a>  <a href="#"><i class="fa Example of anchor fa-anchor" aria-hidden="true"></i>Passages</a> </td>
+                            <td>{{$passage->objectif}}</td>
+                            <td> <a href="{{route("pmodifier_passage",['id'=>$passage->id])}}"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{route("supprimer_passage",['id'=>$passage->id])}}" class="supprimerpassage"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -129,9 +130,9 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         $(document).ready(function() {
-            $('.supprimerinvite').click( function (e) {
+            $('.supprimerpassage').click( function (e) {
                 //   table.row('.selected').remove().draw( false );
-                if(confirm("Voulez vous supprimer liinvité? Attention la suppression de l'inviter entrainera la suppression en cascade de tout ses passages")){}else{e.preventDefault(); e.returnValue = false; return false; }
+                if(confirm("Voulez vous supprimer le passage ?")){}else{e.preventDefault(); e.returnValue = false; return false; }
             } );
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
@@ -141,7 +142,7 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
-                "order": [[ 1, "desc" ]],
+                "order": [[ 0, "desc" ]],
                 "ordering":true,
                 "responsive": true,
                 "createdRow": function( row, data, dataIndex){

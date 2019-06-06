@@ -28,6 +28,9 @@ class HomeController extends Controller
     }
     public function tableau_de_bord()
     {
+        $tabResultat= [
+            1,2,3,4,5,6,7,8,9,10,11,12
+        ];
 
         $groupe_by_societe = DB::table('personne')
                             ->rightJoin('unite','unite.id_unite','=','personne.id_societe')
@@ -41,8 +44,7 @@ class HomeController extends Controller
         foreach ($groupe_by_societe as $group):
             $effectifglobaux[]=$group->nb;
             endforeach;
-        $json_eff_globaux=json_encode($effectifglobaux);
-
+//dd($groupe_by_societe);
 // effectif locaux
 
 
@@ -72,6 +74,52 @@ class HomeController extends Controller
         $json_h_f=json_encode($effectif_h_f);
 
 
-        return view('welcome',compact('json_eff_globaux','json_entite','json_h_f'));
+        return view('welcome',compact('effectifglobaux','json_entite','json_h_f','tabResultat'));
+    }
+    public function globale()
+    {
+        $tabResultat= [
+            1,2,3,4,5,6,7,8,9,10,11,12
+        ];
+
+        $effectifglobaux = DB::table('personne')
+                            ->rightJoin('unite','unite.id_unite','=','personne.id_societe')
+                            ->groupBy('unite.id_unite')
+                            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
+                            ->get();
+
+
+
+//dd($groupe_by_societe);
+// effectif locaux
+
+
+        $groupe_by_entite = DB::table('personne')
+            ->select(DB::raw('count(personne.id) as nb'))
+            ->groupBy('personne.entite')
+            ->orderBy('entite', 'desc')
+            ->get();
+
+        $effectiflocaux= Array();
+        foreach ($groupe_by_entite as $group):
+            $effectiflocaux[]=$group->nb;
+        endforeach;
+        $json_entite=json_encode($effectiflocaux);
+
+
+        //repartition homme femme
+        $groupe_by_h_f = DB::table('personne')
+            ->select(DB::raw('count(personne.id) as nb'))
+            ->groupBy('personne.sexe')
+            ->get();
+
+        $effectif_h_f= Array();
+        foreach ($groupe_by_h_f as $group):
+            $effectif_h_f[]=$group->nb;
+        endforeach;
+        $json_h_f=json_encode($effectif_h_f);
+
+
+        return view('tableau_de_bord/global',compact('effectifglobaux','json_entite','json_h_f','tabResultat'));
     }
 }

@@ -6,7 +6,7 @@
     style="display: block;"
 @endsection
 @section('page')
-    <div class="row">
+   <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
                 <h2 class="title-1">PERSONNE-LISTE </h2>
@@ -17,18 +17,15 @@
         <div class="col-md-12">
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
-
-
                 <div class="table-data__tool-right">
                     <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
                 </div>
             </div>
-            <div class="table-responsive table-responsive-data2">
-                <table class="table  table-earning" id="table_employe">
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderles" id="table_employe">
                     <thead>
                     <tr>
-                        <th>slug</th>
                         <th>NOM & PRENOM</th>
                         <th>SEXE</th>
                         <th>NATIONNALITE</th>
@@ -41,29 +38,15 @@
                     <tbody>
                     @foreach($personnes as $personne)
                         <tr class="tr-shadow">
-                            <td>{{$personne->slug}}</td>
                             <td>{{$personne->nom.' '.$personne->prenom}}</td>
                             <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
-                            <td>@foreach($payss as $pays)
-                                    @if($pays->id==$personne->nationalite)
-                                        {{$pays->nom_fr_fr}}
-                                    @endif
-                                @endforeach</td>
+                            <td>{{$personne->pays->nom_fr_fr}}</td>
                             <td>
                                {{$personne->libelle}}
                             </td>
-                            <td>
-                                @if($personne->entite==1)
-                                    PHB
-                                @else
-                                    DIRECTION CI
-                                @endif
+                            <td>{{ $personne->getEntiteString() }}
                             </td>
-                            <td>@foreach($societes as $societe)
-                                    @if($personne->id_societe==$societe->id_unite)
-                                        {{$societe->libelleUnite}}
-                                    @endif
-                                @endforeach</td>
+                            <td>{{ $personne->societe ? $personne->societe->libelleUnite : ""}}</td>
                             <td> <div class="table-data-feature">
                                     <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -85,6 +68,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    {{ $personnes->links() }}
                     </tbody>
                 </table>
             </div>
@@ -126,6 +110,7 @@
         });
     </script>
     <script>
+
         $(document).ready(function() {
             var table= $('#table_employe').DataTable({
                 dom: 'Bfrtip',
@@ -148,5 +133,8 @@
             }).column(0).visible(false);
             //table.DataTable().draw();
         } );
+$(".current").click(function (){
+   alert("eee");
+});
     </script>
 @endsection

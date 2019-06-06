@@ -52,7 +52,11 @@ public function enregistrer_passage( Request $request){
     $passage->dateDepart=$dateDepart;
     $passage->objectif=$objectif;
     $passage->save();
-    return redirect()->route('passage_invite')->with(['success' => "Invité ajouté avec succès",'invite'=>$invite]);
+    return redirect()->back()->with('success' , "passage ajouté avec succès");
+}public function supprimer_passage($id){
+    $passage=Passage::find($id);
+    $passage->delete();
+    return redirect()->back()->with('success' , "passage supprimé avec succès");
 }
 public function modifier_invite( Request $request){
     $parameters=$request->except(['_token']);
@@ -75,6 +79,23 @@ public function modifier_invite( Request $request){
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
 }
+public function modifier_passage( Request $request){
+    $parameters=$request->except(['_token']);
+    $id=$parameters['id'];
+    $id_invite=$parameters['id_invite'];
+    $dateArrive=$parameters['dateArrive'];
+    $dateDepart=$parameters['dateDepart'];
+    $objectif=$parameters['objectif'];
+
+
+    $passage=  Passage::find($id);
+
+    $passage->dateArrive=$dateArrive;
+    $passage->dateDepart=$dateDepart;
+    $passage->objectif=$objectif;
+    $passage->save();
+    return redirect()->back()->with('success' , "passage modifié avec succès");
+}
 public function pmodifier_invite($id){
 
     $invite= Invite::find($id);
@@ -83,6 +104,14 @@ public function pmodifier_invite($id){
 
 
     return view('invite/gestion_invite',compact('invites','invite'));
+}public function pmodifier_passage($id){
+
+    $passage= Passage::find($id);
+    $invite= $passage->invite;
+
+
+
+    return view('invite/gestion_passage',compact('invite','passage'));
 }
 public function passage_invite($id){
 

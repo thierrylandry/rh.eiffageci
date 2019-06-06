@@ -103,5 +103,16 @@
 <input type="hidden" value="{{isset($json_eff_globaux)?$json_eff_globaux:''}}" id="json_eff_globaux">
 <input type="hidden" value="{{isset($json_entite)?$json_entite:''}}" id="json_entite">
 <input type="hidden" value="{{isset($json_h_f)?$json_h_f:''}}" id="json_h_f">
-
+<script type="application/javascript">
+    var effectifglobaux=[
+        @foreach($effectifglobaux as $res)
+        {{$res}},
+        @endforeach
+    ];
+    var DATA = [
+            @foreach($tabResultat as $res)
+                {{$res}},
+            @endforeach
+    ]
+</script>
 @endsection

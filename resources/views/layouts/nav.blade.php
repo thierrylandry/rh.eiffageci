@@ -126,13 +126,27 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li class="@yield('tableau_de_bord') has-sub">
-                    <a class="js-arrow" href="{{route('tableau_de_bord')}}">
+                    <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
+                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                        <li>
+                            <a href="{{route("global")}}">Global</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Direction CI</a>
+                        </li>
+                        <li>
+                            <a href="index3.html">PHB</a>
+                        </li>
+                        <li>
+                            <a href="index4.html">SPIE Fondation</a>
+                        </li>
+                    </ul>
                 </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
                 <li class="@yield('utilisateur') has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="zmdi zmdi-settings"></i>PARAMETRE</a>
+                        <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')>
                         <li class="@yield('utilisateur')">
                             <a href="{{route('utilisateur')}}">Utilisateurs</a>

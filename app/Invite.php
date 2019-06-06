@@ -12,6 +12,6 @@ class Invite extends Model
 
     public function passages()
     {
-        return $this->hasMany('App\Passage');
+        return $this->hasMany('App\Passage','id_invite');
     }
 }

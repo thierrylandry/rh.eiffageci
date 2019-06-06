@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/tableau_de_bord';
+    protected $redirectTo = '/gbobal';
 
     /**
      * Create a new controller instance.

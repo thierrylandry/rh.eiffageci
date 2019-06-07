@@ -21,10 +21,11 @@ $services = Services::all();
         return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions'));
     }
     public function contrat_new_user2($slug){
+        $definitions = Definition::all();
         $personne= Personne::where('slug', $slug)->get()->first();
         $services = Services::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats'));
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions'));
     }
     public function affiche_contrat($id){
         $contrat= Contrat::find($id);
@@ -92,6 +93,8 @@ $services = Services::all();
         $parameters=$request->except(['_token']);
 
         $slug=$parameters["slug"];
+
+
         $matricule=$parameters["matricule"];
         $couverture_maladie=$parameters["couverture_maladie"];
         $dateDebutC=$parameters["dateDebutC"];
@@ -112,6 +115,12 @@ $services = Services::all();
         $contrat->id_service=$type_de_contrat;
         $personne = Personne::where('slug','=',$slug)->get()->first();
         $personne->matricule=$matricule;
+        $personne->save();
+
+        //changer l'etat de tout les anciens contrats
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)->get();
+        $ancien_contrat->etat=2;
+        $ancien_contrat->save();
         $contrat->id_personne=$personne->id;
         $contrat->email=$email;
         $contrat->contact=$contact;

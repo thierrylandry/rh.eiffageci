@@ -26,7 +26,9 @@ class Personne extends Model
     public function getEntiteString(){
         if($this->entite==1){
             return "PHB";
-        }else{
+        }elseif($this->entite==2){
+            return "SPIE FONDATION";
+        }elseif($this->entite==3){
             return "DIRECTION CI";
         }
     }

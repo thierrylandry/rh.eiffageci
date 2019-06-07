@@ -308,7 +308,7 @@
                           <div class="col-12 col-md-9">
                               <select name="societe" id="societe"  onchange="getval()" class="form-control">
                                   @foreach($societes as $societe)
-                                      <option value="{{$societe->id}}">{{$societe->libelleUnite}}</option>
+                                      <option value="{{$societe->id_unite}}">{{$societe->libelleUnite}}</option>
                                       @endforeach
                               </select>
                           </div>
@@ -574,7 +574,7 @@
     <script>
         function getval()
         {
-            d = document.getElementById("societe").value;
+          //  d = document.getElementById("societe").value;
             //alert(d);
         }
 

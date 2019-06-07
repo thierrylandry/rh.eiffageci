@@ -125,15 +125,15 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="@yield('tableau_de_bord') has-sub">
+                <li class="@yield('tableau_de_bord') @yield('global') @yield('dirci') has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li>
-                            <a href="{{route("global")}}">Global</a>
+                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list" @yield('tableau_de_bord_block')>
+                        <li class="@yield('global')">
+                            <a href="{{route("global")}}" >Global</a>
                         </li>
-                        <li>
-                            <a href="index2.html">Direction CI</a>
+                        <li class="@yield('dirci')">
+                            <a href="{{route("dirci")}}">Direction CI</a>
                         </li>
                         <li>
                             <a href="index3.html">PHB</a>

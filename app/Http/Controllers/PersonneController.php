@@ -114,7 +114,6 @@ class PersonneController extends Controller
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
 
 
-
 //les pieces jointes _piece
         $pieces = new Collection();
         for($i = 0; $i <= count($request->input("num_p_piece"))-1; $i++ )

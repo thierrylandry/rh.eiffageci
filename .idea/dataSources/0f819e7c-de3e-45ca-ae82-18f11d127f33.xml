@@ -678,73 +678,74 @@
       <sequence-identity>1</sequence-identity>
     </column>
     <column id="205" parent="28" name="dateArrive">
-      <mandatory>1</mandatory>
       <data-type>date|0</data-type>
     </column>
     <column id="206" parent="28" name="dateDepart">
-      <mandatory>1</mandatory>
       <data-type>date|0</data-type>
     </column>
-    <column id="207" parent="28" name="id_invite">
+    <column id="207" parent="28" name="objectif">
+      <data-type>varchar(191)|0</data-type>
+    </column>
+    <column id="208" parent="28" name="id_invite">
       <mandatory>1</mandatory>
       <data-type>bigint(20) unsigned|0</data-type>
     </column>
-    <column id="208" parent="28" name="created_at">
+    <column id="209" parent="28" name="created_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <column id="209" parent="28" name="updated_at">
+    <column id="210" parent="28" name="updated_at">
       <data-type>timestamp|0</data-type>
     </column>
-    <index id="210" parent="28" name="passage_id_invite_foreign">
+    <index id="211" parent="28" name="passage_id_invite_foreign">
       <columns>id_invite</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="211" parent="28" name="PRIMARY">
+    <key id="212" parent="28" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="212" parent="29" name="datenaissance">
+    <column id="213" parent="29" name="datenaissance">
       <data-type>date|0</data-type>
     </column>
-    <column id="213" parent="29" name="today">
+    <column id="214" parent="29" name="today">
       <mandatory>1</mandatory>
       <data-type>date|0</data-type>
       <default-expression>&apos;0000-00-00&apos;</default-expression>
     </column>
-    <column id="214" parent="29" name="age">
+    <column id="215" parent="29" name="age">
       <data-type>int(9)|0</data-type>
     </column>
-    <column id="215" parent="30" name="nom">
+    <column id="216" parent="30" name="nom">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="216" parent="30" name="prenom">
+    <column id="217" parent="30" name="prenom">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="217" parent="30" name="fonction">
+    <column id="218" parent="30" name="fonction">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="218" parent="30" name="contact">
+    <column id="219" parent="30" name="contact">
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="219" parent="30" name="email">
+    <column id="220" parent="30" name="email">
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="220" parent="31" name="nom">
+    <column id="221" parent="31" name="nom">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="221" parent="31" name="prenom">
+    <column id="222" parent="31" name="prenom">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="222" parent="31" name="libelle">
+    <column id="223" parent="31" name="libelle">
       <mandatory>1</mandatory>
       <data-type>varchar(191)|0</data-type>
     </column>
-    <column id="223" parent="31" name="datefinc">
+    <column id="224" parent="31" name="datefinc">
       <data-type>date|0</data-type>
     </column>
   </database-model>

@@ -25,7 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
-    'uses'=>'homeController@tableau_de_bord',
+    'uses'=>'homeController@globale',
+])->middleware('auth')->middleware('roles');
+Route::get('/dirci',[
+    'as'=>'dirci',
+    'uses'=>'homeController@dirci',
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/global',[

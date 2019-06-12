@@ -14,10 +14,10 @@ class CreateTableSociete extends Migration
     public function up()
     {
 
-        Schema::create('societe', function (Blueprint $table) {
+        Schema::create('unite', function (Blueprint $table) {
             //
             $table->bigIncrements('id');
-            $table->string('libellesoc');
+            $table->string('libelleUnite');
             $table->timestamps();
         });
     }

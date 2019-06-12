@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Personne;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Vardiag;
 
 class HomeController extends Controller
 {
@@ -79,53 +80,28 @@ class HomeController extends Controller
     }
     public function globale()
     {
-        $tabResultat= [
-            1,2,3,4,5,6,7,8,9,10,11,12
-        ];
-
-      /*  $effectifglobaux = DB::table('personne')
-                            ->rightJoin('unite','unite.id_unite','=','personne.id_societe')
-                            ->groupBy('unite.id_unite')
-                            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
-                            ->get();
-*/
-
-        $effectifglobaux = DB::table('personne')
+        $effectifglobaux_tab = DB::table('personne')
             ->groupBy('entite')
             ->select('entite',DB::raw('count(personne.id) as nb'))
             ->get();
 
-//dd($groupe_by_societe);
-// effectif locaux
+        $effectifglobaux= Array();
+        foreach ($effectifglobaux_tab as $group):
+            $vardiag = New Vardiag();
 
+            if($group->entite==1){
+                $vardiag->name="PHB";
+            }elseif($group->entite==2){
+                $vardiag->name="SPIE FONDATION";
+            }elseif($group->entite==3){
+                $vardiag->name="DIRECTION CI";
+            }
+            $vardiag->y=$group->nb;
 
-        $groupe_by_entite = DB::table('personne')
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.entite')
-            ->orderBy('entite', 'desc')
-            ->get();
-
-        $effectiflocaux= Array();
-        foreach ($groupe_by_entite as $group):
-            $effectiflocaux[]=$group->nb;
+            $effectifglobaux[]=$vardiag;
         endforeach;
-        $json_entite=json_encode($effectiflocaux);
 
-
-        //repartition homme femme
-        $groupe_by_h_f = DB::table('personne')
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.sexe')
-            ->get();
-
-        $effectif_h_f= Array();
-        foreach ($groupe_by_h_f as $group):
-            $effectif_h_f[]=$group->nb;
-        endforeach;
-        $json_h_f=json_encode($effectif_h_f);
-
-
-        return view('tableau_de_bord/global',compact('effectifglobaux','json_entite','json_h_f','tabResultat'));
+        return view('tableau_de_bord/global',compact('effectifglobaux'));
     }
     public function dirci()
     {

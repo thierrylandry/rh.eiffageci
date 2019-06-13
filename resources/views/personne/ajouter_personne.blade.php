@@ -306,7 +306,7 @@
                               <label for="text-input" class=" form-control-label">Unité</label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <select name="societe" id="societe"  onchange="getval()" class="form-control">
+                              <select name="unite" id="societe"  onchange="getval()" class="form-control">
                                   @foreach($societes as $societe)
                                       <option value="{{$societe->id_unite}}">{{$societe->libelleUnite}}</option>
                                       @endforeach

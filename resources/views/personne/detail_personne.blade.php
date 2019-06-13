@@ -246,9 +246,9 @@
                                 <label for="text-input" class=" form-control-label">Unité</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select name="societe" id="disabledSelect" class="form-control">
+                                <select name="unite" id="disabledSelect" class="form-control">
                                     @foreach($societes as $societe)
-                                        <option value="{{$societe->id_unite}}" {{isset($personne)&& $personne->id_societe=$societe->id_unite? 'selected':''}}>{{$societe->libelleUnite}}</option>
+                                        <option value="{{$societe->id_unite}}" {{isset($personne)&& $personne->id_unite=$societe->id_unite? 'selected':''}}>{{$societe->libelleUnite}}</option>
                                     @endforeach
                                 </select>
                             </div>

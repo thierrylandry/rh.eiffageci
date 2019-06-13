@@ -85,7 +85,7 @@ class PersonneController extends Controller
         $rh=$parameters['rh'];
         $fonction=$parameters['fonction'];
         $entite=$parameters['entite'];
-        $societe=$parameters['societe'];
+        $unite=$parameters['unite'];
         $pointure=$parameters['pointure'];
         $taille=$parameters['taille'];
         $surete=$parameters['surete'];
@@ -107,7 +107,7 @@ class PersonneController extends Controller
         $personne->rh=$rh;
         $personne->fonction=$fonction;
         $personne->entite=$entite;
-        $personne->id_societe=$societe;
+        $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
         $personne->surete=$surete;
@@ -207,7 +207,7 @@ class PersonneController extends Controller
         $rh=$parameters['rh'];
         $fonction=$parameters['fonction'];
         $entite=$parameters['entite'];
-        $societe=$parameters['societe'];
+        $unite=$parameters['unite'];
         $pointure=$parameters['pointure'];
         $taille=$parameters['taille'];
         $surete=$parameters['surete'];
@@ -228,7 +228,7 @@ class PersonneController extends Controller
         $personne->rh=$rh;
         $personne->fonction=$fonction;
         $personne->entite=$entite;
-        $personne->id_societe=$societe;
+        $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
         $personne->surete=$surete;

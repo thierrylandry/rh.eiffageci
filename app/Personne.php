@@ -8,11 +8,11 @@ class Personne extends Model
 {
     //
     protected  $table="personne";
-    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','entite','id_societe','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service'];
+    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service'];
 
 
     public function societe(){
-        return $this->belongsTo(Societe::class, "id_societe");
+        return $this->belongsTo(Societe::class, "id_unite");
     }
 
     public function pays(){

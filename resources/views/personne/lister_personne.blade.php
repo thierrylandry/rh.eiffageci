@@ -46,7 +46,7 @@
                             </td>
                             <td>{{ $personne->getEntiteString() }}
                             </td>
-                            <td>{{ $personne->societe ? $personne->societe->libelleUnite : ""}}</td>
+                            <td>{{ $personne->id_unite ? $personne->societe->libelleUnite : ""}}</td>
                             <td> <div class="table-data-feature">
                                     <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="fa fa-eye" aria-hidden="true"></i>

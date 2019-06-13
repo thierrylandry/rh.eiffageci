@@ -30,12 +30,9 @@ class HomeController extends Controller
     }
     public function tableau_de_bord()
     {
-        $tabResultat= [
-            1,2,3,4,5,6,7,8,9,10,11,12
-        ];
 
         $groupe_by_societe = DB::table('personne')
-                            ->rightJoin('unite','unite.id_unite','=','personne.id_societe')
+                            ->rightJoin('unite','unite.id_unite','=','personne.id_unite')
                             ->groupBy('unite.id_unite')
                             ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
                             ->get();
@@ -109,7 +106,7 @@ class HomeController extends Controller
     {
 
         $effectifglobaux_tab = DB::table('personne')
-                            ->join('unite','unite.id_unite','=','personne.id_societe')
+                            ->join('unite','unite.id_unite','=','personne.id_unite')
                               ->join('contrat','contrat.id_personne','=','personne.id')
                              ->where('contrat.etat','=',1)
                             ->where("entite","=",3)

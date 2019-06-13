@@ -67,7 +67,7 @@
                                     @endforeach </p>
                            <p> Entite : {{isset($personne)&& $personne->entite==1? 'PHB':''}}{{isset($personne)&& $personne->entite==2? 'SPIE':''}}{{isset($personne)&& $personne->entite==3? 'DIRECTION CI':''}} </p>
                            <p> Unité :  @foreach($societes as $societe)
-                                   @if($personne->id_societe==$societe->id_unite)
+                                   @if($personne->id_unite==$societe->id_unite)
                                        {{$societe->libelleUnite}}
                                    @endif
                                @endforeach </p>

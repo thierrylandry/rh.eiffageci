@@ -25,6 +25,7 @@ class CreateTablePersonnes extends Migration
             $table->string('cnps')->nullable();
             $table->integer('pointure')->nullable();
             $table->string('entite')->nullable();
+            $table->string('service')->nullable();
             $table->timestamps();
         });
     }

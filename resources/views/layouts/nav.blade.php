@@ -130,7 +130,7 @@
                         <i class="fas fa-tachometer-alt"></i>TABLEAU DE BORD</a>
                     <ul class="navbar-mobile-sub__list list-unstyled js-sub-list" @yield('tableau_de_bord_block')>
                         <li class="@yield('global')">
-                            <a href="{{route("global")}}" >Global</a>
+                            <a href="{{route("global")}}" >Groupement</a>
                         </li>
                         <li class="@yield('dirci')">
                             <a href="{{route("dirci")}}">Direction CI</a>

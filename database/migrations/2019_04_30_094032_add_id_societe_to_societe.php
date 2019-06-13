@@ -15,7 +15,7 @@ class AddIdSocieteToSociete extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('id_societe')->nullable();
+            $table->unsignedBigInteger('id_unite')->nullable();
         });
     }
 

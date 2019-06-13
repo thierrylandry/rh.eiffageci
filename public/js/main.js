@@ -9,7 +9,7 @@
     outClass: 'fade-out',
     inDuration: 900,
     outDuration: 900,
-    linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
+    //linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"]):not^(class^="paginate_button current")',
     loading: true,
     loadingParentElement: 'html',
     loadingClass: 'page-loader',
@@ -22,6 +22,7 @@
     overlayClass: 'animsition-overlay-slide',
     overlayParentElement: 'html',
     transition: function (url) {
+
       window.location.href = url;
     }
   });

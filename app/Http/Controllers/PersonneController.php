@@ -34,7 +34,7 @@ class PersonneController extends Controller
     {
         $personnes= Personne::with("fonction","pays","societe")
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(300);
 
         return view('personne/lister_personne',compact('personnes','societes','payss'));
     }

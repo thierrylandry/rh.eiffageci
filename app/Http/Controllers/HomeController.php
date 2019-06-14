@@ -78,29 +78,102 @@ class HomeController extends Controller
     public function globale()
     {
         $effectifglobaux_tab = DB::table('personne')
-            ->groupBy('entite')
+            ->groupBy('unite.id_unite')
+            ->orderBy('unite.id_unite','DESC')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
             ->where('contrat.etat','=',1)
-            ->select('entite',DB::raw('count(personne.id) as nb'))
+            ->select('unite.libelleUnite',DB::raw('count(personne.id) as nb'))
             ->get();
 
         $effectifglobaux= Array();
         foreach ($effectifglobaux_tab as $group):
             $vardiag = New Vardiag();
-
-            if($group->entite==1){
-                $vardiag->name="PHB";
-            }elseif($group->entite==2){
-                $vardiag->name="SPIE FONDATION";
-            }elseif($group->entite==3){
-                $vardiag->name="DIRECTION CI";
-            }
+            $vardiag->name=$group->libelleUnite;
             $vardiag->y=$group->nb;
 
             $effectifglobaux[]=$vardiag;
         endforeach;
 
-        return view('tableau_de_bord/global',compact('effectifglobaux'));
+        $repartition_nationalite_tab = DB::table('personne')
+            ->join('pays','pays.id','=','personne.nationalite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->select("pays.nom_fr_fr",DB::raw('count(personne.id) as nb'))
+            ->groupBy('personne.nationalite')
+            ->get();
+
+        $repartition_nationalite= Array();
+        foreach ($repartition_nationalite_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->nom_fr_fr;
+            $vardiag->y=$group->nb;
+
+            $repartition_nationalite[]=$vardiag;
+        endforeach;
+
+
+        $repartition_homme_femme_tab= DB::table('personne')
+            ->select("personne.sexe",DB::raw('count(personne.id) as nb'))
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->groupBy('personne.sexe')
+            ->get();
+
+        $repartition_homme_femme= Array();
+        foreach ($repartition_homme_femme_tab as $group):
+            $vardiag = New Vardiag();
+            if($group->sexe=="M"){
+                $vardiag->name="HOMME";
+            }elseif($group->sexe=="F") {
+                $vardiag->name = "FEMME";
+            }
+
+            $vardiag->y=$group->nb;
+
+            $repartition_homme_femme[]=$vardiag;
+        endforeach;
+
+        //dd($repartition_tranche_age);
+        //repartition par service
+        $repartition_service_tab = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->join('services','services.id','=','personne.service')
+            ->select("services.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('services.id')
+            ->get();
+
+        $repartition_service= Array();
+        foreach ($repartition_service_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelle;
+            $vardiag->y=$group->nb;
+
+            $repartition_service[]=$vardiag;
+        endforeach;
+
+        $repartition_effectif_locaux_EIFFAGE = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('entite','=',1)
+            ->where('entite','=',3)
+            ->join('services','services.id','=','personne.service')
+            ->select("services.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('services.id')
+            ->get();
+
+        $repartition_service= Array();
+        foreach ($repartition_service_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelle;
+            $vardiag->y=$group->nb;
+
+            $repartition_service[]=$vardiag;
+        endforeach;
+
+
+        return view('tableau_de_bord/global',compact('effectifglobaux','repartition_nationalite','repartition_service','repartition_homme_femme'));
     }
     public function dirci()
     {

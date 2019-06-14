@@ -125,7 +125,7 @@
 </div>
         <div class="card-footer pull-right">
             <button type="submit" class="btn btn-primary btn-sm">
-                <i class="zmdi zmdi-edit"></i> Enregistrer
+                <i class="zmdi zmdi-edit"></i> Enregistrer & suivant
             </button>
             <button type="reset" class="btn btn-danger btn-sm" id="reset">
                 <i class="fa fa-ban"></i> Réinitialiser

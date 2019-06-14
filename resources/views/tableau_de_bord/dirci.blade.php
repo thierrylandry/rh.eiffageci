@@ -215,7 +215,8 @@
                 </div>
             </div>
         </div>
-    </div>  <div class="row">
+    </div>
+    <div class="row">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >

@@ -315,14 +315,13 @@ class HomeController extends Controller
         $repartition_service= Array();
         foreach ($repartition_service_tab as $group):
             $vardiag = New Vardiag();
-            $vardiag->name=$group->nom_fr_fr;
+            $vardiag->name=$group->libelle;
             $vardiag->y=$group->nb;
 
             $repartition_service[]=$vardiag;
         endforeach;
 
         //entrée / sortie
-
 
 
         return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service'));

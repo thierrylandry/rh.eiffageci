@@ -26,12 +26,12 @@ class EffectifController extends Controller
         ])->get();
         $effectif_phb_locaux = Personne::where([
             ['entite','=',1],
-            ['id_societe','=','1']
+            ['id_unite','=','1']
 
         ])->get();
         $effectif_phb_exp = Personne::where([
             ['entite','=',1],
-            ['id_societe','=','2']
+            ['id_unite','=','2']
 
         ])->get();
         //concernant dir ci
@@ -51,12 +51,12 @@ class EffectifController extends Controller
         ])->get();
         $effectif_dir_locaux = Personne::where([
             ['entite','=',3],
-            ['id_societe','=','1']
+            ['id_unite','=','1']
 
         ])->get();
         $effectif_dir_exp = Personne::where([
             ['entite','=',3],
-            ['id_societe','=','2']
+            ['id_unite','=','2']
 
         ])->get();
 
@@ -74,12 +74,12 @@ class EffectifController extends Controller
         ])->get();
         $effectif_spie_locaux = Personne::where([
             ['entite','=',2],
-            ['id_societe','=','1']
+            ['id_unite','=','1']
 
         ])->get();
         $effectif_spie_exp = Personne::where([
             ['entite','=',2],
-            ['id_societe','=','2']
+            ['id_unite','=','2']
 
         ])->get();
 

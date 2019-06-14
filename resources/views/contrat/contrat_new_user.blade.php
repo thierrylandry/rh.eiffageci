@@ -151,7 +151,7 @@
                             <label for="text-input" class=" form-control-label">E - mail *</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="email" id="email" name="email" placeholder="E - mail" class="form-control" value="{{isset($contrat)?$contrat->email:''}}" required>
+                            <input type="email" id="email" name="email" placeholder="E - mail" class="form-control" value="{{isset($contrat)?$contrat->email:''}}">
 
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                             <label for="text-input" class=" form-control-label">Contact *</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="contact" name="contact" placeholder="Contact" class="form-control" value="{{isset($contrat)?$contrat->contact:''}}" required>
+                            <input type="text" id="contact" name="contact" placeholder="Contact" class="form-control" value="{{isset($contrat)?$contrat->contact:''}}">
 
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin de la période d'éssai :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="periode_essaie" class="form-control" required/>
+                            <input type="date" name="periode_essaie" class="form-control"/>
                         </div>
                     </div>
 

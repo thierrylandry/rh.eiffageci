@@ -124,9 +124,12 @@ $services = Services::all();
         $personne->save();
 
         //changer l'etat de tout les anciens contrats
-        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)->get();
-        $ancien_contrat->etat=2;
-        $ancien_contrat->save();
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)->get()->first();
+        if(!empty($ancien_contrat)){
+            $ancien_contrat->etat=2;
+            $ancien_contrat->save();
+        }
+
         $contrat->id_personne=$personne->id;
         $contrat->email=$email;
         $contrat->contact=$contact;

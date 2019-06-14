@@ -16,7 +16,7 @@ class SalaireController extends Controller
 
         $personnes = DB::table('personne')
             ->leftjoin('fonctions', 'fonctions.id', '=', 'personne.fonction')
-            ->select('personne.id', 'personne.nom', 'personne.prenom', 'sexe', 'entite', 'id_societe', 'personne.slug', 'fonctions.libelle', 'nationalite')
+            ->select('personne.id', 'personne.nom', 'personne.prenom', 'sexe', 'entite', 'id_unite', 'personne.slug', 'fonctions.libelle', 'nationalite')
             ->orderBy('id', 'desc')->get();
         return view('salaires/liste_personnel', compact('personnes'));
     }

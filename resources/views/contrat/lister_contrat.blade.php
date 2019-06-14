@@ -63,7 +63,9 @@
                             </td>
                             <td>{{$contrat->datefinc}}</td>
                             <td>{{$contrat->periode_essaie}}</td>
-                            <td>									<div class=" ">
+                            <td>
+                                @if(!empty($contrat->datedebutc) || !empty($contrat->datefinc))
+                                <div class=" ">
                                     @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
                                     <div class="progress mb-3">
 
@@ -86,7 +88,8 @@
                                              aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
                                     </div>
 @endif
-                                </div></td>
+                                </div>
+                            @endif</td>
                             <td> <div class="table-data-feature">
 
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">

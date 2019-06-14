@@ -31,6 +31,15 @@ Route::get('/dirci',[
     'as'=>'dirci',
     'uses'=>'homeController@dirci',
 ])->middleware('auth')->middleware('roles');
+Route::get('/phb',[
+    'as'=>'phb',
+    'uses'=>'homeController@phb',
+])->middleware('auth')->middleware('roles');
+
+Route::get('/spie_fondation',[
+    'as'=>'spie_fondation',
+    'uses'=>'homeController@spie_fondation',
+])->middleware('auth')->middleware('roles');
 
 Route::get('/global',[
     'as'=>'global',

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('dirci')
+@section('phb')
     active
 @endsection
 @section('tableau_de_bord_block')
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">DIRECTION CI</h2>
+                <h2 class="title-1">PHB</h2>
             </div>
 
         </div>
@@ -125,7 +125,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Répartition tranche d'age DIRECTION CI</th>
+                                <th>Répartition tranche d'age</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -339,7 +339,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF DIRECTION CI'
+                text: 'Effectifs Globaux Projet ESF PHB'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -369,7 +369,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition nationalite DIRECTION CI'
+                text: 'Répartition nationalite PHB'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -399,7 +399,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition homme/femme DIRECTION CI'
+                text: 'Répartition homme/femme PHB'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -429,7 +429,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Répartition tranche d'age DIRECTION CI DIRECTION CI"
+                text: "Répartition tranche d'age PHB"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -459,7 +459,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Ancienneté locaux (révolue) DIRECTION CI"
+                text: "Ancienneté locaux (révolue) PHB"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -489,7 +489,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Service - Personnel DIRECTION CI"
+                text: "Service - Personnel PHB"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -515,7 +515,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Monthly Average Rainfall DIRECTION CI'
+                text: 'Monthly Average Rainfall PHB'
             },
             subtitle: {
                 text: 'Source: WorldClimate.com'

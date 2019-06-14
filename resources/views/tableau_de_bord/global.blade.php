@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">Global</h2>
+                <h2 class="title-1">GROUPEMENT</h2>
             </div>
 
         </div>

@@ -215,30 +215,32 @@
                                     </td>
                                     <td>{{$contrat->datefinc}}</td>
                                     <td>{{$contrat->periode_essaie}}</td>
-                                    <td>									<div class=" ">
-                                            @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
-                                                <div class="progress mb-3">
+                                    <td>                                @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc))
+                                            <div class=" ">
+                                                @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
+                                                    <div class="progress mb-3">
 
-                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                         aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                </div>
-                                            @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>25 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=50)
-                                                <div class="progress mb-3">
-                                                    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                         aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                </div>
-                                            @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
-                                                <div class="progress mb-3">
-                                                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                         aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                </div>
-                                            @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>75)
-                                                <div class="progress mb-3">
-                                                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                         aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                </div>
-                                            @endif
-                                        </div></td>
+                                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
+                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
+                                                    </div>
+                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>25 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=50)
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
+                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
+                                                    </div>
+                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
+                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
+                                                    </div>
+                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>75)
+                                                    <div class="progress mb-3">
+                                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
+                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endif</td>
                                 </tr>
                             @endforeach
                             </tbody>

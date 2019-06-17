@@ -47,7 +47,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="effectifglobaux" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 
                 </div>
@@ -83,6 +83,39 @@
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="repartition_homme_femme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>Qualification contractulle</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($qualification_contractuelle as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="qualification_contractuelle" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -166,6 +199,27 @@
             {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
+        var repartition_nationalite=[
+            @foreach($repartition_nationalite as $res)
+            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+
+        var repartition_homme_femme=[
+            @foreach($repartition_homme_femme as $res)
+            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var repartition_service=[
+            @foreach($repartition_service as $res)
+            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var qualification_contractuelle=[
+            @foreach($qualification_contractuelle as $res)
+            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
 
     </script>
     <script type="text/javascript">
@@ -212,7 +266,7 @@
             "#dba2e6", "#76fc1b", "#608fa4", "#20f6ba", "#07d7f6", "#dce77a", "#77ecca"];
 
         // Build the chart
-        Highcharts.chart('container', {
+        Highcharts.chart('effectifglobaux', {
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -240,6 +294,130 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: effectifglobaux
+            }]
+        });
+        // Build the chart
+        Highcharts.chart('repartition_nationalite', {
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Nationalité ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_nationalite
+            }]
+        });
+        // Build the chart
+        Highcharts.chart('repartition_homme_femme', {
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Répartition H/F - Personnel ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_homme_femme
+            }]
+        });
+        // Build the chart
+        Highcharts.chart('repartition_service', {
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Service locaux ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_service
+            }]
+        });
+        // Build the chart
+        Highcharts.chart('qualification_contractuelle', {
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Qualification contractuelle - Personnel ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Effectif',
+                colorByPoint: true,
+                data: qualification_contractuelle
             }]
         });
     </script>

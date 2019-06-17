@@ -215,7 +215,7 @@
                                     </td>
                                     <td>{{$contrat->datefinc}}</td>
                                     <td>{{$contrat->periode_essaie}}</td>
-                                    <td>                                @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc))
+                                    <td>                                @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)
                                             <div class=" ">
                                                 @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
                                                     <div class="progress mb-3">

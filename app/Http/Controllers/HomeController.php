@@ -471,17 +471,133 @@ class HomeController extends Controller
         endforeach;
 
         //entrée / sortie
-        $entrees= DB::select('call proc_entrees(3)');
-        $sortie= DB::select('call proc_sortie(3)');
+
+
+
+        $a_mois = array ( '1' => 'Janvier', '2' => 'Fevrier', '3' => 'Mars',
+            '4' => 'Avril','5' => 'Mai', '6' => 'Juin','7' => 'Juillet',
+            '8' => 'Aout','9' => 'Septembre', '10' => 'Octobre','11' => 'Novembre', '12' => 'Décembre') ;
         $repartition_entrees= Array();
+        $repartition_sorties= Array();
+
+
+//debut entrée
+        $entrees= DB::select('call proc_entrees(3)');
+        $sorties= DB::select('call proc_sortie(3)');
+        $annee_moins1=date('Y')-1;
+        $tab_allege= Array();
         foreach ($entrees as $entree):
 
+            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
+
+            endforeach;
+
+       // dd($tab_allege);
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["11:".$annee_moins1])){
+
+
+                $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+                $vardiag->y=$tab_allege["11:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["12:".$annee_moins1])){
+
+
+                $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+                $vardiag->y=$tab_allege["12:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+            for( $i=1; $i<=12; $i++){
+                $vardiag = New Vardiag();
+
+                if(isset($tab_allege[$i.":".date('Y')])){
+                    $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                    $vardiag->y=$tab_allege[$i.":".date('Y')];
+                }else{
+                    $vardiag->name=$a_mois[$i]."-".date('Y');
+                }
+                $repartition_entrees[]=$vardiag;
+            }
+
+
+//fin entree
+        //debut sorti
+
+
+        $annee_moins1=date('Y')-1;
+        $tab_allege_sorti= Array();
+        foreach ($sorties as $sortie):
+
+            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
 
         endforeach;
-        //dd($repartition_entrees);
-     //   dd($entre_decembre_annee_prec);
-        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees'));
+
+
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege_sorti[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$entree->entree;
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_sorties[]=$vardiag;
+        }
+
+        //dd($repartition_sorties);
+
+        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties'));
     }
+
 
     public function phb()
     {
@@ -706,7 +822,127 @@ class HomeController extends Controller
 
 
 
-        return view('tableau_de_bord/phb',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service'));
+        $a_mois = array ( '1' => 'Janvier', '2' => 'Fevrier', '3' => 'Mars',
+            '4' => 'Avril','5' => 'Mai', '6' => 'Juin','7' => 'Juillet',
+            '8' => 'Aout','9' => 'Septembre', '10' => 'Octobre','11' => 'Novembre', '12' => 'Décembre') ;
+        $repartition_entrees= Array();
+        $repartition_sorties= Array();
+
+
+//debut entrée
+        $entrees= DB::select('call proc_entrees(1)');
+        $sorties= DB::select('call proc_sortie(1)');
+        $annee_moins1=date('Y')-1;
+        $tab_allege= Array();
+        foreach ($entrees as $entree):
+
+            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
+
+        endforeach;
+
+        // dd($tab_allege);
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["11:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["12:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$tab_allege[$i.":".date('Y')];
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+//fin entree
+        //debut sorti
+
+
+        $annee_moins1=date('Y')-1;
+        $tab_allege_sorti= Array();
+        foreach ($sorties as $sortie):
+
+            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
+
+        endforeach;
+
+
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege_sorti[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$entree->entree;
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        return view('tableau_de_bord/phb',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties'));
     }
     public function spie_fondation()
     {
@@ -928,9 +1164,127 @@ class HomeController extends Controller
         endforeach;
 
         //entrée / sortie
+        $a_mois = array ( '1' => 'Janvier', '2' => 'Fevrier', '3' => 'Mars',
+            '4' => 'Avril','5' => 'Mai', '6' => 'Juin','7' => 'Juillet',
+            '8' => 'Aout','9' => 'Septembre', '10' => 'Octobre','11' => 'Novembre', '12' => 'Décembre') ;
+        $repartition_entrees= Array();
+        $repartition_sorties= Array();
+
+
+//debut entrée
+        $entrees= DB::select('call proc_entrees(2)');
+        $sorties= DB::select('call proc_sortie(2)');
+        $annee_moins1=date('Y')-1;
+        $tab_allege= Array();
+        foreach ($entrees as $entree):
+
+            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
+
+        endforeach;
+
+        // dd($tab_allege);
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["11:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["12:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$tab_allege[$i.":".date('Y')];
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+//fin entree
+        //debut sorti
+
+
+        $annee_moins1=date('Y')-1;
+        $tab_allege_sorti= Array();
+        foreach ($sorties as $sortie):
+
+            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
+
+        endforeach;
+
+
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege_sorti[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$entree->entree;
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_sorties[]=$vardiag;
+        }
 
 
 
-        return view('tableau_de_bord/spie_fondation',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service'));
+        return view('tableau_de_bord/spie_fondation',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties'));
     }
 }

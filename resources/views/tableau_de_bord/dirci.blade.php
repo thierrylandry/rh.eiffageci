@@ -224,11 +224,17 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Bilan entrées - sorties</th>
-                                <th>EFFECTIF</th>
+                                <th>Entrées</th>
+                                <th>Sorties</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @for($i=0;$i<sizeof($repartition_entrees);$i++)
+                                <tr class="tr-shadow">
+                                    <td> {{$repartition_entrees[$i]->y}}</td>
+                                    <td> {{$repartition_sorties[$i]->y}}</td>
+                                </tr>
+                            @endfor
                             </tbody>
                         </table>
                     </div>
@@ -288,6 +294,11 @@
 
         var repartition_entrees=[
             @foreach($repartition_entrees as $res)
+            {{$res->y}},
+            @endforeach
+        ];
+        var repartition_sorties=[
+            @foreach($repartition_sorties as $res)
             {{$res->y}},
             @endforeach
         ];
@@ -590,11 +601,11 @@
             },
             series: [{
                 name: 'Entrées',
-                data: repartition_entree
+                data: repartition_entrees
 
             }, {
                 name: 'Sorties',
-                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+                data: repartition_sorties
 
             }]
         });

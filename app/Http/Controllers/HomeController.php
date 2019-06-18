@@ -232,7 +232,12 @@ class HomeController extends Controller
         if(!is_null($ouvrier)) {
             $vardiag = New Vardiag();
             $vardiag->name = $ouvrier->libelle;
-            $vardiag->y = $ouvrier->nb + $chauffeur->nb;
+            if(is_null($chauffeur)){
+                $vardiag->y = $ouvrier->nb ;
+            }else{
+                $vardiag->y = $ouvrier->nb + $chauffeur->nb;
+            }
+
 
             $qualification_contractuelle[] = $vardiag;
         }

@@ -223,11 +223,17 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Bilan entrées - sorties</th>
-                                <th>EFFECTIF</th>
+                                <th>Entrées</th>
+                                <th>Sorties</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @for($i=0;$i<sizeof($repartition_entrees);$i++)
+                                <tr class="tr-shadow">
+                                    <td> {{$repartition_entrees[$i]->y}}</td>
+                                    <td> {{$repartition_sorties[$i]->y}}</td>
+                                </tr>
+                            @endfor
                             </tbody>
                         </table>
                     </div>

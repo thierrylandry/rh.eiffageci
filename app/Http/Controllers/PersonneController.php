@@ -36,7 +36,7 @@ class PersonneController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(300);
 
-        return view('personne/lister_personne',compact('personnes','payss'));
+        return view('personne/lister_personne',compact('personnes'));
     }
     public function fiche_personnel($slug)
     {

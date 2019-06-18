@@ -280,6 +280,9 @@
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
+            credits: {
+                enabled: false
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -304,6 +307,9 @@
                 plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie'
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: 'Nationalité ESF'
@@ -342,6 +348,9 @@
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
+            credits: {
+                enabled: false
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -369,6 +378,9 @@
             },
             title: {
                 text: 'Service locaux ESF'
+            },
+            credits: {
+                enabled: false
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -403,6 +415,9 @@
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            credits: {
+                enabled: false
             },
             plotOptions: {
                 pie: {

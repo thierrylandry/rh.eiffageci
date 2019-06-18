@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Contrat.php" afterPath="$PROJECT_DIR$/app/Contrat.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php" afterPath="$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
@@ -36,15 +34,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="dirci.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dirci.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+            <state relative-caret-position="-5403">
+              <caret line="255" column="46" selection-start-line="255" selection-start-column="42" selection-end-line="255" selection-end-column="46" />
               <folding>
-                <marker date="1560533683480" expanded="true" signature="22037:22051" ph="..." />
-                <marker date="1560533683480" expanded="true" signature="22126:22156" ph="..." />
-                <marker date="1560533683480" expanded="true" signature="22210:22219" ph="..." />
+                <marker date="1560850128561" expanded="true" signature="22451:22465" ph="..." />
+                <marker date="1560850128561" expanded="true" signature="22540:22570" ph="..." />
+                <marker date="1560850128561" expanded="true" signature="22624:22633" ph="..." />
               </folding>
             </state>
           </provider>
@@ -53,32 +51,23 @@
       <file leaf-file-name="global.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3963">
-              <caret line="287" column="38" selection-start-line="287" selection-start-column="33" selection-end-line="287" selection-end-column="38" />
-              <folding>
-                <element signature="e#3239#3312#0#HTML" expanded="true" />
-                <element signature="e#3471#3502#0#HTML" expanded="true" />
-                <element signature="e#4647#4720#0#HTML" expanded="true" />
-                <element signature="e#6045#6118#0#HTML" expanded="true" />
-                <element signature="e#7431#7504#0#HTML" expanded="true" />
-                <element signature="e#13429#14293#0#HTML" expanded="false" />
-                <element signature="e#14375#15255#0#HTML" expanded="false" />
-                <element signature="e#15333#16196#0#HTML" expanded="false" />
-              </folding>
+            <state relative-caret-position="173">
+              <caret line="418" column="0" selection-start-line="418" selection-start-column="0" selection-end-line="420" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="550" column="7" selection-start-line="550" selection-start-column="7" selection-end-line="550" selection-end-column="7" />
+            <state relative-caret-position="479">
+              <caret line="565" column="23" selection-start-line="565" selection-start-column="23" selection-end-line="565" selection-end-column="23" />
               <folding>
                 <element signature="e#538#1996#0#PHP" expanded="false" />
                 <element signature="e#2001#8892#0#PHP" expanded="false" />
-                <element signature="e#21597#30511#0#PHP" expanded="false" />
-                <element signature="e#30516#39452#0#PHP" expanded="false" />
+                <element signature="e#22734#31648#0#PHP" expanded="false" />
+                <element signature="e#31653#40589#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,7 +76,7 @@
       <file leaf-file-name="lister_contrat.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="1139">
               <caret line="67" column="198" selection-start-line="67" selection-start-column="95" selection-end-line="67" selection-end-column="198" />
               <folding>
                 <marker date="1560784680448" expanded="true" signature="9917:10305" ph="..." />
@@ -99,9 +88,6 @@
                 <marker date="1560784680448" expanded="true" signature="10413:10494" ph="..." />
                 <marker date="1560784680448" expanded="true" signature="10425:10493" ph="..." />
                 <marker date="1560784680448" expanded="true" signature="10550:11348" ph="..." />
-                <marker date="1560784680448" expanded="true" signature="10562:11269" ph="..." />
-                <marker date="1560784680448" expanded="true" signature="10675:10751" ph="..." />
-                <marker date="1560784680448" expanded="true" signature="11070:11088" ph="..." />
               </folding>
             </state>
           </provider>
@@ -110,7 +96,7 @@
       <file leaf-file-name="fiche_personnel.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="3689">
               <caret line="217" column="238" selection-start-line="217" selection-start-column="238" selection-end-line="217" selection-end-column="238" />
               <folding />
             </state>
@@ -130,7 +116,7 @@
       <file leaf-file-name="contrat_affiche.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="1717">
               <caret line="101" column="26" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
               <folding />
             </state>
@@ -150,8 +136,8 @@
       <file leaf-file-name="PersonneController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+            <state relative-caret-position="374">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
               <folding>
                 <element signature="e#2525#6263#0#PHP" expanded="false" />
                 <element signature="e#6268#6648#0#PHP" expanded="false" />
@@ -222,13 +208,13 @@
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/document_administratif.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/document_administratif_new_user.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_17_152234_add_renouvellement_to_contrat.php" />
         <option value="$PROJECT_DIR$/app/Contrat.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
@@ -591,10 +577,32 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -717,7 +725,8 @@
       <workItem from="1560323461736" duration="17528000" />
       <workItem from="1560413034563" duration="24980000" />
       <workItem from="1560500300165" duration="19566000" />
-      <workItem from="1560760152508" duration="18969000" />
+      <workItem from="1560760152508" duration="19025000" />
+      <workItem from="1560847143739" duration="2994000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1556102058481</created>
@@ -1048,11 +1057,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560537288511</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="mise à jour  38">
+      <created>1560796530269</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1560796530269</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="535560000" />
+    <option name="totallyTimeSpent" value="538610000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1067,7 +1083,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1673774" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16897655" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42795232" sideWeight="0.50429183" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14232409" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1185,14 +1201,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/7b86b1fa/0f819e7c-de3e-45ca-ae82-18f11d127f33/rh_eiffage.personne">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1364,14 +1380,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/7b86b1fa/0f819e7c-de3e-45ca-ae82-18f11d127f33/rh_eiffage.unite">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1400,7 +1416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="40" column="42" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1474,7 +1489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3298">
           <caret line="194" column="123" selection-start-line="194" selection-start-column="123" selection-end-line="194" selection-end-column="123" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1482,7 +1496,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
           <caret line="72" column="68" selection-start-line="72" selection-start-column="58" selection-end-line="72" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1490,22 +1503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="127" column="68" selection-start-line="127" selection-start-column="68" selection-end-line="127" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-          <folding>
-            <element signature="e#2525#6263#0#PHP" expanded="false" />
-            <element signature="e#6268#6648#0#PHP" expanded="false" />
-            <element signature="e#6653#7116#0#PHP" expanded="false" />
-            <element signature="e#7121#10710#0#PHP" expanded="false" />
-            <element signature="e#10716#12411#0#PHP" expanded="false" />
-            <element signature="e#12416#14131#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1517,26 +1514,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <marker date="1560533683480" expanded="true" signature="22037:22051" ph="..." />
-            <marker date="1560533683480" expanded="true" signature="22126:22156" ph="..." />
-            <marker date="1560533683480" expanded="true" signature="22210:22219" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_17_152234_add_renouvellement_to_contrat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_17_152234_add_renouvellement_to_contrat.php" />
     <entry file="file://$PROJECT_DIR$/app/Contrat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1547,7 +1525,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="1717">
           <caret line="101" column="26" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
           <folding />
         </state>
@@ -1555,7 +1533,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="1139">
           <caret line="67" column="198" selection-start-line="67" selection-start-column="95" selection-end-line="67" selection-end-column="198" />
           <folding>
             <marker date="1560784680448" expanded="true" signature="9917:10305" ph="..." />
@@ -1567,47 +1545,62 @@
             <marker date="1560784680448" expanded="true" signature="10413:10494" ph="..." />
             <marker date="1560784680448" expanded="true" signature="10425:10493" ph="..." />
             <marker date="1560784680448" expanded="true" signature="10550:11348" ph="..." />
-            <marker date="1560784680448" expanded="true" signature="10562:11269" ph="..." />
-            <marker date="1560784680448" expanded="true" signature="10675:10751" ph="..." />
-            <marker date="1560784680448" expanded="true" signature="11070:11088" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="3689">
           <caret line="217" column="238" selection-start-line="217" selection-start-column="238" selection-end-line="217" selection-end-column="238" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3963">
-          <caret line="287" column="38" selection-start-line="287" selection-start-column="33" selection-end-line="287" selection-end-column="38" />
+        <state relative-caret-position="374">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
-            <element signature="e#3239#3312#0#HTML" expanded="true" />
-            <element signature="e#3471#3502#0#HTML" expanded="true" />
-            <element signature="e#4647#4720#0#HTML" expanded="true" />
-            <element signature="e#6045#6118#0#HTML" expanded="true" />
-            <element signature="e#7431#7504#0#HTML" expanded="true" />
-            <element signature="e#13429#14293#0#HTML" expanded="false" />
-            <element signature="e#14375#15255#0#HTML" expanded="false" />
-            <element signature="e#15333#16196#0#HTML" expanded="false" />
+            <element signature="e#2525#6263#0#PHP" expanded="false" />
+            <element signature="e#6268#6648#0#PHP" expanded="false" />
+            <element signature="e#6653#7116#0#PHP" expanded="false" />
+            <element signature="e#7121#10710#0#PHP" expanded="false" />
+            <element signature="e#10716#12411#0#PHP" expanded="false" />
+            <element signature="e#12416#14131#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="550" column="7" selection-start-line="550" selection-start-column="7" selection-end-line="550" selection-end-column="7" />
+        <state relative-caret-position="479">
+          <caret line="565" column="23" selection-start-line="565" selection-start-column="23" selection-end-line="565" selection-end-column="23" />
           <folding>
             <element signature="e#538#1996#0#PHP" expanded="false" />
             <element signature="e#2001#8892#0#PHP" expanded="false" />
-            <element signature="e#21597#30511#0#PHP" expanded="false" />
-            <element signature="e#30516#39452#0#PHP" expanded="false" />
+            <element signature="e#22734#31648#0#PHP" expanded="false" />
+            <element signature="e#31653#40589#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="418" column="0" selection-start-line="418" selection-start-column="0" selection-end-line="420" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5403">
+          <caret line="255" column="46" selection-start-line="255" selection-start-column="42" selection-end-line="255" selection-end-column="46" />
+          <folding>
+            <marker date="1560850128561" expanded="true" signature="22451:22465" ph="..." />
+            <marker date="1560850128561" expanded="true" signature="22540:22570" ph="..." />
+            <marker date="1560850128561" expanded="true" signature="22624:22633" ph="..." />
           </folding>
         </state>
       </provider>

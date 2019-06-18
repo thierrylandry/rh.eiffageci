@@ -64,7 +64,26 @@
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    {
+                        extend: 'copy',
+                        title: 'Liste fin de contrat groupement'
+                    },
+                    {
+                        extend: 'csv',
+                        title: 'Liste fin de contrat groupement'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Liste fin de contrat groupement'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Liste fin de contrat groupement'
+                    } ,
+                    {
+                        extend: 'print',
+                        title: 'Liste fin de contrat groupement'
+                    }
                 ],
                 language: {
                     url: "{{ asset('public/js/French.json')}}"

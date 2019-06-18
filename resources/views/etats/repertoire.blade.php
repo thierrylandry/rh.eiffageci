@@ -66,7 +66,26 @@
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    {
+                        extend: 'copy',
+                        title: 'Répertoire ESF'
+                    },
+                    {
+                        extend: 'csv',
+                        title: 'Répertoire ESF'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Répertoire ESF'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Répertoire ESF'
+                    } ,
+                    {
+                        extend: 'print',
+                        title: 'Répertoire ESF'
+                    }
                 ],
                 language: {
                     url: "{{ asset('public/js/French.json')}}"

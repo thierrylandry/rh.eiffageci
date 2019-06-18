@@ -25,25 +25,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
-    'uses'=>'homeController@globale',
+    'uses'=>'HomeController@globale',
 ])->middleware('auth')->middleware('roles');
 Route::get('/dirci',[
     'as'=>'dirci',
-    'uses'=>'homeController@dirci',
+    'uses'=>'HomeController@dirci',
 ])->middleware('auth')->middleware('roles');
 Route::get('/phb',[
     'as'=>'phb',
-    'uses'=>'homeController@phb',
+    'uses'=>'HomeController@phb',
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/spie_fondation',[
     'as'=>'spie_fondation',
-    'uses'=>'homeController@spie_fondation',
+    'uses'=>'HomeController@spie_fondation',
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/global',[
     'as'=>'global',
-    'uses'=>'homeController@globale',
+    'uses'=>'HomeController@globale',
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/Ajouter_personne',[

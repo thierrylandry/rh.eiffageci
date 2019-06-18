@@ -285,7 +285,7 @@ Route::get('/supprimer_utilisateur',[
 Route::post('/save_user',[
     'as'=>'save_user',
     'uses'=>'UserController@save_user',
-    'roles' => ['Parametrages']
+    'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 Route::get('/modifier_utilisateur/{id}',[
     'as'=>'modifier_utilisateur',

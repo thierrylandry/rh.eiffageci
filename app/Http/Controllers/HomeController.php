@@ -215,28 +215,28 @@ class HomeController extends Controller
             $qualification_contractuelle[]=$vardiag;
         }
 
-        if(!is_null($agent_de_maitrise)){
+        if(!is_null($cadre)){
         $vardiag = New Vardiag();
             $vardiag->name=$cadre->libelle;
             $vardiag->y=$cadre->nb;
 
             $qualification_contractuelle[]=$vardiag;
         }
-        if(!is_null($agent_de_maitrise)){
+        if(!is_null($employe)){
         $vardiag = New Vardiag();
             $vardiag->name=$employe->libelle;
             $vardiag->y=$employe->nb;
 
             $qualification_contractuelle[]=$vardiag;
         }
-        if(!is_null($agent_de_maitrise)) {
+        if(!is_null($ouvrier)) {
             $vardiag = New Vardiag();
             $vardiag->name = $ouvrier->libelle;
             $vardiag->y = $ouvrier->nb + $chauffeur->nb;
 
             $qualification_contractuelle[] = $vardiag;
         }
-        if(!is_null($agent_de_maitrise)) {
+        if(!is_null($stagiaire)) {
             $vardiag = New Vardiag();
             $vardiag->name = $stagiaire->libelle;
             $vardiag->y = $stagiaire->nb;
@@ -466,114 +466,16 @@ class HomeController extends Controller
         endforeach;
 
         //entrée / sortie
-$entre_novembre_annee_prec = DB::table('personne')
-    ->where("entite","=",3)
-    ->join('contrat','contrat.id_personne','=','personne.id')
-    ->whereMonth('datedebutc','=',11)
-    ->whereYear('datedebutc','=',now()->year-1)
-    ->where('contrat.etat','=',1)
-    ->select("nom",DB::raw('count(personne.id) as nb'))
-    ->groupBy('personne.id')
-    ->get();
-        $entre_decembre_annee_prec =DB::table('personne')
-    ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',12)
-            ->whereYear('datedebutc','=',now()->year-1)
-            ->where('contrat.etat','=',2)
-    ->select(DB::raw('count(personne.id) as nb'))
-    ->groupBy('personne.id')
-    ->get();
-        $entre_janvier_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',1)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_fevrier_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',2)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_mars_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',3)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_avril_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',4)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_mais_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',5)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_juin_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',6)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_juillet_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',7)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_aout_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',8)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_septembre_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',8)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_octobre_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',8)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
-        $entre_novembre_annee =DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->whereMonth('datedebutc','=',8)
-            ->whereYear('datedebutc','=',now()->year)
-            ->where('contrat.etat','=',2)
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.id')
-            ->get();
+        $entrees= DB::select('call proc_entrees(3)');
+        $sortie= DB::select('call proc_sortie(3)');
+        $repartition_entrees= Array();
+        foreach ($entrees as $entree):
 
+
+        endforeach;
+        //dd($repartition_entrees);
      //   dd($entre_decembre_annee_prec);
-        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service'));
+        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees'));
     }
 
     public function phb()

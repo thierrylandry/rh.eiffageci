@@ -53,7 +53,7 @@
                                 @csrf
                             <div class="form-group">
                                 <label>Photo</label>
-                                <input class="au-input au-input--full {{ $errors->has('photo') ? ' is-invalid' : '' }}" type="file" name="photo" placeholder="Photo">
+                                <input class="au-input au-input--full {{ $errors->has('photo') ? ' is-invalid' : '' }}" type="file" name="photo" id="photo" placeholder="Photo">
                                 @if ($errors->has('photo'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('photo') }}</strong>
@@ -89,8 +89,8 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label>Mot de passe</label>
-                                <input class="au-input au-input--full {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Password" required>
+                                <label>Mot de passe (8 caractère minimum)</label>
+                                <input class="au-input au-input--full {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" id="mdp" placeholder="Password" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -99,9 +99,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Confirmer mot de passe</label>
-                                <input class="au-input au-input--full {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password_confirmation" placeholder="Password" required>
+                                <input class="au-input au-input--full {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password_confirmation" id="confmdp" placeholder="Password" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
+
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
@@ -147,7 +148,54 @@
 
 <!-- Main JS-->
 <script src="js/main.js"></script>
+<script>
+    $('#confmdp').on('change',function (e) {
+        var  confmdp=$('#confmdp').val();
+        var  mdp=$('#mdp').val();
+        if(mdp!=confmdp){
+            $('#confmdp').val('');
+        }
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function(e) {
+                console.log(input.files[0]);
+                console.log(input.files[0].type);
+                if(input.files[0].type=="image/jpeg" || input.files[0].type=="image/png" ){
+                    if(input.files[0].size<=1000024){
+
+                        console.log('cool');
+                        $('#rendu_img').attr('src', e.target.result);
+                    }else{
+                        alert('trop volumineux');
+
+                        input.value='';
+                        $('#rendu_img').attr('src','images/user.png');
+                    }
+                }else{
+                    alert('le ficher doit être de type jpeg ou png exclusivement');
+
+                    input.value='';
+                    $('#rendu_img').attr('src','images/user.png');
+                }
+
+
+            }
+
+            reader.readAsDataURL(input.files[0]);
+
+        }else{
+            $('#rendu_img').attr('src','images/user.png');
+        }
+    }
+
+    $("#photo").change(function() {
+        readURL(this);
+    });
+
+</script>
 </body>
 
 </html>

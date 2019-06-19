@@ -89,7 +89,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label>Mot de passe (8 caractère minimum)</label>
+                                <label>Mot de passe (8 caractères minimum)</label>
                                 <input class="au-input au-input--full {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" id="mdp" placeholder="Password" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">

@@ -236,7 +236,7 @@
                             <div class="col-12 col-md-9">
                                 <select name="entite" id="disabledSelect" class="form-control">
                                     <option value="1" {{isset($personne)&& $personne->entite==1? 'selected':''}}>PHB</option>
-                                    <option value="2" {{isset($personne)&& $personne->entite==2? 'selected':''}}>SPIE FONDATION</option>
+                                    <option value="2" {{isset($personne)&& $personne->entite==2? 'selected':''}}>SPIE FONDATIONS</option>
                                     <option value="3" {{isset($personne)&& $personne->entite==3? 'selected':''}}>DIRECTION CI</option>
                                 </select>
                             </div>

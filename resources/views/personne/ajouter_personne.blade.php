@@ -296,7 +296,7 @@
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
                                   <option value="1">PHB</option>
-                                  <option value="2">SPIE FONDATION</option>
+                                  <option value="2">SPIE FONDATIONS</option>
                                   <option value="3">DIRECTION CI</option>
                               </select>
                           </div>

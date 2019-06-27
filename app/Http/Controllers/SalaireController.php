@@ -47,7 +47,7 @@ class SalaireController extends Controller
                 ->orderby('id', 'DESC')->get()->first();
             return view('salaires/ajouter_salaire', compact('contrat', 'personne','salaire'));
         }else{
-            return view('salaires/ajouter_salaire');
+            return view('salaires/ajouter_salaire',compact( 'personne'));
         }
 
 

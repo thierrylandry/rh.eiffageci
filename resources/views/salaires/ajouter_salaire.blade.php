@@ -37,6 +37,18 @@
                     <div class="col-sm-6">
                         <div class="row form-group">
                             <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Contrat</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat">
+                                    @if(isset($contrat))
+                                        <option value="{{$contrat->id}}"> {{"Période de ".$contrat->datedebutc." ".$contrat->datefinc}}</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Salaire catégoriel </label>
                             </div>
                             <div class="col-12 col-md-9">
@@ -48,7 +60,7 @@
                                 <label for="text-input" class=" form-control-label">Sursalaire</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value=""  name="sursalaire" id="sursalaire" placeholder="Sursalaire" class="form-control" required>
+                                <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->sursalaire:''}}"  name="sursalaire" id="sursalaire" placeholder="Sursalaire" class="form-control" required>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -56,29 +68,21 @@
                                 <label for="text-input" class=" form-control-label">Transport</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value=""  name="transport" id="transport" placeholder="Transport" class="form-control" required>
+                                <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->transport:''}}"  name="transport" id="transport" placeholder="Transport" class="form-control" required>
                             </div>
                         </div><div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Logement</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value=""  name="logement" id="logement" placeholder="Logement" class="form-control" required>
+                                <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->logement:''}}"  name="logement" id="logement" placeholder="Logement" class="form-control" required>
                             </div>
                         </div><div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Salissure</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value="" id="salissure" name="salissure" placeholder="Salissure" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Tenue de travail</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value="" id="tenueTravail" name="tenueTravail" placeholder="Tenue de travail" class="form-control" required>
+                                <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->salissure:''}}" id="salissure" name="salissure" placeholder="Salissure" class="form-control" required>
                             </div>
                         </div>
 
@@ -86,10 +90,18 @@
                 <div class="col-sm-6">
                     <div class="row form-group">
                         <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Tenue de travail</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->tenueTravail:''}}" id="tenueTravail" name="tenueTravail" placeholder="Tenue de travail" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Retenue</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="number" min="0" onchange="calculsal()"  value="" id="retenue" name="retenue" placeholder="Retenue" class="form-control" required>
+                            <input type="number" min="0" onchange="calculsal()"  value="{{isset($salaire)?$salaire->retenue:''}}" id="retenue" name="retenue" placeholder="Retenue" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -113,21 +125,10 @@
                             <label for="text-input" class=" form-control-label">Date de debut</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="date"  id="text-input" name="dateDebutS" placeholder="Date de début" class="form-control" required>
+                            <input type="date"  id="text-input" value="{{isset($salaire)?$salaire->dateDebutS:''}}" name="dateDebutS" placeholder="Date de début" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Contrat</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                           <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat">
-                               @foreach($contrats as $contrat)
-                                   <option value="{{$contrat->id}}"> {{"Période de ".$contrat->datedebutc." ".$contrat->datefinc}}</option>
-                                   @endforeach
-                           </select>
-                        </div>
-                    </div>
+
 
                 </div>
 
@@ -206,7 +207,7 @@
                 $('#rendu_img').attr('src','images/user.png');
             }
         }
-
+        calculsal();
         $("#photo").change(function() {
             readURL(this);
         });

@@ -37,9 +37,14 @@ class SalaireController extends Controller
     {
 
         $personne = Personne::where('slug', '=', $slug)->get()->first();
-        $contrats = Contrat::where('id_personne','=',$personne->id)
-                     ->orderby('id', 'DESC')->get();
-        return view('salaires/ajouter_salaire', compact('contrats', 'personne'));
+        $contrat = Contrat::where([
+                                        ['id_personne','=',$personne->id],
+                                         ['matricule','=',$personne->matricule],
+        ])->get()->first();
+
+        $salaire = Salaire::where('id_contrat','=',$contrat->id)
+            ->orderby('id', 'DESC')->get()->first();
+        return view('salaires/ajouter_salaire', compact('contrat', 'personne','salaire'));
     }
     public function enregistrer_salaire(Request $request)
     {

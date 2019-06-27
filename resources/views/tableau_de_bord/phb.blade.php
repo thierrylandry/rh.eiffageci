@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PHB</h2>
+                <h2 class="title-1">TABLEAU DE BORD DE EIFFAGE PHB</h2><a href="javascript:window.print()" id="btnprint" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
             </div>
 
         </div>
@@ -46,7 +46,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="effectifglobaux" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="effectifglobaux" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_homme_femme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_homme_femme" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_nationalite" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_nationalite" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_tranche_age" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_tranche_age" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -178,7 +178,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_ancienete" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_ancienete" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -211,12 +211,12 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_service" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_service" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
     </div>  <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="ne_pas_afficher">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
@@ -243,7 +243,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="bilan_entre_sorti" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="bilan_entre_sorti" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -348,6 +348,10 @@
 
         // Build the chart
         Highcharts.chart('effectifglobaux', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -378,6 +382,10 @@
             }]
         });
         Highcharts.chart('repartition_nationalite', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -408,6 +416,10 @@
             }]
         });
         Highcharts.chart('repartition_homme_femme', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -438,6 +450,10 @@
             }]
         });
         Highcharts.chart('repartition_tranche_age', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -468,6 +484,10 @@
             }]
         });
         Highcharts.chart('repartition_ancienete', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -498,6 +518,10 @@
             }]
         });
         Highcharts.chart('repartition_service', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -528,14 +552,17 @@
             }]
         });
         Highcharts.chart('bilan_entre_sorti', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Monthly Average Rainfall PHB'
+                text: 'BILAN ENTREES SORTIES EIFFAGE PHB'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
             },
             xAxis: {
                 categories: [

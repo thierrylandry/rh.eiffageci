@@ -46,6 +46,12 @@ Route::get('/global',[
     'uses'=>'HomeController@globale',
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/globalExport',[
+    'as'=>'globalExport',
+    'uses'=>'HomeController@globalExport',
+])->middleware('auth')->middleware('roles');
+
+
 Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',

@@ -1,0 +1,50 @@
+body { /* Modifications : la couleur de fond de page - la police - l'unité utilisée pour la taille de la police  */
+    background-color :#fff;
+    font-family :Serif;
+    font-size :15pt;
+}
+
+#page { /* Modifications : suppression de la bordure - marges */
+    margin: 2%;
+    border :none;
+}
+
+#banner, #menuright, #footer { /* Les éléments qui ne seront pas affichés  */
+    display :none;
+}
+
+h1#top { /* Affichage du titre */
+    margin :0;
+    padding :0;
+    text-indent :0;
+    line-height :25pt;
+    font-size :25pt;
+}
+
+h2, h3, #contenu h3, #contenu a, a { /* Modification de la couleur des titres et liens */
+    color :#000;
+    text-align: center;
+
+}
+h2{
+    font-size: 1em;
+}
+header,nav,aside,#ne_pas_afficher,#btnprint{display: none;}
+
+table,div{
+
+
+}
+.logo_eiffage{
+    display: block !important;
+}
+#effectifglobaux,#repartition_homme_femme,#qualification_contractuelle,#repartition_nationalite,#repartition_service{
+    page-break-after:auto;
+    height: 200px;
+}
+.copyright{
+    display: none;
+}
+.col-lg-6{
+    float: left;
+}

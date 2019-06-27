@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <!-- Required meta tags-->
@@ -14,40 +14,41 @@
     <link rel="icon" href="{{ URL::asset('images/Eiffage_2400_02_black_RGB1.png') }}" type="image/png" sizes="66x66">
     <!-- Fontfaces CSS-->
     <link href="{{  URL::asset("css/font-face.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/font-awesome-4.7/css/font-awesome.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/font-awesome-5/css/fontawesome-all.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/mdi-font/css/material-design-iconic-font.min.css") }}" rel="stylesheet" media="all">
+    <link href="{{  URL::asset("vendor/font-awesome-4.7/css/font-awesome.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/font-awesome-5/css/fontawesome-all.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/mdi-font/css/material-design-iconic-font.min.css") }}" rel="stylesheet" media="screen">
 
     <!-- Bootstrap CSS-->
-    <link href="{{  URL::asset("vendor/bootstrap-4.1/bootstrap.min.css") }}" rel="stylesheet" media="all">
+    <link href="{{  URL::asset("vendor/bootstrap-4.1/bootstrap.min.css") }}" rel="stylesheet" media="screen">
 
     <!-- Vendor CSS-->
-    <link href="{{  URL::asset("vendor/animsition/animsition.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/wow/animate.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/css-hamburgers/hamburgers.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/slick/slick.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/select2/select2.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("css/select2.min.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("vendor/perfect-scrollbar/perfect-scrollbar.css") }}" rel="stylesheet" media="all">
-    <link href="{{  URL::asset("css/buttons.dataTables.min.css") }}" rel="stylesheet" media="all">
+    <link href="{{  URL::asset("vendor/animsition/animsition.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/wow/animate.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/css-hamburgers/hamburgers.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/slick/slick.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/select2/select2.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("css/select2.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("vendor/perfect-scrollbar/perfect-scrollbar.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("css/buttons.dataTables.min.css") }}" rel="stylesheet" media="screen">
 
     <!-- Main CSS-->
-    <link href="{{ asset("css/theme.css") }}" rel="stylesheet" media="all">
-    <link href="{{ asset("css/jquery.dataTables.min.css") }}" rel="stylesheet" media="all">
+    <link href="{{ asset("css/theme.css") }}" rel="stylesheet" media="screen">
+    <link href="{{ asset("css/jquery.dataTables.min.css") }}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/impression.css') }}" media="print">
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
-        @include('layouts.nav')
-
-        <!-- PAGE CONTAINER-->
+    @include('layouts.nav')
+        <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}" class="logo_eiffage" style="display: none">
+    <!-- PAGE CONTAINER-->
         <div class="page-container">
             @include('layouts.bar')
             <!-- MAIN CONTENT-->
                 <div class="main-content">
                     <div class="section__content section__content--p30">
-                        <div class="container-fluid">
+                        <div class="container-fluid" id="page">
                             <div class="agile-grid"  style="background-color: #FFFFFF;@yield('pour_register') margin: 5px">
 
                                 @if(Session::has('success'))

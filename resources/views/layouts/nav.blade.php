@@ -136,7 +136,7 @@
                             <a href="{{route("dirci")}}">Direction CI</a>
                         </li>
                         <li class="@yield('phb')">
-                            <a href="{{route("phb")}}">PHB</a>
+                            <a href="{{route("phb")}}">EIFFAGE PHB</a>
                         </li>
                         <li class="@yield('spie_fondation')">
                             <a href="{{route("spie_fondation")}}">SPIE Fondations</a>

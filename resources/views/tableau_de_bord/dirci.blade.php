@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">DIRECTION CI</h2>
+                <h2 class="title-1">TABLEAU DE BORD DE LA DIRECTION CI</h2><a href="javascript:window.print()" id="btnprint" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
             </div>
 
         </div>
@@ -46,7 +46,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="effectifglobaux" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="effectifglobaux" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_homme_femme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_homme_femme" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_nationalite" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_nationalite" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_tranche_age" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_tranche_age" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -178,7 +178,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_ancienete" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_ancienete" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -211,13 +211,13 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_service" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_service" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row" >
+        <div class="col-lg-6" id="ne_pas_afficher">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
@@ -244,7 +244,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="bilan_entre_sorti" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="bilan_entre_sorti" style=" height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -349,6 +349,7 @@
 
         // Build the chart
         Highcharts.chart('effectifglobaux', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -382,6 +383,7 @@
             }]
         });
         Highcharts.chart('repartition_nationalite', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -415,6 +417,7 @@
             }]
         });
         Highcharts.chart('repartition_homme_femme', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -448,6 +451,7 @@
             }]
         });
         Highcharts.chart('repartition_tranche_age', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -481,6 +485,7 @@
             }]
         });
         Highcharts.chart('repartition_ancienete', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -514,6 +519,7 @@
             }]
         });
         Highcharts.chart('repartition_service', {
+            exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
@@ -547,14 +553,15 @@
             }]
         });
         Highcharts.chart('bilan_entre_sorti', {
+            exporting: { enabled: false },
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Monthly Average Rainfall DIRECTION CI'
+                text: 'BILAN ENTREES SORTIES DIRECTION CI'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+
             },
             xAxis: {
                 categories: [

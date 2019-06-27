@@ -39,8 +39,8 @@ class SalaireController extends Controller
         $personne = Personne::where('slug', '=', $slug)->get()->first();
         $contrat = Contrat::where([
                                         ['id_personne','=',$personne->id],
-                                        
-        ])->get()->first();
+
+        ])->orderby('created_at', 'DESC')->get()->first();
 
         if(isset($contrat)){
             $salaire = Salaire::where('id_contrat','=',$contrat->id)

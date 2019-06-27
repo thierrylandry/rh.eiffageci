@@ -45,9 +45,12 @@ class SalaireController extends Controller
         if(isset($contrat)){
             $salaire = Salaire::where('id_contrat','=',$contrat->id)
                 ->orderby('id', 'DESC')->get()->first();
+            return view('salaires/ajouter_salaire', compact('contrat', 'personne','salaire'));
+        }else{
+            return view('salaires/ajouter_salaire');
         }
 
-        return view('salaires/ajouter_salaire', compact('contrat', 'personne','salaire'));
+
     }
     public function enregistrer_salaire(Request $request)
     {

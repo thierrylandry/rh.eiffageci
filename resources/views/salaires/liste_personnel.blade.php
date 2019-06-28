@@ -102,6 +102,7 @@
 
                 "ordering":true,
                 "responsive": true,
+                "paging": false,
                 "createdRow": function( row, data, dataIndex){
 
                 },

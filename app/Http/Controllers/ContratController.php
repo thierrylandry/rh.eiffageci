@@ -99,7 +99,7 @@ $services = Services::all();
         $slug=$parameters["slug"];
 
 
-        $matricule=$parameters["matricule"];
+        $matricule=trim(str_replace(' ','',$parameters["matricule"]));
         $couverture_maladie=$parameters["couverture_maladie"];
         $dateDebutC=$parameters["dateDebutC"];
        $dateFinC= $parameters["dateFinC"];

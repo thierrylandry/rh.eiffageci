@@ -120,7 +120,7 @@ public function passage_invite($id){
 
 
 
-    return view('invite/gestion_passage',compact('passages','invite'));
+    return view('invite/gestion_passage',compact('invite'));
 }
 public function supprimer_invite($id){
 

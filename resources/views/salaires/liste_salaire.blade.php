@@ -23,6 +23,7 @@
                     <a href="{{ url()->previous() }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-arrow-back"></i>RETOUR</a>
                 </div>
+                &nbsp;&nbsp;
                 <div class="table-data__tool-right">
                     <a href="{{route('Ajouter_salaire',['slug'=>$personne->slug])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN SALAIRE</a>

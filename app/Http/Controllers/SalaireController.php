@@ -24,27 +24,42 @@ class SalaireController extends Controller
     public function liste_salaire($slug)
     {
 
-        $personne = $personne = Personne::where('slug', '=', $slug)->get()->first();
-        $salaires = DB::table('salaire')
-            ->join('contrat', 'contrat.id', '=', 'salaire.id_contrat')
-            ->select('salaire.id', 'sursalaire', 'transport', 'logement', 'salissure', 'tenueTravail', 'retenue', 'dateDebutS', 'dateFin','datedebutc','datefinc')
-            ->orderby('salaire.id', 'DESC')->get();
+         $personne = Personne::where('slug', '=', $slug)->get()->first();
 
-        return view('salaires/liste_salaire', compact('salaires', 'personne'));
+        $contrat=Contrat::where([
+            ['id_personne','=',$personne->id],
+            ['matricule','=',$personne->matricule],
+
+        ])->orderby('created_at', 'DESC')->get()->first();
+
+        if(isset($contrat)){
+
+            $salaires = DB::table('salaire')
+                ->join('contrat', 'contrat.id', '=', 'salaire.id_contrat')
+                ->where('id_contrat','=',$contrat->id)
+                ->select('salaire.id', 'sursalaire', 'transport', 'logement', 'salissure', 'tenueTravail', 'retenue', 'dateDebutS', 'dateFin','datedebutc','datefinc')
+                ->orderby('salaire.id', 'DESC')->get();
+            return view('salaires/liste_salaire', compact('salaires', 'personne'));
+        }else{
+            return view('salaires/liste_salaire', compact( 'personne'));
+        }
+
+
+
     }
 
     public function Ajouter_salaire($slug)
     {
 
         $personne = Personne::where('slug', '=', $slug)->get()->first();
-        $contrat = Contrat::where([
+        $contrats = Contrat::where([
                                         ['id_personne','=',$personne->id],
 
-        ])->orderby('created_at', 'DESC')->get()->first();
+        ])->orderby('datedebutc', 'DESC')->get();
 
-        if(isset($contrat)){
-            $salaire = Salaire::where('id_contrat','=',$contrat->id)
-                ->orderby('id', 'DESC')->get()->first();
+        if(isset($contrats)){
+            $salaire = Salaire::where('id_contrat','=',$contrats->first()->id)
+                ->orderby('dateDebutS', 'DESC')->get()->first();
             return view('salaires/ajouter_salaire', compact('contrat', 'personne','salaire'));
         }else{
             return view('salaires/ajouter_salaire',compact( 'personne'));

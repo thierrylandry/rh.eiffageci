@@ -41,8 +41,10 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat">
-                                    @if(isset($contrat))
+                                    @if(isset($contrats))
+                                        @foreach($contrats as $contrat)
                                         <option value="{{$contrat->id}}"> {{"Période de ".$contrat->datedebutc." ".$contrat->datefinc}}</option>
+                                        @endforeach
                                     @endif
                                 </select>
                             </div>

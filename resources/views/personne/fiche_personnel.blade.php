@@ -18,9 +18,9 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('Ajouter_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i>AJOUTER PERSONNE</a>
-            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>
@@ -144,7 +144,7 @@
                             @if(isset($familles))
                                 @foreach($familles as $famille)
                                     <tr>
-                                        <td>{{$famille->nom_famille}}</td>
+                                        <td>{{$famille->nom_prenom}}</td>
                                         <td>  @if($famille->lien_parente=="CONJ")
                                               CONJOINT
                                             @endif
@@ -162,8 +162,8 @@
                                             @elseif($famille->type_p=="CNI")
                                                 <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
                                             @endif</td>
-                                        <td>{{$famille->num_p_piece}}</td>
-                                        <td>{{\Carbon\Carbon::parse(isset($personne)? $famille->date_exp_piece:'')->format('d-m-Y')}}</td>
+                                        <td>{{$famille->num_p}}</td>
+                                        <td>{{\Carbon\Carbon::parse(isset($personne)? $famille->date_exp:'')->format('d-m-Y')}}</td>
 
                                     </tr>
                                 @endforeach

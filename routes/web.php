@@ -58,12 +58,12 @@ Route::get('/Ajouter_personne',[
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 
-Route::get('/Ajouter_personne',[
+Route::get('/Ajouter_personne/{entite}',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
-Route::get('/lister_personne',[
+Route::get('/lister_personne/{entite}',[
     'as'=>'lister_personne',
     'uses'=>'PersonneController@lister_personne',
     'roles' => ['Personnes']
@@ -153,9 +153,16 @@ Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
     'roles' => ['Personnes']
-])->middleware('auth');Route::get('/rupture_contrat/{id}',[
+])->middleware('auth');
+
+Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',
     'uses'=>'ContratController@rupture_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::post('/rompre',[
+    'as'=>'rompre',
+    'uses'=>'ContratController@rompre',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 

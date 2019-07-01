@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('lister_personne')
+@section('lister_personne'.$entite)
     active
 @endsection
 @section('lister_personne_block')
@@ -9,7 +9,7 @@
    <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PERSONNE-LISTE </h2>
+                <h2 class="title-1">PERSONNE-LISTE @if($entite==1) EIFFAGE PHB @elseif($entite==2) SPIE FONDATIONS @else DIRECTION CI @endif</h2>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
-                    <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('Ajouter_personne',$entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
                 </div>
             </div>

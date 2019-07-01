@@ -23,20 +23,21 @@ use App\UploadHandler;
 class PersonneController extends Controller
 {
     //
-    public function ajouter_personne()
+    public function ajouter_personne($entite)
     {
         $societes=Societe::all();
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
-        return view('personne/ajouter_personne',compact('societes','payss','fonctions'));
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite'));
     }
-    public function lister_personne()
+    public function lister_personne($entite)
     {
         $personnes= Personne::with("fonction","pays","societe")
+            ->where('entite','=',$entite)
             ->orderBy('id', 'desc')
             ->paginate(300);
 
-        return view('personne/lister_personne',compact('personnes'));
+        return view('personne/lister_personne',compact('personnes','entite'));
     }
     public function fiche_personnel($slug)
     {
@@ -286,7 +287,7 @@ class PersonneController extends Controller
 
         $personne->save();
 
-        return redirect()->route('lister_personne')->with('success',"La personne a été mise à jour avec succès");
+        return redirect()->route('lister_personne',$personne->entite)->with('success',"La personne a été mise à jour avec succès");
 
     }
 
@@ -328,7 +329,7 @@ class PersonneController extends Controller
 }
             endforeach;
 
-        return redirect()->route('lister_personne')->with('success',"Les documents ont été ajouté");
+        return redirect()->route('lister_personne',$personne->entite)->with('success',"Les documents ont été ajouté");
 
     }
     public function save_document_new_user(Request $request){

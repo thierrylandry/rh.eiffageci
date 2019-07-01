@@ -199,6 +199,8 @@
                             <input type="date" name="periode_essaie" class="form-control" value="{{isset($contrat)?$contrat->periode_essaie:''}}"/>
                         </div>
                     </div>
+
+                    @if(isset($contrat))
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de rupture d'essai :</label>
@@ -215,6 +217,7 @@
                             <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat)?$contrat->departDefinitif:''}}" />
                         </div>
                     </div>
+                    @endif
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date d'induction:</label>

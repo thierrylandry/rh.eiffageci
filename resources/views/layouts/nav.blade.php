@@ -160,11 +160,14 @@
                     <a class="js-arrow " href="#">
                         <i class="fas fa-user open" ></i>PERSONNES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
-                        <li class="@yield('Ajouter_personne')">
-                            <a href="{{route('Ajouter_personne')}}">Ajouter</a>
+                        <li class="@yield('lister_personne1')">
+                            <a href="{{route('lister_personne',1)}}">EIFFAGE PHB</a>
                         </li>
-                        <li class="@yield('lister_personne')">
-                            <a href="{{route('lister_personne')}}">Lister</a>
+                        <li class="@yield('lister_personne2')">
+                            <a href="{{route('lister_personne',2)}}">SPIE FONDATIONS</a>
+                        </li>
+                        <li class="@yield('lister_personne3')">
+                            <a href="{{route('lister_personne',3)}}">DIRECTION CI</a>
                         </li>
 
                     </ul>

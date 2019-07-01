@@ -18,9 +18,9 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('Ajouter_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('Ajouter_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i>AJOUTER PERSONNE</a>
-            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>
@@ -312,17 +312,16 @@
                                 <label for="observation_c[]">type de pièce</label>
                                 <div class="form-group col-sm-12">
                                     <select type="text" name="type_p_piece[]" class="type_c form-control input-field">
-                                        @if($piece->type_p_piece=="CC")
-                                            <option value="CC"> CARTE CONSULAIRE</option>
-                                        @elseif($piece->type_p_piece=="CR")
-                                            <option value="CR">CARTE DE RESIDENTS</option>
-                                        @elseif($piece->type_p_piece=="VIS")
-                                            <option value="VIS">VISA</option>
-                                        @elseif($piece->type_p_piece=="PSP")
-                                            <option value="PSP">PASSEPORT</option>
-                                        @elseif($piece->type_p_piece=="CNI")
-                                            <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
-                                        @endif
+
+                                            <option value="CC"   @if($piece->type_p_piece=="CC") selected @endif> CARTE CONSULAIRE</option>
+
+                                            <option value="CR" @if($piece->type_p_piece=="CR") selected @endif>CARTE DE RESIDENTS</option>
+                                            <option value="VIS" @if($piece->type_p_piece=="VIS") selected @endif>VISA</option>
+
+                                            <option value="PSP" @if($piece->type_p_piece=="PSP") selected @endif >PASSEPORT</option>
+
+                                            <option value="CNI" @if($piece->type_p_piece=="CNI") selected @endif>CARTE NATIONNAL D'IDENTITE</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -496,7 +495,7 @@
                                 <div class="form-group col-sm-12">
                                     <select type="text" name="type_p[]" class="type_c form-control input-field">
                                         <option value="CC"> CARTE CONSULAIRE</option>
-                                        <option value="PSP">CARTE NATIONNAL D'IDENTITE</option>
+                                        <option value="PSP">PASSEPORT</option>
                                         <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
                                     </select>
                                 </div>

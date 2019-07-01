@@ -6,6 +6,9 @@
     style="display: block;"
 @endsection
 @section('page')
+    <style>
+        .grey{ background-color: lightgrey !important;}
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
@@ -13,13 +16,15 @@
             </div>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
                 <div class="table-data__tool-right">
@@ -28,6 +33,7 @@
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN CONTRAT</a>
                 </div>
             </div>
+
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_employe">
                     <thead>
@@ -45,7 +51,7 @@
                     </thead>
                     <tbody>
                     @foreach($contrats as $contrat)
-                        <tr class="tr-shadow">
+                        <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
                             <td>{{$contrat->id}}</td>
                             <td>@foreach($typecontrats as $typecontrat)
                                     @if($typecontrat->id==$contrat->id_type_contrat)

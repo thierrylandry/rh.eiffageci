@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('Ajouter_personne')
+@section('lister_personne'.$entite)
     active
     @endsection
 @section('Ajouter_personne_block')
@@ -82,7 +82,7 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne',$entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>
@@ -108,7 +108,7 @@
                       </div>
                       <div class="col-12 col-md-9">
                           <input type="text" id="text-input" name="nom" placeholder="Nom" class="form-control" required>
-                          <small class="form-text text-muted">une chaine de caractère</small>
+
                       </div>
                   </div>
                   <div class="row form-group">
@@ -117,7 +117,6 @@
                       </div>
                       <div class="col-12 col-md-9">
                           <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" required>
-                          <small class="form-text text-muted">une chaine de caractère</small>
                       </div>
                   </div>
                   <div class="row form-group">
@@ -180,7 +179,7 @@
                               <select name="nationnalite" id="nationnalite" required class="form-control">
                                   @foreach($payss as $pays)
 
-                                       <option value="{{$pays->id}}"> {{$pays->nom_fr_fr}}</option>
+                                       <option value="{{$pays->id}}" @if($pays->alpha2=='CI') selected @endif> {{$pays->nom_fr_fr}}</option>
                                   @endforeach
                               </select>
                           </div>
@@ -243,7 +242,6 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <input type="text" id="text-input" name="cnps" placeholder="CNPS" class="form-control">
-                              <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
                       <div class="row form-group">
@@ -252,7 +250,6 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <input type="text" id="text-input" name="rib" placeholder="RIB" class="form-control">
-                              <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
                       <div class="row form-group">
@@ -295,9 +292,9 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
-                                  <option value="1">PHB</option>
-                                  <option value="2">SPIE FONDATIONS</option>
-                                  <option value="3">DIRECTION CI</option>
+                                  <option value="1" @if($entite==1) selected @endif>PHB</option>
+                                  <option value="2" @if($entite==2) selected @endif>SPIE FONDATIONS</option>
+                                  <option value="3" @if($entite==3) selected @endif>DIRECTION CI</option>
                               </select>
                           </div>
                       </div>
@@ -632,6 +629,9 @@
     <script type="application/javascript">
         $("#addfamille").click(function (e) {
             $($("#familletemplate").html()).appendTo($("#familles"));
+        });
+  $("#addpiece").click(function (e) {
+            $($("#piecetemplate").html()).appendTo($("#pieces"));
         });
 
     </script>

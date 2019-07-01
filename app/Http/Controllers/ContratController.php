@@ -41,7 +41,8 @@ $services = Services::all();
         $personne= Personne::where('slug','=',$slug)->get()->first();
         $services = Services::all();
         $typecontrats= Typecontrat::all();
-        $contrats = Contrat::where('id_personne','=',$personne->id)->get();
+        $contrats = Contrat::where('id_personne','=',$personne->id)
+            ->orderBy('datedebutc','DESC')->get();
 
 
         return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats'));
@@ -93,6 +94,28 @@ $services = Services::all();
 
         return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat  a été modifié avec succès");
     }
+    public function rupture_contrat($id){
+        $contrat= Contrat::find($id);
+        $personne=Personne::find($contrat->id_personne);
+
+        return view('contrat/rupture_contrat',compact('personne','contrat'));
+    }
+    public function rompre(Request $request){
+
+        $parameters=$request->except(['_token']);
+        $slug=$parameters["slug"];
+        $id_contrat=$parameters["id_contrat"];
+        $departdefinitif=$parameters["departdefinitif"];
+
+        $contrat=  Contrat::find($id_contrat);
+
+        $contrat->etat=2;
+        $contrat->departdefinitif=$departdefinitif;
+
+
+        $contrat->save();
+        return redirect()->route('lister_contrat',['slug'=>$slug])->with('success',"Le contrat  a été rompu");
+    }
     public function save_contrat( Request $request){
         $parameters=$request->except(['_token']);
 
@@ -127,6 +150,7 @@ $services = Services::all();
         $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)->get()->first();
         if(!empty($ancien_contrat)){
             $ancien_contrat->etat=2;
+            $ancien_contrat->departDefinitif=date('d-m-Y');
             $ancien_contrat->save();
         }
 
@@ -137,7 +161,8 @@ $services = Services::all();
 
         $contrat->save();
 
+        $entite=$personne->entite;
 
-        return redirect()->route('lister_personne')->with('success',"Le contrat  a été ajouté avec succès");
+        return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
     }
 }

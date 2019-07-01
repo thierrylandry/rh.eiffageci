@@ -92,11 +92,27 @@
                             <label for="text-input" class=" form-control-label">Définition :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_definition" required>
+                            <select class="form-control" name="id_definition" id="id_definition" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($definitions as $definition)
                                     <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}} value="{{$definition->id}}">{{$definition->libelle}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Catégorie :</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="id_categorie" id="id_categorie">
+                                <option value="">SELECTIONNER</option>
+                                @if(isset($categories))
+                                    @foreach($categories as $categorie)
+                                        <option {{isset($contrat) && $contrat->id_categorie==$categorie->id?'selected':''}} value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+
+                                    @endforeach;
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -241,5 +257,22 @@
             </button>
         </div>
     </form>
+            <script src="{{ asset("js/jquery.min.js") }}"></script>
+<script>
+    $("#id_definition").change(function (e) {
+var id_definition=  $("#id_definition").val();
+        $.get("../listercat/"+id_definition,function(data){
+            console.log(data);
+            var lesOptions;
+            $.each(data, function( index, value ) {
+                lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
+            });
+            $("#id_categorie").empty();
+            $("#id_categorie").append(lesOptions);
+          //  $("#id_categorie").trigger("chosen:updated");
 
+        });
+      //  alert("ddd");
+    })
+</script>
 @endsection

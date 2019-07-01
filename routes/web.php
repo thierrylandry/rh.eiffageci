@@ -129,9 +129,15 @@ Route::get('/contrat_new_user',[
     'uses'=>'ContratController@contrat_new_user',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+
 Route::get('/contrat_new_user2/{slug}',[
     'as'=>'contrat_new_user2',
     'uses'=>'ContratController@contrat_new_user2',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::get('/listercat/{id_definition}',[
+    'as'=>'listercat',
+    'uses'=>'ContratController@listercat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat',[

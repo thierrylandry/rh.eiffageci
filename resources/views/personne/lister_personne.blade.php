@@ -49,20 +49,20 @@
                             <td>{{ $personne->id_unite ? $personne->societe->libelleUnite : ""}}</td>
                             <td> <div class="table-data-feature">
                                     <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <i class="fa fa-eye" aria-hidden="true" title="Fiche personnelle"></i>
                                     </a>
                                     <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="zmdi zmdi-more"></i>
+                                        <i class="zmdi zmdi-more" title="modifier les infos"></i>
                                     </a>
                                     <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
-                                        <i class="zmdi zmdi-attachment-alt"></i>
+                                        <i class="zmdi zmdi-attachment-alt" title="document administratif"></i>
                                     </a>
                                     <a href="{{route('lister_contrat',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
-                                        <i class="zmdi zmdi-folder-person"></i>
+                                        <i class="zmdi zmdi-folder-person" title="les contrats"></i>
                                     </a>
 
                                     <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                                        <i class="zmdi zmdi-delete"></i>
+                                        <i class="zmdi zmdi-delete" title="supprimer"></i>
                                     </a>
                                 </div>
                             </td>

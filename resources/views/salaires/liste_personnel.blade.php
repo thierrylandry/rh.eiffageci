@@ -35,8 +35,8 @@
                             <td>{{$personne->nom.' '.$personne->prenom}}</td>
 
                             <td> <div class="table-data-feature">
-                                    <a href="{{route('liste_salaire',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-money-bill-alt" aria-hidden="true"></i>
+                                    <a href="{{route('liste_salaire',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Salaires">
+                                        <i class="fa fa-money-bill-alt" aria-hidden="true" title="Salaires"></i>
                                     </a>
                                 </div>
                             </td>

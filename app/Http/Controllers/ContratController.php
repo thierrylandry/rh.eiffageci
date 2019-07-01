@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Contrat;
 use App\Definition;
 use App\Personne;
@@ -27,14 +28,20 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions'));
     }
+    public function listercat($id_definition){
+        $categories = Categorie::where('id_definition','=',$id_definition)->get();
+
+       return $categories;
+    }
     public function affiche_contrat($id){
         $contrat= Contrat::find($id);
+        $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
 
         $services = Services::all();
         $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions'));
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories'));
     }
 
     public function lister_contrat($slug){
@@ -64,6 +71,7 @@ $services = Services::all();
         $departdefinitif= $parameters["departdefinitif"];
         $dateInduction= $parameters["dateInduction"];
         $id_definition= $parameters["id_definition"];
+        $id_categorie= $parameters["id_categorie"];
         $email= $parameters["email"];
         $contact= $parameters["contact"];
 
@@ -86,6 +94,7 @@ $services = Services::all();
 
         $contrat->id_personne=$personne->id;
         $contrat->id_definition=$id_definition;
+        $contrat->id_categorie=$id_categorie;
         $contrat->email=$email;
         $contrat->contact=$contact;
 
@@ -132,6 +141,13 @@ $services = Services::all();
         $email= $parameters["email"];
         $contact= $parameters["contact"];
         $id_definition= $parameters["id_definition"];
+
+        if(isset($parameters["id_categorie"])){
+            $id_categorie= $parameters["id_categorie"];
+        }else{
+            $id_categorie='';
+        }
+
         $contrat= new Contrat();
 
         $contrat->matricule=$matricule;
@@ -158,6 +174,10 @@ $services = Services::all();
         $contrat->email=$email;
         $contrat->contact=$contact;
         $contrat->id_definition=$id_definition;
+        if(isset($parameters["id_categorie"])){
+            $contrat->id_categorie=$id_categorie;
+        }
+
 
         $contrat->save();
 

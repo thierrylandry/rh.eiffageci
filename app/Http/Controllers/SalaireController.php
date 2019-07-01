@@ -47,7 +47,13 @@ class SalaireController extends Controller
 
 
     }
+public function recsalairecat($id_contrat){
 
+    $categorie= Contrat::find($id_contrat);
+dd($categorie);
+    return $categorie;
+
+}
     public function Ajouter_salaire($slug)
     {
 

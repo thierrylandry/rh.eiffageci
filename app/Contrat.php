@@ -9,4 +9,9 @@ class Contrat extends Model
     //
     protected  $table="contrat";
     protected $fillable= ['*'];
+
+    public function  categorie(){
+
+        return $this->belongsTo('App\Categorie', 'id_categorie');
+    }
 }

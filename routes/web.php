@@ -140,6 +140,11 @@ Route::get('/listercat/{id_definition}',[
     'uses'=>'ContratController@listercat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::get('/recsalairecat/{id_contrat}',[
+    'as'=>'recsalairecat',
+    'uses'=>'SalaireController@recsalairecat',
+    'roles' => ['Salaires']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',

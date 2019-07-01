@@ -40,7 +40,7 @@
                                 <label for="text-input" class=" form-control-label">Contrat</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat">
+                                <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat" id="id_contrat">
                                     @if(isset($contrats))
                                         @foreach($contrats as $contrat)
                                         <option value="{{$contrat->id}}"> {{"Période de ".$contrat->datedebutc." ".$contrat->datefinc}}</option>
@@ -215,6 +215,30 @@
         });
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
+        });
+        $("#id_contrat").change(function (e) {
+            var id_contrat=  $("#id_contrat").val();
+            $.get("../recsalairecat/"+id_contrat,function(data){
+                console.log(data);
+                var lesOptions;
+
+                $("#salCategoriel").empty();
+                $("#salCategoriel").val(data.salCategoriel);
+                //  $("#id_categorie").trigger("chosen:updated");
+                console.log(data.salCategoriel);
+            });
+            //  alert("ddd");
+        })
+        var id_contrat=  $("#id_contrat").val();
+        $.get("../recsalairecat/"+id_contrat,function(data){
+            console.log(data);
+            var lesOptions;
+
+
+            $("#salCategoriel").empty();
+            $("#salCategoriel").val(data.salCategoriel);
+            //  $("#id_categorie").trigger("chosen:updated");
+
         });
     </script>
 @endsection

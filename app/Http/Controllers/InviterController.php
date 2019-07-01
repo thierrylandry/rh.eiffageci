@@ -56,6 +56,7 @@ public function enregistrer_passage( Request $request){
 }public function supprimer_passage($id){
     $passage=Passage::find($id);
     $passage->delete();
+    dd($passage);
     return redirect()->route('passage_invite')->with('success' , "passage supprimé avec succès");
 }
 public function modifier_invite( Request $request){

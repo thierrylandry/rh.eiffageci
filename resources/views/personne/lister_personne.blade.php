@@ -28,7 +28,7 @@
                     <tr>
                         <th>NOM & PRENOM</th>
                         <th>SEXE</th>
-                        <th>NATIONNALITE</th>
+                        <th>NATIONALITE</th>
                         <th>FONCTION</th>
                         <th>ENTITE</th>
                         <th>SOCIETE</th>

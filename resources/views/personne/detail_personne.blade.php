@@ -320,7 +320,7 @@
 
                                             <option value="PSP" @if($piece->type_p_piece=="PSP") selected @endif >PASSEPORT</option>
 
-                                            <option value="CNI" @if($piece->type_p_piece=="CNI") selected @endif>CARTE NATIONNAL D'IDENTITE</option>
+                                            <option value="CNI" @if($piece->type_p_piece=="CNI") selected @endif>CARTE NATIONAL D'IDENTITE</option>
 
                                     </select>
                                 </div>
@@ -355,7 +355,7 @@
                                         <option value="CR">CARTE DE RESIDENTS</option>
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
-                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                        <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -440,9 +440,9 @@
                                                 <option value="PSP">PASSEPORT</option>
                                         @endif
                                             @if($famille->type_p=="CNI")
-                                                <option value="CNI" selected>CARTE NATIONNAL D'IDENTITE</option>
+                                                <option value="CNI" selected>CARTE NATIONAL D'IDENTITE</option>
                                             @else
-                                                <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                                <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                             @endif
 
                                     </select>
@@ -496,7 +496,7 @@
                                     <select type="text" name="type_p[]" class="type_c form-control input-field">
                                         <option value="CC"> CARTE CONSULAIRE</option>
                                         <option value="PSP">PASSEPORT</option>
-                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                        <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>

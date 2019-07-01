@@ -372,7 +372,7 @@
                                         <option value="CR">CARTE DE RESIDENTS</option>
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
-                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                        <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -404,7 +404,7 @@
                                         <option value="CR">CARTE DE RESIDENTS</option>
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
-                                        <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                        <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -475,7 +475,7 @@
                                     <option value="CR">CARTE DE RESIDENTS</option>
                                     <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
-                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                    <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                 </select>
                             </div>
                         </div>
@@ -527,7 +527,7 @@
                                     <option value="CR">CARTE DE RESIDENTS</option>
                                     <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
-                                    <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                    <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                 </select>
                             </div>
                         </div>

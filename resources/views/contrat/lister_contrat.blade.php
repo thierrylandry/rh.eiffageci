@@ -102,7 +102,7 @@
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
-                                    @if(!$contrat->etat==1)
+                                    @if($contrat->etat==1)
                                     <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-minus-circle-outline"></i>
                                     </a>

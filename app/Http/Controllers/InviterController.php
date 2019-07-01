@@ -56,8 +56,7 @@ public function enregistrer_passage( Request $request){
 }public function supprimer_passage($id){
     $passage=Passage::find($id);
     $passage->delete();
-    dd($passage);
-    return redirect()->route('passage_invite')->with('success' , "passage supprimé avec succès");
+    return redirect()->route("invite")->with('success' , "passage supprimé avec succès");
 }
 public function modifier_invite( Request $request){
     $parameters=$request->except(['_token']);
@@ -108,7 +107,13 @@ public function pmodifier_invite($id){
 }public function pmodifier_passage($id){
 
     $passage= Passage::find($id);
-    $invite= $passage->invite;
+    if(isset($passage)){
+
+        $invite= $passage->invite;
+    }else{
+        $invite=null;
+    }
+
 
 
 

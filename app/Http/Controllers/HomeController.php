@@ -501,7 +501,7 @@ class HomeController extends Controller
             ->join('personne_age','personne_age.id','=','personne.id')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
-            ->where('personne_age.age','<=',30)
+            ->where('personne_age.age','>=',30)
             ->where('personne_age.age','>=',39)
             ->get();
         $tranche_age_de_40_a_49_ans= DB::table('personne')
@@ -509,7 +509,7 @@ class HomeController extends Controller
             ->join('personne_age','personne_age.id','=','personne.id')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
-            ->where('personne_age.age','<=',40)
+            ->where('personne_age.age','>=',40)
             ->where('personne_age.age','>=',49)
             ->get();
         $tranche_age_de50_ans= DB::table('personne')
@@ -850,7 +850,7 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
             ->where('personne_age.age','>=',30)
-            ->where('personne_age.age','>=',39)
+            ->where('personne_age.age','<=',39)
             ->get();
         $tranche_age_de_40_a_49_ans= DB::table('personne')
             ->where("entite","=",1)
@@ -858,7 +858,7 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
             ->where('personne_age.age','>=',40)
-            ->where('personne_age.age','>=',49)
+            ->where('personne_age.age','<=',49)
             ->get();
         $tranche_age_de50_ans= DB::table('personne')
             ->where("entite","=",1)

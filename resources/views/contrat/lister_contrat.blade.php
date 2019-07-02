@@ -65,10 +65,10 @@
                                     @endif
                                 @endforeach</td>
                             <td>
-                                {{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->datedebutc)[0])->formatLocalized('%d/%m/%Y'):'' }}
+                                {{date("d-m-Y",strtotime($contrat->datedebutc))}}
                             </td>
-                            <td> {{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->datefinc)[0])->formatLocalized('%d/%m/%Y'):'' }}</td>
-                            <td>{{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->periode_essaie)[0])->formatLocalized('%d/%m/%Y'):'' }}</td>
+                            <td> {{date("d-m-Y",strtotime($contrat->datefinc))}}</td>
+                            <td>{{date("d-m-Y",strtotime($contrat->periode_essaie))}}</td>
                             <td>
 
                                 @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)

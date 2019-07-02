@@ -29,7 +29,7 @@
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN SALAIRE</a>
                 </div>
             </div>
-            
+
             </br>
             <div class="table-responsive table-responsive-data2" style="overflow: auto; width: 100%">
                 <table class="table  table-earning" id="table_employe">

@@ -29,11 +29,14 @@
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN SALAIRE</a>
                 </div>
             </div>
-            <div class="table-responsive table-responsive-data2">
+            
+            </br>
+            <div class="table-responsive table-responsive-data2" style="overflow: auto; width: 100%">
                 <table class="table  table-earning" id="table_employe">
                     <thead>
                     <tr>
                         <th>id</th>
+                        <th>SALAIRE CATEGORIEL</th>
                         <th>SURSALAIRE</th>
                         <th>TRANSPORT</th>
                         <th>LOGEMENT</th>
@@ -53,6 +56,7 @@
 
                         <tr class="tr-shadow">
                             <td>{{$salaire->id}}</td>
+                            <td>{{$salaire->salCategoriel}}</td>
                             <td>{{$salaire->sursalaire}}</td>
                             <td>{{$salaire->transport}}</td>
                             <td>{{$salaire->logement}}</td>
@@ -61,9 +65,9 @@
                             <td>{{$salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail}}</td>
                             <td>{{$salaire->retenue}}</td>
                             <td>{{($salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail)-$salaire->retenue}}</td>
-                           <td>{{$salaire->dateDebutS}}</td>
-                            <td>{{$salaire->dateFin}}</td>
-                            <td>{{"Du ".$salaire->datedebutc." à ".$salaire->datefinc }}</td>
+                           <td>{{date("d-m-Y",strtotime($salaire->dateDebutS))}}</td>
+                            <td>{{date("d-m-Y",strtotime($salaire->dateFin))}}</td>
+                            <td>{{"Du ".date("d-m-Y",strtotime($salaire->datedebutc))." à ".date("d-m-Y",strtotime($salaire->datefinc)) }}</td>
 
                         </tr>
                     @endforeach

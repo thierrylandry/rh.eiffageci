@@ -36,9 +36,11 @@ class SalaireController extends Controller
 
             $salaires = DB::table('salaire')
                 ->join('contrat', 'contrat.id', '=', 'salaire.id_contrat')
+                ->leftJoin('categorie', 'contrat.id_categorie', '=', 'categorie.id')
                 ->where('id_contrat','=',$contrat->id)
-                ->select('salaire.id', 'sursalaire', 'transport', 'logement', 'salissure', 'tenueTravail', 'retenue', 'dateDebutS', 'dateFin','datedebutc','datefinc')
+                ->select('categorie.libelle','salCategoriel','salaire.id', 'sursalaire', 'transport', 'logement', 'salissure', 'tenueTravail', 'retenue', 'dateDebutS', 'dateFin','datedebutc','datefinc')
                 ->orderby('salaire.id', 'DESC')->get();
+           //dd($salaires);
             return view('salaires/liste_salaire', compact('salaires', 'personne'));
         }else{
             return view('salaires/liste_salaire', compact( 'personne'));
@@ -49,8 +51,8 @@ class SalaireController extends Controller
     }
 public function recsalairecat($id_contrat){
 
-    $categorie= Contrat::find($id_contrat);
-dd($categorie);
+    $categorie= Contrat::find($id_contrat)->categorie;
+//dd($categorie);
     return $categorie;
 
 }

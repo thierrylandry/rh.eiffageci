@@ -43,7 +43,7 @@
                                 <select class="form-control" required noSelectedText="Selectionner un contrat" name="id_contrat" id="id_contrat">
                                     @if(isset($contrats))
                                         @foreach($contrats as $contrat)
-                                        <option value="{{$contrat->id}}"> {{"Période de ".$contrat->datedebutc." ".$contrat->datefinc}}</option>
+                                        <option value="{{$contrat->id}}"> {{$contrat->type_contrat()->first()->libelle." Période de ".date("d-m-Y",strtotime($contrat->datedebutc))." ".date("d-m-Y",strtotime($contrat->datefinc))}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -54,7 +54,7 @@
                                 <label for="text-input" class=" form-control-label">Salaire catégoriel </label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="number" min="0" onchange="calculsal()"  value=""  name="salCategoriel" id="salCategoriel" placeholder="Salaire catégoriel" class="form-control">
+                                <input type="number" min="0" onchange="calculsal()"  value=""  name="salCategoriel" id="salCategoriel" placeholder="Salaire catégoriel" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -226,6 +226,7 @@
                 $("#salCategoriel").val(data.salCategoriel);
                 //  $("#id_categorie").trigger("chosen:updated");
                 console.log(data.salCategoriel);
+                calculsal();
             });
             //  alert("ddd");
         })
@@ -238,7 +239,8 @@
             $("#salCategoriel").empty();
             $("#salCategoriel").val(data.salCategoriel);
             //  $("#id_categorie").trigger("chosen:updated");
-
+            calculsal();
         });
+
     </script>
 @endsection

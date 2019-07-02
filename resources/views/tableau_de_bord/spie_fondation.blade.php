@@ -223,6 +223,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
+                                <th>Mois</th>
                                 <th>Entrées</th>
                                 <th>Sorties</th>
                             </tr>
@@ -230,6 +231,7 @@
                             <tbody>
                             @for($i=0;$i<sizeof($repartition_entrees);$i++)
                                 <tr class="tr-shadow">
+                                    <td> {{$repartition_entrees[$i]->name}}</td>
                                     <td> {{$repartition_entrees[$i]->y}}</td>
                                     <td> {{$repartition_sorties[$i]->y}}</td>
                                 </tr>

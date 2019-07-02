@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
-            
+
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>

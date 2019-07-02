@@ -44,7 +44,7 @@
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
-                        <th>PERIODE </br> ESSAIE</th>
+                        <th>PERIODE </br> ESSAI</th>
                         <th>TIMELINE</th>
                         <th>ACTION</th>
                     </tr>
@@ -65,10 +65,10 @@
                                     @endif
                                 @endforeach</td>
                             <td>
-                                {{$contrat->datedebutc}}
+                                {{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->datedebutc)[0])->formatLocalized('%d/%m/%Y'):'' }}
                             </td>
-                            <td>{{$contrat->datefinc}}</td>
-                            <td>{{$contrat->periode_essaie}}</td>
+                            <td> {{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->datefinc)[0])->formatLocalized('%d/%m/%Y'):'' }}</td>
+                            <td>{{ !is_null($contrat->datedebutc)?\Illuminate\Support\Carbon::createFromFormat('Y-m-d',explode(' ',$contrat->periode_essaie)[0])->formatLocalized('%d/%m/%Y'):'' }}</td>
                             <td>
 
                                 @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)

@@ -42,7 +42,7 @@
                             <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
                             <td>{{$personne->pays->nom_fr_fr}}</td>
                             <td>
-                               {{$personne->libelle}}
+                               {{$personne->fonction()->first()->libelle}}
                             </td>
                             <td>{{ $personne->getEntiteString() }}
                             </td>

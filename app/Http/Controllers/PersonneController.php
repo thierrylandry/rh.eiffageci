@@ -37,6 +37,7 @@ class PersonneController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(300);
 
+//dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entite'));
     }
     public function fiche_personnel($slug)

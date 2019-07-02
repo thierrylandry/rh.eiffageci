@@ -20,7 +20,7 @@ class Personne extends Model
     }
 
     public function fonction(){
-        return $this->belongsTo(Fonction::class, "fonction");
+        return $this->belongsTo('App\Fonction', "fonction");
     }
 
     public function getEntiteString(){

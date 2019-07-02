@@ -54,7 +54,7 @@
                                    @endif
                                @endforeach</p>
                            <p id="age">   </p>
-                           <p> Situation matrimoniale : {{isset($personne)&& $personne->matrimonial==1 ? 'Célibataire':''}}{{isset($personne)&& $personne->matrimonial==2 ? 'Marié(e)':''}}{{isset($personne)&& $personne->matrimonial==3 ? 'divorcé(e)':''}}{{isset($personne)&& $personne->matrimonial==4 ? 'Veuf(ve)':''}} </p>
+                           <p> Situation matrimo. : {{isset($personne)&& $personne->matrimonial==1 ? 'Célibataire':''}}{{isset($personne)&& $personne->matrimonial==2 ? 'Marié(e)':''}}{{isset($personne)&& $personne->matrimonial==3 ? 'divorcé(e)':''}}{{isset($personne)&& $personne->matrimonial==4 ? 'Veuf(ve)':''}} </p>
                            <p> Nombre d'enfant : {{isset($personne)? $personne->enfant:0}} </p>
                            <p> CNPS : {{isset($personne)? $personne->cnps:''}}</p>
                            <p> RIB : {{isset($personne)? $personne->rib:''}}</p>

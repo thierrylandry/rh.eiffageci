@@ -48,7 +48,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="nom" placeholder="Nom" value="{{isset($personne)? $personne->nom:''}}" class="form-control" required>
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -57,7 +56,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" value="{{isset($personne)? $personne->prenom:''}}" required>
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -129,7 +127,7 @@
 
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Situation matrimoniale </label>
+                                <label for="text-input" class=" form-control-label">Situation matrimo. </label>
                             </div>
                             <div class="col col-md-9">
                                 <div class="form-check">
@@ -162,7 +160,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" value="{{isset($personne)? $personne->enfant:0}}" required>
-                                <small class="form-text text-muted">une chaine de caractère</small>
+
                             </div>
                         </div>
 
@@ -173,7 +171,7 @@
             <div class="col-lg-4">
                 <div class="card"  style="height: 100% !important">
                     <div class="card-header">
-                        <strong>Information </strong> Employer
+                        <strong>Information </strong> Employé(e)
                     </div>
                     <div class="card-body card-block">
 
@@ -183,7 +181,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="cnps" placeholder="CNPS" value="{{isset($personne)? $personne->cnps:''}}" class="form-control">
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -192,7 +189,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="rib" placeholder="RIB" value="{{isset($personne)? $personne->rib:''}}" class="form-control">
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="row form-group">

@@ -187,7 +187,7 @@
 
                       <div class="row form-group">
                           <div class="col col-md-3">
-                              <label for="text-input" class=" form-control-label">Situation matrimoniale</label>
+                              <label for="text-input" class=" form-control-label">Situation matrimo.</label>
                           </div>
                           <div class="col col-md-8">
                               <div class="form-check">
@@ -221,7 +221,6 @@
                           <!--fin-->
                           <div class="col-12 col-md-9">
                               <input type="number" min="0" id="text-input" name="nb_enf" placeholder="Nombre d'enfant" class="form-control" value="0" required>
-                              <small class="form-text text-muted">une chaine de caractère</small>
                           </div>
                       </div>
 
@@ -232,7 +231,7 @@
       <div class="col-lg-4">
           <div class="card"  style="height: 100% !important">
               <div class="card-header">
-                  <strong>Information </strong> Employer
+                  <strong>Information </strong> Employé(e)
               </div>
               <div class="card-body card-block">
 

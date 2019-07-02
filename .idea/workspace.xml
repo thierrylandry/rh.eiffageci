@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="mise a jours 11">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/0f819e7c-de3e-45ca-ae82-18f11d127f33.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/0f819e7c-de3e-45ca-ae82-18f11d127f33.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -163,8 +162,8 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="851" column="41" selection-start-line="851" selection-start-column="41" selection-end-line="851" selection-end-column="41" />
+            <state relative-caret-position="479">
+              <caret line="867" column="41" selection-start-line="867" selection-start-column="41" selection-end-line="867" selection-end-column="41" />
               <folding>
                 <element signature="e#573#2031#0#PHP" expanded="false" />
                 <element signature="e#2036#9007#0#PHP" expanded="false" />
@@ -848,14 +847,7 @@
       <workItem from="1561660364566" duration="383000" />
       <workItem from="1561710804177" duration="9436000" />
       <workItem from="1561970471560" duration="31736000" />
-      <workItem from="1562056664990" duration="13377000" />
-    </task>
-    <task id="LOCAL-00048" summary="mise à jour  38">
-      <created>1560796530269</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1560796530269</updated>
+      <workItem from="1562056664990" duration="13490000" />
     </task>
     <task id="LOCAL-00049" summary="mise à jour  3ç">
       <created>1560853154218</created>
@@ -1193,11 +1185,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562076938283</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="mise a jours 11">
+      <created>1562077921884</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1562077921884</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="679035000" />
+    <option name="totallyTimeSpent" value="679148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1310,10 +1309,10 @@
     <MESSAGE value="mmmm" />
     <MESSAGE value="mise a jours 12" />
     <MESSAGE value="modif" />
-    <MESSAGE value="mise a jours 11" />
     <MESSAGE value="mise a jours 14" />
     <MESSAGE value="mise a jours 13" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jours 13" />
+    <MESSAGE value="mise a jours 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise a jours 11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1805,8 +1804,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="851" column="41" selection-start-line="851" selection-start-column="41" selection-end-line="851" selection-end-column="41" />
+        <state relative-caret-position="479">
+          <caret line="867" column="41" selection-start-line="867" selection-start-column="41" selection-end-line="867" selection-end-column="41" />
           <folding>
             <element signature="e#573#2031#0#PHP" expanded="false" />
             <element signature="e#2036#9007#0#PHP" expanded="false" />

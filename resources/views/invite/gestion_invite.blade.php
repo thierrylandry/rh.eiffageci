@@ -45,7 +45,6 @@
                         <input type="hidden" id="id" name="id" placeholder="id" class="form-control" value="{{isset($invite)?$invite->id:''}}" required>
                         <div class="col-12 col-md-9">
                             <input type="text" id="text-input" name="nom" placeholder="Nom" class="form-control" value="{{isset($invite)?$invite->nom:''}}" required>
-                            <small class="form-text text-muted">une chaine de caractère</small>
                         </div>
                     </div>
                         <div class="row form-group">
@@ -54,7 +53,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" value="{{isset($invite)?$invite->prenoms:''}}" required>
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -90,7 +88,6 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="email" placeholder="E - mail" class="form-control" value="{{isset($invite)?$invite->email:''}}" required>
-                                <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
                         <div class="card-footer pull-right">
@@ -116,7 +113,7 @@
                         <th>SURETE</th>
                         <th>CONTACT</th>
                         <th>EMAIL</th>
-                        <th>Action</th>
+                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>

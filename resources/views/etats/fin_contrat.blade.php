@@ -16,13 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
-            <div class="table-data__tool  pull-right">
-                <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
-                </div>&nbsp;
-            </div>
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>

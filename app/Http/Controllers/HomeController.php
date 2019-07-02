@@ -848,8 +848,8 @@ class HomeController extends Controller
             ->where("entite","=",1)
             ->join('personne_age','personne_age.id','=','personne.id')
             ->join('contrat','contrat.id_personne','=','personne.id')
-          //  ->where('contrat.etat','=',1)
-            ->where('personne_age.age','<=',30)
+            ->where('contrat.etat','=',1)
+            ->where('personne_age.age','>=',30)
             ->where('personne_age.age','>=',39)
             ->get();
         $tranche_age_de_40_a_49_ans= DB::table('personne')

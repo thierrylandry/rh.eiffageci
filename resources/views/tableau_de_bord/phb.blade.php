@@ -216,7 +216,7 @@
             </div>
         </div>
     </div>  <div class="row">
-        <div class="col-lg-6" id="ne_pas_afficher">
+        <div class="col-lg-6" id="">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">

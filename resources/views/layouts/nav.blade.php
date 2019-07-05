@@ -152,7 +152,7 @@
                             <a href="{{route('utilisateur')}}">Utilisateurs</a>
                         </li>
                         <li class="@yield('fonction')">
-                            <a href="{{route('fonctions')}}">fonctions</a>
+                            <a href="{{route('fonctions')}}">Fonctions</a>
                         </li>
 
                     </ul>

@@ -200,7 +200,7 @@
                 ]
             }).column(0).visible(false);
             //table.DataTable().draw();
-            var $selectrole= $('#roles').select2({ placeholder: 'Selecctionner le(s) rôle(s)'});
+            var $selectrole= $('#roles').select2({ placeholder: 'Selectionner le(s) rôle(s)'});
             $("#checkbox").click(function(){
 
                 if($("#checkbox").is(':checked') ){

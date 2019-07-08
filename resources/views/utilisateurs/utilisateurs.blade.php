@@ -19,8 +19,6 @@
                 <a href="{{route('utilisateur')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                     <i class="zmdi zmdi-plus"></i>Ajouter</a>
             @endif
-            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
         </div>&nbsp;
     </div>
     </br>

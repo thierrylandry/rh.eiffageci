@@ -5,8 +5,8 @@ body { /* Modifications : la couleur de fond de page - la police - l'unité util
 }
 
 #page { /* Modifications : suppression de la bordure - marges */
-    margin: 2%;
-    border :none;
+    page-break-inside : avoid;
+    border :1px;
 }
 
 #banner, #menuright, #footer { /* Les éléments qui ne seront pas affichés  */
@@ -45,6 +45,9 @@ table,div{
 .copyright{
     display: none;
 }
-.col-lg-6{
-    float: left;
+
+div{
+    position: absolute;
 }
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }

@@ -12,7 +12,8 @@
 </style>
 <body style=" text-align: center">
 <div class="entete">
-    <table style="margin-top: 4px; padding: 0; padding-bottom: 100px">
+    <table style="margin-top: 4px; padding: 0; padding-bottom: 100px; page-break-after:auto;
+    height: 200px;" >
         <tr>
             <td width="50%" valign="center" align="left">
                 <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}">
@@ -42,10 +43,10 @@
         </div>
         </br>
         <div class="row">
-            <table width="100%" style="height: 100%; margin-top:10px">
+            <table width="100%" style="height: 100%;padding-bottom : 5px; " border="1">
                 <tr >
                     <td >
-                        <table class="table  table-earning" id="table_employe" border="1" width="100%">
+                        <table class="table  table-earning" id="table_employe" border="1"   width="100%">
                             <thead>
                             <tr>
                                 <th>Effectifs globaux Projet ESF</th>
@@ -64,7 +65,7 @@
                         </table>
                     </td>
                     <td>
-                        <div id="effectifglobaux" style="max-width: 310px; height: 300px;  margin: 0 auto"></div>
+                        <div id="effectifglobaux" style="max-width: 450px; height: 450px;  margin: 0 auto"></div>
                     </td>
                 </tr>
                 <tr>
@@ -87,11 +88,11 @@
                         </table>
                     </td>
                     <td>
-                        <div id="repartition_homme_femme" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto"></div>
+                        <div id="repartition_homme_femme" style="min-width: 450px; height: 450px; max-width: 600px; margin: 0 auto"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>    <table class="table  table-earning" id="table_employe">
+                    <td>    <table class="table  table-earning" id="table_employe" border="1">
                             <thead>
                             <tr>
                                 <th>Qualification contractulle</th>
@@ -109,12 +110,12 @@
                         </table>
                     </td>
                     <td>
-                        <div id="qualification_contractuelle" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto"></div>
+                        <div id="qualification_contractuelle" style="min-width: 450px; height: 450px; max-width: 600px; margin: 0 auto"></div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <table class="table  table-earning" id="table_employe">
+                            <table class="table  table-earning" id="table_employe" border="1">
                                 <thead>
                                 <tr>
                                     <th>Nationnalité - Personnel</th>
@@ -132,12 +133,12 @@
                             </table>
                     </td>
                     <td>
-                        <div id="repartition_nationalite" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto"></div>
+                        <div id="repartition_nationalite" style="min-width: 450px; height: 450px; max-width: 600px; margin: 0 auto"></div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="table  table-earning" id="table_employe" border="1">
                             <thead>
                             <tr>
                                 <th>Services - Personnel</th>
@@ -155,7 +156,7 @@
                         </table>
                     </td>
                     <td>
-                        <div id="repartition_service" style="min-width: 310px; height: 300px; max-width: 600px; margin: 0 auto"></div>
+                        <div id="repartition_service" style="min-width: 450px; height: 450px; max-width: 600px; margin: 0 auto"></div>
                     </td>
                 </tr>
 

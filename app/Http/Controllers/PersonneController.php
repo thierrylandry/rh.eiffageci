@@ -385,7 +385,11 @@ class PersonneController extends Controller
     }
     public function supprimer_doc($slug,$namefile,$id){
         $namefile=str_replace('_','.',$namefile);
-        $docs = Administratif::where('type_doc','=',$id)->get();
+        $personne =Personne::where('slug','=',$slug)->first();
+        $docs = Administratif::where([
+            ['type_doc','=',$id],
+            ['id_personne', '==', $personne->id],
+            ])->get();
         //dd($doc);
         foreach($docs as $doc):
         $doc->delete();

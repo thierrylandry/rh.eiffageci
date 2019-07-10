@@ -301,12 +301,7 @@ class PersonneController extends Controller
 
         foreach($liste_administratif as $list):
 
-            $test_existe_doc=Administratif::find($list->id);
-            if($test_existe_doc!=null){
-                $doc=$test_existe_doc;
-            }else{
-                $doc=new Administratif();
-            }
+            $doc=new Administratif();
 
 
             if(!empty($parameters['existance_'.$list->id]) || !empty($parameters['pj_'.$list->id])){

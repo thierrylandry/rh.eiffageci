@@ -101,8 +101,8 @@
                                             @endforeach> <span class="au-checkmark"></span></label></td>
                             <td> @foreach($doc_admins as $doc)
                                     @if($doc->type_doc==$list->id && $doc->pj!="")
-                                       <a href="{{route('download_doc',[''.$doc->pj])}}">{{ $doc->pj}}</a>
-
+                                        <a target="_blank" href="{{route('download_doc',[$personne->slug,str_replace('.','_',$doc->pj)])}}">{{$doc->pj}}</a> <a class="btn btn-danger" href="{{route('supprimer_doc',[$personne->slug,str_replace('.','_',$doc->pj),$list->id])}}">Supprimer</a>
+                                        @break;
                                     @endif
                                 @endforeach <input type="file" name="pj_{{$list->id}}"/></td>
                         </tr>

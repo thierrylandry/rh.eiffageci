@@ -309,7 +309,7 @@ class PersonneController extends Controller
             }
 
 
-            if(isset($parameters['existance_'.$list->id]) || isset($parameters['pj_'.$list->id])){
+            if(!empty($parameters['existance_'.$list->id]) || !empty($parameters['pj_'.$list->id])){
                 $doc->type_doc=$list->id;
                 $doc->id_personne=$personne->id;
                 if(isset($parameters['existance_'.$list->id]) && $parameters['existance_'.$list->id]==1){
@@ -352,7 +352,7 @@ class PersonneController extends Controller
             }
 
 
-            if(isset($parameters['existance_'.$list->id]) || isset($parameters['pj_'.$list->id])){
+            if(!empty($parameters['existance_'.$list->id]) || !empty($parameters['pj_'.$list->id])){
                 $doc->type_doc=$list->id;
                 $doc->id_personne=$personne->id;
                 if(isset($parameters['existance_'.$list->id]) && $parameters['existance_'.$list->id]==1){
@@ -382,6 +382,18 @@ class PersonneController extends Controller
         // dd($namefile);
      //   dd('document/'.$slug.'/'.$namefile);
         return Storage::download('document/'.$slug.'/'. Str::ascii($namefile,'fr'));
+    }
+    public function supprimer_doc($slug,$namefile,$id){
+        $namefile=str_replace('_','.',$namefile);
+        $docs = Administratif::where('type_doc','=',$id)->get();
+        //dd($doc);
+        foreach($docs as $doc):
+        $doc->delete();
+        endforeach;
+         Storage::delete('document/'.$slug.'/'. Str::ascii($namefile,'fr'));
+     //   dd('document/'.$slug.'/'.$namefile);
+     //   $contents = Storage::get('file.jpg');
+        return redirect()->back()->with('success',"Les documents ont été ajouté");
     }
     public function test($test){
         dd($test);

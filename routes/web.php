@@ -119,6 +119,11 @@ Route::get('/download_doc/{slug}/{pj}',[
     'uses'=>'PersonneController@download_doc',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_doc/{slug}/{pj}{id}',[
+    'as'=>'supprimer_doc',
+    'uses'=>'PersonneController@supprimer_doc',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/test/{slug}',[
     'as'=>'test',
     'uses'=>'PersonneController@test',

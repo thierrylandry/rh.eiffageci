@@ -65,10 +65,10 @@
                                     @endif
                                 @endforeach</td>
                             <td>
-                                {{date("d-m-Y",strtotime($contrat->datedebutc))}}
+                                {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                             </td>
-                            <td> {{date("d-m-Y",strtotime($contrat->datefinc))}}</td>
-                            <td>{{date("d-m-Y",strtotime($contrat->periode_essaie))}}</td>
+                            <td> {{ isset($contrat->datefinc)?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                            <td> {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                             <td>
 
                                 @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)

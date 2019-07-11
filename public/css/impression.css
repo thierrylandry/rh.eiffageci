@@ -32,6 +32,9 @@ div.row.break{
     clear: both;
     display: block;
 }
+div.row{
+    page-break-after:auto;
+}
 div.col-lg-6::after{
     clear:both ;
 

@@ -26,6 +26,7 @@
                 <table class="table table-borderles" id="table_employe">
                     <thead>
                     <tr>
+                        <th>MATRICULE</th>
                         <th>NOM & PRENOM</th>
                         <th>SEXE</th>
                         <th>NATIONALITE</th>
@@ -38,6 +39,7 @@
                     <tbody>
                     @foreach($personnes as $personne)
                         <tr class="tr-shadow">
+                            <td>{{isset($personne->matricule)?$personne->matricule:''}}</td>
                             <td>{{$personne->nom.' '.$personne->prenom}}</td>
                             <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
                             <td>{{$personne->pays->nom_fr_fr}}</td>
@@ -113,6 +115,7 @@
 
         $(document).ready(function() {
             var table= $('#table_employe').DataTable({
+                "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'

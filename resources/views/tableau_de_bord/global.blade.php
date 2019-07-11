@@ -433,7 +433,26 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_service
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                y: 30,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
         });
         // Build the chart
         Highcharts.chart('qualification_contractuelle', {

@@ -72,3 +72,5 @@ div{
 }
 table { page-break-inside:auto }
 tr    { page-break-inside:avoid; page-break-after:auto }
+.table,th, td{border:  1px solid black;
+    border-collapse: collapse; width: 100%}

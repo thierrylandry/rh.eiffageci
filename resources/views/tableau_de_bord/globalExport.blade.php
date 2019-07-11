@@ -8,12 +8,11 @@
 
 </head>
 <style>
-
 </style>
 <body style=" text-align: center">
 <div class="entete">
-    <table style="margin-top: 4px; padding: 0; padding-bottom: 100px; page-break-after:auto;
-    height: 200px;" >
+    <table style="margin-top: 4px; padding: 0; padding-bottom: 100px
+    height: 200px; " >
         <tr>
             <td width="50%" valign="center" align="left">
                 <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}">

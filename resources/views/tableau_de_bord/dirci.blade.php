@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -183,7 +183,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -216,7 +216,7 @@
             </div>
         </div>
     </div>
-    <div class="row" >
+    <div class="row break" >
         <div class="col-lg-6" id="">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -251,7 +251,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-md-12">
             <div class="copyright">
                 <p>Copyright © 2019 Eiffage. All rights reserved.</p>

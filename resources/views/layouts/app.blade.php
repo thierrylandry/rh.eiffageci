@@ -31,6 +31,7 @@
     <link href="{{  URL::asset("css/select2.min.css") }}" rel="stylesheet" media="screen">
     <link href="{{  URL::asset("vendor/perfect-scrollbar/perfect-scrollbar.css") }}" rel="stylesheet" media="screen">
     <link href="{{  URL::asset("css/buttons.dataTables.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{  URL::asset("css/style.css") }}" rel="stylesheet" media="screen">
 
     <!-- Main CSS-->
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet" media="screen">

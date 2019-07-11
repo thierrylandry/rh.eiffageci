@@ -4,50 +4,69 @@ body { /* Modifications : la couleur de fond de page - la police - l'unité util
     font-size :15pt;
 }
 
-#page { /* Modifications : suppression de la bordure - marges */
-    page-break-inside : avoid;
-    border :1px;
+@page { /* Modifications : suppression de la bordure - marges */
+    /*page-break-inside : avoid;*/
+    page-break-after:auto;
+    size: landscape;
+    border :1cm;
 }
 
 #banner, #menuright, #footer { /* Les éléments qui ne seront pas affichés  */
     display :none;
 }
-
+#page .agile-grid, br
+{
+    display: none;
+}
+div.col-lg-6{
+    width: 11.5cm;
+    margin: 0.1cm 0.5cm;
+    float: left;
+}
+div.row.break{
+    page-break-after:always;
+    clear: both;
+    display: block;
+}
+div.col-lg-6::after{
+    clear:both ;
+}
+.logo_eiffage{
+    display: block !important;
+}
 h1#top { /* Affichage du titre */
     margin :0;
     padding :0;
     text-indent :0;
-    line-height :25pt;
     font-size :25pt;
 }
 
 h2, h3, #contenu h3, #contenu a, a { /* Modification de la couleur des titres et liens */
     color :#000;
     text-align: center;
-
+    margin :0;
+    padding :0;
 }
 h2{
     font-size: 1em;
 }
+h2.title-1{
+    margin-bottom: 10pt;
+}
 header,nav,aside,#ne_pas_afficher,#btnprint{display: none;}
 
 table,div{
-
-
-}
-.logo_eiffage{
-    display: block !important;
 }
 #effectifglobaux,#repartition_homme_femme,#qualification_contractuelle,#repartition_nationalite,#repartition_service{
-    page-break-after:auto;
-    height: 200px;
+    height: auto;
 }
 .copyright{
     display: none;
 }
 
 div{
-    position: absolute;
+    /*position: absolute;
+    border: 1px #ff0000 solid;*/
 }
 table { page-break-inside:auto }
 tr    { page-break-inside:avoid; page-break-after:auto }

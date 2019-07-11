@@ -6,7 +6,7 @@ body { /* Modifications : la couleur de fond de page - la police - l'unité util
 
 @page { /* Modifications : suppression de la bordure - marges */
     /*page-break-inside : avoid;*/
-    page-break-after:auto;
+    page-break-after: always;
     size: landscape;
     border :1cm;
 }
@@ -75,6 +75,7 @@ table,div{
 div{
     /*position: absolute;
     border: 1px #ff0000 solid;*/
+
 
 
 }

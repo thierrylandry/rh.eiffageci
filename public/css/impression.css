@@ -19,10 +19,13 @@ body { /* Modifications : la couleur de fond de page - la police - l'unité util
     display: none;
 }
 div.col-lg-6{
-    width: 12.5cm;
+    width: 14.5cm;
     margin: 0.1cm 0.5cm;
     float: left;
 
+}
+.tableau{
+    width: 8.5cm !important;
 }
 div.row.break{
     page-break-after:always;
@@ -69,6 +72,7 @@ table,div{
 div{
     /*position: absolute;
     border: 1px #ff0000 solid;*/
+
 
 }
 table { page-break-inside:auto }

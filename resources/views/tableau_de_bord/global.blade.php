@@ -435,10 +435,8 @@
                 data: repartition_service
             }],
             legend: {
-                layout: 'vertical',
-                align: 'left',
-                verticalAlign: 'top',
-                y: 30,
+
+                y: 0,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',

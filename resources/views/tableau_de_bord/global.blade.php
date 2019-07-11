@@ -333,7 +333,37 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_nationalite
-            }]
+            }],
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            align: 'center',
+                            verticalAlign: 'bottom',
+                            layout: 'horizontal'
+                        },
+                        yAxis: {
+                            labels: {
+                                align: 'left',
+                                x: 0,
+                                y: -5
+                            },
+                            title: {
+                                text: null
+                            }
+                        },
+                        subtitle: {
+                            text: null
+                        },
+                        credits: {
+                            enabled: false
+                        }
+                    }
+                }]
+            }
         });
         // Build the chart
         Highcharts.chart('repartition_homme_femme', {
@@ -346,7 +376,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition H/F - Personnel ESF'
+                text: 'Répartition H/F-Personnel ESF'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -416,7 +446,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Qualification contractuelle - Personnel ESF'
+                text: 'Qualification contractuelle'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

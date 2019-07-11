@@ -361,7 +361,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF SPIE FONDATIONS'
+                text: 'Effectifs Globaux Projet ESF'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -395,7 +395,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition nationalite SPIE FONDATIONS'
+                text: 'Répartition nationalite'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -429,7 +429,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition homme/femme SPIE FONDATIONS'
+                text: 'Répartition homme/femme'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -463,7 +463,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Répartition tranche d'age SPIE FONDATIONS"
+                text: "Répartition tranche d'age"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -497,7 +497,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Ancienneté locaux (révolue) SPIE FONDATIONS"
+                text: "Ancienneté locaux (révolue)"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -531,7 +531,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Service - Personnel SPIE FONDATIONS"
+                text: "Service - Personnel"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -561,7 +561,7 @@
                 type: 'column'
             },
             title: {
-                text: 'BILAN ENTREES SORTIES SPIE FONDATIONS'
+                text: 'BILAN ENTREES SORTIES'
             },
             subtitle: {
 

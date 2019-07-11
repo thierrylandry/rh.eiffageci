@@ -362,7 +362,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF PHB'
+                text: 'Effectifs Globaux Projet ESF'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -396,7 +396,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition nationalite PHB'
+                text: 'Répartition nationalite'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -430,7 +430,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition homme/femme PHB'
+                text: 'Répartition homme/femme'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -464,7 +464,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Répartition tranche d'age PHB"
+                text: "Répartition tranche d'age"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -498,7 +498,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Ancienneté locaux (révolue) PHB"
+                text: "Ancienneté locaux (révolue)"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -532,7 +532,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Service - Personnel PHB"
+                text: "Service - Personnel"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -562,7 +562,7 @@
                 type: 'column'
             },
             title: {
-                text: 'BILAN ENTREES SORTIES EIFFAGE PHB'
+                text: 'BILAN ENTREES SORTIES'
             },
             subtitle: {
             },

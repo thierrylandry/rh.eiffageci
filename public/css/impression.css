@@ -19,7 +19,7 @@ body { /* Modifications : la couleur de fond de page - la police - l'unité util
     display: none;
 }
 div.col-lg-6{
-    width: 11.5cm;
+    width: 12.5cm;
     margin: 0.1cm 0.5cm;
     float: left;
 
@@ -69,8 +69,10 @@ table,div{
 div{
     /*position: absolute;
     border: 1px #ff0000 solid;*/
+
 }
 table { page-break-inside:auto }
 tr    { page-break-inside:avoid; page-break-after:auto }
 .table,th, td{border:  1px solid black;
-    border-collapse: collapse; width: 100%}
+    border-collapse: collapse; width: 80%;
+text-align: center;}

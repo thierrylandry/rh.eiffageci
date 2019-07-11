@@ -360,7 +360,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF DIRECTION CI'
+                text: 'Effectifs Globaux Projet ESF'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -394,7 +394,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition nationalite DIRECTION CI'
+                text: 'Répartition nationalite'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -428,7 +428,7 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition homme/femme DIRECTION CI'
+                text: 'Répartition homme/femme'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -462,7 +462,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Répartition tranche d'age DIRECTION CI DIRECTION CI"
+                text: "Répartition tranche d'age"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -496,7 +496,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Ancienneté locaux (révolue) DIRECTION CI"
+                text: "Ancienneté locaux (révolue)"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -530,7 +530,7 @@
                 type: 'pie'
             },
             title: {
-                text: "Service - Personnel DIRECTION CI"
+                text: "Service - Personnel"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -560,7 +560,7 @@
                 type: 'column'
             },
             title: {
-                text: 'BILAN ENTREES SORTIES DIRECTION CI'
+                text: 'BILAN ENTREES SORTIES'
             },
             subtitle: {
 

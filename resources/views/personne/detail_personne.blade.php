@@ -317,6 +317,7 @@
                                             <option value="PSP" @if($piece->type_p_piece=="PSP") selected @endif >PASSEPORT</option>
 
                                             <option value="CNI" @if($piece->type_p_piece=="CNI") selected @endif>CARTE NATIONAL D'IDENTITE</option>
+                                             <option value="ATTN" @if($piece->type_p_piece=="ATTN") selected @endif>ATTESTATION D'IDENTITE</option>
 
                                     </select>
                                 </div>
@@ -352,6 +353,7 @@
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
                                         <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                        <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -440,6 +442,11 @@
                                             @else
                                                 <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
                                             @endif
+                                            @if($famille->type_p=="CNI")
+                                                <option value="ATTN" selected>ATTESTATION D'IDENTITE</option>
+                                            @else
+                                                <option value="ATTN">ATTESTATION D'IDENTITE</option>
+                                            @endif
 
                                     </select>
                                 </div>
@@ -493,6 +500,7 @@
                                         <option value="CC"> CARTE CONSULAIRE</option>
                                         <option value="PSP">PASSEPORT</option>
                                         <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                        <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>

@@ -372,6 +372,7 @@
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
                                         <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                        <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -404,6 +405,7 @@
                                         <option value="VIS">VISA</option>
                                         <option value="PSP">PASSEPORT</option>
                                         <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                        <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                     </select>
                                 </div>
                             </div>
@@ -475,6 +477,7 @@
                                     <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
                                     <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                    <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                 </select>
                             </div>
                         </div>
@@ -527,6 +530,7 @@
                                     <option value="VIS">VISA</option>
                                     <option value="PSP">PASSEPORT</option>
                                     <option value="CNI">CARTE NATIONAL D'IDENTITE</option>
+                                    <option value="ATTN">ATTESTATION D'IDENTITE</option>
                                 </select>
                             </div>
                         </div>

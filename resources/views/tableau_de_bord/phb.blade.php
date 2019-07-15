@@ -529,6 +529,7 @@
                     activeColor: '#3E576F',
                     animation: true,
                     arrowSize: 12,
+                    enabled: false,
                     inactiveColor: '#CCC',
                     style: {
                         fontWeight: 'bold',

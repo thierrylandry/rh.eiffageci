@@ -435,7 +435,7 @@
                 data: repartition_service
             }],
             legend: {
-
+                layout: 'vertical',
                 y: 0,
                 useHTML: true,
                 navigation: {

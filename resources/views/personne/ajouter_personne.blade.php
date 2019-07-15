@@ -275,7 +275,7 @@
                               <label for="text-input" class=" form-control-label">Fonction  </label>
                           </div>
                           <div class="col-12 col-md-9">
-                              <select name="fonction" id="fonction" required class="form-control">
+                              <select name="fonction" id="fonction" required class="form-control" required>
                                   <option vzlue="">SELECTIONNER</option>
                                   @foreach($fonctions as $fonction)
 

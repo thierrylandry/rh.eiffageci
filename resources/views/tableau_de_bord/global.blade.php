@@ -298,7 +298,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: effectifglobaux
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         // Build the chart
         Highcharts.chart('repartition_nationalite', {
@@ -416,7 +434,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_homme_femme
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         // Build the chart
         Highcharts.chart('repartition_service', {
@@ -505,7 +541,25 @@
                 name: 'Effectif',
                 colorByPoint: true,
                 data: qualification_contractuelle
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
     </script>
 @endsection

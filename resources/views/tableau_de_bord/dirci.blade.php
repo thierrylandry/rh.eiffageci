@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row break">
         <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -383,24 +383,6 @@
                 colorByPoint: true,
                 data: effectifglobaux
             }],
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                verticalAlign: 'top',
-                y: 0,
-                useHTML: true,
-                navigation: {
-                    activeColor: '#3E576F',
-                    animation: true,
-                    arrowSize: 12,
-                    inactiveColor: '#CCC',
-                    style: {
-                        fontWeight: 'bold',
-                        color: '#333',
-                        fontSize: '12px'
-                    }
-                }
-            },
         });
         Highcharts.chart('repartition_nationalite', {
             exporting: { enabled: false },
@@ -487,24 +469,6 @@
                 colorByPoint: true,
                 data: repartition_homme_femme
             }],
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                verticalAlign: 'top',
-                y: 0,
-                useHTML: true,
-                navigation: {
-                    activeColor: '#3E576F',
-                    animation: true,
-                    arrowSize: 12,
-                    inactiveColor: '#CCC',
-                    style: {
-                        fontWeight: 'bold',
-                        color: '#333',
-                        fontSize: '12px'
-                    }
-                }
-            },
         });
         Highcharts.chart('repartition_tranche_age', {
             exporting: { enabled: false },

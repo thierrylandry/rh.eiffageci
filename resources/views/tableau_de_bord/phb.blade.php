@@ -520,7 +520,6 @@
                 data: repartition_ancienete
             }],
             legend: {
-
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
@@ -530,7 +529,6 @@
                     activeColor: '#3E576F',
                     animation: true,
                     arrowSize: 12,
-                    enabled: false,
                     inactiveColor: '#CCC',
                     style: {
                         fontWeight: 'bold',
@@ -574,14 +572,11 @@
                 data: repartition_service
             }],
             legend: {
-                layout: 'horizontal',
+                layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
                 y: 0,
                 useHTML: true,
-                style: {
-                    fontSize: '3pt'
-                },
                 navigation: {
                     activeColor: '#3E576F',
                     animation: true,

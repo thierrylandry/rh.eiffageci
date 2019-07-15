@@ -520,7 +520,8 @@
                 data: repartition_ancienete
             }],
             legend: {
-                enable:false,
+
+                layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
                 y: 30,
@@ -534,7 +535,7 @@
                     style: {
                         fontWeight: 'bold',
                         color: '#333',
-                        fontSize: '2px'
+                        fontSize: '12px'
                     }
                 }
             },
@@ -573,11 +574,14 @@
                 data: repartition_service
             }],
             legend: {
-                layout: 'vertical',
+                layout: 'horizontal',
                 align: 'left',
                 verticalAlign: 'top',
                 y: 0,
                 useHTML: true,
+                style: {
+                    fontSize: '3pt'
+                },
                 navigation: {
                     activeColor: '#3E576F',
                     animation: true,

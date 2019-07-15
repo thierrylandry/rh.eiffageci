@@ -12,9 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">TABLEAU DE BORD DE EIFFAGE PHB</h2><a href="javascript:window.print()" id="btnprint" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
+                <h2 class="title-1">TABLEAU DE BORD DE EIFFAGE PHB</h2><a href="javascript:window.print()" id="btnprint" class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
             </div>
-
         </div>
     </div>
     </br>

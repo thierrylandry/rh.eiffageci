@@ -22,6 +22,11 @@ Route::get('erreur', [
 
 ]);
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/printview',[
+    'as'=>'printview',
+    'uses'=>'HomeController@printview',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
 
 Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
@@ -356,3 +361,4 @@ Route::post('/modifier_user',[
     'uses'=>'UserController@modifier_user',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
+

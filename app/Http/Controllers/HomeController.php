@@ -1465,4 +1465,10 @@ class HomeController extends Controller
 
         return view('tableau_de_bord/spie_fondation',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties'));
     }
+
+    public function printview(){
+
+        return view('tableau_de_bord/printview');
+
+    }
 }

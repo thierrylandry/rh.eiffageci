@@ -37,9 +37,10 @@
     <link href="{{ asset("css/theme.css") }}" rel="stylesheet" media="screen">
     <link href="{{ asset("css/jquery.dataTables.min.css") }}" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/impression.css') }}" media="print">
+
 </head>
 
-<body class="animsition">
+<body class="animsition" >
     <div class="page-wrapper">
     @include('layouts.nav')
         <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}" class="logo_eiffage" style="display: none">
@@ -68,7 +69,6 @@
                 <!-- END PAGE CONTAINER-->
         </div>
     </div>
-
 
     <!-- Jquery JS-->
     <!-- Jquery JS-->

@@ -521,7 +521,6 @@
             }],
             legend: {
                 enable:false,
-                layout: 'horizontal',
                 align: 'left',
                 verticalAlign: 'top',
                 y: 30,
@@ -535,7 +534,7 @@
                     style: {
                         fontWeight: 'bold',
                         color: '#333',
-                        fontSize: '12px'
+                        fontSize: '2px'
                     }
                 }
             },

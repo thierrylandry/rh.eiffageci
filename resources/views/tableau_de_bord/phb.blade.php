@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="row ">
+    <div class="row break">
         <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -469,7 +469,7 @@
                 colorByPoint: true,
                 data: repartition_homme_femme
             }],
-            
+
         });
         Highcharts.chart('repartition_tranche_age', {
             credits: {

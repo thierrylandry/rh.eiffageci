@@ -416,7 +416,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_nationalite
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_homme_femme', {
             credits: {

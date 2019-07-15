@@ -520,6 +520,7 @@
                 data: repartition_ancienete
             }],
             legend: {
+                enable:false,
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',

@@ -436,6 +436,8 @@
             }],
             legend: {
                 layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
                 y: 0,
                 useHTML: true,
                 navigation: {

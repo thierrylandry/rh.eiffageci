@@ -521,7 +521,7 @@
             }],
             legend: {
                 enable:false,
-                layout: 'vertical',
+                layout: 'horizontal',
                 align: 'left',
                 verticalAlign: 'top',
                 y: 30,

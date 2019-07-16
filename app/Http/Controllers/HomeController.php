@@ -78,6 +78,9 @@ class HomeController extends Controller
     }
     public function globale()
     {
+        $soustraitant = DB::table('effectif')
+                        ->select('nom as libelleUnite','effectif as nb');
+//dd($soustraitant);
         $effectifglobaux_tab = DB::table('personne')
             ->groupBy('unite.id_unite')
             ->orderBy('unite.id_unite','DESC')
@@ -85,6 +88,7 @@ class HomeController extends Controller
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->where('contrat.etat','=',1)
             ->select('unite.libelleUnite',DB::raw('count(personne.id) as nb'))
+            ->union($soustraitant)
             ->get();
 
         $effectifglobaux= Array();

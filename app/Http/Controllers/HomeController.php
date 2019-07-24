@@ -806,7 +806,8 @@ class HomeController extends Controller
            ->groupBy('unite.id_unite','entite')
            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
 
-
+        $soustraitant = DB::table('effectif')
+            ->select('nom as libelleUnite','effectif as entite','effectif as nb');
                $effectifglobaux_tab=DB::table('personne')
                    ->join('unite','unite.id_unite','=','personne.id_unite')
                    ->join('contrat','contrat.id_personne','=','personne.id')
@@ -816,6 +817,7 @@ class HomeController extends Controller
                    ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'))
                   ->union($effectifglobaux_tab3)
                    ->union($effectifglobaux_tab2)
+                   ->union($soustraitant)
                     ->get();
 
 //dd($effectifglobaux_tab);

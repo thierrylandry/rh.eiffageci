@@ -49,6 +49,12 @@
                                         <td>{{$res->name.' SPIE FONDATIONS'}}</td>
                                         <td>{{$res->y}}</td>
                                     </tr>
+                                @else
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
                                 @endif
                             @endforeach
                             </tbody>
@@ -315,6 +321,8 @@
                     {{"{name:"}} '{{$res->name}} DIRECTION CI' {{",y:".$res->y."}"}}
                 @elseif(($res->entite==2))
                     {{"{name:"}} '{{$res->name}} SPIE FONDATIONS' {{",y:".$res->y."}"}}
+                    @else
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}}
                 @endif
                     ,
             @endforeach
@@ -548,6 +556,24 @@
                 colorByPoint: true,
                 data: repartition_homme_femme
             }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
 
         });
         Highcharts.chart('repartition_tranche_age', {

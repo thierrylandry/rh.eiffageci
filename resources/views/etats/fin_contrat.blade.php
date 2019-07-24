@@ -33,7 +33,7 @@
                             <td>{{$contrat->nom}}</td>
                             <td>{{$contrat->prenom}}</td>
                             <td>{{$contrat->libelle}}</td>
-                            <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i> {{$contrat->datefinc}}</td>
+                            <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datefinc)->format('d-m-Y')}}</td>
                         </tr>
                     @endforeach
                     </tbody>

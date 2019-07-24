@@ -383,7 +383,7 @@ class PersonneController extends Controller
         $personne =Personne::where('slug','=',$slug)->first();
         $docs = Administratif::where([
             ['type_doc','=',$id],
-            ['id_personne', '==', $personne->id],
+            ['id_personne', '=', $personne->id],
             ])->get();
         //dd($doc);
         foreach($docs as $doc):

@@ -417,7 +417,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: effectifglobaux
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_nationalite', {
             credits: {
@@ -451,7 +469,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_nationalite
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_homme_femme', {
             credits: {
@@ -485,7 +521,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_homme_femme
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_tranche_age', {
             credits: {
@@ -519,7 +573,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_tranche_age
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_ancienete', {
             credits: {
@@ -553,7 +625,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_ancienete
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('repartition_service', {
             credits: {
@@ -587,7 +677,25 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_service
-            }]
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
         Highcharts.chart('bilan_entre_sorti', {
             credits: {

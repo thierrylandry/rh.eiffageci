@@ -92,7 +92,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Qualification contractulle</th>
+                                <th>Qualification contractuelle</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>

@@ -136,7 +136,7 @@
                             <a href="{{route("dirci")}}">Direction CI</a>
                         </li>
                         <li class="@yield('phb')">
-                            <a href="{{route("phb")}}">EIFFAGE PHB</a>
+                            <a href="{{route("phb")}}">Eiffage PHB</a>
                         </li>
                         <li class="@yield('spie_fondation')">
                             <a href="{{route("spie_fondation")}}">SPIE Fondations</a>
@@ -164,13 +164,13 @@
                         <i class="fas fa-user open" ></i>PERSONNES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
                         <li class="@yield('lister_personne1')">
-                            <a href="{{route('lister_personne',1)}}">EIFFAGE PHB</a>
+                            <a href="{{route('lister_personne',1)}}">Eiffage PHB</a>
                         </li>
                         <li class="@yield('lister_personne2')">
-                            <a href="{{route('lister_personne',2)}}">SPIE FONDATIONS</a>
+                            <a href="{{route('lister_personne',2)}}">SPIE Fondations</a>
                         </li>
                         <li class="@yield('lister_personne3')">
-                            <a href="{{route('lister_personne',3)}}">DIRECTION CI</a>
+                            <a href="{{route('lister_personne',3)}}">Direction CI</a>
                         </li>
 
                     </ul>

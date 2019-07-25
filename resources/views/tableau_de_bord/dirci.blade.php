@@ -125,7 +125,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Nationnalité - Personnel</th>
+                                <th>Nationalité - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>

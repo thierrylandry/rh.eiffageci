@@ -221,11 +221,6 @@
 
                     </ul>
                 </li>
-                    <li>
-                    <li>
-                        <img src="{{ URL::asset('public/images/landry.png') }}" width="200px" height="180px">
-                    </li>
-                    </li>
                     @endif
 
             </ul>

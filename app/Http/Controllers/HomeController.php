@@ -78,6 +78,50 @@ class HomeController extends Controller
     }
     public function globale()
     {
+
+
+        $effectifglobaux_tab3=DB::table('personne')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('entite','=',3)
+            ->groupBy('unite.id_unite','entite')
+            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
+        $effectifglobaux_tab2=DB::table('personne')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('entite','=',2)
+            ->groupBy('unite.id_unite','entite')
+            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
+
+        $soustraitant = DB::table('effectif')
+            ->select('nom as libelleUnite','effectif as entite','effectif as nb');
+        $effectifglobaux_tabx=DB::table('personne')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('entite','=',1)
+            ->groupBy('unite.id_unite','entite')
+            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'))
+            ->union($effectifglobaux_tab3)
+            ->union($effectifglobaux_tab2)
+            ->union($soustraitant)
+            ->get();
+
+//dd($effectifglobaux_tab);
+        $effectifglobauxx= Array();
+        foreach ($effectifglobaux_tabx as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelleUnite;
+            $vardiag->entite=$group->entite;
+            $vardiag->y=$group->nb;
+
+            $effectifglobauxx[]=$vardiag;
+        endforeach;
+
+
+
         $soustraitant = DB::table('effectif')
                         ->select('nom as libelleUnite','effectif as nb');
 //dd($soustraitant);
@@ -159,7 +203,7 @@ class HomeController extends Controller
         endforeach;
 
 
-        return view('tableau_de_bord/global',compact('effectifglobaux','repartition_nationalite','repartition_service','repartition_homme_femme'));
+        return view('tableau_de_bord/global',compact('effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
     }
     public function globalExport(){
         $effectifglobaux_tab = DB::table('personne')

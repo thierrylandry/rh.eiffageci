@@ -54,6 +54,60 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6 tableau ">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>Effectifs globaux détaillé Projet ESF</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($effectifglobauxx as $res)
+                                @if($res->entite==1)
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$res->name.' PHB'}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
+                                @elseif(($res->entite==3))
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$res->name.' DIRECTION CI'}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
+                                @elseif(($res->entite==2))
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$res->name.' SPIE FONDATIONS'}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
+                                @else
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="effectifglobauxx" style=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row break">
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
@@ -167,6 +221,21 @@
             {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
+        var effectifglobauxx=[
+            @foreach($effectifglobauxx as $res)
+
+                    @if($res->entite==1)
+                    {{"{name:"}} '{{$res->name}}  PHB' {{",y:".$res->y."}"}}
+                    @elseif(($res->entite==3))
+                    {{"{name:"}} '{{$res->name}} DIRECTION CI' {{",y:".$res->y."}"}}
+                    @elseif(($res->entite==2))
+                    {{"{name:"}} '{{$res->name}} SPIE FONDATIONS' {{",y:".$res->y."}"}}
+                    @else
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}}
+            @endif
+            ,
+            @endforeach
+        ];
         var repartition_nationalite=[
             @foreach($repartition_nationalite as $res)
             {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
@@ -262,6 +331,58 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: effectifglobaux
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+        });        // Build the chart
+        Highcharts.chart('effectifglobauxx', {
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Effectifs Globaux détaillé Projet ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: effectifglobauxx
             }],
             legend: {
                 layout: 'vertical',

@@ -300,6 +300,13 @@ class HomeController extends Controller
 
             $qualification_contractuelle[]=$vardiag;
         }
+        if(!is_null($agent_de_maitrise)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$agent_de_maitrise->libelle;
+            $vardiag->y=$agent_de_maitrise->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
         if(!is_null($employe)){
             $vardiag = New Vardiag();
             $vardiag->name=$employe->libelle;
@@ -326,13 +333,7 @@ class HomeController extends Controller
 
             $qualification_contractuelle[] = $vardiag;
         }
-        if(!is_null($agent_de_maitrise)){
-            $vardiag = New Vardiag();
-            $vardiag->name=$agent_de_maitrise->libelle;
-            $vardiag->y=$agent_de_maitrise->nb;
 
-            $qualification_contractuelle[]=$vardiag;
-        }
 
         return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
     }

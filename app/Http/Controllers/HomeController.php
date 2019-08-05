@@ -205,62 +205,84 @@ class HomeController extends Controller
         // qualification contractuelle
         $cadre = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',1)
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',1],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+            ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
         $agent_de_maitrise = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',2)
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',2],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+            ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
         $employe = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',3)
-
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
-            ->join('definition','definition.id','=','contrat.id_definition')
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',3],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+            ])->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
         $chauffeur = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',5)
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',5],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+            ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
         $ouvrier = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',4)
-            ->orWhere('definition.id','=',5)
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',4],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+                ['definition.id','=',5],
+            ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-            ->where('definition.id','=',6)
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)
+            ->where([
+                ['contrat.etat','=',1],
+                ['definition.id','=',6],
+            ])
+            ->orWhere([
+                ['entite','=',1],
+                ['entite','=',2],
+            ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
@@ -269,13 +291,7 @@ class HomeController extends Controller
 
         $qualification_contractuelle= Array();
 
-        if(!is_null($agent_de_maitrise)){
-            $vardiag = New Vardiag();
-            $vardiag->name=$agent_de_maitrise->libelle;
-            $vardiag->y=$agent_de_maitrise->nb;
 
-            $qualification_contractuelle[]=$vardiag;
-        }
 
         if(!is_null($cadre)){
             $vardiag = New Vardiag();
@@ -310,6 +326,14 @@ class HomeController extends Controller
 
             $qualification_contractuelle[] = $vardiag;
         }
+        if(!is_null($agent_de_maitrise)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$agent_de_maitrise->libelle;
+            $vardiag->y=$agent_de_maitrise->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+
         return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
     }
     public function globalExport(){

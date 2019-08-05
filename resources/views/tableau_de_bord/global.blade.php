@@ -141,7 +141,39 @@
             </div>
         </div>
     </div>
-
+    <div class="row break">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>Qualification contractuelle personnel ESF</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($qualification_contractuelle as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="qualification_contractuelle" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row break">
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
@@ -250,6 +282,11 @@
         var repartition_service=[
             @foreach($repartition_service as $res)
             {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var qualification_contractuelle=[
+            @foreach($qualification_contractuelle as $res)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
 
@@ -592,6 +629,59 @@
                 }
             },
 
+        });
+        // Build the chart
+        Highcharts.chart('qualification_contractuelle', {
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Qualification contractuelle personnel ESF'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Effectif',
+                colorByPoint: true,
+                data: qualification_contractuelle
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                y: 0,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
         });
 
     </script>

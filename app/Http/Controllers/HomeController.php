@@ -202,8 +202,115 @@ class HomeController extends Controller
             $repartition_service[]=$vardiag;
         endforeach;
 
+        // qualification contractuelle
+        $cadre = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',1)
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $agent_de_maitrise = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',2)
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $employe = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',3)
 
-        return view('tableau_de_bord/global',compact('effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $chauffeur = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',5)
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $ouvrier = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',4)
+            ->orWhere('definition.id','=',5)
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $stagiaire = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('definition.id','=',6)
+            ->where('entite','=',1)
+            ->orWhere('entite','=',2)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+
+
+        $qualification_contractuelle= Array();
+
+        if(!is_null($agent_de_maitrise)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$agent_de_maitrise->libelle;
+            $vardiag->y=$agent_de_maitrise->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+
+        if(!is_null($cadre)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$cadre->libelle;
+            $vardiag->y=$cadre->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+        if(!is_null($employe)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$employe->libelle;
+            $vardiag->y=$employe->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+        if(!is_null($ouvrier)) {
+            $vardiag = New Vardiag();
+            $vardiag->name = $ouvrier->libelle;
+            if(is_null($chauffeur)){
+                $vardiag->y = $ouvrier->nb ;
+            }else{
+                $vardiag->y = $ouvrier->nb + $chauffeur->nb;
+            }
+
+
+            $qualification_contractuelle[] = $vardiag;
+        }
+        if(!is_null($stagiaire)) {
+            $vardiag = New Vardiag();
+            $vardiag->name = $stagiaire->libelle;
+            $vardiag->y = $stagiaire->nb;
+
+            $qualification_contractuelle[] = $vardiag;
+        }
+        return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
     }
     public function globalExport(){
         $effectifglobaux_tab = DB::table('personne')

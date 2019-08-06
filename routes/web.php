@@ -362,3 +362,9 @@ Route::post('/modifier_user',[
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/conges',[
+    'as'=>'conges',
+    'uses'=>'CongerController@conges',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+

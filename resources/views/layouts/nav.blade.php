@@ -196,8 +196,8 @@
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Conges'))
-                <li class="@yield('') @yield('') has-sub">
-                    <a class="js-arrow " href="">
+                <li class="@yield('conges') @yield('') has-sub">
+                    <a class="js-arrow " href="{{route('conges')}}" target="_self">
                         <i class="fas fa-calendar-alt" ></i>CONGES</a>
                 </li>
                 @endif

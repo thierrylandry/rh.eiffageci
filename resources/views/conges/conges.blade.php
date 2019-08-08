@@ -9,6 +9,9 @@
      folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="{{asset('public/dist/css/skins/_all-skins.min.css')}}">
 <link href="{{ asset("css/jquery.dataTables.min.css") }}" rel="stylesheet" media="screen">
+
+
+
 <style>
     .fc-title{
         color: #ffffff;
@@ -40,7 +43,7 @@
                                         <td>{{$personne->id}} </td>
                                         <td> <div class="external-event" style="background-color:
 {{$colors[$personne->id]}};color: white">{{$personne->nom.' '.$personne->prenom}}</div></td>
-                                        <td></td>
+                                        <td>{{isset($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc)? date_diff(new DateTime($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc),new DateTime('now'))->m:''}}</td>
                                 </tr>
                                     @endforeach
                                 </tbody>
@@ -115,7 +118,7 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            });
+            }).column(0).visible(false);
         $(".current").click(function (){
             alert("eee");
         });

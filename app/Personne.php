@@ -15,6 +15,10 @@ class Personne extends Model
         return $this->belongsTo(Societe::class, "id_unite");
     }
 
+    public function contrat_renouvelles(){
+        return $this->hasMany(Contrat::class, "matricule","matricule");
+    }
+
     public function pays(){
         return $this->belongsTo(Pays::class, "nationalite");
     }

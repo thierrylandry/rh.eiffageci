@@ -40,7 +40,7 @@
                                 <tbody>
                                 @foreach($personnes as $personne)
                                 <tr>
-                                        <td>{{$personne->id}} </td>
+                                        <td>{{$personne->id.'couleur: '.$colors[$personne->id]}} </td>
                                         <td> <div class="external-event" style="background-color:
 {{isset($colors[$personne->id])?$colors[$personne->id]:'black'}};color: white">{{$personne->nom.' '.$personne->prenom}}</div></td>
                                         <td>{{isset($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc)? date_diff(new DateTime($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc),new DateTime('now'))->m:''}}</td>

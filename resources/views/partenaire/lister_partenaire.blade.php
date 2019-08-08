@@ -83,10 +83,6 @@ style="display: block;"
     <script>
         $(document).ready(function() {
             var table= $('#table_employe').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },

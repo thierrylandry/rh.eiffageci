@@ -75,7 +75,6 @@
 <script src="{{ asset("js/dataTables.min.js") }}"></script>
 
 <script src="{{ asset("js/dataTables.checkboxes.js") }}"></script>
-<script src="{{ asset("js/dataTables.buttons.min.js") }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset("public/bootstrap/dist/js/bootstrap.min.js") }}"></script>
 <!-- jQuery UI 1.11.4 -->

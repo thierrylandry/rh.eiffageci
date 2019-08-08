@@ -117,7 +117,7 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            }).column(0).visible(false);
+            })
         $(".current").click(function (){
             alert("eee");
         });

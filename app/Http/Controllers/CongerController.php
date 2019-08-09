@@ -32,7 +32,8 @@ class CongerController extends Controller
 
                  //   dd(date_diff(new \DateTime($datedebutc),new \DateTime('now')));
                 $VarpersonneConges->nb_m=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->m;
-                $VarpersonneConges->jours=(($VarpersonneConges->nb_y*12) +$VarpersonneConges->nb_m)*2.5  -$personne->jours_conges()->count();
+                $VarpersonneConges->nb_d=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->d;
+                $VarpersonneConges->jours=(($VarpersonneConges->nb_y*12) +$VarpersonneConges->nb_m)*2.5 +$VarpersonneConges->nb_d/30  -$personne->jours_conges()->count();
 
 
                 $VarpersonneConges->jour_conges=$personne->jours_conges()->count();

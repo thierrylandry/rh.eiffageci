@@ -15,6 +15,7 @@ class VarpersonneConges
     public $nom_prenom;
     public $nb_y;
     public $nb_m;
+    public $nb_d;
     public $jour_conges;
     public $jours;
 

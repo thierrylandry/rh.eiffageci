@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Personne;
+use App\VarpersonneConges;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Array_;
 
 class CongerController extends Controller
 {
@@ -13,6 +15,37 @@ class CongerController extends Controller
 
         $personnes= Personne::all();
          //   dd($personnes->contrat_renouvelles()->where('datedebutc','<>',null)->orderBy('datedebutc','ASC')->first()->datedebutc);
+
+        $personnesConge= Array();
+        foreach ($personnes as $personne):
+
+
+
+            if(isset($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc)){
+
+                $VarpersonneConges= new VarpersonneConges();
+                $VarpersonneConges->personne_id=$personne->id;
+                $VarpersonneConges->nom_prenom=$personne->nom.' '.$personne->prenom;
+                $datedebutc=$personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc;
+
+                $VarpersonneConges->nb_y=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->y;
+
+
+                $VarpersonneConges->nb_m=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->m;
+                $VarpersonneConges->jours=(30 * $VarpersonneConges->nb_y) -$personne->jours_conges()->count();
+
+
+                $VarpersonneConges->jour_conges=$personne->jours_conges()->count();
+                $personnesConge[]=$VarpersonneConges;
+
+            }
+
+
+
+
+            endforeach;
+
+       
          $colors= [
             "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
             "#f205e6" ,"#1c0365" ,"#14a9ad" ,"#4ca2f9" ,"#a4e43f" ,"#d298e2" ,"#6119d0",
@@ -55,6 +88,6 @@ class CongerController extends Controller
             "#f812b3", "#b17fc9", "#8d6c2f", "#d3277a", "#2ca1ae", "#9685eb", "#8a96c6",
             "#dba2e6", "#76fc1b", "#608fa4", "#20f6ba", "#07d7f6", "#dce77a", "#77ecca"];
 
-        return view('conges/conges',compact('personnes','colors'));
+        return view('conges/conges',compact('personnesConge','colors'));
     }
 }

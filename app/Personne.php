@@ -18,6 +18,10 @@ class Personne extends Model
     public function contrat_renouvelles(){
         return $this->hasMany(Contrat::class, "matricule","matricule");
     }
+    public function jours_conges()
+    {
+        return $this->hasMany(Conges::class,'id_personne');
+    }
 
     public function pays(){
         return $this->belongsTo(Pays::class, "nationalite");

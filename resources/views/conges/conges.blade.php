@@ -35,15 +35,17 @@
                                 <thead>
                                 <td>id</td>
                                 <td>personne</td>
-                                <td>jours de congé</td>
+                                <td>jours de congé Restant</td>
+                                <td>jours de congé pris</td>
                                 </thead>
                                 <tbody>
-                                @foreach($personnes as $personne)
+                                @foreach($personnesConge as $personneC)
                                 <tr>
-                                        <td>{{$personne->id.'couleur: '.$colors[$personne->id]}} </td>
+                                        <td>{{$personneC->personne_id}}</td>
                                         <td> <div class="external-event" style="background-color:
-{{isset($colors[$personne->id])?$colors[$personne->id]:'black'}};color: white">{{$personne->nom.' '.$personne->prenom}}</div></td>
-                                        <td>{{isset($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc)? date_diff(new DateTime($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc),new DateTime('now'))->m:''}}</td>
+{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{$personneC->nom_prenom}}</div></td>
+                                        <td>{{$personneC->jours}}</td>
+                                        <td>{{$personneC->jour_conges}}</td>
                                 </tr>
                                     @endforeach
                                 </tbody>
@@ -117,7 +119,7 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            })
+            }).column(0).visible(false);
         $(".current").click(function (){
             alert("eee");
         });

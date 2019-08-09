@@ -43,7 +43,7 @@
                                 <tr>
                                         <td>{{$personneC->personne_id}}</td>
                                         <td> <div class="external-event" style="background-color:
-{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{$personneC->nom_prenom}}</div></td>
+{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ $personneC->personne_id.' '.$personneC->nom_prenom}}</div></td>
                                         <td>{{$personneC->jours}}</td>
                                         <td>{{$personneC->jour_conges}}</td>
                                 </tr>
@@ -51,6 +51,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <button id="enregistrer_conges">Afficher</button>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -157,7 +158,7 @@
         var d    = date.getDate(),
                 m    = date.getMonth(),
                 y    = date.getFullYear()
-        $('#calendar').fullCalendar({
+     var calendar=   $('#calendar').fullCalendar({
             locale: 'fr',
             header    : {
                 left  : 'prev,next today',
@@ -180,35 +181,46 @@
                     $('#calendar').fullCalendar('removeEvents',event._id);
                 });
             },
+         weekends:false,
 
 
             drop      : function (date, allDay) { // this function is called when something is dropped
 
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject')
+                var data = table.row($(this).closest('tr')).data();
+                $('#id').val(data[Object.keys(data)[0]]);
 
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject)
+                var nombrejourRestant=data[Object.keys(data)[2]];
 
-                // assign it the date that was reported
-                copiedEventObject.start           = date
-                copiedEventObject.allDay          = allDay
-                copiedEventObject.backgroundColor = $(this).css('background-color')
-                copiedEventObject.borderColor     = $(this).css('border-color')
-                copiedEventObject.eventColor='#FFFFFF'
+                    if(parseInt(nombrejourRestant)>0){
 
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
 
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove()
-                }
+
+                        // retrieve the dropped element's stored Event Object
+                        var originalEventObject = $(this).data('eventObject')
+
+                        // we need to copy it, so that multiple events don't have a reference to the same object
+                        var copiedEventObject = $.extend({}, originalEventObject)
+
+                        // assign it the date that was reported
+                        copiedEventObject.start           = date
+                        copiedEventObject.allDay          = allDay
+                        copiedEventObject.backgroundColor = $(this).css('background-color')
+                        copiedEventObject.borderColor     = $(this).css('border-color')
+                        copiedEventObject.eventColor='#FFFFFF'
+
+                        // render the event on the calendar
+                        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
+
+                        // is the "remove after drop" checkbox checked?
+                        if ($('#drop-remove').is(':checked')) {
+                            // if so, remove the element from the "Draggable Events" list
+                            $(this).remove()
+                        }
+                    }
 
             }
-        })
+        });
 
         /* ADDING EVENTS */
         var currColor = '#3c8dbc' //Red by default
@@ -245,5 +257,35 @@
             //Remove event from text input
             $('#new-event').val('')
         })
+        $('#enregistrer_conges').click(function() {
+
+         //   var selectionner=$('#calendar').fullCalendar('clientEvents');
+            var events = $('#calendar').fullCalendar('clientEvents');
+            for (var i = 0; i < events.length; i++) {
+                var start_date = new Date(events[i].start._d);
+                var end_date = '';
+                if (events[i].end != null) {
+                    end_date = new Date(events[i].end._d);
+                }
+                var title = events[i].title;
+
+                var st_day = start_date.getDate();
+                var st_monthIndex = start_date.getMonth() + 1;
+                var st_year = start_date.getFullYear();
+
+                var en_day ='';
+                var en_monthIndex = '';
+                var en_year = '';
+                if (end_date != '') {
+                    en_day = end_date.getDate()-1;
+                    en_monthIndex = end_date.getMonth()+1;
+                    en_year = end_date.getFullYear();
+                }
+
+
+                console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day);
+            }
+
+        });
     })
 </script>

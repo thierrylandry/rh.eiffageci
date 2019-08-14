@@ -23,7 +23,7 @@
 
     <!-- Main content -->
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="box box-solid">
                     <div class="box-header with-border">
                         <h4 class="box-title">Glissez deposer dans le calendrier</h4>
@@ -42,23 +42,23 @@
                                 @foreach($personnesConge as $personneC)
                                 <tr>
                                         <td>{{$personneC->personne_id}}</td>
-                                        <td> <div class="external-event" style="background-color:
-{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ $personneC->personne_id.' '.$personneC->nom_prenom}}</div></td>
-                                        <td>{{$personneC->jours}}</td>
+                                        <td> <div class="external-event"  style="background-color:
+{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ $personneC->personne_id.' '.$personneC->nom_prenom}}</div> </td>
+                                        <td>{{intval($personneC->jours)}}</td>
                                         <td>{{$personneC->jour_conges}}</td>
                                 </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <button id="enregistrer_conges">Afficher</button>
+                        <button id="enregistrer_conges">ENREGISTRER</button>
                     </div>
                     <!-- /.box-body -->
                 </div>
 
             </div>
             <!-- /.col -->
-            <div class="col-sm-9">
+            <div class="col-sm-7">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->
@@ -97,6 +97,16 @@
 <!-- Page specific script -->
 <script>
     $(function () {
+        var tab = Array();
+        //ce tableau permet d'enregster les valeurs des jours déjà pris
+        var tabdejapris = Array();
+    @foreach($personnesConge as $personneC)
+          tab["{{$personneC->personne_id.' '.$personneC->nom_prenom}}"]={{intval($personneC->jours)}};
+        tabdejapris["{{$personneC->personne_id.' '.$personneC->nom_prenom}}"]=0;
+    @endforeach
+
+
+
 
 
 
@@ -178,7 +188,55 @@
             eventRender: function(event, element) {
                 element.append( "<span class='closeon' style='color: white; font-size: medium'> X Retirer</span>" );
                 element.find(".closeon").click(function() {
+
+
                     $('#calendar').fullCalendar('removeEvents',event._id);
+
+                   // var data = table.row($(this).closest('tr')).data();
+                   // data[Object.keys(data)[2]]++;
+                    //tabdejapris[$(this).closest('div')[0].innerHTML]= tabdejapris[$(this).closest('div')[0].innerHTML]+1;
+                  //  console.log(tabdejapris[$(this).closest('div')[0].innerHTML]);
+                    //tab[$(this).closest('div')[0].innerHTML]=data[Object.keys(data)[2]];
+
+                   // $(this).closest('td').next().html(tab[$(this).closest('div')[0].innerHTML]);
+
+                    var events = $('#calendar').fullCalendar('clientEvents');
+                    var totday=0;
+                    for (var i = 0; i < events.length; i++) {
+                        events[i].weekdays=false;
+                        var start_date = new Date(events[i].start._d);
+                        var end_date = '';
+                        if (events[i].end != null) {
+                            end_date = new Date(events[i].end._d);
+                        }
+                        var title = events[i].title;
+
+                        if(events[i].title==event.title){
+                            var st_day = start_date.getDate();
+                            var st_monthIndex = start_date.getMonth() + 1;
+                            var st_year = start_date.getFullYear();
+
+                            var en_day ='';
+                            var en_monthIndex = '';
+                            var en_year = '';
+                            if (end_date != '') {
+                                en_day = end_date.getDate()-1;
+                                en_monthIndex = end_date.getMonth()+1;
+                                en_year = end_date.getFullYear();
+                            }
+
+                            diff  = new Date(end_date - start_date);
+                            days  = diff/1000/60/60/24;
+                            console.log(days);
+                            totday=totday + days;
+                        }
+
+                    }
+
+                    tabdejapris[event.title]=totday;
+                    $(".external-event:contains("+event.title+")").closest('td').next().html(tab[event.title]- tabdejapris[event.title] );
+                   // console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day);
+
                 });
             },
          weekends:false,
@@ -186,15 +244,14 @@
 
             drop      : function (date, allDay) { // this function is called when something is dropped
 
+                var tr = $(this).closest('tr');  //Find DataTables table row
+                var theRowObject = table.row(tr); //Get DataTables row object
+                var thistr=this;
+              //  console.log($(this).closest('div')[0].innerHTML);
                 var data = table.row($(this).closest('tr')).data();
                 $('#id').val(data[Object.keys(data)[0]]);
 
                 var nombrejourRestant=data[Object.keys(data)[2]];
-
-                    if(parseInt(nombrejourRestant)>0){
-
-
-
                         // retrieve the dropped element's stored Event Object
                         var originalEventObject = $(this).data('eventObject')
 
@@ -217,9 +274,87 @@
                             // if so, remove the element from the "Draggable Events" list
                             $(this).remove()
                         }
+                var events = $('#calendar').fullCalendar('clientEvents');
+                var totday=0;
+                for (var i = 0; i < events.length; i++) {
+                    events[i].weekdays=false;
+                    var start_date = new Date(events[i].start._d);
+                    var end_date = '';
+                    if (events[i].end != null) {
+                        end_date = new Date(events[i].end._d);
+                    }else{
+                        end_date = new Date(events[i].start._d);
+                    }
+                    var title = events[i].title;
+
+                    if(events[i].title==$(this).closest('div')[0].innerHTML){
+                        var st_day = start_date.getDate();
+                        var st_monthIndex = start_date.getMonth() + 1;
+                        var st_year = start_date.getFullYear();
+
+                        var en_day ='';
+                        var en_monthIndex = '';
+                        var en_year = '';
+                        if (end_date != '') {
+                            en_day = end_date.getDate()-1;
+                            en_monthIndex = end_date.getMonth()+1;
+                            en_year = end_date.getFullYear();
+                        }
+
+                        diff  = new Date(end_date - start_date);
+                                days  = diff/1000/60/60/24;
+                        if(days==0){
+                            days=1;
+                        }
+                        totday=totday + days;
                     }
 
-            }
+                }
+
+                tabdejapris[$(this).closest('div')[0].innerHTML]=totday;
+                $(".external-event:contains("+$(this).closest('div')[0].innerHTML+")").closest('td').next().html(tab[$(this).closest('div')[0].innerHTML] - tabdejapris[$(this).closest('div')[0].innerHTML]);
+                console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day);
+
+
+            },
+         eventResize: function(info) {
+
+             var events = $('#calendar').fullCalendar('clientEvents');
+             var totday=0;
+             for (var i = 0; i < events.length; i++) {
+                 events[i].weekdays=false;
+                 var start_date = new Date(events[i].start._d);
+                 var end_date = '';
+                 if (events[i].end != null) {
+                     end_date = new Date(events[i].end._d);
+                 }
+                 var title = events[i].title;
+
+                 if(events[i].title==info.title){
+                     var st_day = start_date.getDate();
+                     var st_monthIndex = start_date.getMonth() + 1;
+                     var st_year = start_date.getFullYear();
+
+                     var en_day ='';
+                     var en_monthIndex = '';
+                     var en_year = '';
+                     if (end_date != '') {
+                         en_day = end_date.getDate()-1;
+                         en_monthIndex = end_date.getMonth()+1;
+                         en_year = end_date.getFullYear();
+                     }
+
+                     diff  = new Date(end_date - start_date),
+                             days  = diff/1000/60/60/24;
+                     totday=totday + days;
+                          }
+
+             }
+             tabdejapris[info.title]=totday;
+             $(".external-event:contains("+info.title+")").closest('td').next().html(tab[info.title] - tabdejapris[info.title]);
+             console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day+ ' diff'+totday);
+
+         }
         });
 
         /* ADDING EVENTS */

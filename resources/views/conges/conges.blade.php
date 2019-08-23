@@ -200,7 +200,7 @@
             {
 
 
-                title          : '{{$congessss->title.'  periode:'.$congessss->EndDate}}',
+                title          : '{{$congessss->title}}',
                 start          : '{{$congessss->startDate}}',
                 @if(isset($congessss->EndDate))
                 end          : '{{$congessss->EndDate}}',
@@ -219,7 +219,7 @@
 
             if(tab_events[i].end!='' && typeof(tab_events[i].end)!="undefined"){
                 tab_events[i].end=getdate(tab_events[i].valeurr);
-                alert(tab_events[0].title+" "+tab_events[i].end);
+              //  alert(tab_events[0].title+" "+tab_events[i].end);
             }else{
 
             }

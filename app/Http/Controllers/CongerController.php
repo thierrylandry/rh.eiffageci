@@ -146,7 +146,11 @@ class CongerController extends Controller
     //
     public function conges(){
 
-        $personnes= Personne::all();
+        $personnes= Personne::orWhere([
+                ['entite','=',1],
+                 ['entite','=',3],
+                ])->get();
+        dd($personnes);
          //   dd($personnes->contrat_renouvelles()->where('datedebutc','<>',null)->orderBy('datedebutc','ASC')->first()->datedebutc);
 
         $personnesConge= Array();

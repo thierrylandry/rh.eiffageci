@@ -26,7 +26,7 @@
             <div class="col-sm-4">
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <button class="btn btn-info"> RETOUR</button> <h4 class="box-title">Glissez deposer dans le calendrier</h4>
+                        <a class="btn btn-info" href="{{route('global')}}"> page d'accueil</a> <h4 class="box-title">Glissez deposer dans le calendrier</h4>
                     </div>
                     <div class="box-body">
                         <!-- the events -->

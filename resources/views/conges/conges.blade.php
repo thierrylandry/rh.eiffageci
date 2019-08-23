@@ -26,7 +26,7 @@
             <div class="col-sm-4">
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Glissez deposer dans le calendrier</h4>
+                        <button class="btn btn-info"> RETOUR</button> <h4 class="box-title">Glissez deposer dans le calendrier</h4>
                     </div>
                     <div class="box-body">
                         <!-- the events -->
@@ -44,14 +44,14 @@
                                         <td>{{$personneC->personne_id}}</td>
                                         <td> <div class="external-event"  style="background-color:
 {{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ $personneC->personne_id.' '.$personneC->nom_prenom}}</div> </td>
-                                        <td>{{intval($personneC->jours)}}</td>
+                                        <td>{{intval($personneC->jours)-intval($personneC->jour_conges)}}</td>
                                         <td>{{$personneC->jour_conges}}</td>
                                 </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <button id="enregistrer_conges">ENREGISTRER</button>
+                        <button id="enregistrer_conges" class="btn btn-success">ENREGISTRER</button>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -96,7 +96,12 @@
 <script src="{{asset('public/fullcalendar/dist/locale/fr.js')}}"></script>
 <!-- Page specific script -->
 <script>
+
     $(function () {
+
+
+
+
         var tab = Array();
         //ce tableau permet d'enregster les valeurs des jours déjà pris
         var tabdejapris = Array();
@@ -167,22 +172,78 @@
         var date = new Date()
         var d    = date.getDate(),
                 m    = date.getMonth(),
-                y    = date.getFullYear()
+                y    = date.getFullYear();
+        function getdate(tt) {
+
+
+            var date = new Date(tt);
+            var newdate = new Date(date);
+
+            newdate.setDate(newdate.getDate() + 1);
+
+            var dd = newdate.getDate();
+            var mm = newdate.getMonth() + 1;
+            var y = newdate.getFullYear();
+
+            if(mm<10){
+                mm='0'+mm;
+            }
+            if(dd<10){
+                dd='0'+dd;
+            }
+            var someFormattedDate =  y+'-'+mm+'-'+dd;
+
+            return someFormattedDate;
+        }
+        var  tab_events  = [
+                @foreach($conges as $congessss)
+            {
+
+
+                title          : '{{$congessss->title.'  periode:'.$congessss->EndDate}}',
+                start          : '{{$congessss->startDate}}',
+                @if(isset($congessss->EndDate))
+                end          : '{{$congessss->EndDate}}',
+                valeurr         : '{{$congessss->EndDate}}',
+                @endif
+                backgroundColor: '{{$congessss->backgroundColor}}', //red
+                borderColor    : '{{$congessss->backgroundColor}}', //red
+                editable  : true,
+                startEditable : true,
+                durationEditable: true,
+
+            },
+            @endforeach
+        ];
+        for(var i=0;i<tab_events.length;i++){
+
+            if(tab_events[i].end!='' && typeof(tab_events[i].end)!="undefined"){
+                tab_events[i].end=getdate(tab_events[i].valeurr);
+                alert(tab_events[0].title+" "+tab_events[i].end);
+            }else{
+
+            }
+
+        }
+        console.log(tab_events);
+
      var calendar=   $('#calendar').fullCalendar({
             locale: 'fr',
             header    : {
                 left  : 'prev,next today',
                 center: 'title',
-                right : 'month,agendaWeek,agendaDay'
+                right : 'listWeek,month'
             },
-            buttonText: {
-                today: 'today',
-                month: 'month',
-                week : 'week',
-                day  : 'day'
-            },
+         buttonText: {
+             list: 'list',
+             month: 'month',
+             week : 'week',
+             day  : 'day'
+         },
             //Random default events
             editable  : true,
+         durationEditable: true,
+         displayEventEnd:true,
             droppable : true, // this allows things to be dropped onto the calendar !!!
 
             eventRender: function(event, element) {
@@ -354,7 +415,10 @@
              $(".external-event:contains("+info.title+")").closest('td').next().html(tab[info.title] - tabdejapris[info.title]);
              console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day+ ' diff'+totday);
 
-         }
+         },
+         //Random default events
+
+         events    : tab_events
         });
 
         /* ADDING EVENTS */
@@ -396,6 +460,15 @@
 
          //   var selectionner=$('#calendar').fullCalendar('clientEvents');
             var events = $('#calendar').fullCalendar('clientEvents');
+console.log(events);
+            var conges = new Array();
+            function Conges (numero,startDate,EndDate,backgroundColor,nb_days) {
+                this.numero=numero;
+                this.startDate = startDate;
+                this.EndDate = EndDate;
+                this.backgroundColor=backgroundColor;
+                this.nb_days=nb_days;
+            }
             for (var i = 0; i < events.length; i++) {
                 var start_date = new Date(events[i].start._d);
                 var end_date = '';
@@ -403,6 +476,7 @@
                     end_date = new Date(events[i].end._d);
                 }
                 var title = events[i].title;
+
 
                 var st_day = start_date.getDate();
                 var st_monthIndex = start_date.getMonth() + 1;
@@ -416,10 +490,40 @@
                     en_monthIndex = end_date.getMonth()+1;
                     en_year = end_date.getFullYear();
                 }
+                if(end_date!=''){
+                    diff  = new Date(end_date - start_date);
+                    days  = diff/1000/60/60/24;
+
+                }else{
+                    days=1;
+                }
+
+
+                if(en_year=='' && en_monthIndex== '' && en_day==''){
+                    conges[i]= new Conges(parseInt(events[i].title),st_year + '-' + st_monthIndex + '-' + st_day, '',events[i].backgroundColor,days);
+                }else{
+                    conges[i]= new Conges(parseInt(events[i].title),st_year + '-' + st_monthIndex + '-' + st_day, en_year + '-' + en_monthIndex + '-' + en_day,events[i].backgroundColor,days);
+                }
+
 
 
                 console.log('Title-'+title+', start Date-' + st_year + '-' + st_monthIndex + '-' + st_day + ' , End Date-' + en_year + '-' + en_monthIndex + '-' + en_day);
             }
+            console.log('conges_save/'+JSON.stringify(conges));
+
+if (confirm('Voulez vous enregistrer les modification?')){
+    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+    var variconges=JSON.stringify(conges);
+
+    $.post('conges_save',{variconges:variconges,_token:"{{csrf_token()}}"},function (data){
+        console.log(data);
+        if(data=='ok'){
+
+            alert('Calendrier des congés mis à jours');
+        }
+
+    });
+}
 
         });
     })

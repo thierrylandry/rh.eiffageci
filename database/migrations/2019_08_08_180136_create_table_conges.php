@@ -15,7 +15,12 @@ class CreateTableConges extends Migration
     {
         Schema::create('conges', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('jour_conges')->nullable();
+            $table->string('title')->nullable();
+            $table->date('startDate')->nullable();
+            $table->date('EndDate')->nullable();
+            $table->string('backgroundColor')->nullable();
+            $table->unsignedBigInteger('id_personne')->nullable();
+            $table->foreign('id_personne')->references('id')->on('personne');
             $table->timestamps();
         });
     }

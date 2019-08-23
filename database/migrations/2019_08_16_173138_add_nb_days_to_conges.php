@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdPersonneToConges extends Migration
+class AddNbDaysToConges extends Migration
 {
     /**
      * Run the migrations.
@@ -15,12 +15,7 @@ class AddIdPersonneToConges extends Migration
     {
         Schema::table('conges', function (Blueprint $table) {
             //
-            if (!Schema::hasColumn('conges', 'id_personne')){
-                $table->unsignedBigInteger('id_personne');
-
-                $table->foreign('id_personne')->references('id')->on('personne');
-            }
-
+            $table->integer('nb_days')->nullable();
         });
     }
 
@@ -33,7 +28,7 @@ class AddIdPersonneToConges extends Migration
     {
         Schema::table('conges', function (Blueprint $table) {
             //
-            $table->removeColumn('id_personne');
+            $table->removeColumn('nb_days');
         });
     }
 }

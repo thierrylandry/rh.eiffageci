@@ -365,12 +365,12 @@ Route::post('/modifier_user',[
 Route::get('/conges',[
     'as'=>'conges',
     'uses'=>'CongerController@conges',
-    'roles' => ['Parametrage']
+    'roles' => ['Conges']
 ])->middleware('auth')->middleware('roles');
 
 Route::post('/conges_save',[
     'as'=>'conges_save',
     'uses'=>'CongerController@conges_save',
-    'roles' => ['Parametrage']
+    'roles' => ['Conges']
 ])->middleware('auth')->middleware('roles');
 

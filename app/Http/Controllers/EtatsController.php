@@ -23,7 +23,7 @@ $repertoires= Liste_telephonique::all();
 
 
     public function mailfin_contrat(){
-        //$contrats= Fin_contrat::all();
+        $contrats= Fin_contrat::all();
 
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";

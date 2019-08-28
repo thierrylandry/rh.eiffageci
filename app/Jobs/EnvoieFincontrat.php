@@ -35,7 +35,7 @@ class EnvoieFincontrat implements ShouldQueue
         //
         $contact=$this->contact;
         $contrats=$this->contrats;
-        Mail::send('mail/mailfincontrat',compact('images','contrats'),function($message)use ($contact,$contrats )
+        Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact )
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");

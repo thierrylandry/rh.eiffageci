@@ -300,6 +300,10 @@ Route::get('/fin_contrat',[
     'uses'=>'EtatsController@fin_contrat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::get('/mailfin_contrat',[
+    'as'=>'mailfin_contrat',
+    'uses'=>'EtatsController@mailfin_contrat',
+]);
  //parametre création des utilisateurs
 Route::get('/utilisateur',[
     'as'=>'utilisateur',
@@ -374,4 +378,28 @@ Route::post('/conges_save',[
     'uses'=>'CongerController@conges_save',
     'roles' => ['Conges']
 ])->middleware('auth')->middleware('roles');
+
+Route::get('/avantages',[
+    'as'=>'avantages',
+    'uses'=>'AvantagesController@avantages',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/gestionmateriel',[
+    'as'=>'gestionmateriel',
+    'uses'=>'AvantagesController@gestionmateriel',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+
+Route::post('/save_materiel',[
+    'as'=>'save_materiel',
+    'uses'=>'AvantagesController@save_materiel',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/updateMateriel/{id}',[
+    'as'=>'updateMateriel',
+    'uses'=>'AvantagesController@updateMateriel',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+
+
 

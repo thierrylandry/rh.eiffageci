@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Mail;
 class EnvoieFincontrat implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $contact,$contrats;
+    private $contact=[];
+    private $contrats=[];
     /**
      * Create a new job instance.
      *

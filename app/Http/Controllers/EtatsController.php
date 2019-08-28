@@ -27,7 +27,7 @@ $repertoires= Liste_telephonique::all();
 
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
-        //$this->dispatch(new EnvoieFincontrat($contact,$contrats) );
+        $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
 
         //return view('mail/mailfincontrat',compact('contrats'));
     }

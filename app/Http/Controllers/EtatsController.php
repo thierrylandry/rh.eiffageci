@@ -24,7 +24,7 @@ $repertoires= Liste_telephonique::all();
 
     public function mailfin_contrat(){
         $contrats= Fin_contrat::all();
-
+dd($contrats);
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
         $this->dispatch(new EnvoieFincontrat($contact,$contrats) );

@@ -27,15 +27,8 @@ $repertoires= Liste_telephonique::all();
         $contrats= Fin_contrat::all();
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
-      //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
-        Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact )
-        {
-            $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");
-            foreach($contact as $em):
-                $message ->to($em);
-            endforeach;
-        });
+        $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
+
         //return view('mail/mailfincontrat',compact('contrats'));
     }
 }

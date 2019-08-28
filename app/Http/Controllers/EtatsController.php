@@ -6,6 +6,7 @@ use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EtatsController extends Controller
 {

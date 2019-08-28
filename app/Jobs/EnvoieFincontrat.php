@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Fin_contrat;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,8 +23,8 @@ class EnvoieFincontrat implements ShouldQueue
     public function __construct($contact,$contrats)
     {
         //
+        $this->contrats=Fin_contrat::all();
         $this->contact=$contact;
-        $this->contrats=$contrats;
     }
 
     /**

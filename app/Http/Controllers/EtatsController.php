@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class EtatsController extends Controller
@@ -24,7 +26,19 @@ $repertoires= Liste_telephonique::all();
 
 
     public function mailfin_contrat(){
+
+
         $contrats= Fin_contrat::all();
+        $users = User::all();
+
+        foreach($users as $user):
+
+            if($user->hasRole('Personnes')){
+                $contact[]=$user->email;
+            }
+
+            endforeach;
+        dd($contact);
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
       //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );

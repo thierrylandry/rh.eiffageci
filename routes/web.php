@@ -400,6 +400,11 @@ Route::get('/updateMateriel/{id}',[
     'uses'=>'AvantagesController@updateMateriel',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
+Route::post('/modifier_equipement/',[
+    'as'=>'modifier_equipement',
+    'uses'=>'AvantagesController@modifier_equipement',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
 
 
 

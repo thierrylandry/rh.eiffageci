@@ -34,6 +34,7 @@ $repertoires= Liste_telephonique::all();
         foreach($users as $user):
 
             if($user->hasRole('Personnes')){
+                if($user->email!="admin@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" )
                 $contact[]=$user->email;
             }
 

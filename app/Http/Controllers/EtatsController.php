@@ -39,7 +39,7 @@ $repertoires= Liste_telephonique::all();
             }
 
             endforeach;
-        dd($contact);
+       // dd($contact);
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
       //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );

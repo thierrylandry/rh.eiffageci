@@ -201,6 +201,12 @@
                         <i class="fas fa-calendar-alt" ></i>CONGES</a>
                 </li>
                 @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
+                    <li class="@yield('avantages') @yield('') has-sub">
+                        <a class="js-arrow " href="{{route('avantages')}}" target="_self">
+                            <i class="fas fa-box"></i>AVANTAGES</a>
+                    </li>
+                @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Sanctions'))
                 <li class="@yield('') @yield('') has-sub">
                     <a class="js-arrow " href="">

@@ -21,12 +21,7 @@ Route::get('erreur', [
     'uses'=>'erreurController@erreur'
 
 ]);
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/printview',[
-    'as'=>'printview',
-    'uses'=>'HomeController@printview',
-    'roles' => ['Parametrage']
-])->middleware('auth')->middleware('roles');
+
 
 Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
@@ -403,6 +398,11 @@ Route::get('/updateMateriel/{id}',[
 Route::post('/modifier_equipement/',[
     'as'=>'modifier_equipement',
     'uses'=>'AvantagesController@modifier_equipement',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_equipement/{id}',[
+    'as'=>'supprimer_equipement',
+    'uses'=>'AvantagesController@supprimer_equipement',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 

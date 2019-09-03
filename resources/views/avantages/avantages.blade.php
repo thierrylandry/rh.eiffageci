@@ -115,7 +115,7 @@
                                 <td>{{$avantage->equipement->type_equipement->libelleCode}} :{{$avantage->equipement->code}}</td>
                                 <td>{{$avantage->dateDotation}}</td>
                                 <td>{{$avantage->retour}}</td>
-                                <td> <a class="btn btn-primary retourner" href="#" data-toggle="modal" data-target="#smallmodal"><i class="fas fa-history"></i> Retourner</a><a onclick="" class="btn btn-danger" href="{{route('supprimer_equipement',['id'=>$equipement->id])}}"><i class="fas fa-trash"></i></a></td>
+                                <td> <a class="btn btn-primary retourner" href="#" data-toggle="modal" data-target="#smallmodal"><i class="fas fa-history"></i> Retourner</a><a onclick="" class="btn btn-danger" href="{{route('supprimer_equipement',['id'=>$avantage->id])}}"><i class="fas fa-trash"></i></a></td>
                                 </tr>
                                 @endforeach
                     </tbody>

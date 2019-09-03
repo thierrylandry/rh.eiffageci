@@ -19,6 +19,8 @@ class CreateTableAvantages extends Migration
             $table->date('retour')->nullable();
             $table->unsignedBigInteger('id_equippements')->nullable();
             $table->foreign('id_equippements')->references('id')->on('equippements');
+            $table->unsignedBigInteger('id_personne')->nullable();
+            $table->foreign('id_personne')->references('id')->on('personne');
             $table->timestamps();
         });
     }

@@ -390,14 +390,34 @@ Route::post('/save_materiel',[
     'uses'=>'AvantagesController@save_materiel',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
+Route::post('/save_avantage',[
+    'as'=>'save_avantage',
+    'uses'=>'AvantagesController@save_avantage',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
 Route::get('/updateMateriel/{id}',[
     'as'=>'updateMateriel',
     'uses'=>'AvantagesController@updateMateriel',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
+Route::get('/updateAvantage/{id}',[
+    'as'=>'updateAvantage',
+    'uses'=>'AvantagesController@updateAvantage',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
 Route::post('/modifier_equipement/',[
     'as'=>'modifier_equipement',
     'uses'=>'AvantagesController@modifier_equipement',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/modifier_avantage/',[
+    'as'=>'modifier_avantage',
+    'uses'=>'AvantagesController@modifier_avantage',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/retourner_avantage/',[
+    'as'=>'retourner_avantage',
+    'uses'=>'AvantagesController@retourner_avantage',
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_equipement/{id}',[
@@ -406,5 +426,10 @@ Route::get('/supprimer_equipement/{id}',[
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/historique_passages/{id}',[
+    'as'=>'historique_passages',
+    'uses'=>'AvantagesController@historique_passages',
+    'roles' => ['Parametrage']
 
+])->middleware('auth');
 

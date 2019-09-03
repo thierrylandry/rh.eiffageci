@@ -276,7 +276,7 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="fonction" id="fonction" required class="form-control" required>
-                                  <option vzlue="">SELECTIONNER</option>
+                                  <option value="">SELECTIONNER</option>
                                   @foreach($fonctions as $fonction)
 
                                       <option value="{{$fonction->id}}"> {{$fonction->libelle}}</option>

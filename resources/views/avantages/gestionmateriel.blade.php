@@ -104,11 +104,12 @@
                 <table class="table table-borderles" id="table_employe">
                     <thead>
                     <tr >
+                        <th>id</th>
                         <th>IMAGE</th>
                         <th>TYPE EQUIPEMENT</th>
                          <th>CODE</th>
                          <th>TYPE PC</th>
-                        <th>SACCOCHE</th>
+                        <th>SACOCHE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -116,12 +117,13 @@
 
                                     @foreach($equipements as $equipement)
                                         <tr style="{{ $equipement->etat==0?'background-color: grey; color: white;':''}}">
+                                            <td>{{$equipement->id}}</td>
                                         <td> <img src="{{Storage::url('app/images/'.$equipement->type_equipement->image)}}" width="30px;" height="30px;"/> </td>
                                     <td>{{$equipement->type_equipement->libelle}}</td>
                                           <td>{{$equipement->code}}</td>
                                         <td>{{$equipement->TypePC}}</td>
                                         <td>@if($equipement->saccoche==1)AVEC @else SANS @endif</td>
-                                        <td style="text-align: center;"> <a class="btn btn-primary" href="#"><i class="fas fa-history"></i> Historique</a><a class="btn btn-info" href="{{route('updateMateriel',['id'=>$equipement->id])}}"><i class="fas fa-edit"></i> Modifier</a><a onclick="" class="btn btn-danger" href="{{route('supprimer_equipement',['id'=>$equipement->id])}}"><i class="fas fa-trash"></i></a> </td>
+                                        <td style="text-align: center;"> <a class="btn btn-primary btn_historique"  href="#" data-toggle="modal" data-target="#modalhistorique"><i class="fas fa-history"></i> Historique</a> @if($equipement->etat==1)<a class="btn btn-info" href="{{route('updateMateriel',['id'=>$equipement->id])}}"><i class="fas fa-edit"></i> Modifier</a><a onclick="" class="btn btn-danger" href="{{route('supprimer_equipement',['id'=>$equipement->id])}}"><i class="fas fa-trash"></i></a> @endif </td>
                                         </tr>
                                     @endforeach
 
@@ -193,11 +195,60 @@
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
         });
+
+
     </script>
     <script>
 
         $(document).ready(function() {
             var table= $('#table_employe').DataTable({
+                "order": [[ 0, "desc" ]],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                language: {
+                    url: "{{ asset('public/js/French.json')}}"
+                },
+
+                "ordering":true,
+                "responsive": true,
+                "paging": false,
+                "createdRow": function( row, data, dataIndex){
+
+                },
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 }
+                ]
+            }).column(0).visible(false);
+
+            $(".btn_historique").click(function (){
+                var data = table.row($(this).parents('tr')).data();
+                //  var id_bc= $("#id_bc").val();
+                console.log(data);
+                table1.clear().draw();
+                $.get('historique_passages/'+data[0],function(tab,status){
+                    console.log(tab);
+                 //   table1
+                    $.each(tab, function( indexi, value ) {
+                        table1.row.add( [
+                            value.matricule,
+                            value.nom,
+                            value.prenom,
+                            value.dateDotation,
+                            value.retour,
+                        ] ).draw( false );
+
+
+                    });
+                });
+
+
+
+
+            });
+            var table1= $('#table_historique').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [

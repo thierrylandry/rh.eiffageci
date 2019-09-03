@@ -215,8 +215,8 @@
                                 <label for="text-input" class=" form-control-label">Fonction  </label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select name="fonction" id="fonction" required class="form-control" required>
-                                    <option vzlue="">SELECTIONNER</option>
+                                <select name="fonction" id="fonction" class="form-control" required>
+                                    <option value="">SELECTIONNER</option>
                                     @foreach($fonctions as $fonction)
 
                                         <option value="{{$fonction->id}}" {{$fonction->id==$personne->fonction?'selected':''}}> {{$fonction->libelle}}</option>

@@ -41,6 +41,63 @@
 </head>
 
 <body class="animsition" >
+<!-- modal small -->
+<div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallmodalLabel">Préciser la date de retour</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('retourner_avantage')}}" method="post">
+                @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="text-input" class=" form-control-label"></label>
+                    <input type="hidden" id="id_avantages" name="id" />
+                    <input class="form-control" name="retour" id="retour" type="date" value="{{date('Y-m-d')}}"required />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- modal small -->
+<div class="modal fade" id="modalhistorique" tabindex="-1" role="dialog" aria-labelledby="modalhistoriqueLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalhistoriqueLabel">Historique</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <table id="table_historique">
+                <thead>
+                <tr>
+                    <td>Matricule</td>
+                    <td>Nom</td>
+                    <td>Prenom</td>
+                    <td>Date d'attribution</td>
+                    <td>Date retour</td>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
     <div class="page-wrapper">
     @include('layouts.nav')
         <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}" class="logo_eiffage" style="display: none">

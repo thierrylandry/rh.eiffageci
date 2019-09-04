@@ -58,8 +58,8 @@
                                 <label for="text-input" class=" form-control-label">Type PC</label>
                                 <select name="TypePC" id="TypePC" required class="form-control">
                                     <option value="" {{isset($equipement) &&$equipement->TypePC==''?'selected':''}}>choisir</option>
-                                    <option value="Portable" {{isset($equipement) &&$equipement->TypePC=='Portable'?'selected':''}}>Portable</option>
-                                    <option value="Bureau" {{isset($equipement) &&$equipement->TypePC=='Bureau'?'selected':''}}>Bureau</option>
+                                    <option value="Portable" {{isset($equipement) &&$equipement->TypePC=='LAPTOP'?'selected':''}}>LAPTOP</option>
+                                    <option value="Bureau" {{isset($equipement) &&$equipement->TypePC=='DESKTOP'?'selected':''}}>DESKTOP</option>
                                 </select>
                             </div>
                             <div class="col col-md-3">

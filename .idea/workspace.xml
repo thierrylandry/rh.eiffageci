@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="afficher le matricule et trier par ordre décroissant">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/defaut.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/domino.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ecran.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ordinateur.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/puce.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/station.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/uc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/vehicule.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rh.eiffageci.iws" />
@@ -673,14 +680,7 @@
       <workItem from="1567416054397" duration="23227000" />
       <workItem from="1567500749700" duration="17567000" />
       <workItem from="1567588115822" duration="1197000" />
-      <workItem from="1567595678601" duration="2078000" />
-    </task>
-    <task id="LOCAL-00164" summary="afficher le matricule et trier par ordre décroissant">
-      <created>1565113505261</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1565113505261</updated>
+      <workItem from="1567595678601" duration="2274000" />
     </task>
     <task id="LOCAL-00165" summary="afficher le matricule et trier par ordre décroissant">
       <created>1565280590069</created>
@@ -1018,11 +1018,18 @@
       <option name="project" value="LOCAL" />
       <updated>1567597013358</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="afficher le matricule et trier par ordre décroissant">
+      <created>1567598044608</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1567598044608</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1094223000" />
+    <option name="totallyTimeSpent" value="1094419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

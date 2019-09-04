@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - rh_eiffage@localhost [2]" uuid="0f819e7c-de3e-45ca-ae82-18f11d127f33">
+    <data-source source="LOCAL" name="MySQL - rh_eiffage@172.20.73.3" uuid="39b43144-09b7-4175-a307-06dec00b2804">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/rh_eiffage</jdbc-url>
+      <jdbc-url>jdbc:mysql://172.20.73.3:3306/rh_eiffage</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,11 +15,11 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="MySQL - rh_eiffage@172.20.73.3" uuid="39b43144-09b7-4175-a307-06dec00b2804">
+    <data-source source="LOCAL" name="MySQL - rh_eiffage@localhost" uuid="2b3d9b48-8c1c-46e8-bdfc-6459a5db2980">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://172.20.73.3:3306/rh_eiffage</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/rh_eiffage</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

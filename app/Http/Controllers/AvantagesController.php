@@ -122,6 +122,19 @@ class AvantagesController extends Controller
 
         return redirect()->back()->with('success',"L'équipement a été supprimé  avec succès");
     }
+    public function supprimer_avantage($id){
+        $avantage = Avantages::find($id);
+
+        if($avantage->retour=!null){
+            $equipement= Equipement::find($avantage->id_equippements);
+            $equipement->etat=1;
+            $equipement->save();
+        }
+        $avantage->delete();
+
+
+        return redirect()->back()->with('success',"L'avantages a été supprimé  avec succès");
+    }
     public function historique_passages($id){
         $avantages = Avantages::where('id_equippements','=',$id)
                                 ->join('personne','avantages.id_personne','=','personne.id')->get();

@@ -426,6 +426,12 @@ Route::get('/supprimer_equipement/{id}',[
     'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/supprimer_avantage/{id}',[
+    'as'=>'supprimer_avantage',
+    'uses'=>'AvantagesController@supprimer_avantage',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+
 Route::get('/historique_passages/{id}',[
     'as'=>'historique_passages',
     'uses'=>'AvantagesController@historique_passages',

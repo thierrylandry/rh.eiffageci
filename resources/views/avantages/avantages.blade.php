@@ -111,8 +111,8 @@
                                 <td>{{$avantage->id}}</td>
                                 <td>{{$avantage->personne->matricule}}</td>
                                 <td>{{$avantage->personne->nom}} {{$avantage->personne->prenom}}</td>
-                                <td>{{$avantage->equipement->type_equipement->libelle}}</td>
-                                <td>{{$avantage->equipement->type_equipement->libelleCode}} :{{$avantage->equipement->code}}</td>
+                                <td>{{isset($avantage->equipement)?$avantage->equipement->type_equipement->libelle:''}}</td>
+                                <td>@if(isset($avantages->equipement)){{$avantage->equipement->type_equipement->libelleCode}} :{{$avantage->equipement->code}} @endif </td>
                                 <td>{{$avantage->dateDotation}}</td>
                                 <td>{{$avantage->retour}}</td>
                                 <td> <a class="btn btn-primary retourner" href="#" data-toggle="modal" data-target="#smallmodal"><i class="fas fa-history"></i> Retourner</a><a onclick="" class="btn btn-danger" href="{{route('supprimer_equipement',['id'=>$avantage->id])}}"><i class="fas fa-trash"></i></a></td>

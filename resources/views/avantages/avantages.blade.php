@@ -6,7 +6,38 @@
     style="display: block;"
 @endsection
 @section('page')
+    <div class="row">
+    @foreach($nb_equipement as $nbequi)
+    <div class="col-md-2">
+        <div class="card">
 
+            <div class="card-body">
+                <div class="mx-auto d-block">
+                    <img class="rounded-circle mx-auto d-block" src="{{Storage::url('app/images/'.strtolower($nbequi->libelle).'.png')}}" alt="Card image cap" style="width: 100px;height: 100px;">
+                    <h5 class="text-sm-center mt-2 mb-1">{{$nbequi->libelle}}</h5>
+                    <div class="location text-sm-center">
+
+
+                        @if(!is_null($nbequi->nb) && $nbequi->nb!=0 )
+                        <i class="fa fa-check-circle"></i>@foreach($equipement_dispo as $dispo)
+
+                                                            @if($dispo->libelle==$nbequi->libelle)
+                                    Stock disponible: {{is_null($dispo->nb) ?0:$dispo->nb}}
+                                                                @endif
+
+
+                    @endforeach
+                            /  {{ is_null($nbequi->nb)? 0:$nbequi->nb}}
+
+                            @else
+                            Stock indisponible
+                    @endif</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">

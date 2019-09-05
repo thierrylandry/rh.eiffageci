@@ -23,7 +23,11 @@ class AvantagesController extends Controller
        // dd($employes);
         $avantages= Avantages::orderBy('created_at','DESC')->get();
       // dd($avantages[0]->equipement->);
-        return view('avantages/avantages',compact('equipements','employes','avantages'));
+
+$nb_equipement= DB::table('nb_equipement')->get();
+$equipement_dispo= DB::table('equipement_dispo')->get();
+      //  dd($nb_equipement);
+        return view('avantages/avantages',compact('equipements','employes','avantages','equipement_dispo','nb_equipement'));
     }
 
     public function save_avantage(Request $request){

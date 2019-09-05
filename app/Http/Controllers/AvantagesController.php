@@ -118,6 +118,8 @@ $equipement_dispo= DB::table('equipement_dispo')->get();
             ->orWhere('entite','=',2)->get();
         // dd($employes);
         $avantages= Avantages::orderBy('created_at','DESC')->get();
+        $nb_equipement= DB::table('nb_equipement')->get();
+        $equipement_dispo= DB::table('equipement_dispo')->get();
         return view('avantages/avantages',compact('equipements','employes','avantages','avantage'));
     }
     public function supprimer_equipement($id){

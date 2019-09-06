@@ -17,20 +17,28 @@
                     <h5 class="text-sm-center mt-2 mb-1">{{$nbequi->libelle}}</h5>
                     <div class="location text-sm-center">
 
+                        @if(is_null($nbequi->nb) || $nbequi->nb==0 )
+                            Stock indisponible
 
-                        @if(!is_null($nbequi->nb) && $nbequi->nb!=0 )
-                        <i class="fa fa-check-circle"></i>@foreach($equipement_dispo as $dispo)
+                            @else
+                        <i class="fa fa-check-circle"></i>
+
+
+                            @foreach($equipement_dispo as $dispo)
 
                                                             @if($dispo->libelle==$nbequi->libelle)
-                                    Stock disponible: {{is_null($dispo->nb) ?0:$dispo->nb}}
+
+
+                           
+
+                                      {{is_null($dispo->nb) ?0:$dispo->nb}}  disponible sur  {{ is_null($nbequi->nb)? 0:$nbequi->nb}}
+
+
                                                                 @endif
 
 
-                    @endforeach
-                            /  {{ is_null($nbequi->nb)? 0:$nbequi->nb}}
+                             @endforeach
 
-                            @else
-                            Stock indisponible
                     @endif</div>
                 </div>
             </div>

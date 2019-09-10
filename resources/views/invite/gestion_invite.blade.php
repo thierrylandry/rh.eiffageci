@@ -156,10 +156,55 @@
                 //   table.row('.selected').remove().draw( false );
                 if(confirm("Voulez vous supprimer liinvité? Attention la suppression de l'inviter entrainera la suppression en cascade de tout ses passages")){}else{e.preventDefault(); e.returnValue = false; return false; }
             } );
+            var date =new Date();
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    {
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [ 0,1, 2,3,4,5 ]
+                        },
+                        text:"Copier",
+                        filename: "Liste des invités du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        className: 'btn btn-primary btn-sm m-5 width-140 assets-select-btn toolbox-delete-selected',
+                        messageTop: "Liste des invités du  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [ 0,1, 2,3,4,5]
+                        },
+                        text:"Excel",
+                        filename: "Liste des invités du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        className: 'btn btn-primary btn-sm m-5 width-140 assets-select-btn toolbox-delete-selected',
+                        messageTop: "Liste des invités du  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [ 0,1, 2,3,4,5 ]
+                        },
+                        text:"PDF",
+                        filename: "Liste des invités du  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        className: 'btn btn-primary btn-sm m-5 width-140 assets-select-btn toolbox-delete-selected',
+                        messageTop: "Liste des invités du  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0,1, 2,3,4,5 ]
+                        },
+                        text:"Imprimer",
+                        filename: "Liste des invités du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        className: 'btn btn-primary btn-sm m-5 width-140 assets-select-btn toolbox-delete-selected',
+                        messageTop: "Liste des invités du  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+                    }
                 ],
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
@@ -168,6 +213,7 @@
                 "ordering":true,
                 "responsive": true,
                 "paging": false,
+
                 "createdRow": function( row, data, dataIndex){
 
                 },

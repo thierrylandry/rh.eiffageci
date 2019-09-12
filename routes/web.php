@@ -237,6 +237,12 @@ Route::get('/repertoire',[
     'uses'=>'EtatsController@repertoire',
     'roles' => ['Etats']
 ])->middleware('auth')->middleware('roles');
+
+Route::get('/expatrie',[
+    'as'=>'expatrie',
+    'uses'=>'EtatsController@expatrie',
+    'roles' => ['Etats']
+])->middleware('auth')->middleware('roles');
 //invite
 
 Route::get('/invite',[

@@ -224,6 +224,9 @@
                         <li class="@yield('fin_contrat')">
                             <a href="{{route('fin_contrat')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat</a>
                         </li>
+                        <li class="@yield('expatrie')">
+                            <a href="{{route('expatrie')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Expatriés et invités present</a>
+                        </li>
 
                     </ul>
                 </li>

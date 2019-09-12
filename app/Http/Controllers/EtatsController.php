@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
+use App\Personne;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class EtatsController extends Controller
@@ -22,6 +24,20 @@ $repertoires= Liste_telephonique::all();
         $contrats= Fin_contrat::all();
 
         return view('etats/fin_contrat',compact('contrats'));
+    }
+
+    public function expatrie(){
+        $contrats= Fin_contrat::all();
+
+      $expatries= DB::table('expatrie')->get();
+       // dd($expatries);
+      //  dd($personnes);
+
+        $invites_presents= DB::table('invite')
+            ->join('passage', 'invite.id','=','passage.id_invite')
+            ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
+      //  dd($expatries);
+        return view('etats/expatrie',compact('expatries','invites_presents'));
     }
 
 

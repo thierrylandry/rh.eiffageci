@@ -67,8 +67,7 @@
                         <tr class="tr-shadow">
                             <td>{{$expatrie->nom}}</td>
                             <td>{{$expatrie->prenom}}</td>
-                            <td>{{$expatrie->surete}}</td>
-                          
+                            <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
                         </tr>
                     @endforeach
                     </tbody>

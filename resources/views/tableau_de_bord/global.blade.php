@@ -33,13 +33,19 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($effectifglobaux as $res)
                             <tr class="tr-shadow">
                                 <td>
                                 {{$res->name}}</td>
-                                <td>{{$res->y}}</td>
+                                <td>{{$res->y }}</td>
                             </tr>
+                            <?php $somme += $res->y ?>
                                 @endforeach
+                            <tr class="tr-shadow">
+                                <td> ToTal</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -43,7 +43,7 @@
                             <?php $somme += $res->y ?>
                                 @endforeach
                             <tr class="tr-shadow">
-                                <td> ToTal</td>
+                                <td> Total</td>
                                 <td>{{$somme }}</td>
                             </tr>
                             </tbody>

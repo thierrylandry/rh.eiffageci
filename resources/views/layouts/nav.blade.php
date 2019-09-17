@@ -207,6 +207,12 @@
                             <i class="fas fa-box"></i>AVANTAGES</a>
                     </li>
                 @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
+                    <li class="@yield('epi') @yield('') has-sub">
+                        <a class="js-arrow " href="{{route('gestion_epi')}}" target="_self">
+                            <i class="fas fa-shield-alt"></i>GESTION DES EPI</a>
+                    </li>
+                @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Sanctions'))
                 <li class="@yield('') @yield('') has-sub">
                     <a class="js-arrow " href="">

@@ -445,3 +445,10 @@ Route::get('/historique_passages/{id}',[
 
 ])->middleware('auth');
 
+//gestion des epi
+Route::get('/gestion_epi',[
+    'as'=>'gestion_epi',
+    'uses'=>'EpiController@gestion_epi',
+    'roles' => ['Parametrage']
+
+])->middleware('auth');

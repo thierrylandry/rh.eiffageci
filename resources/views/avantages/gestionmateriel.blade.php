@@ -180,6 +180,41 @@
             }
         }
 
+        function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    console.log(input.files[0]);
+                    console.log(input.files[0].type);
+                    if(input.files[0].type=="image/jpeg" || input.files[0].type=="image/png" ){
+                        if(input.files[0].size<=1000024){
+
+                            console.log('cool');
+                            $('#rendu_img').attr('src', e.target.result);
+                        }else{
+                            alert('trop volumineux');
+
+                            input.value='';
+                            $('#rendu_img').attr('src','images/user.png');
+                        }
+                    }else{
+                        alert('le ficher doit être de type jpeg ou png exclusivement');
+
+                        input.value='';
+                        $('#rendu_img').attr('src','{{Storage::url('app/images/defaut.png')}}');
+                    }
+
+
+                }
+
+                reader.readAsDataURL(input.files[0]);
+
+            }else{
+                $('#rendu_img').attr('src','images/user.png');
+            }
+        }
+
         $("#id_type_equipement").change(function() {
 
             var valeur=$('#id_type_equipement :selected').html();

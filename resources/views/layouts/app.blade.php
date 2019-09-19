@@ -103,27 +103,48 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalhistoriqueLabel">Historique</h5>
+                <h5 class="modal-title" id="modalhistoriqueLabel">Fiche equipement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form method="post" action="{{route(isset($avantage)?'modifier_avantage':'save_epi')}}" enctype="multipart/form-data" >
+        <div class="modal-content">
 
-            <table id="table_historique">
-                <thead>
-                <tr>
-                    <td>Matricule</td>
-                    <td>Nom</td>
-                    <td>Prenom</td>
-                    <td>Date d'attribution</td>
-                    <td>Date retour</td>
-                </tr>
-                </thead>
-                <tbody>
+        <div class="row">
+            @csrf
 
-                </tbody>
-            </table>
+            <input type="hidden" id="id" name="id" value="{{isset($avantage)?$avantage->id:''}}" />
+            <div class="col-sm-3">
+                <div class="form-group"  >
+                    <img src="{{Storage::url(isset($equipement)?'app/images/'.strtolower($equipement->libelle).'.png':'app/images/defaut.png')}}" id="rendu_img1"style=";height: 200px;" class="fa fa-user"/>
+                </div>
 
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label for="text-input" class=" form-control-label">Libelle</label>
+                    <input name="libelleequipement" required class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="text-input" class=" form-control-label">Quantite</label>
+                    <input name="qte_equipement" type="number" min="1" required class="form-control" />
+                </div>
+                <div>
+                    <input type="file" class="form-control" id="photo" name="photo_equipement"/>
+                </div>
+
+            </div>
+
+        </div>
+
+        </div>
+          <div class="modal-footer">
+              </br>
+              <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                  Enregistrer</button>
+          </div>
+        </form>
         </div>
     </div>
 </div>

@@ -17,6 +17,7 @@ class CreateTableEquipementSecurite extends Migration
             $table->bigIncrements('id');
             $table->string('libelle')->nullable();
             $table->string('image')->nullable();
+            $table->integer('qte')->nullable();
             $table->timestamps();
         });
     }

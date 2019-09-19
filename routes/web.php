@@ -452,3 +452,10 @@ Route::get('/gestion_epi',[
     'roles' => ['Parametrage']
 
 ])->middleware('auth');
+//gestion des epi
+Route::post('/save_epi',[
+    'as'=>'save_epi',
+    'uses'=>'EpiController@save_epi',
+    'roles' => ['Parametrage']
+
+])->middleware('auth');

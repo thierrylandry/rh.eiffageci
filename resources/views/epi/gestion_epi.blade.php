@@ -40,11 +40,34 @@
                     <tr>
                         <th>id</th>
                         <th class="">image</th>
+                        <th class="">Libelle</th>
                         <th>Quantite</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($equipements as $equipement)
+
+                        <tr>
+                            <td>
+                                {{$equipement->id}}
+                            </td>
+                            <td>
+                               <img  src="{{Storage::url('app/images/'.$equipement->image)}}" width="100px" height="100px"/>
+                            </td>
+                            <td>
+                                {{$equipement->libelle}}
+                            </td>
+                            <td>
+                                {{$equipement->qte}}
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-info">Approvisionner</a>
+                                <a href="" class="btn btn-info">Attribution</a>
+                                <a href="" class="btn btn-error">Suppression</a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -69,12 +92,12 @@
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#rendu_img').attr('src', e.target.result);
+                    $('#rendu_img1').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }else{
-                $('#rendu_img').attr('src','images/user.png');
+                $('#rendu_img1').attr('src','images/user.png');
             }
         }
 

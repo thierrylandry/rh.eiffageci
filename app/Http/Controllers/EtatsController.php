@@ -35,8 +35,7 @@ $repertoires= Liste_telephonique::all();
 
         $invites_presents= DB::table('invite')
             ->join('passage', 'invite.id','=','passage.id_invite')
-            ->where('dateDepart','>=',DB::raw('CURDATE()'))
-            ->where('dateArrive','<=',DB::raw('CURDATE()'))->get();
+            ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
       //  dd($expatries);
         return view('etats/expatrie',compact('expatries','invites_presents'));
     }

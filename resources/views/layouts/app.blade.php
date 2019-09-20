@@ -117,7 +117,7 @@
             <input type="hidden" id="id" name="id" value="{{isset($avantage)?$avantage->id:''}}" />
             <div class="col-sm-3">
                 <div class="form-group"  >
-                    <img src="{{Storage::url(isset($equipement)?'app/images/'.strtolower($equipement->libelle).'.png':'app/images/defaut.png')}}" id="rendu_img1"style=";height: 200px;" class="fa fa-user"/>
+                    <img src="{{Storage::url('app/images/defaut.png')}}" id="rendu_img1"style=";height: 200px;" class="fa fa-user"/>
                 </div>
 
             </div>

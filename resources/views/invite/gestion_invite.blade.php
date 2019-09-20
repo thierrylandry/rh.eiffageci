@@ -79,7 +79,7 @@
                                 <label for="text-input" class=" form-control-label">Contact</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" value="{{isset($invite)?$invite->contact:''}}" required>
+                                <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" value="{{isset($invite)?$invite->contact:''}}">
                             </div>
                         </div>
                         <div class="row form-group">

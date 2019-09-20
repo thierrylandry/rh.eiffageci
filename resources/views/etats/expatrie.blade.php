@@ -82,6 +82,14 @@
                             @endif
 
                     @endforeach
+
+                    @foreach($invites_presents as $invites_present)
+                        <tr class="tr-shadow">
+                            <td>{{$invites_present->nom}}</td>
+                            <td>{{$invites_present->prenoms}}</td>
+                            <td>{{isset($invites_present->surete) && $invites_present->surete==1?'OUI':'NON'}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

@@ -71,10 +71,11 @@
                         </tr>
 
                         @if(isset($expatrie->familles))
+
                             @foreach(json_decode($expatrie->familles) as $familles)
                                 <tr class="tr-shadow">
-                                    <td>{{$familles->nom_prenom}}</td>
-                                    <td>{{$expatrie->nom_prenom}}</td>
+                                    <td>{{isset($familles->nom_prenom)?$familles->nom_prenom:''}} famille</td>
+                                    <td>{{isset($familles->nom_prenom)?$familles->nom_prenom:''}}</td>
                                     <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
                                 </tr>
                             @endforeach

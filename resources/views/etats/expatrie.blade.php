@@ -70,7 +70,7 @@
                             <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
                         </tr>
 
-                        @if(isset($expatrie->familles))
+                        @if(isset($expatrie->familles) && !empty($expatrie->familles))
 
                             @foreach(json_decode($expatrie->familles) as $familles)
                                 <tr class="tr-shadow">

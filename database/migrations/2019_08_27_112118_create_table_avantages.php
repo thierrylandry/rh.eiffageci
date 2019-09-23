@@ -13,16 +13,19 @@ class CreateTableAvantages extends Migration
      */
     public function up()
     {
-        Schema::create('avantages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->date('dateDotation')->nullable();
-            $table->date('retour')->nullable();
-            $table->unsignedBigInteger('id_equippements')->nullable();
-            $table->foreign('id_equippements')->references('id')->on('equippements');
-            $table->unsignedBigInteger('id_personne')->nullable();
-            $table->foreign('id_personne')->references('id')->on('personne');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('users')) {
+            Schema::create('avantages', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->date('dateDotation')->nullable();
+                $table->date('retour')->nullable();
+                $table->unsignedBigInteger('id_equippements')->nullable();
+                $table->foreign('id_equippements')->references('id')->on('equippements');
+                $table->unsignedBigInteger('id_personne')->nullable();
+                $table->foreign('id_personne')->references('id')->on('personne');
+                $table->timestamps();
+            });
+        }
+
     }
 
     /**

@@ -15,7 +15,11 @@ class AddEtatToEquipement extends Migration
     {
         Schema::table('equipements', function (Blueprint $table) {
             //
-            $table->integer('etat')->nullable()->default(1);
+            if (!Schema::hasColumn('equipements', 'email')) {
+                //
+                $table->integer('etat')->nullable()->default(1);
+            }
+
         });
     }
 

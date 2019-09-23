@@ -15,7 +15,10 @@ class AddAdresseToPersonne extends Migration
     {
         Schema::table('personne', function (Blueprint $table) {
             //
-            $table->string('adresse')->nullable();
+
+            if (!Schema::hasColumn('personne', 'adresse')) {
+                $table->string('adresse')->nullable();
+            }
             $table->string('whatsapp')->nullable();
             $table->string('sattelitaire')->nullable();
         });

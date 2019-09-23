@@ -10,41 +10,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">LISTE DES INVITES PRESENTS</h2>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- DATA TABLE -->
-
-            <div class="table-responsive table-responsive-data2">
-                <table class="table  table-earning" id="table_invite">
-                    <thead>
-                    <tr>
-                        <th>NOM</th>
-                        <th>PRENOMS</th>
-                        <th>SURETE</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($invites_presents as $invites_present)
-                        <tr class="tr-shadow">
-                            <td>{{$invites_present->nom}}</td>
-                            <td>{{$invites_present->prenoms}}</td>
-                            <td>{{isset($invites_present->surete) && $invites_present->surete==1?'OUI':'NON'}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <!-- END DATA TABLE -->
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="overview-wrap">
                 <h2 class="title-1">LISTE DES EXPATRIES</h2>
             </div>
         </div>

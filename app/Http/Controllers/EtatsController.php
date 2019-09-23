@@ -7,6 +7,7 @@ use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
 use App\Personne;
 use App\User;
+use Barryvdh\DomPDF\Facade as PDF;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,23 @@ $repertoires= Liste_telephonique::all();
             ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
       //  dd($expatries);
         return view('etats/expatrie',compact('expatries','invites_presents'));
+    }
+    public function expatriepdf(){
+        $contrats= Fin_contrat::all();
+
+      $expatries= DB::table('expatrie')->get();
+       // dd($expatries);
+      //  dd($personnes);
+
+        $invites_presents= DB::table('invite')
+            ->join('passage', 'invite.id','=','passage.id_invite')
+            ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
+      //  dd($expatries);
+        //return view('BC.bon-commande', compact('bc','ligne_bcs','tothtax'));
+        $pdf = PDF::loadView('etats.expatriepdf', compact('expatries','invites_presents'));
+
+        /*debut du traçages*/
+      return $pdf->download('Liste_des_expatrie°.pdf');
     }
 
 

@@ -53,17 +53,17 @@
             </div>
             <form action="{{route('retourner_avantage')}}" method="post">
                 @csrf
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="text-input" class=" form-control-label"></label>
-                    <input type="hidden" id="id_avantages" name="id" />
-                    <input class="form-control" name="retour" id="retour" type="date" value="{{date('Y-m-d')}}"required />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="text-input" class=" form-control-label"></label>
+                        <input type="hidden" id="id_avantages" name="id" />
+                        <input class="form-control" name="retour" id="retour" type="date" value="{{date('Y-m-d')}}"required />
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
             </form>
         </div>
     </div>
@@ -109,42 +109,42 @@
                 </button>
             </div>
             <form method="post" action="{{route(isset($avantage)?'modifier_avantage':'save_epi')}}" enctype="multipart/form-data" >
-        <div class="modal-content">
+                <div class="modal-content">
 
-        <div class="row">
-            @csrf
+                    <div class="row">
+                        @csrf
 
-            <input type="hidden" id="id" name="id" value="{{isset($avantage)?$avantage->id:''}}" />
-            <div class="col-sm-3">
-                <div class="form-group"  >
-                    <img src="{{Storage::url('app/images/defaut.png')}}" id="rendu_img1"style=";height: 200px;" class="fa fa-user"/>
+                        <input type="hidden" id="id" name="id" value="{{isset($avantage)?$avantage->id:''}}" />
+                        <div class="col-sm-3">
+                            <div class="form-group"  >
+                                <img src="{{Storage::url('app/images/defaut.png')}}" id="rendu_img1"style=";height: 200px;" class="fa fa-user"/>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="text-input" class=" form-control-label">Libelle</label>
+                                <input name="libelleequipement" required class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="text-input" class=" form-control-label">Quantite</label>
+                                <input name="qte_equipement" type="number" min="1" required class="form-control" />
+                            </div>
+                            <div>
+                                <input type="file" class="form-control" id="photo" name="photo_equipement"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-
-            </div>
-            <div class="col-sm-5">
-                <div class="form-group">
-                    <label for="text-input" class=" form-control-label">Libelle</label>
-                    <input name="libelleequipement" required class="form-control"/>
+                <div class="modal-footer">
+                    </br>
+                    <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        Enregistrer</button>
                 </div>
-                <div class="form-group">
-                    <label for="text-input" class=" form-control-label">Quantite</label>
-                    <input name="qte_equipement" type="number" min="1" required class="form-control" />
-                </div>
-                <div>
-                    <input type="file" class="form-control" id="photo" name="photo_equipement"/>
-                </div>
-
-            </div>
-
-        </div>
-
-        </div>
-          <div class="modal-footer">
-              </br>
-              <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                  Enregistrer</button>
-          </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>

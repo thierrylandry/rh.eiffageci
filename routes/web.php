@@ -243,6 +243,11 @@ Route::get('/expatrie',[
     'uses'=>'EtatsController@expatrie',
     'roles' => ['Etats']
 ])->middleware('auth')->middleware('roles');
+Route::get('/expatriepdf',[
+    'as'=>'expatriepdf',
+    'uses'=>'EtatsController@expatriepdf',
+    'roles' => ['Etats']
+])->middleware('auth')->middleware('roles');
 //invite
 
 Route::get('/invite',[

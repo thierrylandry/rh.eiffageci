@@ -61,7 +61,7 @@ h2{
 h2.title-1{
     margin-bottom: 10pt;
 }
-header,nav,aside,#ne_pas_afficher,#btnprint{display: none;}
+header,nav,aside,#ne_pas_afficher,#btnprint,.modal{display: none;}
 
 table,div{
 }

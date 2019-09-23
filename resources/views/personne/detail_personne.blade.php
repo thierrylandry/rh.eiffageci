@@ -164,6 +164,45 @@
                             </div>
                         </div>
 
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Contact:</label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <input type="text"  id="text-input" name="contact" placeholder="Contact" class="form-control" value="{{isset($personne)? $personne->contact:''}}">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label"> Whatsapp </label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="whatsapp" placeholder="whatsapp" class="form-control" value="{{isset($personne)? $personne->whatsapp:''}}">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Sattellitaire </label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="sattelitaire" placeholder="Sattellitaire" class="form-control" value="{{isset($personne)? $personne->sattelitaire:''}}">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Adresse :</label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="adresse" placeholder="Adresse" class="form-control" value="{{isset($personne)? $personne->adresse:''}}">
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

@@ -62,9 +62,9 @@
                                 {{$equipement->qte}}
                             </td>
                             <td>
-                                <a href="" class="btn btn-info">Approvisionner</a>
-                                <a href="" class="btn btn-info">Attribution</a>
-                                <a href="" class="btn btn-error">Suppression</a>
+                                <a href="" class="btn btn-info" title="Approvisionner"><i class="fa fa-plus"></i></a>
+                                <a href="" class="btn btn-info">Attribuer</a>
+                                <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

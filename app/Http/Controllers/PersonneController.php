@@ -92,6 +92,14 @@ class PersonneController extends Controller
         $taille=$parameters['taille'];
         $surete=$parameters['surete'];
 
+
+        $adresse=$parameters['adresse'];
+        $contact=$parameters['contact'];
+        $whatsapp=$parameters['whatsapp'];
+        $sattelitaire=$parameters['sattelitaire'];
+
+
+
         $date= new \DateTime(null);
 
 
@@ -114,6 +122,11 @@ class PersonneController extends Controller
         $personne->taille=$taille;
         $personne->surete=$surete;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
+
+        $personne->adresse=$adresse;
+        $personne->contact=$contact;
+        $personne->whatsapp=$whatsapp;
+        $personne->sattelitaire=$sattelitaire;
 
 
 //les pieces jointes _piece
@@ -214,6 +227,11 @@ class PersonneController extends Controller
         $taille=$parameters['taille'];
         $surete=$parameters['surete'];
 
+        $adresse=$parameters['adresse'];
+        $contact=$parameters['contact'];
+        $whatsapp=$parameters['whatsapp'];
+        $sattelitaire=$parameters['sattelitaire'];
+
         $date= new \DateTime(null);
 
 
@@ -234,6 +252,11 @@ class PersonneController extends Controller
         $personne->pointure=$pointure;
         $personne->taille=$taille;
         $personne->surete=$surete;
+
+        $personne->adresse=$adresse;
+        $personne->contact=$contact;
+        $personne->whatsapp=$whatsapp;
+        $personne->sattelitaire=$sattelitaire;
 
         $familles = new Collection();
 

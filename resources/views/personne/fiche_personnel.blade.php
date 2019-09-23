@@ -45,8 +45,6 @@
                           <p> Prénom : <b>{{isset($personne)? $personne->prenom:''}}</b></p>
                           <p> Date de naissance :  {{\Carbon\Carbon::parse(isset($personne)? $personne->datenaissance:'')->format('d-m-Y')}}</p>
                            <p id="age">   </p>
-                       </div>
-                       <div class="col-sm-2">
                            <p> Sexe : {{isset($personne)&& $personne->sexe=='M'? 'Masculin':'Féminin'}}</p>
                            <p>Nationalité : @foreach($payss as $pays)
                                    @if($personne->nationalite==$pays->id)
@@ -55,9 +53,16 @@
                                @endforeach</p>
                            <p id="age">   </p>
                            <p> Situation matrimo. : {{isset($personne)&& $personne->matrimonial==1 ? 'Célibataire':''}}{{isset($personne)&& $personne->matrimonial==2 ? 'Marié(e)':''}}{{isset($personne)&& $personne->matrimonial==3 ? 'divorcé(e)':''}}{{isset($personne)&& $personne->matrimonial==4 ? 'Veuf(ve)':''}} </p>
-                           <p> Nombre d'enfant : {{isset($personne)? $personne->enfant:0}} </p>
+
+                       </div>
+                       <div class="col-sm-4">
+                          <p> Nombre d'enfant : {{isset($personne)? $personne->enfant:0}} </p>
                            <p> CNPS : {{isset($personne)? $personne->cnps:''}}</p>
                            <p> RIB : {{isset($personne)? $personne->rib:''}}</p>
+                           <p> Contact : {{isset($personne)? $personne->contact:''}} </p>
+                           <p> whatsapp : {{isset($personne)? $personne->whatsapp:''}}</p>
+                           <p> Sattelitaire : {{isset($personne)? $personne->sattelitaire:''}}</p>
+                           <p> Adresse : {{isset($personne)? $personne->adresse:''}}</p>
                        </div>
                        <div class="col-sm-2">
 

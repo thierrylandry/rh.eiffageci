@@ -54,7 +54,7 @@
 
                                         @if(isset($familles->nom_prenom))
 
-                                            @foreach(explode(' ',$familles->nom_prenom) as $tt):
+                                            @foreach(explode(' : ',$familles->nom_prenom) as $tt):
                                                {{$tt.' '}}
                                             @endforeach
 

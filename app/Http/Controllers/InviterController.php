@@ -25,6 +25,11 @@ public function save_invite( Request $request){
     $contact=$parameters['contact'];
     $email=$parameters['email'];
 
+
+    $adresse=$parameters['adresse'];
+    $whatsapp=$parameters['whatsapp'];
+    $sattelitaire=$parameters['sattelitaire'];
+
     $inviete= new Invite();
 
     $inviete->nom=$nom;
@@ -33,6 +38,10 @@ public function save_invite( Request $request){
     $inviete->surete=$surete;
     $inviete->contact=$contact;
     $inviete->email=$email;
+
+    $inviete->adresse=$adresse;
+    $inviete->whatsapp=$whatsapp;
+    $inviete->sattelitaire=$sattelitaire;
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
 }
@@ -68,6 +77,10 @@ public function modifier_invite( Request $request){
     $contact=$parameters['contact'];
     $email=$parameters['email'];
 
+    $adresse=$parameters['adresse'];
+    $whatsapp=$parameters['whatsapp'];
+    $sattelitaire=$parameters['sattelitaire'];
+
     $inviete=  Invite::find($id);
 
     $inviete->nom=$nom;
@@ -76,6 +89,11 @@ public function modifier_invite( Request $request){
     $inviete->surete=$surete;
     $inviete->contact=$contact;
     $inviete->email=$email;
+
+    $inviete->adresse=$adresse;
+    $inviete->whatsapp=$whatsapp;
+    $inviete->sattelitaire=$sattelitaire;
+    
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
 }

@@ -8,7 +8,7 @@ class Invite extends Model
 {
     //
     protected  $table="invite";
-    protected $fillable= ['id','nom','prenoms','entreprise','surete','contact','email'];
+    protected $fillable= ['*'];
 
     public function passages()
     {

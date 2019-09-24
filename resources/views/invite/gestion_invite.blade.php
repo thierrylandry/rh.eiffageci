@@ -90,6 +90,34 @@
                                 <input type="text" id="text-input" name="email" placeholder="E - mail" class="form-control" value="{{isset($invite)?$invite->email:''}}" required>
                             </div>
                         </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label"> Whatsapp </label>
+                                    </div>
+                                    <!--fin-->
+                                    <div class="col-12 col-md-9">
+                                        <input type="text"  id="text-input" name="whatsapp" placeholder="whatsapp" class="form-control" value="{{isset($invite)?$invite->whatsapp:''}}">
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Sattellitaire </label>
+                                    </div>
+                                    <!--fin-->
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="text-input" name="sattelitaire" placeholder="Sattellitaire" class="form-control" value="{{isset($invite)?$invite->sattelitaire:''}}">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Adresse :</label>
+                                    </div>
+                                    <!--fin-->
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="text-input" name="adresse" placeholder="Adresse" class="form-control" value="{{isset($invite)?$invite->adresse:''}}">
+                                    </div>
+                                </div>
                         <div class="card-footer pull-right">
                             <button type="submit" class="btn btn-primary btn-sm">
                                 <i class="fa fa-dot-circle-o"></i>@if(isset($invite)) {{"Modifier"}} @else {{"Enregistrer"}}@endif

@@ -93,7 +93,7 @@ public function modifier_invite( Request $request){
     $inviete->adresse=$adresse;
     $inviete->whatsapp=$whatsapp;
     $inviete->sattelitaire=$sattelitaire;
-    
+
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
 }

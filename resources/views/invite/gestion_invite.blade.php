@@ -60,7 +60,7 @@
                                 <label for="text-input" class=" form-control-label">Entreprise</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="entreprise" placeholder="entreprise" class="form-control" value="{{isset($invite)?$invite->entreprise:''}}" required>
+                                <input type="text" id="text-input" name="entreprise" placeholder="Entreprise" class="form-control" value="{{isset($invite)?$invite->entreprise:''}}" required>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -79,7 +79,7 @@
                                 <label for="text-input" class=" form-control-label">Contact</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="contact" placeholder="contact" class="form-control" value="{{isset($invite)?$invite->contact:''}}">
+                                <input type="text" id="text-input" name="contact" placeholder="Contact" class="form-control" value="{{isset($invite)?$invite->contact:''}}">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -102,11 +102,11 @@
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="text-input" class=" form-control-label">Sattellitaire </label>
+                                        <label for="text-input" class=" form-control-label">Sattelitaire </label>
                                     </div>
                                     <!--fin-->
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="text-input" name="sattelitaire" placeholder="Sattellitaire" class="form-control" value="{{isset($invite)?$invite->sattelitaire:''}}">
+                                        <input type="text" id="text-input" name="sattelitaire" placeholder="Sattelitaire" class="form-control" value="{{isset($invite)?$invite->sattelitaire:''}}">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -140,6 +140,9 @@
                         <th>ENTREPRISE</th>
                         <th>SURETE</th>
                         <th>CONTACT</th>
+                        <th>WHATSAPP</th>
+                        <th>SATTELITAIRE</th>
+                        <th>ADRESSE</th>
                         <th>EMAIL</th>
                         <th>ACTION</th>
                     </tr>
@@ -155,6 +158,9 @@
                                     @else
                                     NON
                                 @endif</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->whatsapp}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->sattelitaire}}</td>
                             <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
                             <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$invite->email}}</td>
                             <td><a href="{{route("pmodifier_invite",['id'=>$invite->id])}}"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a> <a href="{{route("supprimer_invite",['id'=>$invite->id])}}" class="supprimerinvite"><i class="fa fa-trash" aria-hidden="true"></i></a>  <a href="{{route("passage_invite",['id'=>$invite->id])}}"><i class="fa Example of anchor fa-anchor" aria-hidden="true"></i>Passages</a> </td>

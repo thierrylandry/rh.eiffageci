@@ -24,7 +24,12 @@
                     <tr>
                         <th>NOM</th>
                         <th>PRENOMS</th>
-                        <th>SURETE</th>
+                        <th>FONCTION</th>
+                        <th>NATIONNALITE</th>
+                        <th>ADRESSE</th>
+                        <th>MOBILE</th>
+                        <th>WHATSAPP</th>
+                        <th>SATTELITAIRE</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,7 +37,12 @@
                         <tr class="tr-shadow">
                             <td>{{$expatrie->nom}}</td>
                             <td>{{$expatrie->prenom}}</td>
-                            <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
+                            <td>{{$expatrie->libelle}}</td>
+                            <td>{{$expatrie->nom_fr_fr}}</td>
+                            <td>{{$expatrie->adresse}}</td>
+                            <td>{{$expatrie->mobile}}</td>
+                            <td>{{$expatrie->whatsapp}}</td>
+                            <td>{{$expatrie->sattelitaire}}</td>
                         </tr>
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))

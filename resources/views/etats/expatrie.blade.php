@@ -25,7 +25,7 @@
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>FONCTION</th>
-                        <th>NATIONNALITE</th>
+                        <th>NATIONALITE</th>
                         <th>ADRESSE</th>
                         <th>MOBILE</th>
                         <th>WHATSAPP</th>

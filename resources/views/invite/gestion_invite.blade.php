@@ -161,7 +161,7 @@
                             <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
                             <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->whatsapp}}</td>
                             <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->sattelitaire}}</td>
-                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->contact}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$invite->adresse}}</td>
                             <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$invite->email}}</td>
                             <td><a href="{{route("pmodifier_invite",['id'=>$invite->id])}}"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a> <a href="{{route("supprimer_invite",['id'=>$invite->id])}}" class="supprimerinvite"><i class="fa fa-trash" aria-hidden="true"></i></a>  <a href="{{route("passage_invite",['id'=>$invite->id])}}"><i class="fa Example of anchor fa-anchor" aria-hidden="true"></i>Passages</a> </td>
                         </tr>

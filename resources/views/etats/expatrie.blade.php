@@ -49,7 +49,7 @@
 
                             @foreach(json_decode($expatrie->familles) as $familles)
                                 <tr class="tr-shadow">
-                                    <td>{{isset($familles->nom_prenom)?$familles->nom_prenom:''}}</td>
+                                    <td>{{isset($familles->nom_prenom)?explode($familles->nom_prenom,' ')[0]:''}}</td>
                                     <td></td>
                                     <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
                                 </tr>

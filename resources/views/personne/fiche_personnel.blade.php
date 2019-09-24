@@ -59,6 +59,7 @@
                           <p> Nombre d'enfant : {{isset($personne)? $personne->enfant:0}} </p>
                            <p> CNPS : {{isset($personne)? $personne->cnps:''}}</p>
                            <p> RIB : {{isset($personne)? $personne->rib:''}}</p>
+                           <p> E-mail : {{isset($personne)? $personne->email:''}} </p>
                            <p> Contact : {{isset($personne)? $personne->contact:''}} </p>
                            <p> whatsapp : {{isset($personne)? $personne->whatsapp:''}}</p>
                            <p> Sattelitaire : {{isset($personne)? $personne->sattelitaire:''}}</p>

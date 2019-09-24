@@ -163,7 +163,15 @@
 
                             </div>
                         </div>
-
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">E-mail:</label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="email" placeholder="email" class="form-control"  value="{{isset($personne)? $personne->email:''}}">
+                            </div>
+                        </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Contact:</label>

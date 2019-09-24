@@ -93,6 +93,7 @@ class PersonneController extends Controller
         $surete=$parameters['surete'];
 
 
+        $email=$parameters['email'];
         $adresse=$parameters['adresse'];
         $contact=$parameters['contact'];
         $whatsapp=$parameters['whatsapp'];
@@ -123,6 +124,7 @@ class PersonneController extends Controller
         $personne->surete=$surete;
         $personne->slug=Str::slug($nom.$prenom.$date->format('dmYhis'));
 
+        $personne->email=$email;
         $personne->adresse=$adresse;
         $personne->contact=$contact;
         $personne->whatsapp=$whatsapp;
@@ -227,6 +229,7 @@ class PersonneController extends Controller
         $taille=$parameters['taille'];
         $surete=$parameters['surete'];
 
+        $email=$parameters['email'];
         $adresse=$parameters['adresse'];
         $contact=$parameters['contact'];
         $whatsapp=$parameters['whatsapp'];
@@ -253,6 +256,7 @@ class PersonneController extends Controller
         $personne->taille=$taille;
         $personne->surete=$surete;
 
+        $personne->email=$email;
         $personne->adresse=$adresse;
         $personne->contact=$contact;
         $personne->whatsapp=$whatsapp;

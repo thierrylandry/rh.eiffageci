@@ -123,8 +123,10 @@
                             columns: [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Copier",
-                        filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Liste des expatriés du "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'excelHtml5',
@@ -132,8 +134,10 @@
                             columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Excel",
-                        filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Liste des expatriés du "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
 
                     },
                     {
@@ -142,8 +146,10 @@
                             columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"PDF",
-                        filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Liste des expatriés du "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
 
                     },
                     {
@@ -152,8 +158,10 @@
                             columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Imprimer",
-                        filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Liste des expatriés du "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
+                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     }
                 ],
                 language: {

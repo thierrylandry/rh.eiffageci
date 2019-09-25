@@ -61,30 +61,35 @@ $repertoires= Liste_telephonique::all();
 
     public function mailfin_contrat(){
 
-
         $contrats= Fin_contrat::all();
         $users = User::all();
 
         foreach($users as $user):
 
             if($user->hasRole('Personnes')){
-                if($user->email!="admin@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" )
-                $contact[]=$user->email;
+                if($user->email!="admin@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
+                 //   $contact[]=$user->email;
+                    }
             }
 
-            endforeach;
-       // dd($contact);
+        endforeach;
+        // dd($contact);
         $contact[]="cyriaque.kodia@eiffage.com";
         $contact[]="thierry.koffi@eiffage.com";
-      //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
-        Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact )
-        {
-            $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");
-            foreach($contact as $em):
-                $message ->to($em);
-            endforeach;
-        });
+        //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
+      //  dd($contrats);
+
+        if(isset($contrats[0])){
+            Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact )
+            {
+                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");
+                foreach($contact as $em):
+                    $message ->to($em);
+                endforeach;
+            });
+        }
+
         //return view('mail/mailfincontrat',compact('contrats'));
     }
 }

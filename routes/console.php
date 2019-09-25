@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('rhfincontrat', function () {
+    echo (new \App\Http\Controllers\EtatsController())->mailfin_contrat();
+})->describe('Notifier les RH sur les contrats à terme');

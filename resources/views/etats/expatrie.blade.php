@@ -30,6 +30,7 @@
                         <th>MOBILE</th>
                         <th>WHATSAPP</th>
                         <th>SATTELITAIRE</th>
+                        <th>LIEN DE PARENTE</th>
                     </tr>
                     </thead>
                     <tbody>

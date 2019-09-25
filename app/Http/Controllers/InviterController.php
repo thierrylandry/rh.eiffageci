@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Fonction;
 use App\Invite;
 use App\Passage;
+use App\Pays;
 use Illuminate\Http\Request;
 
 class InviterController extends Controller
@@ -12,9 +14,8 @@ class InviterController extends Controller
 public function invite(){
     $invites= Invite::all();
 
-
-
-    return view('invite/gestion_invite',compact('invites'));
+    $payss=Pays::all();
+    return view('invite/gestion_invite',compact('invites','payss'));
 }
 public function save_invite( Request $request){
     $parameters=$request->except(['_token']);
@@ -30,6 +31,9 @@ public function save_invite( Request $request){
     $whatsapp=$parameters['whatsapp'];
     $sattelitaire=$parameters['sattelitaire'];
 
+    $fonction=$parameters['fonction'];
+    $nationnalite=$parameters['nationnalite'];
+
     $inviete= new Invite();
 
     $inviete->nom=$nom;
@@ -42,6 +46,8 @@ public function save_invite( Request $request){
     $inviete->adresse=$adresse;
     $inviete->whatsapp=$whatsapp;
     $inviete->sattelitaire=$sattelitaire;
+    $inviete->fonction=$fonction;
+    $inviete->nationalite=$nationnalite;
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
 }
@@ -81,6 +87,9 @@ public function modifier_invite( Request $request){
     $whatsapp=$parameters['whatsapp'];
     $sattelitaire=$parameters['sattelitaire'];
 
+    $fonction=$parameters['fonction'];
+    $nationnalite=$parameters['nationnalite'];
+
     $inviete=  Invite::find($id);
 
     $inviete->nom=$nom;
@@ -93,6 +102,9 @@ public function modifier_invite( Request $request){
     $inviete->adresse=$adresse;
     $inviete->whatsapp=$whatsapp;
     $inviete->sattelitaire=$sattelitaire;
+
+    $inviete->fonction=$fonction;
+    $inviete->nationalite=$nationnalite;
 
     $inviete->save();
     return redirect()->route('invite')->with('success',"Invité ajouté avec succès");
@@ -119,9 +131,9 @@ public function pmodifier_invite($id){
     $invite= Invite::find($id);
     $invites= Invite::all();
 
+    $payss=Pays::all();
 
-
-    return view('invite/gestion_invite',compact('invites','invite'));
+    return view('invite/gestion_invite',compact('invites','invite','payss'));
 }public function pmodifier_passage($id){
 
     $passage= Passage::find($id);

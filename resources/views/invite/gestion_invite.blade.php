@@ -74,6 +74,35 @@
                                 </select>
                             </div>
                         </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Fonction  </label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="text-input" name="fonction" placeholder="Fonction" class="form-control" value="{{isset($invite)?$invite->fonction:''}}" required>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Nationalité*</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="nationnalite" id="nationnalite" required class="form-control">
+                                            @foreach($payss as $pays)
+
+                                                @if(isset($invite))
+                                                @if($invite->nationalite==$pays->id)
+                                                    <option value="{{$pays->id}}" selected> {{$pays->nom_fr_fr}}</option>
+                                                @else
+                                                    <option value="{{$pays->id}}"> {{$pays->nom_fr_fr}}</option>
+                                                @endif
+                                                @else
+                                                    <option value="{{$pays->id}}" @if($pays->alpha2=='FR') selected @endif> {{$pays->nom_fr_fr}}</option>
+                                                    @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Contact</label>

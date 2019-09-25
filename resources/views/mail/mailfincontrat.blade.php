@@ -21,6 +21,6 @@
     </p>
 
     <p>
-        <strong>Eiffage Génie Civil Côte d’Ivoire</strong>
+        <strong>Eiffage Génie Civil Côte d’Ivoire</strong></br>
         <img src="http://172.20.73.3/achat.eiffageci/images/logomail.png"/>
     </p>

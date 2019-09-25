@@ -68,7 +68,7 @@
                                     <td>{{$expatrie->contact}}</td>
                                     <td>{{$expatrie->whatsapp}}</td>
                                     <td>{{$expatrie->sattelitaire}}</td>
-                                    <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
+                                    <td>{{$familles->$type_p}} de {{$expatrie->nom}} {{$expatrie->prenom}} </td>
                                 </tr>
                             @endforeach
                             @endif

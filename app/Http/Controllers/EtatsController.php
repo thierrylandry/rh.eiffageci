@@ -67,15 +67,15 @@ $repertoires= Liste_telephonique::all();
         foreach($users as $user):
 
             if($user->hasRole('Personnes')){
-                if($user->email!="admin@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
+                if($user->email!="admin@eiffage.com" && $user->email!="chamie.diomande@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
                     $contact[]=$user->email;
                     }
             }
 
         endforeach;
         // dd($contact);
-        $contact[]="cyriaque.kodia@eiffage.com";
-        $contact[]="thierry.koffi@eiffage.com";
+       // $contact[]="cyriaque.kodia@eiffage.com";
+        //$contact[]="thierry.koffi@eiffage.com";
         //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
       //  dd($contrats);
 
@@ -87,6 +87,8 @@ $repertoires= Liste_telephonique::all();
                 foreach($contact as $em):
                     $message ->to($em);
                 endforeach;
+                $message->bcc("cyriaque.kodia@eiffage.com");
+                $message->bcc("thierry.koffi@eiffage.com");
             });
         }
 

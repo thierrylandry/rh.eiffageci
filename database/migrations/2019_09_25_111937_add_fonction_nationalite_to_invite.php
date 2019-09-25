@@ -15,8 +15,12 @@ class AddFonctionNationaliteToInvite extends Migration
     {
         Schema::table('invite', function (Blueprint $table) {
             //
-            $table->string('fonction')->nullable();
-            $table->string('nationalite')->nullable();
+            if (!Schema::hasColumn('invite', 'fonction')) {
+                $table->string('fonction')->nullable();
+            }
+            if (!Schema::hasColumn('invite', 'nationalite')) {
+                $table->string('nationalite')->nullable();
+            }
         });
     }
 

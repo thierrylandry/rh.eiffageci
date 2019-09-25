@@ -15,9 +15,15 @@ class AddAdresseToInvite extends Migration
     {
         Schema::table('invite', function (Blueprint $table) {
             //
-            $table->string('adresse')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('sattelitaire')->nullable();
+            if (!Schema::hasColumn('invite', 'adresse')) {
+                $table->string('adresse')->nullable();
+            }
+            if (!Schema::hasColumn('invite', 'whatsapp')) {
+                $table->string('whatsapp')->nullable();
+            }
+            if (!Schema::hasColumn('invite', 'sattelitaire')) {
+                $table->string('sattelitaire')->nullable();
+            }
         });
     }
 

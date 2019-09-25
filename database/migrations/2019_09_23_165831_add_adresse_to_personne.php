@@ -19,8 +19,12 @@ class AddAdresseToPersonne extends Migration
             if (!Schema::hasColumn('personne', 'adresse')) {
                 $table->string('adresse')->nullable();
             }
-            $table->string('whatsapp')->nullable();
-            $table->string('sattelitaire')->nullable();
+            if (!Schema::hasColumn('personne', 'whatsapp')) {
+                $table->string('whatsapp')->nullable();
+            }
+            if (!Schema::hasColumn('personne', 'sattelitaire')) {
+                $table->string('sattelitaire')->nullable();
+            }
         });
     }
 

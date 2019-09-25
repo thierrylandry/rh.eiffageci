@@ -120,7 +120,7 @@
                     {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2,3,4,5,6,7]
+                            columns: [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Copier",
                         filename: "Tableau synoptique "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -131,7 +131,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Excel",
                         filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -143,7 +143,7 @@
                     {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"PDF",
                         filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -155,7 +155,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Imprimer",
                         filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),

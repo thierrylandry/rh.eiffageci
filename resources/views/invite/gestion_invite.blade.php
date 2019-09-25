@@ -216,6 +216,7 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         $(document).ready(function() {
+            $('#nationnalite').select2({ placeholder: 'Select an option'});
             $('.supprimerinvite').click( function (e) {
                 //   table.row('.selected').remove().draw( false );
                 if(confirm("Voulez vous supprimer liinvité? Attention la suppression de l'inviter entrainera la suppression en cascade de tout ses passages")){}else{e.preventDefault(); e.returnValue = false; return false; }

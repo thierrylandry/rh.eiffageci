@@ -62,6 +62,12 @@
 
 
                                   </td>
+                                    <td>{{$expatrie->libelle}}</td>
+                                    <td>{{$expatrie->nom_fr_fr}}</td>
+                                    <td>{{$expatrie->adresse}}</td>
+                                    <td>{{$expatrie->contact}}</td>
+                                    <td>{{$expatrie->whatsapp}}</td>
+                                    <td>{{$expatrie->sattelitaire}}</td>
                                     <td>{{isset($expatrie->surete) && $expatrie->surete==1?'OUI':'NON'}}</td>
                                 </tr>
                             @endforeach
@@ -150,7 +156,7 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
-              
+
                 "paging": false,
                 "responsive": true,
                 "createdRow": function( row, data, dataIndex){

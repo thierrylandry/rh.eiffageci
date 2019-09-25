@@ -77,7 +77,7 @@
                             <td>{{$invites_present->nom_fr_fr}}</td>
                             <td>{{$invites_present->adresse}}</td>
                             <td>{{$invites_present->contact}}</td>
-                            <td>{{$invites_present->whtsapp}}</td>
+                            <td>{{$invites_present->whatsapp}}</td>
                             <td>{{$invites_present->sattelitaire}}</td>
                         </tr>
                     @endforeach

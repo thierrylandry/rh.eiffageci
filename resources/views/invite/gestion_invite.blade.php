@@ -182,7 +182,7 @@
                         <tr class="tr-shadow">
                             <td>{{$invite->nom}}</td>
                             <td>{{$invite->prenoms}}</td>
-                            <td>{{$invite->nationalite}}</td>
+                            <td>{{$personne->pays->nom_fr_fr}}</td>
                             <td>{{$invite->entreprise}}</td>
                             <td>{{$invite->fonction}}</td>
                             <td>@if($invite->surete==1)

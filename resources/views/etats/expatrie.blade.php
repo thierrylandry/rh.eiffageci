@@ -73,7 +73,12 @@
                         <tr class="tr-shadow">
                             <td>{{$invites_present->nom}}</td>
                             <td>{{$invites_present->prenoms}}</td>
-                            <td>{{isset($invites_present->surete) && $invites_present->surete==1?'OUI':'NON'}}</td>
+                            <td>{{$invites_present->fonction}}</td>
+                            <td>{{$invites_present->nom_fr_fr}}</td>
+                            <td>{{$invites_present->adresse}}</td>
+                            <td>{{$invites_present->contact}}</td>
+                            <td>{{$invites_present->whtsapp}}</td>
+                            <td>{{$invites_present->sattelitaire}}</td>
                         </tr>
                     @endforeach
                     </tbody>

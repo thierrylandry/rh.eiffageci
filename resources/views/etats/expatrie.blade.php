@@ -68,7 +68,10 @@
                                     <td>{{$expatrie->contact}}</td>
                                     <td>{{$expatrie->whatsapp}}</td>
                                     <td>{{$expatrie->sattelitaire}}</td>
-                                    <td>{{$familles->type_p}} de {{$expatrie->nom}} {{$expatrie->prenom}} </td>
+                                    <td>
+
+                                        @if($familles->lien_parente=="CONJ") conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
+                                        @if($familles->lien_parente=="ENF") conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif</td>
                                 </tr>
                             @endforeach
                             @endif

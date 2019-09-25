@@ -120,7 +120,7 @@
                     {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2]
+                            columns: [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Copier",
                         filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -129,7 +129,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2]
+                            columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Excel",
                         filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -139,7 +139,7 @@
                     {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2]
+                            columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"PDF",
                         filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
@@ -149,7 +149,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns: [0,1, 2]
+                            columns:  [ 0,1, 2,3,4,5,6,7]
                         },
                         text:"Imprimer",
                         filename: "Liste des expatriés du "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),

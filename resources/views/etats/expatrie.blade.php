@@ -44,6 +44,7 @@
                             <td>{{$expatrie->contact}}</td>
                             <td>{{$expatrie->whatsapp}}</td>
                             <td>{{$expatrie->sattelitaire}}</td>
+                            <td>-</td>
                         </tr>
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))
@@ -89,6 +90,7 @@
                             <td>{{$invites_present->contact}}</td>
                             <td>{{$invites_present->whatsapp}}</td>
                             <td>{{$invites_present->sattelitaire}}</td>
+                            <td>-</td>
                         </tr>
                     @endforeach
                     </tbody>

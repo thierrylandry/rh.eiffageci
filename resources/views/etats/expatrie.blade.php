@@ -150,8 +150,7 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
-                "order": [[ 1, "desc" ]],
-                "ordering":true,
+              
                 "paging": false,
                 "responsive": true,
                 "createdRow": function( row, data, dataIndex){

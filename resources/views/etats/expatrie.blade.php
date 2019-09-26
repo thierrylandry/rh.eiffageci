@@ -44,7 +44,7 @@
                             <td>{{$expatrie->contact}}</td>
                             <td>{{$expatrie->whatsapp}}</td>
                             <td>{{$expatrie->sattelitaire}}</td>
-                            <td>-</td>
+                            <td>- {{$expatrie->familles}}</td>
                         </tr>
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))

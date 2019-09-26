@@ -59,6 +59,7 @@
                                         @if(isset($familles->nom_prenom))
 
                                             <?php
+                                            $nom_part="";
                                             foreach(explode(' : ',$familles->nom_prenom) as $tt):
                                            $nom_part.=$tt.' ';
                                             endforeach;

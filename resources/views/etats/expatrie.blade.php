@@ -126,6 +126,62 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
         $(document).ready(function() {
+            function getWeek ( tDate ) {
+                var res = '' ;
+
+                //de l'année courante
+                var janv1 = new Date ( tDate.getYear(), 0, 1 ) ;  //1 janvier
+                var dec31 = new Date ( tDate.getYear(), 11, 31 ) ;  //31 decembre
+                var janv1Num = janv1.getDay() == 0 ? 7 : janv1.getDay() ; //numero du 1 janvier
+                var premSem = 7 - janv1Num > 2 ? true : false ;  //si la première semaine compte ou pas
+                var premLundi = 9 - janv1Num ; //date du premier lundi suivant le 1 janvier
+                //nb jour separant la date du 1 janvier
+                var nbJour = parseInt((tDate - janv1) / (60 * 60 * 24 * 1000) + 1, 10) ;
+                //nb jour dans l'annee
+                var nbJourTot = parseInt((dec31 - janv1) / (60 * 60 * 24 * 1000) + 1, 10) ;
+                //nombre de semaines dans l'annee
+                var nbSem ;
+                if (janv1Num == 4 || (janv1Num == 3 && nbJourTot == 366)) { nbSem = 53 ; }
+                else { nbSem = 52 ; }
+
+                //de l'année précédente
+                var janv1Prev = new Date ( tDate.getYear()-1, 0, 1 ) ;  //1 janvier
+                var dec31Prev = new Date ( tDate.getYear()-1, 11, 31 ) ;  //31 decembre
+                var janv1NumPrev = janv1Prev.getDay() == 0 ? 7 : janv1Prev.getDay() ;  //numero du 1 janvier
+                //nb jour dans l'annee
+                var nbJourTotPrev = parseInt((dec31Prev - janv1Prev) / (60 * 60 * 24 * 1000) + 1, 10) ;
+                //nombre de semaines dans l'annee
+                var nbSemPrev ;
+                if (janv1NumPrev == 4 || (janv1NumPrev == 3 && nbJourTotPrev == 366)) { nbSemPrev = 53 ; }
+                else { nbSemPrev = 52 ; }
+
+                //calcul de la semaine
+                var nbSemCompl = parseInt((nbJour - premLundi) / 7 , 10) ;
+
+                var week = premSem + nbSemCompl + 1 ;
+
+                if (nbJour < premLundi) {
+                    if (premSem) {
+                        res = '01/' + tDate.getYear() ;
+                    }
+                    else {
+                        res = nbSemPrev + '/' + (tDate.getYear()-1) ;
+                    }
+                }
+                else {
+                    if ((week > 52) && (week > nbSem)) {
+                        res = '01/' + (tDate.getYear()+1) ;
+                    }
+                    else {
+                        var tmp = '0' + week ;
+                        res = tmp.substring(tmp.length-2, tmp.length) + '/' + tDate.getYear() ;
+                    }
+                }
+
+                return (res) ;
+            }
+
+
             var date =new Date();
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
@@ -136,8 +192,8 @@
                             columns: [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Copier",
-                        filename: "Tableau synoptique "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
+                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     },
@@ -147,8 +203,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Excel",
-                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
+                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -159,8 +215,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"PDF",
-                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
+                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -171,8 +227,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Imprimer",
-                        filename: "Tableau synoptique  "+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear(),
-                        messageTop: "Tableau synoptique  "+date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear(),
+                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
+                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }

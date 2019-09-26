@@ -61,7 +61,7 @@
                                             <?php
                                             $nom_part="";
                                             foreach(explode(' : ',$familles->nom_prenom) as $tt):
-                                                if (explode(' ',$familles->nom_prenom)[0]!=$tt){
+                                                if ($expatrie->nom!=$tt){
                                                     $nom_part.=$tt.' ';
                                                 }
 

@@ -49,7 +49,8 @@
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))
 
-                            <?php $tabs=json_decode($expatrie->familles)
+                            <?php $tabs=json_decode($expatrie->familles);
+                                    var_dump($tabs);
                             ?>
                             @foreach($tabs as $familles)
                                 <tr class="tr-shadow">

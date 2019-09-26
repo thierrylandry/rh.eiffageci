@@ -227,7 +227,7 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Imprimer",
-                        filename: "Tableau synoptique N°"+getWeek ( new Date(2019, 09, 26)),
+                        filename: "Tableau synoptique N°"+getWeek ( new Date(2019, 11, 26)),
                         messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
                         orientation: 'landscape',
                         pageSize: 'LEGAL'

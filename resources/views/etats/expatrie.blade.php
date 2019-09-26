@@ -192,8 +192,8 @@
                             columns: [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Copier",
-                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
-                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
+                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     },
@@ -203,8 +203,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Excel",
-                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
-                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
+                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -215,8 +215,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"PDF",
-                        filename: "Tableau synoptique N°"+getWeek ( new Date()),
-                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
+                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -227,8 +227,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Imprimer",
-                        filename: "Tableau synoptique N°"+getWeek ( new Date(2019, 11, 26)),
-                        messageTop: "Tableau synoptique  N°"+getWeek ( new Date()),
+                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }
@@ -243,10 +243,6 @@
                 "createdRow": function( row, data, dataIndex){
 
                 },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 },
-                    { responsivePriority: 2, targets: -1 }
-                ]
             });
 
             var table1= $('#table_invite').DataTable({

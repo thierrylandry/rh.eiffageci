@@ -75,7 +75,7 @@
 
                                   </td>
                                     <td>-</td>
-                                    <td>{{$expatrie->nom_fr_fr}}</td>
+                                    <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>

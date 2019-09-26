@@ -58,9 +58,13 @@
 
                                         @if(isset($familles->nom_prenom))
 
-                                            @foreach(explode(' : ',$familles->nom_prenom) as $tt):
-                                               {{$tt.' '}}
-                                            @endforeach
+                                            <?php
+                                            foreach(explode(' : ',$familles->nom_prenom) as $tt):
+                                           $nom_part.=$tt.' ';
+                                            endforeach;
+                                            ?>
+
+                                            {{$nom_part}}
 
                                         @endif
 

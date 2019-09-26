@@ -44,13 +44,12 @@
                             <td>{{$expatrie->contact}}</td>
                             <td>{{$expatrie->whatsapp}}</td>
                             <td>{{$expatrie->sattelitaire}}</td>
-                            <td>- {{$expatrie->familles}}</td>
+                            <td>-</td>
                         </tr>
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))
 
                             <?php $tabs=json_decode($expatrie->familles);
-                                    var_dump($tabs);
                             ?>
                             @foreach($tabs as $familles)
                                 <tr class="tr-shadow">

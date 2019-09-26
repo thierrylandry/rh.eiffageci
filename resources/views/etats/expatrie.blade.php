@@ -49,7 +49,9 @@
 
                         @if(isset($expatrie->familles) && !empty($expatrie->familles))
 
-                            @foreach(json_decode($expatrie->familles) as $familles)
+                            <?php $tabs=json_decode($expatrie->familles)
+                            ?>
+                            @foreach($tabs as $familles)
                                 <tr class="tr-shadow">
                                     <td>{{isset($familles->nom_prenom)?explode(' ',$familles->nom_prenom)[0]:''}}</td>
                                     <td>

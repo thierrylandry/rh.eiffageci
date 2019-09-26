@@ -182,6 +182,7 @@
                 },
 
                 "paging": false,
+                "order": false,
                 "responsive": true,
                 "createdRow": function( row, data, dataIndex){
 
@@ -191,6 +192,7 @@
                     { responsivePriority: 2, targets: -1 }
                 ]
             });
+
             var table1= $('#table_invite').DataTable({
                 dom: 'Bfrtip',
                 buttons: [

@@ -74,12 +74,12 @@
 
 
                                   </td>
-                                    <td>{{$expatrie->libelle}}</td>
+                                    <td>-</td>
                                     <td>{{$expatrie->nom_fr_fr}}</td>
-                                    <td>{{$expatrie->adresse}}</td>
-                                    <td>{{$expatrie->contact}}</td>
-                                    <td>{{$expatrie->whatsapp}}</td>
-                                    <td>{{$expatrie->sattelitaire}}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                     <td>
 
                                         @if($familles->lien_parente=="CONJ") conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif

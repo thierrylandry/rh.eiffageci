@@ -82,8 +82,8 @@
                                     <td>-</td>
                                     <td>
 
-                                        @if($familles->lien_parente=="CONJ") conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
-                                        @if($familles->lien_parente=="ENF") enfant de {{$expatrie->nom}} {{$expatrie->prenom}} @endif</td>
+                                        @if($familles->lien_parente=="CONJ") Conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
+                                        @if($familles->lien_parente=="ENF") Enfant de {{$expatrie->nom}} {{$expatrie->prenom}} @endif</td>
                                 </tr>
                             @endforeach
                             @endif

@@ -208,7 +208,7 @@
                         messageTop: "",
                         title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
-                        pageSize: 'LEGAL'
+                        pageSize: 'LEGAL',
 
                     },
                     {
@@ -221,8 +221,7 @@
                         messageTop: "",
                         title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
-                        pageSize: 'LEGAL'
-
+                        pageSize: 'LEGAL',
                     },
                     {
                         extend: 'print',
@@ -234,7 +233,7 @@
                         messageTop: "",
                         title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
-                        pageSize: 'LEGAL'
+                        pageSize: 'LEGAL',
                     }
                 ],
                 language: {

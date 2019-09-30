@@ -5,6 +5,14 @@
 @section('avantages_block')
     style="display: block;"
 @endsection
+<style>
+    .etrevisible{
+        display:block;
+    }
+    .etreinvisible{
+        display:none;
+    }
+</style>
 @section('page')
     <div class="row">
         <div class="col-md-12">
@@ -54,6 +62,9 @@
                                 <input type="text" id="code" name="code" value="{{isset($equipement)?$equipement->code:''}}" placeholder="Code" class="form-control">
 
                             </div>
+                            <div id="reste" class="etreinvisible">
+
+
                             <div class="form-group"  >
                                 <label for="text-input" class=" form-control-label">Type PC</label>
                                 <select name="TypePC" id="TypePC" required class="form-control">
@@ -78,6 +89,7 @@
                                         </label>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                             <div class="table-data__tool  pull-right">
                                 <div class="table-data__tool-right">
@@ -280,6 +292,26 @@
                 });
 
 
+
+
+            });
+            $("#id_type_equipement").change(function (){
+
+                var res = $("#id_type_equipement option:selected").text();
+
+                if(res=="ORDINATEUR" ){
+
+                    if($('#reste').hasClass('etreinvisible')){
+                        $('#reste').removeClass('etreinvisible');
+                    }
+
+                }else{
+                    if($('#reste').hasClass('etreinvisible')){
+
+                    }else {
+                        $('#reste').addClass('etreinvisible');
+                    }
+                }
 
 
             });

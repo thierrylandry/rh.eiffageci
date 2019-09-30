@@ -193,7 +193,8 @@
                         },
                         text:"Copier",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "",
+                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     },
@@ -204,7 +205,8 @@
                         },
                         text:"Excel",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "",
+                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -216,7 +218,8 @@
                         },
                         text:"PDF",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "",
+                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -228,7 +231,8 @@
                         },
                         text:"Imprimer",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "",
+                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }

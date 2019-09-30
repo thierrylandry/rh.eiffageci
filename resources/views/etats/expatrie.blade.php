@@ -192,8 +192,8 @@
                             columns: [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Copier",
-                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
+                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     },
@@ -203,8 +203,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Excel",
-                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
+                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -215,8 +215,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"PDF",
-                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
+                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
 
@@ -227,8 +227,8 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8]
                         },
                         text:"Imprimer",
-                        filename: "Tableau synoptique N°<?php echo date('W', date('Ymd')); ?>",
-                        messageTop: "Tableau synoptique  N°<?php echo date('W', date('Ymd')); ?>",
+                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        messageTop: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     }

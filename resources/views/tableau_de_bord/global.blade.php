@@ -99,7 +99,12 @@
                                         <td>{{$res->y}}</td>
                                     </tr>
                                 @endif
+                                <?php $somme += $res->y ?>
                             @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -132,7 +137,12 @@
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
+                                <?php $somme += $res->y ?>
                             @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -165,7 +175,12 @@
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
+                                <?php $somme += $res->y ?>
                             @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -198,7 +213,12 @@
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
+                                <?php $somme += $res->y ?>
                             @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -231,7 +251,12 @@
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
+                                <?php $somme += $res->y ?>
                             @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

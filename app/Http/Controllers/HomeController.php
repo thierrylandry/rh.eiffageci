@@ -1380,7 +1380,7 @@ class HomeController extends Controller
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
-            ->where('contrat.departDefinitif','<>','')
+            ->where('contrat.departDefinitif','=',null)
             ->where('definition.id','=',6)
             ->where('entite','=',1)
             ->join('definition','definition.id','=','contrat.id_definition')

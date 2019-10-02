@@ -1381,6 +1381,7 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
             ->where('contrat.departDefinitif','=',null)
+            ->where('contrat.matricule','=','personne.matricule')
             ->where('definition.id','=',6)
             ->where('entite','=',1)
             ->join('definition','definition.id','=','contrat.id_definition')

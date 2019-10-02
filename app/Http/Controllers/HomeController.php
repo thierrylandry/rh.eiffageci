@@ -1334,7 +1334,7 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
             ->where('definition.id','=',1)
-            ->where('definition.departDefinitif','<>','')
+            ->where('contrat.departDefinitif','<>','')
             ->where('entite','=',1)
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))

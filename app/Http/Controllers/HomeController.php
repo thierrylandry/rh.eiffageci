@@ -1386,6 +1386,7 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
             ->where('contrat.departDefinitif','=',null)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',6)
             ->where('entite','=',1)
             ->join('definition','definition.id','=','contrat.id_definition')

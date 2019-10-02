@@ -213,11 +213,12 @@
                             <tbody>
                             <?php $somme =0; ?>
                             @foreach($repartition_nationalite as $res)
+                                <?php $somme += $res->y; ?>
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y; ?>
+
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>

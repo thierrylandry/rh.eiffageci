@@ -256,7 +256,7 @@
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php$somme=0; $somme += $res->y; ?>
+                                <?php $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>

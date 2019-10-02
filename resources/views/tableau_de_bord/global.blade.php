@@ -73,6 +73,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($effectifglobauxx as $res)
                                 @if($res->entite==1)
                                     <tr class="tr-shadow">
@@ -99,7 +100,7 @@
                                         <td>{{$res->y}}</td>
                                     </tr>
                                 @endif
-                                <?php $somme += $res->y ?>
+                                <?php $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>
@@ -132,12 +133,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($repartition_homme_femme as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y ?>
+                                <?php  $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>
@@ -170,12 +172,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($qualification_contractuelle as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y ?>
+                                <?php  $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>
@@ -208,12 +211,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($repartition_nationalite as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y ?>
+                                <?php $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>
@@ -246,12 +250,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $somme =0; ?>
                             @foreach($repartition_service as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y ?>
+                                <?php$somme=0; $somme += $res->y; ?>
                             @endforeach
                             <tr class="tr-shadow">
                                 <td> Total</td>

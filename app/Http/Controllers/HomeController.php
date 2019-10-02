@@ -1393,9 +1393,9 @@ class HomeController extends Controller
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-          //  ->toSql();
+           // ->toSql();
 
-        dd($stagiaire);
+        //dd($stagiaire);
 
         $qualification_contractuelle= Array();
 

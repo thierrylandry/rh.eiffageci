@@ -101,7 +101,7 @@ $repertoires= Liste_telephonique::all();
 
         $lespersonnes= DB::table('personne')
                         ->join('avantages','avantages.id_personne','=','personne.id')
-                        ->disinct('personne.id')
+                        ->distinct('personne.id')
                         ->get();
 
 return json_decode($lespersonnes);

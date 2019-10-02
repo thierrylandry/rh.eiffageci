@@ -464,3 +464,8 @@ Route::post('/save_epi',[
     'roles' => ['Parametrage']
 
 ])->middleware('auth');
+Route::get('/informatique',[
+    'as'=>'informatique',
+    'uses'=>'EtatsController@informatique',
+
+])->middleware('auth');

@@ -95,4 +95,16 @@ $repertoires= Liste_telephonique::all();
 
         //return view('mail/mailfincontrat',compact('contrats'));
     }
+
+
+    public function informatique(){
+
+        $lespersonnes= DB::table('personne')
+                        ->join('avantages','avantages.id_personne','=','personne.id')
+                        ->disinct('personne.id')
+                        ->get();
+
+return json_decode($lespersonnes);
+        //return view('mail/mailfincontrat',compact('contrats'));
+    }
 }

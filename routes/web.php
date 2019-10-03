@@ -469,3 +469,9 @@ Route::get('/informatique',[
     'uses'=>'EtatsController@informatique',
 
 ])->middleware('auth');
+
+Route::get('/personne_contrat',[
+    'as'=>'personne_contrat',
+    'uses'=>'EtatsController@personne_contrat',
+
+])->middleware('auth');

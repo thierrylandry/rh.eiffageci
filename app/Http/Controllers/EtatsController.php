@@ -6,6 +6,7 @@ use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
 use App\Personne;
+use App\Personne_contrat;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;;
 use Illuminate\Http\Request;
@@ -25,6 +26,11 @@ $repertoires= Liste_telephonique::all();
         $contrats= Fin_contrat::all();
 
         return view('etats/fin_contrat',compact('contrats'));
+    }
+    public function personne_contrat(){
+        $contrats= Personne_contrat::all();
+
+        return view('etats/personnecontrat',compact('contrats'));
     }
 
     public function expatrie(){
@@ -103,8 +109,9 @@ $repertoires= Liste_telephonique::all();
                         ->join('avantages','avantages.id_personne','=','personne.id')
                         ->distinct('personne.id')
                         ->get();
-
-return json_decode($lespersonnes);
+      //  ->tosql();
+return $lespersonnes;
+//return json_decode($lespersonnes);
         //return view('mail/mailfincontrat',compact('contrats'));
     }
 }

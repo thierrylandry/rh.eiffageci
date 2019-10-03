@@ -233,6 +233,9 @@
                         <li class="@yield('expatrie')">
                             <a href="{{route('expatrie')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Expatriés et invités presents</a>
                         </li>
+                        <li class="@yield('personne_contrat')">
+                            <a href="{{route('personne_contrat')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i>Les personnes & leur contrat</a>
+                        </li>
 
                     </ul>
                 </li>

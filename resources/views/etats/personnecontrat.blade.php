@@ -32,7 +32,13 @@
                         <tr class="tr-shadow">
                             <td>{{$contrat->nom}}</td>
                             <td>{{$contrat->prenom}}</td>
-                            <td>{{$contrat->libelle}}</td>
+                            <td>
+                                @if($contrat->definition=="Stagiaire")
+                                    {{$contrat->Stagiaire}}
+                                    @else
+                                    {{$contrat->libelle}}
+                            @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

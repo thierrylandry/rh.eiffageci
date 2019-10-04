@@ -903,8 +903,9 @@ class HomeController extends Controller
         $chauffeur = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
-            ->where('entite','=',3)
             ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
+            ->where('entite','=',3)
             ->where('definition.id','=',5)
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))

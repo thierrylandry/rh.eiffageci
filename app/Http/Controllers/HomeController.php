@@ -84,6 +84,8 @@ class HomeController extends Controller
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where('entite','=',3)
             ->groupBy('unite.id_unite','entite')
             ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
@@ -91,6 +93,8 @@ class HomeController extends Controller
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where('entite','=',2)
             ->groupBy('unite.id_unite','entite')
             ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
@@ -101,6 +105,8 @@ class HomeController extends Controller
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where('entite','=',1)
             ->groupBy('unite.id_unite','entite')
             ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'))
@@ -131,6 +137,8 @@ class HomeController extends Controller
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->select('unite.libelleUnite',DB::raw('count(personne.id) as nb'))
             ->union($soustraitant)
             ->get();
@@ -148,6 +156,8 @@ class HomeController extends Controller
             ->join('pays','pays.id','=','personne.nationalite')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->select("pays.nom_fr_fr",DB::raw('count(personne.id) as nb'))
             ->groupBy('personne.nationalite')
             ->get();
@@ -166,6 +176,8 @@ class HomeController extends Controller
             ->select("personne.sexe",DB::raw('count(personne.id) as nb'))
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->groupBy('personne.sexe')
             ->get();
 
@@ -188,6 +200,8 @@ class HomeController extends Controller
         $repartition_service_tab = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->join('services','services.id','=','personne.service')
             ->select("services.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('services.id')
@@ -205,6 +219,8 @@ class HomeController extends Controller
         // qualification contractuelle
         $cadre = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',1],
@@ -219,6 +235,8 @@ class HomeController extends Controller
             ->get()->first();
         $agent_de_maitrise = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',2],
@@ -233,6 +251,8 @@ class HomeController extends Controller
             ->get()->first();
         $employe = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',3],
@@ -246,6 +266,8 @@ class HomeController extends Controller
             ->get()->first();
         $chauffeur = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',5],
@@ -260,6 +282,8 @@ class HomeController extends Controller
             ->get()->first();
         $ouvrier = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',4],
@@ -275,6 +299,8 @@ class HomeController extends Controller
             ->get()->first();
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+
             ->where([
                 ['contrat.etat','=',1],
                 ['definition.id','=',6],

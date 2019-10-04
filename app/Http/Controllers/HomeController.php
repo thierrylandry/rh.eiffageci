@@ -921,8 +921,8 @@ class HomeController extends Controller
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
-           // ->get()->first();
-        ->tosql();
+            ->get()->first();
+       // ->tosql();
         dd($ouvrier);
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')

@@ -1469,7 +1469,8 @@ class HomeController extends Controller
             if(is_null($chauffeur)){
                 $vardiag->y = $ouvrier->nb ;
             }else{
-                $vardiag->y = $ouvrier->nb + $chauffeur->nb;
+                //$vardiag->y = $ouvrier->nb + $chauffeur->nb;
+                $vardiag->y = $ouvrier->nb ;
             }
 
 

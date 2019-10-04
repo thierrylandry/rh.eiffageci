@@ -903,9 +903,8 @@ class HomeController extends Controller
         $chauffeur = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
-            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
             ->where('entite','=',3)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',5)
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
@@ -965,7 +964,8 @@ class HomeController extends Controller
             if(is_null($chauffeur)){
                 $vardiag->y = $ouvrier->nb ;
             }else{
-                $vardiag->y = $ouvrier->nb + $chauffeur->nb;
+                //$vardiag->y = $ouvrier->nb + $chauffeur->nb;
+                $vardiag->y = $ouvrier->nb;
             }
 
 

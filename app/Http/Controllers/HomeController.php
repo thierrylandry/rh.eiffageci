@@ -913,10 +913,10 @@ class HomeController extends Controller
         $ouvrier = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('entite','=',3)
-            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where('contrat.etat','=',1)
             ->where('definition.id','=',4)
             ->orWhere('definition.id','=',5)
+            ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('contrat.etat','=',1)
 
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))

@@ -961,10 +961,12 @@ class HomeController extends Controller
         }
         if(!is_null($ouvrier)) {
             $vardiag = New Vardiag();
-            $vardiag->name = $ouvrier->libelle;
+
             if(is_null($chauffeur)){
+                $vardiag->name = $ouvrier->libelle;
                 $vardiag->y = $ouvrier->nb ;
             }else{
+                $vardiag->name = $ouvrier->libelle;
                 //$vardiag->y = $ouvrier->nb + $chauffeur->nb;
                 $vardiag->y = $ouvrier->nb;
             }

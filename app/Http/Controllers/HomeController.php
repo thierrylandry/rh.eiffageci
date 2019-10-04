@@ -895,10 +895,11 @@ class HomeController extends Controller
             ->get()->first();
         $ouvrier = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('entite','=',3)
             ->where('contrat.etat','=',1)
             ->where('definition.id','=',4)
             ->orWhere('definition.id','=',5)
-            ->where('entite','=',3)
+
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')

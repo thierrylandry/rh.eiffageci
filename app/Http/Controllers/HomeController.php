@@ -923,7 +923,7 @@ class HomeController extends Controller
             ->groupBy('definition.id')
             ->get()->first();
        // ->tosql();
-        dd($ouvrier);
+       // dd($ouvrier);
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)

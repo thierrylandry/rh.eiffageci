@@ -921,8 +921,9 @@ class HomeController extends Controller
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
-            //->get()->first();
+           // ->get()->first();
         ->tosql();
+        dd($ouvrier);
         $stagiaire = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
@@ -959,7 +960,7 @@ class HomeController extends Controller
 
             $qualification_contractuelle[]=$vardiag;
         }
-        if(!is_null($ouvrier->libelle)) {
+        if(!is_null($ouvrier)) {
             $vardiag = New Vardiag();
             $vardiag->name = $ouvrier->libelle;
             if(is_null($chauffeur)){

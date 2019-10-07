@@ -110,8 +110,8 @@ $repertoires= Liste_telephonique::all();
                         ->distinct('personne.id')
                         ->get();
       //  ->tosql();
-return $lespersonnes;
+//return $lespersonnes;
 //return json_decode($lespersonnes);
-        //return view('mail/mailfincontrat',compact('contrats'));
+        return view('etats/informatique',compact('lespersonnes'));
     }
 }

@@ -79,7 +79,7 @@
                                         <label for="text-input" class=" form-control-label">Fonction  </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="text-input" name="fonction" placeholder="Fonction" class="form-control" value="{{isset($invite)?$invite->fonction:''}}" required>
+                                        <input type="text" id="text-input" name="fonction" placeholder="Fonction" class="form-control" value="{{isset($invite)?$invite->fonction:''}}">
                                     </div>
                                 </div>
                                 <div class="row form-group">

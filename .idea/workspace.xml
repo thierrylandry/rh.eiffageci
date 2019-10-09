@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
+    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="total">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" afterPath="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,108 +38,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="InviterController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/InviterController.php">
+      <file leaf-file-name="informatique.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/etats/informatique.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
-                <element signature="e#1362#1949#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="expatrie.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/etats/expatrie.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
-              <folding>
-                <marker date="1569922838308" expanded="true" signature="5324:13514" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fiche_personnel.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="251" column="58" selection-start-line="241" selection-start-column="47" selection-end-line="251" selection-end-column="58" />
+            <state relative-caret-position="765">
+              <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lister_contrat.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
+      <file leaf-file-name="personnecontrat.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/etats/personnecontrat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
+            <state relative-caret-position="646">
+              <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="1938" column="47" selection-start-line="1938" selection-start-column="47" selection-end-line="1938" selection-end-column="47" />
               <folding>
-                <element signature="e#3260#9231#0#HTML" expanded="false" />
-                <element signature="e#9265#10404#0#HTML" expanded="false" />
+                <element signature="e#2036#13536#0#PHP" expanded="false" />
+                <element signature="e#13541#20787#0#PHP" expanded="false" />
+                <element signature="e#20792#39894#0#PHP" expanded="false" />
+                <element signature="e#39901#60647#0#PHP" expanded="false" />
+                <element signature="e#77157#77243#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
+      <file leaf-file-name="avantages.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/avantages/avantages.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
-              <folding>
-                <element signature="e#240#572#0#PHP" expanded="false" />
-                <element signature="e#577#921#0#PHP" expanded="false" />
-                <element signature="e#926#1085#0#PHP" expanded="false" />
-                <element signature="e#1090#1575#0#PHP" expanded="false" />
-                <element signature="e#1581#2000#0#PHP" expanded="false" />
-                <element signature="e#2006#3962#0#PHP" expanded="false" />
-                <element signature="e#3967#4184#0#PHP" expanded="false" />
-                <element signature="e#4697#6830#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="global.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-299">
-              <caret line="252" column="47" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="47" />
+            <state relative-caret-position="1853">
+              <caret line="109" column="38" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestionmateriel.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/avantages/gestionmateriel.blade.php">
+      <file leaf-file-name="nav.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajouter_personne.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10693">
-              <caret line="629" column="0" selection-start-line="629" selection-start-column="0" selection-end-line="629" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Famille.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Metier/Json/Famille.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="18" />
+            <state relative-caret-position="4046">
+              <caret line="238" column="58" selection-start-line="238" selection-start-column="58" selection-end-line="238" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -148,12 +97,55 @@
       <file leaf-file-name="EtatsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="39" column="31" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="31" />
+            <state relative-caret-position="232">
+              <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
               <folding>
-                <element signature="e#527#665#0#PHP" expanded="false" />
-                <element signature="e#1200#1843#0#PHP" expanded="false" />
-                <element signature="e#1850#3167#0#PHP" expanded="false" />
+                <element signature="e#1390#2033#0#PHP" expanded="false" />
+                <element signature="e#2040#3357#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestion_invite.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="81" column="182" selection-start-line="81" selection-start-column="182" selection-end-line="81" selection-end-column="182" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Categorie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Categorie.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dirciExport.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirciExport.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dirci.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1683">
+              <caret line="99" column="65" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="65" />
+              <folding>
+                <marker date="1564066394152" expanded="true" signature="28578:28592" ph="..." />
+                <marker date="1564066394152" expanded="true" signature="28667:28697" ph="..." />
+                <marker date="1564066394152" expanded="true" signature="28751:28760" ph="..." />
               </folding>
             </state>
           </provider>
@@ -176,9 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_08_08_180136_create_table_conges.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_08_16_173138_add_nb_days_to_conges.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_08_08_181301_add_id_personne_to_conges.php" />
         <option value="$PROJECT_DIR$/resources/views/conges/conges.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CongerController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_27_110230_create_table_type_equipement.php" />
@@ -189,7 +178,6 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Fin_contrat.php" />
         <option value="$PROJECT_DIR$/app/Jobs/EnvoieFincontrat.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_02_143314_create_table_avantages.php" />
         <option value="$PROJECT_DIR$/app/Avantages.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AvantagesController.php" />
@@ -202,7 +190,6 @@
         <option value="$PROJECT_DIR$/app/Equipement_securite.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EpiController.php" />
         <option value="$PROJECT_DIR$/resources/views/etats/expatriepdf.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/public/css/impression.css" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/epi/gestion_epi.blade.php" />
@@ -217,16 +204,21 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_09_23_165831_add_adresse_to_personne.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_25_111937_add_fonction_nationalite_to_invite.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_24_103712_add_adresse_to_invite.php" />
-        <option value="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
         <option value="$PROJECT_DIR$/routes/console.php" />
         <option value="$PROJECT_DIR$/resources/views/mail/mailfincontrat.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/EtatsController.php" />
         <option value="$PROJECT_DIR$/resources/views/avantages/gestionmateriel.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/etats/expatrie.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Personne_contrat.php" />
+        <option value="$PROJECT_DIR$/resources/views/etats/personnecontrat.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/etats/informatique.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/EtatsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php" />
       </list>
     </option>
   </component>
@@ -270,6 +262,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -298,20 +292,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -338,7 +318,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tableau_de_bord" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -360,29 +340,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="personne" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mail" />
+              <option name="myItemId" value="invite" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -421,50 +379,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="contrat" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="avantages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -477,28 +391,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Metier" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Json" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -562,8 +454,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -788,322 +678,14 @@
       <workItem from="1569837094101" duration="8198000" />
       <workItem from="1569918034940" duration="5282000" />
       <workItem from="1569944182010" duration="1190000" />
-      <workItem from="1570005873899" duration="3923000" />
-    </task>
-    <task id="LOCAL-00268" summary="mise a jours des adresses">
-      <created>1569424748959</created>
-      <option name="number" value="00268" />
-      <option name="presentableId" value="LOCAL-00268" />
-      <option name="project" value="LOCAL" />
-      <updated>1569424748959</updated>
-    </task>
-    <task id="LOCAL-00269" summary="mise a jours des adresses">
-      <created>1569427333168</created>
-      <option name="number" value="00269" />
-      <option name="presentableId" value="LOCAL-00269" />
-      <option name="project" value="LOCAL" />
-      <updated>1569427333168</updated>
-    </task>
-    <task id="LOCAL-00270" summary="mise a jours des adresses">
-      <created>1569430948873</created>
-      <option name="number" value="00270" />
-      <option name="presentableId" value="LOCAL-00270" />
-      <option name="project" value="LOCAL" />
-      <updated>1569430948873</updated>
-    </task>
-    <task id="LOCAL-00271" summary="mise a jours des adresses">
-      <created>1569431108581</created>
-      <option name="number" value="00271" />
-      <option name="presentableId" value="LOCAL-00271" />
-      <option name="project" value="LOCAL" />
-      <updated>1569431108581</updated>
-    </task>
-    <task id="LOCAL-00272" summary="mise a jours des adresses">
-      <created>1569432355272</created>
-      <option name="number" value="00272" />
-      <option name="presentableId" value="LOCAL-00272" />
-      <option name="project" value="LOCAL" />
-      <updated>1569432355272</updated>
-    </task>
-    <task id="LOCAL-00273" summary="mise a jours des adresses">
-      <created>1569432473510</created>
-      <option name="number" value="00273" />
-      <option name="presentableId" value="LOCAL-00273" />
-      <option name="project" value="LOCAL" />
-      <updated>1569432473510</updated>
-    </task>
-    <task id="LOCAL-00274" summary="mise a jours des adresses">
-      <created>1569432820167</created>
-      <option name="number" value="00274" />
-      <option name="presentableId" value="LOCAL-00274" />
-      <option name="project" value="LOCAL" />
-      <updated>1569432820167</updated>
-    </task>
-    <task id="LOCAL-00275" summary="mise a jours des adresses">
-      <created>1569432874930</created>
-      <option name="number" value="00275" />
-      <option name="presentableId" value="LOCAL-00275" />
-      <option name="project" value="LOCAL" />
-      <updated>1569432874930</updated>
-    </task>
-    <task id="LOCAL-00276" summary="mise a jours des adresses">
-      <created>1569433167355</created>
-      <option name="number" value="00276" />
-      <option name="presentableId" value="LOCAL-00276" />
-      <option name="project" value="LOCAL" />
-      <updated>1569433167355</updated>
-    </task>
-    <task id="LOCAL-00277" summary="mise a jours des adresses">
-      <created>1569433363155</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1569433363155</updated>
-    </task>
-    <task id="LOCAL-00278" summary="mise a jours des adresses">
-      <created>1569433727692</created>
-      <option name="number" value="00278" />
-      <option name="presentableId" value="LOCAL-00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1569433727692</updated>
-    </task>
-    <task id="LOCAL-00279" summary="mise a jours des adresses">
-      <created>1569433890391</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1569433890391</updated>
-    </task>
-    <task id="LOCAL-00280" summary="mise a jours des adresses">
-      <created>1569433953752</created>
-      <option name="number" value="00280" />
-      <option name="presentableId" value="LOCAL-00280" />
-      <option name="project" value="LOCAL" />
-      <updated>1569433953752</updated>
-    </task>
-    <task id="LOCAL-00281" summary="mise a jours des adresses">
-      <created>1569434078754</created>
-      <option name="number" value="00281" />
-      <option name="presentableId" value="LOCAL-00281" />
-      <option name="project" value="LOCAL" />
-      <updated>1569434078754</updated>
-    </task>
-    <task id="LOCAL-00282" summary="mise a jours des adresses">
-      <created>1569489986373</created>
-      <option name="number" value="00282" />
-      <option name="presentableId" value="LOCAL-00282" />
-      <option name="project" value="LOCAL" />
-      <updated>1569489986373</updated>
-    </task>
-    <task id="LOCAL-00283" summary="mise a jours des adresses">
-      <created>1569490078982</created>
-      <option name="number" value="00283" />
-      <option name="presentableId" value="LOCAL-00283" />
-      <option name="project" value="LOCAL" />
-      <updated>1569490078982</updated>
-    </task>
-    <task id="LOCAL-00284" summary="mise a jours des adresses">
-      <created>1569490850135</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1569490850135</updated>
-    </task>
-    <task id="LOCAL-00285" summary="mise a jours des adresses">
-      <created>1569491205640</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1569491205640</updated>
-    </task>
-    <task id="LOCAL-00286" summary="mise a jours des adresses">
-      <created>1569491447609</created>
-      <option name="number" value="00286" />
-      <option name="presentableId" value="LOCAL-00286" />
-      <option name="project" value="LOCAL" />
-      <updated>1569491447609</updated>
-    </task>
-    <task id="LOCAL-00287" summary="mise a jours des adresses">
-      <created>1569492890637</created>
-      <option name="number" value="00287" />
-      <option name="presentableId" value="LOCAL-00287" />
-      <option name="project" value="LOCAL" />
-      <updated>1569492890637</updated>
-    </task>
-    <task id="LOCAL-00288" summary="mise a jours des adresses">
-      <created>1569492943524</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1569492943524</updated>
-    </task>
-    <task id="LOCAL-00289" summary="mise a jours des adresses">
-      <created>1569493150052</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493150052</updated>
-    </task>
-    <task id="LOCAL-00290" summary="mise a jours des adresses">
-      <created>1569493246587</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493246587</updated>
-    </task>
-    <task id="LOCAL-00291" summary="mise a jours des adresses">
-      <created>1569493416083</created>
-      <option name="number" value="00291" />
-      <option name="presentableId" value="LOCAL-00291" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493416083</updated>
-    </task>
-    <task id="LOCAL-00292" summary="mise a jours des adresses">
-      <created>1569493664685</created>
-      <option name="number" value="00292" />
-      <option name="presentableId" value="LOCAL-00292" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493664685</updated>
-    </task>
-    <task id="LOCAL-00293" summary="mise a jours des adresses">
-      <created>1569493754088</created>
-      <option name="number" value="00293" />
-      <option name="presentableId" value="LOCAL-00293" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493754088</updated>
-    </task>
-    <task id="LOCAL-00294" summary="mise a jours des adresses">
-      <created>1569493891500</created>
-      <option name="number" value="00294" />
-      <option name="presentableId" value="LOCAL-00294" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493891500</updated>
-    </task>
-    <task id="LOCAL-00295" summary="mise a jours des adresses">
-      <created>1569493932941</created>
-      <option name="number" value="00295" />
-      <option name="presentableId" value="LOCAL-00295" />
-      <option name="project" value="LOCAL" />
-      <updated>1569493932941</updated>
-    </task>
-    <task id="LOCAL-00296" summary="mise a jours des adresses">
-      <created>1569494173272</created>
-      <option name="number" value="00296" />
-      <option name="presentableId" value="LOCAL-00296" />
-      <option name="project" value="LOCAL" />
-      <updated>1569494173272</updated>
-    </task>
-    <task id="LOCAL-00297" summary="mise a jours des adresses">
-      <created>1569494366253</created>
-      <option name="number" value="00297" />
-      <option name="presentableId" value="LOCAL-00297" />
-      <option name="project" value="LOCAL" />
-      <updated>1569494366253</updated>
-    </task>
-    <task id="LOCAL-00298" summary="mise a jours des adresses">
-      <created>1569494530860</created>
-      <option name="number" value="00298" />
-      <option name="presentableId" value="LOCAL-00298" />
-      <option name="project" value="LOCAL" />
-      <updated>1569494530860</updated>
-    </task>
-    <task id="LOCAL-00299" summary="mise a jours des adresses">
-      <created>1569496284426</created>
-      <option name="number" value="00299" />
-      <option name="presentableId" value="LOCAL-00299" />
-      <option name="project" value="LOCAL" />
-      <updated>1569496284426</updated>
-    </task>
-    <task id="LOCAL-00300" summary="mise a jours des adresses">
-      <created>1569496569420</created>
-      <option name="number" value="00300" />
-      <option name="presentableId" value="LOCAL-00300" />
-      <option name="project" value="LOCAL" />
-      <updated>1569496569420</updated>
-    </task>
-    <task id="LOCAL-00301" summary="mise a jours des adresses">
-      <created>1569497128684</created>
-      <option name="number" value="00301" />
-      <option name="presentableId" value="LOCAL-00301" />
-      <option name="project" value="LOCAL" />
-      <updated>1569497128684</updated>
-    </task>
-    <task id="LOCAL-00302" summary="mise a jours des adresses">
-      <created>1569497880292</created>
-      <option name="number" value="00302" />
-      <option name="presentableId" value="LOCAL-00302" />
-      <option name="project" value="LOCAL" />
-      <updated>1569497880292</updated>
-    </task>
-    <task id="LOCAL-00303" summary="mise a jours des adresses">
-      <created>1569497955886</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1569497955886</updated>
-    </task>
-    <task id="LOCAL-00304" summary="mise a jours des adresses">
-      <created>1569498917117</created>
-      <option name="number" value="00304" />
-      <option name="presentableId" value="LOCAL-00304" />
-      <option name="project" value="LOCAL" />
-      <updated>1569498917117</updated>
-    </task>
-    <task id="LOCAL-00305" summary="mise a jours des adresses">
-      <created>1569598558367</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1569598558367</updated>
-    </task>
-    <task id="LOCAL-00306" summary="mise a jours des adresses">
-      <created>1569840279397</created>
-      <option name="number" value="00306" />
-      <option name="presentableId" value="LOCAL-00306" />
-      <option name="project" value="LOCAL" />
-      <updated>1569840279397</updated>
-    </task>
-    <task id="LOCAL-00307" summary="mise a jours des adresses">
-      <created>1569840640215</created>
-      <option name="number" value="00307" />
-      <option name="presentableId" value="LOCAL-00307" />
-      <option name="project" value="LOCAL" />
-      <updated>1569840640215</updated>
-    </task>
-    <task id="LOCAL-00308" summary="mise a jours des adresses">
-      <created>1569854870914</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1569854870914</updated>
-    </task>
-    <task id="LOCAL-00309" summary="mise a jours des adresses">
-      <created>1569855359317</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1569855359317</updated>
-    </task>
-    <task id="LOCAL-00310" summary="mise a jours des adresses">
-      <created>1569940146413</created>
-      <option name="number" value="00310" />
-      <option name="presentableId" value="LOCAL-00310" />
-      <option name="project" value="LOCAL" />
-      <updated>1569940146413</updated>
-    </task>
-    <task id="LOCAL-00311" summary="mise a jours des adresses">
-      <created>1569940467143</created>
-      <option name="number" value="00311" />
-      <option name="presentableId" value="LOCAL-00311" />
-      <option name="project" value="LOCAL" />
-      <updated>1569940467143</updated>
-    </task>
-    <task id="LOCAL-00312" summary="mise a jours des adresses">
-      <created>1569940896043</created>
-      <option name="number" value="00312" />
-      <option name="presentableId" value="LOCAL-00312" />
-      <option name="project" value="LOCAL" />
-      <updated>1569940896043</updated>
+      <workItem from="1570005873899" duration="16226000" />
+      <workItem from="1570091852888" duration="5047000" />
+      <workItem from="1570110367070" duration="8963000" />
+      <workItem from="1570178954081" duration="6952000" />
+      <workItem from="1570435524363" duration="9965000" />
+      <workItem from="1570545529458" duration="1161000" />
+      <workItem from="1570618877096" duration="82000" />
+      <workItem from="1570635911341" duration="1657000" />
     </task>
     <task id="LOCAL-00313" summary="mise a jours des adresses">
       <created>1569941130978</created>
@@ -1133,11 +715,326 @@
       <option name="project" value="LOCAL" />
       <updated>1570011567606</updated>
     </task>
-    <option name="localTasksCounter" value="317" />
+    <task id="LOCAL-00317" summary="total">
+      <created>1570011822423</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
+      <option name="project" value="LOCAL" />
+      <updated>1570011822423</updated>
+    </task>
+    <task id="LOCAL-00318" summary="total">
+      <created>1570011939338</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1570011939338</updated>
+    </task>
+    <task id="LOCAL-00319" summary="total">
+      <created>1570012234556</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1570012234556</updated>
+    </task>
+    <task id="LOCAL-00320" summary="total">
+      <created>1570030398345</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1570030398345</updated>
+    </task>
+    <task id="LOCAL-00321" summary="total">
+      <created>1570030520265</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1570030520265</updated>
+    </task>
+    <task id="LOCAL-00322" summary="total">
+      <created>1570032375481</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1570032375481</updated>
+    </task>
+    <task id="LOCAL-00323" summary="total">
+      <created>1570032481136</created>
+      <option name="number" value="00323" />
+      <option name="presentableId" value="LOCAL-00323" />
+      <option name="project" value="LOCAL" />
+      <updated>1570032481136</updated>
+    </task>
+    <task id="LOCAL-00324" summary="total">
+      <created>1570032575587</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1570032575587</updated>
+    </task>
+    <task id="LOCAL-00325" summary="total">
+      <created>1570032650428</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
+      <option name="project" value="LOCAL" />
+      <updated>1570032650429</updated>
+    </task>
+    <task id="LOCAL-00326" summary="total">
+      <created>1570032823364</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1570032823364</updated>
+    </task>
+    <task id="LOCAL-00327" summary="total">
+      <created>1570033107764</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1570033107764</updated>
+    </task>
+    <task id="LOCAL-00328" summary="total">
+      <created>1570033195802</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1570033195802</updated>
+    </task>
+    <task id="LOCAL-00329" summary="total">
+      <created>1570033281289</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1570033281289</updated>
+    </task>
+    <task id="LOCAL-00330" summary="total">
+      <created>1570035172347</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1570035172347</updated>
+    </task>
+    <task id="LOCAL-00331" summary="total">
+      <created>1570036012841</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1570036012841</updated>
+    </task>
+    <task id="LOCAL-00332" summary="total">
+      <created>1570036423033</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1570036423033</updated>
+    </task>
+    <task id="LOCAL-00333" summary="total">
+      <created>1570037083096</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1570037083096</updated>
+    </task>
+    <task id="LOCAL-00334" summary="total">
+      <created>1570116198047</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1570116198047</updated>
+    </task>
+    <task id="LOCAL-00335" summary="total">
+      <created>1570116257089</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1570116257089</updated>
+    </task>
+    <task id="LOCAL-00336" summary="total">
+      <created>1570117599275</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1570117599275</updated>
+    </task>
+    <task id="LOCAL-00337" summary="total">
+      <created>1570119190851</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1570119190851</updated>
+    </task>
+    <task id="LOCAL-00338" summary="total">
+      <created>1570124212538</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1570124212538</updated>
+    </task>
+    <task id="LOCAL-00339" summary="total">
+      <created>1570125963358</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1570125963358</updated>
+    </task>
+    <task id="LOCAL-00340" summary="total">
+      <created>1570180534572</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1570180534573</updated>
+    </task>
+    <task id="LOCAL-00341" summary="total">
+      <created>1570182671682</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
+      <option name="project" value="LOCAL" />
+      <updated>1570182671682</updated>
+    </task>
+    <task id="LOCAL-00342" summary="total">
+      <created>1570182782115</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1570182782115</updated>
+    </task>
+    <task id="LOCAL-00343" summary="total">
+      <created>1570183144934</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1570183144934</updated>
+    </task>
+    <task id="LOCAL-00344" summary="total">
+      <created>1570184751949</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1570184751949</updated>
+    </task>
+    <task id="LOCAL-00345" summary="total">
+      <created>1570186147267</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1570186147267</updated>
+    </task>
+    <task id="LOCAL-00346" summary="total">
+      <created>1570186327935</created>
+      <option name="number" value="00346" />
+      <option name="presentableId" value="LOCAL-00346" />
+      <option name="project" value="LOCAL" />
+      <updated>1570186327935</updated>
+    </task>
+    <task id="LOCAL-00347" summary="total">
+      <created>1570186425585</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1570186425585</updated>
+    </task>
+    <task id="LOCAL-00348" summary="total">
+      <created>1570186519104</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1570186519104</updated>
+    </task>
+    <task id="LOCAL-00349" summary="total">
+      <created>1570186598238</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1570186598238</updated>
+    </task>
+    <task id="LOCAL-00350" summary="total">
+      <created>1570187073931</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1570187073931</updated>
+    </task>
+    <task id="LOCAL-00351" summary="total">
+      <created>1570187165032</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1570187165032</updated>
+    </task>
+    <task id="LOCAL-00352" summary="total">
+      <created>1570187237135</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1570187237135</updated>
+    </task>
+    <task id="LOCAL-00353" summary="total">
+      <created>1570189813908</created>
+      <option name="number" value="00353" />
+      <option name="presentableId" value="LOCAL-00353" />
+      <option name="project" value="LOCAL" />
+      <updated>1570189813908</updated>
+    </task>
+    <task id="LOCAL-00354" summary="total">
+      <created>1570449238981</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1570449238982</updated>
+    </task>
+    <task id="LOCAL-00355" summary="total">
+      <created>1570449564510</created>
+      <option name="number" value="00355" />
+      <option name="presentableId" value="LOCAL-00355" />
+      <option name="project" value="LOCAL" />
+      <updated>1570449564511</updated>
+    </task>
+    <task id="LOCAL-00356" summary="total">
+      <created>1570463052895</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1570463052895</updated>
+    </task>
+    <task id="LOCAL-00357" summary="total">
+      <created>1570636814737</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1570636814738</updated>
+    </task>
+    <task id="LOCAL-00358" summary="total">
+      <created>1570636928448</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1570636928449</updated>
+    </task>
+    <task id="LOCAL-00359" summary="total">
+      <created>1570637008968</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1570637008968</updated>
+    </task>
+    <task id="LOCAL-00360" summary="total">
+      <created>1570637095406</created>
+      <option name="number" value="00360" />
+      <option name="presentableId" value="LOCAL-00360" />
+      <option name="project" value="LOCAL" />
+      <updated>1570637095406</updated>
+    </task>
+    <task id="LOCAL-00361" summary="total">
+      <created>1570637461087</created>
+      <option name="number" value="00361" />
+      <option name="presentableId" value="LOCAL-00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1570637461087</updated>
+    </task>
+    <option name="localTasksCounter" value="362" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1279384000" />
+    <option name="totallyTimeSpent" value="1325514000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1152,14 +1049,14 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33102345" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29744136" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5107296" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17004265" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1684435" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18093175" sideWeight="0.47424892" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20693392" sideWeight="0.6636266" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1928494" sideWeight="0.6636266" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1228,7 +1125,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mise a jours 9" />
     <MESSAGE value="mise a jours 10" />
     <MESSAGE value="mmmm" />
     <MESSAGE value="mise a jours 12" />
@@ -1253,7 +1149,8 @@
     <MESSAGE value="empecher l'affichage des modal à limpression des camamberts" />
     <MESSAGE value="mise a jours nationnalite" />
     <MESSAGE value="mise a jours des adresses" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jours des adresses" />
+    <MESSAGE value="total" />
+    <option name="LAST_COMMIT_MESSAGE" value="total" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1262,74 +1159,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/7b86b1fa/2b3d9b48-8c1c-46e8-bdfc-6459a5db2980/rh_eiffage.equipements">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/globalExport.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/conges/conges.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="229" column="48" selection-start-line="229" selection-start-column="36" selection-end-line="229" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/2019_09_16_134005_create_permis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" column="10" selection-start-line="20" selection-start-column="11" selection-end-line="24" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/2019_09_16_115320_create_type_permis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_17_095855_create_table_atribution.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="77" selection-start-line="18" selection-start-column="10" selection-end-line="19" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_17_105123_create_table_approvisionnement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3774">
-          <caret line="229" column="81" selection-start-line="229" selection-start-column="8" selection-end-line="229" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SalaireController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1341,14 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/avantages/avantages.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="38" selection-start-line="101" selection-start-column="30" selection-end-line="109" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1387,13 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4012">
-          <caret line="245" column="24" selection-start-line="245" selection-start-column="13" selection-end-line="245" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/etats/expatriepdf.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -1426,9 +1240,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#59#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1495,20 +1306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="218" column="75" selection-start-line="218" selection-start-column="75" selection-end-line="218" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="220" column="22" selection-start-line="220" selection-start-column="22" selection-end-line="220" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/EnvoieFincontrat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1516,54 +1313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
-          <folding>
-            <element signature="e#573#2031#0#PHP" expanded="false" />
-            <element signature="e#2036#11859#0#PHP" expanded="false" />
-            <element signature="e#11864#19110#0#PHP" expanded="false" />
-            <element signature="e#19115#35693#0#PHP" expanded="false" />
-            <element signature="e#35700#53316#0#PHP" expanded="false" />
-            <element signature="e#53321#69820#0#PHP" expanded="false" />
-            <element signature="e#69826#69912#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PartenaireController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#149#339#0#PHP" expanded="false" />
-            <element signature="e#344#507#0#PHP" expanded="false" />
-            <element signature="e#512#680#0#PHP" expanded="false" />
-            <element signature="e#685#1158#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding>
-            <element signature="e#555#828#0#PHP" expanded="false" />
-            <element signature="e#833#1193#0#PHP" expanded="false" />
-            <element signature="e#1198#1854#0#PHP" expanded="false" />
-            <element signature="e#1859#2236#0#PHP" expanded="false" />
-            <element signature="e#2241#2631#0#PHP" expanded="false" />
-            <element signature="e#2637#6786#0#PHP" expanded="false" />
-            <element signature="e#6791#7171#0#PHP" expanded="false" />
-            <element signature="e#7176#7639#0#PHP" expanded="false" />
-            <element signature="e#7644#11659#0#PHP" expanded="false" />
-            <element signature="e#11665#13203#0#PHP" expanded="false" />
-            <element signature="e#13208#14925#0#PHP" expanded="false" />
-            <element signature="e#14931#15191#0#PHP" expanded="false" />
-            <element signature="e#15196#15862#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1571,7 +1324,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1586,7 +1338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1594,22 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-            <element signature="e#1362#1949#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#527#665#0#PHP" expanded="false" />
-            <element signature="e#1200#1843#0#PHP" expanded="false" />
-            <element signature="e#1850#3167#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1617,7 +1352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="27" column="18" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1625,7 +1359,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1633,36 +1366,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10693">
           <caret line="629" column="0" selection-start-line="629" selection-start-column="0" selection-end-line="629" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/etats/expatrie.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
-          <folding>
-            <marker date="1569922838308" expanded="true" signature="5324:13514" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/personne/fiche_personnel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="4267">
           <caret line="251" column="58" selection-start-line="241" selection-start-column="47" selection-end-line="251" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
+        <state relative-caret-position="1190">
           <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
-          <folding>
-            <element signature="e#3260#9231#0#HTML" expanded="false" />
-            <element signature="e#9265#10404#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1670,23 +1387,156 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
-          <folding>
-            <element signature="e#240#572#0#PHP" expanded="false" />
-            <element signature="e#577#921#0#PHP" expanded="false" />
-            <element signature="e#926#1085#0#PHP" expanded="false" />
-            <element signature="e#1090#1575#0#PHP" expanded="false" />
-            <element signature="e#1581#2000#0#PHP" expanded="false" />
-            <element signature="e#2006#3962#0#PHP" expanded="false" />
-            <element signature="e#3967#4184#0#PHP" expanded="false" />
-            <element signature="e#4697#6830#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/global.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="252" column="47" selection-start-line="252" selection-start-column="47" selection-end-line="252" selection-end-column="47" />
+        <state relative-caret-position="3655">
+          <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2788">
+          <caret line="171" column="83" selection-start-line="171" selection-start-column="81" selection-end-line="171" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/etats/expatrie.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="310" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7905">
+          <caret line="474" column="45" selection-start-line="474" selection-start-column="45" selection-end-line="474" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Fin_contrat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="63" selection-start-line="12" selection-start-column="4" selection-end-line="13" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Personne_contrat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirciExport.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/dirci.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="65" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="65" />
+          <folding>
+            <marker date="1564066394152" expanded="true" signature="28578:28592" ph="..." />
+            <marker date="1564066394152" expanded="true" signature="28667:28697" ph="..." />
+            <marker date="1564066394152" expanded="true" signature="28751:28760" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Categorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4046">
+          <caret line="238" column="58" selection-start-line="238" selection-start-column="58" selection-end-line="238" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/avantages/avantages.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="109" column="38" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/etats/personnecontrat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/etats/informatique.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="1938" column="47" selection-start-line="1938" selection-start-column="47" selection-end-line="1938" selection-end-column="47" />
+          <folding>
+            <element signature="e#2036#13536#0#PHP" expanded="false" />
+            <element signature="e#13541#20787#0#PHP" expanded="false" />
+            <element signature="e#20792#39894#0#PHP" expanded="false" />
+            <element signature="e#39901#60647#0#PHP" expanded="false" />
+            <element signature="e#77157#77243#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
+          <folding>
+            <element signature="e#1390#2033#0#PHP" expanded="false" />
+            <element signature="e#2040#3357#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/invite/gestion_invite.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="81" column="182" selection-start-line="81" selection-start-column="182" selection-end-line="81" selection-end-column="182" />
           <folding />
         </state>
       </provider>

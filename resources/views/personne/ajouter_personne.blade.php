@@ -548,6 +548,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Presence Effective</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <select type="text" name="presence_effective[]" class="type_c form-control input-field">
+                                        <option value="P">PRESENT</option>
+                                        <option value="ABS">ABSENT</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <hr width="100%" color="blue">
                     </div>
                     <div id="familletemplate" class="row clearfix" style="display: none">
@@ -598,6 +610,18 @@
                             <div class="form-group col-sm-12">
                                 <div class="form-line">
                                     <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control-label">
+                            <label for="observation_c[]">Presence Effective</label>
+                            <div class="form-group col-sm-12">
+                                <div class="form-line">
+                                    <select type="text" name="presence_effective[]" class="type_c form-control input-field">
+                                        <option value="P">PRESENT</option>
+                                        <option value="ABS">ABSENT</option>
+
+                                    </select>
                                 </div>
                             </div>
                         </div>

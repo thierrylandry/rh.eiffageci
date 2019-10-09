@@ -165,6 +165,7 @@ class PersonneController extends Controller
                 $famille->type_p = $request->input("type_p")[$i];
                 $famille->num_p= $request->input("num_p")[$i];
                 $famille->date_exp= $request->input("date_exp")[$i];
+                $famille->presence_effective= $request->input("presence_effective")[$i];
                 $familles->add($famille);
             }
 
@@ -295,6 +296,7 @@ class PersonneController extends Controller
                 $famille->type_p = $request->input("type_p")[$i];
                 $famille->num_p= $request->input("num_p")[$i];
                 $famille->date_exp= $request->input("date_exp")[$i];
+                $famille->presence_effective= $request->input("presence_effective")[$i];
                 $familles->add($famille);
             }
 

@@ -515,6 +515,34 @@
                                     </div>
                                 </div>
                             </div>
+                                    <div class="form-control-label">
+                                        <label for="observation_c[]">Presence Effective</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <select type="text" name="presence_effective[]" class="type_c form-control input-field">
+
+                                                    @if(isset($famille->presence_effective))
+                                                        @if($famille->presence_effective=="P" )
+                                                        <option value="P" selected>PRESENT</option>
+                                                         @else
+                                                        <option value="P">PRESENT</option>
+
+                                                          @endif
+                                                               @if($famille->presence_effective=="ABS")
+                                                            <option value="ABS" selected>ABSENT</option>
+                                                                @else
+                                                            <option value="ABS">PRESENT</option>
+
+                                                               @endif
+                                                        @else
+                                                        <option value="P" selected>PRESENT</option>
+                                                        <option value="ABS">ABS</option>
+                                                    @endif
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                             <hr width="100%" color="blue">
                                 @endforeach
                             @endif
@@ -565,6 +593,18 @@
                                 <div class="form-group col-sm-12">
                                     <div class="form-line">
                                         <input type="date" name="date_exp[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('date_exp[]') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-control-label">
+                                <label for="observation_c[]">Presence Effective</label>
+                                <div class="form-group col-sm-12">
+                                    <div class="form-line">
+                                        <select type="text" name="presence_effective[]" class="type_c form-control input-field">
+                                            <option value="P">PRESENT</option>
+                                            <option value="ABS">ABSENT</option>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>

@@ -47,11 +47,12 @@
                             <td>-</td>
                         </tr>
 
-                        @if(isset($expatrie->familles) && !empty($expatrie->familles))
+                        @if(isset($expatrie->familles) && !empty($expatrie->familles)  )
 
                             <?php $tabs=json_decode($expatrie->familles);
                             ?>
                             @foreach($tabs as $familles)
+                                @if(!isset($familles->presence_effective) || isset($familles->presence_effective)&& $familles->presence_effective="p")
                                 <tr class="tr-shadow">
                                     <td>{{isset($familles->nom_prenom)?explode(' ',$familles->nom_prenom)[0]:''}}</td>
                                     <td>
@@ -85,6 +86,7 @@
                                         @if($familles->lien_parente=="CONJ") Conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
                                         @if($familles->lien_parente=="ENF") Enfant de {{$expatrie->nom}} {{$expatrie->prenom}} @endif</td>
                                 </tr>
+                                @endif
                             @endforeach
                             @endif
 

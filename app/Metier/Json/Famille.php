@@ -21,6 +21,11 @@ class Famille extends Serializable
         "CNI" => "CARTE NATIONNAL D'IDENTITE",
 
 
+    ];    public static $presence_effective_list = [
+        "P" => "PRESENT",
+        "ABS" => "ABSENT",
+
+
     ];
 
     public $nom_prenom;
@@ -28,6 +33,7 @@ class Famille extends Serializable
     public $type_p;
     public $num_p;
     public $date_exp;
+    public $presence_effective;
 
     public static function getFamilleLienString($name)
     {
@@ -41,6 +47,14 @@ class Famille extends Serializable
     {
         if (key_exists($name, self::$pieces_list)) {
             return self::$pieces_list[$name];
+        } else {
+            return null;
+        }
+    }
+    public static function getListePresence($name)
+    {
+        if (key_exists($name, self::$presence_effective_list)) {
+            return self::$presence_effective_list[$name];
         } else {
             return null;
         }

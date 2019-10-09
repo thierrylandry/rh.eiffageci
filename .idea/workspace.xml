@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
+    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="total">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Metier/Json/Famille.php" afterPath="$PROJECT_DIR$/app/Metier/Json/Famille.php" />
+    </list>
+    <list id="44d2217e-35ff-4e8d-85a0-90f659370b0b" name="Rejected commit: Default" comment="total">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/etats/expatrie.blade.php" afterPath="$PROJECT_DIR$/resources/views/etats/expatrie.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" afterPath="$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" afterPath="$PROJECT_DIR$/resources/views/personne/detail_personne.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,11 +64,11 @@
         <entry file="file://$PROJECT_DIR$/resources/views/etats/expatrie.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
-              <caret line="54" column="148" selection-start-line="54" selection-start-column="148" selection-end-line="54" selection-end-column="148" />
+              <caret line="54" column="147" selection-start-line="54" selection-start-column="147" selection-end-line="54" selection-end-column="147" />
               <folding>
-                <element signature="e#2180#3777#0#HTML" expanded="false" />
-                <marker date="1570639610120" expanded="true" signature="2642:2932" ph="..." />
-                <marker date="1570639610120" expanded="true" signature="2755:2885" ph="..." />
+                <element signature="e#2181#3778#0#HTML" expanded="false" />
+                <marker date="1570639893623" expanded="true" signature="2643:2933" ph="..." />
+                <marker date="1570639893623" expanded="true" signature="2756:2886" ph="..." />
               </folding>
             </state>
           </provider>
@@ -653,14 +651,7 @@
       <workItem from="1570435524363" duration="9965000" />
       <workItem from="1570545529458" duration="1161000" />
       <workItem from="1570618877096" duration="82000" />
-      <workItem from="1570635911341" duration="3701000" />
-    </task>
-    <task id="LOCAL-00314" summary="mise a jours des adresses">
-      <created>1570007564714</created>
-      <option name="number" value="00314" />
-      <option name="presentableId" value="LOCAL-00314" />
-      <option name="project" value="LOCAL" />
-      <updated>1570007564714</updated>
+      <workItem from="1570635911341" duration="4010000" />
     </task>
     <task id="LOCAL-00315" summary="mise a jours des adresses">
       <created>1570008966071</created>
@@ -998,11 +989,18 @@
       <option name="project" value="LOCAL" />
       <updated>1570637579464</updated>
     </task>
-    <option name="localTasksCounter" value="363" />
+    <task id="LOCAL-00363" summary="total">
+      <created>1570639627972</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1570639627972</updated>
+    </task>
+    <option name="localTasksCounter" value="364" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1327558000" />
+    <option name="totallyTimeSpent" value="1327867000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1015,19 +1013,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29744136" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5107296" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1684435" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18093175" sideWeight="0.47424892" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1928494" sideWeight="0.6636266" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1928494" sideWeight="0.6636266" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1530,11 +1528,11 @@
     <entry file="file://$PROJECT_DIR$/resources/views/etats/expatrie.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
-          <caret line="54" column="148" selection-start-line="54" selection-start-column="148" selection-end-line="54" selection-end-column="148" />
+          <caret line="54" column="147" selection-start-line="54" selection-start-column="147" selection-end-line="54" selection-end-column="147" />
           <folding>
-            <element signature="e#2180#3777#0#HTML" expanded="false" />
-            <marker date="1570639610120" expanded="true" signature="2642:2932" ph="..." />
-            <marker date="1570639610120" expanded="true" signature="2755:2885" ph="..." />
+            <element signature="e#2181#3778#0#HTML" expanded="false" />
+            <marker date="1570639893623" expanded="true" signature="2643:2933" ph="..." />
+            <marker date="1570639893623" expanded="true" signature="2756:2886" ph="..." />
           </folding>
         </state>
       </provider>

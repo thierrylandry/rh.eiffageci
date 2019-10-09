@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('expatrie')
+@section('informatique')
     active
 @endsection
 @section('etats')
@@ -38,75 +38,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($expatries as $expatrie)
-                        <tr class="tr-shadow">
-                            <td>{{$expatrie->nom}}</td>
-                            <td>{{$expatrie->prenom}}</td>
-                            <td>{{$expatrie->libelle}}</td>
-                            <td>{{$expatrie->nom_fr_fr}}</td>
-                            <td>{{$expatrie->adresse}}</td>
-                            <td>{{$expatrie->contact}}</td>
-                            <td>{{$expatrie->whatsapp}}</td>
-                            <td>{{$expatrie->sattelitaire}}</td>
-                            <td>-</td>
+                    @foreach($lespersonnes as $lespersonne)
+
+                        <tr>
+                            <th>{{$lespersonne->prenoms}}</th>
+                            <th>{{$lespersonne->NOM}}</th>
+                            <th>{{$lespersonne->CHANTIER}}</th>
                         </tr>
 
-                        @if(isset($expatrie->familles) && !empty($expatrie->familles))
-
-                            <?php $tabs=json_decode($expatrie->familles);
-                            ?>
-                            @foreach($tabs as $familles)
-                                <tr class="tr-shadow">
-                                    <td>{{isset($familles->nom_prenom)?explode(' ',$familles->nom_prenom)[0]:''}}</td>
-                                    <td>
-
-                                        @if(isset($familles->nom_prenom))
-
-                                            <?php
-                                            $nom_part="";
-                                            foreach(explode(' ',$familles->nom_prenom) as $tt):
-                                                if (stristr($tt,explode(' ',$familles->nom_prenom)[0])===false){
-                                                    $nom_part=$nom_part.$tt.' ';
-                                                }
-
-                                            endforeach;
-                                            ?>
-
-                                            {{$nom_part}}
-
-                                        @endif
-
-
-                                    </td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-
-                                        @if($familles->lien_parente=="CONJ") Conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
-                                        @if($familles->lien_parente=="ENF") Enfant de {{$expatrie->nom}} {{$expatrie->prenom}} @endif</td>
-                                </tr>
-                            @endforeach
-                        @endif
-
-                    @endforeach
-
-                    @foreach($invites_presents as $invites_present)
-                        <tr class="tr-shadow">
-                            <td>{{$invites_present->nom}}</td>
-                            <td>{{$invites_present->prenoms}}</td>
-                            <td>{{$invites_present->fonction}}</td>
-                            <td>{{$invites_present->nom_fr_fr}}</td>
-                            <td>{{$invites_present->adresse}}</td>
-                            <td>{{$invites_present->contact}}</td>
-                            <td>{{$invites_present->whatsapp}}</td>
-                            <td>{{$invites_present->sattelitaire}}</td>
-                            <td>-</td>
-                        </tr>
-                    @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

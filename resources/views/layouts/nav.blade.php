@@ -235,6 +235,8 @@
                         </li>
                         <li class="@yield('personne_contrat')">
                             <a href="{{route('personne_contrat')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i>Les personnes & leur contrat</a>
+                        </li> <li class="@yield('informatique')">
+                            <a href="{{route('informatique')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i>Tableau de gestion du parc informatique</a>
                         </li>
 
                     </ul>

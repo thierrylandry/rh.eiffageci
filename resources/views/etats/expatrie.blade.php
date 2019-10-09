@@ -47,12 +47,13 @@
                             <td>-</td>
                         </tr>
 
+
                         @if(isset($expatrie->familles) && !empty($expatrie->familles)  )
 
                             <?php $tabs=json_decode($expatrie->familles);
                             ?>
                             @foreach($tabs as $familles)
-                                @if(!isset($familles->presence_effective) || isset($familles->presence_effective)&& $familles->presence_effective="p")
+                                @if(!isset($familles->presence_effective) || isset($familles->presence_effective)&& $familles->presence_effective=="P")
                                 <tr class="tr-shadow">
                                     <td>{{isset($familles->nom_prenom)?explode(' ',$familles->nom_prenom)[0]:''}}</td>
                                     <td>

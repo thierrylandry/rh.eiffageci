@@ -43,7 +43,7 @@ $repertoires= Liste_telephonique::all();
         $invites_presents= DB::table('invite')
             ->join('passage', 'invite.id','=','passage.id_invite')
             ->join('pays', 'invite.nationalite','=','pays.id')
-            ->where('dateDepart','>=',DB::raw('CURDATE()'))->tosql();
+            ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
 
         return view('etats/expatrie',compact('expatries','invites_presents'));
     }

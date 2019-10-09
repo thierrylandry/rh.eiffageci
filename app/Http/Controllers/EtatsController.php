@@ -41,10 +41,10 @@ $repertoires= Liste_telephonique::all();
       //  dd($personnes);
 
         $invites_presents= DB::table('invite')
-            ->join('passage', 'invite.id','=','passage.id_invite')
-            ->join('pays', 'invite.nationalite','=','pays.id')
-            ->where('dateDepart','>=',DB::raw('CURDATE()'))->tosql();
-dd($invites_presents);
+            ->leftjoin('passage', 'invite.id','=','passage.id_invite')
+            ->leftjoin('pays', 'invite.nationalite','=','pays.id')
+            ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
+//dd($invites_presents);
         return view('etats/expatrie',compact('expatries','invites_presents'));
     }
     public function expatriepdf(){

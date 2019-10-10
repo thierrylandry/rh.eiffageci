@@ -531,12 +531,12 @@
                                                                @if($famille->presence_effective=="ABS")
                                                             <option value="ABS" selected>ABSENT</option>
                                                                 @else
-                                                            <option value="ABS">PRESENT</option>
+                                                            <option value="ABS">ABSENT</option>
 
                                                                @endif
                                                         @else
                                                         <option value="P" selected>PRESENT</option>
-                                                        <option value="ABS">ABS</option>
+                                                        <option value="ABS">ABSENT</option>
                                                     @endif
 
                                                 </select>

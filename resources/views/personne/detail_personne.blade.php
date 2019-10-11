@@ -329,6 +329,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Presence effective</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select type="text" name="presenceEff" class="type_c form-control input-field">
+                                    <option value="present" {{isset($personne) && $personne->presenceEff=="present"? 'selected':''}}>PRESENT</option>
+                                    <option value="absent" {{isset($personne) && $personne->presenceEff=="absent"? 'selected':''}}>ABSENT</option>
+                                </select>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

@@ -235,6 +235,7 @@ class PersonneController extends Controller
         $contact=$parameters['contact'];
         $whatsapp=$parameters['whatsapp'];
         $sattelitaire=$parameters['sattelitaire'];
+        $presenceEff=$parameters['presenceEff'];
 
         $date= new \DateTime(null);
 
@@ -262,6 +263,7 @@ class PersonneController extends Controller
         $personne->contact=$contact;
         $personne->whatsapp=$whatsapp;
         $personne->sattelitaire=$sattelitaire;
+        $personne->presenceEff=$presenceEff;
 
         $familles = new Collection();
 

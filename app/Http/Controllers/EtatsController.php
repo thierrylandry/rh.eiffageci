@@ -36,7 +36,8 @@ $repertoires= Liste_telephonique::all();
     public function expatrie(){
         $contrats= Fin_contrat::all();
 
-      $expatries= DB::table('expatrie')->get();
+      $expatries= DB::table('expatrie')
+          ->where('presenceEff','=','present')->get();
        // dd($expatries);
       //  dd($personnes);
 

@@ -117,7 +117,32 @@
         </div>
     </div>
 
+    <?php
+    function trouver_date($sem, $annee, $j)
+    {
+        $jour_dans_le_mois = array();
+        $mois = 1;
+        $jour = 0;
 
+        for($a=1;$a<=365+date('L');$a++)
+        {
+            for($i=1;$i<=12;$i++)
+            {
+                $jour += date('t', mktime(0, 0, 0, $i, 1, date('Y')));
+                $jour_dans_le_mois[$i] = $jour;
+            }
+
+            $today = mktime(0, 0, 0, $mois, $a, date('Y'));
+            $semaine = date('W', $today);
+            $day = date('N', $today);
+            $date = date('d/m/Y', $today);
+            if(in_array($a, $jour_dans_le_mois)) $mois++;
+
+            if($semaine == $sem && $day == $j)
+                return $date;
+        }
+    }
+    ?>
 
 
     <script src="{{ asset("js/jquery.min.js") }}"></script>
@@ -187,8 +212,13 @@
 
                 return (res) ;
             }
+<?php
+        $numsemaineActuel =date('W', strtotime("now"))+1;
+        $dateDebutSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),1);
+        $datefinSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),7);
+        $nom="Tableau synoptique N°".$numsemaineActuel." du ".$dateDebutSemaineActuel." au ".$datefinSemaineActuel;
 
-
+        ?>
             var date =new Date();
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',
@@ -199,9 +229,9 @@
                             columns: [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"Copier",
-                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        filename: "<?php echo $nom?>",
                         messageTop: "",
-                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        title: "<?php echo $nom?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL'
                     },
@@ -211,9 +241,9 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8,,9]
                         },
                         text:"Excel",
-                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        filename: "<?php echo $nom?>",
                         messageTop: "",
-                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        title: "<?php echo $nom?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL',
 
@@ -224,9 +254,9 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"PDF",
-                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        filename: "<?php echo $nom?>",
                         messageTop: "",
-                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        title: "<?php echo $nom?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL',
                     },
@@ -236,9 +266,9 @@
                             columns:  [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"Imprimer",
-                        filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
+                        filename: "<?php echo $nom?>",
                         messageTop: "",
-                        title: "Tableau synoptique  N°<?php echo date('W', strtotime("now")); ?>",
+                        title: "<?php echo $nom?>",
                         orientation: 'landscape',
                         pageSize: 'LEGAL',
                     }

@@ -144,7 +144,7 @@
                     </ul>
                 </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
-                <li class="@yield('utilisateur') @yield('fonction') has-sub">
+                <li class=" @yield('fonction') has-sub">
                     <a class="js-arrow" href="#">
                         <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block')>

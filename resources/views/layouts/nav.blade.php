@@ -153,14 +153,14 @@
                         </li>
                             <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
                                 <a class="js-arrow " href="{{route('effectif')}}">
-                                    </i>EFFECTIFS</a>
+                                    </i>Effectifs</a>
                             </li>
                     </ul>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Gestion_utilisateur'))
                 <li class="@yield('utilisateur')">
-                   <a href="{{route('utilisateur')}}"> <i class="fas fa-user open" ></i> Utilisateurs</a>
+                   <a href="{{route('utilisateur')}}"> <i class="fas fa-user open" ></i> UTILISATEURS</a>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))

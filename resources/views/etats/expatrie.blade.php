@@ -30,7 +30,7 @@
                         <th>MOBILE</th>
                         <th>WHATSAPP</th>
                         <th>SATTELITAIRE</th>
-                        <th>DEPART/ARRIVE</th>
+                        <th>ARRIVE/DEPART</th>
                         <th>LIEN DE PARENTE</th>
                     </tr>
                     </thead>
@@ -196,7 +196,7 @@
                     {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2,3,4,5,6,7,8]
+                            columns: [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"Copier",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
@@ -208,7 +208,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,,9]
                         },
                         text:"Excel",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
@@ -221,7 +221,7 @@
                     {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"PDF",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",
@@ -233,7 +233,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"Imprimer",
                         filename: "Tableau synoptique N°<?php echo date('W', strtotime("now")); ?>",

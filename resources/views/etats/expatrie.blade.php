@@ -30,7 +30,7 @@
                         <th>MOBILE</th>
                         <th>WHATSAPP</th>
                         <th>SATTELITAIRE</th>
-                        <th>ARRIVE/DEPART</th>
+                        <th>ARRIVEE/DEPART</th>
                         <th>LIEN DE PARENTE</th>
                     </tr>
                     </thead>
@@ -45,7 +45,7 @@
                             <td>{{$expatrie->contact}}</td>
                             <td>{{$expatrie->whatsapp}}</td>
                             <td>{{$expatrie->sattelitaire}}</td>
-                            <td>PERMANANT</td>
+                            <td>PERMANENT</td>
                             <td>-</td>
                         </tr>
 

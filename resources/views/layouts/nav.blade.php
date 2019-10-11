@@ -151,19 +151,22 @@
                         <li class="@yield('fonction')">
                             <a href="{{route('fonctions')}}">Fonctions</a>
                         </li>
-
+                            <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
+                                <a class="js-arrow " href="{{route('effectif')}}">
+                                    </i>EFFECTIFS</a>
+                            </li>
                     </ul>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Gestion_utilisateur'))
                 <li class="@yield('utilisateur')">
-                    <a href="{{route('utilisateur')}}">Utilisateurs</a>
+                   <a href="{{route('utilisateur')}}"> <i class="fas fa-user open" ></i> Utilisateurs</a>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
                 <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
                     <a class="js-arrow " href="#">
-                        <i class="fas fa-user open" ></i>PERSONNES</a>
+                        <i class="fas fa-users open" ></i>PERSONNES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
                         <li class="@yield('lister_personne1')">
                             <a href="{{route('lister_personne',1)}}">Eiffage PHB</a>
@@ -189,12 +192,6 @@
                 <li class="@yield('salaires')  has-sub">
                     <a class="js-arrow " href="{{route('salaires')}}">
                         <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>
-                </li>
-                @endif
-                @if(Auth::user() != null && Auth::user()->hasRole('Effectifs'))
-                <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
-                    <a class="js-arrow " href="{{route('effectif')}}">
-                        <i class="fas fa-users" ></i>EFFECTIFS</a>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Conges'))

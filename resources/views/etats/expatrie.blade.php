@@ -30,6 +30,7 @@
                         <th>MOBILE</th>
                         <th>WHATSAPP</th>
                         <th>SATTELITAIRE</th>
+                        <th>DEPART/ARRIVE</th>
                         <th>LIEN DE PARENTE</th>
                     </tr>
                     </thead>
@@ -44,6 +45,7 @@
                             <td>{{$expatrie->contact}}</td>
                             <td>{{$expatrie->whatsapp}}</td>
                             <td>{{$expatrie->sattelitaire}}</td>
+                            <td>PERMANANT</td>
                             <td>-</td>
                         </tr>
 
@@ -82,6 +84,7 @@
                                     <td>-</td>
                                     <td>-</td>
                                     <td>-</td>
+                                    <td>-</td>
                                     <td>
 
                                         @if($familles->lien_parente=="CONJ") Conjoint de {{$expatrie->nom}} {{$expatrie->prenom}} @endif
@@ -103,6 +106,7 @@
                             <td>{{$invites_present->contact}}</td>
                             <td>{{$invites_present->whatsapp}}</td>
                             <td>{{$invites_present->sattelitaire}}</td>
+                            <td>{{date("d-m-Y",strtotime($invites_present->dateArrive)).'/'.date("d-m-Y",strtotime($invites_present->dateDepart))}}</td>
                             <td>-</td>
                         </tr>
                     @endforeach

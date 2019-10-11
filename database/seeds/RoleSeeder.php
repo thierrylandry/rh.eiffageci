@@ -17,6 +17,9 @@ class RoleSeeder extends Seeder
         $role_Admin->name="Parametrage";
         $role_Admin->description="PARAMETRAGE";
         $role_Admin->save();
+        $role_Admin->name="Gestion_utilisateur";
+        $role_Admin->description="GESTION UILISATEUR";
+        $role_Admin->save();
         $role_Admin = new Role();
         $role_Admin->name="Personnes";
         $role_Admin->description="PERSONNES";

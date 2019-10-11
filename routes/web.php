@@ -314,7 +314,7 @@ Route::get('/mailfin_contrat',[
 Route::get('/utilisateur',[
     'as'=>'utilisateur',
     'uses'=>'UserController@utilisateur',
-    'roles' => ['Parametrage']
+    'roles' => ['Gestion_utilisateur']
 ])->middleware('auth')->middleware('roles');
 Route::get('/fonctions',[
     'as'=>'fonctions',
@@ -344,12 +344,12 @@ Route::get('/supprimer_fonction/{id}',[
 Route::get('/voir_utilisateur',[
     'as'=>'voir_utilisateur',
     'uses'=>'UserController@voir_utilisateur',
-    'roles' => ['Parametrage']
+    'roles' => ['Gestion_utilisateur']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_utilisateur',[
     'as'=>'supprimer_utilisateur',
     'uses'=>'UserController@supprimer_utilisateur',
-    'roles' => ['Parametrage']
+    'roles' => ['Gestion_utilisateur']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_user',[
     'as'=>'save_user',
@@ -359,12 +359,12 @@ Route::post('/save_user',[
 Route::get('/modifier_utilisateur/{id}',[
     'as'=>'modifier_utilisateur',
     'uses'=>'UserController@modifier_utilisateur',
-    'roles' => ['Parametrage']
+    'roles' => ['Gestion_utilisateur']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_utilisateur/{id}',[
     'as'=>'supprimer_utilisateur',
     'uses'=>'UserController@supprimer_utilisateur',
-    'roles' => ['Parametrage']
+    'roles' => ['Gestion_utilisateur']
 ])->middleware('auth')->middleware('roles');
 Route::post('/modifier_user',[
     'as'=>'modifier_user',

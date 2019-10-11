@@ -148,14 +148,16 @@
                     <a class="js-arrow" href="#">
                         <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block')>
-                        <li class="@yield('utilisateur')">
-                            <a href="{{route('utilisateur')}}">Utilisateurs</a>
-                        </li>
                         <li class="@yield('fonction')">
                             <a href="{{route('fonctions')}}">Fonctions</a>
                         </li>
 
                     </ul>
+                </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Gestion_utilisateur'))
+                <li class="@yield('utilisateur')">
+                    <a href="{{route('utilisateur')}}">Utilisateurs</a>
                 </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))

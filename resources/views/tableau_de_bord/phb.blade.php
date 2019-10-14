@@ -25,7 +25,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Effectifs EIFFAGE</th>
+                                <th style="min-width: 400px; max-width: 400px">Effectifs EIFFAGE</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -79,7 +79,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Répartition H/F</th>
+                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -112,7 +112,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Qualification contractuelle</th>
+                                <th style="min-width: 400px; max-width: 400px">Qualification contractuelle</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -145,7 +145,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Nationalité - Personnel</th>
+                                <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -178,7 +178,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Répartition tranche d'age</th>
+                                <th style="min-width: 400px; max-width: 400px">Répartition tranche d'age</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -211,7 +211,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Ancienneté locaux EGC CI (révolue)</th>
+                                <th style="min-width: 400px; max-width: 400px">Ancienneté locaux EGC CI (révolue)</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -244,7 +244,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Services - Personnel</th>
+                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>

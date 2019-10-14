@@ -28,7 +28,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Effectifs globaux Projet ESF</th>
+                                <th style="min-width: 400px; max-width: 400px">Effectifs globaux Projet ESF</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -68,7 +68,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Effectifs globaux détaillé Projet ESF</th>
+                                <th style="min-width: 400px; max-width: 400px">Effectifs globaux détaillé Projet ESF</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -128,7 +128,7 @@
                         <table class="table  table-earning">
                             <thead>
                             <tr>
-                                <th>Répartition H/F</th>
+                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -167,7 +167,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Qualification contractuelle personnel ESF</th>
+                                <th style="min-width: 400px; max-width: 400px">Qualification contractuelle personnel ESF</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -206,7 +206,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Nationalité - Personnel</th>
+                                <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>
@@ -246,7 +246,7 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Services - Personnel</th>
+                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
                             </thead>

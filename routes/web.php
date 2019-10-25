@@ -23,9 +23,9 @@ Route::get('erreur', [
 ]);
 
 
-Route::get('/tableau_de_bord',[
+Route::get('/tableau_de_bord/{id}',[
     'as'=>'tableau_de_bord',
-    'uses'=>'HomeController@globale',
+    'uses'=>'HomeController@tableau_de_bord',
 ])->middleware('auth')->middleware('roles');
 Route::get('/dirci',[
     'as'=>'dirci',
@@ -52,11 +52,7 @@ Route::get('/globalExport',[
 ])->middleware('auth')->middleware('roles');
 
 
-Route::get('/Ajouter_personne',[
-    'as'=>'Ajouter_personne',
-    'uses'=>'PersonneController@ajouter_personne',
-    'roles' => ['Personnes']
-])->middleware('auth')->middleware('roles');
+
 
 Route::get('/Ajouter_personne/{entite}',[
     'as'=>'Ajouter_personne',
@@ -186,23 +182,68 @@ Route::post('/rompre',[
 Route::get('/Ajouter_partenaire',[
     'as'=>'Ajouter_partenaire',
     'uses'=>'PersonneController@Ajouter_partenaire',
-    'roles' => ['Effectifs']
+    'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 Route::get('/lister_partenaire',[
     'as'=>'lister_partenaire',
     'uses'=>'PartenaireController@lister_partenaire',
-    'roles' => ['Effectifs']
+    'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
 Route::get('/detail_partenaire/{id}',[
     'as'=>'detail_partenaire',
     'uses'=>'PartenaireController@detail_partenaire',
-    'roles' => ['Effectifs']
+    'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
-Route::post('/modifier_effectif',[
-    'as'=>'modifier_effectif',
-    'uses'=>'EffectifController@modifier_effectif',
-    'roles' => ['Effectifs']
+Route::post('/modifier_partenaire',[
+    'as'=>'modifier_partenaire',
+    'uses'=>'PartenaireController@modifier_partenaire',
+    'roles' => ['Parametrage']
 ])->middleware('auth')->middleware('roles');
+Route::post('/enregistrer_partenaire',[
+    'as'=>'enregistrer_partenaire',
+    'uses'=>'PartenaireController@enregistrer_partenaire',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_partenaire',[
+    'as'=>'supprimer_partenaire',
+    'uses'=>'PartenaireController@supprimer_partenaire',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+
+
+Route::get('/Ajouter_entite',[
+    'as'=>'Ajouter_entite',
+    'uses'=>'EntiteController@Ajouter_partenaire',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/lister_entite',[
+    'as'=>'lister_entite',
+    'uses'=>'EntiteController@lister_entite',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/detail_entite/{id}',[
+    'as'=>'detail_entite',
+    'uses'=>'EntiteController@detail_entite',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/modifier_entite',[
+    'as'=>'modifier_entite',
+    'uses'=>'EntiteController@modifier_entite',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::post('/enregistrer_entite',[
+    'as'=>'enregistrer_entite',
+    'uses'=>'EntiteController@enregistrer_entite',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_entite',[
+    'as'=>'supprimer_entite',
+    'uses'=>'EntiteController@supprimer_entite',
+    'roles' => ['Parametrage']
+])->middleware('auth')->middleware('roles');
+
+
+
 Route::get('/effectif',[
     'as'=>'effectif',
     'uses'=>'EffectifController@effectif',

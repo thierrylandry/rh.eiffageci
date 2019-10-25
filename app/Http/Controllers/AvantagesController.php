@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Avantages;
+use App\Entite;
 use App\Equipement;
 use App\Personne;
 use App\Type_equipement;
@@ -27,7 +28,8 @@ class AvantagesController extends Controller
 $nb_equipement= DB::table('nb_equipement')->get();
 $equipement_dispo= DB::table('equipement_dispo')->get();
       //  dd($nb_equipement);
-        return view('avantages/avantages',compact('equipements','employes','avantages','equipement_dispo','nb_equipement'));
+        $entites= Entite::all();
+        return view('avantages/avantages',compact('equipements','employes','avantages','equipement_dispo','nb_equipement','entites'));
     }
 
     public function save_avantage(Request $request){
@@ -52,7 +54,8 @@ $equipement_dispo= DB::table('equipement_dispo')->get();
 
         $type_equipements=Type_equipement::all();
         $equipements=Equipement::all();
-        return view('avantages/gestionmateriel',compact('type_equipements','equipements'));
+        $entites= Entite::all();
+        return view('avantages/gestionmateriel',compact('type_equipements','equipements','entites'));
     }
     public function save_materiel(Request $request){
         $parameters=$request->except(['_token']);
@@ -106,7 +109,8 @@ $equipement_dispo= DB::table('equipement_dispo')->get();
         $equipement = Equipement::find($id);
         $type_equipements=Type_equipement::all();
         $equipements=Equipement::all();
-        return view('avantages/gestionmateriel',compact('type_equipements','equipements','equipement'));
+        $entites= Entite::all();
+        return view('avantages/gestionmateriel',compact('type_equipements','equipements','equipement','entites'));
     }
     public function updateAvantage($id){
         $avantage = Avantages::find($id);
@@ -120,7 +124,8 @@ $equipement_dispo= DB::table('equipement_dispo')->get();
         $avantages= Avantages::orderBy('created_at','DESC')->get();
         $nb_equipement= DB::table('nb_equipement')->get();
         $equipement_dispo= DB::table('equipement_dispo')->get();
-        return view('avantages/avantages',compact('equipements','employes','avantages','avantage'));
+        $entites= Entite::all();
+        return view('avantages/avantages',compact('equipements','employes','avantages','avantage','entites'));
     }
     public function supprimer_equipement($id){
         $equipement = Equipement::find($id);

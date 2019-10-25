@@ -17,7 +17,7 @@ style="display: block;"
     <div class="row">
             <div class="col-lg-6">
                 <h3>Autre partenaire</h3>
-                <form action="{{route('modifier_effectif')}}" method="post"  class="form-horizontal">
+                <form action="" method="post"  class="form-horizontal">
                     @csrf
                     @foreach($effectifs as  $effectif)
                 <div class="card" style="height: 100% !important">

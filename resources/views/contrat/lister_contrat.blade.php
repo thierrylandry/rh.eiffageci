@@ -24,7 +24,7 @@
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('lister_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
                 <div class="table-data__tool-right">

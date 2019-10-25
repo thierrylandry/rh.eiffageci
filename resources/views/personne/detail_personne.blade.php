@@ -18,9 +18,9 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('Ajouter_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('Ajouter_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i>AJOUTER PERSONNE</a>
-            <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>
@@ -278,9 +278,10 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <select name="entite" id="disabledSelect" class="form-control">
-                                    <option value="1" {{isset($personne)&& $personne->entite==1? 'selected':''}}>PHB</option>
-                                    <option value="2" {{isset($personne)&& $personne->entite==2? 'selected':''}}>SPIE FONDATIONS</option>
-                                    <option value="3" {{isset($personne)&& $personne->entite==3? 'selected':''}}>DIRECTION CI</option>
+                                    @foreach($entites as $entite)
+
+                                        <option value="{{$entite->id}}"> {{$entite->libelle}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -13,8 +13,8 @@ class EpiController extends Controller
     public function gestion_epi()
     {
         $equipements = Equipement_securite::all();
-
-        return view('epi/gestion_epi',compact('equipements'));
+        $entites= Entite::all();
+        return view('epi/gestion_epi',compact('equipements','entites'));
     }
     public function save_epi(Request $request)
     {

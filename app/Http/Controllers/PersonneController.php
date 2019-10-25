@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Administratif;
 use App\Contrat;
+use App\Entite;
 use App\Fonction;
 use App\Liste_Administratif;
 use App\Metier\Json\Famille;
@@ -28,17 +29,19 @@ class PersonneController extends Controller
         $societes=Societe::all();
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
-        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite'));
+        $entites= Entite::all();
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite','entites'));
     }
     public function lister_personne($entite)
     {
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('entite','=',$entite)
+            ->where('id_entite','=',$entite)
             ->orderBy('id', 'desc')
             ->paginate(300);
+        $entites= Entite::all();
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entite'));
+        return view('personne/lister_personne',compact('personnes','entites','entite'));
     }
     public function fiche_personnel($slug)
     {
@@ -207,7 +210,8 @@ class PersonneController extends Controller
         $pieces= json_decode($personne->pieces);
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
-        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces'));
+        $entites= Entite::all();
+        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces','entites'));
     }
     public function modifier_personne(Request $request){
 

@@ -132,24 +132,26 @@
                         <li class="@yield('global')">
                             <a href="{{route("global")}}" >Groupement</a>
                         </li>
-                        <li class="@yield('dirci')">
-                            <a href="{{route("dirci")}}">Direction CI</a>
-                        </li>
-                        <li class="@yield('phb')">
-                            <a href="{{route("phb")}}">Eiffage PHB</a>
-                        </li>
-                        <li class="@yield('spie_fondation')">
-                            <a href="{{route("spie_fondation")}}">SPIE Fondations</a>
-                        </li>
+                        @foreach($entites as $enti)
+                            <li class="@yield('tableau_de_bord'.$enti->id)">
+                                <a href="{{route("tableau_de_bord",$enti->id)}}">{{$enti->libelle}}</a>
+                            </li>
+                            @endforeach
                     </ul>
                 </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
-                <li class=" @yield('fonction') has-sub">
+                <li class=" @yield('fonction')@yield('lister_partenaire')@yield('lister_entite') has-sub">
                     <a class="js-arrow" href="#">
                         <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block')>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block') @yield('lister_partenaire_block')@yield('lister_entite_block')>
                         <li class="@yield('fonction')">
                             <a href="{{route('fonctions')}}">Fonctions</a>
+                        </li>
+                        <li class="@yield('lister_entite')">
+                            <a href="{{route('lister_entite')}}">Entites</a>
+                        </li>
+                        <li class="@yield('lister_partenaire')">
+                            <a href="{{route('lister_partenaire')}}">Partenaires</a>
                         </li>
                             <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
                                 <a class="js-arrow " href="{{route('effectif')}}">
@@ -168,16 +170,11 @@
                     <a class="js-arrow " href="#">
                         <i class="fas fa-users open" ></i>PERSONNES</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
-                        <li class="@yield('lister_personne1')">
-                            <a href="{{route('lister_personne',1)}}">Eiffage PHB</a>
-                        </li>
-                        <li class="@yield('lister_personne2')">
-                            <a href="{{route('lister_personne',2)}}">SPIE Fondations</a>
-                        </li>
-                        <li class="@yield('lister_personne3')">
-                            <a href="{{route('lister_personne',3)}}">Direction CI</a>
-                        </li>
-
+                        @foreach($entites as $enti)
+                            <li class="@yield('lister_personne'.$enti->id)">
+                                <a href="{{route("lister_personne",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 @endif

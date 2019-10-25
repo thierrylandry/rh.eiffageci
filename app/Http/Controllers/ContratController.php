@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Contrat;
 use App\Definition;
+use App\Entite;
 use App\Personne;
 use App\Services;
 use App\Typecontrat;
@@ -19,14 +20,16 @@ class ContratController extends Controller
 $services = Services::all();
         $typecontrats= Typecontrat::all();
         $definitions = Definition::all();
-        return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions'));
+        $entites= Entite::all();
+        return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites'));
     }
     public function contrat_new_user2($slug){
         $definitions = Definition::all();
         $personne= Personne::where('slug', $slug)->get()->first();
         $services = Services::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions'));
+        $entites= Entite::all();
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites'));
     }
     public function listercat($id_definition){
         $categories = Categorie::where('id_definition','=',$id_definition)->get();
@@ -41,7 +44,8 @@ $services = Services::all();
         $services = Services::all();
         $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories'));
+        $entites= Entite::all();
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites'));
     }
 
     public function lister_contrat($slug){
@@ -50,9 +54,9 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         $contrats = Contrat::where('id_personne','=',$personne->id)
             ->orderBy('datedebutc','DESC')->get();
+        $entites= Entite::all();
 
-
-        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats'));
+        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats','entites'));
     }
 
     public function update_contrat( Request $request){

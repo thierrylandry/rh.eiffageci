@@ -2,6 +2,9 @@
 @section('lister_personne'.$entite)
     active
 @endsection
+@section('lister_personne')
+    active
+@endsection
 @section('lister_personne_block')
     style="display: block;"
 @endsection
@@ -9,7 +12,12 @@
    <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PERSONNE-LISTE @if($entite==1) EIFFAGE PHB @elseif($entite==2) SPIE FONDATIONS @else DIRECTION CI @endif</h2>
+                <h2 class="title-1">PERSONNE-LISTE  @foreach($entites as $enti)
+
+                                                        @if($enti->id==$entite)
+                      {{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}
+                        @endif
+                    @endforeach</h2>
             </div>
         </div>
     </div>

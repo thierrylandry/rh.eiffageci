@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
@@ -19,23 +20,23 @@ class EtatsController extends Controller
     //
     public function repertoire(){
 $repertoires= Liste_telephonique::all();
-
-        return view('etats/repertoire',compact('repertoires'));
+        $entites= Entite::all();
+        return view('etats/repertoire',compact('repertoires','entites'));
     }
     public function fin_contrat(){
         $contrats= Fin_contrat::all();
-
-        return view('etats/fin_contrat',compact('contrats'));
+        $entites= Entite::all();
+        return view('etats/fin_contrat',compact('contrats','entites'));
     }
     public function personne_contrat(){
         $contrats= Personne_contrat::all();
-
-        return view('etats/personnecontrat',compact('contrats'));
+        $entites= Entite::all();
+        return view('etats/personnecontrat',compact('contrats','entites'));
     }
 
     public function expatrie(){
         $contrats= Fin_contrat::all();
-
+        $entites= Entite::all();
       $expatries= DB::table('expatrie')
           ->where('presenceEff','=','present')->get();
        // dd($expatries);
@@ -46,7 +47,7 @@ $repertoires= Liste_telephonique::all();
             ->leftjoin('pays', 'invite.nationalite','=','pays.id')
             ->where('dateDepart','>=',DB::raw('CURDATE()'))->get();
 //dd($invites_presents);
-        return view('etats/expatrie',compact('expatries','invites_presents'));
+        return view('etats/expatrie',compact('expatries','invites_presents','entites'));
     }
     public function expatriepdf(){
         $contrats= Fin_contrat::all();
@@ -113,6 +114,7 @@ $repertoires= Liste_telephonique::all();
       //  ->tosql();
 //return $lespersonnes;
 //return json_decode($lespersonnes);
-        return view('etats/informatique',compact('lespersonnes'));
+        $entites= Entite::all();
+        return view('etats/informatique',compact('lespersonnes','entites'));
     }
 }

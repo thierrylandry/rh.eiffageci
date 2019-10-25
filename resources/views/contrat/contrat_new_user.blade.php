@@ -215,6 +215,18 @@
                         </div>
                     </div>
 
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Position:</label>
+                        </div>
+                        <div class="form-group">
+                            <select name="position" class="form-control">
+                                <option value="1">Chantier</option>
+                                <option value="2">Bureau</option>
+                                <option value="3">Femme de ménage</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
 

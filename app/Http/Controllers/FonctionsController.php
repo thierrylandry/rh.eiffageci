@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Fonction;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,8 @@ class FonctionsController extends Controller
     public function fonctions(){
 
         $fonctions = Fonction::all();
-
-        return view('fonctions/liste_fonction',compact('fonctions'));
+        $entites= Entite::all();
+        return view('fonctions/liste_fonction',compact('fonctions','entites'));
     }
     public function save_fonction(Request $request){
         $parameters=$request->except(['_token']);
@@ -40,8 +41,8 @@ class FonctionsController extends Controller
 
         $fonction=Fonction::find($id);
         $fonctions = Fonction::all();
-
-        return view('fonctions/liste_fonction',compact('fonctions','fonction'));
+        $entites= Entite::all();
+        return view('fonctions/liste_fonction',compact('fonctions','fonction','entites'));
     }
     public function supprimer_fonction($id){
 

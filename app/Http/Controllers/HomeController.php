@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Personne;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,98 +30,571 @@ class HomeController extends Controller
     {
         return view('/');
     }
-    public function tableau_de_bord()
+    public function tableau_de_bord($id)
     {
-
-        $groupe_by_societe = DB::table('personne')
-                            ->rightJoin('unite','unite.id_unite','=','personne.id_unite')
-                            ->groupBy('unite.id_unite')
-                            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
-                            ->get();
-
-
+        $soustraitant = DB::table('partenaire')
+            ->select('nom as libelleUnite','effectif as entite','effectif as nb');
+        $effectifglobaux_tab=DB::table('personne')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->join('entite','personne.id_entite','=','entite.id')
+            ->where('contrat.etat','=',1)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('id_entite','=',$id)
+            ->groupBy('unite.id_unite','id_entite')
+            ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne.id) as nb'))
+           // ->union($soustraitant)
+            ->get();
         $effectifglobaux= Array();
+        foreach ($effectifglobaux_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelleUnite;
+            $vardiag->entite=$group->id_entite;
+            $vardiag->y=$group->nb;
 
-        foreach ($groupe_by_societe as $group):
-            $effectifglobaux[]=$group->nb;
-            endforeach;
-//dd($groupe_by_societe);
-// effectif locaux
+            $effectifglobaux[]=$vardiag;
+        endforeach;
 
+        //tableau sur le nombre de cdd et cdi
 
-        $groupe_by_entite = DB::table('personne')
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.entite')
-            ->orderBy('entite', 'desc')
+        $camanbert_tab=DB::table('personne_contrat_toute_entite')
+                    ->select('libelle',DB::raw('count(*) as nb'))
+                    ->where('id_entite','=',$id)
+                     ->groupBy('libelle')->get();
+       // dd($camanbert_tab);
+        $camanberts= Array();
+        foreach ($camanbert_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelle;
+            $vardiag->y=$group->nb;
+
+            $camanberts[]=$vardiag;
+        endforeach;
+
+        //fin tableau sur le nombre de CDD CDI
+        $repartition_nationalite_tab = DB::table('personne')
+            ->join('pays','pays.id','=','personne.nationalite')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->select("pays.nom_fr_fr",DB::raw('count(personne.id) as nb'))
+            ->groupBy('personne.nationalite')
             ->get();
 
-        $effectiflocaux= Array();
-        foreach ($groupe_by_entite as $group):
-            $effectiflocaux[]=$group->nb;
+        $repartition_nationalite= Array();
+        foreach ($repartition_nationalite_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->nom_fr_fr;
+            $vardiag->y=$group->nb;
+
+            $repartition_nationalite[]=$vardiag;
         endforeach;
-        $json_entite=json_encode($effectiflocaux);
 
 
-        //repartition homme femme
-        $groupe_by_h_f = DB::table('personne')
-            ->select(DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.sexe')
+        $repartition_homme_femme_tab= DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->select("personne.sexe",DB::raw('count(personne.id) as nb'),"position")
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->groupBy('personne.sexe','position')
             ->get();
 
-        $effectif_h_f= Array();
-        foreach ($groupe_by_h_f as $group):
-            $effectif_h_f[]=$group->nb;
+        $repartition_homme_femme= Array();
+        foreach ($repartition_homme_femme_tab as $group):
+            $vardiag = New Vardiag();
+            if($group->sexe=="M" && $group->position==1){
+                $vardiag->name="HOMME CHANTIER";
+                $vardiag->y=$group->nb;
+            }elseif($group->sexe=="F" && $group->position==1) {
+                $vardiag->name = "FEMME CHANTIER";
+                $vardiag->y=$group->nb;
+            }elseif($group->sexe=="M" && $group->position==2) {
+                $vardiag->name = "HOMME BUREAU";
+                $vardiag->y=$group->nb;
+            }elseif($group->sexe=="F" && $group->position==2) {
+                $vardiag->name = "FEMME BUREAU";
+                $vardiag->y=$group->nb;
+            }
+            elseif($group->sexe=="M" && $group->position==3) {
+                $vardiag->name = "HOMME DE MENAGES";
+                $vardiag->y=$group->nb;
+            }elseif($group->sexe=="F" && $group->position==3) {
+                $vardiag->name = "FEMME DE MENAGES";
+                $vardiag->y=$group->nb;
+            }
+
+
+
+            $repartition_homme_femme[]=$vardiag;
         endforeach;
-        $json_h_f=json_encode($effectif_h_f);
+
+        $tranche_age_moin30_ans= DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('personne_age','personne_age.id','=','personne.id')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('personne_age.age','<',30)
+            ->get();
+        $tranche_age_de_30_a_39_ans= DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('personne_age','personne_age.id','=','personne.id')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('personne_age.age','>=',30)
+            ->where('personne_age.age','<=',39)
+            ->get();
+        $tranche_age_de_40_a_49_ans= DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('personne_age','personne_age.id','=','personne.id')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('personne_age.age','>=',40)
+            ->where('personne_age.age','<=',49)
+            ->get();
+        $tranche_age_de50_ans= DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('personne_age','personne_age.id','=','personne.id')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('personne_age.age','>',50)
+            ->get();
+        $repartition_tranche_age= Array();
+        $vardiag = New Vardiag();
+        $vardiag->name="Moins de 30 ans";
+        $vardiag->y=sizeof($tranche_age_moin30_ans);
+
+        $repartition_tranche_age[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="30-39 ans";
+        $vardiag->y=sizeof($tranche_age_de_30_a_39_ans);
+
+        $repartition_tranche_age[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="40-49 ans";
+        $vardiag->y=sizeof($tranche_age_de_40_a_49_ans);
+
+        $repartition_tranche_age[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="50 ans et +";
+        $vardiag->y=sizeof($tranche_age_de50_ans);
+
+        $repartition_tranche_age[]=$vardiag;
+        //dd($repartition_tranche_age);
+
+        $anciennete_contrat_moins_3_mois_ = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('ancienete','ancienete.id_personne','=','personne.id')
+            ->where('temps','<',3)
+            ->select("ancienete.id_personne",DB::raw('sum(temps) as temps'))
+            ->groupBy('personne.id')
+            ->get();
+        $anciennete_contrat__3_a_6_mois_ = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //     ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('ancienete','ancienete.id_personne','=','personne.id')
+            ->where('temps','>=',3)
+            ->where('temps','<=',6)
+            ->select("ancienete.id_personne",DB::raw('sum(temps) as temps'))
+            ->groupBy('personne.id')
+            ->get();
+
+        $anciennete_contrat__7_a_10_mois_ = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('ancienete','ancienete.id_personne','=','personne.id')
+            ->where('temps','>=',7)
+            ->where('temps','<=',10)
+            ->select("ancienete.id_personne",DB::raw('sum(temps) as temps'))
+            ->groupBy('personne.id')
+            ->get();
+        $anciennete_contrat__11_a_12_mois_ = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('ancienete','ancienete.id_personne','=','personne.id')
+            ->where('temps','>=',11)
+            ->where('temps','<=',12)
+            ->select("ancienete.id_personne",DB::raw('sum(temps) as temps'))
+            ->groupBy('personne.id')
+            ->get();
+        $anciennete_contrat_superieur_a_12_mois_ = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('ancienete','ancienete.id_personne','=','personne.id')
+            ->where('temps','>',12)
+            ->select("ancienete.id_personne",DB::raw('sum(temps) as temps'))
+            ->groupBy('personne.id')
+            ->get();
 
 
-        return view('welcome',compact('effectifglobaux','json_entite','json_h_f','tabResultat'));
+        //->join('contrat','contrat.id_personne','=','personne.id')
+        $repartition_ancienete= Array();
+        $vardiag = New Vardiag();
+        $vardiag->name="< 3 mois";
+        $vardiag->y=sizeof($anciennete_contrat_moins_3_mois_);
+
+        $repartition_ancienete[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="3 à 6 mois";
+        $vardiag->y=sizeof($anciennete_contrat__3_a_6_mois_);
+
+        $repartition_ancienete[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="7 à 10 mois";
+        $vardiag->y=sizeof($anciennete_contrat__7_a_10_mois_);
+
+        $repartition_ancienete[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="11 à 12 mois";
+        $vardiag->y=sizeof($anciennete_contrat__11_a_12_mois_);
+
+        $repartition_ancienete[]=$vardiag;
+
+        $vardiag = New Vardiag();
+        $vardiag->name="> 12 mois";
+        $vardiag->y=sizeof($anciennete_contrat_superieur_a_12_mois_);
+
+        $repartition_ancienete[]=$vardiag;
+
+        //repartition par service
+        $repartition_service_tab = DB::table('personne')
+            ->where("id_entite","=",$id)
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('services','services.id','=','personne.service')
+            ->select("services.libelle",DB::raw('count(personne.id) as nb'))
+
+            ->groupBy('services.id')
+            ->get();
+
+        $repartition_service= Array();
+        foreach ($repartition_service_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelle;
+            $vardiag->y=$group->nb;
+
+            $repartition_service[]=$vardiag;
+        endforeach;
+
+        //entrée / sortie
+
+
+
+        $a_mois = array ( '1' => 'Janvier', '2' => 'Fevrier', '3' => 'Mars',
+            '4' => 'Avril','5' => 'Mai', '6' => 'Juin','7' => 'Juillet',
+            '8' => 'Aout','9' => 'Septembre', '10' => 'Octobre','11' => 'Novembre', '12' => 'Décembre') ;
+        $repartition_entrees= Array();
+        $repartition_sorties= Array();
+
+
+//debut entrée
+        //$entrees= DB::select('call proc_entrees(1)');
+        $entrees= [];
+        //$sorties= DB::select('call proc_sortie(1)');
+        $sorties= [];
+        $annee_moins1=date('Y')-1;
+        $tab_allege= Array();
+        foreach ($entrees as $entree):
+
+            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
+
+        endforeach;
+
+        // dd($tab_allege);
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["11:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["12:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$tab_allege[$i.":".date('Y')];
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+//fin entree
+        //debut sorti
+
+
+        $annee_moins1=date('Y')-1;
+        $tab_allege_sorti= Array();
+        foreach ($sorties as $sortie):
+
+            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
+
+        endforeach;
+
+
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege_sorti[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$entree->entree;
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_sorties[]=$vardiag;
+        }
+
+        // qualification contractuelle
+        $cadre = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',1)
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $agent_de_maitrise = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',2)
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $employe = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',3)
+
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $chauffeur = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',5)
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $ouvrier = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',4)
+            ->orWhere('definition.id','=',5)
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        $stagiaire = DB::table('personne')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->where('contrat.etat','=',1)
+            ->where('contrat.departDefinitif','=',null)
+            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->where('definition.id','=',6)
+            ->where('id_entite','=',$id)
+            ->join('definition','definition.id','=','contrat.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->groupBy('definition.id')
+            ->get()->first();
+        // ->toSql();
+
+        //dd($stagiaire);
+
+        $qualification_contractuelle= Array();
+
+        if(!is_null($agent_de_maitrise)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$agent_de_maitrise->libelle;
+            $vardiag->y=$agent_de_maitrise->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+
+        if(!is_null($cadre)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$cadre->libelle;
+            $vardiag->y=$cadre->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+        if(!is_null($employe)){
+            $vardiag = New Vardiag();
+            $vardiag->name=$employe->libelle;
+            $vardiag->y=$employe->nb;
+
+            $qualification_contractuelle[]=$vardiag;
+        }
+        if(!is_null($ouvrier)) {
+            $vardiag = New Vardiag();
+            $vardiag->name = $ouvrier->libelle;
+            if(is_null($chauffeur)){
+                $vardiag->y = $ouvrier->nb ;
+            }else{
+                //$vardiag->y = $ouvrier->nb + $chauffeur->nb;
+                $vardiag->y = $ouvrier->nb ;
+            }
+
+
+            $qualification_contractuelle[] = $vardiag;
+        }
+        if(!is_null($stagiaire)) {
+            $vardiag = New Vardiag();
+            $vardiag->name = $stagiaire->libelle;
+            $vardiag->y = $stagiaire->nb;
+
+            $qualification_contractuelle[] = $vardiag;
+        }
+
+        $entites=Entite::all();
+        $lentite=Entite::find($id);
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts'));
+
     }
     public function globale()
     {
 
 
-        $effectifglobaux_tab3=DB::table('personne')
-            ->join('unite','unite.id_unite','=','personne.id_unite')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-       //     ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
-            ->where('entite','=',3)
-            ->groupBy('unite.id_unite','entite')
-            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
-        $effectifglobaux_tab2=DB::table('personne')
-            ->join('unite','unite.id_unite','=','personne.id_unite')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-          //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
-            ->where('entite','=',2)
-            ->groupBy('unite.id_unite','entite')
-            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
-
-        $soustraitant = DB::table('effectif')
+        $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as entite','effectif as nb');
-        $effectifglobaux_tabx=DB::table('personne')
+//dd($soustraitant);
+        $effectifglobaux_tabx = DB::table('personne')
             ->join('unite','unite.id_unite','=','personne.id_unite')
             ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
-        //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->join('entite','entite.id','=','personne.id_entite')
+            //   ->where('contrat.etat','=',1)
+            //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->groupBy('unite.id_unite','id_entite')
+            ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne.id) as nb'))
+            // ->union($effectifglobaux_tab3)
+            //  ->union($effectifglobaux_tab2)
+            ->union($soustraitant)
+            ->get();
+        //dd($effectifglobaux_tab);
+        $effectifglobaux= Array();
+        foreach ($effectifglobaux_tabx as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->libelleUnite;
+            $vardiag->entite=$group->id_entite;
+            $vardiag->y=$group->nb;
 
-            ->where('entite','=',1)
-            ->groupBy('unite.id_unite','entite')
-            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'))
-            ->union($effectifglobaux_tab3)
-            ->union($effectifglobaux_tab2)
+            $effectifglobaux[]=$vardiag;
+        endforeach;
+        $soustraitant = DB::table('partenaire')
+            ->select('nom as libelleUnite','effectif as nb');
+        $effectifglobaux_tab=DB::table('personne')
+            ->join('unite','unite.id_unite','=','personne.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne.id')
+         //   ->where('contrat.etat','=',1)
+        //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
+            ->groupBy('unite.id_unite')
+            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
+           // ->union($effectifglobaux_tab3)
+          //  ->union($effectifglobaux_tab2)
             ->union($soustraitant)
             ->get();
 
 //dd($effectifglobaux_tab);
         $effectifglobauxx= Array();
-        foreach ($effectifglobaux_tabx as $group):
+        foreach ($effectifglobaux_tab as $group):
             $vardiag = New Vardiag();
             $vardiag->name=$group->libelleUnite;
-            $vardiag->entite=$group->entite;
             $vardiag->y=$group->nb;
 
             $effectifglobauxx[]=$vardiag;
@@ -128,29 +602,6 @@ class HomeController extends Controller
 
 
 
-        $soustraitant = DB::table('effectif')
-                        ->select('nom as libelleUnite','effectif as nb');
-//dd($soustraitant);
-        $effectifglobaux_tab = DB::table('personne')
-            ->groupBy('unite.id_unite')
-            ->orderBy('unite.id_unite','DESC')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->join('unite','unite.id_unite','=','personne.id_unite')
-            ->where('contrat.etat','=',1)
-          //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
-            ->select('unite.libelleUnite',DB::raw('count(personne.id) as nb'))
-            ->union($soustraitant)
-            ->get();
-
-        $effectifglobaux= Array();
-        foreach ($effectifglobaux_tab as $group):
-            $vardiag = New Vardiag();
-            $vardiag->name=$group->libelleUnite;
-            $vardiag->y=$group->nb;
-
-            $effectifglobaux[]=$vardiag;
-        endforeach;
 
         $repartition_nationalite_tab = DB::table('personne')
             ->join('pays','pays.id','=','personne.nationalite')
@@ -174,28 +625,32 @@ class HomeController extends Controller
 
         $repartition_homme_femme_tab= DB::table('personne')
             ->select("personne.sexe",DB::raw('count(personne.id) as nb'))
-            ->join('contrat','contrat.id_personne','=','personne.id')
+            ->leftjoin('contrat','contrat.id_personne','=','personne.id')
             ->where('contrat.etat','=',1)
       //      ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
             ->groupBy('personne.sexe')
             ->get();
-
+//dd($repartition_homme_femme_tab);
+        $repartition_homme_femme_partenaire= DB::table('partenaire')
+            ->select(DB::raw('sum(homme) as homme'),DB::raw('sum(femme) as femme'))
+            ->first();
+//dd($repartition_homme_femme_partenaire);
         $repartition_homme_femme= Array();
         foreach ($repartition_homme_femme_tab as $group):
             $vardiag = New Vardiag();
             if($group->sexe=="M"){
                 $vardiag->name="HOMME";
+                $vardiag->y=$group->nb;
             }elseif($group->sexe=="F") {
                 $vardiag->name = "FEMME";
+
             }
 
-            $vardiag->y=$group->nb;
 
             $repartition_homme_femme[]=$vardiag;
         endforeach;
 
-        //dd($repartition_tranche_age);
+    //    dd($repartition_homme_femme);
         //repartition par service
         $repartition_service_tab = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
@@ -226,8 +681,8 @@ class HomeController extends Controller
                 ['definition.id','=',1],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
             ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
@@ -242,8 +697,8 @@ class HomeController extends Controller
                 ['definition.id','=',2],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
             ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
@@ -258,8 +713,8 @@ class HomeController extends Controller
                 ['definition.id','=',3],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
             ])->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
             ->groupBy('definition.id')
@@ -273,8 +728,8 @@ class HomeController extends Controller
                 ['definition.id','=',5],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
             ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
@@ -289,8 +744,8 @@ class HomeController extends Controller
                 ['definition.id','=',4],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
                 ['definition.id','=',5],
             ])
             ->join('definition','definition.id','=','contrat.id_definition')
@@ -306,8 +761,8 @@ class HomeController extends Controller
                 ['definition.id','=',6],
             ])
             ->orWhere([
-                ['entite','=',1],
-                ['entite','=',2],
+                ['id_entite','=',1],
+                ['id_entite','=',2],
             ])
             ->join('definition','definition.id','=','contrat.id_definition')
             ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
@@ -360,8 +815,8 @@ class HomeController extends Controller
             $qualification_contractuelle[] = $vardiag;
         }
 
-
-        return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme'));
+        $entites =Entite::all();
+        return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme','entites'));
     }
     public function globalExport(){
         $effectifglobaux_tab = DB::table('personne')
@@ -1006,8 +1461,8 @@ class HomeController extends Controller
 
             $qualification_contractuelle[] = $vardiag;
         }
-
-        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle'));
+        $entites=Entite::all();
+        return view('tableau_de_bord/dirci',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites'));
     }
 
 
@@ -1033,7 +1488,7 @@ class HomeController extends Controller
            ->groupBy('unite.id_unite','entite')
            ->select('libelleUnite','entite',DB::raw('count(personne.id) as nb'));
 
-        $soustraitant = DB::table('effectif')
+        $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as entite','effectif as nb');
                $effectifglobaux_tab=DB::table('personne')
                    ->join('unite','unite.id_unite','=','personne.id_unite')
@@ -1512,7 +1967,8 @@ class HomeController extends Controller
             $qualification_contractuelle[] = $vardiag;
         }
 
-        return view('tableau_de_bord/phb',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle'));
+        $entites=Entite::all();
+        return view('tableau_de_bord/phb',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites'));
     }
     public function spie_fondation()
     {
@@ -1954,8 +2410,8 @@ class HomeController extends Controller
             $qualification_contractuelle[] = $vardiag;
         }
 
-
-        return view('tableau_de_bord/spie_fondation',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle'));
+        $entites=Entite::all();
+        return view('tableau_de_bord/spie_fondation',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites'));
     }
 
     public function printview(){

@@ -1,41 +1,37 @@
 @extends('layouts.app')
-@section('lister_partenaire')
+@section('lister_entite')
     active
 @endsection
-@section('lister_partenaire_block');
+@section('lister_entite_block');
 style="display: block;"
 @endsection
 @section('page')
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PARTENAIRE - LISTE</h2>
+                <h2 class="title-1">ENTITE - LISTE</h2>
             </div>
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    @if(isset($partenaire))
-                        <a href="{{route('lister_partenaire')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    @if(isset($entite))
+                        <a href="{{route('lister_entite')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>Ajouter</a>
                     @endif
                 </div>&nbsp;
             </div>
         </div>
     </div>
-
-    </br>
     <div class="row">
-
-        <div class="col-sm-12">
-
+        <div class="col-sm-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-header">
-                    <strong>{{isset($partenaire)? 'Modifier un partenaire':'Ajouter un partenaire'}}</strong>
+                    <strong>{{isset($entite)? 'Modifier une entite':'Ajouter une entite'}}</strong>
                 </div>
                 <div class="card-body" >
-                    <form action="{{route(isset($partenaire)? 'modifier_partenaire':'enregistrer_partenaire')}}" method="post">
+                    <form action="{{route(isset($entite)? 'modifier_entite':'enregistrer_entite')}}" method="post">
                         @csrf
-                        <input type="hidden" id="text-input" name="id_partenaire" placeholder="Nom" value="{{isset($partenaire)? $partenaire->id:''}}" class="form-control" required>
+                        <input type="hidden" id="text-input" name="id_entite" placeholder="Nom" value="{{isset($entite)? $entite->id:''}}" class="form-control" required>
                                 <div class="card" style="height: 100% !important">
                                     <div class="card-body" >
                                         <div class="row form-group">
@@ -43,36 +39,15 @@ style="display: block;"
                                                 <label for="text-input" class=" form-control-label">Libelle </label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input" name="libelle" placeholder="Libelle" value="{{isset($partenaire)? $partenaire->nom:''}}" class="form-control" required>
+                                                <input type="text" id="text-input" name="libelle" placeholder="Libelle" value="{{isset($entite)? $entite->libelle:''}}" class="form-control" required>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label">Effectif homme *</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="number" id="homme" name="homme" placeholder="Effectif" class="form-control" value="{{isset($partenaire)? $partenaire->homme:''}}" min="0" required>
-                                            </div>
-                                        </div> <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label"> Effectif femme *</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="number" id="femme" name="femme" placeholder="Effectif" class="form-control" value="{{isset($partenaire)? $partenaire->femme:''}}" min="0" required>
-                                            </div>
-                                        </div> <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label">Effectif total*</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="number" id="effectif" name="effectif" placeholder="Effectif" class="form-control" value="{{isset($partenaire)? $partenaire->effectif:''}}" min="0" readonly>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                         <div class="card-footer pull-right">
-                            <button type="submit" class="btn btn-{{isset($partenaire)? 'primary':'success'}} btn-sm">
-                                <i class="zmdi zmdi-edit"></i> {{isset($partenaire)? 'Modifier':'Enregistrer'}}
+                            <button type="submit" class="btn btn-{{isset($entite)? 'primary':'success'}} btn-sm">
+                                <i class="zmdi zmdi-edit"></i> {{isset($entite)? 'Modifier':'Enregistrer'}}
                             </button>
                             <button type="reset" class="btn btn-danger btn-sm" id="reset">
                                 <i class="fa fa-ban"></i> Réinitialiser
@@ -84,36 +59,27 @@ style="display: block;"
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-6">
             <!-- DATA TABLE -->
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_employe">
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>NOM</th>
-                        <th>EFFECTIF HOMME</th>
-                        <th>EFFECTIF FEMME</th>
-                        <th>EFFECTIF TOTAL</th>
+                        <th>LIBELLE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($partenaires as $partenaire)
+                    @foreach($entites as $entite)
                         <tr class="tr-shadow">
-                            <td>{{$partenaire->id}}</td>
-                            <td>{{$partenaire->nom}}</td>
-                            <td>{{$partenaire->homme}}</td>
-                            <td>{{$partenaire->femme}}</td>
-                            <td>{{$partenaire->effectif}}</td>
+                            <td>{{$entite->id}}</td>
+                            <td>{{$entite->libelle}}</td>
                             <td> <div class="table-data-feature">
-                                    <a href="{{route('detail_partenaire',['id'=>$partenaire->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                    <a href="{{route('detail_entite',['id'=>$entite->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
-                                    <a href="{{route('detail_partenaire',['id'=>$partenaire->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprumer">
+                                    <a href="{{route('detail_entite',['id'=>$entite->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Supprumer">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
@@ -129,6 +95,7 @@ style="display: block;"
             <!-- END DATA TABLE -->
         </div>
     </div>
+
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
 
@@ -158,20 +125,6 @@ style="display: block;"
 
         $("#photo").change(function() {
             readURL(this);
-        });
-        //code du calcule de somme
-        $("#homme").change(function() {
-            //readURL(this);
-            var homme=$(this).val();
-            var femme=$("#femme").val();
-            var tot= parseInt(homme)+parseInt(femme);
-            $("#effectif").val(tot);
-        });
-        $("#femme").change(function() {
-            var femme=$(this).val();
-            var homme=$("#homme").val();
-            var tot= parseInt(homme)+parseInt(femme);
-            $("#effectif").val(tot);
         });
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');

@@ -309,121 +309,6 @@ class HomeController extends Controller
         $repartition_entrees= Array();
         $repartition_sorties= Array();
 
-
-//debut entrée
-        //$entrees= DB::select('call proc_entrees(1)');
-        $entrees= [];
-        //$sorties= DB::select('call proc_sortie(1)');
-        $sorties= [];
-        $annee_moins1=date('Y')-1;
-        $tab_allege= Array();
-        foreach ($entrees as $entree):
-
-            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
-
-        endforeach;
-
-        // dd($tab_allege);
-        $vardiag = New Vardiag();
-        if(isset($tab_allege["11:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[11]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege["11:".$annee_moins1];
-            $repartition_entrees[]=$vardiag;
-        }else{
-            $vardiag->name="Novembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_entrees[]=$vardiag;
-        }
-        $vardiag = New Vardiag();
-        if(isset($tab_allege["12:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[12]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege["12:".$annee_moins1];
-            $repartition_entrees[]=$vardiag;
-        }else{
-            $vardiag->name="Décembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_entrees[]=$vardiag;
-        }
-
-
-        for( $i=1; $i<=12; $i++){
-            $vardiag = New Vardiag();
-
-            if(isset($tab_allege[$i.":".date('Y')])){
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-
-                $vardiag->y=$tab_allege[$i.":".date('Y')];
-            }else{
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-            }
-            $repartition_entrees[]=$vardiag;
-        }
-
-
-//fin entree
-        //debut sorti
-
-
-        $annee_moins1=date('Y')-1;
-        $tab_allege_sorti= Array();
-        foreach ($sorties as $sortie):
-
-            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
-
-        endforeach;
-
-
-        $vardiag = New Vardiag();
-        if(isset($tab_allege_sorti["11:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[11]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
-            $repartition_sorties[]=$vardiag;
-        }else{
-            $vardiag->name="Novembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_sorties[]=$vardiag;
-        }
-        $vardiag = New Vardiag();
-        if(isset($tab_allege_sorti["12:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[12]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
-            $repartition_sorties[]=$vardiag;
-        }else{
-            $vardiag->name="Décembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_sorties[]=$vardiag;
-        }
-
-
-        for( $i=1; $i<=12; $i++){
-            $vardiag = New Vardiag();
-
-            if(isset($tab_allege_sorti[$i.":".date('Y')])){
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-
-                $vardiag->y=$entree->entree;
-            }else{
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-            }
-            $repartition_sorties[]=$vardiag;
-        }
-
         // qualification contractuelle
         $cadre = DB::table('personne')
             ->join('contrat','contrat.id_personne','=','personne.id')
@@ -542,9 +427,163 @@ class HomeController extends Controller
             $qualification_contractuelle[] = $vardiag;
         }
 
+//debut entrée
+        $entrees= DB::select('call proc_entrees(1)');
+      //  $entrees= [];
+        $sorties= DB::select('call proc_sortie(1)');
+       // $sorties= [];
+        $annee_moins1=date('Y')-1;
+        $tab_allege= Array();
+        foreach ($entrees as $entree):
+
+            $tab_allege[$entree->numeromois.':'.$entree->annee]=$entree->entree;
+
+        endforeach;
+
+        // dd($tab_allege);
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["11:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege["12:".$annee_moins1];
+            $repartition_entrees[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$tab_allege[$i.":".date('Y')];
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_entrees[]=$vardiag;
+        }
+
+
+//fin entree
+        //debut sorti
+
+
+        $annee_moins1=date('Y')-1;
+        $tab_allege_sorti= Array();
+        foreach ($sorties as $sortie):
+
+            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
+
+        endforeach;
+
+
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["11:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[11]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Novembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+        $vardiag = New Vardiag();
+        if(isset($tab_allege_sorti["12:".$annee_moins1])){
+
+
+            $vardiag->name=$a_mois[12]."-".$annee_moins1;
+
+            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
+            $repartition_sorties[]=$vardiag;
+        }else{
+            $vardiag->name="Décembre-".$annee_moins1;
+
+            $vardiag->y=0;
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+        for( $i=1; $i<=12; $i++){
+            $vardiag = New Vardiag();
+
+            if(isset($tab_allege_sorti[$i.":".date('Y')])){
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+
+                $vardiag->y=$entree->entree;
+            }else{
+                $vardiag->name=$a_mois[$i]."-".date('Y');
+            }
+            $repartition_sorties[]=$vardiag;
+        }
+
+
+
+        //tableau des effectif par mois
+//cumules des entrees
+        $runningSum = 0;
+        $cumule_entrees= Array();
+        foreach ($repartition_entrees as $vardiag) {
+            $runningSum += $vardiag->y;
+
+            $vardiagCumul = New Vardiag();
+            $vardiagCumul->name=$vardiag->name;
+            $vardiagCumul->y=$runningSum;
+            $cumule_entrees[] = $vardiagCumul;
+        }
+
+        //cumules des entrees
+        $runningSum = 0;
+        $cumule_sortis= Array();
+        foreach ($repartition_sorties as $vardiag) {
+            $runningSum += $vardiag->y;
+
+            $vardiagCumul = New Vardiag();
+            $vardiagCumul->name=$vardiag->name;
+            $vardiagCumul->y=$runningSum;
+            $cumule_sortis[] = $vardiagCumul;
+        }
+      //  var_dump($cumule_entrees);
+
+        $effectif_par_mois= Array();
+
+        for($i=0;$i<sizeof($cumule_sortis);$i++){
+            $vardiagEffectif = New Vardiag();
+
+            $vardiagEffectif->name=$cumule_entrees[$i]->name;
+            $vardiagEffectif->y=$cumule_entrees[$i]->y -$cumule_sortis[$i]->y;
+            $effectif_par_mois[]=$vardiagEffectif;
+        }
+
+        //dd($effectif_par_mois);
+
         $entites=Entite::all();
         $lentite=Entite::find($id);
-        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts'));
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois'));
 
     }
     public function globale()

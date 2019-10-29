@@ -28,8 +28,8 @@
                                 @foreach($effectifglobaux as $res)
                                 <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Effectifs {{$lentite->libelle}}</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Effectifs {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,78 +55,6 @@
         </div>
     </div>
     <div class="row break">
-        <div class="col-lg-6 tableau">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
-                            <thead>
-                            <tr><?php $somme =0; ?>
-                                @foreach($repartition_homme_femme as $res)
-                                    <?php $somme += $res->y; ?>
-                                @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
-                                <th>{{$somme}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($repartition_homme_femme as $res)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="repartition_homme_femme" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 tableau">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
-                            <thead>
-                            <tr><?php $somme =0; ?>
-                                @foreach($camanberts as $res)
-                                    <?php $somme += $res->y; ?>
-                                @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Type de contrat</th>
-                                <th>{{$somme}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($camanberts as $res)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="type_de_contrat" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row break">
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -138,8 +66,8 @@
                                 @foreach($qualification_contractuelle as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Qualification contractuelle</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Qualification contractuelle {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -172,15 +100,15 @@
                             <thead>
                             <tr>
                                 <?php $somme =0; ?>
-                                @foreach($repartition_nationalite as $res)
+                                @foreach($repartition_service as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Services - Personnel {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($repartition_nationalite as $res)
+                            @foreach($repartition_service as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
@@ -192,10 +120,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_nationalite" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_service" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -212,8 +140,8 @@
                                 @foreach($repartition_tranche_age as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Répartition tranche d'age</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Répartition tranche d'age {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -229,7 +157,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="repartition_tranche_age" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
@@ -244,13 +172,125 @@
                     <div class="table-responsive table-responsive-data2">
                         <table class="table  table-earning" id="table_employe">
                             <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="min-width: 100px; max-width: 100px">Répartition H/F {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_homme_femme as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($repartition_nationalite as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="min-width: 100px; max-width: 100px">Nationalité - Personnel {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_nationalite as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_nationalite" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($camanberts as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="min-width: 100px; max-width: 100px">Type de contrat {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($camanberts as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="type_de_contrat"  style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
                             <tr>
                                 <?php $somme =0; ?>
                                 @foreach($repartition_ancienete as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Ancienneté locaux EGC CI (révolue)</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Ancienneté locaux EGC CI (révolue) {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -266,7 +306,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="repartition_ancienete" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
@@ -274,43 +314,7 @@
             </div>
         </div>
     </div>
-    <div class="row break">
-        <div class="col-lg-6 tableau">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
-                            <thead>
-                            <tr>
-                                <?php $somme =0; ?>
-                                @foreach($repartition_service as $res)
-                                    <?php $somme += $res->y; ?>
-                                @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
-                                <th>{{$somme}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($repartition_service as $res)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="repartition_service" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row break">
         <div class="col-lg-6 tableau" >
             <div class="card" style="height: 100% !important">
@@ -338,10 +342,44 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="bilan_entre_sorti" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <div class="col-lg-6 tableau" >
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th>Mois</th>
+                                <th>Effectifs</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for($i=0;$i<sizeof($effectif_par_mois);$i++)
+                                <tr class="tr-shadow">
+                                    <td> {{$effectif_par_mois[$i]->name}}</td>
+                                    <td> {{$effectif_par_mois[$i]->y}}</td>
+
+                                </tr>
+                            @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="effectif_par_mois" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -402,6 +440,11 @@
         ];
         var repartition_sorties=[
             @foreach($repartition_sorties as $res)
+            {{$res->y}},
+            @endforeach
+        ];
+        var effectif_par_mois=[
+            @foreach($effectif_par_mois as $res)
             {{$res->y}},
             @endforeach
         ];
@@ -466,7 +509,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: 'Effectifs Globaux {{$lentite->libelle}}'
@@ -519,7 +563,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: 'Répartition nationalite'
@@ -571,7 +616,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: 'Répartition homme/femme'
@@ -623,7 +669,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: 'Type de contrat'
@@ -676,7 +723,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: "Répartition tranche d'age"
@@ -728,7 +776,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: "Ancienneté locaux (révolue)"
@@ -780,7 +829,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: "Service - Personnel"
@@ -828,7 +878,8 @@
             },
             exporting: { enabled: false },
             chart: {
-                type: 'column'
+                type: 'column',
+                width: 600
             },
             title: {
                 text: 'BILAN ENTREES SORTIES'
@@ -885,6 +936,55 @@
 
             }]
         });
+
+        Highcharts.chart('effectif_par_mois', {
+            chart: {
+                type: 'line',
+                width: 600
+            },
+            title: {
+                text: 'Effectif Mensuelle'
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: [
+            'Novembre-{{date('Y')-1}}',
+            'Decembre-{{date('Y')-1}}',
+            'Janvier-{{date('Y')}}',
+            'Fevrier-{{date('Y')}}',
+            'Mars-{{date('Y')}}',
+            'Avril-{{date('Y')}}',
+            'Mais-{{date('Y')}}',
+            'juin-{{date('Y')}}',
+            'juillet-{{date('Y')}}',
+            'Aout-{{date('Y')}}',
+            'Septembre-{{date('Y')}}',
+            'Octobre-{{date('Y')}}',
+            'Novembre-{{date('Y')}}',
+            'Decembre-{{date('Y')}}',
+            'Total'
+        ],
+            },
+            yAxis: {
+                title: {
+                    text: 'Durée'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Effectif',
+                data: effectif_par_mois
+            }]
+        });
         // Build the chart
         Highcharts.chart('qualification_contractuelle', {
             exporting: { enabled: false },
@@ -893,7 +993,8 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
                 text: 'Qualification contractuelle'

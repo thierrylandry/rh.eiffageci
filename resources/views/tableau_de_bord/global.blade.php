@@ -102,44 +102,6 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning">
-                            <thead>
-                            <tr><?php $somme =0; ?>
-                                @foreach($repartition_homme_femme as $res)
-                                    <?php $somme += $res->y; ?>
-                                @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
-                                <th>{{$somme}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $somme =0; ?>
-                            @foreach($repartition_homme_femme as $res)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
-                                <?php  $somme += $res->y; ?>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="repartition_homme_femme" ></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row break">
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
@@ -185,6 +147,84 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
+                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
+                                <th>EFFECTIF</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $somme =0; ?>
+                            @foreach($repartition_service as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                                <?php $somme += $res->y; ?>
+                            @endforeach
+                            <tr class="tr-shadow">
+                                <td> Total</td>
+                                <td>{{$somme }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_service" style="height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
+                                <th>{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $somme =0; ?>
+                            @foreach($repartition_homme_femme as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                                <?php  $somme += $res->y; ?>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row break">
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
                                 <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
                                 <th>EFFECTIF</th>
                             </tr>
@@ -217,45 +257,7 @@
             </div>
         </div>
     </div>
-    <div class="row break">
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
-                            <thead>
-                            <tr>
-                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
-                                <th>EFFECTIF</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $somme =0; ?>
-                            @foreach($repartition_service as $res)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
-                                <?php $somme += $res->y; ?>
-                            @endforeach
-                            <tr class="tr-shadow">
-                                <td> Total</td>
-                                <td>{{$somme }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="repartition_service" style="height: 310px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row break">
         <div class="col-md-12">
             <div class="copyright">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Equipement;
 use App\Equipement_securite;
 use Illuminate\Http\Request;

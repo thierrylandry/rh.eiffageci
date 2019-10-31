@@ -67,7 +67,7 @@
                             <td>
                                 {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                             </td>
-                            <td> {{ isset($contrat->datefinc) || $contrat->datefinc=='0000-00-00' ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                            <td> {{ isset($contrat->datefinc) || $contrat->datefinc!='0000-00-00' ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
                             <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                             <td>
 

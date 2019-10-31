@@ -196,9 +196,9 @@ class PersonneController extends Controller
     {
         $personne= Personne::where('slug','=',$slug)->get()->first();
         if($personne->delete()){
-            return redirect()->route('lister_personne')->with('success',"La suppression a reussi");
+            return redirect()->route('lister_personne',$personne->id_entite)->with('success',"La suppression a reussi");
         }else{
-            return redirect()->route('lister_personne')->with('error',"La suppression a échoué");
+            return redirect()->route('lister_personne',$personne->id_entite)->with('error',"La suppression a échoué");
         }
 
     }
@@ -323,7 +323,7 @@ class PersonneController extends Controller
 
         $personne->save();
 
-        return redirect()->route('lister_personne',$personne->entite)->with('success',"La personne a été mise à jour avec succès");
+        return redirect()->route('lister_personne',$personne->id_entite)->with('success',"La personne a été mise à jour avec succès");
 
     }
 

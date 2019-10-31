@@ -652,7 +652,7 @@ class HomeController extends Controller
                 $vardiag->y=$group->nb;
             }elseif($group->sexe=="F") {
                 $vardiag->name = "FEMME";
-
+                $vardiag->y=$group->nb;
             }
 
 

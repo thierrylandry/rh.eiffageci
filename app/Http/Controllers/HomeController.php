@@ -93,9 +93,9 @@ class HomeController extends Controller
 
         $repartition_homme_femme_tab= DB::table('personne_presente')
             ->where("id_entite","=",$id)
-            ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'))
+            ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'),"position")
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->groupBy('personne_presente.sexe')
+            ->groupBy('personne_presente.sexe','position')
             ->get();
 
         $repartition_homme_femme= Array();

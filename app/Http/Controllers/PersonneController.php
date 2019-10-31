@@ -120,7 +120,7 @@ class PersonneController extends Controller
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->entite=$entite;
+        $personne->id_entite=$entite;
         $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
@@ -256,7 +256,7 @@ class PersonneController extends Controller
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->entite=$entite;
+        $personne->id_entite=$entite;
         $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;

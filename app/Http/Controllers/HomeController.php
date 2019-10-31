@@ -44,8 +44,8 @@ class HomeController extends Controller
             ->groupBy('unite.id_unite','id_entite')
             ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne.id) as nb'))
            // ->union($soustraitant)
-            ->tosql();
-        dd($effectifglobaux_tab);
+            ->get();
+     //   dd($effectifglobaux_tab);
         $effectifglobaux= Array();
         foreach ($effectifglobaux_tab as $group):
             $vardiag = New Vardiag();

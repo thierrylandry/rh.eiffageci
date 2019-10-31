@@ -19,8 +19,8 @@ class AvantagesController extends Controller
         $equipements=Equipement::where('etat','=',1)->get();
        // dd($equipements);
         $employes=Personne::with("fonction","pays","societe")
-            ->where('entite','=',1)
-            ->orWhere('entite','=',2)->get();
+            ->where('id_entite','=',1)
+            ->orWhere('id_entite','=',2)->get();
        // dd($employes);
         $avantages= Avantages::orderBy('created_at','DESC')->get();
       // dd($avantages[0]->equipement->);

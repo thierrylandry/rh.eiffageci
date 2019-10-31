@@ -54,14 +54,16 @@ class PersonneController extends Controller
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $contrats = Contrat::where('id_personne','=',$personne->id)->get();
-        return view('personne/fiche_personnel',compact('personne','societes','familles','payss','fonctions','pieces','services','typecontrats','contrats'));
+        $entites= Entite::all();
+        return view('personne/fiche_personnel',compact('personne','societes','familles','payss','fonctions','pieces','services','typecontrats','contrats','entites'));
     }
     public function document_administratif($slug)
     {
         $personne= Personne::where('slug','=',$slug)->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
-        return view('personne/document_administratif',compact('personne','list_administratif','doc_admins'));
+        $entites= Entite::all();
+        return view('personne/document_administratif',compact('personne','list_administratif','doc_admins','entites'));
     }
     public function document_administratif_new_user()
     {

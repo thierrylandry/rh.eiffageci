@@ -76,7 +76,6 @@ class HomeController extends Controller
         $repartition_nationalite_tab = DB::table('personne_presente')
             ->join('pays','pays.id','=','personne_presente.nationalite')
             ->where("id_entite","=",$id)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->select("pays.nom_fr_fr",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('personne_presente.nationalite')
@@ -95,7 +94,6 @@ class HomeController extends Controller
         $repartition_homme_femme_tab= DB::table('personne_presente')
             ->where("id_entite","=",$id)
             ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'),"position")
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('personne_presente.sexe','position')
             ->get();

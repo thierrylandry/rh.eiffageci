@@ -301,8 +301,7 @@ class HomeController extends Controller
         // qualification contractuelle
         $cadre = DB::table('personne_presente')
             // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where('definition.id','=',1)
-            ->where('id_entite','=',$id)
+            ->where([['definition.id','=',1],['id_entite','=',$id]])
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -315,6 +314,8 @@ class HomeController extends Controller
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
+        //dd($agent_de_maitrise);
+        //
         $employe = DB::table('personne_presente')
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',3)
@@ -333,12 +334,13 @@ class HomeController extends Controller
             ->get()->first();
         $ouvrier = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where('definition.id','=',4)
-            ->orWhere('definition.id','=',5)
+            ->orWhere([['definition.id','=',5],['definition.id','=',4]])
             ->where('id_entite','=',$id)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
+          //  ->tosql();
+      //  dd($ouvrier);
             ->get()->first();
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))

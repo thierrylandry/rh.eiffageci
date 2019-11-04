@@ -185,7 +185,7 @@ $services = Services::all();
 
         $contrat->save();
 
-        $entite=$personne->entite;
+        $entite=$personne->id_entite;
 
         return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
     }

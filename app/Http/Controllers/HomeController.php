@@ -342,7 +342,7 @@ class HomeController extends Controller
             ->groupBy('definition.id')*/
          //   ->tosql();
      //   dd($ouvrier);
-        $ouvrier=DB::select('call proc_ouvrier(1)');
+        $ouvrier=DB::select('call proc_ouvrier('.$id.')');
            // ->get()->first();
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))

@@ -341,7 +341,7 @@ class HomeController extends Controller
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
          //   ->tosql();
-       // dd($ouvrier);
+     //   dd($ouvrier);
             ->get()->first();
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))

@@ -92,6 +92,13 @@ $services = Services::all();
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
         $personne = Personne::where('slug','=',$slug)->get()->first();
+
+        //changer l'etat de tout les anciens contrats
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
+            ->orderby('datedebutc','DESC')
+            ->first();
+
+
         $personne->matricule=$matricule;
         $personne->service=$service;
         $personne->save();
@@ -162,17 +169,40 @@ $services = Services::all();
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
         $personne = Personne::where('slug','=',$slug)->get()->first();
-        $personne->matricule=$matricule;
-        $personne->service=$service;
-        $personne->save();
+
+
 
         //changer l'etat de tout les anciens contrats
-        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)->get()->first();
-        if(!empty($ancien_contrat)){
-            $ancien_contrat->etat=2;
-            $ancien_contrat->departDefinitif=date('d-m-Y');
-            $ancien_contrat->save();
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
+                          ->orderby('datedebutc','DESC')
+                          ->first();
+     //   dd($ancien_contrat);
+
+        // on regarde si il y a un ou plusieurs anciens contrats. Si oui alors récupéré celui qui a la date de debut la plus ressente
+        if(!empty($ancien_contrat) ){
+            if($ancien_contrat->datedebutc < $dateDebutC){
+                $ancien_contrat->etat=2;
+                $ancien_contrat->departDefinitif=date('d-m-Y');
+                $ancien_contrat->save();
+                $personne->matricule=$matricule;
+                $personne->service=$service;
+    //            dd("ancien contrat : ".$ancien_contrat->datedebutc." NOUVEAU CONTRAT :".$dateDebutC);
+            }else{
+                $contrat->etat=2;
+
+                if(!empty($ancien_contrat)){
+                    $contrat->departDefinitif=$ancien_contrat->departDefinitif;
+                }else{
+                    $contrat->departDefinitif=date('d-m-Y');
+                }
+
+            }
+        }else{
+
+            $personne->matricule=$matricule;
+            $personne->service=$service;
         }
+
 
         $contrat->id_personne=$personne->id;
         $contrat->email=$email;
@@ -182,7 +212,7 @@ $services = Services::all();
             $contrat->id_categorie=$id_categorie;
         }
 
-
+        $personne->save();
         $contrat->save();
 
         $entite=$personne->id_entite;

@@ -270,15 +270,12 @@ class HomeController extends Controller
         //repartition par service
         $repartition_service_tab = DB::table('personne_presente')
             ->where("id_entite","=",$id)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->join('services','services.id','=','personne_presente.service')
             ->select("services.libelle",DB::raw('count(personne_presente.id) as nb'))
 
             ->groupBy('services.id')
             ->get();
-
         $repartition_service= Array();
         foreach ($repartition_service_tab as $group):
             $vardiag = New Vardiag();

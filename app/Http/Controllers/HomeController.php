@@ -381,7 +381,7 @@ class HomeController extends Controller
 
             $qualification_contractuelle[]=$vardiag;
         }
-        if(!is_null($ouvrier) && !empty($ouvrier)) {
+        if(!is_null($ouvrier) && !isset($ouvrier)) {
             $vardiag = New Vardiag();
             $vardiag->name = $ouvrier->libelle;
             if(is_null($chauffeur)){

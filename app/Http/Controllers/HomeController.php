@@ -332,17 +332,18 @@ class HomeController extends Controller
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $ouvrier = DB::table('personne_presente')
+     /*   $ouvrier = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('id_entite','=',$id)
             ->where('definition.id','=',5)
             ->orWhere('definition.id','=',4)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
-            ->groupBy('definition.id')
+            ->groupBy('definition.id')*/
          //   ->tosql();
      //   dd($ouvrier);
-            ->get()->first();
+        $ouvrier=DB::select('call proc_ouvrier(1)');
+           // ->get()->first();
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',6)
@@ -401,9 +402,9 @@ class HomeController extends Controller
         }
 
 //debut entrée
-        $entrees= DB::select('call proc_entrees(1)');
+        $entrees= DB::select('call proc_entrees('.$id.')');
       //  $entrees= [];
-        $sorties= DB::select('call proc_sortie(1)');
+        $sorties= DB::select('call proc_sortie('.$id.')');
        // $sorties= [];
         $annee_moins1=date('Y')-1;
         $tab_allege= Array();

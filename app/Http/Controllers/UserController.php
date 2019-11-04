@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -14,14 +15,16 @@ class UserController extends Controller
     public function utilisateur(){
         $utilisateurs= User::all();
         $roles=  Role::all();
-        return view('utilisateurs/utilisateurs',compact('utilisateurs','roles'));
+        $entites = Entite::all();
+        return view('utilisateurs/utilisateurs',compact('utilisateurs','roles','entites'));
 
     }
     public function modifier_utilisateur($id){
         $utilisateur= User::find($id);
         $utilisateurs= User::all();
         $roles=  Role::all();
-        return view('utilisateurs/utilisateurs',compact('utilisateurs','utilisateur','roles'));
+        $entites = Entite::all();
+        return view('utilisateurs/utilisateurs',compact('utilisateurs','utilisateur','roles','entites'));
 
     }
     public function supprimer_utilisateur($id){

@@ -344,6 +344,7 @@ class HomeController extends Controller
      //   dd($ouvrier);
         $ouvrier=DB::select('call proc_ouvrier('.$id.')');
            // ->get()->first();
+        //dd($ouvrier);
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',6)
@@ -380,7 +381,7 @@ class HomeController extends Controller
 
             $qualification_contractuelle[]=$vardiag;
         }
-        if(!is_null($ouvrier)) {
+        if(!is_null($ouvrier) and !empty($ouvrier)) {
             $vardiag = New Vardiag();
             $vardiag->name = $ouvrier->libelle;
             if(is_null($chauffeur)){

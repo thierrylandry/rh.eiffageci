@@ -350,7 +350,7 @@ class HomeController extends Controller
             ->get()->first();
         // ->toSql();
 
-        dd("les stagiaires :".$stagiaire." les ouvriers ".$ouvrier."les chauffeurs ".$chauffeur."les employers ".$employe." les agents de maitrise ".$agent_de_maitrise." les cadres ".$cadre);
+      //  dd("les stagiaires :".$stagiaire." les ouvriers ".$ouvrier."les chauffeurs ".$chauffeur."les employers ".$employe." les agents de maitrise ".$agent_de_maitrise." les cadres ".$cadre);
 
         $qualification_contractuelle= Array();
 

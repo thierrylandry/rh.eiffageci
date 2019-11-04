@@ -97,11 +97,34 @@ $services = Services::all();
         $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
             ->orderby('datedebutc','DESC')
             ->first();
+        if(!empty($ancien_contrat) ){
+            if($ancien_contrat->datedebutc < $dateDebutC){
+                $ancien_contrat->etat=2;
+                $contrat->etat=1;
+                $ancien_contrat->departDefinitif=date('d-m-Y');
+                $ancien_contrat->save();
+                $personne->matricule=$matricule;
+                $personne->service=$service;
+                //            dd("ancien contrat : ".$ancien_contrat->datedebutc." NOUVEAU CONTRAT :".$dateDebutC);
+            }else{
 
+                if($ancien_contrat->datedebutc != $dateDebutC){
+                    $contrat->etat=2;
+                    $ancien_contrat->etat=1;
+                }
+                if(!empty($ancien_contrat)){
+                    $contrat->departDefinitif=$ancien_contrat->departDefinitif;
+                }else{
+                    $contrat->departDefinitif=date('d-m-Y');
+                }
 
-        $personne->matricule=$matricule;
-        $personne->service=$service;
-        $personne->save();
+            }
+        }else{
+
+            $personne->matricule=$matricule;
+            $personne->service=$service;
+        }
+
 
         $contrat->id_personne=$personne->id;
         $contrat->id_definition=$id_definition;
@@ -110,6 +133,19 @@ $services = Services::all();
         $contrat->contact=$contact;
 
         $contrat->save();
+        $personne->save();
+
+        // armonisation contrat actif
+        $leplusressent=  Contrat::where('id_personne','=',$personne->id)
+            ->orderby('datedebutc','DESC')
+            ->first();
+
+        $personne->service=$leplusressent->service;
+        $personne->matricule=$leplusressent->matricule;
+        $leplusressent->etat=1;
+        $leplusressent->departDefinitif=null;
+        $leplusressent->save();
+        $personne->save();
 
 
         return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat  a été modifié avec succès");
@@ -117,8 +153,8 @@ $services = Services::all();
     public function rupture_contrat($id){
         $contrat= Contrat::find($id);
         $personne=Personne::find($contrat->id_personne);
-
-        return view('contrat/rupture_contrat',compact('personne','contrat'));
+$entites= Entite::all();
+        return view('contrat/rupture_contrat',compact('personne','contrat','entites'));
     }
     public function rompre(Request $request){
 

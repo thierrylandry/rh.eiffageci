@@ -230,7 +230,7 @@
                             <label for="text-input" class=" form-control-label">Date depart définitif :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat)? $newDate = date("Y-m-d",strtotime($contrat->departDefinitif)):''}}" />
+                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat) && $contrat->departDefinitif==''? $newDate = date("Y-m-d",strtotime($contrat->departDefinitif)):''}}" />
                         </div>
                     </div>
                     @endif

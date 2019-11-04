@@ -343,8 +343,9 @@ class HomeController extends Controller
          //   ->tosql();
      //   dd($ouvrier);
         $ouvrier=DB::select('call proc_ouvrier('.$id.')');
+
            // ->get()->first();
-        //dd($ouvrier);
+        dd($ouvrier);
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',6)

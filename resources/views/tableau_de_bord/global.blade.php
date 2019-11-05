@@ -484,6 +484,9 @@
                     showInLegend: true
                 }
             },
+            navigation: {
+                enable:'false'
+            },
             series: [{
                 name: 'Brands',
                 colorByPoint: true,

@@ -25,14 +25,14 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($effectifglobauxx as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Effectifs globaux Projet ESF</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th  style="width: 100%">Effectifs globaux Projet ESF</th>
+                                <th class="colonneMonatant" style="width: 100px"  >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -64,14 +64,14 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($effectifglobaux as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Effectifs globaux détaillé Projet ESF</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Effectifs globaux détaillé Projet ESF</th>
+                                <th>{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -102,14 +102,14 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($qualification_contractuelle as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Qualification contractuelle personnel ESF</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Qualification contractuelle personnel ESF</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -140,15 +140,15 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <?php $somme =0; ?>
                             @foreach($qualification_contractuelle as $res)
                                 <?php $somme += $res->y; ?>
                             @endforeach
                             <tr>
-                                <th style="min-width: 100px; max-width: 100px">Services - Personnel</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Services - Personnel</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -179,14 +179,14 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning">
+                        <table class="tableperso  table-earning">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Répartition H/F</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Répartition H/F</th>
+                                <th>{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -217,14 +217,14 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Nationalité - Personnel</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Nationalité - Personnel</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>

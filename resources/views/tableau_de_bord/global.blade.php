@@ -142,6 +142,7 @@
                     <div class="table-responsive table-responsive-data2">
                         <table class="table  table-earning" id="table_employe">
                             <thead>
+                            <?php $somme =0; ?>
                             @foreach($qualification_contractuelle as $res)
                                 <?php $somme += $res->y; ?>
                             @endforeach

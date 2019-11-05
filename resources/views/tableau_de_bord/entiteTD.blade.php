@@ -355,7 +355,7 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr>
                                 <?php $somme =0; ?>

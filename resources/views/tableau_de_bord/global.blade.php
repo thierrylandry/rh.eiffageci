@@ -464,7 +464,8 @@
                 enabled: false
             },
             title: {
-                text: 'Nationalité ESF'
+                text: 'Nationalité ESF',
+                align:'center'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -518,7 +519,8 @@
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',
@@ -544,7 +546,8 @@
                 type: 'pie'
             },
             title: {
-                text: 'Répartition H/F-Personnel ESF'
+                text: 'Répartition H/F-Personnel ESF',
+                align:'center'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -571,7 +574,8 @@
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',
@@ -597,7 +601,8 @@
                 type: 'pie'
             },
             title: {
-                text: 'Service locaux ESF'
+                text: 'Service locaux ESF',
+                align:'center'
             },
             credits: {
                 enabled: false
@@ -624,7 +629,8 @@
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',
@@ -651,7 +657,8 @@
                 type: 'pie'
             },
             title: {
-                text: 'Qualification contractuelle personnel ESF'
+                text: 'Qualification contractuelle personnel ESF',
+                align:'center'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -678,7 +685,8 @@
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',

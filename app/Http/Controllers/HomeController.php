@@ -132,7 +132,7 @@ class HomeController extends Controller
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','<',30)
-            ->tosql();
+            ->get();
      //   dd($tranche_age_moin30_ans);
         $tranche_age_de_30_a_39_ans= DB::table('personne_presente')
             ->where("id_entite","=",$id)

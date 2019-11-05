@@ -349,7 +349,8 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF'
+                text: 'Effectifs Globaux Projet ESF',
+                align:'center'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -368,7 +369,7 @@
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'Effectif',
                 colorByPoint: true,
                 data: effectifglobaux
             }],
@@ -376,7 +377,8 @@
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',
@@ -392,6 +394,7 @@
             },
         });        // Build the chart
         Highcharts.chart('effectifglobauxx', {
+
             exporting: { enabled: false },
             colors: colors,
             chart: {
@@ -401,7 +404,8 @@
                 type: 'pie'
             },
             title: {
-                text: 'Effectifs Globaux détaillé Projet ESF'
+                text: 'Effectifs Globaux détaillé Projet ESF',
+                align:'center',
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -420,45 +424,17 @@
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'Effectif',
                 colorByPoint: true,
                 data: effectifglobauxx
             }],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            align: 'center',
-                            verticalAlign: 'bottom',
-                            layout: 'horizontal'
-                        },
-                        yAxis: {
-                            labels: {
-                                align: 'left',
-                                x: 0,
-                                y: -5
-                            },
-                            title: {
-                                text: null
-                            }
-                        },
-                        subtitle: {
-                            text: null
-                        },
-                        credits: {
-                            enabled: false
-                        }
-                    }
-                }]
-            },
+
             legend: {
                 layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
-                y: 0,
+                y: 20,
+                x:10,
                 useHTML: true,
                 navigation: {
                     activeColor: '#3E576F',
@@ -473,6 +449,7 @@
                 }
             },
         });
+
         // Build the chart
         Highcharts.chart('repartition_nationalite', {
             exporting: { enabled: false },

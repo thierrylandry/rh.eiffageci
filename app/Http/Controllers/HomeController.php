@@ -566,14 +566,13 @@ class HomeController extends Controller
         $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as entite','effectif as nb');
 //dd($soustraitant);
-        $effectifglobaux_tabx = DB::table('personne')
-            ->join('unite','unite.id_unite','=','personne.id_unite')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->join('entite','entite.id','=','personne.id_entite')
+        $effectifglobaux_tabx = DB::table('personne_presente')
+            ->join('unite','unite.id_unite','=','personne_presente.id_unite')
+            ->join('entite','entite.id','=','personne_presente.id_entite')
             //   ->where('contrat.etat','=',1)
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('unite.id_unite','id_entite')
-            ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne.id) as nb'))
+            ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne_presente.id) as nb'))
             // ->union($effectifglobaux_tab3)
             //  ->union($effectifglobaux_tab2)
             ->union($soustraitant)
@@ -590,13 +589,13 @@ class HomeController extends Controller
         endforeach;
         $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as nb');
-        $effectifglobaux_tab=DB::table('personne')
-            ->join('unite','unite.id_unite','=','personne.id_unite')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $effectifglobaux_tab=DB::table('personne_presente')
+            ->join('unite','unite.id_unite','=','personne_presente.id_unite')
+            ->join('contrat','contrat.id_personne','=','personne_presente.id')
          //   ->where('contrat.etat','=',1)
         //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('unite.id_unite')
-            ->select('libelleUnite',DB::raw('count(personne.id) as nb'))
+            ->select('libelleUnite',DB::raw('count(personne_presente.id) as nb'))
            // ->union($effectifglobaux_tab3)
           //  ->union($effectifglobaux_tab2)
             ->union($soustraitant)
@@ -615,14 +614,12 @@ class HomeController extends Controller
 
 
 
-        $repartition_nationalite_tab = DB::table('personne')
-            ->join('pays','pays.id','=','personne.nationalite')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
+        $repartition_nationalite_tab = DB::table('personne_presente')
+            ->join('pays','pays.id','=','personne_presente.nationalite')
        //     ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
-            ->select("pays.nom_fr_fr",DB::raw('count(personne.id) as nb'))
-            ->groupBy('personne.nationalite')
+            ->select("pays.nom_fr_fr",DB::raw('count(personne_presente.id) as nb'))
+            ->groupBy('personne_presente.nationalite')
             ->get();
 
         $repartition_nationalite= Array();
@@ -635,12 +632,10 @@ class HomeController extends Controller
         endforeach;
 
 
-        $repartition_homme_femme_tab= DB::table('personne')
-            ->select("personne.sexe",DB::raw('count(personne.id) as nb'))
-            ->leftjoin('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
+        $repartition_homme_femme_tab= DB::table('personne_presente')
+            ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'))
       //      ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->groupBy('personne.sexe')
+            ->groupBy('personne_presente.sexe')
             ->get();
 //dd($repartition_homme_femme_tab);
         $repartition_homme_femme_partenaire= DB::table('partenaire')
@@ -664,13 +659,11 @@ class HomeController extends Controller
 
     //    dd($repartition_homme_femme);
         //repartition par service
-        $repartition_service_tab = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
-            ->where('contrat.etat','=',1)
+        $repartition_service_tab = DB::table('personne_presente')
           //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
-            ->join('services','services.id','=','personne.service')
-            ->select("services.libelle",DB::raw('count(personne.id) as nb'))
+            ->join('services','services.id','=','personne_presente.service')
+            ->select("services.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('services.id')
             ->get();
 
@@ -684,100 +677,65 @@ class HomeController extends Controller
         endforeach;
 
         // qualification contractuelle
-        $cadre = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $cadre = DB::table('personne_presente')
           //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',1],
             ])
-            ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
-            ])
-            ->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->join('definition','definition.id','=','personne_presente.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $agent_de_maitrise = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $agent_de_maitrise = DB::table('personne_presente')
          //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',2],
             ])
-            ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
-            ])
-            ->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->join('definition','definition.id','=','personne_presente.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $employe = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $employe = DB::table('personne_presente')
         //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',3],
             ])
-            ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
-            ])->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->join('definition','definition.id','=','personne_presente.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $chauffeur = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $chauffeur = DB::table('personne_presente')
         //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
+        ->join('definition','definition.id','=','personne_presente.id_definition')
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',5],
             ])
-            ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
-            ])
-            ->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $ouvrier = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $ouvrier = DB::table('personne_presente')
           //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-
+          ->join('definition','definition.id','=','personne_presente.id_definition')
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',4],
             ])
             ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
                 ['definition.id','=',5],
             ])
-            ->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
-        $stagiaire = DB::table('personne')
-            ->join('contrat','contrat.id_personne','=','personne.id')
+        $stagiaire = DB::table('personne_presente')
            // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
 
             ->where([
-                ['contrat.etat','=',1],
                 ['definition.id','=',6],
             ])
-            ->orWhere([
-                ['id_entite','=',1],
-                ['id_entite','=',2],
-            ])
-            ->join('definition','definition.id','=','contrat.id_definition')
-            ->select("definition.libelle",DB::raw('count(personne.id) as nb'))
+            ->join('definition','definition.id','=','personne_presente.id_definition')
+            ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
             ->get()->first();
 

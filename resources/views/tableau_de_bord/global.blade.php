@@ -121,10 +121,6 @@
                                 </tr>
                                 <?php  $somme += $res->y; ?>
                             @endforeach
-                            <tr class="tr-shadow">
-                                <td> Total</td>
-                                <td>{{$somme }}</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -146,9 +142,12 @@
                     <div class="table-responsive table-responsive-data2">
                         <table class="table  table-earning" id="table_employe">
                             <thead>
+                            @foreach($qualification_contractuelle as $res)
+                                <?php $somme += $res->y; ?>
+                            @endforeach
                             <tr>
                                 <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
-                                <th>EFFECTIF</th>
+                                <th>{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -160,10 +159,6 @@
                                 </tr>
                                 <?php $somme += $res->y; ?>
                             @endforeach
-                            <tr class="tr-shadow">
-                                <td> Total</td>
-                                <td>{{$somme }}</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

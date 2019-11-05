@@ -92,7 +92,7 @@
         <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="effectifglobauxx" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="effectifglobauxx" style=""></div>
                 </div>
             </div>
         </div>

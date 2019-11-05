@@ -132,7 +132,8 @@ class HomeController extends Controller
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','<',30)
-            ->get();
+            ->tosql();
+        dd($tranche_age_moin30_ans);
         $tranche_age_de_30_a_39_ans= DB::table('personne_presente')
             ->where("id_entite","=",$id)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
@@ -151,7 +152,7 @@ class HomeController extends Controller
             ->where("id_entite","=",$id)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where('personne_age.age','>',50)
+            ->where('personne_age.age','>=',50)
             ->get();
         $repartition_tranche_age= Array();
         $vardiag = New Vardiag();

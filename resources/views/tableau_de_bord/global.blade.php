@@ -31,8 +31,8 @@
                                 @foreach($effectifglobauxx as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Effectifs globaux Projet ESF</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Effectifs globaux Projet ESF</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,8 +70,8 @@
                                 @foreach($effectifglobaux as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Effectifs globaux détaillé Projet ESF</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Effectifs globaux détaillé Projet ESF</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -108,8 +108,8 @@
                                 @foreach($qualification_contractuelle as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Qualification contractuelle personnel ESF</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Qualification contractuelle personnel ESF</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -147,8 +147,8 @@
                                 <?php $somme += $res->y; ?>
                             @endforeach
                             <tr>
-                                <th style="min-width: 400px; max-width: 400px">Services - Personnel</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Services - Personnel</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -185,8 +185,8 @@
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Répartition H/F</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Répartition H/F</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -212,7 +212,6 @@
             </div>
         </div>
     </div>
-
     <div class="row break">
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
@@ -224,8 +223,8 @@
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
-                                <th>{{$somme}}</th>
+                                <th style="min-width: 100px; max-width: 100px">Nationalité - Personnel</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>

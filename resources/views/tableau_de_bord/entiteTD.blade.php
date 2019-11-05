@@ -22,13 +22,13 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="  table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($effectifglobaux as $res)
                                 <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Effectifs {{$lentite->libelle}}</th>
+                                <th style="width: 100%">Effectifs {{$lentite->libelle}}</th>
                                 <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
@@ -66,7 +66,7 @@
                                 @foreach($qualification_contractuelle as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Qualification contractuelle {{$lentite->libelle}}</th>
+                                <th style="width: 100%">Qualification contractuelle {{$lentite->libelle}}</th>
                                 <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
@@ -96,15 +96,15 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="  table-earning" id="table_employe">
                             <thead>
                             <tr>
                                 <?php $somme =0; ?>
                                 @foreach($repartition_service as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Services - Personnel {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Services - Personnel {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -140,8 +140,8 @@
                                 @foreach($repartition_tranche_age as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Répartition tranche d'age {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Répartition tranche d'age {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -176,8 +176,8 @@
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Répartition H/F {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Répartition H/F {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -213,8 +213,8 @@
                                 @foreach($repartition_nationalite as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Nationalité - Personnel {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Nationalité - Personnel {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -249,8 +249,8 @@
                                 @foreach($camanberts as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Type de contrat {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Type de contrat {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -289,8 +289,8 @@
                                 @foreach($repartition_ancienete as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="min-width: 100px; max-width: 100px">Ancienneté locaux EGC CI (révolue) {{$lentite->libelle}}</th>
-                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th style="width: 100%">Ancienneté locaux EGC CI (révolue) {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>

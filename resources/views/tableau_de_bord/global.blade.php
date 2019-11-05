@@ -523,7 +523,7 @@
                 }]
             },
             legend: {
-                layout: 'proximate',
+                layout: 'vertical',
                 align: 'left',
                 verticalAlign: 'top',
                 alignColumns:'true',

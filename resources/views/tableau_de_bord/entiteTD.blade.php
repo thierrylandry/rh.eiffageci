@@ -358,8 +358,12 @@
                         <table class="table  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Mois</th>
-                                <th>Effectifs</th>
+                                <?php $somme =0; ?>
+                                @foreach($effectif_par_mois as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Mois</th>
+                                <th>{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -78,9 +78,11 @@ $services = Services::all();
         $id_categorie= $parameters["id_categorie"];
         $email= $parameters["email"];
         $contact= $parameters["contact"];
+        $position= $parameters["position"];
 
         $contrat=  Contrat::find($id_contrat);
 
+        $contrat->position=$position;
         $contrat->matricule=$matricule;
         $contrat->periode_essaie=$periode_essaie;
         $contrat->couvertureMaladie=$couverture_maladie;
@@ -187,6 +189,7 @@ $entites= Entite::all();
        $periode_essaie= $parameters["periode_essaie"];
         $email= $parameters["email"];
         $contact= $parameters["contact"];
+        $position= $parameters["position"];
         $id_definition= $parameters["id_definition"];
 
         if(isset($parameters["id_categorie"])){
@@ -198,6 +201,7 @@ $entites= Entite::all();
         $contrat= new Contrat();
 
         $contrat->matricule=$matricule;
+        $contrat->position=$position;
         $contrat->periode_essaie=$periode_essaie;
         $contrat->couvertureMaladie=$couverture_maladie;
         $contrat->dateDebutC=$dateDebutC;

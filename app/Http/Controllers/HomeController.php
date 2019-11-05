@@ -577,7 +577,7 @@ class HomeController extends Controller
             //  ->union($effectifglobaux_tab2)
             ->union($soustraitant)
             ->get();
-        //dd($effectifglobaux_tab);
+
         $effectifglobaux= Array();
         foreach ($effectifglobaux_tabx as $group):
             $vardiag = New Vardiag();
@@ -591,7 +591,6 @@ class HomeController extends Controller
             ->select('nom as libelleUnite','effectif as nb');
         $effectifglobaux_tab=DB::table('personne_presente')
             ->join('unite','unite.id_unite','=','personne_presente.id_unite')
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
          //   ->where('contrat.etat','=',1)
         //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('unite.id_unite')

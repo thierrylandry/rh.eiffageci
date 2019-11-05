@@ -220,9 +220,12 @@
                     <div class="table-responsive table-responsive-data2">
                         <table class="table  table-earning" id="table_employe">
                             <thead>
-                            <tr>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
                                 <th style="min-width: 400px; max-width: 400px">Nationalité - Personnel</th>
-                                <th>EFFECTIF</th>
+                                <th>{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -235,10 +238,6 @@
                                 </tr>
 
                             @endforeach
-                            <tr class="tr-shadow">
-                                <td> Total</td>
-                                <td>{{$somme }}</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -323,7 +323,7 @@
                         <table class="tableperso  table-earning" id="table_employe">
                             <thead>
                             <tr>
-                                <th>Mois</th>
+                                <th style="width: 100%">Mois</th>
                                 <th>Entrées</th>
                                 <th>Sorties</th>
                             </tr>
@@ -360,7 +360,7 @@
                             <tr>
                                 <?php $somme =0; ?>
                                 @foreach($effectif_par_mois as $res)
-                                    <?php $somme += $res->y; ?>
+                                    <?php $somme += intval($res->y); ?>
                                 @endforeach
                                 <th style="width: 100%">Mois</th>
                                 <th>{{$somme}}</th>

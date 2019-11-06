@@ -404,6 +404,7 @@ class HomeController extends Controller
         $entrees= DB::select('call proc_entrees('.$id.')');
       //  $entrees= [];
         $sorties= DB::select('call proc_sortie('.$id.')');
+        dd($sorties);
        // $sorties= [];
         $annee_moins1=date('Y')-1;
         $tab_allege= Array();

@@ -553,7 +553,7 @@ class HomeController extends Controller
             $effectif_par_mois[]=$vardiagEffectif;
         }
 
-        //dd($effectif_par_mois);
+        dd($effectif_par_mois);
 
         $entites=Entite::all();
         $lentite=Entite::find($id);

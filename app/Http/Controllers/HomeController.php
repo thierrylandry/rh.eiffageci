@@ -522,12 +522,14 @@ class HomeController extends Controller
         $runningSum = 0;
         $cumule_entrees= Array();
         foreach ($entrees as $vardiag) {
-            $runningSum += $vardiag->entree;
+            if($vardiag->name!="" || !is_null($vardiag->name)) {
+                $runningSum += $vardiag->entree;
 
-            $vardiagCumul = New Vardiag();
-            $vardiagCumul->name=$vardiag->mois;
-            $vardiagCumul->y=$runningSum;
-            $cumule_entrees[] = $vardiagCumul;
+                $vardiagCumul = New Vardiag();
+                $vardiagCumul->name = $vardiag->mois;
+                $vardiagCumul->y = $runningSum;
+                $cumule_entrees[] = $vardiagCumul;
+            }
         }
 
         //cumules des entrees

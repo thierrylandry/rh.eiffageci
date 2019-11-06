@@ -454,7 +454,7 @@
         ];
         var categories=[
             @foreach($effectif_par_mois as $res)
-            {{$res->name}},
+            "{{$res->name}}",
             @endforeach
         ];
         var qualification_contractuelle=[

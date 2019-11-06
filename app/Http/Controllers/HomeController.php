@@ -541,16 +541,26 @@ class HomeController extends Controller
             $vardiagCumul->y=$runningSum;
             $cumule_sortis[] = $vardiagCumul;
         }
-       // var_dump($cumule_entrees);
+      //  dd($cumule_entrees);
+     //   dd($cumule_sortis);
 
         $effectif_par_mois= Array();
 
-        for($i=0;$i<sizeof($cumule_sortis);$i++){
-            $vardiagEffectif = New Vardiag();
+        for($i=0;$i<sizeof($cumule_entrees);$i++) {
 
-            $vardiagEffectif->name=$cumule_entrees[$i]->name;
-            $vardiagEffectif->y=$cumule_entrees[$i]->y -$cumule_sortis[$i]->y;
-            $effectif_par_mois[]=$vardiagEffectif;
+            $vardiagEffectif = New Vardiag();
+            $vardiagEffectif->y = $cumule_entrees[$i]->y;
+            $effectif_par_mois[$i] = $vardiagEffectif;
+              for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
+                  if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name){
+                      $vardiagEffectif = New Vardiag();
+
+                      $vardiagEffectif->name = $cumule_entrees[$i]->name;
+                      $vardiagEffectif->y = $cumule_entrees[$i]->y - $cumule_sortis[$i]->y;
+                      $effectif_par_mois[$i] = $vardiagEffectif;
+                  }
+              }
+
         }
 
         //dd($effectif_par_mois);

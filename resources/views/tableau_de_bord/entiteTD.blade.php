@@ -360,7 +360,7 @@
                             <tr>
                                 <?php $somme =0; ?>
                                 @foreach($effectif_par_mois as $res)
-                                    <?php $somme += intval($res->y); ?>
+                                    <?php $somme = $res->y; ?>
                                 @endforeach
                                 <th style="width: 100%">Mois</th>
                                 <th>{{$somme}}</th>

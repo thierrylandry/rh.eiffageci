@@ -373,7 +373,7 @@
                                     <td> {{$effectif_par_mois_tab->y}}</td>
 
                                 </tr>
-                            @endfor
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -452,6 +452,11 @@
             {{$res->y}},
             @endforeach
         ];
+        var categories=[
+            @foreach($effectif_par_mois as $res)
+            {{$res->name}},
+            @endforeach
+        ];
         var qualification_contractuelle=[
             @foreach($qualification_contractuelle as $res)
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
@@ -974,23 +979,7 @@
                 text: 'Source: WorldClimate.com'
             },
             xAxis: {
-                categories: [
-            'Novembre-{{date('Y')-1}}',
-            'Decembre-{{date('Y')-1}}',
-            'Janvier-{{date('Y')}}',
-            'Fevrier-{{date('Y')}}',
-            'Mars-{{date('Y')}}',
-            'Avril-{{date('Y')}}',
-            'Mais-{{date('Y')}}',
-            'juin-{{date('Y')}}',
-            'juillet-{{date('Y')}}',
-            'Aout-{{date('Y')}}',
-            'Septembre-{{date('Y')}}',
-            'Octobre-{{date('Y')}}',
-            'Novembre-{{date('Y')}}',
-            'Decembre-{{date('Y')}}',
-            'Total'
-        ],
+                categories: categories,
             },
             yAxis: {
                 title: {

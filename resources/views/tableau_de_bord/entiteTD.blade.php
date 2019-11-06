@@ -968,15 +968,16 @@
         });
 
         Highcharts.chart('effectif_par_mois', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
             chart: {
                 type: 'line',
                 width: 600
             },
             title: {
                 text: 'Effectif Mensuelle'
-            },
-            subtitle: {
-                text: 'Source: WorldClimate.com'
             },
             xAxis: {
                 categories: categories,

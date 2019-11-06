@@ -71,8 +71,8 @@ class PersonneController extends Controller
         $personne= Personne::orderBy('id', 'desc')->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
-
-        return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins'));
+        $entites= Entite::all();
+        return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins','entites'));
     }
 
     public function enregistrer_personne(Request $request){

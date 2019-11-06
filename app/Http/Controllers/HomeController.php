@@ -541,7 +541,7 @@ class HomeController extends Controller
             $vardiagCumul->y=$runningSum;
             $cumule_sortis[] = $vardiagCumul;
         }
-        var_dump($cumule_entrees);
+       // var_dump($cumule_entrees);
 
         $effectif_par_mois= Array();
 
@@ -553,7 +553,7 @@ class HomeController extends Controller
             $effectif_par_mois[]=$vardiagEffectif;
         }
 
-        dd($effectif_par_mois);
+        //dd($effectif_par_mois);
 
         $entites=Entite::all();
         $lentite=Entite::find($id);

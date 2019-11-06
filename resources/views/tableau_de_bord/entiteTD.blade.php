@@ -367,10 +367,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @for($i=0;$i<sizeof($effectif_par_mois);$i++)
+                            @foreach($effectif_par_mois as $effectif_par_mois_tab)
                                 <tr class="tr-shadow">
-                                    <td> {{$effectif_par_mois[$i]->name}}</td>
-                                    <td> {{$effectif_par_mois[$i]->y}}</td>
+                                    <td> {{$effectif_par_mois_tab->name}}</td>
+                                    <td> {{$effectif_par_mois_tab->y}}</td>
 
                                 </tr>
                             @endfor

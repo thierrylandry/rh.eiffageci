@@ -536,12 +536,13 @@ class HomeController extends Controller
         $runningSum = 0;
         $cumule_sortis= Array();
         foreach ($sorties as $vardiag) {
-            $runningSum += $vardiag->sortie;
-
-            $vardiagCumul = New Vardiag();
-            $vardiagCumul->name=$vardiag->mois;
-            $vardiagCumul->y=$runningSum;
-            $cumule_sortis[] = $vardiagCumul;
+            if($vardiag->mois!="" || !is_null($vardiag->mois)) {
+                $runningSum += $vardiag->sortie;
+                $vardiagCumul = New Vardiag();
+                $vardiagCumul->name = $vardiag->mois;
+                $vardiagCumul->y = $runningSum;
+                $cumule_sortis[] = $vardiagCumul;
+            }
         }
       //  dd($cumule_entrees);
      //   dd($cumule_sortis);

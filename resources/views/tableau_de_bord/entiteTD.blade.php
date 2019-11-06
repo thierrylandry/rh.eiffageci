@@ -973,7 +973,7 @@
             },
             exporting: { enabled: false },
             chart: {
-                type: 'line',
+                type: 'area',
                 width: 600
             },
             title: {

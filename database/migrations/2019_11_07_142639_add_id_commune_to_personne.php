@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCommune extends Migration
+class AddIdCommuneToPersonne extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateTableCommune extends Migration
      */
     public function up()
     {
-        Schema::create('commune', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('libelle');
-            $table->timestamps();
+        Schema::table('personne', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('id_commune');
+            $table->foreign('id_commune')->references('id')->on('commune');
         });
     }
 
     /**
      * Reverse the migrations.
      *
-     *
-     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('commune');
+        Schema::table('personne', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -8,5 +8,5 @@ class Partenaire extends Model
 {
     //
     protected  $table="partenaire";
-    protected $fillable= ['id','nom','effectif'];
+    protected $fillable= ['*'];
 }

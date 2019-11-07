@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entite;
 use App\Fonction;
 use App\Invite;
 use App\Passage;
@@ -13,9 +14,9 @@ class InviterController extends Controller
     //
 public function invite(){
     $invites= Invite::all();
-
+    $entites= Entite::all();
     $payss=Pays::all();
-    return view('invite/gestion_invite',compact('invites','payss'));
+    return view('invite/gestion_invite',compact('invites','payss','entites'));
 }
 public function save_invite( Request $request){
     $parameters=$request->except(['_token']);
@@ -130,10 +131,10 @@ public function pmodifier_invite($id){
 
     $invite= Invite::find($id);
     $invites= Invite::all();
-
+    $entites= Entite::all();
     $payss=Pays::all();
 
-    return view('invite/gestion_invite',compact('invites','invite','payss'));
+    return view('invite/gestion_invite',compact('invites','invite','payss','entites'));
 }public function pmodifier_passage($id){
 
     $passage= Passage::find($id);
@@ -155,8 +156,8 @@ public function passage_invite($id){
     //$passages= $invite->comments();
 
 
-
-    return view('invite/gestion_passage',compact('invite'));
+    $entites= Entite::all();
+    return view('invite/gestion_passage',compact('invite','entites'));
 }
 public function supprimer_invite($id){
 

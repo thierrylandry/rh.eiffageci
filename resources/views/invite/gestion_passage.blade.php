@@ -60,7 +60,7 @@
                                              <label for="text-input" class=" form-control-label">Date de départ </label>
                                          </div>
                                          <div class="col-12 col-md-9">
-                                             <input type="date" id="text-input" name="dateDepart" placeholder="" class="form-control" value="{{isset($passage)?$passage->dateDepart:''}}" required>
+                                             <input type="date" id="text-input" name="dateDepart" placeholder="" class="form-control" value="{{isset($passage)?$passage->dateDepart:''}}" *>
 
                                          </div>
                                      </div>

@@ -24,7 +24,7 @@
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('lister_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
                 <div class="table-data__tool-right">
@@ -67,7 +67,7 @@
                             <td>
                                 {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                             </td>
-                            <td> {{ isset($contrat->datefinc)?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                            <td> {{ isset($contrat->datefinc) ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
                             <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                             <td>
 

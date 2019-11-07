@@ -68,6 +68,7 @@
         </div>
     </div>
 </div>
+
 <!-- modal small -->
 <div class="modal fade" id="modalhistorique" tabindex="-1" role="dialog" aria-labelledby="modalhistoriqueLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

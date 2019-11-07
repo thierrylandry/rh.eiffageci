@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Administratif;
 use App\Contrat;
+use App\Entite;
 use App\Fonction;
 use App\Liste_Administratif;
 use App\Metier\Json\Famille;
@@ -28,17 +29,19 @@ class PersonneController extends Controller
         $societes=Societe::all();
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
-        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite'));
+        $entites= Entite::all();
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite','entites'));
     }
     public function lister_personne($entite)
     {
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('entite','=',$entite)
+            ->where('id_entite','=',$entite)
             ->orderBy('id', 'desc')
             ->paginate(300);
+        $entites= Entite::all();
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entite'));
+        return view('personne/lister_personne',compact('personnes','entites','entite'));
     }
     public function fiche_personnel($slug)
     {
@@ -51,14 +54,16 @@ class PersonneController extends Controller
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $contrats = Contrat::where('id_personne','=',$personne->id)->get();
-        return view('personne/fiche_personnel',compact('personne','societes','familles','payss','fonctions','pieces','services','typecontrats','contrats'));
+        $entites= Entite::all();
+        return view('personne/fiche_personnel',compact('personne','societes','familles','payss','fonctions','pieces','services','typecontrats','contrats','entites'));
     }
     public function document_administratif($slug)
     {
         $personne= Personne::where('slug','=',$slug)->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
-        return view('personne/document_administratif',compact('personne','list_administratif','doc_admins'));
+        $entites= Entite::all();
+        return view('personne/document_administratif',compact('personne','list_administratif','doc_admins','entites'));
     }
     public function document_administratif_new_user()
     {
@@ -66,8 +71,8 @@ class PersonneController extends Controller
         $personne= Personne::orderBy('id', 'desc')->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
-
-        return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins'));
+        $entites= Entite::all();
+        return view('personne/document_administratif_new_user',compact('personne','list_administratif','doc_admins','entites'));
     }
 
     public function enregistrer_personne(Request $request){
@@ -117,7 +122,7 @@ class PersonneController extends Controller
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->entite=$entite;
+        $personne->id_entite=$entite;
         $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
@@ -193,9 +198,9 @@ class PersonneController extends Controller
     {
         $personne= Personne::where('slug','=',$slug)->get()->first();
         if($personne->delete()){
-            return redirect()->route('lister_personne')->with('success',"La suppression a reussi");
+            return redirect()->route('lister_personne',$personne->id_entite)->with('success',"La suppression a reussi");
         }else{
-            return redirect()->route('lister_personne')->with('error',"La suppression a échoué");
+            return redirect()->route('lister_personne',$personne->id_entite)->with('error',"La suppression a échoué");
         }
 
     }
@@ -207,7 +212,8 @@ class PersonneController extends Controller
         $pieces= json_decode($personne->pieces);
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
-        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces'));
+        $entites= Entite::all();
+        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces','entites'));
     }
     public function modifier_personne(Request $request){
 
@@ -252,7 +258,7 @@ class PersonneController extends Controller
         $personne->rib=$rib;
         $personne->rh=$rh;
         $personne->fonction=$fonction;
-        $personne->entite=$entite;
+        $personne->id_entite=$entite;
         $personne->id_unite=$unite;
         $personne->pointure=$pointure;
         $personne->taille=$taille;
@@ -319,7 +325,7 @@ class PersonneController extends Controller
 
         $personne->save();
 
-        return redirect()->route('lister_personne',$personne->entite)->with('success',"La personne a été mise à jour avec succès");
+        return redirect()->route('lister_personne',$personne->id_entite)->with('success',"La personne a été mise à jour avec succès");
 
     }
 

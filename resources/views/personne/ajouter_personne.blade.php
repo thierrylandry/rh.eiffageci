@@ -341,9 +341,10 @@
                           </div>
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
-                                  <option value="1" @if($entite==1) selected @endif>PHB</option>
-                                  <option value="2" @if($entite==2) selected @endif>SPIE FONDATIONS</option>
-                                  <option value="3" @if($entite==3) selected @endif>DIRECTION CI</option>
+                                  @foreach($entites as $entite)
+
+                                      <option value="{{$entite->id}}"> {{$entite->libelle}}</option>
+                                  @endforeach
                               </select>
                           </div>
                       </div>

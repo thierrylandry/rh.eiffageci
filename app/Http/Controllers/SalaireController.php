@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrat;
+use App\Entite;
 use App\Personne;
 use App\Salaire;
 use Illuminate\Http\Request;
@@ -16,9 +17,10 @@ class SalaireController extends Controller
 
         $personnes = DB::table('personne')
             ->leftjoin('fonctions', 'fonctions.id', '=', 'personne.fonction')
-            ->select('personne.id', 'personne.nom', 'personne.prenom', 'sexe', 'entite', 'id_unite', 'personne.slug', 'fonctions.libelle', 'nationalite')
+            ->select('personne.id', 'personne.nom', 'personne.prenom', 'sexe', 'id_entite', 'id_unite', 'personne.slug', 'fonctions.libelle', 'nationalite')
             ->orderBy('id', 'desc')->get();
-        return view('salaires/liste_personnel', compact('personnes'));
+        $entites= Entite::all();
+        return view('salaires/liste_personnel', compact('personnes','entites'));
     }
 
     public function liste_salaire($slug)
@@ -41,9 +43,11 @@ class SalaireController extends Controller
                 ->select('categorie.libelle','salCategoriel','salaire.id', 'sursalaire', 'transport', 'logement', 'salissure', 'tenueTravail', 'retenue', 'dateDebutS', 'dateFin','datedebutc','datefinc')
                 ->orderby('salaire.id', 'DESC')->get();
            //dd($salaires);
-            return view('salaires/liste_salaire', compact('salaires', 'personne'));
+            $entites= Entite::all();
+            return view('salaires/liste_salaire', compact('salaires', 'personne','entites'));
         }else{
-            return view('salaires/liste_salaire', compact( 'personne'));
+            $entites= Entite::all();
+            return view('salaires/liste_salaire', compact( 'personne','entites'));
         }
 
 
@@ -64,13 +68,13 @@ public function recsalairecat($id_contrat){
                                         ['id_personne','=',$personne->id],
 
         ])->orderby('datedebutc', 'DESC')->get();
-
+        $entites= Entite::all();
         if(isset($contrats)){
             $salaire = Salaire::where('id_contrat','=',$contrats->first()->id)
                 ->orderby('dateDebutS', 'DESC')->get()->first();
-            return view('salaires/ajouter_salaire', compact('contrats', 'personne','salaire'));
+            return view('salaires/ajouter_salaire', compact('contrats', 'personne','salaire','entites'));
         }else{
-            return view('salaires/ajouter_salaire',compact( 'personne'));
+            return view('salaires/ajouter_salaire',compact( 'personne','entites'));
         }
 
 

@@ -18,9 +18,9 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('Ajouter_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('Ajouter_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i>AJOUTER PERSONNE</a>
-            <a href="{{route('lister_personne',$personne->entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>

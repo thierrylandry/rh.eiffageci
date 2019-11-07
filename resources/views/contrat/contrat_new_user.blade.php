@@ -87,7 +87,7 @@
                 <div class="">
                     <div class="row form-group">
                         <div class="col-sm-3">
-                            <label for="text-input" class=" form-control-label">Définition :</label>
+                            <label for="text-input" class=" form-control-label">Définition* :</label>
                         </div>
                         <div class="col-sm-9">
                             <select class="form-control" name="id_definition" id="id_definition" required>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
-                            <label for="text-input" class=" form-control-label">Matricule :</label>
+                            <label for="text-input" class=" form-control-label">Matricule* :</label>
                         </div>
                         <div class="col-md-9">
                             <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" required>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
-                            <label for="text-input" class=" form-control-label">Service :</label>
+                            <label for="text-input" class=" form-control-label">Service* :</label>
                         </div>
                         <div class="col-md-9">
                             <select class="form-control" name="service" required>
@@ -150,7 +150,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-md-3">
-                            <label for="text-input" class=" form-control-label">Type de contrat :</label>
+                            <label for="text-input" class=" form-control-label">Type de contrat* :</label>
                         </div>
                         <div class="col-md-9">
                             <select class="form-control" name="type_de_contrat" required>
@@ -190,7 +190,7 @@
                 <div class="">
                     <div class="row form-group">
                         <div class="col col-md-4">
-                            <label for="text-input" class=" form-control-label">Date de debut :</label>
+                            <label for="text-input" class=" form-control-label">Date de debut* :</label>
                         </div>
                         <div class="form-group">
                             <input type="date" name="dateDebutC" class="form-control" required/>
@@ -215,6 +215,18 @@
                         </div>
                     </div>
 
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Position:</label>
+                        </div>
+                        <div class="form-group">
+                            <select name="position" class="form-control">
+                                <option value="1">Chantier</option>
+                                <option value="2">Bureau</option>
+                                <option value="3">Femme de ménage</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
 

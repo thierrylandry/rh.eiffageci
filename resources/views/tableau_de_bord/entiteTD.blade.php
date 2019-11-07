@@ -1,87 +1,44 @@
 @extends('layouts.app')
-@section('global')
+@section('tableau_de_bord'.$lentite->id)
     active
 @endsection
 @section('tableau_de_bord_block')
     style="display: block;"
 @endsection
-
 @section('page')
     <script src="{{URL::asset('public/code/highcharts.js')}}"></script>
     <script src="{{URL::asset('public/code/modules/exporting.js')}}"></script>
     <script src="{{URL::asset('public/code/modules/export-data.js')}}"></script>
-
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">TABLEAU DE BORD DU GROUPEMENT</h2><a href="javascript:window.print();" id="btnprint"  class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
+                <h2 class="title-1">TABLEAU DE BORD DE {{$lentite->libelle}}</h2><a href="javascript:window.print()" id="btnprint" class="btn btn-info"><i class="fa fa-print"></i> Imprimer</a>
             </div>
-
         </div>
     </div>
     </br>
     <div class="row">
-        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6 tableau ">
+        <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="tableperso  table-earning" id="table_employe">
-                            <thead>
-                            <tr><?php $somme =0; ?>
-                                @foreach($effectifglobauxx as $res)
-                                    <?php $somme += $res->y; ?>
-                                @endforeach
-                                <th  style="width: 100%">Effectifs globaux Projet ESF</th>
-                                <th class="colonneMonatant" style="width: 100px"  >{{$somme}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $somme =0; ?>
-                            @foreach($effectifglobauxx as $res)
-                            <tr class="tr-shadow">
-                                <td>
-                                {{$res->name}}</td>
-                                <td>{{$res->y }}</td>
-                            </tr>
-                            <?php $somme += $res->y ?>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="effectifglobaux" style=""></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row break">
-        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6 tableau ">
-            <div class="card" style="height: 100% !important">
-                <div class="card-body" >
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="tableperso  table-earning" id="table_employe">
+                        <table class="tableperso table-earning" id="table_employe">
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($effectifglobaux as $res)
-                                    <?php $somme += $res->y; ?>
+                                <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="width: 100%">Effectifs globaux détaillé Projet ESF</th>
-                                <th>{{$somme}}</th>
+                                <th style="width: 100%">Effectifs {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($effectifglobaux as $res)
-                                <tr class="tr-shadow">
+                                    <tr class="tr-shadow">
 
-                                    <td>{{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                </tr>
+                                        <td>{{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                    </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -89,10 +46,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-xs-3	col-sm-6	col-md-6	col-lg-6">
+        <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="effectifglobauxx" style=""></div>
+                    <div id="effectifglobaux" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
@@ -104,22 +61,21 @@
                     <div class="table-responsive table-responsive-data2">
                         <table class="tableperso  table-earning" id="table_employe">
                             <thead>
-                            <tr><?php $somme =0; ?>
+                            <tr>
+                                <?php $somme =0; ?>
                                 @foreach($qualification_contractuelle as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="width: 100%">Qualification contractuelle personnel ESF</th>
-                                <th >{{$somme}}</th>
+                                <th style="width: 100%">Qualification contractuelle {{$lentite->libelle}}</th>
+                                <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($qualification_contractuelle as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php  $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -136,29 +92,27 @@
         </div>
     </div>
     <div class="row break">
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+        <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="tableperso  table-earning" id="table_employe">
+                        <table class=" tableperso table-earning" id="table_employe">
                             <thead>
-                            <?php $somme =0; ?>
-                            @foreach($qualification_contractuelle as $res)
-                                <?php $somme += $res->y; ?>
-                            @endforeach
                             <tr>
-                                <th style="width: 100%">Services - Personnel</th>
+                                <?php $somme =0; ?>
+                                @foreach($repartition_service as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Services - Personnel {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($repartition_service as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -169,34 +123,33 @@
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_service" style="height: 310px; max-width: 600px; margin: 0 auto"></div>
+                    <div id="repartition_service" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row break">
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+        <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
-                        <table class="tableperso  table-earning">
+                        <table class="tableperso  table-earning" id="table_employe">
                             <thead>
-                            <tr><?php $somme =0; ?>
-                                @foreach($repartition_homme_femme as $res)
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($repartition_tranche_age as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="width: 100%">Répartition H/F</th>
-                                <th>{{$somme}}</th>
+                                <th style="width: 100%">Répartition tranche d'age {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
-                            @foreach($repartition_homme_femme as $res)
+                            @foreach($repartition_tranche_age as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-                                <?php  $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -207,13 +160,13 @@
         <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
-                    <div id="repartition_homme_femme" ></div>
+                    <div id="repartition_tranche_age" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row break">
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 tableau">
+        <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">
@@ -223,19 +176,53 @@
                                 @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
-                                <th style="width: 100%">Nationalité - Personnel</th>
+                                <th style="width: 100%">Répartition H/F {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
-                            @foreach($repartition_nationalite as $res)
-                                <?php $somme += $res->y; ?>
+                            @foreach($repartition_homme_femme as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                 </tr>
-
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($repartition_nationalite as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Nationalité - Personnel {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_nationalite as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -251,8 +238,157 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($camanberts as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Type de contrat {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($camanberts as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="type_de_contrat"  style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($repartition_ancienete as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Ancienneté locaux EGC CI (révolue) {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_ancienete as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_ancienete" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row break">
+        <div class="col-lg-6 tableau" >
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <th style="width: 100%">Mois</th>
+                                <th>Entrées</th>
+                                <th>Sorties</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @for($i=0;$i<sizeof($repartition_entrees);$i++)
+                                <tr class="tr-shadow">
+                                    <td> {{$repartition_entrees[$i]->name}}</td>
+                                    <td> {{$repartition_entrees[$i]->y}}</td>
+                                    <td> {{$repartition_sorties[$i]->y}}</td>
+                                </tr>
+                            @endfor
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="bilan_entre_sorti" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <div class="col-lg-6 tableau" >
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($effectif_par_mois as $res)
+                                    <?php $somme = $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Mois</th>
+                                <th>{{$somme}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($effectif_par_mois as $effectif_par_mois_tab)
+                                <tr class="tr-shadow">
+                                    <td> {{$effectif_par_mois_tab->name}}</td>
+                                    <td> {{$effectif_par_mois_tab->y}}</td>
+
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="effectif_par_mois" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="copyright">
                 <p>Copyright © 2019 Eiffage. All rights reserved.</p>
@@ -260,31 +396,65 @@
         </div>
     </div>
     <script type="application/javascript">
-        var effectifglobauxx=[
-            @foreach($effectifglobaux as $res)
-            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
-            @endforeach
-        ];
         var effectifglobaux=[
-            @foreach($effectifglobauxx as $res)
+            @foreach($effectifglobaux as $res)
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}}
             ,
             @endforeach
         ];
+
+
         var repartition_nationalite=[
             @foreach($repartition_nationalite as $res)
-            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
 
         var repartition_homme_femme=[
             @foreach($repartition_homme_femme as $res)
-            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var type_de_contrat=[
+            @foreach($camanberts as $res)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var repartition_tranche_age=[
+            @foreach($repartition_tranche_age as $res)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+
+        var repartition_ancienete=[
+            @foreach($repartition_ancienete as $res)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
         var repartition_service=[
             @foreach($repartition_service as $res)
-            {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+
+        var repartition_entrees=[
+            @foreach($repartition_entrees as $res)
+            {{$res->y}},
+            @endforeach
+        ];
+        var repartition_sorties=[
+            @foreach($repartition_sorties as $res)
+            {{$res->y}},
+            @endforeach
+        ];
+        var effectif_par_mois=[
+            @foreach($effectif_par_mois as $res)
+            {{$res->y}},
+            @endforeach
+        ];
+        var categories=[
+            @foreach($effectif_par_mois as $res)
+            "{{$res->name}}",
             @endforeach
         ];
         var qualification_contractuelle=[
@@ -292,7 +462,6 @@
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
-
 
     </script>
     <script type="text/javascript">
@@ -340,23 +509,23 @@
 
         // Build the chart
         Highcharts.chart('effectifglobaux', {
+            credits: {
+                enabled: false
+            },
             exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
-                text: 'Effectifs Globaux Projet ESF',
-                align:'center'
+                text: 'Effectifs Globaux {{$lentite->libelle}}'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            credits: {
-                enabled: false
             },
             plotOptions: {
                 pie: {
@@ -369,7 +538,7 @@
                 }
             },
             series: [{
-                name: 'Effectif',
+                name: 'Brands',
                 colorByPoint: true,
                 data: effectifglobaux
             }],
@@ -394,82 +563,23 @@
                     }
                 }
             },
-        });        // Build the chart
-        Highcharts.chart('effectifglobauxx', {
 
-            exporting: { enabled: false },
-            colors: colors,
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Effectifs Globaux détaillé Projet ESF',
-                align:'center',
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            credits: {
-                enabled: false
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Effectif',
-                colorByPoint: true,
-                data: effectifglobauxx
-            }],
-
-            legend: {
-                layout: 'vertical',
-                align: 'left',
-                verticalAlign: 'top',
-                alignColumns:'true',
-                floating:true,
-                y: 20,
-                x:10,
-                useHTML: true,
-                navigation: {
-                    activeColor: '#3E576F',
-                    animation: true,
-                    arrowSize: 12,
-                    inactiveColor: '#CCC',
-                    style: {
-                        fontWeight: 'bold',
-                        color: '#333',
-                        fontSize: '12px'
-                    }
-                }
-            },
         });
-
-        // Build the chart
         Highcharts.chart('repartition_nationalite', {
+            credits: {
+                enabled: false
+            },
             exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
-            },
-            credits: {
-                enabled: false
+                type: 'pie',
+                width: 600
             },
             title: {
-                text: 'Nationalité ESF',
-                align:'center'
+                text: 'Répartition nationalite'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -483,45 +593,12 @@
                     },
                     showInLegend: true
                 }
-            },
-            navigation: {
-                enable:'false'
             },
             series: [{
                 name: 'Brands',
                 colorByPoint: true,
                 data: repartition_nationalite
             }],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        legend: {
-                            align: 'center',
-                            verticalAlign: 'bottom',
-                            layout: 'horizontal'
-                        },
-                        yAxis: {
-                            labels: {
-                                align: 'left',
-                                x: 0,
-                                y: -5
-                            },
-                            title: {
-                                text: null
-                            }
-                        },
-                        subtitle: {
-                            text: null
-                        },
-                        credits: {
-                            enabled: false
-                        }
-                    }
-                }]
-            },
             legend: {
                 layout: 'vertical',
                 align: 'left',
@@ -544,25 +621,24 @@
                 }
             },
         });
-        // Build the chart
         Highcharts.chart('repartition_homme_femme', {
+            credits: {
+                enabled: false
+            },
             exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
-                text: 'Répartition H/F-Personnel ESF',
-                align:'center'
+                text: 'Répartition homme/femme'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            credits: {
-                enabled: false
             },
             plotOptions: {
                 pie: {
@@ -600,23 +676,191 @@
                     }
                 }
             },
-        });
-        // Build the chart
-        Highcharts.chart('repartition_service', {
+
+        });        Highcharts.chart('type_de_contrat', {
+            credits: {
+                enabled: false
+            },
             exporting: { enabled: false },
             colors: colors,
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
-                text: 'Service locaux ESF',
-                align:'center'
+                text: 'Type de contrat'
             },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: type_de_contrat
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
+        });
+        Highcharts.chart('repartition_tranche_age', {
             credits: {
                 enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: "Répartition tranche d'age"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_tranche_age
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+        });
+        Highcharts.chart('repartition_ancienete', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: "Ancienneté locaux (révolue)"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_ancienete
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+        });
+        Highcharts.chart('repartition_service', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: "Service - Personnel"
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -657,7 +901,104 @@
                     }
                 }
             },
+        });
+        Highcharts.chart('bilan_entre_sorti', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            chart: {
+                type: 'column',
+                width: 600
+            },
+            title: {
+                text: 'BILAN ENTREES SORTIES'
+            },
+            subtitle: {
+            },
+            xAxis: {
+                categories: [
+                    'Novembre-{{date('Y')-1}}',
+                    'Decembre-{{date('Y')-1}}',
+                    'Janvier-{{date('Y')}}',
+                    'Fevrier-{{date('Y')}}',
+                    'Mars-{{date('Y')}}',
+                    'Avril-{{date('Y')}}',
+                    'Mais-{{date('Y')}}',
+                    'juin-{{date('Y')}}',
+                    'juillet-{{date('Y')}}',
+                    'Aout-{{date('Y')}}',
+                    'Septembre-{{date('Y')}}',
+                    'Octobre-{{date('Y')}}',
+                    'Novembre-{{date('Y')}}',
+                    'Decembre-{{date('Y')}}',
+                    'Total'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Rainfall (mm)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Entrées',
+                data: repartition_entrees
 
+            }, {
+                name: 'Sorties',
+                data: repartition_sorties
+
+            }]
+        });
+
+        Highcharts.chart('effectif_par_mois', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            chart: {
+                type: 'area',
+                width: 600
+            },
+            title: {
+                text: 'Effectif Mensuelle'
+            },
+            xAxis: {
+                categories: categories,
+            },
+            yAxis: {
+                title: {
+                    text: 'Durée'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Effectif',
+                data: effectif_par_mois
+            }]
         });
         // Build the chart
         Highcharts.chart('qualification_contractuelle', {
@@ -667,11 +1008,11 @@
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
-                type: 'pie'
+                type: 'pie',
+                width: 600
             },
             title: {
-                text: 'Qualification contractuelle personnel ESF',
-                align:'center'
+                text: 'Qualification contractuelle'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -716,6 +1057,5 @@
                 }
             },
         });
-
     </script>
 @endsection

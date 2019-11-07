@@ -106,7 +106,7 @@
                             <td>{{$invites_present->contact}}</td>
                             <td>{{$invites_present->whatsapp}}</td>
                             <td>{{$invites_present->sattelitaire}}</td>
-                            <td>{{date("d-m-Y",strtotime($invites_present->dateArrive)).'/'.date("d-m-Y",strtotime($invites_present->dateDepart))}}</td>
+                            <td>{{date("d-m-Y",strtotime($invites_present->dateArrive)).'/'}} {{isset($invites_present->dateDepart)?date("d-m-Y",strtotime($invites_present->dateDepart)):'Indéterminé'}}</td>
                             <td>-</td>
                         </tr>
                     @endforeach
@@ -238,7 +238,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8,,9]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
                         },
                         text:"Excel",
                         filename: "<?php echo $nom?>",

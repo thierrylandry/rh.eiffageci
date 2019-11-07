@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('lister_partenaire')
-    active
+@section('lister_entite')
+active
 @endsection
-@section('lister_partenaire_block');
+@section('lister_entite_block');
 style="display: block;"
 @endsection
 @section('page')
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PARTENAIRE-DETAIL </h2>
+                <h2 class="title-1">ENTITE-DETAIL </h2>
             </div>
         </div>
     </div>

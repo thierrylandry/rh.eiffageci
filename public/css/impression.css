@@ -79,8 +79,14 @@ div{
 
 
 }
-table { page-break-inside:auto }
+table { page-break-inside:auto; width:100% }
 tr    { page-break-inside:avoid; page-break-after:auto }
-.table,th, td{border:  1px solid black;
-    border-collapse: collapse; width: 100%;
+.tableperso,th, td{border:  1px solid black;
+    border-collapse: collapse;
+    width: 100%;
 text-align: center;}
+
+.colonneMonatant{
+    width: 300px;
+    text-align: left;
+}

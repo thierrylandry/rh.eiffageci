@@ -8,7 +8,7 @@ class Personne extends Model
 {
     //
     protected  $table="personne";
-    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff'];
+    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','id_entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff'];
 
 
     public function societe(){
@@ -32,11 +32,11 @@ class Personne extends Model
     }
 
     public function getEntiteString(){
-        if($this->entite==1){
+        if($this->id_entite==1){
             return "PHB";
-        }elseif($this->entite==2){
+        }elseif($this->id_entite==2){
             return "SPIE FONDATION";
-        }elseif($this->entite==3){
+        }elseif($this->id_entite==3){
             return "DIRECTION CI";
         }
     }

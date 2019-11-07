@@ -230,7 +230,7 @@
                             <label for="text-input" class=" form-control-label">Date depart définitif :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat)?$contrat->departDefinitif:''}}" />
+                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("Y-m-d",strtotime($contrat->departDefinitif)):''}}" />
                         </div>
                     </div>
                     @endif
@@ -240,6 +240,19 @@
                         </div>
                         <div class="form-group">
                             <input type="date" name="dateInduction" value="{{isset($contrat)?$contrat->dateInduction:''}}" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Position:</label>
+                        </div>
+                        <div class="form-group">
+                            <select name="position" class="form-control">
+                                    <option value="1" {{isset($contrat) && $contrat->position==1 ?'selected':''}}>Chantier</option>
+                                    <option value="2" {{isset($contrat) && $contrat->position==2 ?'selected':''}}>Bureau</option>
+                                    <option value="3" {{isset($contrat) && $contrat->position==3 ?'selected':''}}>Femme de ménage</option>
+                            </select>
                         </div>
                     </div>
 

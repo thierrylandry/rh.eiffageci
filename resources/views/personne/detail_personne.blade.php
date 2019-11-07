@@ -280,7 +280,7 @@
                                 <select name="entite" id="disabledSelect" class="form-control">
                                     @foreach($entites as $entite)
 
-                                        <option value="{{$entite->id}}"> {{$entite->libelle}}</option>
+                                        <option value="{{$entite->id}}" {{isset($personne)&& $personne->id_entite==$entite->id? 'selected':''}}> {{$entite->libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -24,7 +24,8 @@
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>FONCTION</th>
-                        <th>CONTACT</th>
+                        <th>CONTACT PROFESSIONNEL</th>
+                        <th>CONTACT PERSONNEL</th>
                         <th>EMAIL</th>
                     </tr>
                     </thead>
@@ -34,7 +35,8 @@
                             <td>{{$repertoire->nom}}</td>
                             <td>{{$repertoire->prenom}}</td>
                             <td>{{$repertoire->fonction}}</td>
-                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->contact}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->pro}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->perso}}</td>
                             <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$repertoire->email}}</td>
                         </tr>
                     @endforeach

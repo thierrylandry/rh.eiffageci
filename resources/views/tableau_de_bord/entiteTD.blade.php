@@ -904,6 +904,7 @@
                 }
             },
         });
+        /*
         Highcharts.chart('bilan_entre_sorti', {
             credits: {
                 enabled: false
@@ -968,7 +969,7 @@
 
             }]
         });
-
+*/
         Highcharts.chart('effectif_par_mois', {
             credits: {
                 enabled: false

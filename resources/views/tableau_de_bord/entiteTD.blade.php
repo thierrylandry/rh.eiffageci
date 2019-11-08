@@ -977,7 +977,7 @@
             exporting: { enabled: false },
             chart: {
                 type: 'area',
-                width: 600
+                zoomType:'Xy'
             },
             title: {
                 text: 'Effectif Mensuel'

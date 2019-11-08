@@ -977,7 +977,7 @@
                 width: 600
             },
             title: {
-                text: 'Effectif Mensuelle'
+                text: 'Effectif Mensuel'
             },
             xAxis: {
                 categories: categories,

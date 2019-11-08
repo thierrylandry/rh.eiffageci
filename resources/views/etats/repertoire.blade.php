@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <!-- DATA TABLE -->
 
-            <div class="table-responsive table-responsive-data2">
+            <div class="table-responsive table-responsive-data2" style="overflow-x: scroll">
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>
                     <tr>

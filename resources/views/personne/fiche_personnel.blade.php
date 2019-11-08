@@ -64,7 +64,7 @@
                            <p> whatsapp : {{isset($personne)? $personne->whatsapp:''}}</p>
                            <p> Sattelitaire : {{isset($personne)? $personne->sattelitaire:''}}</p>
                            <p> Adresse : {{isset($personne)? $personne->adresse:''}}</p>
-                           <p> Commune : {{isset($personne)? $personne->commune->libelle:''}}</p>
+                           <p> Commune : {{isset($personne) && isset($personne->commune)? $personne->commune->libelle:''}}</p>
                        </div>
                        <div class="col-sm-2">
 

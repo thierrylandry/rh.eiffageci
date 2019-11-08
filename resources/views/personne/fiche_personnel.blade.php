@@ -71,7 +71,7 @@
                            <p> Fonction :   @foreach($fonctions as $fonction){{isset($personne) && $personne->fonction== $fonction->id ? $fonction->libelle:''}}
 
                                     @endforeach </p>
-                           <p> Entite :  @foreach($entites as $enti){{isset($personne) && $personne->id_entite== $enti->id ? $enti->libelle:''}} </p>
+                           <p> Entite :  @foreach($entites as $enti){{isset($personne) && $personne->id_entite== $enti->id ? $enti->libelle:''}} @endforeach</p>
                            <p> Unité :  @foreach($societes as $societe)
                                    @if($personne->id_unite==$societe->id_unite)
                                        {{$societe->libelleUnite}}

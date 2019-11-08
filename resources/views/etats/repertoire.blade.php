@@ -64,23 +64,33 @@
                 buttons: [
                     {
                         extend: 'copy',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'csv',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'excelHtml5',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     } ,
                     {
                         extend: 'print',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     }
                 ],
                 language: {

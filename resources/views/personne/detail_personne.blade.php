@@ -216,9 +216,11 @@
                             </div>
                             <!--fin-->
                             <div class="col-12 col-md-9">
-                                <select name="commune">
+                                <select name="commune" id="commune">
+                                    <option value=""></option>
                                     @foreach($communes  as $commune):
-                                    <option></option>
+
+                                    <option value="{{$commune->id}}" {{isset($personne) && $personne->id_commune==$commune->id?'selected':''}}>{{$commune->libelle}}</option>
                                     @endforeach
 
                                 </select>
@@ -652,7 +654,10 @@
         </div>
     </form>
     <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
+
+    <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
+        $('#commune').select2({ placeholder: 'Selectionner une commune'});
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));

@@ -271,6 +271,21 @@
                           <input type="text" id="text-input" name="adresse" placeholder="Adresse" class="form-control">
                       </div>
                   </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Commune </label>
+                      </div>
+                      <!--fin-->
+                      <div class="col-12 col-md-9">
+                          <select name="commune" id="commune">
+                              <option value=""></option>
+                              @foreach($communes  as $commune):
+                              <option value="{{$commune->id}}">{{$commune->libelle}}</option>
+                              @endforeach
+
+                          </select>
+                      </div>
+                  </div>
 
 
 
@@ -662,6 +677,7 @@
             $('#age').html('Age : '+age+' Ans');
         });
         $('#nationnalite').select2({ placeholder: 'Select an option'});
+        $('#commune').select2({ placeholder: 'Selectionner une commune'});
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

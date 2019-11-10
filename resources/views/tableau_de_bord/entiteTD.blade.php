@@ -30,14 +30,15 @@
                                 @endforeach
                                 <th style="width: 100%">Effectifs {{$lentite->libelle}}</th>
                                 <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($effectifglobaux as $res)
                                     <tr class="tr-shadow">
-
                                         <td>{{$res->name}}</td>
                                         <td>{{$res->y}}</td>
+                                        <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                     </tr>
                             @endforeach
                             </tbody>
@@ -68,6 +69,7 @@
                                 @endforeach
                                 <th style="width: 100%">Qualification contractuelle {{$lentite->libelle}}</th>
                                 <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,6 +77,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -105,6 +108,7 @@
                                 @endforeach
                                 <th style="width: 100%">Services - Personnel {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -112,6 +116,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -142,6 +147,7 @@
                                 @endforeach
                                 <th style="width: 100%">Répartition tranche d'age {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -149,6 +155,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -178,6 +185,7 @@
                                 @endforeach
                                 <th style="width: 100%">Répartition H/F {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -185,6 +193,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -215,6 +224,7 @@
                                 @endforeach
                                 <th style="width: 100%">Nationalité - Personnel {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -222,6 +232,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -251,6 +262,7 @@
                                 @endforeach
                                 <th style="width: 100%">Type de contrat {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -258,6 +270,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -291,6 +304,7 @@
                                 @endforeach
                                 <th style="width: 100%">Ancienneté locaux EGC CI (révolue) {{$lentite->libelle}}</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -298,6 +312,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>

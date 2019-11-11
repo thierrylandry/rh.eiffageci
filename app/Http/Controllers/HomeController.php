@@ -102,19 +102,19 @@ class HomeController extends Controller
         foreach ($repartition_homme_femme_tab as $group):
             $vardiag = New Vardiag();
             if($group->sexe=="M" && $group->position==1){
-                $vardiag->name="HOMME CHANTIER";
+                $vardiag->name="CHANTIER HOMME";
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==1) {
-                $vardiag->name = "FEMME CHANTIER";
+                $vardiag->name = "CHANTIER FEMME";
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="M" && $group->position==2) {
-                $vardiag->name = "HOMME BUREAU";
+                $vardiag->name = "BUREAU HOMME";
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==2) {
-                $vardiag->name = "FEMME BUREAU";
+                $vardiag->name = "BUREAU FEMME";
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }

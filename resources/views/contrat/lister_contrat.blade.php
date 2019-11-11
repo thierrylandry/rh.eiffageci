@@ -39,8 +39,8 @@
                     <thead>
                     <tr>
                         <th>slug</th>
-                        <th class="">TYPE </br>CONTRAT</th>
                         <th>MATRICULE</th>
+                        <th class="">TYPE </br>CONTRAT</th>
                         <th>COUVERTURE </br>MALADIE</th>
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
@@ -55,12 +55,13 @@
                     @foreach($contrats as $contrat)
                         <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
                             <td>{{$contrat->id}}</td>
+                            <td>{{$contrat->matricule}}</td>
                             <td>@foreach($typecontrats as $typecontrat)
                                     @if($typecontrat->id==$contrat->id_type_contrat)
                                         {{$typecontrat->libelle}}
                                     @endif
                                 @endforeach</td>
-                            <td>{{$contrat->matricule}}</td>
+
                             <td>{{$contrat->couvertureMaladie}}</td>
                             <td>@foreach($services as $service)
                                     @if($service->id==$contrat->id_service)

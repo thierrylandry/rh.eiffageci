@@ -40,10 +40,12 @@
                     <tr>
                         <th>slug</th>
                         <th class="">TYPE </br>CONTRAT</th>
+                        <th>MATRICULE</th>
                         <th>COUVERTURE </br>MALADIE</th>
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
+                        <th>DATE DE DEPART DEFINITIF</th>
                         <th>PERIODE </br> ESSAI</th>
                         <th>TIMELINE</th>
                         <th>ACTION</th>
@@ -58,6 +60,7 @@
                                         {{$typecontrat->libelle}}
                                     @endif
                                 @endforeach</td>
+                            <td>{{$contrat->matricule}}</td>
                             <td>{{$contrat->couvertureMaladie}}</td>
                             <td>@foreach($services as $service)
                                     @if($service->id==$contrat->id_service)
@@ -68,6 +71,7 @@
                                 {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                             </td>
                             <td> {{ isset($contrat->datefinc) ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                            <td> {{ isset($contrat->departdefinitif) ?date("d-m-Y",strtotime($contrat->departdefinitif)):'' }}</td>
                             <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                             <td>
 

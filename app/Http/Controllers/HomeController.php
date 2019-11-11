@@ -95,7 +95,7 @@ class HomeController extends Controller
             ->where("id_entite","=",$id)
             ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'),"position")
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->groupBy('personne_presente.sexe','position')
+            ->groupBy('position','personne_presente.sexe')
             ->get();
 
         $repartition_homme_femme= Array();
@@ -104,29 +104,34 @@ class HomeController extends Controller
             if($group->sexe=="M" && $group->position==1){
                 $vardiag->name="HOMME CHANTIER";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==1) {
                 $vardiag->name = "FEMME CHANTIER";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="M" && $group->position==2) {
                 $vardiag->name = "HOMME BUREAU";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==2) {
                 $vardiag->name = "FEMME BUREAU";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }
             elseif($group->sexe=="M" && $group->position==3) {
                 $vardiag->name = "HOMME DE MENAGES";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==3) {
                 $vardiag->name = "FEMME DE MENAGES";
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }
 
 
 
-            $repartition_homme_femme[]=$vardiag;
-        endforeach;
 
+        endforeach;
         $tranche_age_moin30_ans= DB::table('personne_presente')
             ->where("id_entite","=",$id)
             ->join('personne_age','personne_age.id','=','personne_presente.id')

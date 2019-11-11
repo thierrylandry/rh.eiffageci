@@ -381,6 +381,7 @@
                                 @endforeach
                                 <th style="width: 100%">Mois</th>
                                 <th>{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -388,7 +389,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$effectif_par_mois_tab->name}}</td>
                                     <td> {{$effectif_par_mois_tab->y}}</td>
-
+                                    <td>{{number_format(($effectif_par_mois_tab->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>

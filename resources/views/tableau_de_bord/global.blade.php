@@ -196,7 +196,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
-                                    <td>{{($res->y/$somme)*100 }}%</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>

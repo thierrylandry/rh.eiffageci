@@ -97,33 +97,39 @@ class HomeController extends Controller
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('position','personne_presente.sexe')
             ->get();
-
+//dd($repartition_homme_femme_tab);
         $repartition_homme_femme= Array();
         foreach ($repartition_homme_femme_tab as $group):
             $vardiag = New Vardiag();
             if($group->sexe=="M" && $group->position==1){
                 $vardiag->name="CHANTIER HOMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==1) {
                 $vardiag->name = "CHANTIER FEMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="M" && $group->position==2) {
                 $vardiag->name = "BUREAU HOMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==2) {
                 $vardiag->name = "BUREAU FEMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }
             elseif($group->sexe=="M" && $group->position==3) {
                 $vardiag->name = "HOMME DE MENAGES";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==3) {
                 $vardiag->name = "FEMME DE MENAGES";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }
@@ -580,7 +586,7 @@ class HomeController extends Controller
 
         $entites=Entite::all();
         $lentite=Entite::find($id);
-        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois'));
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab'));
 
     }
     public function globale()

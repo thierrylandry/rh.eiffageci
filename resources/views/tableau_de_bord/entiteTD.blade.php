@@ -181,6 +181,129 @@
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($repartition_homme_femme as $res)
+                                    @if($res->entite==1)
+                                    <?php $somme += $res->y; ?>
+                                    @endif
+                                @endforeach
+                                <th style="width: 100%">Répartition H/F chantier {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                                <th>100%</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_homme_femme as $res)
+                                @if($res->entite==1)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme_chantier" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
+                                    @if($res->entite==2)
+                                        <?php $somme += $res->y; ?>
+                                    @endif
+                                @endforeach
+                                <th style="width: 100%">Répartition H/F bureau {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                                <th>100%</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_homme_femme as $res)
+                                @if($res->entite==2)
+                                    <tr class="tr-shadow">
+                                        <td> {{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                        <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme_bureau" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
+                                    @if($res->entite==3)
+                                        <?php $somme += $res->y; ?>
+                                    @endif
+                                @endforeach
+                                <th style="width: 100%">Répartition H/F entretien {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                                <th>100%</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($repartition_homme_femme as $res)
+                                @if($res->entite==3)
+                                    <tr class="tr-shadow">
+                                        <td> {{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                        <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="repartition_homme_femme_entretien" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($repartition_homme_femme as $res)
                                     <?php $somme += $res->y; ?>
                                 @endforeach
                                 <th style="width: 100%">Répartition H/F {{$lentite->libelle}}</th>
@@ -428,7 +551,25 @@
             @endforeach
         ];
 
-        var repartition_homme_femme=[
+        var repartition_homme_femme_chantier=[
+            @foreach($repartition_homme_femme as $res)
+                    @if($res->entite==1)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+                    @endif
+            @endforeach
+        ];        var repartition_homme_femme_bureau=[
+            @foreach($repartition_homme_femme as $res)
+                    @if($res->entite==2)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endif
+            @endforeach
+        ];        var repartition_homme_femme_entretien=[
+            @foreach($repartition_homme_femme as $res)
+                    @if($res->entite==3)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endif
+            @endforeach
+        ];        var repartition_homme_femme=[
             @foreach($repartition_homme_femme as $res)
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
@@ -639,6 +780,177 @@
                 }
             },
         });
+        Highcharts.chart('repartition_homme_femme_bureau', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: 'Répartition homme/femme bureau'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_homme_femme_bureau
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
+        });
+        Highcharts.chart('repartition_homme_femme_chantier', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: 'Répartition homme/femme bureau chantier'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_homme_femme_chantier
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
+        });
+        Highcharts.chart('repartition_homme_femme_entretien', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: 'Répartition homme/femme entretien'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: repartition_homme_femme_entretien
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
+        });
         Highcharts.chart('repartition_homme_femme', {
             credits: {
                 enabled: false
@@ -695,7 +1007,9 @@
                 }
             },
 
-        });        Highcharts.chart('type_de_contrat', {
+        });
+
+        Highcharts.chart('type_de_contrat', {
             credits: {
                 enabled: false
             },

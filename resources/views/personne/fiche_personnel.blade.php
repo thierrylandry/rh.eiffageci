@@ -114,7 +114,7 @@
                                         @elseif($piece->type_p_piece=="PSP")
                                             <option value="PSP">PASSEPORT</option>
                                         @elseif($piece->type_p_piece=="CNI")
-                                            <option value="CNI">CARTE NATIONNALE D'IDENTITE</option>
+                                            <option value="CNI">CARTE NATIONALE D'IDENTITE</option>
                                         @endif</td>
                                     <td>{{$piece->num_p_piece}}</td>
                                     <td>{{\Carbon\Carbon::parse(isset($personne)? $piece->date_exp_piece:'')->format('d-m-Y')}}</td>

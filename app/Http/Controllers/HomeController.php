@@ -103,7 +103,6 @@ class HomeController extends Controller
             $vardiag = New Vardiag();
             if($group->sexe=="M" && $group->position==1){
                 $vardiag->name="CHANTIER HOMME";
-                $vardiag->entite="CHANTIER HOMME";
                 $vardiag->y=$group->nb;
                 $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==1) {

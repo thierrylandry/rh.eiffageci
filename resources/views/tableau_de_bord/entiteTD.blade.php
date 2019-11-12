@@ -191,7 +191,6 @@
                             <tbody>
                             @foreach($repartition_homme_femme as $res)
                                 <tr class="tr-shadow">
-                                  
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
                                     <td>{{number_format(($res->y/$somme)*100,1)}}%</td>

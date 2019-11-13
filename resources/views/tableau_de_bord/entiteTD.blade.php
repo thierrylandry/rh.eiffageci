@@ -295,7 +295,8 @@
                 </div>
             </div>
         </div>
-    </div>    <div class="row break">
+    </div>
+    <div class="row ">
         <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >

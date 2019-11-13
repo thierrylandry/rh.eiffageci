@@ -411,6 +411,44 @@
             </div>
         </div>
     </div>
+    <div class="row break">
+        <div class="col-lg-6 tableau">
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr><?php $somme =0; ?>
+                                @foreach($communes as $res)
+                                    <?php $somme += $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Les communes {{$lentite->libelle}}</th>
+                                <th >{{$somme}}</th>
+                                <th>100%</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($communes as $res)
+                                <tr class="tr-shadow">
+                                    <td> {{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="communes"  style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -577,6 +615,11 @@
         ];
         var type_de_contrat=[
             @foreach($camanberts as $res)
+                    {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
+            @endforeach
+        ];
+        var communes=[
+            @foreach($communes as $res)
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
             @endforeach
         ];
@@ -1010,6 +1053,63 @@
 
         });
 
+        Highcharts.chart('communes', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            colors: colors,
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie',
+                width: 600
+            },
+            title: {
+                text: 'Les communes'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: communes
+            }],
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                alignColumns:'true',
+                floating:true,
+                y: 20,
+                x:10,
+                useHTML: true,
+                navigation: {
+                    activeColor: '#3E576F',
+                    animation: true,
+                    arrowSize: 12,
+                    inactiveColor: '#CCC',
+                    style: {
+                        fontWeight: 'bold',
+                        color: '#333',
+                        fontSize: '12px'
+                    }
+                }
+            },
+
+        });
         Highcharts.chart('type_de_contrat', {
             credits: {
                 enabled: false

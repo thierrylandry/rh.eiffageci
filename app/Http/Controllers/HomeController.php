@@ -72,6 +72,21 @@ class HomeController extends Controller
             $camanberts[]=$vardiag;
         endforeach;
 
+        $commune_tab=DB::table('personne_presente')
+                    ->select(DB::raw('commune.libelle as commune'),DB::raw('count(*) as nb'))
+                    ->leftJoin('commune','commune.id','=','personne_presente.id_commune')
+                    ->where('id_entite','=',$id)
+                     ->groupBy('id_commune','commune.libelle')->get();
+       // dd($commune_tab);
+        $communes= Array();
+        foreach ($commune_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->commune;
+            $vardiag->y=$group->nb;
+
+            $communes[]=$vardiag;
+        endforeach;
+
         //fin tableau sur le nombre de CDD CDI
         $repartition_nationalite_tab = DB::table('personne_presente')
             ->join('pays','pays.id','=','personne_presente.nationalite')
@@ -584,9 +599,10 @@ class HomeController extends Controller
 
        // dd($effectif_par_mois);
 
+
         $entites=Entite::all();
         $lentite=Entite::find($id);
-        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab'));
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
     }
     public function globale()

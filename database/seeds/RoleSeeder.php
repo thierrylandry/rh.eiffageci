@@ -17,8 +17,9 @@ class RoleSeeder extends Seeder
         $role_Admin->name="Parametrage";
         $role_Admin->description="PARAMETRAGE";
         $role_Admin->save();
+        $role_Admin = new Role();
         $role_Admin->name="Gestion_utilisateur";
-        $role_Admin->description="GESTION UILISATEUR";
+        $role_Admin->description="GESTION UTILISATEUR";
         $role_Admin->save();
         $role_Admin = new Role();
         $role_Admin->name="Personnes";
@@ -48,5 +49,18 @@ class RoleSeeder extends Seeder
         $role_Admin->name="Etats";
         $role_Admin->description="ETATS";
         $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Gestion_recrutement";
+        $role_Admin->description="GESTION RECRUTEMENT";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Demande_recrutement";
+        $role_Admin->description="DEMANDE DE RECRUTEMENT";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Validation_recrutement";
+        $role_Admin->description="VALIDATION DE RECRUTEMENT";
+        $role_Admin->save();
+
     }
 }

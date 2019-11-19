@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Administratif;
+use App\Commune;
 use App\Contrat;
 use App\Entite;
 use App\Fonction;
@@ -30,7 +31,8 @@ class PersonneController extends Controller
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
         $entites= Entite::all();
-        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite','entites'));
+        $communes = Commune::all();
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite','entites','communes'));
     }
     public function lister_personne($entite)
     {
@@ -103,6 +105,7 @@ class PersonneController extends Controller
         $contact=$parameters['contact'];
         $whatsapp=$parameters['whatsapp'];
         $sattelitaire=$parameters['sattelitaire'];
+        $id_commune=$parameters['commune'];
 
 
 
@@ -134,6 +137,7 @@ class PersonneController extends Controller
         $personne->contact=$contact;
         $personne->whatsapp=$whatsapp;
         $personne->sattelitaire=$sattelitaire;
+        $personne->id_commune=$id_commune;
 
 
 //les pieces jointes _piece
@@ -213,7 +217,8 @@ class PersonneController extends Controller
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
         $entites= Entite::all();
-        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces','entites'));
+        $communes =Commune::all();
+        return view('personne/detail_personne',compact('personne','societes','familles','payss','fonctions','pieces','entites','communes'));
     }
     public function modifier_personne(Request $request){
 
@@ -242,7 +247,7 @@ class PersonneController extends Controller
         $whatsapp=$parameters['whatsapp'];
         $sattelitaire=$parameters['sattelitaire'];
         $presenceEff=$parameters['presenceEff'];
-
+        $id_commune=$parameters['commune'];
         $date= new \DateTime(null);
 
 
@@ -270,6 +275,7 @@ class PersonneController extends Controller
         $personne->whatsapp=$whatsapp;
         $personne->sattelitaire=$sattelitaire;
         $personne->presenceEff=$presenceEff;
+        $personne->id_commune=$id_commune;
 
         $familles = new Collection();
 
@@ -362,7 +368,7 @@ class PersonneController extends Controller
 }
             endforeach;
 
-        return redirect()->route('lister_personne',$personne->entite)->with('success',"Les documents ont été ajouté");
+        return redirect()->route('lister_personne',$personne->id_entite)->with('success',"Les documents ont été ajouté");
 
     }
     public function save_document_new_user(Request $request){

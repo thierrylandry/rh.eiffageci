@@ -165,7 +165,7 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">E-mail:</label>
+                                <label for="text-input" class=" form-control-label">E-mail</label>
                             </div>
                             <!--fin-->
                             <div class="col-12 col-md-9">
@@ -174,7 +174,7 @@
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Contact:</label>
+                                <label for="text-input" class=" form-control-label">Contact</label>
                             </div>
                             <!--fin-->
                             <div class="col-12 col-md-9">
@@ -203,11 +203,27 @@
 
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Adresse :</label>
+                                <label for="text-input" class=" form-control-label">Adresse </label>
                             </div>
                             <!--fin-->
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="adresse" placeholder="Adresse" class="form-control" value="{{isset($personne)? $personne->adresse:''}}">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Commune </label>
+                            </div>
+                            <!--fin-->
+                            <div class="col-12 col-md-9">
+                                <select name="commune" id="commune">
+                                    <option value=""></option>
+                                    @foreach($communes  as $commune):
+
+                                    <option value="{{$commune->id}}" {{isset($personne) && $personne->id_commune==$commune->id?'selected':''}}>{{$commune->libelle}}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
                         </div>
 
@@ -245,14 +261,14 @@
                             <div class="col-12 col-md-9">
                                 <select class="form-control" name="rh">
                                     <option value="">SELECTIONNER</option>
-                                    <option value="AB-" {{isset($personne)&& $personne->rh="AB-"?'selected':''}}>AB-</option>
-                                    <option value="A-" {{isset($personne)&& $personne->rh="A-"?'selected':''}}>A-</option>
-                                    <option value="B-" {{isset($personne)&& $personne->rh="B-"?'selected':''}}>B-</option>
-                                    <option value="O-" {{isset($personne)&& $personne->rh="O-"?'selected':''}}>O-</option>
-                                    <option value="O+" {{isset($personne)&& $personne->rh="O+"?'selected':''}}>O+</option>
-                                    <option value="B+" {{isset($personne)&& $personne->rh="B+"?'selected':''}}>B+</option>
-                                    <option value="A+" {{isset($personne)&& $personne->rh="A+"?'selected':''}}>A+</option>
-                                    <option value="AB+" {{isset($personne)&& $personne->rh="AB+"?'selected':''}}>AB+</option>
+                                    <option value="AB-" {{isset($personne)&& $personne->rh=="AB-"?'selected':''}}>AB-</option>
+                                    <option value="A-" {{isset($personne)&& $personne->rh=="A-"?'selected':''}}>A-</option>
+                                    <option value="B-" {{isset($personne)&& $personne->rh=="B-"?'selected':''}}>B-</option>
+                                    <option value="O-" {{isset($personne)&& $personne->rh=="O-"?'selected':''}}>O-</option>
+                                    <option value="O+" {{isset($personne)&& $personne->rh=="O+"?'selected':''}}>O+</option>
+                                    <option value="B+" {{isset($personne)&& $personne->rh=="B+"?'selected':''}}>B+</option>
+                                    <option value="A+" {{isset($personne)&& $personne->rh=="A+"?'selected':''}}>A+</option>
+                                    <option value="AB+" {{isset($personne)&& $personne->rh=="AB+"?'selected':''}}>AB+</option>
                                 </select>
 
                             </div>
@@ -280,7 +296,7 @@
                                 <select name="entite" id="disabledSelect" class="form-control">
                                     @foreach($entites as $entite)
 
-                                        <option value="{{$entite->id}}"> {{$entite->libelle}}</option>
+                                        <option value="{{$entite->id}}" {{isset($personne)&& $personne->id_entite==$entite->id? 'selected':''}}> {{$entite->libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -320,13 +336,13 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <select class="form-control " name="taille">
-                                    <option value="XS" {{isset($personne) && $personne->taille=="XS"? $personne->taille:''}}>XS</option>
-                                    <option value="S" {{isset($personne) && $personne->taille=="S"? $personne->taille:''}}>S</option>
-                                    <option value="M" {{isset($personne) && $personne->taille=="M"? $personne->taille:''}}>M</option>
-                                    <option value="L" {{isset($personne) && $personne->taille=="L"? $personne->taille:''}}>L</option>
-                                    <option value="XL" {{isset($personne) && $personne->taille=="XL"? $personne->taille:''}}>XL</option>
-                                    <option value="XXL" {{isset($personne) && $personne->taille=="XXL"? $personne->taille:''}}>XXL</option>
-                                    <option value="XXXL" {{isset($personne) && $personne->taille=="XXXL"? $personne->taille:''}}>XXXL</option>
+                                    <option value="XS" {{isset($personne) && $personne->taille=="XS"? 'selected':''}}>XS</option>
+                                    <option value="S" {{isset($personne) && $personne->taille=="S"? 'selected':''}}>S</option>
+                                    <option value="M" {{isset($personne) && $personne->taille=="M"? 'selected':''}}>M</option>
+                                    <option value="L" {{isset($personne) && $personne->taille=="L"? 'selected':''}}>L</option>
+                                    <option value="XL" {{isset($personne) && $personne->taille=="XL"? 'selected':''}}>XL</option>
+                                    <option value="XXL" {{isset($personne) && $personne->taille=="XXL"? 'selected':''}}>XXL</option>
+                                    <option value="XXXL" {{isset($personne) && $personne->taille=="XXXL"? 'selected':''}}>XXXL</option>
                                 </select>
                             </div>
                         </div>
@@ -638,7 +654,10 @@
         </div>
     </form>
     <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
+
+    <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
+        $('#commune').select2({ placeholder: 'Selectionner une commune'});
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));

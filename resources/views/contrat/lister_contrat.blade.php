@@ -39,11 +39,13 @@
                     <thead>
                     <tr>
                         <th>slug</th>
+                        <th>MATRICULE</th>
                         <th class="">TYPE </br>CONTRAT</th>
                         <th>COUVERTURE </br>MALADIE</th>
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
+                        <th>DATE DE DEPART DEFINITIF</th>
                         <th>PERIODE </br> ESSAI</th>
                         <th>TIMELINE</th>
                         <th>ACTION</th>
@@ -53,11 +55,13 @@
                     @foreach($contrats as $contrat)
                         <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
                             <td>{{$contrat->id}}</td>
+                            <td>{{$contrat->matricule}}</td>
                             <td>@foreach($typecontrats as $typecontrat)
                                     @if($typecontrat->id==$contrat->id_type_contrat)
                                         {{$typecontrat->libelle}}
                                     @endif
                                 @endforeach</td>
+
                             <td>{{$contrat->couvertureMaladie}}</td>
                             <td>@foreach($services as $service)
                                     @if($service->id==$contrat->id_service)
@@ -68,6 +72,8 @@
                                 {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                             </td>
                             <td> {{ isset($contrat->datefinc) ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                            <td>
+                                {{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("d-m-Y",strtotime($contrat->departDefinitif)):''}}</td>
                             <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                             <td>
 

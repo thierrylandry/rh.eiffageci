@@ -64,6 +64,7 @@
                            <p> whatsapp : {{isset($personne)? $personne->whatsapp:''}}</p>
                            <p> Sattelitaire : {{isset($personne)? $personne->sattelitaire:''}}</p>
                            <p> Adresse : {{isset($personne)? $personne->adresse:''}}</p>
+                           <p> Commune : {{isset($personne) && isset($personne->commune)? $personne->commune->libelle:''}}</p>
                        </div>
                        <div class="col-sm-2">
 
@@ -71,7 +72,7 @@
                            <p> Fonction :   @foreach($fonctions as $fonction){{isset($personne) && $personne->fonction== $fonction->id ? $fonction->libelle:''}}
 
                                     @endforeach </p>
-                           <p> Entite : {{isset($personne)&& $personne->entite==1? 'PHB':''}}{{isset($personne)&& $personne->entite==2? 'SPIE':''}}{{isset($personne)&& $personne->entite==3? 'DIRECTION CI':''}} </p>
+                           <p> Entite :  @foreach($entites as $enti){{isset($personne) && $personne->id_entite== $enti->id ? $enti->libelle:''}} @endforeach</p>
                            <p> Unité :  @foreach($societes as $societe)
                                    @if($personne->id_unite==$societe->id_unite)
                                        {{$societe->libelleUnite}}
@@ -113,7 +114,7 @@
                                         @elseif($piece->type_p_piece=="PSP")
                                             <option value="PSP">PASSEPORT</option>
                                         @elseif($piece->type_p_piece=="CNI")
-                                            <option value="CNI">CARTE NATIONNAL D'IDENTITE</option>
+                                            <option value="CNI">CARTE NATIONALE D'IDENTITE</option>
                                         @endif</td>
                                     <td>{{$piece->num_p_piece}}</td>
                                     <td>{{\Carbon\Carbon::parse(isset($personne)? $piece->date_exp_piece:'')->format('d-m-Y')}}</td>

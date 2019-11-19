@@ -72,6 +72,21 @@ class HomeController extends Controller
             $camanberts[]=$vardiag;
         endforeach;
 
+        $commune_tab=DB::table('personne_presente')
+                    ->select(DB::raw('commune.libelle as commune'),DB::raw('count(*) as nb'))
+                    ->leftJoin('commune','commune.id','=','personne_presente.id_commune')
+                    ->where('id_entite','=',$id)
+                     ->groupBy('id_commune','commune.libelle')->get();
+       // dd($commune_tab);
+        $communes= Array();
+        foreach ($commune_tab as $group):
+            $vardiag = New Vardiag();
+            $vardiag->name=$group->commune;
+            $vardiag->y=$group->nb;
+
+            $communes[]=$vardiag;
+        endforeach;
+
         //fin tableau sur le nombre de CDD CDI
         $repartition_nationalite_tab = DB::table('personne_presente')
             ->join('pays','pays.id','=','personne_presente.nationalite')
@@ -95,38 +110,49 @@ class HomeController extends Controller
             ->where("id_entite","=",$id)
             ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'),"position")
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->groupBy('personne_presente.sexe','position')
+            ->groupBy('position','personne_presente.sexe')
             ->get();
-
+//dd($repartition_homme_femme_tab);
         $repartition_homme_femme= Array();
         foreach ($repartition_homme_femme_tab as $group):
             $vardiag = New Vardiag();
             if($group->sexe=="M" && $group->position==1){
-                $vardiag->name="HOMME CHANTIER";
+                $vardiag->name="CHANTIER HOMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==1) {
-                $vardiag->name = "FEMME CHANTIER";
+                $vardiag->name = "CHANTIER FEMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="M" && $group->position==2) {
-                $vardiag->name = "HOMME BUREAU";
+                $vardiag->name = "BUREAU HOMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==2) {
-                $vardiag->name = "FEMME BUREAU";
+                $vardiag->name = "BUREAU FEMME";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }
             elseif($group->sexe=="M" && $group->position==3) {
                 $vardiag->name = "HOMME DE MENAGES";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }elseif($group->sexe=="F" && $group->position==3) {
                 $vardiag->name = "FEMME DE MENAGES";
+                $vardiag->entite=$group->position;
                 $vardiag->y=$group->nb;
+                $repartition_homme_femme[]=$vardiag;
             }
 
 
 
-            $repartition_homme_femme[]=$vardiag;
-        endforeach;
 
+        endforeach;
         $tranche_age_moin30_ans= DB::table('personne_presente')
             ->where("id_entite","=",$id)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
@@ -573,9 +599,10 @@ class HomeController extends Controller
 
        // dd($effectif_par_mois);
 
+
         $entites=Entite::all();
         $lentite=Entite::find($id);
-        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois'));
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
     }
     public function globale()

@@ -17,14 +17,15 @@
         <div class="col-md-12">
             <!-- DATA TABLE -->
 
-            <div class="table-responsive table-responsive-data2">
+            <div class="table-responsive table-responsive-data2" style="overflow-x: scroll">
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>
                     <tr>
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>FONCTION</th>
-                        <th>CONTACT</th>
+                        <th>CONTACT PROFESSIONNEL</th>
+                        <th>CONTACT PERSONNEL</th>
                         <th>EMAIL</th>
                     </tr>
                     </thead>
@@ -34,7 +35,8 @@
                             <td>{{$repertoire->nom}}</td>
                             <td>{{$repertoire->prenom}}</td>
                             <td>{{$repertoire->fonction}}</td>
-                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->contact}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->pro}}</td>
+                            <td><i class="fa fa-phone-square" aria-hidden="true"></i> {{$repertoire->perso}}</td>
                             <td><i class="fa fa-envelope" aria-hidden="true"></i> {{$repertoire->email}}</td>
                         </tr>
                     @endforeach
@@ -62,23 +64,33 @@
                 buttons: [
                     {
                         extend: 'copy',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'csv',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'excelHtml5',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     } ,
                     {
                         extend: 'print',
-                        title: 'Répertoire ESF'
+                        title: 'Répertoire ESF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL'
                     }
                 ],
                 language: {

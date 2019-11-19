@@ -19,7 +19,7 @@
         </div>
         <div class="table-data__tool-right">
             <a href="{{back()->getTargetUrl()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-long-arrow-return"></i>PRECEDANT</a>
+                <i class="zmdi zmdi-long-arrow-return"></i>PRECEDENT</a>
 
         </div>
     </div>

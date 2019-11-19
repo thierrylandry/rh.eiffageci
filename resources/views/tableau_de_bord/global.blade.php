@@ -33,17 +33,17 @@
                                 @endforeach
                                 <th  style="width: 100%">Effectifs globaux Projet ESF</th>
                                 <th class="colonneMonatant" style="width: 100px"  >{{$somme}}</th>
+                                <th class="colonneMonatant" style="width: 100px"  >100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($effectifglobauxx as $res)
                             <tr class="tr-shadow">
                                 <td>
                                 {{$res->name}}</td>
-                                <td>{{$res->y }}</td>
+                                <td>{{$res->y}}</td>
+                                <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                             </tr>
-                            <?php $somme += $res->y ?>
                                 @endforeach
                             </tbody>
                         </table>
@@ -72,15 +72,16 @@
                                 @endforeach
                                 <th style="width: 100%">Effectifs globaux détaillé Projet ESF</th>
                                 <th>{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($effectifglobaux as $res)
                                 <tr class="tr-shadow">
 
                                     <td>{{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -110,16 +111,16 @@
                                 @endforeach
                                 <th style="width: 100%">Qualification contractuelle personnel ESF</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($qualification_contractuelle as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
-                                <?php  $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -149,16 +150,16 @@
                             <tr>
                                 <th style="width: 100%">Services - Personnel</th>
                                 <th >{{$somme}}</th>
+                                <th >100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($repartition_service as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
-                                <?php $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -187,16 +188,16 @@
                                 @endforeach
                                 <th style="width: 100%">Répartition H/F</th>
                                 <th>{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($repartition_homme_femme as $res)
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
-                                <?php  $somme += $res->y; ?>
                             @endforeach
                             </tbody>
                         </table>
@@ -225,15 +226,15 @@
                                 @endforeach
                                 <th style="width: 100%">Nationalité - Personnel</th>
                                 <th >{{$somme}}</th>
+                                <th>100%</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $somme =0; ?>
                             @foreach($repartition_nationalite as $res)
-                                <?php $somme += $res->y; ?>
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
                                 </tr>
 
                             @endforeach

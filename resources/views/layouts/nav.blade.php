@@ -139,32 +139,7 @@
                             @endforeach
                     </ul>
                 </li>
-                @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
-                <li class=" @yield('fonction')@yield('lister_partenaire')@yield('lister_entite') has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block') @yield('lister_partenaire_block')@yield('lister_entite_block')>
-                        <li class="@yield('fonction')">
-                            <a href="{{route('fonctions')}}">Fonctions</a>
-                        </li>
-                        <li class="@yield('lister_entite')">
-                            <a href="{{route('lister_entite')}}">Entites</a>
-                        </li>
-                        <li class="@yield('lister_partenaire')">
-                            <a href="{{route('lister_partenaire')}}">Partenaires</a>
-                        </li>
-                            <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
-                                <a class="js-arrow " href="{{route('effectif')}}">
-                                    </i>Effectifs</a>
-                            </li>
-                    </ul>
-                </li>
-                @endif
-                @if(Auth::user() != null && Auth::user()->hasRole('Gestion_utilisateur'))
-                <li class="@yield('utilisateur')">
-                   <a href="{{route('utilisateur')}}"> <i class="fas fa-user open" ></i> UTILISATEURS</a>
-                </li>
-                @endif
+
                 @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
                 <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
                     <a class="js-arrow " href="#">
@@ -236,6 +211,32 @@
                     </ul>
                 </li>
                     @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
+                    <li class=" @yield('fonction')@yield('lister_partenaire')@yield('lister_entite') has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block') @yield('lister_partenaire_block')@yield('lister_entite_block')>
+                            <li class="@yield('fonction')">
+                                <a href="{{route('fonctions')}}">Fonctions</a>
+                            </li>
+                            <li class="@yield('lister_entite')">
+                                <a href="{{route('lister_entite')}}">Entites</a>
+                            </li>
+                            <li class="@yield('lister_partenaire')">
+                                <a href="{{route('lister_partenaire')}}">Partenaires</a>
+                            </li>
+                            <li class="@yield('lister_effectif') @yield('lister_effectif') has-sub">
+                                <a class="js-arrow " href="{{route('effectif')}}">
+                                    </i>Effectifs</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Gestion_utilisateur'))
+                    <li class="@yield('utilisateur')">
+                        <a href="{{route('utilisateur')}}"> <i class="fas fa-user open" ></i> UTILISATEURS</a>
+                    </li>
+                @endif
 
             </ul>
         </nav>

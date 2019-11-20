@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">RECRUTEMENT-DEMANDE DE PERSONNEL</h2>
+                <h2 class="title-1">RECRUTEMENT - DEMANDE DE PERSONNEL</h2>
             </div>
         </div>
     </div>
@@ -36,26 +36,24 @@
                     </div>
                     <div class="card-body" >
                         <div class="row form-group">
-                            <div class="col col-md-3">
+                            <div class="col-12 col-md-6">
                                 <label for="text-input" class=" form-control-label">Poste à pouvoir *</label>
+                                <input type="text" id="company" placeholder="Entrer le poste à pouvoir" class="form-control">
                             </div>
-                            <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="posteApouvoir" placeholder="POSTE A POUVOIR" value="" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Entite*</label>
-                            </div>
-                            <div class="col-12 col-md-9">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="col-12 col-md-6">
+                                <label for="text-input" class=" form-control-label">Entite *</label>
                                 <select class="form-control">
                                     @foreach($entites as $entite)
-
                                         <option value="{{$entite->id}}">{{$entite->libelle}}</option>
-                                        @endforeach
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Descriptif de la fonction</label>
@@ -73,7 +71,7 @@
             <div class="col-sm-6"   >
                 <div class="card" style="height: 100% !important" >
                     <div class="card-header">
-                        <strong>Compétence </strong>
+                        <strong>Compétence recherchées</strong>
                     </div>
                     <div class="card-body card-block">
                         Ajouter une compétence
@@ -85,7 +83,6 @@
                         <div id="pieces" class="form-inline">
 
                             <div class="form-control-label">
-                            -
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
                                          <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
@@ -97,7 +94,7 @@
                         <div id="piecetemplate" class="row clearfix" style="display: none">
 
                             <div class="form-control-label">
-                             -   <div class="form-group col-sm-6">
+                               <div class="form-group col-sm-6">
                                     <div class="form-line">
                                        <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
                                     </div>
@@ -107,13 +104,12 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
             <div class="col-sm-6"   >
                 <div class="card" style="height: 100% !important" >
                     <div class="card-header">
-                        <strong>Responsabilités ou tâches </strong>
+                        <strong>Responsabilités ou tâches</strong>
                     </div>
                     <div class="card-body card-block">
                         Ajouter une Responsabilité ou une tâche
@@ -147,16 +143,22 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
         </br>
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card" style="height: 100% !important">
                     <div class="card-body" >
-
+                        <div class="col-12 col-md-6">
+                            <label for="text-input" class=" form-control-label">Type de contrat *</label>
+                            <select class="form-control">
+                                @foreach($typecontrats as $typecontrat)
+                                    <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

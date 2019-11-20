@@ -518,12 +518,26 @@ Route::get('/personne_contrat',[
 ])->middleware('auth');
 
 //recrutement
-Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
+Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recrutement'], function () {
 
     Route::get('/Ajouter',[
         'as'=>'Ajouter',
         'uses'=>'RecrutementController@ajouter_recrutement',
+        'roles' => ['Parametrage']
 
     ])->middleware('auth');
 
+    Route::get('/Lister',[
+        'as'=>'Lister',
+        'uses'=>'RecrutementController@lister_recrutement',
+        'roles' => ['Parametrage']
+
+    ])->middleware('auth');
+
+    Route::get('/Valider',[
+        'as'=>'Valider',
+        'uses'=>'RecrutementController@valider_recrutement',
+        'roles' => ['Parametrage']
+
+    ])->middleware('auth');
 });

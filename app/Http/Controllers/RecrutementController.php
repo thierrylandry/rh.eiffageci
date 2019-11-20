@@ -13,4 +13,17 @@ class RecrutementController extends Controller
 $entites = Entite::all();
         return view('recrutements/ficheRecrutement',compact('entites'));
     }
+
+    public function lister_recrutement(){
+
+$entites = Entite::all();
+        return view('recrutements/ficheRecrutement',compact('entites'));
+    }
+
+    public function valider_recrutement(){
+
+        $entites = Entite::all();
+        return view('recrutements/ficheRecrutement',compact('entites'));
+    }
+
 }

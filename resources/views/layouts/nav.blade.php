@@ -139,19 +139,35 @@
                             @endforeach
                     </ul>
                 </li>
-
-                @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
-                <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
-                    <a class="js-arrow " href="#">
-                        <i class="fas fa-users open" ></i>PERSONNES</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
-                        @foreach($entites as $enti)
-                            <li class="@yield('lister_personne'.$enti->id)">
-                                <a href="{{route("lister_personne",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
+                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements'))
+                    <li class="@yield('Recrutements') has-sub">
+                        <a class="js-arrow " href="#">
+                            <i class="fa fa-list" ></i>RECRUTEMENTS</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
+                            <li class="@yield('demande_recrutement')">
+                                <a href="{{route('demande_recrutement')}}"></i>Demande de recrutement</a>
                             </li>
-                        @endforeach
-                    </ul>
-                </li>
+                            <li class="@yield('gestion_recrutement')">
+                                <a href="{{route('gestion_recrutement')}}"></i>Gestion des recrutements</a>
+                            </li>
+                            <li class="@yield('validation_recrutement')">
+                                <a href="{{route('validation_recrutement')}}"></i>Validation de recrutement</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
+                    <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
+                        <a class="js-arrow " href="#">
+                            <i class="fas fa-users open" ></i>PERSONNES</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') @yield('lister_personne_block')>
+                            @foreach($entites as $enti)
+                                <li class="@yield('lister_personne'.$enti->id)">
+                                    <a href="{{route("lister_personne",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Invites'))
                 <li class="@yield('invite') has-sub">
@@ -207,10 +223,9 @@
                         <li class="@yield('informatique')">
                             <a href="{{route('informatique')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i>Tableau de gestion du parc informatique</a>
                         </li>
-
                     </ul>
                 </li>
-                    @endif
+                @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
                     <li class=" @yield('fonction')@yield('lister_partenaire')@yield('lister_entite') has-sub">
                         <a class="js-arrow" href="#">

@@ -50,6 +50,10 @@ class RoleSeeder extends Seeder
         $role_Admin->description="ETATS";
         $role_Admin->save();
         $role_Admin = new Role();
+        $role_Admin->name="Recrutements";
+        $role_Admin->description="RECRUTEMENTS";
+        $role_Admin->save();
+        $role_Admin = new Role();
         $role_Admin->name="Gestion_recrutement";
         $role_Admin->description="GESTION RECRUTEMENT";
         $role_Admin->save();

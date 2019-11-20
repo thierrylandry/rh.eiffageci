@@ -13,11 +13,16 @@ class AddIdCommuneToPersonne extends Migration
      */
     public function up()
     {
-        Schema::table('personne', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('id_commune');
-            $table->foreign('id_commune')->references('id')->on('commune');
-        });
+        if(!Schema::hasColumn('personne','id_commune')){
+
+            Schema::table('personne', function (Blueprint $table) {
+                //
+
+                $table->unsignedBigInteger('id_commune');
+                $table->foreign('id_commune')->references('id')->on('commune');
+            });
+        }
+
     }
 
     /**

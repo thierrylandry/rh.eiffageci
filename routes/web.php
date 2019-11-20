@@ -523,21 +523,21 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recr
     Route::get('/Ajouter',[
         'as'=>'Ajouter',
         'uses'=>'RecrutementController@ajouter_recrutement',
-        'roles' => ['Parametrage']
+        'roles' => ['Demande_recrutement']
 
     ])->middleware('auth');
 
     Route::get('/Lister',[
         'as'=>'Lister',
         'uses'=>'RecrutementController@lister_recrutement',
-        'roles' => ['Parametrage']
+        'roles' => ['Gestion_recrutement']
 
     ])->middleware('auth');
 
     Route::get('/Valider',[
         'as'=>'Valider',
         'uses'=>'RecrutementController@valider_recrutement',
-        'roles' => ['Parametrage']
+        'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
 });

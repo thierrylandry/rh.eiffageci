@@ -13,18 +13,19 @@ class CreateTableRecrutement extends Migration
      */
     public function up()
     {
+        if (!schema::hasTable('recrutement')){
         Schema::create('recrutement', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('posteAPouvoir')->nullable();
             $table->text('competenceRecherche')->nullable();
             $table->text('tache')->nullable();
             $table->integer('id_type_contrat')->nullable();
-           // $table->foreign('id_type_contrat')->references('id')->on('typecontrat');
+            // $table->foreign('id_type_contrat')->references('id')->on('typecontrat');
             $table->date('dateDebut')->nullable();
             $table->text('dureeMission')->nullable();
             $table->float('budgetMensuel')->nullable();
             $table->text('id_categorie')->nullable();
-           // $table->foreign('id_categorie')->references('id')->on('categorie');
+            // $table->foreign('id_categorie')->references('id')->on('categorie');
             $table->float('salaireBase')->nullable();
             $table->float('surSalaire')->nullable();
             $table->float('primeTp')->nullable();
@@ -37,9 +38,10 @@ class CreateTableRecrutement extends Migration
             $table->text('debit_internet')->nullable();
             $table->string('assurance_maladie')->nullable();
             $table->integer('etat')->default(1);
-          // $table->unsignedBigInteger('id_avantagedotation')->nullable();
+            // $table->unsignedBigInteger('id_avantagedotation')->nullable();
             $table->timestamps();
         });
+    }
     }
 
     /**

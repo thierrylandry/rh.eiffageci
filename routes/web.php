@@ -540,4 +540,10 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recr
         'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'RecrutementController@enregistrer_recrutement',
+        'roles' => ['Validation_recrutement']
+
+    ])->middleware('auth');
 });

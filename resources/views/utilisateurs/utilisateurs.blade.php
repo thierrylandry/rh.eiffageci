@@ -107,6 +107,33 @@
                                 <input type="password" id="confmdp" name="confmdp" placeholder="Confirmer mot de passe" class="form-control" value="{{isset($utilisateur)?$utilisateur->password:''}}" required>
                             </div>
                         </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">L'entité *</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select name="id_entite" class="form-control" required>
+                                        <option value=""></option>
+                                        @foreach($entites as $entite)
+                                            <option value="{{$entite->id}}" {{isset($utilisateur) && $utilisateur->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="text-input" class=" form-control-label">Service</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select name="id_service" class="form-control">
+                                        <option value=""></option>
+                                        @foreach($services as $service)
+                                            <option value="{{$service->id}}" {{isset($utilisateur) && $utilisateur->id_service==$service->id?"selected":""}}>{{$service->libelle}}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         <div class="card-footer pull-right">
                             <button type="submit" class="btn btn-primary btn-sm">
                                 <i class="fa fa-dot-circle-o"></i>@if(isset($utilisateur)) {{"Modifier"}} @else {{"Enregistrer"}}@endif

@@ -19,9 +19,9 @@
         </div>
        <!--place ici les bouton -->
     </div>
-    <form action="{{route('modifier_personne')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{route('recrutement.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
-        <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
+        <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($recrutement)? $recrutement->slug:''}}" class="form-control" required>
 
         <div class="row">
             <div class="col-lg-12">
@@ -33,7 +33,7 @@
                         <div class="row form-group">
                             <div class="col-12 col-md-4">
                                 <label for="text-input" class=" form-control-label">Poste à pouvoir *</label>
-                                <input type="text" id="company" placeholder="Entrer le poste à pouvoir" class="form-control">
+                                <input type="text" id="posteAPouvoir" name="posteAPouvoir" placeholder="Entrer le poste à pouvoir" class="form-control">
                             </div>
                             <br>
                             <br>
@@ -41,17 +41,20 @@
                             <br>
                             <div class="col-12 col-md-4">
                                 <label for="text-input" class=" form-control-label">Entite *</label>
-                                <select class="form-control">
+                                <select class="form-control" id="id_entite" name="id_entite"  >
                                     @foreach($entites as $entite)
-                                        <option value="{{$entite->id}}">{{$entite->libelle}}</option>
+                                        <option value="{{$entite->id}}" {{Auth::user()->id_service==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-12 col-md-4">
                                 <label for="text-input" class=" form-control-label">Service</label>
-                                <select class="form-control" readonly="">
-
+                                <select class="form-control" id="service" name="service">
+                                    <option value=""></option>
+                                    @foreach($services as $service)
+                                        <option value="{{$service->id}}" {{Auth::user()->id_service==$service->id?"selected":""}}>{{$service->libelle}}</option>
+                                        @endforeach;
                                 </select>
                             </div>
                         </div>
@@ -61,7 +64,7 @@
                                 <label for="text-input" class=" form-control-label">Descriptif de la fonction</label>
                             </div>
                             <div class="col-12 col-md-9">
-                               <textarea class="form-control"></textarea>
+                               <textarea class="form-control" name="descriptifFonction"></textarea>
                             </div>
                         </div>
                     </div>
@@ -86,7 +89,7 @@
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                         <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                         <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +100,7 @@
                             <div class="form-control-label">
                                <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                       <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
+                                       <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +128,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                         <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                         <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +139,7 @@
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                       <input type="text" name="num_p_piece[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('valeur_c[]') }}">
+                                       <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +156,7 @@
                        <div class="row">
                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Type de contrat *</label>
-                               <select class="form-control">
+                               <select class="form-control" name="id_type_contrat" required>
                                    @foreach($typecontrats as $typecontrat)
                                        <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
                                    @endforeach
@@ -161,11 +164,11 @@
                            </div>
                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Date de debut</label>
-                               <input type="date" name="datedebut" class="form-control" />
+                               <input type="date" name="dateDebut" class="form-control" />
                            </div>
                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Durée de mission</label>
-                               <input type="text" name="dureemission" class="form-control" />
+                               <input type="text" name="dureeMission" class="form-control" />
                            </div>
                        </div>
                     </div>
@@ -186,7 +189,7 @@
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
-                                <select class="form-control" name="categorieProfessionnel">
+                                <select class="form-control" name="id_categorie">
                                     @foreach($categories as $categorie)
                                         <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
                                         @endforeach
@@ -194,19 +197,19 @@
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Salaire de base</label>
-                                <input type="text" name="salaire_de_base" class="form-control" />
+                                <input type="text" name="salaireBase" class="form-control" />
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Sursalaire</label>
-                                <input type="text" name="sursalaire" class="form-control" />
+                                <input type="text" name="surSalaire" class="form-control" />
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Prime de transport</label>
-                                <input type="text" name="primetp" class="form-control" />
+                                <input type="text" name="primeTp" class="form-control" />
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Total brute</label>
-                                <input type="text" name="totalbrute" class="form-control" />
+                                <input type="text" name="totalBrute" class="form-control" />
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Total net (avec 1 part d'IG)</label>
@@ -214,7 +217,7 @@
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Total net (...parts d'IGR)</label>
-                                <input type="text" name="totalnetnparts" class="form-control" />
+                                <input type="text" name="totalnetparts" class="form-control" />
                             </div>
                         </div>
                     </div>

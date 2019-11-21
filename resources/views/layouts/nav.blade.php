@@ -144,14 +144,14 @@
                         <a class="js-arrow " href="#">
                             <i class="fa fa-list" ></i>RECRUTEMENTS</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
-                            <li class="@yield('demande_recrutement')">
-                                <a href="{{route('demande_recrutement')}}"></i>Demande de recrutement</a>
+                            <li class="@yield('recrutement.Ajouter')">
+                                <a href="{{route('recrutement.Ajouter')}}"></i>Demande de recrutement</a>
                             </li>
-                            <li class="@yield('gestion_recrutement')">
-                                <a href="{{route('gestion_recrutement')}}"></i>Gestion des recrutements</a>
+                            <li class="@yield('recrutement.Lister')">
+                                <a href="{{route('recrutement.Lister')}}"></i>Gestion des recrutements</a>
                             </li>
-                            <li class="@yield('validation_recrutement')">
-                                <a href="{{route('validation_recrutement')}}"></i>Validation de recrutement</a>
+                            <li class="@yield('recrutement.Valider')">
+                                <a href="{{route('recrutement.Valider')}}"></i>Validation de recrutement</a>
                             </li>
                         </ul>
                     </li>

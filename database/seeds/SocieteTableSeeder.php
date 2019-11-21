@@ -15,27 +15,27 @@ class SocieteTableSeeder extends Seeder
         //
         $societe = new Societe();
         $societe->id=1;
-        $societe->libellesoc="Expatriés PHB";
+        $societe->libelleUnite="Expatriés PHB";
         $societe->save();
 
         $societe = new Societe();
         $societe->id=2;
-        $societe->libellesoc="Expatriés DIR. CI";
+        $societe->libelleUnite="Expatriés DIR. CI";
         $societe->save();
 
         $societe = new Societe();
         $societe->id=3;
-        $societe->libellesoc="Locaux EGC CI";
+        $societe->libelleUnite="Locaux EGC CI";
         $societe->save();
 
          $societe = new Societe();
         $societe->id=4;
-        $societe->libellesoc="SPIE Fondations";
+        $societe->libelleUnite="SPIE Fondations";
         $societe->save();
 
         $societe = new Societe();
         $societe->id=5;
-        $societe->libellesoc="Sous - Traitant";
+        $societe->libelleUnite="Sous - Traitant";
         $societe->save();
     }
 }

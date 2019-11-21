@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableContrat extends Migration
+class CreateTableAvantagedotation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTableContrat extends Migration
      */
     public function up()
     {
-        Schema::create('contrat', function (Blueprint $table) {
+        Schema::create('avantagedotation', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('matricule')->nullable();
-            $table->date('datedebutc')->nullable();
-            $table->date('datefinc')->nullable();
-            $table->string('couvertureMaladie')->nullable();
-            $table->integer('etat')->default(1);
+            $table->boolean('telephonePortable')->defaut(false);
+            $table->string('forfait');
+            $table->string('debitInternet');
+            $table->string('assuranceMaladie');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTableContrat extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrat');
+        Schema::dropIfExists('avantagedatation');
     }
 }

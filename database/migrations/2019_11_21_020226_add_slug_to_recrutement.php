@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFonctionServiceToPersonne extends Migration
+class AddSlugToRecrutement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddFonctionServiceToPersonne extends Migration
      */
     public function up()
     {
-        Schema::table('personne', function (Blueprint $table) {
+        Schema::table('recrutement', function (Blueprint $table) {
             //
-            $table->integer('fonction')->nullable();
-           // $table->integer('service')->nullable();
+            $table->string('slug');
         });
     }
 
@@ -27,10 +26,9 @@ class AddFonctionServiceToPersonne extends Migration
      */
     public function down()
     {
-        Schema::table('personne', function (Blueprint $table) {
+        Schema::table('recrutement', function (Blueprint $table) {
             //
-            $table->removeColumn('fonction');
-            $table->removeColumn('service');
+            $table->removeColumn('slug');
         });
     }
 }

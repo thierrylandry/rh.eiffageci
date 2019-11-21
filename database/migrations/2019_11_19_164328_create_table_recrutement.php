@@ -30,10 +30,8 @@ class CreateTableRecrutement extends Migration
             $table->float('totalBrut')->nullable();
             $table->float('totalNet1part')->nullable();
             $table->float('totalNetparts')->nullable();
-            $table->boolean('telephonePortable')->nullable();
-            $table->string('forfait')->nullable();
-            $table->string('debitInternet')->nullable();
-            $table->string('assurenceMaladie')->nullable();
+            $table->integer('etat')->default(1);
+           $table->unsignedBigInteger('id_avantagedotation')->nullable();
             $table->timestamps();
         });
     }

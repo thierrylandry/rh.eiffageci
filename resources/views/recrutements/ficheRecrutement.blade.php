@@ -229,11 +229,35 @@
                     </div>
                     <div class="card-body" >
                         <div class="row">
-                            <div class=" col-lg-12">
-                                <select class="form-control" name="id_avantagedotation" id="id_avantagedotation">
+                            <div class=" col-lg-3">
+                                <label>Téléphone portable</label>
+                                <select class="form-control" name="telephone_portable" id="telephone_portable">
                                     <option value=""></option>
-                                    @foreach($avantagedotations as $avantagedotation)
-                                        <option value="{{$avantagedotation->id}}">Téléphone portable : {{$avantagedotation->telephonePortable==0?"non":"oui"}} Forfait: {{$avantagedotation->forfait}} Debit Internet: {{$avantagedotation->debitInternet}} Assurence Maladie: {{$avantagedotation->assuranceMaladie}}</option>
+                                    <option value="0">non</option>
+                                    <option value="1">oui</option>
+                                </select>
+                            </div><div class=" col-lg-3">
+                                <label>Forfait</label>
+                                <select class="form-control" name="forfait" id="forfait">
+                                    <option value=""></option>
+                                    @foreach($forfaits as $forfait)
+                                        <option value="{{$forfait->libelle}}">{{$forfait->libelle}}</option>
+                                        @endforeach
+                                </select>
+                            </div><div class=" col-lg-3">
+                                <label>Débit internet</label>
+                                <select class="form-control" name="debit_internet" id="debit_internet">
+                                    <option value=""></option>
+                                    @foreach($debit_internets as $debit_internet)
+                                        <option value="{{$debit_internet->libelle}}">{{$debit_internet->libelle}}</option>
+                                    @endforeach
+                                </select>
+                            </div><div class=" col-lg-3">
+                                <label>Assurence maladie</label>
+                                <select class="form-control" name="assurance_maladie" id="assurance_maladie">
+                                    <option value=""></option>
+                                    @foreach($assurance_maladies as $assurance_maladie)
+                                        <option value="{{$assurance_maladie->libelle}}">{{$assurance_maladie->libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -255,7 +279,10 @@
 
     <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
-        $('#id_avantagedotation').select2({ placeholder: 'Selectionner un avantage/Dotation (mensuel)'});
+        $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
+        $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
+        $('#debit_internet').select2({ placeholder: 'Selectionner un debit internet'});
+        $('#assurance_maladie').select2({ placeholder: 'Selectionner un assurance maladie'});
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));

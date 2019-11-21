@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('recrutement.Ajouter')
+@section('recrutement.demande')
     active
 @endsection
 @section('recrutements')
@@ -187,7 +187,9 @@
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
                                 <select class="form-control" name="categorieProfessionnel">
-
+                                    @foreach($categories as $categorie)
+                                        <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <div class=" col-lg-3">

@@ -520,22 +520,22 @@ Route::get('/personne_contrat',[
 //recrutement
 Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recrutement'], function () {
 
-    Route::get('/Ajouter',[
-        'as'=>'Ajouter',
+    Route::get('/demande',[
+        'as'=>'demande',
         'uses'=>'RecrutementController@ajouter_recrutement',
         'roles' => ['Demande_recrutement']
 
     ])->middleware('auth');
 
-    Route::get('/Lister',[
-        'as'=>'Lister',
+    Route::get('/gestion',[
+        'as'=>'gestion',
         'uses'=>'RecrutementController@lister_recrutement',
         'roles' => ['Gestion_recrutement']
 
     ])->middleware('auth');
 
-    Route::get('/Valider',[
-        'as'=>'Valider',
+    Route::get('/validation',[
+        'as'=>'validation',
         'uses'=>'RecrutementController@valider_recrutement',
         'roles' => ['Validation_recrutement']
 

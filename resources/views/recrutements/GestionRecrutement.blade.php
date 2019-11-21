@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('lister_personne'.$entite)
+@section('recrutement.gestion')
     active
 @endsection
 @section('lister_personne')
     active
 @endsection
-@section('lister_personne_block')
+@section('recrutements')
     style="display: block;"
 @endsection
 @section('page')
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="overflow-x:scroll;">
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
@@ -26,55 +26,40 @@
                 </div>
             </div>
             <div class="table-responsive m-b-40">
-                <table class="table table-borderles" id="table_employe">
+                <table class="table table-borderles" id="table_recrutement">
                     <thead>
                     <tr>
                         <th>slug</th>
-                        <th>MATRICULE</th>
-                        <th>NOM & PRENOM</th>
-                        <th>SEXE</th>
-                        <th>NATIONALITE</th>
-                        <th>FONCTION</th>
-                        <th>ENTITE</th>
-                        <th>SOCIETE</th>
+                        <th>STATUS</th>
+                        <th>NUMERO</th>
+                        <th>NOM & PRENOM DEMANDEUR</th>
+                        <th>DIRECTION</th>
+                        <th>SERVICE</th>
+                        <th>POSTE A POUVOIR</th>
+                        <th>DESCRIPTIF FONCTION</th>
+                        <th>COMPETENCES RECHERCHEES</th>
+                        <th>RESPONSABILITES OU TACHES</th>
+                        <th>NATURE CONTRAT</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($personnes as $personne)
-                        <tr class="tr-shadow">
-                            <td>{{isset($personne->matricule)?$personne->matricule:''}}</td>
-                            <td>{{$personne->nom.' '.$personne->prenom}}</td>
-                            <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
-                            <td>{{$personne->pays->nom_fr_fr}}</td>
-                            <td>
-                                {{isset($personne->fonction()->first()->libelle)?$personne->fonction()->first()->libelle:''}}
-                            </td>
-                            <td>{{ $personne->getEntiteString() }}
-                            </td>
-                            <td>{{ $personne->id_unite ? $personne->societe->libelleUnite : ""}}</td>
-                            <td> <div class="table-data-feature">
-                                    <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-eye" aria-hidden="true" title="Fiche personnelle"></i>
-                                    </a>
-                                    <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="zmdi zmdi-more" title="modifier les infos"></i>
-                                    </a>
-                                    <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
-                                        <i class="zmdi zmdi-attachment-alt" title="document administratif"></i>
-                                    </a>
-                                    <a href="{{route('lister_contrat',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
-                                        <i class="zmdi zmdi-folder-person" title="les contrats"></i>
-                                    </a>
-
-                                    <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                                        <i class="zmdi zmdi-delete" title="supprimer"></i>
-                                    </a>
-                                </div>
-                            </td>
+                    @foreach($recrutements as $recrutement)
+                        <tr>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->etat}}</td>
+                            <td>{{$recrutement->id}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->slug}}</td>
                         </tr>
-                    @endforeach
-                    {{ $personnes->links() }}
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -118,7 +103,7 @@
     <script>
 
         $(document).ready(function() {
-            var table= $('#table_employe').DataTable({
+            var table= $('#table_recrutement').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [
@@ -138,7 +123,7 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            });
+            }).column(0).visible(false);
             //table.DataTable().draw();
         } );
         $(".current").click(function (){

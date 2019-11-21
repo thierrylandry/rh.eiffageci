@@ -15,14 +15,15 @@ class CreateTableRecrutement extends Migration
     {
         Schema::create('recrutement', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('posteAPouvoir')->nullable();
-            $table->string('competenceRecherche')->nullable();
+            $table->text('posteAPouvoir')->nullable();
+            $table->text('competenceRecherche')->nullable();
+            $table->text('tache')->nullable();
             $table->integer('id_type_contrat')->nullable();
            // $table->foreign('id_type_contrat')->references('id')->on('typecontrat');
             $table->date('dateDebut')->nullable();
-            $table->string('dureeMission')->nullable();
+            $table->text('dureeMission')->nullable();
             $table->float('budgetMensuel')->nullable();
-            $table->integer('id_categorie')->nullable();
+            $table->text('id_categorie')->nullable();
            // $table->foreign('id_categorie')->references('id')->on('categorie');
             $table->float('salaireBase')->nullable();
             $table->float('surSalaire')->nullable();
@@ -32,8 +33,8 @@ class CreateTableRecrutement extends Migration
             $table->float('totalNetparts')->nullable();
 
             $table->boolean('telephone_portable')->default(false);
-            $table->float('forfait')->nullable();
-            $table->string('debit_internet')->nullable();
+            $table->string('forfait')->nullable();
+            $table->text('debit_internet')->nullable();
             $table->string('assurance_maladie')->nullable();
             $table->integer('etat')->default(1);
           // $table->unsignedBigInteger('id_avantagedotation')->nullable();

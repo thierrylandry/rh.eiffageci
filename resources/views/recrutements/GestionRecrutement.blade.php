@@ -2,9 +2,6 @@
 @section('recrutement.gestion')
     active
 @endsection
-@section('lister_personne')
-    active
-@endsection
 @section('recrutements')
     style="display: block;"
 @endsection
@@ -32,14 +29,14 @@
                         <th>slug</th>
                         <th>STATUS</th>
                         <th>NUMERO</th>
-                        <th>NOM & PRENOM DEMANDEUR</th>
+                        <th>DEMANDEUR</th>
                         <th>DIRECTION</th>
                         <th>SERVICE</th>
-                        <th>POSTE A POUVOIR</th>
-                        <th>DESCRIPTIF FONCTION</th>
-                        <th>COMPETENCES RECHERCHEES</th>
-                        <th>RESPONSABILITES OU TACHES</th>
-                        <th>NATURE CONTRAT</th>
+                        <th>POSTE</th>
+                        <th>DESCRIPTIF</th>
+                        <th>COMPETENCES</th>
+                        <th>RESPONSABILITES</th>
+                        <th>CONTRAT</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -47,17 +44,54 @@
                     @foreach($recrutements as $recrutement)
                         <tr>
                             <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->etat}}</td>
+                            <td>    @if($recrutement->etat==1)
+                                        <i class=" fas fa-check-circle-o" style="background-color: red"></i>
+                                        @elseif($recrutement->etat==2)
+                                         <i class=" fas fa-check-circle-o" style="background-color: orange"></i>
+                                    @elseif($recrutement->etat==3)
+                                    <i class=" fas fa-check-circle-o" style="background-color: green"></i>
+                                @elseif($recrutement->etat==4)
+                                    <i class=" fas fa-check-circle-o" style="background-color: black"></i>
+                                    @endif
+                            </td>
                             <td>{{$recrutement->id}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
-                            <td>{{$recrutement->slug}}</td>
+                            <td>{{$recrutement->user->nom}} {{$recrutement->user->prenoms}}</td>
+                            <td>{{$recrutement->user->entite->libelle}}</td>
+                            <td>{{$recrutement->user->service->libelle}}</td>
+                            <td>{{$recrutement->posteAPouvoir}}</td>
+                            <td>{{$recrutement->descriptifFonction}}</td>
+                            <td>
+                                <ul>@foreach(json_decode($recrutement->competenceRecherche) as $tab)
+                                         @if(!empty($tab))
+                                            <li>
+                                        {{$tab}}
+                                            </li>
+                                        @endif
+                                      @endforeach
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>@foreach(json_decode($recrutement->tache) as $tab)
+                                        @if(!empty($tab))
+                                            <li>
+                                                {{$tab}}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                             </td>
+                            <td>{{$recrutement->type_contrat->libelle}}</td>
+                            <td>
+                                @if($recrutement->etat==1)
+                                    <a><i class="fas fa-pencil" style="background-color: red"></i> Modifier</a>
+                                @elseif($recrutement->etat==2)
+                                    <i class=" fas fa-check-circle-o" style="background-color: orange"></i>
+                                @elseif($recrutement->etat==3)
+                                    <i class=" fas fa-check-circle-o" style="background-color: green"></i>
+                                @elseif($recrutement->etat==4)
+                                    <i class=" fas fa-check-circle-o" style="background-color: black"></i>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

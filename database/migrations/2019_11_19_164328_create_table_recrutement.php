@@ -37,6 +37,7 @@ class CreateTableRecrutement extends Migration
             $table->text('debit_internet')->nullable();
             $table->string('assurance_maladie')->nullable();
             $table->integer('etat')->default(1);
+            $table->integer('id_user')->default(1);
           // $table->unsignedBigInteger('id_avantagedotation')->nullable();
             $table->timestamps();
         });

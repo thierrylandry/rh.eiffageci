@@ -9,4 +9,11 @@ class Recrutement extends Model
     //
     protected  $table="recrutement";
     protected $fillable= ['*'];
+
+    public function user(){
+        return $this->belongsTo(User::class, "id_users");
+    }
+    public function type_contrat(){
+        return $this->belongsTo(Typecontrat::class, "id_type_contrat");
+    }
 }

@@ -31,7 +31,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
     }
-
+    public function service(){
+        return $this->belongsTo(Services::class, "id_service");
+    }    public function entite(){
+        return $this->belongsTo(Entite::class, "id_entite");
+    }
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {

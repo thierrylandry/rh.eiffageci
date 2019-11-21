@@ -13,6 +13,7 @@ use App\Services;
 use App\Typecontrat;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class RecrutementController extends Controller
@@ -80,6 +81,7 @@ class RecrutementController extends Controller
         $recruement->forfait=$forfait;
         $recruement->debit_internet=$debit_internet;
         $recruement->assurance_maladie=$assurance_maladie;
+        $recruement->id_users=Auth::user()->id;
         $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
 
 

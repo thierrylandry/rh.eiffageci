@@ -6,6 +6,7 @@ use App\Assurance_maladie;
 use App\Avantagedotation;
 use App\Categorie;
 use App\Debit_internet;
+use App\Definition;
 use App\Entite;
 use App\Forfait;
 use App\Recrutement;
@@ -29,7 +30,8 @@ class RecrutementController extends Controller
         $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::all();
         $services = Services::all();
-        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','categories','debit_internets','forfaits','assurance_maladies','services'));
+        $definitions = Definition::all();
+        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services'));
     }
 
     public function enregistrer_recrutement(Request $request ){

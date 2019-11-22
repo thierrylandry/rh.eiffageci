@@ -203,9 +203,11 @@
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
                                 <select class="form-control" name="id_categorie">
-                                    @foreach($categories as $categorie)
-                                        <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
-                                    @endforeach
+                                        @if(isset($categories))
+                                            @foreach($categories as $categorie)
+                                                <option  value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                                            @endforeach;
+                                        @endif
                                 </select>
                             </div>
                             <div class=" col-lg-3">

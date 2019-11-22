@@ -98,6 +98,83 @@
         </div>
     </div>
 </div>
+<!-- modal small -->
+<div class="modal fade" id="modalconditionremuneration" tabindex="-1" role="dialog" aria-labelledby="modalconditionremunerationLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalhistoriqueLabel">Historique</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+<form>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card" style="height: 100% !important">
+                <div class="card-header">
+                    <strong>Condition de rémunération</strong>
+                </div>
+                <div class="card-body" >
+                    <div class="row">
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Définition</label>
+                            <select class="form-control" name="id_definition">
+                                @foreach($definitions as $definition)
+                                    <option value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
+                            <select class="form-control" name="id_categorie">
+                                @foreach($categories as $categorie)
+                                    <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
+                            <select class="form-control" name="regime" id="regime">
+                                <option value="0">40H</option>
+                                <option value="1">44H</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Salaire de base</label>
+                            <input type="text" name="salaireBase" class="form-control" />
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Sursalaire</label>
+                            <input type="text" name="surSalaire" class="form-control" />
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Prime de transport</label>
+                            <input type="text" name="primeTp" class="form-control" />
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Total brut</label>
+                            <input type="text" name="totalBrute" class="form-control" />
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Total net (avec 1 part d'IG)</label>
+                            <input type="text" name="totalnet1part" class="form-control" />
+                        </div>
+                        <div class=" col-lg-3">
+                            <label for="text-input" class=" form-control-label">Total net (...parts d'IGR)</label>
+                            <input type="text" name="totalnetparts" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+        </div>
+    </div>
+</div>
 
 <!-- modal small -->
 <div class="modal fade" id="modal_add_epi" tabindex="-1" role="dialog" aria-labelledby="modalhistoriqueLabel" aria-hidden="true">

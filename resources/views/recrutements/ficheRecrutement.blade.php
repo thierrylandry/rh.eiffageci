@@ -19,6 +19,8 @@
         </div>
        <!--place ici les bouton -->
     </div>
+<div class="row">
+
     <form action="{{route('recrutement.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($recrutement)? $recrutement->slug:''}}" class="form-control" required>
@@ -27,7 +29,7 @@
             <div class="col-lg-12">
                 <div class="card" style="height: 100% !important">
                     <div class="card-header">
-                       <strong> Information</strong>
+                        <strong> Information</strong>
                     </div>
                     <div class="card-body" >
                         <div class="row form-group">
@@ -54,7 +56,7 @@
                                     <option value=""></option>
                                     @foreach($services as $service)
                                         <option value="{{$service->id}}" {{Auth::user()->id_service==$service->id?"selected":""}}>{{$service->libelle}}</option>
-                                        @endforeach;
+                                    @endforeach;
                                 </select>
                             </div>
                         </div>
@@ -64,7 +66,7 @@
                                 <label for="text-input" class=" form-control-label">Descriptif de la fonction</label>
                             </div>
                             <div class="col-12 col-md-9">
-                               <textarea class="form-control" name="descriptifFonction"></textarea>
+                                <textarea class="form-control" name="descriptifFonction"></textarea>
                             </div>
                         </div>
                     </div>
@@ -89,7 +91,7 @@
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                         <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
+                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -98,9 +100,9 @@
                         <div id="competencetemplate" class="row clearfix" style="display: none">
 
                             <div class="form-control-label">
-                               <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                       <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
+                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                         <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
+                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +141,7 @@
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                       <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
+                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -157,31 +159,31 @@
                     </div>
                     <div class="card" style="height: 100% !important">
                         <div class="card-body" >
-                        <div class="row">
-                           <div class=" col-lg-4">
-                               <label for="text-input" class=" form-control-label">Type de contrat *</label>
-                               <select class="form-control" name="id_type_contrat" required>
-                                   @foreach($typecontrats as $typecontrat)
-                                       <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
-                                   @endforeach
-                               </select>
-                            </div>
-                            <div class=" col-lg-4">
-                               <label for="text-input" class=" form-control-label">Date de debut</label>
-                               <input type="date" name="dateDebut" class="form-control" />
-                            </div>
-                            <div class=" col-lg-4">
-                               <label for="text-input" class=" form-control-label">Durée de mission</label>
-                               <input type="text" name="dureeMission" class="form-control" />
-                            </div>
-                            <div class=" col-lg-4">
-                                <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                <input type="text" name="budgetMensuel" class="form-control" />
-                            </div>
+                            <div class="row">
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Type de contrat *</label>
+                                    <select class="form-control" name="id_type_contrat" required>
+                                        @foreach($typecontrats as $typecontrat)
+                                            <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Date de debut</label>
+                                    <input type="date" name="dateDebut" class="form-control" />
+                                </div>
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Durée de mission</label>
+                                    <input type="text" name="dureeMission" class="form-control" />
+                                </div>
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
+                                    <input type="text" name="budgetMensuel" class="form-control" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -267,7 +269,7 @@
                                     <option value=""></option>
                                     @foreach($forfaits as $forfait)
                                         <option value="{{$forfait->libelle}}">{{$forfait->libelle}}</option>
-                                        @endforeach
+                                    @endforeach
                                 </select>
                             </div><div class=" col-lg-3">
                                 <label>Débit internet</label>
@@ -300,6 +302,96 @@
             </button>
         </div>
     </form>
+
+</div>
+</br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card" style="height: 100% !important">
+                <div class="card-header">
+                    <strong>Mes demandes de recrutement</strong>
+                </div>
+                <div class="card-body" >
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderles" id="table_recrutement">
+                    <thead>
+                    <tr>
+                        <th>slug</th>
+                        <th>STATUS</th>
+                        <th>NUMERO</th>
+                        <th>DEMANDEUR</th>
+                        <th>DIRECTION</th>
+                        <th>SERVICE</th>
+                        <th>POSTE</th>
+                        <th>CONTRAT</th>
+                        <th>ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($recrutements as $recrutement)
+                        <tr>
+                            <td>{{$recrutement->slug}}</td>
+                            <td>    @if($recrutement->etat==1)
+                                    <i class=" fa fa-check-circle-o" style="background-color: red"></i>
+                                @elseif($recrutement->etat==2)
+                                    <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
+                                @elseif($recrutement->etat==3)
+                                    <i class=" fa fa-check-circle-o" style="background-color: green"></i>
+                                @elseif($recrutement->etat==4)
+                                    <i class=" fa fa-check-circle-o" style="background-color: black"></i>
+                                @endif
+                            </td>
+                            <td>{{$recrutement->id}}</td>
+                            <td>{{$recrutement->user->nom}} {{$recrutement->user->prenoms}}</td>
+                            <td>{{$recrutement->user->entite->libelle}}</td>
+                            <td>{{$recrutement->user->service->libelle}}</td>
+                            <td>{{$recrutement->posteAPouvoir}}</td>
+                            <td>{{$recrutement->type_contrat->libelle}}</td>
+                            <td>
+                                <div class="table-data-feature">
+                                    @if($recrutement->etat==1)
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+
+
+                                    @elseif($recrutement->etat==2)
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </button>
+                                    @elseif($recrutement->etat==3)
+
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </button>
+                                    @elseif($recrutement->etat==4)
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- END DATA TABLE -->
+
+
     <script src="{{ asset("vendor/jquery-3.2.1.min.js") }}"></script>
 
     <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
@@ -318,6 +410,30 @@
             var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
             $('#age').html('Age : '+age+' Ans');
         });
+        $(document).ready(function() {
+            var table= $('#table_recrutement').DataTable({
+                "order": [[ 0, "desc" ]],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                language: {
+                    url: "{{ asset('public/js/French.json')}}"
+                },
+
+                "ordering":true,
+                "responsive": true,
+                "paging": false,
+                "createdRow": function( row, data, dataIndex){
+
+                },
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 }
+                ]
+            }).column(0).visible(false);
+            //table.DataTable().draw();
+        } );
     </script>
     <script type="application/javascript">
         $("#addcompetence").click(function (e) {

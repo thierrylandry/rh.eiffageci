@@ -518,21 +518,27 @@ Route::get('/personne_contrat',[
 ])->middleware('auth');
 
 //recrutement
-Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recrutement'], function () {
+Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recrutements'], function () {
 
     Route::get('/demande',[
         'as'=>'demande',
         'uses'=>'RecrutementController@ajouter_recrutement',
         'roles' => ['Demande_recrutement']
 
-    ])->middleware('auth');
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'RecrutementController@enregistrer_recrutement',
+        'roles' => ['Demande_recrutement']
+
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion',[
         'as'=>'gestion',
         'uses'=>'RecrutementController@lister_recrutement',
         'roles' => ['Gestion_recrutement']
 
-    ])->middleware('auth');
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/validation',[
         'as'=>'validation',
@@ -540,10 +546,17 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'recr
         'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
-    Route::post('/enregistrer',[
-        'as'=>'enregistrer',
-        'uses'=>'RecrutementController@enregistrer_recrutement',
+    Route::get('/ActionValider/{slug}',[
+        'as'=>'ActionValider',
+        'uses'=>'RecrutementController@ActionValider',
         'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
+    Route::get('/ActionRejeter/{slug}',[
+        'as'=>'ActionRejeter',
+        'uses'=>'RecrutementController@ActionRejeter',
+        'roles' => ['Validation_recrutement']
+
+    ])->middleware('auth');
+
 });

@@ -31,7 +31,8 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services'));
+        $recrutements = Recrutement::where('id_service','=',Auth::user()->service->id)->get();
+        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements'));
     }
 
     public function enregistrer_recrutement(Request $request ){
@@ -89,21 +90,58 @@ class RecrutementController extends Controller
 
         $recruement->save();
 
-        return redirect()->route('utilisateur')->with('success',"La demande de recrutement a été  enregistrée avec succès");
+        return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
+
+    }
+
+    public function ActionValider($slug){
+        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $date= new DateTime(null);
+
+        $recruement->etat=2;
+        $recruement->id_valideur=Auth::user()->id;
+
+        $recruement->save();
+
+        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
+
+    }
+    public function ActionRejeter($slug){
+        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $date= new DateTime(null);
+
+        $recruement->etat=4;
+        $recruement->id_valideur=Auth::user()->id;
+
+        $recruement->save();
+
+        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  réfusé avec succès");
 
     }
 
     public function lister_recrutement(){
-
-        $recrutements= Recrutement::all();
+        $recrutements= Recrutement::where('etat','<>',1)->get();
         $entites = Entite::all();
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements'));
+        $mode="gestion";
+
+        $entites = Entite::all();
+        $typecontrats = Typecontrat::all();
+        // $avantagedotations = Avantagedotation::all();
+        $debit_internets=Debit_internet::all();
+        $forfaits = Forfait::all();
+        $assurance_maladies= Assurance_maladie::all();
+        $categories = Categorie::all();
+        $services = Services::all();
+        $definitions = Definition::all();
+        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions'));
     }
 
     public function valider_recrutement(){
 
         $entites = Entite::all();
-       // return view('recrutements/ficheRecrutement',compact('entites'));
+        $recrutements= Recrutement::where('etat','=',1)->get();
+        $mode="validation";
+        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode'));
     }
 
 }

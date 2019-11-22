@@ -139,20 +139,28 @@
                             @endforeach
                     </ul>
                 </li>
-                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements'))
+                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
                     <li class="@yield('Recrutements') has-sub">
                         <a class="js-arrow " href="#">
                             <i class="fa fa-list" ></i>RECRUTEMENTS</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
+
                             <li class="@yield('recrutement.demande')">
                                 <a href="{{route('recrutement.demande')}}"></i>Demande</a>
                             </li>
-                            <li class="@yield('recrutement.gestion')">
-                                <a href="{{route('recrutement.gestion')}}"></i>Gestion</a>
-                            </li>
+                            @endif
+                                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+
+                                <li class="@yield('recrutement.gestion')">
+                                     <a href="{{route('recrutement.gestion')}}"></i>Gestion</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
                             <li class="@yield('recrutement.validation')">
                                 <a href="{{route('recrutement.validation')}}"></i>Validation</a>
                             </li>
+                                @endif
                         </ul>
                     </li>
                 @endif

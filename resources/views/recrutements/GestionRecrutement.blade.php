@@ -1,7 +1,14 @@
 @extends('layouts.app')
-@section('recrutement.gestion')
+
+@if($mode=="gestion")
+        @section('recrutement.gestion')
+            active
+        @endsection
+@else
+@section('recrutement.validation')
     active
 @endsection
+@endif
 @section('recrutements')
     style="display: block;"
 @endsection
@@ -14,13 +21,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12" style="overflow-x:scroll;">
+        <div class="col-md-12" >
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
+                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
                 <div class="table-data__tool-right">
-                    <a href="" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('recrutement.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>DEMANDER UN RECRUTEMENT</a>
                 </div>
+                    @endif
             </div>
             <div class="table-responsive m-b-40">
                 <table class="table table-borderles" id="table_recrutement">
@@ -33,9 +42,6 @@
                         <th>DIRECTION</th>
                         <th>SERVICE</th>
                         <th>POSTE</th>
-                        <th>DESCRIPTIF</th>
-                        <th>COMPETENCES</th>
-                        <th>RESPONSABILITES</th>
                         <th>CONTRAT</th>
                         <th>ACTION</th>
                     </tr>
@@ -45,13 +51,13 @@
                         <tr>
                             <td>{{$recrutement->slug}}</td>
                             <td>    @if($recrutement->etat==1)
-                                        <i class=" fas fa-check-circle-o" style="background-color: red"></i>
+                                        <i class=" fa fa-check-circle-o" style="background-color: red"></i>
                                         @elseif($recrutement->etat==2)
-                                         <i class=" fas fa-check-circle-o" style="background-color: orange"></i>
+                                         <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
                                     @elseif($recrutement->etat==3)
-                                    <i class=" fas fa-check-circle-o" style="background-color: green"></i>
+                                    <i class=" fa fa-check-circle-o" style="background-color: green"></i>
                                 @elseif($recrutement->etat==4)
-                                    <i class=" fas fa-check-circle-o" style="background-color: black"></i>
+                                    <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                     @endif
                             </td>
                             <td>{{$recrutement->id}}</td>
@@ -59,38 +65,52 @@
                             <td>{{$recrutement->user->entite->libelle}}</td>
                             <td>{{$recrutement->user->service->libelle}}</td>
                             <td>{{$recrutement->posteAPouvoir}}</td>
-                            <td>{{$recrutement->descriptifFonction}}</td>
-                            <td>
-                                <ul>@foreach(json_decode($recrutement->competenceRecherche) as $tab)
-                                         @if(!empty($tab))
-                                            <li>
-                                        {{$tab}}
-                                            </li>
-                                        @endif
-                                      @endforeach
-                                </ul>
-                            </td>
-                            <td>
-                                <ul>@foreach(json_decode($recrutement->tache) as $tab)
-                                        @if(!empty($tab))
-                                            <li>
-                                                {{$tab}}
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                             </td>
                             <td>{{$recrutement->type_contrat->libelle}}</td>
                             <td>
+                                <div class="table-data-feature">
                                 @if($recrutement->etat==1)
-                                    <a><i class="fas fa-pencil" style="background-color: red"></i> Modifier</a>
+                                        @if($mode=="validation")
+                                        <a href="{{route('recrutement.ActionValider',$recrutement->slug)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                            <i class="zmdi zmdi-mail-send"></i> Valider
+                                        </a>&nbsp;
+                                        <a href="" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Send">
+                                            <i class="zmdi zmdi zmdi-close"></i> Rejeter
+                                        </a>&nbsp;
+                                        @endif
+
+
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="fa fa-eye"></i>
+                                        </a>&nbsp;
+                                    @if($mode=="gestion")
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>&nbsp;
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>&nbsp;
+                                        @endif
+
+
                                 @elseif($recrutement->etat==2)
-                                    <i class=" fas fa-check-circle-o" style="background-color: orange"></i>
+                                        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalconditionremuneration" data-placement="top" title="Send">
+                                            <i class="zmdi zmdi-format-indent-increase"></i> Condition de rémunération
+                                        </a>&nbsp;
+
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </a>&nbsp;
                                 @elseif($recrutement->etat==3)
-                                    <i class=" fas fa-check-circle-o" style="background-color: green"></i>
+
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </a>&nbsp;
                                 @elseif($recrutement->etat==4)
-                                    <i class=" fas fa-check-circle-o" style="background-color: black"></i>
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>&nbsp;
                                 @endif
+                                </div>
                             </td>
                         </tr>
                         @endforeach

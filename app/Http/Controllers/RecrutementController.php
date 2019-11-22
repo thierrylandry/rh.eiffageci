@@ -141,7 +141,16 @@ class RecrutementController extends Controller
         $entites = Entite::all();
         $recrutements= Recrutement::where('etat','=',1)->get();
         $mode="validation";
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode'));
+
+        $typecontrats = Typecontrat::all();
+        // $avantagedotations = Avantagedotation::all();
+        $debit_internets=Debit_internet::all();
+        $forfaits = Forfait::all();
+        $assurance_maladies= Assurance_maladie::all();
+        $categories = Categorie::all();
+        $services = Services::all();
+        $definitions = Definition::all();
+        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions'));
     }
 
 }

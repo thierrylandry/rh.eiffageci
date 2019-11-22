@@ -152,8 +152,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card" style="height: 100% !important">
-                    <div class="card-body" >
-                       <div class="row">
+                    <div class="card-header">
+                        <strong>Contrat</strong>
+                    </div>
+                    <div class="card" style="height: 100% !important">
+                        <div class="card-body" >
+                        <div class="row">
                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Type de contrat *</label>
                                <select class="form-control" name="id_type_contrat" required>
@@ -161,18 +165,23 @@
                                        <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
                                    @endforeach
                                </select>
-                           </div>
-                           <div class=" col-lg-4">
+                            </div>
+                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Date de debut</label>
                                <input type="date" name="dateDebut" class="form-control" />
-                           </div>
-                           <div class=" col-lg-4">
+                            </div>
+                            <div class=" col-lg-4">
                                <label for="text-input" class=" form-control-label">Durée de mission</label>
                                <input type="text" name="dureeMission" class="form-control" />
-                           </div>
-                       </div>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
+                                <input type="text" name="budgetMensuel" class="form-control" />
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                 </div>
             </div>
         </div>
         <div class="row">
@@ -184,15 +193,26 @@
                     <div class="card-body" >
                         <div class="row">
                             <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                <input type="text" name="budgetMensuel" class="form-control" />
+                                <label for="text-input" class=" form-control-label">Définition</label>
+                                <select class="form-control" name="id_definition">
+                                    @foreach($definitions as $definition)
+                                        <option value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class=" col-lg-3">
                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
                                 <select class="form-control" name="id_categorie">
                                     @foreach($categories as $categorie)
                                         <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
-                                        @endforeach
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class=" col-lg-3">
+                                <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
+                                <select class="form-control" name="regime" id="regime">
+                                    <option value="0">40H</option>
+                                    <option value="1">44H</option>
                                 </select>
                             </div>
                             <div class=" col-lg-3">
@@ -208,7 +228,7 @@
                                 <input type="text" name="primeTp" class="form-control" />
                             </div>
                             <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Total brute</label>
+                                <label for="text-input" class=" form-control-label">Total brut</label>
                                 <input type="text" name="totalBrute" class="form-control" />
                             </div>
                             <div class=" col-lg-3">

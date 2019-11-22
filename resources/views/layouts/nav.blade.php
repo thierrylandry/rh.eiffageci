@@ -145,13 +145,13 @@
                             <i class="fa fa-list" ></i>RECRUTEMENTS</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
                             <li class="@yield('recrutement.demande')">
-                                <a href="{{route('recrutement.demande')}}"></i>Demande de recrutement</a>
+                                <a href="{{route('recrutement.demande')}}"></i>Demande</a>
                             </li>
                             <li class="@yield('recrutement.gestion')">
-                                <a href="{{route('recrutement.gestion')}}"></i>Gestion des recrutements</a>
+                                <a href="{{route('recrutement.gestion')}}"></i>Gestion</a>
                             </li>
                             <li class="@yield('recrutement.validation')">
-                                <a href="{{route('recrutement.validation')}}"></i>Validation de recrutement</a>
+                                <a href="{{route('recrutement.validation')}}"></i>Validation</a>
                             </li>
                         </ul>
                     </li>

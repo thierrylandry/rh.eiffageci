@@ -84,18 +84,10 @@ class RecrutementController extends Controller
         $dateDebut=$parameters['dateDebut'];
         $dureeMission=$parameters['dureeMission'];
         $budgetMensuel=$parameters['budgetMensuel'];
-        $id_categorie=$parameters['id_categorie'];
-        $salaireBase=$parameters['salaireBase'];
-        $surSalaire=$parameters['surSalaire'];
-        $primeTp=$parameters['primeTp'];
-        $totalBrute=$parameters['totalBrute'];
-        $totalnet1part=$parameters['totalnet1part'];
-        $totalnetparts=$parameters['totalnetparts'];
         $telephone_portable=$parameters['telephone_portable'];
         $forfait=$parameters['forfait'];
         $debit_internet=$parameters['debit_internet'];
         $assurance_maladie=$parameters['assurance_maladie'];
-        $regime=$parameters['regime'];
         $nombre_personne=$parameters['nombre_personne'];
 
         $recruement = new Recrutement();
@@ -111,19 +103,11 @@ class RecrutementController extends Controller
         $recruement->dateDebut=$dateDebut;
         $recruement->dureeMission=$dureeMission;
         $recruement->budgetMensuel=$budgetMensuel;
-        $recruement->id_categorie=$id_categorie;
-        $recruement->salaireBase=$salaireBase;
-        $recruement->surSalaire=$surSalaire;
-        $recruement->primeTp=$primeTp;
-        $recruement->totalBrut=$totalBrute;
-        $recruement->totalnet1part=$totalnet1part;
-        $recruement->totalnetparts=$totalnetparts;
         $recruement->telephone_portable=$telephone_portable;
         $recruement->forfait=$forfait;
         $recruement->debit_internet=$debit_internet;
         $recruement->assurance_maladie=$assurance_maladie;
         $recruement->id_users=Auth::user()->id;
-        $recruement->regime=$regime;
         $recruement->nombre_personne=$nombre_personne;
         $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
 

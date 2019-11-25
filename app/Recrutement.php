@@ -16,4 +16,10 @@ class Recrutement extends Model
     public function type_contrat(){
         return $this->belongsTo(Typecontrat::class, "id_type_contrat");
     }
+    public function entite(){
+        return $this->belongsTo(Entite::class, "id_entite");
+    }
+    public function service(){
+        return $this->belongsTo(Services::class, "id_service");
+    }
 }

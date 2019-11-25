@@ -9,19 +9,27 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">RECRUTEMENT - DEMANDE DE PERSONNEL</h2>
+                <h2 class="title-1">RECRUTEMENT - {{isset($recrutement)?"MODIFICATION DE LA DEMANDE ":"DEMANDE DE PERSONNEL"}}</h2>
             </div>
         </div>
     </div>
     </br>
     <div class="table-data__tool">
         <div class="table-data__tool-left">
+            <div class="table-data__tool  pull-right">
+                @if(isset($recrutement))
+                    <div class="table-data__tool-right">
+                        <a href="{{route('recrutement.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>DEMANDER UN RECRUTEMENT</a>
+                    </div>
+                @endif
+            </div>
         </div>
        <!--place ici les bouton -->
     </div>
 <div class="row">
 
-    <form action="{{route('recrutement.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{isset($recrutement)?route('recrutement.modifier'):route('recrutement.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($recrutement)? $recrutement->slug:''}}" class="form-control" required>
 
@@ -33,29 +41,34 @@
                     </div>
                     <div class="card-body" >
                         <div class="row form-group">
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <label for="text-input" class=" form-control-label">Poste à pouvoir *</label>
-                                <input type="text" id="posteAPouvoir" name="posteAPouvoir" placeholder="Entrer le poste à pouvoir" class="form-control">
+                                <input type="text" id="posteAPouvoir" name="posteAPouvoir" placeholder="Entrer le poste à pouvoir" class="form-control" value="{{isset($recrutement)?$recrutement->posteAPouvoir:""}}">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <label for="text-input" class=" form-control-label">Nombre de personne</label>
+                                <input class="form-control" type="number" min="1" value="{{isset($recrutement)?$recrutement->nombre_personne:1}}" id="nombre_personne" name="nombre_personne"/>
+
                             </div>
                             <br>
                             <br>
                             <br>
                             <br>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <label for="text-input" class=" form-control-label">Entite *</label>
-                                <select class="form-control" id="id_entite" name="id_entite"  >
+                                <select class="form-control" id="id_entite" name="id_entite" >
                                     @foreach($entites as $entite)
-                                        <option value="{{$entite->id}}" {{Auth::user()->id_service==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
+                                        <option value="{{$entite->id}}" {{isset($recrutement) && $recrutement->id_entite==$entite->id?"selected":Auth::user()->id_entite==$entite->id?"selected":""}} >{{$entite->libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <label for="text-input" class=" form-control-label">Service</label>
                                 <select class="form-control" id="service" name="service">
                                     <option value=""></option>
                                     @foreach($services as $service)
-                                        <option value="{{$service->id}}" {{Auth::user()->id_service==$service->id?"selected":""}}>{{$service->libelle}}</option>
+                                        <option value="{{$service->id}}" {{isset($recrutement) && $recrutement->id_service==$service->id?"selected":Auth::user()->id_service==$entite->id?"selected":""}} >{{$service->libelle}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -66,7 +79,7 @@
                                 <label for="text-input" class=" form-control-label">Descriptif de la fonction</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea class="form-control" name="descriptifFonction"></textarea>
+                                <textarea class="form-control" name="descriptifFonction">{{isset($recrutement)?$recrutement->descriptifFonction:""}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -87,15 +100,18 @@
                         </br>
                         </br>
                         <div id="competences" class="form-inline">
-
+                            @if(isset($competences))
+                                @foreach($competences as $competence)
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
+                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence)?$competence->valeur:old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
                             <hr width="100%" color="blue">
+                                @endforeach
+                                @endif
                         </div>
                         <div id="competencetemplate" class="row clearfix" style="display: none">
 
@@ -125,16 +141,19 @@
                         </br>
                         </br>
                         <div id="taches" class="form-inline">
-
+                            @if(isset($taches))
+                                @foreach($taches as $tache)
                             <div class="form-control-label">
 
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
+                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache)?$tache->valeur:old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>
                             <hr width="100%" color="blue">
+                                @endforeach
+                                @endif
                         </div>
                         <div id="tachetemplate" class="row clearfix" style="display: none">
 
@@ -160,88 +179,26 @@
                     <div class="card" style="height: 100% !important">
                         <div class="card-body" >
                             <div class="row">
-                                <div class=" col-lg-4">
+                                <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Type de contrat *</label>
                                     <select class="form-control" name="id_type_contrat" required>
                                         @foreach($typecontrats as $typecontrat)
-                                            <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
+                                            <option value="{{$typecontrat->id}}" {{isset($recrutement) && $recrutement->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class=" col-lg-4">
+                                <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de debut</label>
-                                    <input type="date" name="dateDebut" class="form-control" />
+                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($recrutement)? $recrutement->dateDebut:''}}"/>
                                 </div>
-                                <div class=" col-lg-4">
+                                <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Durée de mission</label>
-                                    <input type="text" name="dureeMission" class="form-control" />
+                                    <input type="text" name="dureeMission" class="form-control" value="{{isset($recrutement)? $recrutement->dureeMission:''}}"/>
                                 </div>
-                                <div class=" col-lg-4">
+                                <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                    <input type="text" name="budgetMensuel" class="form-control" />
+                                    <input type="text" name="budgetMensuel" class="form-control" value="{{isset($recrutement)? $recrutement->budgetMensuel:''}}"/>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card" style="height: 100% !important">
-                    <div class="card-header">
-                        <strong>Condition de rémunération</strong>
-                    </div>
-                    <div class="card-body" >
-                        <div class="row">
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Définition</label>
-                                <select class="form-control" name="id_definition">
-                                    @foreach($definitions as $definition)
-                                        <option value="{{$definition->id}}">{{$definition->libelle}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
-                                <select class="form-control" name="id_categorie">
-                                        @if(isset($categories))
-                                            @foreach($categories as $categorie)
-                                                <option  value="{{$categorie->id}}">{{$categorie->libelle}}</option>
-                                            @endforeach;
-                                        @endif
-                                </select>
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
-                                <select class="form-control" name="regime" id="regime">
-                                    <option value="0">40H</option>
-                                    <option value="1">44H</option>
-                                </select>
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Salaire de base</label>
-                                <input type="text" name="salaireBase" class="form-control" />
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Sursalaire</label>
-                                <input type="text" name="surSalaire" class="form-control" />
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Prime de transport</label>
-                                <input type="text" name="primeTp" class="form-control" />
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Total brut</label>
-                                <input type="text" name="totalBrute" class="form-control" />
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Total net (avec 1 part d'IG)</label>
-                                <input type="text" name="totalnet1part" class="form-control" />
-                            </div>
-                            <div class=" col-lg-3">
-                                <label for="text-input" class=" form-control-label">Total net (...parts d'IGR)</label>
-                                <input type="text" name="totalnetparts" class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -260,8 +217,8 @@
                                 <label>Téléphone portable</label>
                                 <select class="form-control" name="telephone_portable" id="telephone_portable">
                                     <option value=""></option>
-                                    <option value="0">non</option>
-                                    <option value="1">oui</option>
+                                    <option value="0" {{isset($recrutement)&& $recrutement->telephone_portable==0?"selected":""}} >non</option>
+                                    <option value="1" {{isset($recrutement)&& $recrutement->telephone_portable==1?"selected":""}}>oui</option>
                                 </select>
                             </div><div class=" col-lg-3">
                                 <label>Forfait</label>
@@ -294,8 +251,8 @@
             </div>
         </div>
         <div class="card-footer pull-right">
-            <button type="submit" class="btn btn-success btn-sm">
-                <i class="zmdi zmdi-edit"></i> Envoyer la demande
+            <button type="submit" class="btn {{isset($recrutement)?"btn-info":"btn-success"}} btn-sm">
+                <i class="zmdi zmdi-edit"></i>{{isset($recrutement)? "Modifier la demande":'Envoyer la demande'}}
             </button>
             <button type="reset" class="btn btn-danger btn-sm" id="reset">
                 <i class="fa fa-ban"></i> Réinitialiser
@@ -350,30 +307,30 @@
                             <td>
                                 <div class="table-data-feature">
                                     @if($recrutement->etat==1)
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="fa fa-eye"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        </a>
+                                        <a href="{{route("recrutement.modification",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
-                                        </button>
+                                        </a>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
 
 
                                     @elseif($recrutement->etat==2)
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
-                                        </button>
+                                        </a>
                                     @elseif($recrutement->etat==3)
 
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
-                                        </button>
+                                        </a>
                                     @elseif($recrutement->etat==4)
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
-                                        </button>
+                                        </a>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
@@ -396,6 +353,10 @@
 
     <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
+        $('#id_entite').select2({ placeholder: 'Selectionner une entité'});
+        $("#id_entite").prop("readonly", true);
+        $('#service').select2({ placeholder: 'Selectionner un service'});
+        $("#service").prop("readonly", true);
         $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
         $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
         $('#debit_internet').select2({ placeholder: 'Selectionner un debit internet'});

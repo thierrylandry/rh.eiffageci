@@ -79,11 +79,11 @@
                                         @endif
 
 
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="fa fa-eye"></i>
                                         </a>&nbsp;
                                     @if($mode=="gestion")
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="{{route("recrutement.modification",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>&nbsp;
                                         <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -97,12 +97,12 @@
                                             <i class="zmdi zmdi-format-indent-increase"></i> Condition de rémunération
                                         </a>&nbsp;
 
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>&nbsp;
                                 @elseif($recrutement->etat==3)
 
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>&nbsp;
                                 @elseif($recrutement->etat==4)
@@ -132,6 +132,10 @@
     <script src="{{ asset("js/buttons.html5.min.js") }}"></script>
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script>
+        $('#id_definition').select2({ placeholder: 'Selectionner un téléphone portable'});
+        $('#id_categorie').select2({ placeholder: 'Selectionner un forfait'});
+        $('#regime').select2({ placeholder: 'Selectionner un debit internet'});
+        $('#assurance_maladie').select2({ placeholder: 'Selectionner un assurance maladie'});
         function readURL(input) {
 
             if (input.files && input.files[0]) {

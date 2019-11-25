@@ -103,7 +103,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalhistoriqueLabel">Historique</h5>
+                <h5 class="modal-title" id="modalhistoriqueLabel">Condition de rémunération</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -113,57 +113,72 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card" style="height: 100% !important">
-                <div class="card-header">
-                    <strong>Condition de rémunération</strong>
-                </div>
                 <div class="card-body" >
                     <div class="row">
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Définition</label>
                             <select class="form-control" name="id_definition">
+                                @if(isset($definitions))
                                 @foreach($definitions as $definition)
                                     <option value="{{$definition->id}}">{{$definition->libelle}}</option>
                                 @endforeach
+                                    @endif
                             </select>
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
                             <select class="form-control" name="id_categorie">
+                                @if(isset($definitions))
                                 @foreach($categories as $categorie)
                                     <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
                                 @endforeach
+                                    @endif
                             </select>
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
                             <select class="form-control" name="regime" id="regime">
                                 <option value="0">40H</option>
                                 <option value="1">44H</option>
                             </select>
                         </div>
-                        <div class=" col-lg-3">
+                    </div>
+                    <div class="row">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Salaire de base</label>
                             <input type="text" name="salaireBase" class="form-control" />
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Sursalaire</label>
                             <input type="text" name="surSalaire" class="form-control" />
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Prime de transport</label>
                             <input type="text" name="primeTp" class="form-control" />
                         </div>
-                        <div class=" col-lg-3">
+                    </div>
+                    <div class="row">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Total brut</label>
                             <input type="text" name="totalBrute" class="form-control" />
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Total net (avec 1 part d'IG)</label>
                             <input type="text" name="totalnet1part" class="form-control" />
                         </div>
-                        <div class=" col-lg-3">
+                        <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Total net (...parts d'IGR)</label>
                             <input type="text" name="totalnetparts" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card-footer pull-right col-lg-pull-5">
+                            <button type="submit" class="btn btn-success btn-sm">
+                                <i class="zmdi zmdi-edit"></i> Envoyer la demande
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm" id="reset">
+                                <i class="fa fa-ban"></i> Réinitialiser
+                            </button>
                         </div>
                     </div>
                 </div>

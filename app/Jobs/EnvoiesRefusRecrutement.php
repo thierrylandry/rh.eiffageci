@@ -14,7 +14,6 @@ class EnvoiesRefusRecrutement implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     private $recrutement;
-    private $contact;
     private $motif;
     /**
      * Create a new job instance.
@@ -38,11 +37,11 @@ class EnvoiesRefusRecrutement implements ShouldQueue
         //
         $recrutement=$this->recrutement;
         $motif=$this->motif;
-        Mail::send('mail/mailfincontrat',compact('motif'),function($message)use ($recrutement,$motif )
+        Mail::send('mail/refus_recrutement',compact('motif','recrutement'),function($message)use ($recrutement,$motif )
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject("REFUS DE LA DEMANDE DE RECRUTEMENT N°".$recrutement->id);
-            $message ->to($recrutement->user()->email);
+            $message ->to($recrutement->user->email);
         });
     }
 }

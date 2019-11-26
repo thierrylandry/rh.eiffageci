@@ -2,7 +2,7 @@
 
 <p>Bonjour,</p>
 
-<p>Votre demande de recrutement N°{{$recrutement->id}} a été réfuser pour les raisons suivantes :
+<p>Votre demande de recrutement N°{{$recrutement->id}} pour le poste de {{$recrutement->posteAPouvoir}} a été réfuser pour les raisons suivantes :
     <br>
 {{$motif}}
 <br>

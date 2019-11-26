@@ -110,10 +110,10 @@
             </div>
 
             <div class="modal-body">
-                <form method="GET" action="{{route("recrutement.ActionRejeter")}}">
+                <form method="POST" action="{{route("recrutement.ActionRejeter")}}">
                     @csrf
                 <div class="row">
-                    <input type="text" name="slug" />
+                    <input type="hidden" name="slug" id="slugrecrutement" />
                     <div class="col-sm-12">
                         <label>Motif de refus</label>
                         <textarea class="form-control" name="motif">
@@ -152,70 +152,74 @@
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="row">
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Définition</label>
-                            <select class="form-control" name="id_definition">
-                                @if(isset($definitions))
-                                @foreach($definitions as $definition)
-                                    <option value="{{$definition->id}}">{{$definition->libelle}}</option>
-                                @endforeach
-                                    @endif
-                            </select>
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
-                            <select class="form-control" name="id_categorie">
-                                @if(isset($definitions))
-                                @foreach($categories as $categorie)
-                                    <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
-                                @endforeach
-                                    @endif
-                            </select>
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
-                            <select class="form-control" name="regime" id="regime">
-                                <option value="0">40H</option>
-                                <option value="1">44H</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Salaire de base</label>
-                            <input type="text" name="salaireBase" class="form-control" />
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Sursalaire</label>
-                            <input type="text" name="surSalaire" class="form-control" />
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Prime de transport</label>
-                            <input type="text" name="primeTp" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Total brut</label>
-                            <input type="text" name="totalBrute" class="form-control" />
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Total net (avec 1 part d'IG)</label>
-                            <input type="text" name="totalnet1part" class="form-control" />
-                        </div>
-                        <div class=" col-lg-4">
-                            <label for="text-input" class=" form-control-label">Total net (...parts d'IGR)</label>
-                            <input type="text" name="totalnetparts" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="card-footer pull-right col-lg-pull-5">
-                            <button type="submit" class="btn btn-success btn-sm">
-                                <i class="zmdi zmdi-edit"></i> Envoyer la demande
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm" id="reset">
-                                <i class="fa fa-ban"></i> Réinitialiser
-                            </button>
+                        <div class="col-sm-12"   >
+                            <div class="card" style="height: 100% !important" >
+                                <div class="card-body card-block">
+                                    Ajouter une rubrique salariale
+                                    <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addrubrique">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    </button>
+                                    </br>
+                                    </br>
+                                    <div id="rubriques" class="form-inline">
+
+                                        <div class=" form-control-label">
+                                            <label for="rubrique[]">Rubrique</label>
+                                            <div class="form-group col-sm-12">
+                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                    @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
+                                                        @endforeach
+                                                        @endif
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-control-label">
+                                            <label for="valeur[]">Valeur</label>
+                                            <div class="form-group col-sm-12">
+                                                <div class="form-line">
+                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr width="100%" color="blue">
+                                    </div>
+                                    <div id="rubriquetemplate" class="row clearfix" style="display: none">
+
+                                        <div class=" form-control-label">
+                                            <label for="rubrique[]">Rubrique</label>
+                                            <div class="form-group col-sm-12">
+                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                    @if(isset($rubrique_salaires))
+                                                        @foreach($rubrique_salaires as $rubrique_salaire)
+                                                            <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-control-label">
+                                            <label for="valeur[]">Valeur</label>
+                                            <div class="form-group col-sm-12">
+                                                <div class="form-line">
+                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr width="100%" color="blue">
+                                    </div>
+                                    <div class="modal-footer">
+                                        </br>
+                                        <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                            Enregistrer</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

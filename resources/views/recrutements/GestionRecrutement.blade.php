@@ -73,7 +73,7 @@
                                         <a href="{{route('recrutement.ActionValider',$recrutement->slug)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                             <i class="zmdi zmdi-mail-send"></i> Valider
                                         </a>&nbsp;
-                                        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Send">
+                                        <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
                                             <i class="zmdi zmdi zmdi-close"></i> Rejeter
                                         </a>&nbsp;
                                         @endif
@@ -131,11 +131,14 @@
     <script src="{{ asset("js/vfs_fonts.js") }}"></script>
     <script src="{{ asset("js/buttons.html5.min.js") }}"></script>
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
+    <script type="application/javascript">
+        $("#addrubrique").click(function (e) {
+            $($("#rubriquetemplate").html()).appendTo($("#rubriques"));
+        });
+    </script>
     <script>
-        $('#id_definition').select2({ placeholder: 'Selectionner un téléphone portable'});
-        $('#id_categorie').select2({ placeholder: 'Selectionner un forfait'});
-        $('#regime').select2({ placeholder: 'Selectionner un debit internet'});
-        $('#assurance_maladie').select2({ placeholder: 'Selectionner un assurance maladie'});
+
+
         function readURL(input) {
 
             if (input.files && input.files[0]) {
@@ -157,6 +160,7 @@
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
         });
+
         $("#btnsupprimer").click(function(e){
            if(confirm("Voulez vous supprimer?")){
 
@@ -190,6 +194,14 @@
                 ]
             }).column(0).visible(false);
             //table.DataTable().draw();
+
+           // $("#slugrecrutement").
+            $(".btn_rejeter").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                $("#slugrecrutement").val(slug);
+            });
         } );
         $(".current").click(function (){
             alert("eee");

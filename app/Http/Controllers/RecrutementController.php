@@ -11,6 +11,7 @@ use App\Entite;
 use App\Forfait;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Recrutement;
+use App\Rubrique_salaire;
 use App\Services;
 use App\Typecontrat;
 use DateTime;
@@ -206,13 +207,13 @@ class RecrutementController extends Controller
         $parameters=$request->except(['_token']);
         $slug=$parameters['slug'];
         $motif=$parameters['motif'];
-        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $recrutement = Recrutement::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
-        $recruement->etat=0;
-        $recruement->id_valideur=Auth::user()->id;
+        $recrutement->etat=0;
+        $recrutement->id_valideur=Auth::user()->id;
 
-        $recruement->save();
+        $recrutement->save();
 
         $this->dispatch(new EnvoiesRefusRecrutement($recrutement,$motif));
 
@@ -234,7 +235,8 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions'));
+        $rubrique_salaires= Rubrique_salaire::all();
+        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions','rubrique_salaires'));
     }
 
     public function valider_recrutement(){
@@ -251,7 +253,8 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions'));
+        $rubrique_salaires= Rubrique_salaire::all();
+        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions','rubrique_salaires'));
     }
     public function supprimer($slug){
 

@@ -313,9 +313,9 @@
                                         <a href="{{route("recrutement.modification",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a  href="{{route("recrutement.supprimer",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
-                                        </button>
+                                        </a>
 
 
                                     @elseif($recrutement->etat==2)
@@ -331,9 +331,9 @@
                                         <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("recrutement.supprimer",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
-                                        </button>
+                                        </a>
                                     @endif
                                 </div>
                             </td>

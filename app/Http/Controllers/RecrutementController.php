@@ -9,6 +9,7 @@ use App\Debit_internet;
 use App\Definition;
 use App\Entite;
 use App\Forfait;
+use App\Jobs\EnvoiesRefusRecrutement;
 use App\Recrutement;
 use App\Services;
 use App\Typecontrat;
@@ -33,7 +34,7 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements'));
     }
     public function modification($slug){
@@ -48,7 +49,7 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
@@ -65,7 +66,7 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
         return view('recrutements/Consulrecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
@@ -201,21 +202,26 @@ class RecrutementController extends Controller
         return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
 
     }
-    public function ActionRejeter($slug){
+    public function ActionRejeter(Request $request){
+        $parameters=$request->except(['_token']);
+        $slug=$parameters['slug'];
+        $motif=$parameters['motif'];
         $recruement = Recrutement::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
-        $recruement->etat=4;
+        $recruement->etat=0;
         $recruement->id_valideur=Auth::user()->id;
 
         $recruement->save();
 
-        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  réfusé avec succès");
+        $this->dispatch(new EnvoiesRefusRecrutement($recrutement,$motif));
+
+        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  réfusé");
 
     }
 
     public function lister_recrutement(){
-        $recrutements= Recrutement::where('etat','<>',1)->get();
+        $recrutements= Recrutement::where('etat','<>',0)->where('etat','<>',1)->get();
         $entites = Entite::all();
         $mode="gestion";
 
@@ -246,6 +252,19 @@ class RecrutementController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions'));
+    }
+    public function supprimer($slug){
+
+        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $date= new DateTime(null);
+
+        $recruement->etat=0;
+        $recruement->id_valideur=Auth::user()->id;
+
+        $recruement->save();
+
+        return redirect()->back()->with('success',"La demande de recrutement a été  supprimé avec succès");
+
     }
 
 }

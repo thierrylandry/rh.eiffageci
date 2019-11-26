@@ -552,14 +552,14 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
         'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
-    Route::get('/ActionRejeter/{slug}',[
+    Route::post('/ActionRejeter',[
         'as'=>'ActionRejeter',
         'uses'=>'RecrutementController@ActionRejeter',
         'roles' => ['Validation_recrutement']
 
     ])->middleware('auth');
 
-    Route::get('/modification/{slug}',[
+    Route::post('/modification/{slug}',[
         'as'=>'modification',
         'uses'=>'RecrutementController@modification',
         'roles' => ['Gestion_recrutement']
@@ -569,6 +569,12 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
     Route::get('/consulter/{slug}',[
         'as'=>'consulter',
         'uses'=>'RecrutementController@afficher',
+        'roles' => ['Gestion_recrutement']
+
+    ])->middleware('auth');
+    Route::get('/supprimer/{slug}',[
+        'as'=>'supprimer',
+        'uses'=>'RecrutementController@supprimer',
         'roles' => ['Gestion_recrutement']
 
     ])->middleware('auth');

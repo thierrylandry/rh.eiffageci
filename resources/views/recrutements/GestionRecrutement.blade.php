@@ -73,7 +73,7 @@
                                         <a href="{{route('recrutement.ActionValider',$recrutement->slug)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                             <i class="zmdi zmdi-mail-send"></i> Valider
                                         </a>&nbsp;
-                                        <a href="" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Send">
+                                        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Send">
                                             <i class="zmdi zmdi zmdi-close"></i> Rejeter
                                         </a>&nbsp;
                                         @endif
@@ -86,7 +86,7 @@
                                         <a href="{{route("recrutement.modification",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>&nbsp;
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("recrutement.supprimer",$recrutement->slug)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>&nbsp;
                                         @endif
@@ -106,7 +106,7 @@
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>&nbsp;
                                 @elseif($recrutement->etat==4)
-                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("recrutement.supprimer",$recrutement->slug)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>&nbsp;
                                 @endif
@@ -157,6 +157,13 @@
         $("#reset").click(function() {
             $('#rendu_img').attr('src','images/user.png');
         });
+        $("#btnsupprimer").click(function(e){
+           if(confirm("Voulez vous supprimer?")){
+
+           }else{
+               e.preventDefault;
+           }
+        })
     </script>
     <script>
 

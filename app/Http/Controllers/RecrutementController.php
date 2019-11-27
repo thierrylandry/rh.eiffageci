@@ -100,7 +100,7 @@ class RecrutementController extends Controller
                     endforeach;
                 }
 
-                $resultat.="</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='".$salaire->valeur."'></div></div></div>";
+                $resultat.="</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='".$salaire->valeur."'></div></div></div> ";
 
             endforeach;
 

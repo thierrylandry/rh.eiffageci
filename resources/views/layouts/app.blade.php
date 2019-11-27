@@ -156,7 +156,35 @@
                                 <div class="card-body card-block">
                                     <form method="post" action="{{route("recrutement.ConditionRemuneration")}}">
                                         @csrf
-
+                                        <div class="row">
+                                            <div class=" col-lg-4">
+                                                <label for="text-input" class=" form-control-label">Définition</label>
+                                                <select class="form-control" name="id_definition">
+                                                    @if(isset($definitions))
+                                                        @foreach($definitions as $definition)
+                                                            <option value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                            <div class=" col-lg-4">
+                                                <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
+                                                <select class="form-control" name="id_categorie">
+                                                    @if(isset($definitions))
+                                                        @foreach($categories as $categorie)
+                                                            <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                            <div class=" col-lg-4">
+                                                <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
+                                                <select class="form-control" name="regime" id="regime">
+                                                    <option value="0">40H</option>
+                                                    <option value="1">44H</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <input type="hidden" id="slugConditionRemuneration" name="slugConditionRemuneration" value="" />
                                     <div id="rubriques" class="form-inline">
                                         <?php $i=0; ?>

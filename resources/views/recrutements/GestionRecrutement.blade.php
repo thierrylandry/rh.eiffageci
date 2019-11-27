@@ -226,5 +226,20 @@
         $(".current").click(function (){
             alert("eee");
         });
+        $("#id_definition").change(function (e) {
+            var id_definition=  $("#id_definition").val();
+            $.get("../listercat/"+id_definition,function(data){
+                console.log(data);
+                var lesOptions;
+                $.each(data, function( index, value ) {
+                    lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
+                });
+                $("#id_categorie").empty();
+                $("#id_categorie").append(lesOptions);
+                //  $("#id_categorie").trigger("chosen:updated");
+
+            });
+            //  alert("ddd");
+        })
     </script>
 @endsection

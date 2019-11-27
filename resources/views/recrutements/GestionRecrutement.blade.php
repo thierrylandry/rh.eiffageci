@@ -44,6 +44,7 @@
                         <th>POSTE</th>
                         <th>CONTRAT</th>
                         <th>ACTION</th>
+                        <th>CONDITION DE REMUNERATION</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,7 +94,7 @@
 
 
                                 @elseif($recrutement->etat==2)
-                                        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalconditionremuneration" data-placement="top" title="Send">
+                                        <a href="#" class="btn btn-warning btn_modal_condition_remuneration" data-toggle="modal" data-target="#modalconditionremuneration" data-placement="top" title="Condition de rémunération">
                                             <i class="zmdi zmdi-format-indent-increase"></i> Condition de rémunération
                                         </a>&nbsp;
 
@@ -112,6 +113,7 @@
                                 @endif
                                 </div>
                             </td>
+                            <td>{{isset($recrutement)?$recrutement->salaire:''}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -192,7 +194,7 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            }).column(0).visible(false);
+            }).column(0).visible(false).column(9).visible(false);
             //table.DataTable().draw();
 
            // $("#slugrecrutement").
@@ -201,6 +203,24 @@
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugrecrutement").val(slug);
+            });
+            $(".btn_modal_condition_remuneration").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                $("#slugConditionRemuneration").val(slug);
+                var salairejson=data[Object.keys(data)[9]];
+
+                var tab_salairejson = jQuery.parseJSON( salairejson );
+          //      alert( obj.name === "John" );
+                console.log(tab_salairejson);
+                $("#rubriques").empty();
+                $.get("../recrutements/liste_salaire/"+slug,function(data){
+                    $("#rubriques").append(data);
+
+                });
+
+
             });
         } );
         $(".current").click(function (){

@@ -10,6 +10,7 @@ use App\Definition;
 use App\Entite;
 use App\Forfait;
 use App\Jobs\EnvoiesRefusRecrutement;
+use App\Metier\Json\Rubrique;
 use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
@@ -72,6 +73,41 @@ class RecrutementController extends Controller
         $taches= json_decode($recrutement->tache);
         return view('recrutements/Consulrecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
     }
+    public function liste_salaire($slug){
+
+        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $rubrique_salaires= Rubrique_salaire::all();
+
+        if(!empty($recrutement->salaire)){
+
+            $salaires=\GuzzleHttp\json_decode($recrutement->salaire);
+
+
+            $resultat="";
+            foreach($salaires as $salaire ):
+
+                $resultat.="<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
+                $selected='';
+                if(isset($rubrique_salaires)){
+                    foreach($rubrique_salaires as $rubrique_salaire):
+
+                            if($rubrique_salaire->libelle==$salaire->libelle){
+                                $selected="selected";
+                            }else{
+                                $selected='';
+                            }
+                        $resultat.= " <option value='".$rubrique_salaire->libelle."'".$selected." >".$rubrique_salaire->libelle."</option>";
+                    endforeach;
+                }
+
+                $resultat.="</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='".$salaire->valeur."'></div></div></div>";
+
+            endforeach;
+
+        }
+     //   dd($resultat);
+        return $resultat;
+    }
 
     public function enregistrer_recrutement(Request $request ){
 
@@ -117,6 +153,38 @@ class RecrutementController extends Controller
         $recruement->save();
 
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
+
+    }
+  public function ConditionRemuneration(Request $request ){
+
+     // dd($request);
+        $parameters=$request->except(['_token']);
+        $slug=$parameters['slugConditionRemuneration'];
+     // $rubrique_salaire=$parameters['rubrique_salaire'];
+
+
+//les rubriques du salaire
+      $rubriques = new Collection();
+      for($i = 0; $i <= count($request->input("rubrique"))-1; $i++ )
+      {
+          $rubrique = new Rubrique();
+
+          if( !empty($request->input("valeur")[$i])){
+              $rubrique->libelle = $request->input("rubrique")[$i];
+              $rubrique->valeur= $request->input("valeur")[$i];
+              $rubriques->add($rubrique);
+          }
+
+      }
+
+      $recruement = Recrutement::where('slug','=',$slug)->first();
+        $date= new DateTime(null);
+
+        $recruement->salaire=json_encode($rubriques->toArray());
+
+        $recruement->save();
+
+        return redirect()->back()->with('success',"Les condition de rémunération ont été enregistrée avec succès");
 
     }
 

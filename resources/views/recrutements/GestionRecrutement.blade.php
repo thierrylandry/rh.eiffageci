@@ -206,14 +206,14 @@
             });
             $(".btn_modal_condition_remuneration").click(function(e){
 
-                var data = table.row($(this).closest('tr')).data();
+           /*     var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugConditionRemuneration").val(slug);
                 var salairejson=data[Object.keys(data)[9]];
 
                 var tab_salairejson = jQuery.parseJSON( salairejson );
           //      alert( obj.name === "John" );
-                console.log(tab_salairejson);
+                console.log(tab_salairejson);*/
                 $("#rubriques").empty();
                 $.get("../recrutements/liste_salaire/"+slug,function(data){
                     $("#rubriques").append(data);
@@ -252,8 +252,10 @@
 
         $(".regime").change(function (e) {
             // alert("test");
-            var id_categorie=  $(".id_definition").val();
-            $.get("../recrutements/macategorie/"+id_categorie,function(data){
+            var id_categorie=  $(".id_categorie").val();
+            var id_definition=  $(".id_definition").val();
+            var regime=  $(".regime").val();
+            $.get("../recrutements/macategorie/"+id_categorie+"/"+id_definition+"/"+regime,function(data){
                 console.log(data);
                 var lesOptions;
                 if(data!=""){
@@ -265,7 +267,7 @@
                         }else if(value.regime=="40H"){
                             $(".salaire_base").val(value.salCategoriel);
                         }else{
-                            $(".salaire_base").val("ghj");
+                            $(".salaire_base").val("");
                         }
 
                     });

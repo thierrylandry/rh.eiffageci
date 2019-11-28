@@ -601,7 +601,7 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
         'uses'=>'RecrutementController@monrecrutement',
         'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
-    Route::get('/macategorie/{id_categorie}',[
+    Route::get('/macategorie/{id_categorie}/{id_definition}/{regime}',[
         'as'=>'macategorie',
         'uses'=>'RecrutementController@macategorie',
         'roles' => ['Gestion_recrutement']

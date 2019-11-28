@@ -116,9 +116,13 @@ class RecrutementController extends Controller
 
         return $recrutement;
     }
-    public function macategorie($id_categorie){
+    public function macategorie($id_categorie,$id_definition,$regime){
 
-        $catgorie = Categorie::where('id','=',$id_categorie)->get();
+        $catgorie = Categorie::where([
+                                        ['id','=',$id_categorie],
+                                        ['id_definition','=',$id_definition],
+                                        ['regime','=',$regime],
+                                    ])->first();
 
 
         return $catgorie;

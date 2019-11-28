@@ -108,6 +108,21 @@ class RecrutementController extends Controller
      //   dd($resultat);
         return $resultat;
     }
+     public function monrecrutement($slug){
+
+        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $rubrique_salaires= Rubrique_salaire::all();
+
+
+        return $recrutement;
+    }
+    public function macategorie($id_categorie){
+
+        $catgorie = Categorie::where('id','=',$id_categorie)->get();
+
+
+        return $catgorie;
+    }
 
     public function enregistrer_recrutement(Request $request ){
 
@@ -184,6 +199,9 @@ class RecrutementController extends Controller
         $date= new DateTime(null);
 
         $recruement->salaire=json_encode($rubriques->toArray());
+        $recruement->id_categorie=$id_categorie;
+        $recruement->id_definition=$id_definition;
+        $recruement->regime=$regime;
 
         $recruement->save();
 

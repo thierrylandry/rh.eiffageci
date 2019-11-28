@@ -159,8 +159,7 @@
                                         <div class="row">
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Définition</label>
-                                                <select class="form-control" name="id_definition" id="id_definition" required>
-                                                    <option value="">SELECTIONNER UNE DEFINITION</option>
+                                                <select class="form-control id_definition" name="id_definition" id="id_definition" required>
                                                     @if(isset($definitions))
                                                         @foreach($definitions as $definition)
                                                             <option value="{{$definition->id}}">{{$definition->libelle}}</option>
@@ -170,7 +169,7 @@
                                             </div>
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
-                                                <select class="form-control" name="id_categorie" id="id_categorie">
+                                                <select class="form-control id_categorie" name="id_categorie" id="id_categorie">
                                                     @if(isset($definitions))
                                                         @foreach($categories as $categorie)
                                                             <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
@@ -180,7 +179,7 @@
                                             </div>
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
-                                                <select class="form-control" name="regime" id="regime">
+                                                <select class="form-control regime" name="regime" id="regime">
                                                     <option value="0">40H</option>
                                                     <option value="1">44H</option>
                                                 </select>
@@ -192,12 +191,13 @@
                                         <div class=" form-control-label">
                                             <label for="rubrique[]">Rubrique</label>
                                             <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field rubrique">
+                                                <select type="text" name="rubrique[]" class="  type_c form-control input-field rubrique" readonly="true">
                                                     @if(isset($rubrique_salaires))
                                                     @foreach($rubrique_salaires as $rubrique_salaire)
                                                         <?php $i++?>
+                                                        @if($i==1)
                                                         <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
+                                                        @endif @endforeach
                                                         @endif
                                                 </select>
                                             </div>
@@ -207,7 +207,7 @@
                                             <label for="valeur[]">Valeur</label>
                                             <div class="form-group col-sm-12">
                                                 <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                    <input type="text" name="valeur[]" class="valeur_c salaire_base form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -303,145 +303,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==6?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
 
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==7?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==8?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==9?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==10?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">                                        <div class=" form-control-label">
-                                            <label for="rubrique[]">Rubrique</label>
-                                            <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                                                    <?php $i=0; ?>
-                                                    @if(isset($rubrique_salaires))
-                                                        @foreach($rubrique_salaires as $rubrique_salaire)
-                                                            <?php $i++?>
-                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==11?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-control-label">
-                                            <label for="valeur[]">Valeur</label>
-                                            <div class="form-group col-sm-12">
-                                                <div class="form-line">
-                                                    <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr width="100%" color="blue">
                                     </div>
 
                                     Ajouter une rubrique salariale
@@ -454,9 +316,12 @@
                                             <label for="rubrique[]">Rubrique</label>
                                             <div class="form-group col-sm-12">
                                                 <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                    <?php $i=0?>
                                                     @if(isset($rubrique_salaires))
                                                         @foreach($rubrique_salaires as $rubrique_salaire)
+                                                            @if($i>=6)
                                                             <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
                                                         @endforeach
                                                     @endif
                                                 </select>

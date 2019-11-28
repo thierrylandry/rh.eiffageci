@@ -221,8 +221,10 @@
                 });
 
                 $.get("../recrutements/monrecrutement/"+slug,function(data){
-                    alert(data);
-
+                   // alert(data.id_definition);
+                    $(".id_definition").val(data.id_definition);
+                    $(".id_categorie").val(data.id_categorie);
+                    $(".regime").val(data.regime);
                 });
 
 
@@ -231,7 +233,7 @@
         $(".current").click(function (){
             alert("eee");
         });
-        $("#id_definition").change(function (e) {
+        $(".id_definition").change(function (e) {
            // alert("test");
             var id_definition=  $("#id_definition").val();
             $.get("../listercat/"+id_definition,function(data){
@@ -242,6 +244,37 @@
                 });
                 $("#id_categorie").empty();
                 $("#id_categorie").append(lesOptions);
+                //  $("#id_categorie").trigger("chosen:updated");
+
+            });
+            //  alert("ddd");
+        })
+
+        $(".regime").change(function (e) {
+            // alert("test");
+            var id_categorie=  $(".id_definition").val();
+            $.get("../recrutements/macategorie/"+id_categorie,function(data){
+                console.log(data);
+                var lesOptions;
+                if(data!=""){
+                    $.each(data, function( index, value ) {
+                        if(value.regime=="44H"){
+
+                            $(".salaire_base").val(value.salCategoriel);
+
+                        }else if(value.regime=="40H"){
+                            $(".salaire_base").val(value.salCategoriel);
+                        }else{
+                            $(".salaire_base").val("ghj");
+                        }
+
+                    });
+                }else{
+                    $(".salaire_base").val("");
+                }
+
+              /*  $("#id_categorie").empty();
+                $("#id_categorie").append(lesOptions);*/
                 //  $("#id_categorie").trigger("chosen:updated");
 
             });

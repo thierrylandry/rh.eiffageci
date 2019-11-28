@@ -596,6 +596,16 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
         'uses'=>'RecrutementController@liste_salaire',
         'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
+    Route::get('/monrecrutement/{slug}',[
+        'as'=>'monrecrutement',
+        'uses'=>'RecrutementController@monrecrutement',
+        'roles' => ['Gestion_recrutement']
+    ])->middleware('auth');
+    Route::get('/macategorie/{id_categorie}',[
+        'as'=>'macategorie',
+        'uses'=>'RecrutementController@macategorie',
+        'roles' => ['Gestion_recrutement']
+    ])->middleware('auth');
 
 
 });

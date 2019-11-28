@@ -220,6 +220,11 @@
 
                 });
 
+                $.get("../recrutements/monrecrutement/"+slug,function(data){
+                    alert(data);
+
+                });
+
 
             });
         } );
@@ -227,6 +232,7 @@
             alert("eee");
         });
         $("#id_definition").change(function (e) {
+           // alert("test");
             var id_definition=  $("#id_definition").val();
             $.get("../listercat/"+id_definition,function(data){
                 console.log(data);

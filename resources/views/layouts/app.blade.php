@@ -159,7 +159,8 @@
                                         <div class="row">
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Définition</label>
-                                                <select class="form-control" name="id_definition">
+                                                <select class="form-control" name="id_definition" id="id_definition" required>
+                                                    <option value="">SELECTIONNER UNE DEFINITION</option>
                                                     @if(isset($definitions))
                                                         @foreach($definitions as $definition)
                                                             <option value="{{$definition->id}}">{{$definition->libelle}}</option>
@@ -169,7 +170,7 @@
                                             </div>
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
-                                                <select class="form-control" name="id_categorie">
+                                                <select class="form-control" name="id_categorie" id="id_categorie">
                                                     @if(isset($definitions))
                                                         @foreach($categories as $categorie)
                                                             <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
@@ -191,7 +192,7 @@
                                         <div class=" form-control-label">
                                             <label for="rubrique[]">Rubrique</label>
                                             <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                <select type="text" name="rubrique[]" class="type_c form-control input-field rubrique">
                                                     @if(isset($rubrique_salaires))
                                                     @foreach($rubrique_salaires as $rubrique_salaire)
                                                         <?php $i++?>
@@ -213,7 +214,7 @@
                                         <hr width="100%" color="blue">                                        <div class=" form-control-label">
                                             <label for="rubrique[]">Rubrique</label>
                                             <div class="form-group col-sm-12">
-                                                <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                <select type="text" name="rubrique[]" class="type_c form-control input-field" rubrique>
                                                     <?php $i=0; ?>
                                                     @if(isset($rubrique_salaires))
                                                         @foreach($rubrique_salaires as $rubrique_salaire)

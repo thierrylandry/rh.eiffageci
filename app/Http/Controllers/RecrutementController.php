@@ -160,6 +160,9 @@ class RecrutementController extends Controller
      // dd($request);
         $parameters=$request->except(['_token']);
         $slug=$parameters['slugConditionRemuneration'];
+        $id_categorie=$parameters['id_categorie'];
+        $id_definition=$parameters['id_definition'];
+        $regime=$parameters['regime'];
      // $rubrique_salaire=$parameters['rubrique_salaire'];
 
 

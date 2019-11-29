@@ -9,6 +9,7 @@ use App\Entite;
 use App\Personne;
 use App\Services;
 use App\Typecontrat;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class ContratController extends Controller
@@ -258,5 +259,23 @@ $entites= Entite::all();
         $entite=$personne->id_entite;
 
         return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
+    }
+    public function contratpdf(){
+
+        $pdf = PDF::loadView('contrat.contratpdf');
+
+        return $pdf->stream();
+    }
+    public function renouvellement_contratpdf(){
+
+        $pdf = PDF::loadView('contrat.renouvelement_contratpdf');
+
+        return $pdf->stream();
+    }
+    public function avenant_contratpdf(){
+
+        $pdf = PDF::loadView('contrat.avenant_contratpdf');
+
+        return $pdf->stream();
     }
 }

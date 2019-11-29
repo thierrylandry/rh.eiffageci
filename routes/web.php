@@ -178,6 +178,21 @@ Route::post('/rompre',[
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 
+Route::get('/contratpdf',[
+    'as'=>'avenant_contratpdf',
+    'uses'=>'ContratController@contratpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/renouvellement_contratpdf',[
+    'as'=>'renouvellement_contratpdf',
+    'uses'=>'ContratController@renouvellement_contratpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/avenant_contratpdf',[
+    'as'=>'avenant_contratpdf',
+    'uses'=>'ContratController@avenant_contratpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
 
 Route::get('/Ajouter_partenaire',[
     'as'=>'Ajouter_partenaire',
@@ -609,3 +624,4 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
 
 
 });
+

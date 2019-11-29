@@ -210,6 +210,13 @@
                 var slug=data[Object.keys(data)[0]];
                 $("#slugConditionRemuneration").val(slug);
                 $("#rubriques_petit").empty();
+
+                $("#Salaire_de_base").val("");
+                $("#Sursalaire").val("");
+                $("#Prime_de_salissure").val("");
+                $("#Prime_de_tenue_de_travail").val("");
+                $("#Prime_de_transport").val("");
+
                 $.get("../recrutements/liste_salaire/"+slug,function(data){
                     console.log(data[0]);
                     $("#Salaire_de_base").val(data[0][0].valeur);

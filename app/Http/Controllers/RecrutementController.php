@@ -15,6 +15,7 @@ use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
 use App\Typecontrat;
+use App\uniteJour;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -37,7 +38,8 @@ class RecrutementController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements'));
+        $uniteJours=uniteJour::all();
+        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','uniteJours'));
     }
     public function modification($slug){
 
@@ -54,7 +56,8 @@ class RecrutementController extends Controller
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
-        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
+        $uniteJours=uniteJour::all();
+        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));
     }
     public function afficher($slug){
 
@@ -77,36 +80,46 @@ class RecrutementController extends Controller
 
         $recrutement = Recrutement::where('slug','=',$slug)->first();
         $rubrique_salaires= Rubrique_salaire::all();
-
+        $resultat="";
         if(!empty($recrutement->salaire)){
 
             $salaires=\GuzzleHttp\json_decode($recrutement->salaire);
 
 
-            $resultat="";
+$j=0;
             foreach($salaires as $salaire ):
+                $j++;
+                if($j>5) {
+                    $resultat .= "<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
 
-                $resultat.="<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
+
                 $selected='';
                 if(isset($rubrique_salaires)){
+                    $i=0;
                     foreach($rubrique_salaires as $rubrique_salaire):
+                            $i++;
 
+                        if($i>5){
                             if($rubrique_salaire->libelle==$salaire->libelle){
                                 $selected="selected";
                             }else{
                                 $selected='';
                             }
                         $resultat.= " <option value='".$rubrique_salaire->libelle."'".$selected." >".$rubrique_salaire->libelle."</option>";
+                        }
                     endforeach;
                 }
 
-                $resultat.="</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='".$salaire->valeur."'></div></div></div> ";
-
+                    $resultat .= "</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='" . $salaire->valeur . "'></div></div></div><hr width='800' color='blue'> ";
+                }
             endforeach;
 
         }
      //   dd($resultat);
-        return $resultat;
+
+        $tab[]=$salaires;
+        $tab[]=$resultat;
+        return $tab;
     }
      public function monrecrutement($slug){
 
@@ -116,15 +129,16 @@ class RecrutementController extends Controller
 
         return $recrutement;
     }
-    public function macategorie($id_categorie,$id_definition,$regime){
+    public function macategorie($categorieLibelle,$id_definition,$regime){
 
         $catgorie = Categorie::where([
-                                        ['id','=',$id_categorie],
+
+                                        ['libelle','=',$categorieLibelle],
                                         ['id_definition','=',$id_definition],
                                         ['regime','=',$regime],
                                     ])->first();
 
-
+       // dd($id_categorie);
         return $catgorie;
     }
 
@@ -146,6 +160,7 @@ class RecrutementController extends Controller
         $debit_internet=$parameters['debit_internet'];
         $assurance_maladie=$parameters['assurance_maladie'];
         $nombre_personne=$parameters['nombre_personne'];
+        $id_uniteJour=$parameters['id_uniteJour'];
 
         $recruement = new Recrutement();
         $date= new DateTime(null);
@@ -166,6 +181,7 @@ class RecrutementController extends Controller
         $recruement->assurance_maladie=$assurance_maladie;
         $recruement->id_users=Auth::user()->id;
         $recruement->nombre_personne=$nombre_personne;
+        $recruement->id_uniteJour=$id_uniteJour;
         $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
 
 

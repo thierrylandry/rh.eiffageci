@@ -135,7 +135,7 @@
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
     <script type="application/javascript">
         $("#addrubrique").click(function (e) {
-            $($("#rubriquetemplate").html()).appendTo($("#rubriques"));
+            $($("#rubriquetemplate").html()).appendTo($("#rubriques_petit"));
         });
     </script>
     <script>
@@ -206,17 +206,19 @@
             });
             $(".btn_modal_condition_remuneration").click(function(e){
 
-           /*     var data = table.row($(this).closest('tr')).data();
+                var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugConditionRemuneration").val(slug);
-                var salairejson=data[Object.keys(data)[9]];
-
-                var tab_salairejson = jQuery.parseJSON( salairejson );
-          //      alert( obj.name === "John" );
-                console.log(tab_salairejson);*/
-                $("#rubriques").empty();
+                $("#rubriques_petit").empty();
                 $.get("../recrutements/liste_salaire/"+slug,function(data){
-                    $("#rubriques").append(data);
+                    console.log(data[0]);
+                    $("#Salaire_de_base").val(data[0][0].valeur);
+                    $("#Sursalaire").val(data[0][1].valeur);
+                    $("#Prime_de_salissure").val(data[0][2].valeur);
+                    $("#Prime_de_tenue_de_travail").val(data[0][3].valeur);
+                    $("#Prime_de_transport").val(data[0][4].valeur);
+
+                    $("#rubriques_petit").append(data[1]);
 
                 });
 
@@ -233,6 +235,28 @@
         $(".current").click(function (){
             alert("eee");
         });
+
+        function trouvezur_de_salaire_cat(){
+            var categorieLibelle=  $(".id_categorie option:selected").text();
+            var id_definition=  $(".id_definition").val();
+            var regime=  $(".regime option:selected").html();
+            $.get("../recrutements/macategorie/"+categorieLibelle+"/"+id_definition+"/"+regime,function(data){
+                console.log(data);
+                var lesOptions;
+                if(data!=""){
+
+                    $(".salaire_base").val(data.salCategoriel);
+
+                }else{
+                    $(".salaire_base").val("");
+                }
+
+                /*  $("#id_categorie").empty();
+                 $("#id_categorie").append(lesOptions);*/
+                //  $("#id_categorie").trigger("chosen:updated");
+
+            });
+        }
         $(".id_definition").change(function (e) {
            // alert("test");
             var id_definition=  $("#id_definition").val();
@@ -245,41 +269,18 @@
                 $("#id_categorie").empty();
                 $("#id_categorie").append(lesOptions);
                 //  $("#id_categorie").trigger("chosen:updated");
-
+                // pour trouver le salcategorielle
+                trouvezur_de_salaire_cat();
             });
-            //  alert("ddd");
-        })
 
+        });
+
+        $(".id_categorie").change(function (e) {
+            trouvezur_de_salaire_cat();
+        })      ;
         $(".regime").change(function (e) {
             // alert("test");
-            var id_categorie=  $(".id_categorie").val();
-            var id_definition=  $(".id_definition").val();
-            var regime=  $(".regime").val();
-            $.get("../recrutements/macategorie/"+id_categorie+"/"+id_definition+"/"+regime,function(data){
-                console.log(data);
-                var lesOptions;
-                if(data!=""){
-                    $.each(data, function( index, value ) {
-                        if(value.regime=="44H"){
-
-                            $(".salaire_base").val(value.salCategoriel);
-
-                        }else if(value.regime=="40H"){
-                            $(".salaire_base").val(value.salCategoriel);
-                        }else{
-                            $(".salaire_base").val("");
-                        }
-
-                    });
-                }else{
-                    $(".salaire_base").val("");
-                }
-
-              /*  $("#id_categorie").empty();
-                $("#id_categorie").append(lesOptions);*/
-                //  $("#id_categorie").trigger("chosen:updated");
-
-            });
+            trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
     </script>

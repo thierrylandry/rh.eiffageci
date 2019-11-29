@@ -68,7 +68,7 @@
                                 <select class="form-control" id="service" name="service">
                                     <option value=""></option>
                                     @foreach($services as $service)
-                                        <option value="{{$service->id}}" {{isset($recrutement) && $recrutement->id_service==$service->id?"selected":Auth::user()->id_service==$entite->id?"selected":""}} >{{$service->libelle}}</option>
+                                        <option value="{{$service->id}}" {{isset($recrutement) && $recrutement->id_service==$service->id?"selected":Auth::user()->id_service==$service->id?"selected":""}} >{{$service->libelle}}</option>
                                     @endforeach;
                                 </select>
                             </div>
@@ -191,9 +191,17 @@
                                     <label for="text-input" class=" form-control-label">Date de debut</label>
                                     <input type="date" name="dateDebut" class="form-control" value="{{isset($recrutement)? $recrutement->dateDebut:''}}"/>
                                 </div>
-                                <div class=" col-lg-3">
+                                <div class=" col-lg-2">
                                     <label for="text-input" class=" form-control-label">Durée de mission</label>
-                                    <input type="text" name="dureeMission" class="form-control" value="{{isset($recrutement)? $recrutement->dureeMission:''}}"/>
+                                    <input type="number" name="dureeMission" class="form-control" value="{{isset($recrutement)? $recrutement->dureeMission:''}}"/>
+                                </div>
+                                <div class=" col-lg-1">
+                                    <label for="text-input" class=" form-control-label">Unité</label>
+                                    <select class="form-control" name="id_uniteJour" required>
+                                        @foreach($uniteJours as $uniteJour)
+                                            <option value="{{$uniteJour->id}}" {{isset($recrutement) && $recrutement->id_unite==$uniteJour->id?"selected":""}}>{{$uniteJour->libelle}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
@@ -216,7 +224,6 @@
                             <div class=" col-lg-3">
                                 <label>Téléphone portable</label>
                                 <select class="form-control" name="telephone_portable" id="telephone_portable">
-                                    <option value=""></option>
                                     <option value="0" {{isset($recrutement)&& $recrutement->telephone_portable==0?"selected":""}} >non</option>
                                     <option value="1" {{isset($recrutement)&& $recrutement->telephone_portable==1?"selected":""}}>oui</option>
                                 </select>

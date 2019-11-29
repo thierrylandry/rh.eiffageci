@@ -559,7 +559,7 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
 
     ])->middleware('auth');
 
-    Route::post('/modification/{slug}',[
+    Route::get('/modification/{slug}',[
         'as'=>'modification',
         'uses'=>'RecrutementController@modification',
         'roles' => ['Gestion_recrutement']
@@ -601,7 +601,7 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
         'uses'=>'RecrutementController@monrecrutement',
         'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
-    Route::get('/macategorie/{id_categorie}/{id_definition}/{regime}',[
+    Route::get('/macategorie/{categorieLibelle}/{id_definition}/{regime}',[
         'as'=>'macategorie',
         'uses'=>'RecrutementController@macategorie',
         'roles' => ['Gestion_recrutement']

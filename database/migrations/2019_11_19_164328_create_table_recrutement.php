@@ -21,7 +21,7 @@ class CreateTableRecrutement extends Migration
             $table->integer('id_type_contrat')->nullable();
            // $table->foreign('id_type_contrat')->references('id')->on('typecontrat');
             $table->date('dateDebut')->nullable();
-            $table->text('dureeMission')->nullable();
+            $table->integer('dureeMission')->nullable();
             $table->float('budgetMensuel')->nullable();
             $table->text('id_categorie')->nullable();
            // $table->foreign('id_categorie')->references('id')->on('categorie');

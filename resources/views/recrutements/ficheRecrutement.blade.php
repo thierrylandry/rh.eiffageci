@@ -191,11 +191,11 @@
                                     <label for="text-input" class=" form-control-label">Date de debut</label>
                                     <input type="date" name="dateDebut" class="form-control" value="{{isset($recrutement)? $recrutement->dateDebut:''}}"/>
                                 </div>
-                                <div class=" col-lg-2">
-                                    <label for="text-input" class=" form-control-label">Durée de mission</label>
+                                <div class=" col-lg-1">
+                                    <label for="text-input" class=" form-control-label">Durée</label>
                                     <input type="number" name="dureeMission" class="form-control" value="{{isset($recrutement)? $recrutement->dureeMission:''}}"/>
                                 </div>
-                                <div class=" col-lg-1">
+                                <div class=" col-lg-2">
                                     <label for="text-input" class=" form-control-label">Unité</label>
                                     <select class="form-control" name="id_uniteJour" required>
                                         @foreach($uniteJours as $uniteJour)

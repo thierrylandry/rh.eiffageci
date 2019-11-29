@@ -50,7 +50,7 @@ class RecrutementController extends Controller
         $debit_internets=Debit_internet::all();
         $forfaits = Forfait::all();
         $assurance_maladies= Assurance_maladie::all();
-        $categories = Categorie::all();
+        $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
@@ -341,7 +341,7 @@ $j=0;
         $debit_internets=Debit_internet::all();
         $forfaits = Forfait::all();
         $assurance_maladies= Assurance_maladie::all();
-        $categories = Categorie::all();
+        $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
         $rubrique_salaires= Rubrique_salaire::all();

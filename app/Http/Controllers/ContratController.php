@@ -33,7 +33,7 @@ $services = Services::all();
         return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites'));
     }
     public function listercat($id_definition){
-        $categories = Categorie::where('id_definition','=',$id_definition)->get();
+        $categories = Categorie::where('id_definition','=',$id_definition)->distinct('libelle')->get();
 
        return $categories;
     }

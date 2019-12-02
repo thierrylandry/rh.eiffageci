@@ -244,7 +244,7 @@
         });
 
         function trouvezur_de_salaire_cat(){
-            var categorieLibelle=  $(".id_categorie option:selected").text();
+            var categorieLibelle=  $(".id_categorie").val();
             var id_definition=  $(".id_definition").val();
             var regime=  $(".regime option:selected").html();
             $.get("../recrutements/macategorie/"+categorieLibelle+"/"+id_definition+"/"+regime,function(data){
@@ -271,7 +271,7 @@
                 console.log(data);
                 var lesOptions;
                 $.each(data, function( index, value ) {
-                    lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
+                    lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
                 });
                 $("#id_categorie").empty();
                 $("#id_categorie").append(lesOptions);

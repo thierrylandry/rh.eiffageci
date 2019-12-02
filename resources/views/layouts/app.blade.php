@@ -172,7 +172,7 @@
                                                 <select class="form-control id_categorie" name="id_categorie" id="id_categorie">
                                                     @if(isset($definitions))
                                                         @foreach($categories as $categorie)
-                                                            <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                                                            <option value="{{$categorie->libelle}}">{{$categorie->libelle}}</option>
                                                         @endforeach
                                                     @endif
                                                 </select>

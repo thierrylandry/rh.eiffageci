@@ -268,9 +268,14 @@ $entites= Entite::all();
 
         return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
     }
-    public function contratpdf(){
+    public function contratCDDpdf(){
 
-        $pdf = PDF::loadView('contrat.contratpdf');
+        $pdf = PDF::loadView('contrat.contratCDDpdf');
+
+        return $pdf->stream();
+    }public function contratCDIpdf(){
+
+        $pdf = PDF::loadView('contrat.contratCDIpdf');
 
         return $pdf->stream();
     }

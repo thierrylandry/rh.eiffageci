@@ -13,11 +13,14 @@ class CreateTableUniteJour extends Migration
      */
     public function up()
     {
-        Schema::create('uniteJour', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string("libelle");
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('uniteJour')){
+            Schema::create('uniteJour', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string("libelle");
+                $table->timestamps();
+            });
+        }
+
     }
     /**
      * Reverse the migrations.

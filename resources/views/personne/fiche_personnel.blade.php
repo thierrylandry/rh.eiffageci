@@ -16,6 +16,12 @@
     </br>
     <div class="table-data__tool">
         <div class="table-data__tool-left">
+            <div class="card-body">
+                <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
+                <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
+                <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les documents administratifs</a>
+                <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+            </div>
         </div>
         <div class="table-data__tool-right">
             <a href="{{route('Ajouter_personne',$personne->id_entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -191,26 +197,29 @@
                 <div class="card-body" >
                     <div class="row" >
 
-                        <table class="table  table-earning" id="table_employe">
+                        <table class="table  table-earning col-sm-12" id="table_employe">
                             <thead>
                             <tr>
+                                <th>MATRICULE</th>
                                 <th class="">TYPE </br>CONTRAT</th>
                                 <th>COUVERTURE </br>MALADIE</th>
                                 <th>SERVICE</th>
                                 <th>DATE DEBUT</th>
                                 <th>DATE FIN</th>
-                                <th>PERIODE </br> ESSAIE</th>
-                                <th>TIMELINE</th>
+                                <th>DATE DE </br>DEPART DEFINITIF</th>
+                                <th>PERIODE </br> ESSAI</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($contrats as $contrat)
-                                <tr class="tr-shadow">
+                                <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
+                                    <td>{{$contrat->matricule}}</td>
                                     <td>@foreach($typecontrats as $typecontrat)
                                             @if($typecontrat->id==$contrat->id_type_contrat)
                                                 {{$typecontrat->libelle}}
                                             @endif
                                         @endforeach</td>
+
                                     <td>{{$contrat->couvertureMaladie}}</td>
                                     <td>@foreach($services as $service)
                                             @if($service->id==$contrat->id_service)
@@ -218,46 +227,16 @@
                                             @endif
                                         @endforeach</td>
                                     <td>
-                                        {{$contrat->datedebutc}}
+                                        {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
                                     </td>
-                                    <td>{{$contrat->datefinc}}</td>
-                                    <td>{{$contrat->periode_essaie}}</td>
-                                    <td>                                @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)
-                                            <div class=" ">
-                                                @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
-                                                    <div class="progress mb-3">
-
-                                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                    </div>
-                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>25 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=50)
-                                                    <div class="progress mb-3">
-                                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                    </div>
-                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
-                                                    <div class="progress mb-3">
-                                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                    </div>
-                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>75 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<100)
-                                                    <div class="progress mb-3">
-                                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                                    </div>
-                                                @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>=100)
-                                                        <div class="progress mb-3">
-                                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width:100%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                                 aria-valuemin="0" aria-valuemax="100">100%</div>
-                                                        </div>
-                                                    @endif
-                                            </div>
-                                        @endif</td>
+                                    <td> {{ isset($contrat->datefinc) ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
+                                    <td>
+                                        {{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("d-m-Y",strtotime($contrat->departDefinitif)):''}}</td>
+                                    <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

@@ -22,4 +22,7 @@ class Recrutement extends Model
     public function service(){
         return $this->belongsTo(Services::class, "id_service");
     }
+    public function unitejour(){
+        return $this->belongsTo(uniteJour::class, "id_uniteJour");
+    }
 }

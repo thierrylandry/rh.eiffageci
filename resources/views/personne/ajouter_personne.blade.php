@@ -46,6 +46,10 @@
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
             font-size: 1.7rem; }
 
+        .lescheckeurs {
+            height: 50px;
+            width: 50px;
+        }
     </style>
 
     <div class="row">
@@ -88,6 +92,61 @@
     </div>
     <form action="{{route('enregistrer_personne')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
+
+        <div class="row">
+            <div class="col-sm-12"   >
+                <div class="card" style="height: 100% !important" >
+                    <div class="card-header">
+                        <strong>Les Entretiens </strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <div class="row">
+                            <div class="col-sm-4" style="text-align: center">
+                                <div>
+                                    <label for="text-input" class=" form-control-label">Entretien du chef de service</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" value="1" name="entretien_cs" class="lescheckeurs" {{isset($personne) && $personne->entretien_cs==1?'checked':''}}>
+                                </div>
+                            </div>
+                            <div class="col-sm-4" style="text-align: center">
+                                <div>
+                                    <label for="text-input" class=" form-control-label">ENTRETIEN RH</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox"  class="lescheckeurs" value="1" name="entretien_rh" {{isset($personne) && $personne->entretien_rh==1?'checked':''}}>
+                                </div>
+                            </div>
+                            <div class="col-sm-4" style="text-align: center">
+                                <div>
+                                    <label for="text-input" class=" form-control-label">VISITE MEDICALE</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="lescheckeurs" value="1" name="visite_medicale"  {{isset($personne) && $personne->visite_medicale==1?'checked':''}}>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Date prévue</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="date" name="date_visite"  class="form-control" value="{{isset($personne)?$personne->date_visite:''}}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        </br>
+
   <div class="row">
       <div class="col-lg-4">
           <div class="card" style="height: 100% !important">

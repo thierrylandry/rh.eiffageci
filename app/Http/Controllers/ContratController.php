@@ -22,7 +22,12 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         $definitions = Definition::all();
         $entites= Entite::all();
-        return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites'));
+        if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
+            return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites'));
+        }else{
+            return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
+        }
+
     }
     public function contrat_new_user2($slug){
         $definitions = Definition::all();
@@ -30,7 +35,12 @@ $services = Services::all();
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites'));
+        if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites'));
+        }else{
+            return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
+        }
+
     }
     public function listercat($id_definition){
         $categories_initials = Categorie::where('id_definition','=',$id_definition)->select('libelle')->get();
@@ -184,10 +194,22 @@ $entites= Entite::all();
         return redirect()->route('lister_contrat',['slug'=>$slug])->with('success',"Le contrat  a été rompu");
     }
     public function save_contrat( Request $request){
+
+
+
         $parameters=$request->except(['_token']);
 
         $slug=$parameters["slug"];
 
+        $personne = Personne::where('slug','=',$slug)->get()->first();
+
+
+        /* vérifier si on a le droit de creer un contrat pour ce mec */
+        if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
+        }else{
+            return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
+        }
+        /* -- fin  vérifier si on a le droit de creer un contrat pour ce mec */
 
         $matricule=trim(str_replace(' ','',$parameters["matricule"]));
         $couverture_maladie=$parameters["couverture_maladie"];
@@ -217,7 +239,6 @@ $entites= Entite::all();
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
-        $personne = Personne::where('slug','=',$slug)->get()->first();
 
 
 

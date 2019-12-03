@@ -33,6 +33,12 @@
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN CONTRAT</a>
                 </div>
             </div>
+            <div class="card-body">
+                <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
+                <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
+                <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
+                <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+            </div>
 
             <div class="table-responsive table-responsive-data2">
                 <table class="table  table-earning" id="table_employe">

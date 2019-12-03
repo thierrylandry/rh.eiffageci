@@ -118,7 +118,7 @@
 <!-- MENU SIDEBAR-->
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="#">
+        <a href="{{route('global')}}">
             <img src="{{ URL::asset('images/icon/Eiffage_2400_02_black_RGB.png') }}"/>
         </a>
     </div>

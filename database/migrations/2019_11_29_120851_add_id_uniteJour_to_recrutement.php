@@ -15,7 +15,10 @@ class AddIdUniteJourToRecrutement extends Migration
     {
         Schema::table('recrutement', function (Blueprint $table) {
             //
-            $table->integer('id_uniteJour');
+            if(!Schema::hasColumn('recrutement','id_uniteJour')){
+                $table->integer('id_uniteJour');
+            }
+
         });
     }
 

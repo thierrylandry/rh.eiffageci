@@ -107,7 +107,24 @@ class PersonneController extends Controller
         $sattelitaire=$parameters['sattelitaire'];
         $id_commune=$parameters['commune'];
 
+        if(isset($parameters['entretien_cs'])){
+            $entretien_cs=$parameters['entretien_cs'];
+        }else{
+            $entretien_cs=0;
+        }
+        if(isset($parameters['entretien_rh'])){
+            $entretien_rh=$parameters['entretien_rh'];
+        }else{
+            $entretien_rh=0;
+        }
 
+        if(isset($parameters['visite_medicale'])){
+            $visite_medicale=$parameters['visite_medicale'];
+        }else{
+            $visite_medicale=0;
+        }
+
+        $date_visite=$parameters['date_visite'];
 
         $date= new \DateTime(null);
 
@@ -120,6 +137,26 @@ class PersonneController extends Controller
         $personne->nationalite=$nationnalite;
         $personne->matrimonial=$sit;
         $personne->enfant=$nb_enf;
+
+        if(isset($entretien_cs)){
+            $personne->entretien_cs=$entretien_cs;
+        }else{
+            $personne->entretien_cs=0;
+        }
+
+        if(isset($entretien_rh)){
+            $personne->entretien_rh=$entretien_rh;
+        }else{
+            $personne->entretien_rh=0;
+        }
+
+
+        if(isset($visite_medicale)){
+            $personne->visite_medicale=$visite_medicale;
+        }else{
+            $personne->visite_medicale=0;
+        }
+        $personne->date_visite=$date_visite;
 
         $personne->cnps=$cnps;
         $personne->rib=$rib;
@@ -247,7 +284,28 @@ class PersonneController extends Controller
         $whatsapp=$parameters['whatsapp'];
         $sattelitaire=$parameters['sattelitaire'];
         $presenceEff=$parameters['presenceEff'];
+
         $id_commune=$parameters['commune'];
+
+        if(isset($parameters['entretien_cs'])){
+           $entretien_cs=$parameters['entretien_cs'];
+        }else{
+            $entretien_cs=0;
+        }
+        if(isset($parameters['entretien_rh'])){
+           $entretien_rh=$parameters['entretien_rh'];
+        }else{
+            $entretien_rh=0;
+        }
+
+        if(isset($parameters['visite_medicale'])){
+            $visite_medicale=$parameters['visite_medicale'];
+        }else{
+            $visite_medicale=0;
+        }
+
+        $date_visite=$parameters['date_visite'];
+
         $date= new \DateTime(null);
 
 
@@ -276,6 +334,27 @@ class PersonneController extends Controller
         $personne->sattelitaire=$sattelitaire;
         $personne->presenceEff=$presenceEff;
         $personne->id_commune=$id_commune;
+
+
+        if(isset($entretien_cs)){
+            $personne->entretien_cs=$entretien_cs;
+        }else{
+            $personne->entretien_cs=0;
+        }
+
+        if(isset($entretien_cs)){
+            $personne->entretien_rh=$entretien_rh;
+        }else{
+            $personne->entretien_rh=0;
+        }
+
+
+        if(isset($visite_medicale)){
+            $personne->visite_medicale=$visite_medicale;
+        }else{
+            $personne->visite_medicale=0;
+        }
+        $personne->date_visite=$date_visite;
 
         $familles = new Collection();
 

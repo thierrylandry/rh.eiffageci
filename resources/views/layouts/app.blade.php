@@ -170,7 +170,7 @@
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Catégorie professionnelle</label>
                                                 <select class="form-control id_categorie" name="id_categorie" id="id_categorie">
-                                                    @if(isset($definitions))
+                                                    @if(isset($categories))
                                                         @foreach($categories as $categorie)
                                                             <option value="{{$categorie->libelle}}">{{$categorie->libelle}}</option>
                                                         @endforeach

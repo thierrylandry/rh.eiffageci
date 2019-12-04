@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRegimeHebdoAndNbpersToRecrutement extends Migration
+class AddIdNatureContratToContrat extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddRegimeHebdoAndNbpersToRecrutement extends Migration
      */
     public function up()
     {
-        Schema::table('recrutement', function (Blueprint $table) {
+        Schema::table('contrat', function (Blueprint $table) {
             //
-            $table->string("regime")->nullable();
-            $table->integer("NbrePersonne")->default(1);
+            $table->unsignedBigInteger('id_nature_contrat')->nullable();
+            $table->foreign('id_nature_contrat')->references('id')->on('nature_contrat');
         });
     }
 
@@ -27,10 +27,9 @@ class AddRegimeHebdoAndNbpersToRecrutement extends Migration
      */
     public function down()
     {
-        Schema::table('recrutement', function (Blueprint $table) {
+        Schema::table('contrat', function (Blueprint $table) {
             //
-            $table->removeColumn("regime");
-            $table->removeColumn("nombre_personne");
+            $table->removeColumn('id_nature_contrat');
         });
     }
 }

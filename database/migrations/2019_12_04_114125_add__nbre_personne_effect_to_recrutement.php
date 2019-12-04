@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRegimeHebdoAndNbpersToRecrutement extends Migration
+class AddNbrePersonneEffectToRecrutement extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,7 @@ class AddRegimeHebdoAndNbpersToRecrutement extends Migration
     {
         Schema::table('recrutement', function (Blueprint $table) {
             //
-            $table->string("regime")->nullable();
-            $table->integer("NbrePersonne")->default(1);
+            $table->integer('NbrePersonneEffect')->nullable();
         });
     }
 
@@ -29,8 +28,7 @@ class AddRegimeHebdoAndNbpersToRecrutement extends Migration
     {
         Schema::table('recrutement', function (Blueprint $table) {
             //
-            $table->removeColumn("regime");
-            $table->removeColumn("nombre_personne");
+            $table->removeColumn('NbrePersonneEffect');
         });
     }
 }

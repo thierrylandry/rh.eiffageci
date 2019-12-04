@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 <label for="text-input" class=" form-control-label">Nombre de personne</label>
-                                <input class="form-control" type="number" min="1" value="{{isset($recrutement)?$recrutement->nombre_personne:1}}" id="nombre_personne" name="nombre_personne"/>
+                                <input class="form-control" type="number" min="1" value="{{isset($recrutement)?$recrutement->NbrePersonne:1}}" id="nombre_personne" name="nombre_personne"/>
 
                             </div>
                             <br>

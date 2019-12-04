@@ -180,7 +180,7 @@ $j=0;
         $recruement->debit_internet=$debit_internet;
         $recruement->assurance_maladie=$assurance_maladie;
         $recruement->id_users=Auth::user()->id;
-        $recruement->nombre_personne=$nombre_personne;
+        $recruement->NbrePersonne=$nombre_personne;
         $recruement->id_uniteJour=$id_uniteJour;
         $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
 
@@ -293,7 +293,7 @@ $j=0;
         $recruement->forfait=$forfait;
         $recruement->debit_internet=$debit_internet;
         $recruement->assurance_maladie=$assurance_maladie;
-        $recruement->nombre_personne=$nombre_personne;
+        $recruement->NbrePersonne=$nombre_personne;
 
         $recruement->save();
 

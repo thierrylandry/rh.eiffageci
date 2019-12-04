@@ -6,6 +6,7 @@ use App\Categorie;
 use App\Contrat;
 use App\Definition;
 use App\Entite;
+use App\Nature_contrat;
 use App\Personne;
 use App\Services;
 use App\Typecontrat;
@@ -22,8 +23,9 @@ $services = Services::all();
         $typecontrats= Typecontrat::all();
         $definitions = Definition::all();
         $entites= Entite::all();
+        $nature_contrats= Nature_contrat::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites'));
+            return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites','nature_contrats'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -35,8 +37,9 @@ $services = Services::all();
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
+        $nature_contrats= Nature_contrat::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -294,7 +297,8 @@ $entites= Entite::all();
         $pdf = PDF::loadView('contrat.contratCDDpdf');
 
         return $pdf->stream();
-    }public function contratCDIpdf(){
+    }
+    public function contratCDIpdf(){
 
         $pdf = PDF::loadView('contrat.contratCDIpdf');
 

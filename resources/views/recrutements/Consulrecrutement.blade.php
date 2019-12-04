@@ -137,6 +137,7 @@
     </div>
     </br>
 
+<div class="row">
     <div class="col-lg-12">
         <div class="card" style="height: 100% !important">
             <div class="card-header">
@@ -162,6 +163,22 @@
                     <div class="col-sm-3">
                         <p> Assurance : {{isset($recrutement)?  $recrutement->debit_internet:''}}</p>
 
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card" style="height: 100% !important">
+                <div class="card-header">
+                    <strong>Condition de rémunération</strong>
+                </div>
+                <div class="card-body" >
+                    <div class="row">
 
                     </div>
                 </div>

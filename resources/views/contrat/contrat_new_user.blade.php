@@ -87,6 +87,19 @@
                 <div class="">
                     <div class="row form-group">
                         <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Nature de contrat :</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="id_nature_contrat" id="id_nature_contrat" required>
+                                <option value="">SELECTIONNER</option>
+                                @foreach($nature_contrats as $nature_contrat)
+                                    <option {{isset($contrat) && $contrat->id_nature_contrat==$nature_contrat->id?'selected':''}} value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Définition* :</label>
                         </div>
                         <div class="col-sm-9">

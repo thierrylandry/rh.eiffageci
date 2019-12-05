@@ -172,7 +172,7 @@ $services = Services::all();
         $personne->save();
 
 
-        return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat  a été modifié avec succès");
+        return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat a été modifié avec succès");
     }
     public function rupture_contrat($id){
         $contrat= Contrat::find($id);
@@ -290,29 +290,35 @@ $entites= Entite::all();
 
         $entite=$personne->id_entite;
 
-        return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
+        return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat a été ajouté avec succès");
     }
-    public function contratCDDpdf(){
+    public function contratcddpdf(){
 
-        $pdf = PDF::loadView('contrat.contratCDDpdf');
+        $pdf = PDF::loadView('contrat.contratcddpdf');
 
         return $pdf->stream();
     }
-    public function contratCDIpdf(){
+    public function contratcdipdf(){
 
-        $pdf = PDF::loadView('contrat.contratCDIpdf');
+        $pdf = PDF::loadView('contrat.contratcdipdf');
 
         return $pdf->stream();
     }
     public function renouvellement_contratpdf(){
 
-        $pdf = PDF::loadView('contrat.renouvelement_contratpdf');
+        $pdf = PDF::loadView('contrat.renouvellement_contratpdf');
 
         return $pdf->stream();
     }
-    public function avenant_contratpdf(){
+    public function avenant_type_contratpdf(){
 
-        $pdf = PDF::loadView('contrat.avenant_contratpdf');
+        $pdf = PDF::loadView('contrat.avenant_type_contratpdf');
+
+        return $pdf->stream();
+    }
+    public function avenant_renum_contratpdf(){
+
+        $pdf = PDF::loadView('contrat.avenant_renum_contratpdf');
 
         return $pdf->stream();
     }

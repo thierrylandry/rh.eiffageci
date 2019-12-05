@@ -178,9 +178,14 @@ Route::post('/rompre',[
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 
-Route::get('/contratpdf',[
-    'as'=>'avenant_contratpdf',
-    'uses'=>'ContratController@contratpdf',
+Route::get('/contratcddpdf',[
+    'as'=>'contratcddpdf',
+    'uses'=>'ContratController@contratcddpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/contratcdipdf',[
+    'as'=>'contratcdipdf',
+    'uses'=>'ContratController@contratcdipdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
 Route::get('/renouvellement_contratpdf',[
@@ -188,9 +193,14 @@ Route::get('/renouvellement_contratpdf',[
     'uses'=>'ContratController@renouvellement_contratpdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
-Route::get('/avenant_contratpdf',[
-    'as'=>'avenant_contratpdf',
-    'uses'=>'ContratController@avenant_contratpdf',
+Route::get('/avenant_type_contratpdf',[
+    'as'=>'avenant_type_contratpdf',
+    'uses'=>'ContratController@avenant_type_contratpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/avenant_renum_contratpdf',[
+    'as'=>'avenant_renum_contratpdf',
+    'uses'=>'ContratController@avenant_renum_contratpdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
 

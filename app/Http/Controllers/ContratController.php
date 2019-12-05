@@ -34,12 +34,14 @@ $services = Services::all();
     public function contrat_new_user2($slug){
         $definitions = Definition::all();
         $personne= Personne::where('slug', $slug)->get()->first();
+        $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
+        $ancien_contrat=true;
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -67,7 +69,8 @@ $services = Services::all();
         $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites'));
+        $nature_contrats= Nature_contrat::all();
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats'));
     }
 
     public function lister_contrat($slug){
@@ -78,8 +81,17 @@ $services = Services::all();
             ->orderBy('datedebutc','DESC')->get();
         $entites= Entite::all();
 
-        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats','entites'));
+        $definitions = Definition::all();
+
+
+        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats','entites','services','typecontrats','definitions'));
     }
+
+    public function information_contrat($id){
+        $contrats = Contrat::find($id);
+        return $contrats;
+
+     }
 
     public function update_contrat( Request $request){
 
@@ -101,6 +113,7 @@ $services = Services::all();
         $email= $parameters["email"];
         $contact= $parameters["contact"];
         $position= $parameters["position"];
+        $id_nature_contrat= $parameters["id_nature_contrat"];
 
         $contrat=  Contrat::find($id_contrat);
 
@@ -115,6 +128,7 @@ $services = Services::all();
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
+        $contrat->id_nature_contrat=$id_nature_contrat;
         $personne = Personne::where('slug','=',$slug)->get()->first();
 
         //changer l'etat de tout les anciens contrats
@@ -225,6 +239,7 @@ $entites= Entite::all();
         $contact= $parameters["contact"];
         $position= $parameters["position"];
         $id_definition= $parameters["id_definition"];
+        $id_nature_contrat= $parameters["id_nature_contrat"];
 
         if(isset($parameters["id_categorie"])){
             $id_categorie= $parameters["id_categorie"];
@@ -242,6 +257,7 @@ $entites= Entite::all();
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
+        $contrat->id_nature_contrat=$id_nature_contrat;
 
 
 
@@ -291,6 +307,70 @@ $entites= Entite::all();
         $entite=$personne->id_entite;
 
         return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
+    }
+    public function save_renouvellezment_avenant( Request $request){
+
+
+
+        $parameters=$request->except(['_token']);
+
+        $id_personne=$parameters["id_personne"];
+
+        $personne = Personne::find($id_personne);
+      //  dd($parameters);
+
+        $matricule=trim(str_replace(' ','',$parameters["matricule"]));
+        $couverture_maladie=$parameters["couverture_maladie"];
+        $dateDebutC=$parameters["dateDebutC"];
+       $dateFinC= $parameters["dateFinC"];
+       $type_de_contrat= $parameters["type_de_contrat"];
+       $service= $parameters["service"];
+        $id_definition= $parameters["id_definition"];
+        $id_nature_contrat= $parameters["id_nature_contrat"];
+        $regime= $parameters["regime"];
+
+        if(isset($parameters["id_categorie"])){
+            $id_categorie= Categorie::where('libelle','=',$parameters["id_categorie"])->where('regime','=',$regime)->first()->id;
+          //  dd($id_categorie);
+        }else{
+            $id_categorie='';
+        }
+
+        $contrat= new Contrat();
+
+        $contrat->matricule=$matricule;
+        $contrat->couvertureMaladie=$couverture_maladie;
+        $contrat->dateDebutC=$dateDebutC;
+        $contrat->dateFinC=$dateFinC;
+        $contrat->id_type_contrat=$type_de_contrat;
+        $contrat->id_service=$service;
+        $contrat->id_nature_contrat=$id_nature_contrat;
+        $contrat->regime=$regime;
+
+
+
+        //changer l'etat de tout les anciens contrats
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
+                              ->where('matricule','=',$personne->matricule)
+                            ->where('id_nature_contrat','=',1)
+                          ->first();
+
+            //dd($ancien_contrat);
+        $contrat->id_personne=$personne->id;
+        $contrat->email=$ancien_contrat->email;
+        $contrat->contact=$ancien_contrat->contact;
+        $contrat->position=$ancien_contrat->position;
+        $contrat->id_definition=$id_definition;
+        if(isset($parameters["id_categorie"])){
+            $contrat->id_categorie=$id_categorie;
+        }
+
+      //  $personne->save();
+        $contrat->save();
+
+        $entite=$personne->id_entite;
+
+        return redirect()->back()->with('success',"Le contrat  a été ajouté avec succès");
     }
     public function contratCDDpdf(){
 

@@ -68,6 +68,164 @@
         </div>
     </div>
 </div>
+<!-- modal small -->
+<div class="modal fade" id="RVmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titre_contrat">Renouvellement ou avenant</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('save_renouvellezment_avenant')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <input type="hidden" id="id_personne" name="id_personne" placeholder="Nom" value="" class="form-control" required>
+                    <input type="hidden" id="id_nature_contrat" name="id_nature_contrat" placeholder="Nom" value="" class="form-control" required>
+
+                    <div class="row">
+                        <div class="col-sm-6 top-campaign ">
+
+                            <div class="">
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label for="text-input" class=" form-control-label">Définition* :</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="id_definition" id="id_definition" required>
+                                            <option value="">SELECTIONNER</option>
+                                            @if(isset($definitions))
+                                                @foreach($definitions as $definition)
+                                                    <option  value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label for="text-input" class=" form-control-label">Catégorie :</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="id_categorie" id="id_categorie" required>
+                                            <option value="">SELECTIONNER</option>
+                                            @if(isset($categories))
+                                                @foreach($categories as $categorie)
+                                                    <option  value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+
+                                                @endforeach;
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class=" row form-group">
+                                    <div class="col-sm-5">
+                                        <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <select class="form-control regime" name="regime" id="regime">
+                                            <option value="40H">40H</option>
+                                            <option value="44H">44H</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label for="text-input" class=" form-control-label">Matricule* :</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" id="matricule" name="matricule" placeholder="Matricule" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-sm-5">
+                                        <label for="text-input" class=" form-control-label">Service* :</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="form-control" name="service" id="service" required>
+                                            <option value="">SELECTIONNER UN SERVICE</option>
+                                            @if(isset($services))
+                                                @foreach($services as $service)
+                                                    <option value="{{$service->id}}">{{$service->libelle}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="text-input" class=" form-control-label">Couverture maladie:</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="form-control" name="couverture_maladie" id="couverture_maladie">
+                                            <option value="80">80</option>
+                                            <option value="80R">80R</option>
+                                            <option value="100">100</option>
+                                            <option value="100M">100M</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="text-input" class=" form-control-label">Type de contrat* :</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="form-control" name="type_de_contrat" id="type_contrat" required>
+                                            <option value="">SELECTIONNER</option>
+                                            @if(isset($typecontrats))
+                                                @foreach($typecontrats as $typecontrat)
+                                                    <option value="{{$typecontrat->id}}">{{$typecontrat->libelle}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6 top-campaign ">
+                            <div class="">
+                                <div class="row form-group">
+                                    <div class="col col-md-5">
+                                        <label for="text-input" class=" form-control-label">Date de debut* :</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" required/>
+                                    </div>
+                                </div>
+
+
+                                <div class="row form-group">
+                                    <div class="col col-md-5">
+                                        <label for="text-input" class=" form-control-label">Date de fin :</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="dateFinC" id="dateFinC" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer pull-right">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="zmdi zmdi-edit"></i> Enregistrer
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm" id="reset">
+                            <i class="fa fa-ban"></i> Réinitialiser
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- modal small -->
 <div class="modal fade" id="modalhistorique" tabindex="-1" role="dialog" aria-labelledby="modalhistoriqueLabel" aria-hidden="true">

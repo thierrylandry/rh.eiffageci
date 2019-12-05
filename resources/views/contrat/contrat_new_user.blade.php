@@ -58,7 +58,19 @@
     <div class="row">
         <div class="col-sm-12">
             <h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Etape 3</strong></h2>
-
+            <div class="row form-group">
+                <div class="col-sm-3">
+                    <label for="text-input" class=" form-control-label">Nature de contrat :</label>
+                </div>
+                <div class="col-sm-9">
+                    <select class="form-control" name="id_nature_contrat" id="id_nature_contrat" required>
+                        <option value="">SELECTIONNER</option>
+                        @foreach($nature_contrats as $nature_contrat)
+                            <option {{isset($contrat) && $contrat->id_nature_contrat==$nature_contrat->id?'selected':''}} value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <!-- Stepper -->
             <div class="steps-form-2">
                 <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">

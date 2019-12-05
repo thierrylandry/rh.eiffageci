@@ -166,6 +166,16 @@ Route::get('/lister_contrat/{slug}',[
     'uses'=>'ContratController@lister_contrat',
     'roles' => ['Personnes']
 ])->middleware('auth');
+Route::get('/information_contrat/{id}',[
+    'as'=>'information_contrat',
+    'uses'=>'ContratController@information_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::post('/save_renouvellezment_avenant',[
+    'as'=>'save_renouvellezment_avenant',
+    'uses'=>'ContratController@save_renouvellezment_avenant',
+    'roles' => ['Personnes']
+])->middleware('auth');
 
 Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',

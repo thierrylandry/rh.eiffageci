@@ -15,6 +15,11 @@ class Contrat extends Model
         return $this->belongsTo('App\Categorie', 'id_categorie');
     }
 
+    public function  nature_contrat(){
+
+        return $this->belongsTo('App\Nature_contrat', 'id_nature_contrat');
+    }
+
     public function  type_contrat(){
 
         return $this->belongsTo('App\Typecontrat', 'id_type_contrat');

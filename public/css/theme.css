@@ -4446,6 +4446,18 @@ section {
     background: #57b846;
 }
 
+.role.contrat {
+    background: #00b5e9;
+}
+
+.role.renouvellement {
+    background: #4bb1b1;
+}
+
+.role.avenant {
+    background: #57b846;
+}
+
 .table-top-campaign.table td {
     border-top: none;
     border-bottom: 1px solid #e5e5e5;

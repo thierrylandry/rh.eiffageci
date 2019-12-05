@@ -72,7 +72,12 @@
 
     </div>
 
-    </br>
+
+    @if(isset($ancien_contrat))
+        <div class="alert alert-warning">Attention les valeurs du dernier contrat sont pré-chargées</div>
+    @endif()
+
+    <br>
 
     @if(isset($contrat))
     <form action="{{route('update_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -87,18 +92,8 @@
             <div class="col-sm-6 top-campaign ">
 
                 <div class="">
-                    <div class="row form-group">
-                        <div class="col-sm-3">
-                            <label for="text-input" class=" form-control-label">Nature de contrat :</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="id_nature_contrat" id="id_nature_contrat" required>
-                                <option value="">SELECTIONNER</option>
-                                @foreach($nature_contrats as $nature_contrat)
-                                    <option {{isset($contrat) && $contrat->id_nature_contrat==$nature_contrat->id?'selected':''}} value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="col-sm-9">
+                        <input type="hidden" name="id_nature_contrat" id="id_nature_contrat" value="1">
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
@@ -134,7 +129,7 @@
                             <label for="text-input" class=" form-control-label">Matricule :</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="text-input" name="matricule" placeholder="Matricule" class="form-control" value="{{isset($contrat)?$contrat->matricule:''}}" required>
+                            <input type="text" id="matricule" name="matricule" placeholder="Matricule" class="form-control" value="{{isset($contrat)?$contrat->matricule:''}}" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -142,7 +137,7 @@
                             <label for="text-input" class=" form-control-label">Service :</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="service" required>
+                            <select class="form-control" name="service" id="service" required>
                                 <option value="">SELECTIONNER UN SERVICE</option>
                                 @foreach($services as $service)
                                     <option {{isset($contrat) && $contrat->id_service==$service->id?'selected':''}} value="{{$service->id}}">{{$service->libelle}}</option>
@@ -155,7 +150,7 @@
                             <label for="text-input" class=" form-control-label">Couverture maladie:</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="couverture_maladie">
+                            <select class="form-control" name="couverture_maladie" id="couverture_maladie">
                                 <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
                                 <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
                                 <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>
@@ -168,7 +163,7 @@
                             <label for="text-input" class=" form-control-label">Type de contrat :</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="type_de_contrat" required>
+                            <select class="form-control" name="type_de_contrat" id="type_de_contrat1" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($typecontrats as $typecontrat)
 
@@ -208,7 +203,8 @@
                             <label for="text-input" class=" form-control-label">Date de debut :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
+                            <input type="hidden" id="dateDebutC_memoire" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}" />
+                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
                         </div>
                     </div>
 
@@ -299,6 +295,26 @@ var id_definition=  $("#id_definition").val();
 
         });
       //  alert("ddd");
+    });
+    $("#id_nature_contrat").change(function (e) {
+var id_nature_contrat=  $("#id_nature_contrat").val();
+
+      //  alert("ddd");
+        if(id_nature_contrat!=1){
+            $("#dateDebutC").prop('readonly',true);
+        }else{
+            $("#dateDebutC").prop('readonly',false);
+        }
+
+        if(id_nature_contrat==1){
+            $("#dateDebutC").prop('readonly',true);
+            $("#dateDebutC").prop('readonly',true);
+            $("#dateDebutC").prop('readonly',true);
+            $("#dateDebutC").prop('readonly',true);
+            $("#dateDebutC").prop('readonly',true);
+        }else{
+            $("#dateDebutC").prop('readonly',false);
+        }
     })
 </script>
 @endsection

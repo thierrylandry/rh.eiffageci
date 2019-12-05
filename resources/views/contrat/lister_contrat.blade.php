@@ -45,15 +45,15 @@
                     <thead>
                     <tr>
                         <th>slug</th>
+                        <th>NATURE CONTRAT</th>
                         <th>MATRICULE</th>
                         <th class="">TYPE </br>CONTRAT</th>
                         <th>COUVERTURE </br>MALADIE</th>
                         <th>SERVICE</th>
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
-                        <th>DATE DE DEPART DEFINITIF</th>
+                        <th>DATE DE </br>DEPART DEFINITIF</th>
                         <th>PERIODE </br> ESSAI</th>
-                        <th>TIMELINE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -61,6 +61,14 @@
                     @foreach($contrats as $contrat)
                         <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
                             <td>{{$contrat->id}}</td>
+                            <td>@if(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==1)
+                            <span style="background-color:#57b846; color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==2)
+                                    <span style="background-color:#00b5e9;  color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                        @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==3)
+                                            <span style="background-color:#4bb1b1;  color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                    @endif
+                            </td>
                             <td>{{$contrat->matricule}}</td>
                             <td>@foreach($typecontrats as $typecontrat)
                                     @if($typecontrat->id==$contrat->id_type_contrat)
@@ -81,40 +89,20 @@
                             <td>
                                 {{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("d-m-Y",strtotime($contrat->departDefinitif)):''}}</td>
                             <td> {{ isset($contrat->periode_essaie)?date("d-m-Y",strtotime($contrat->periode_essaie)):'' }}</td>
-                            <td>
 
-                                @if(!empty($contrat->datedebutc) && !empty($contrat->datefinc) && Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) !=0)
-                                <div class=" ">
-                                    @if(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=25)
-                                    <div class="progress mb-3">
-
-                                          <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                    </div>
-@elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>25 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=50)
-                                    <div class="progress mb-3">
-                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                    </div>
-@elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>50 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<=75)
-                                    <div class="progress mb-3">
-                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                             aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                    </div>
-                                    @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>75 && round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))<100)
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ $diff = ((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)) }}%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                 aria-valuemin="0" aria-valuemax="100">{{ round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc))) }}%</div>
-                                        </div>
-                                    @elseif(round(((Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()))*100)/Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::parse($contrat->datefinc)))>=100)
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width:100%" aria-valuenow="{{ $diff = Carbon\Carbon::parse($contrat->datedebutc)->diffInDays(Carbon\Carbon::now()) }}"
-                                                 aria-valuemin="0" aria-valuemax="100">100%</div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @endif</td>
                             <td> <div class="table-data-feature">
+
+                                    @if($contrat->id_nature_contrat==1)
+                                        <div class="input-group-btn">
+                                            <div class="btn-group">
+                                                <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary">Action</button>
+                                                <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
+                                                    <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Renouvellement de contrat" id="modalbtnrenouvellement">Renouvellement de contrat</button>
+                                                    <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Avenant de contrat" id="modalbtnavenant" >Avenant</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
 
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
@@ -182,7 +170,7 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
-                "order": [[ 1, "desc" ]],
+                "order": [[ 0, "desc" ]],
                 "ordering":true,
                 "paging": false,
                 "responsive": true,
@@ -194,6 +182,115 @@
                     { responsivePriority: 2, targets: -1 }
                 ]
             }).column(0).visible(false);
+function vider(){
+    $("#id_definition").val("");
+    $("#id_categorie").val("");
+    $("#matricule").val("");
+    $("#service").val("");
+    $("#couverture_maladie").val();
+    $("#type_contrat").val();
+    $("#email").val("");
+    $("#contact").val("");
+    $("#dateDebutC").val("");
+    $("#dateFinC").val("");
+    $("#periode_essaie").val("");
+    $("#position").val("");
+    $("#id_personne").val("");
+    $("#id_nature_contrat").val("");
+    $("#regime").val("");
+}
+            function information_contrat(ici){
+                var data = table.row($(ici).closest('tr')).data();
+                var id=data[Object.keys(data)[0]];
+                $.get("../information_contrat/"+id,function(data){
+                    console.log(data);
+                    $("#id_definition").val(data.id_definition);
+                    $("#id_categorie").val(data.id_categorie);
+                    $("#matricule").val(data.matricule);
+                    $("#service").val(data.service);
+                    $("#couverture_maladie").val(data.couvertureMaladie);
+                    $("#type_contrat").val(data.id_type_contrat);
+                    $("#email").val(data.email);
+                    $("#contact").val(data.contact);
+                    $("#dateDebutC").val(data.datedebutc);
+                    $("#dateFinC").val(data.datefinc);
+                    $("#periode_essaie").val(data.periode_essaie);
+                    $("#position").val(data.position);
+                    $("#id_personne").val(data.id_personne);
+                    $("#regime").val(data.regime);
+
+
+                });
+            }
+
+            $("#modalbtnrenouvellement").click(function (e) {
+                $typedoc=2;
+                vider();
+                information_contrat(this);
+                if($typedoc==2){
+                $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',false);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                    $("#id_nature_contrat").val($typedoc);
+                }else if($typedoc==3){
+                    $("#titre_contrat").html("AVENANT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',true);
+                    $("#id_nature_contrat").val($typedoc);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                }
+
+
+            });
+            $("#modalbtnavenant").click(function (e) {
+                $typedoc=3;
+                vider();
+                information_contrat(this);
+                if($typedoc==2){
+                $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',false);
+                    $("#id_nature_contrat").val($typedoc);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                }else if($typedoc==3){
+                    $("#titre_contrat").html("AVENANT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',true);
+                    $("#id_nature_contrat").val($typedoc);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                }
+
+
+            });
+            $("#id_definition").change(function (e) {
+                var id_definition=  $("#id_definition").val();
+                $.get("../listercat/"+id_definition,function(data){
+                    console.log(data);
+                    var lesOptions;
+                    $.each(data, function( index, value ) {
+                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                    });
+                    alert(lesOptions);
+                    $("#id_categorie").empty();
+                    $("#id_categorie").append(lesOptions);
+                    //  $("#id_categorie").trigger("chosen:updated");
+
+                });
+                //  alert("ddd");
+            });
             //table.DataTable().draw();
         } );
     </script>

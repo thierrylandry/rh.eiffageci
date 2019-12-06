@@ -406,13 +406,19 @@ $entites= Entite::all();
     }
     public function renouvellement_contratpdf(){
 
-        $pdf = PDF::loadView('contrat.renouvelement_contratpdf');
+        $pdf = PDF::loadView('contrat.renouvellement_contratpdf');
 
         return $pdf->stream();
     }
-    public function avenant_contratpdf(){
+    public function avenant_type_contratpdf(){
 
-        $pdf = PDF::loadView('contrat.avenant_contratpdf');
+        $pdf = PDF::loadView('contrat.avenant_type_contratpdf');
+
+        return $pdf->stream();
+    }
+    public function avenant_renum_contratpdf(){
+
+        $pdf = PDF::loadView('contrat.avenant_renum_contratpdf');
 
         return $pdf->stream();
     }

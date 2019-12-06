@@ -100,7 +100,7 @@
                             <label for="text-input" class=" form-control-label">Définition :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_definition" id="id_definition" required>
+                            <select class="form-control id_definition" name="id_definition" id="id_definition" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($definitions as $definition)
                                     <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}} value="{{$definition->id}}">{{$definition->libelle}}</option>
@@ -113,7 +113,7 @@
                             <label for="text-input" class=" form-control-label">Catégorie :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_categorie" id="id_categorie">
+                            <select class="form-control id_categorie" name="id_categorie" id="id_categorie">
                                 <option value="">SELECTIONNER</option>
                                 @if(isset($categories))
                                     @foreach($categories as $categorie)
@@ -123,6 +123,18 @@
                                 @endif
                             </select>
                         </div>
+                    </div>
+                    <div class=" row form-group">
+                        <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Régime </br>hebdomadaire</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control regime" name="regime" id="regime">
+                                <option value="40H">40H</option>
+                                <option value="44H">44H</option>
+                            </select>
+                        </div>
+
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
@@ -281,40 +293,23 @@
     </form>
             <script src="{{ asset("js/jquery.min.js") }}"></script>
 <script>
-    $("#id_definition").change(function (e) {
-var id_definition=  $("#id_definition").val();
+    function envoie_liste_categorie(){
+        var id_definition=  $(".id_definition").val();
         $.get("../listercat/"+id_definition,function(data){
             console.log(data);
             var lesOptions;
             $.each(data, function( index, value ) {
                 lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
             });
-            $("#id_categorie").empty();
-            $("#id_categorie").append(lesOptions);
-          //  $("#id_categorie").trigger("chosen:updated");
+            $(".id_categorie").empty();
+            $(".id_categorie").append(lesOptions);
+            //  $("#id_categorie").trigger("chosen:updated");
 
         });
-      //  alert("ddd");
+    }
+    $(".id_definition").change(function (e) {
+        envoie_liste_categorie();
+        //  alert("ddd");
     });
-    $("#id_nature_contrat").change(function (e) {
-var id_nature_contrat=  $("#id_nature_contrat").val();
-
-      //  alert("ddd");
-        if(id_nature_contrat!=1){
-            $("#dateDebutC").prop('readonly',true);
-        }else{
-            $("#dateDebutC").prop('readonly',false);
-        }
-
-        if(id_nature_contrat==1){
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-        }else{
-            $("#dateDebutC").prop('readonly',false);
-        }
-    })
 </script>
 @endsection

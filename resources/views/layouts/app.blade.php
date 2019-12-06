@@ -93,7 +93,7 @@
                                         <label for="text-input" class=" form-control-label">Définition* :</label>
                                     </div>
                                     <div class="col-sm-7">
-                                        <select class="form-control" name="id_definition" id="id_definition" required>
+                                        <select class="form-control" name="id_definition" id="id_definition1" required>
                                             <option value="">SELECTIONNER</option>
                                             @if(isset($definitions))
                                                 @foreach($definitions as $definition)
@@ -108,7 +108,7 @@
                                         <label for="text-input" class=" form-control-label">Catégorie :</label>
                                     </div>
                                     <div class="col-sm-7">
-                                        <select class="form-control" name="id_categorie" id="id_categorie" required>
+                                        <select class="form-control" name="id_categorie" id="id_categorie1" required>
                                             <option value="">SELECTIONNER</option>
                                             @if(isset($categories))
                                                 @foreach($categories as $categorie)

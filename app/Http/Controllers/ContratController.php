@@ -34,21 +34,23 @@ $services = Services::all();
     public function contrat_new_user2($slug){
         $definitions = Definition::all();
         $personne= Personne::where('slug', $slug)->get()->first();
+
         $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
+        $categories = Categorie::where('id_definition','=',$contrat->id_definition);
         $ancien_contrat=true;
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
 
     }
     public function listercat($id_definition){
-        $categories_initials = Categorie::where('id_definition','=',$id_definition)->select('libelle')->get();
+        $categories_initials = Categorie::where('id_definition','=',$id_definition)->select('id','libelle')->get();
 
         $categories = Array();
         foreach($categories_initials as $lacategorie):
@@ -89,7 +91,19 @@ $services = Services::all();
 
     public function information_contrat($id){
         $contrats = Contrat::find($id);
-        return $contrats;
+        $categories_initials = Categorie::where('id_definition','=',$contrats->id_definition)->get();
+        $tab[0]=$contrats;
+
+        $categories = Array();
+        foreach($categories_initials as $lacategorie):
+
+            if(!in_array($lacategorie,$categories)){
+                $categories[]=$lacategorie;
+            }
+        endforeach;
+
+        $tab[1]=$categories;
+        return $tab;
 
      }
 
@@ -113,7 +127,8 @@ $services = Services::all();
         $email= $parameters["email"];
         $contact= $parameters["contact"];
         $position= $parameters["position"];
-        $id_nature_contrat= $parameters["id_nature_contrat"];
+        $regime= $parameters["regime"];
+       // $id_nature_contrat= $parameters["id_nature_contrat"];
 
         $contrat=  Contrat::find($id_contrat);
 
@@ -128,7 +143,8 @@ $services = Services::all();
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
-        $contrat->id_nature_contrat=$id_nature_contrat;
+        $contrat->regime=$regime;
+     //   $contrat->id_nature_contrat=$id_nature_contrat;
         $personne = Personne::where('slug','=',$slug)->get()->first();
 
         //changer l'etat de tout les anciens contrats
@@ -239,6 +255,7 @@ $entites= Entite::all();
         $contact= $parameters["contact"];
         $position= $parameters["position"];
         $id_definition= $parameters["id_definition"];
+        $regime= $parameters["regime"];
         $id_nature_contrat= $parameters["id_nature_contrat"];
 
         if(isset($parameters["id_categorie"])){
@@ -258,7 +275,7 @@ $entites= Entite::all();
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
         $contrat->id_nature_contrat=$id_nature_contrat;
-
+        $contrat->regime=$regime;
 
 
         //changer l'etat de tout les anciens contrats
@@ -330,7 +347,8 @@ $entites= Entite::all();
         $regime= $parameters["regime"];
 
         if(isset($parameters["id_categorie"])){
-            $id_categorie= Categorie::where('libelle','=',$parameters["id_categorie"])->where('regime','=',$regime)->first()->id;
+              //dd($parameters["id_categorie"]);
+            $id_categorie= Categorie::where('id','=',$parameters["id_categorie"])->orWhere('libelle','=',$parameters["id_categorie"])->where('regime','=',$regime)->first()->id;
           //  dd($id_categorie);
         }else{
             $id_categorie='';
@@ -351,8 +369,8 @@ $entites= Entite::all();
 
         //changer l'etat de tout les anciens contrats
         $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
-                              ->where('matricule','=',$personne->matricule)
-                            ->where('id_nature_contrat','=',1)
+                              ->where('matricule','=',$personne->matricule)->where('etat','=',1)
+                           // ->where('id_nature_contrat','=',1)
                           ->first();
 
             //dd($ancien_contrat);
@@ -366,6 +384,8 @@ $entites= Entite::all();
         }
 
       //  $personne->save();
+        $ancien_contrat->etat=2;
+        $ancien_contrat->save();
         $contrat->save();
 
         $entite=$personne->id_entite;

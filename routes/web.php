@@ -214,6 +214,7 @@ Route::get('/avenant_renum_contratpdf',[
     'roles' => ['Personnes']
 ])->middleware('auth');
 
+
 Route::get('/Ajouter_partenaire',[
     'as'=>'Ajouter_partenaire',
     'uses'=>'PersonneController@Ajouter_partenaire',

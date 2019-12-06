@@ -144,23 +144,52 @@
                         <a class="js-arrow " href="#">
                             <i class="fa fa-list" ></i>RECRUTEMENTS</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
-                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
 
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
                             <li class="@yield('recrutement.demande')">
                                 <a href="{{route('recrutement.demande')}}"></i>Demande</a>
                             </li>
                             @endif
-                                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
 
-                                <li class="@yield('recrutement.gestion')">
-                                     <a href="{{route('recrutement.gestion')}}"></i>Gestion</a>
-                                </li>
-                                @endif
-                                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
                             <li class="@yield('recrutement.validation')">
                                 <a href="{{route('recrutement.validation')}}"></i>Validation</a>
                             </li>
-                                @endif
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+                                <li class="@yield('recrutement.gestion')">
+                                    <a href="{{route('recrutement.gestion')}}"></i>Gestion</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
+                    <li class="@yield('modifications') has-sub">
+                        <a class="js-arrow " href="#">
+                            <i class="fa fa-list" ></i>DEMANDE MODIFICATION</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('modifications')>
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
+
+                                <li class="@yield('modification.demande')">
+                                    <a href="{{route('modification.demande')}}"></i>Demande</a>
+                                </li>
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+
+                                <li class="@yield('recrutement.gestion')">
+                                    <a href="{{route('recrutement.gestion')}}"></i>Validation</a>
+                                </li>
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
+                                <li class="@yield('recrutement.validation')">
+                                    <a href="{{route('recrutement.validation')}}"></i>Gestion</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endif

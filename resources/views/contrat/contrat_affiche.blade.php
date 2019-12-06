@@ -100,7 +100,7 @@
                             <label for="text-input" class=" form-control-label">Définition :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_definition" id="id_definition" required>
+                            <select class="form-control id_definition" name="id_definition" id="id_definition" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($definitions as $definition)
                                     <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}} value="{{$definition->id}}">{{$definition->libelle}}</option>
@@ -113,7 +113,7 @@
                             <label for="text-input" class=" form-control-label">Catégorie :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_categorie" id="id_categorie">
+                            <select class="form-control id_categorie" name="id_categorie" id="id_categorie">
                                 <option value="">SELECTIONNER</option>
                                 @if(isset($categories))
                                     @foreach($categories as $categorie)
@@ -123,6 +123,18 @@
                                 @endif
                             </select>
                         </div>
+                    </div>
+                    <div class=" row form-group">
+                        <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Régime </br>hebdomadaire</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control regime" name="regime" id="regime">
+                                <option value="40H">40H</option>
+                                <option value="44H">44H</option>
+                            </select>
+                        </div>
+
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
@@ -270,6 +282,201 @@
 
             </div>
         </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card" style="height: 100% !important">
+                            <div class="card-header">
+                                <strong>Condition de rémunération</strong>
+                            </div>
+                            <div class="card-body" >
+                                    <form method="post" action="{{route("recrutement.ConditionRemuneration")}}">
+                                        @csrf
+                                        <input type="hidden" id="slugConditionRemuneration" name="slugConditionRemuneration" value="" />
+                                        <div id="rubriques" class="form-inline">
+                                            <?php $i=0; ?>
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]"  class="  type_c form-control input-field rubrique" readonly="true" style="width: 260px">
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++?>
+                                                                @if($i==1)
+                                                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                                @endif @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" id="Salaire_de_base" class="valeur_c salaire_base form-control" placeholder="Valeur" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                        <?php $i=0; ?>
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++?>
+                                                                @if($i==2)
+                                                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==2?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control" placeholder="Valeur" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                        <?php $i=0; ?>
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++?>
+                                                                @if($i==3)
+                                                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==3?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                        <?php $i=0; ?>
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++?>
+                                                                @if($i==4)
+                                                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==4?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                        <?php $i=0; ?>
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++?>
+                                                                @if($i==5)
+                                                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==5?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                            </br>
+
+                                        </div>
+                                        <h5>Rubrique Additionnelle</h5>
+                                        <div id="rubriques_petit" class="form-inline">
+
+                                        </div>
+                                        Ajouter une rubrique salariale
+                                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addrubrique">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        </button>
+                                        <div id="rubriquetemplate" class="row clearfix" style="display: none">
+
+                                            <div class=" form-control-label">
+                                                <label for="rubrique[]">Rubrique</label>
+                                                <div class="form-group col-sm-12">
+                                                    <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                        <?php $i=0?>
+                                                        @if(isset($rubrique_salaires))
+                                                            @foreach($rubrique_salaires as $rubrique_salaire)
+                                                                <?php $i++;?>
+                                                                @if($i>=6)
+                                                                    <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-control-label">
+                                                <label for="valeur[]">Valeur</label>
+                                                <div class="form-group col-sm-12">
+                                                    <div class="form-line">
+                                                        <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr width="100%" color="blue">
+                                        </div>
+                                        <div class="modal-footer">
+                                            </br>
+                                            <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                                Enregistrer</button>
+                                        </div>
+                                    </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </br>
         <div class="card-footer pull-right">
             <button type="submit" class="btn btn-primary btn-sm">
                 <i class="zmdi zmdi-edit"></i> Enregistrer
@@ -281,40 +488,23 @@
     </form>
             <script src="{{ asset("js/jquery.min.js") }}"></script>
 <script>
-    $("#id_definition").change(function (e) {
-var id_definition=  $("#id_definition").val();
+    function envoie_liste_categorie(){
+        var id_definition=  $(".id_definition").val();
         $.get("../listercat/"+id_definition,function(data){
             console.log(data);
             var lesOptions;
             $.each(data, function( index, value ) {
                 lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
             });
-            $("#id_categorie").empty();
-            $("#id_categorie").append(lesOptions);
-          //  $("#id_categorie").trigger("chosen:updated");
+            $(".id_categorie").empty();
+            $(".id_categorie").append(lesOptions);
+            //  $("#id_categorie").trigger("chosen:updated");
 
         });
-      //  alert("ddd");
+    }
+    $(".id_definition").change(function (e) {
+        envoie_liste_categorie();
+        //  alert("ddd");
     });
-    $("#id_nature_contrat").change(function (e) {
-var id_nature_contrat=  $("#id_nature_contrat").val();
-
-      //  alert("ddd");
-        if(id_nature_contrat!=1){
-            $("#dateDebutC").prop('readonly',true);
-        }else{
-            $("#dateDebutC").prop('readonly',false);
-        }
-
-        if(id_nature_contrat==1){
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-            $("#dateDebutC").prop('readonly',true);
-        }else{
-            $("#dateDebutC").prop('readonly',false);
-        }
-    })
 </script>
 @endsection

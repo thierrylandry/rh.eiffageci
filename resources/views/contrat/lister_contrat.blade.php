@@ -92,13 +92,21 @@
 
                             <td> <div class="table-data-feature">
 
-                                    @if($contrat->id_nature_contrat==1)
+                                    @if($contrat->etat==1)
                                         <div class="input-group-btn">
                                             <div class="btn-group">
                                                 <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary">Action</button>
                                                 <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
                                                     <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Renouvellement de contrat" id="modalbtnrenouvellement">Renouvellement de contrat</button>
                                                     <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Avenant de contrat" id="modalbtnavenant" >Avenant</button>
+                                                    @if($contrat->id_nature_contrat==1)
+                                                    <a href="{{route("contratcddpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
+                                                        @elseif($contrat->id_nature_contrat==2)
+                                                        <a href="{{route("renouvellement_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
+                                                        @elseif($contrat->id_nature_contrat==3)
+                                                        <a href="{{route("avenant_type_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
+                                                        <a href="{{route("avenant_renum_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le couriel</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -183,8 +191,8 @@
                 ]
             }).column(0).visible(false);
 function vider(){
-    $("#id_definition").val("");
-    $("#id_categorie").val("");
+    $("#id_definition1").val("");
+    $("#id_categorie1").val("");
     $("#matricule").val("");
     $("#service").val("");
     $("#couverture_maladie").val();
@@ -197,6 +205,7 @@ function vider(){
     $("#position").val("");
     $("#id_personne").val("");
     $("#id_nature_contrat").val("");
+    $("#service").val("");
     $("#regime").val("");
 }
             function information_contrat(ici){
@@ -204,20 +213,29 @@ function vider(){
                 var id=data[Object.keys(data)[0]];
                 $.get("../information_contrat/"+id,function(data){
                     console.log(data);
-                    $("#id_definition").val(data.id_definition);
-                    $("#id_categorie").val(data.id_categorie);
-                    $("#matricule").val(data.matricule);
-                    $("#service").val(data.service);
-                    $("#couverture_maladie").val(data.couvertureMaladie);
-                    $("#type_contrat").val(data.id_type_contrat);
-                    $("#email").val(data.email);
-                    $("#contact").val(data.contact);
-                    $("#dateDebutC").val(data.datedebutc);
-                    $("#dateFinC").val(data.datefinc);
+                    $("#id_definition1").val(data[0].id_definition);
+                    $("#id_categorie1").empty();
+
+                    var lesOptions;
+                    $.each(data[1], function( index, value ) {
+                        lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
+                    });
+
+                    $("#id_categorie1").append(lesOptions);
+                    $("#id_categorie1").val(data[0].id_categorie);
+                    $("#matricule").val(data[0].matricule);
+                    $("#service").val(data[0].service);
+                    $("#couverture_maladie").val(data[0].couvertureMaladie);
+                    $("#type_contrat").val(data[0].id_type_contrat);
+                    $("#email").val(data[0].email);
+                    $("#contact").val(data[0].contact);
+                    $("#dateDebutC").val(data[0].datedebutc);
+                    $("#dateFinC").val(data[0].datefinc);
                     $("#periode_essaie").val(data.periode_essaie);
-                    $("#position").val(data.position);
-                    $("#id_personne").val(data.id_personne);
-                    $("#regime").val(data.regime);
+                    $("#position").val(data[0].position);
+                    $("#id_personne").val(data[0].id_personne);
+                    $("#service").val(data[0].id_service);
+                    $("#regime").val(data[0].regime);
 
 
                 });
@@ -275,17 +293,16 @@ function vider(){
 
 
             });
-            $("#id_definition").change(function (e) {
-                var id_definition=  $("#id_definition").val();
+            $("#id_definition1").change(function (e) {
+                var id_definition=  $("#id_definition1").val();
                 $.get("../listercat/"+id_definition,function(data){
                     console.log(data);
                     var lesOptions;
                     $.each(data, function( index, value ) {
                         lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
                     });
-                    alert(lesOptions);
-                    $("#id_categorie").empty();
-                    $("#id_categorie").append(lesOptions);
+                    $("#id_categorie1").empty();
+                    $("#id_categorie1").append(lesOptions);
                     //  $("#id_categorie").trigger("chosen:updated");
 
                 });

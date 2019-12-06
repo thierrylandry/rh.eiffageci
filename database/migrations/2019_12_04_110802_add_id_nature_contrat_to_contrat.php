@@ -13,11 +13,14 @@ class AddIdNatureContratToContrat extends Migration
      */
     public function up()
     {
-        Schema::table('contrat', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('id_nature_contrat')->nullable();
-            $table->foreign('id_nature_contrat')->references('id')->on('nature_contrat');
-        });
+        if(!Schema::hasColumn('contrat','id_nature_contrat')){
+            Schema::table('contrat', function (Blueprint $table) {
+                //
+                $table->unsignedBigInteger('id_nature_contrat')->nullable();
+                $table->foreign('id_nature_contrat')->references('id')->on('nature_contrat');
+            });
+        }
+
     }
 
     /**

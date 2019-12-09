@@ -29,9 +29,6 @@ class CreateTableRecrutement extends Migration
             $table->float('surSalaire')->nullable();
             $table->float('primeTp')->nullable();
             $table->float('totalBrut')->nullable();
-            $table->float('totalNet1part')->nullable();
-            $table->float('totalNetparts')->nullable();
-
             $table->boolean('telephone_portable')->default(false);
             $table->string('forfait')->nullable();
             $table->text('debit_internet')->nullable();

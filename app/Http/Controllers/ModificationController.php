@@ -11,6 +11,7 @@ use App\Entite;
 use App\Forfait;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
+use App\Modification;
 use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
@@ -30,20 +31,19 @@ class ModificationController extends Controller
 
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
-       // $avantagedotations = Avantagedotation::all();
         $debit_internets=Debit_internet::all();
         $forfaits = Forfait::all();
         $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $modifications = Modification::all();
         $uniteJours=uniteJour::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','uniteJours'));
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','uniteJours','modifications'));
     }
     public function modification($slug){
 
-        $modification = Recrutement::where('slug','=',$slug)->first();
+        $modifications = Modification::where('slug','=',$slug)->first();
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
        // $avantagedotations = Avantagedotation::all();
@@ -53,15 +53,15 @@ class ModificationController extends Controller
         $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        $competences= json_decode($modification->competenceRecherche);
-        $taches= json_decode($modification->tache);
+        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $competences= json_decode($modifications->competenceRecherche);
+        $taches= json_decode($modifications->tache);
         $uniteJours=uniteJour::all();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));
     }
     public function afficher($slug){
 
-        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $recrutement = Modification::where('slug','=',$slug)->first();
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
        // $avantagedotations = Avantagedotation::all();
@@ -71,14 +71,14 @@ class ModificationController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
         return view('recrutements/Consulrecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
     }
     public function liste_salaire($slug){
 
-        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $recrutement = Modification::where('slug','=',$slug)->first();
         $rubrique_salaires= Rubrique_salaire::all();
         $resultat="";
         if(!empty($recrutement->salaire)){
@@ -123,7 +123,7 @@ $j=0;
     }
      public function monrecrutement($slug){
 
-        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $recrutement = Modification::where('slug','=',$slug)->first();
         $rubrique_salaires= Rubrique_salaire::all();
 
 
@@ -215,7 +215,7 @@ $j=0;
 
       }
 
-      $recruement = Recrutement::where('slug','=',$slug)->first();
+      $recruement = Modification::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
         $recruement->salaire=json_encode($rubriques->toArray());
@@ -251,7 +251,7 @@ $j=0;
         $assurance_maladie=$parameters['assurance_maladie'];
         $nombre_personne=$parameters['nombre_personne'];
 
-        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $recruement = Modification::where('slug','=',$slug)->first();
 
         $recruement->posteAPouvoir=$posteAPouvoir;
       /*  $recruement->id_entite=$id_entite;
@@ -301,7 +301,7 @@ $j=0;
     }
 
     public function ActionValider($slug){
-        $recruement = Recrutement::where('slug','=',$slug)->first();
+        $recruement = Modification::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
         $recruement->etat=2;

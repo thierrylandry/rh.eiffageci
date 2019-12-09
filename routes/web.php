@@ -324,8 +324,8 @@ Route::get('/expatriepdf',[
     'uses'=>'EtatsController@expatriepdf',
     'roles' => ['Etats']
 ])->middleware('auth')->middleware('roles');
-//invite
 
+//invite
 Route::get('/invite',[
     'as'=>'invite',
     'uses'=>'InviterController@invite',

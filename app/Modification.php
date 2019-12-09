@@ -22,7 +22,7 @@ class Modification extends Model
     public function service(){
         return $this->belongsTo(Services::class, "id_service");
     }
-    public function unitejour(){
-        return $this->belongsTo(uniteJour::class, "id_uniteJour");
+    public function personne(){
+        return $this->belongsTo(Personne::class, "id_personne");
     }
 }

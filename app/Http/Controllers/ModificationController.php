@@ -8,10 +8,12 @@ use App\Categorie;
 use App\Debit_internet;
 use App\Definition;
 use App\Entite;
+use App\Fonction;
 use App\Forfait;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
 use App\Modification;
+use App\Personne;
 use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
@@ -31,15 +33,13 @@ class ModificationController extends Controller
 
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
-        $debit_internets=Debit_internet::all();
-        $forfaits = Forfait::all();
-        $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::all();
-        $uniteJours=uniteJour::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','uniteJours','modifications'));
+        $personnes = Personne::all();
+        $fonctions = Fonction::all();
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','categories'));
     }
     public function modification($slug){
 

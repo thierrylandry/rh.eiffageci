@@ -20,7 +20,7 @@
                 @if(isset($modification))
                     <div class="table-data__tool-right">
                         <a href="{{route('modifications.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                            <i class="zmdi zmdi-plus"></i>DEMANDER UN RECRUTEMENT</a>
+                            <i class="zmdi zmdi-plus"></i>DEMANDER UNE MODIFICATION</a>
                     </div>
                 @endif
             </div>
@@ -37,29 +37,25 @@
             <div class="col-lg-12">
                 <div class="card" style="height: 100% !important">
                     <div class="card-header">
-                        <strong> Information</strong>
+                        <strong>Information employé</strong>
                     </div>
                     <div class="card-body" >
                         <div class="row form-group">
-                            <div class="col-12 col-md-3">
-                                <label for="text-input" class=" form-control-label">Poste à pouvoir *</label>
-                                <input type="text" id="posteAPouvoir" name="posteAPouvoir" placeholder="Entrer le poste à pouvoir" class="form-control" value="{{isset($modification)?$modification->posteAPouvoir:""}}">
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <label for="text-input" class=" form-control-label">Nombre de personne</label>
-                                <input class="form-control" type="number" min="1" value="{{isset($modification)?$modification->NbrePersonne:1}}" id="nombre_personne" name="nombre_personne"/>
 
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="col-12 col-md-3">
-                                <label for="text-input" class=" form-control-label">Entite *</label>
-                                <select class="form-control" id="id_entite" name="id_entite" >
-                                    @foreach($entites as $entite)
-                                        <option value="{{$entite->id}}" {{isset($modification) && $modification->id_entite==$entite->id?"selected":Auth::user()->id_entite==$entite->id?"selected":""}} >{{$entite->libelle}}</option>
+                            <div class="col-12 col-md-6">
+                                <label for="text-input" class=" form-control-label">Personne concernée</label>
+                                <select class="form-control" id="id_personne" name="id_personne" >
+                                    @foreach($personnes as $personne)
+                                        <option value="{{$personne->id}}" {{isset($modification) && $modification->id_personne==$personne->id?"selected":Auth::user()->id_entite==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                                <label for="text-input" class=" form-control-label">Matricule</label>
+                                <select class="form-control" id="matricule" name="matricule">
+                                    <option value=""></option>
+
                                 </select>
                             </div>
 
@@ -87,176 +83,58 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6"   >
+            <div class="col-lg-12"   >
                 <div class="card" style="height: 100% !important" >
                     <div class="card-header">
-                        <strong>Compétence recherchées</strong>
-                    </div>
-                    <div class="card-body card-block">
-                        Ajouter une compétence
-                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addcompetence">
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        </button>
-                        </br>
-                        </br>
-                        <div id="competences" class="form-inline">
-                            @if(isset($competences))
-                                @foreach($competences as $competence)
-                            <div class="form-control-label">
-                                <div class="form-group col-sm-6">
-                                    <div class="form-line">
-                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence)?$competence:old('competences[]') }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr width="100%" color="blue">
-                                @endforeach
-                                @endif
-                        </div>
-                        <div id="competencetemplate" class="row clearfix" style="display: none">
-
-                            <div class="form-control-label">
-                                <div class="form-group col-sm-6">
-                                    <div class="form-line">
-                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('competences[]') }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr width="100%" color="blue">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6"   >
-                <div class="card" style="height: 100% !important" >
-                    <div class="card-header">
-                        <strong>Responsabilités ou tâches</strong>
-                    </div>
-                    <div class="card-body card-block">
-                        Ajouter une Responsabilité ou une tâche
-                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float" id="addtache">
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        </button>
-                        </br>
-                        </br>
-                        <div id="taches" class="form-inline">
-                            @if(isset($taches))
-                                @foreach($taches as $tache)
-                            <div class="form-control-label">
-
-                                <div class="form-group col-sm-6">
-                                    <div class="form-line">
-                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache)?$tache:old('taches[]') }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr width="100%" color="blue">
-                                @endforeach
-                                @endif
-                        </div>
-                        <div id="tachetemplate" class="row clearfix" style="display: none">
-
-                            <div class="form-control-label">
-                                <div class="form-group col-sm-6">
-                                    <div class="form-line">
-                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('taches[]') }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr width="100%" color="blue">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card" style="height: 100% !important">
-                    <div class="card-header">
-                        <strong>Contrat</strong>
-                    </div>
-                    <div class="card" style="height: 100% !important">
-                        <div class="card-body" >
-                            <div class="row">
-                                <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Type de contrat *</label>
-                                    <select class="form-control" name="id_type_contrat" required>
-                                        @foreach($typecontrats as $typecontrat)
-                                            <option value="{{$typecontrat->id}}" {{isset($modification) && $modification->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Date de debut</label>
-                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($modification)? $modification->dateDebut:''}}"/>
-                                </div>
-                                <div class=" col-lg-1">
-                                    <label for="text-input" class=" form-control-label">Durée</label>
-                                    <input type="number" name="dureeMission" class="form-control" value="{{isset($modification)? $modification->dureeMission:''}}"/>
-                                </div>
-                                <div class=" col-lg-2">
-                                    <label for="text-input" class=" form-control-label">Unité</label>
-                                    <select class="form-control" name="id_uniteJour" required>
-                                        @foreach($uniteJours as $uniteJour)
-                                            <option value="{{$uniteJour->id}}" {{isset($modification) && $modification->id_unite==$uniteJour->id?"selected":""}}>{{$uniteJour->libelle}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                    <input type="text" name="budgetMensuel" class="form-control" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card" style="height: 100% !important">
-                    <div class="card-header">
-                        <strong>Avantage/Dotation (mensuel)</strong>
+                        <strong>Modification demandée</strong>
                     </div>
                     <div class="card-body" >
                         <div class="row">
-                            <div class=" col-lg-3">
-                                <label>Téléphone portable</label>
-                                <select class="form-control" name="telephone_portable" id="telephone_portable">
-                                    <option value="0" {{isset($modification)&& $modification->telephone_portable==0?"selected":""}} >non</option>
-                                    <option value="1" {{isset($modification)&& $modification->telephone_portable==1?"selected":""}}>oui</option>
-                                </select>
-                            </div><div class=" col-lg-3">
-                                <label>Forfait</label>
-                                <select class="form-control" name="forfait" id="forfait">
-                                    <option value=""></option>
-                                    @foreach($forfaits as $forfait)
-                                        <option value="{{$forfait->libelle}}">{{$forfait->libelle}}</option>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Fonction</label>
+                                <select class="form-control" name="id_fonction" required>
+                                    @foreach($fonctions as $fonction)
+                                        <option value="{{$fonction->id}}" {{isset($modification) && $modification->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
                                     @endforeach
                                 </select>
-                            </div><div class=" col-lg-3">
-                                <label>Débit internet</label>
-                                <select class="form-control" name="debit_internet" id="debit_internet">
-                                    <option value=""></option>
-                                    @foreach($debit_internets as $debit_internet)
-                                        <option value="{{$debit_internet->libelle}}">{{$debit_internet->libelle}}</option>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Type de contrat</label>
+                                <select class="form-control" name="id_type_contrat" required>
+                                    @foreach($typecontrats as $typecontrat)
+                                        <option value="{{$typecontrat->id}}" {{isset($modification) && $modification->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
                                     @endforeach
                                 </select>
-                            </div><div class=" col-lg-3">
-                                <label>Assurence maladie</label>
-                                <select class="form-control" name="assurance_maladie" id="assurance_maladie">
-                                    <option value=""></option>
-                                    @foreach($assurance_maladies as $assurance_maladie)
-                                        <option value="{{$assurance_maladie->libelle}}">{{$assurance_maladie->libelle}}</option>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Date de fin de contrat</label>
+                                <input type="date" name="dateDebut" class="form-control" value="{{isset($modification)? $modification->dateDebut:''}}"/>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Catégorie profesionnelle</label>
+                                <select class="form-control" name="id_categorie" required>
+                                    @foreach($categories as $categorie)
+                                        <option value="{{$categorie->id}}" {{isset($modification) && $modification->id_categorie==$categorie->id?"selected":""}}>{{$categorie->libelle}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Régime</label>
+                                <select class="form-control" name="regime" required>
+                                        <option value="40H">40H</option>
+                                        <option value="44H">44H</option>
+                                </select>
+                            </div>
+                            <div class=" col-lg-4">
+                                <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
+                                <input type="text" name="budgetMensuel" class="form-control" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="card-footer pull-right">
             <button type="submit" class="btn {{isset($modification)?"btn-info":"btn-success"}} btn-sm">
                 <i class="zmdi zmdi-edit"></i>{{isset($modification)? "Modifier la demande":'Envoyer la demande'}}
@@ -314,31 +192,31 @@
                             <td>
                                 <div class="table-data-feature">
                                     @if($modification->etat==1)
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{route("recrutement.modification",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="{{route("modification.modification",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>
-                                        <a  href="{{route("recrutement.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a  href="{{route("modification.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
 
 
                                     @elseif($modification->etat==2)
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
                                     @elseif($modification->etat==3)
 
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
                                     @elseif($modification->etat==4)
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
-                                        <a href="{{route("recrutement.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("modification.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
                                     @endif

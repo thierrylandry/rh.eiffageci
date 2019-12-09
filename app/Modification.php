@@ -17,7 +17,7 @@ class Modification extends Model
         return $this->belongsTo(Typecontrat::class, "id_type_contrat");
     }
     public function contrat(){
-        return $this->belongsTo(Typecontrat::class, "id_contrat");
+        return $this->belongsTo(Contrat::class, "id_contrat");
     }
     public function entite(){
         return $this->belongsTo(Entite::class, "id_entite");
@@ -27,5 +27,11 @@ class Modification extends Model
     }
     public function personne(){
         return $this->belongsTo(Personne::class, "id_personne");
+    }
+    public function categorie(){
+        return $this->belongsTo(Categorie::class, "id_categorie");
+    }
+    public function fonction(){
+        return $this->belongsTo(Fonction::class, "id_fonction");
     }
 }

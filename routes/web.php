@@ -214,7 +214,6 @@ Route::get('/avenant_renum_contratpdf',[
     'roles' => ['Personnes']
 ])->middleware('auth');
 
-
 Route::get('/Ajouter_partenaire',[
     'as'=>'Ajouter_partenaire',
     'uses'=>'PersonneController@Ajouter_partenaire',
@@ -646,3 +645,11 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
 
 });
 
+//demande de modification de contrat
+Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Recrutements'], function () {
+
+    Route::get('/demande',[
+        'as'=>'demande',
+        'uses'=>'ModificationController@demande_modification',
+    ])->middleware('roles')->middleware('auth');
+});

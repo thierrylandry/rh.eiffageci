@@ -165,7 +165,7 @@
                         </ul>
                     </li>
                 @endif
-                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
+                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Validation_recrutement') || Auth::user()->hasRole('Gestion_recrutement'))
                     <li class="@yield('modifications') has-sub">
                         <a class="js-arrow " href="#">
                             <i class="fa fa-list" ></i>DEMANDE MODIFICATION</a>
@@ -178,16 +178,16 @@
                                 </li>
                             @endif
 
-                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
 
-                                <li class="@yield('recrutement.gestion')">
-                                    <a href="{{route('recrutement.gestion')}}"></i>Validation</a>
+                                <li class="@yield('modification.validation')">
+                                    <a href="{{route('modification.validation')}}"></i>Validation</a>
                                 </li>
                             @endif
 
-                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
-                                <li class="@yield('recrutement.validation')">
-                                    <a href="{{route('recrutement.validation')}}"></i>Gestion</a>
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+                                <li class="@yield('modification.gestion')">
+                                    <a href="{{route('modification.gestion')}}"></i>Gestion</a>
                                 </li>
                             @endif
                         </ul>

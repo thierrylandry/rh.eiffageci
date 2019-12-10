@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Assurance_maladie;
-use App\Avantagedotation;
 use App\Categorie;
-use App\Debit_internet;
 use App\Definition;
 use App\Entite;
 use App\Fonction;
-use App\Forfait;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
 use App\Modification;
@@ -39,42 +36,35 @@ class ModificationController extends Controller
         $modifications = Modification::all();
         $personnes = Personne::all();
         $fonctions = Fonction::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','categories'));
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions'));
     }
     public function modification($slug){
 
         $modifications = Modification::where('slug','=',$slug)->first();
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
-       // $avantagedotations = Avantagedotation::all();
-        $debit_internets=Debit_internet::all();
-        $forfaits = Forfait::all();
         $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::distinct('libelle')->get();
+        $services = Services::all();
+        $definitions = Definition::all();
+        // $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $competences= json_decode($modifications->competenceRecherche);
+        $taches= json_decode($modifications->tache);
+        $uniteJours=uniteJour::all();
+        return view('modifications/ficheModification',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));
+    }
+    public function afficher($slug){
+
+        $modifications = Modification::where('slug','=',$slug)->first();
+        $entites = Entite::all();
+        $typecontrats = Typecontrat::all();
+        $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($modifications->competenceRecherche);
         $taches= json_decode($modifications->tache);
-        $uniteJours=uniteJour::all();
-        return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));
-    }
-    public function afficher($slug){
-
-        $recrutement = Modification::where('slug','=',$slug)->first();
-        $entites = Entite::all();
-        $typecontrats = Typecontrat::all();
-       // $avantagedotations = Avantagedotation::all();
-        $debit_internets=Debit_internet::all();
-        $forfaits = Forfait::all();
-        $assurance_maladies= Assurance_maladie::all();
-        $categories = Categorie::all();
-        $services = Services::all();
-        $definitions = Definition::all();
-        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        $competences= json_decode($recrutement->competenceRecherche);
-        $taches= json_decode($recrutement->tache);
-        return view('recrutements/Consulrecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
+        return view('modifications/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','competences','taches'));
     }
     public function liste_salaire($slug){
 
@@ -232,7 +222,7 @@ $j=0;
     /**
      *
      */
-    public function modifier_recrutement(Request $request){
+    public function modifier_modification(Request $request){
 
         $parameters=$request->except(['_token']);
         $slug=$parameters['slug'];
@@ -326,44 +316,35 @@ $j=0;
 
         $this->dispatch(new EnvoiesRefusRecrutement($recrutement,$motif));
 
-        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  réfusé");
+        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été réfusé");
 
     }
 
-    public function lister_recrutement(){
-        $recrutements= Recrutement::where('etat','<>',0)->where('etat','<>',1)->get();
+    public function lister_modification(){
+        $modifications= Modification::where('etat','<>',0)->where('etat','<>',1)->get();
         $entites = Entite::all();
         $mode="gestion";
 
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
-        // $avantagedotations = Avantagedotation::all();
-        $debit_internets=Debit_internet::all();
-        $forfaits = Forfait::all();
-        $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
         $rubrique_salaires= Rubrique_salaire::all();
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions','rubrique_salaires'));
+        return view('recrutements/GestionRecrutement',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires'));
     }
 
-    public function valider_recrutement(){
+    public function valider_modification(){
 
         $entites = Entite::all();
-        $recrutements= Recrutement::where('etat','=',1)->get();
+        $modifications= Modification::where('etat','=',1)->get();
         $mode="validation";
-
         $typecontrats = Typecontrat::all();
-        // $avantagedotations = Avantagedotation::all();
-        $debit_internets=Debit_internet::all();
-        $forfaits = Forfait::all();
-        $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
         $rubrique_salaires= Rubrique_salaire::all();
-        return view('recrutements/GestionRecrutement',compact('entites','recrutements','mode','typecontrats','debit_internets','forfaits','assurance_maladies','categories','services','definitions','rubrique_salaires'));
+        return view('modification/GestionModification',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires'));
     }
     public function supprimer($slug){
 
@@ -375,7 +356,7 @@ $j=0;
 
         $recruement->save();
 
-        return redirect()->back()->with('success',"La demande de recrutement a été  supprimé avec succès");
+        return redirect()->back()->with('success',"La demande de recrutement a été supprimé avec succès");
 
     }
 

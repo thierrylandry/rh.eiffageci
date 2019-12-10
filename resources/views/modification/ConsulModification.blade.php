@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">DEMANDE DE RECRUTEMENT N°{{$recrutement->id}}</h2>
+                <h2 class="title-1">DEMANDE DE MODIFICATION N°{{$modification->id}}</h2>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="table-data__tool">
         <div class="table-data__tool-left">
             <div class="table-data__tool  pull-right">
-                @if(isset($recrutement))
+                @if(isset($modification))
                     <div class="table-data__tool-right">
                         <a href="{{back()->getTargetUrl()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-long-arrow-return"></i>RETOUR</a>
@@ -39,16 +39,16 @@
             <div class="card-body" >
                 <div class="row">
                     <div class="col-sm-4">
-                        <p> Poste à pouvoir : <b>{{isset($recrutement)? $recrutement->postApouvoir:''}}</b></p>
-                        <p> Nombre de personne : <b>{{isset($recrutement)? $recrutement->nombre_personne:''}}</b></p>
+                        <p> Poste à pouvoir : <b>{{isset($modification)? $modification->postApouvoir:''}}</b></p>
+                        <p> Nombre de personne : <b>{{isset($modification)? $modification->nombre_personne:''}}</b></p>
                     </div>
                     <div class="col-sm-4">
                         <p> Date de naissance :  {{\Carbon\Carbon::parse(isset($personne)? $personne->datenaissance:'')->format('d-m-Y')}}</p>
-                        <p> Entité : {{isset($recrutement)?  $recrutement->entite->libelle:''}}</p>
+                        <p> Entité : {{isset($modification)?  $modification->entite->libelle:''}}</p>
                     </div>
                     <div class="col-sm-4">
-                        <p>Service : {{isset($recrutement)?  $recrutement->service->libelle:''}}</p>
-                        <p> Description de la fonction : {{isset($recrutement) ? $recrutement->descriptifFonction:''}} </p>
+                        <p>Service : {{isset($modification)?  $modification->service->libelle:''}}</p>
+                        <p> Description de la fonction : {{isset($modification) ? $modification->descriptifFonction:''}} </p>
                     </div>
                 </div>
             </div>
@@ -117,18 +117,18 @@
                 <div class="card-body" >
                     <div class="row">
                         <div class="col-sm-3">
-                            <p> Date de début : <b>{{isset($recrutement)? $recrutement->dateDebut:''}}</b></p>
+                            <p> Date de début : <b>{{isset($modification)? $modification->dateDebut:''}}</b></p>
 
                         </div>
                         <div class="col-sm-3">
-                            <p> Type de contrat : <b>{{isset($recrutement)? $recrutement->type_contrat->libelle:''}}</b></p>
+                            <p> Type de contrat : <b>{{isset($modification)? $modification->type_contrat->libelle:''}}</b></p>
 
                         </div>
                         <div class="col-sm-3">
-                            <p> Durée de mission : {{isset($recrutement)? $recrutement->dureeMission:''}} {{isset($recrutement) && isset($recrutement->unitejour->libelle)? $recrutement->unitejour->libelle:''}}</p>
+                            <p> Durée de mission : {{isset($modification)? $modification->dureeMission:''}} {{isset($modification) && isset($modification->unitejour->libelle)? $modification->unitejour->libelle:''}}</p>
                         </div>
                         <div class="col-sm-3">
-                            <p> Budget mensuel : {{isset($recrutement)?  $recrutement->budgetMensuel:''}}</p>
+                            <p> Budget mensuel : {{isset($modification)? $modification->budgetMensuel:''}}</p>
                         </div>
                     </div>
                 </div>

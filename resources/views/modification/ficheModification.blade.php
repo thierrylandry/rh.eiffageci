@@ -29,7 +29,7 @@
     </div>
 <div class="row">
 
-    <form action="{{isset($modification)?route('recrutement.modifier'):route('recrutement.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
+    <form action="{{isset($modification)?route('modification.modifier'):route('modification.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($modification)? $modification->slug:''}}" class="form-control" required>
 

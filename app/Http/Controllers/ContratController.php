@@ -8,6 +8,8 @@ use App\Definition;
 use App\Entite;
 use App\Nature_contrat;
 use App\Personne;
+use App\Recrutement;
+use App\Rubrique_salaire;
 use App\Services;
 use App\Typecontrat;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -36,14 +38,19 @@ $services = Services::all();
         $personne= Personne::where('slug', $slug)->get()->first();
 
         $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
-        $categories = Categorie::where('id_definition','=',$contrat->id_definition);
+
+        $dernierSalaire= $contrat->salaires()->orderby('dateDebutS','DESC')->first();
+        $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
+       // dd($categories);
+        $rubrique_salaires= Rubrique_salaire::all();
         $ancien_contrat=true;
         $services = Services::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
+        $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','dernierSalaire','recrutements'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -52,6 +59,7 @@ $services = Services::all();
     public function listercat($id_definition){
         $categories_initials = Categorie::where('id_definition','=',$id_definition)->select('id','libelle')->get();
 
+      //  dd($categories_initials);
         $categories = Array();
         foreach($categories_initials as $lacategorie):
 
@@ -61,6 +69,12 @@ $services = Services::all();
             endforeach;
 
        return $categories;
+    }
+    public function lerecrutement($id_recrutement){
+        $lerecrutement = Recrutement::find($id_recrutement);
+
+
+       return $lerecrutement;
     }
     public function affiche_contrat($id){
         $contrat= Contrat::find($id);

@@ -141,6 +141,14 @@ Route::get('/listercat/{id_definition}',[
     'uses'=>'ContratController@listercat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+
+Route::get('/lerecrutement/{id_recrutement}',[
+    'as'=>'lerecrutement',
+    'uses'=>'ContratController@lerecrutement',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+
+
 Route::get('/recsalairecat/{id_contrat}',[
     'as'=>'recsalairecat',
     'uses'=>'SalaireController@recsalairecat',

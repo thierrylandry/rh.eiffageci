@@ -36,17 +36,8 @@
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>SALAIRE CATEGORIEL</th>
-                        <th>SURSALAIRE</th>
-                        <th>TRANSPORT</th>
-                        <th>LOGEMENT</th>
-                        <th>SALISSURE</th>
-                        <th>TENUE DE TRAVAIL</th>
-                        <th>SALAIRE BRUTE</th>
-                        <th>RETENUE</th>
-                        <th>SALAIRE NET</th>
+                        <th>RUBRIQUE SALARIALE</th>
                         <th>DATE DEBUT</th>
-                        <th>DATE FIN</th>
                         <th>PERIODE DE CONTRAT</th>
                     </tr>
                     </thead>
@@ -56,17 +47,12 @@
 
                         <tr class="tr-shadow">
                             <td>{{$salaire->id}}</td>
-                            <td>{{$salaire->salCategoriel}}</td>
-                            <td>{{$salaire->sursalaire}}</td>
-                            <td>{{$salaire->transport}}</td>
-                            <td>{{$salaire->logement}}</td>
-                            <td>{{$salaire->salissure}}</td>
-                            <td>{{$salaire->tenueTravail}}</td>
-                            <td>{{$salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail}}</td>
-                            <td>{{$salaire->retenue}}</td>
-                            <td>{{($salaire->sursalaire+$salaire->transport+$salaire->logement+$salaire->salissure+$salaire->tenueTravail)-$salaire->retenue}}</td>
+                            <td>@if(!empty($salaire->valeurSalaire))
+                                    @foreach( json_decode($salaire->valeurSalaire) as $rub)
+                                        {{$rub->libelle}} : {{$rub->valeur}}
+                                    @endforeach
+                            @endif</td>
                            <td>{{date("d-m-Y",strtotime($salaire->dateDebutS))}}</td>
-                            <td>{{date("d-m-Y",strtotime($salaire->dateFin))}}</td>
                             <td>{{"Du ".date("d-m-Y",strtotime($salaire->datedebutc))." à ".date("d-m-Y",strtotime($salaire->datefinc)) }}</td>
 
                         </tr>

@@ -298,7 +298,7 @@
                       </div>
                       <!--fin-->
                       <div class="col-12 col-md-9">
-                          <input type="text" min="0" id="text-input" name="contact" placeholder="Contact" class="form-control">
+                          <input type="text" min="0" id="text-input" name="contact" placeholder="Contact" class="form-control" required="required">
                       </div>
                   </div>
                   <div class="row form-group">
@@ -336,7 +336,7 @@
                       </div>
                       <!--fin-->
                       <div class="col-12 col-md-9">
-                          <select name="commune" id="commune">
+                          <select name="commune" id="commune" required="required">
                               <option value=""></option>
                               @foreach($communes  as $commune):
                               <option value="{{$commune->id}}">{{$commune->libelle}}</option>

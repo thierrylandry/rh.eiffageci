@@ -121,6 +121,54 @@ $j=0;
         $tab[]=$resultat;
         return $tab;
     }
+    public function liste_salaire_by_id($id){
+
+        $recrutement = Recrutement::find($id);
+        $rubrique_salaires= Rubrique_salaire::all();
+        $resultat="";
+        if(!empty($recrutement->salaire)){
+
+            $salaires=\GuzzleHttp\json_decode($recrutement->salaire);
+
+
+$j=0;
+            foreach($salaires as $salaire ):
+                $j++;
+                if($j>5) {
+                    $resultat .= "<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
+
+
+                $selected='';
+                if(isset($rubrique_salaires)){
+                    $i=0;
+                    foreach($rubrique_salaires as $rubrique_salaire):
+                            $i++;
+
+                        if($i>5){
+                            if($rubrique_salaire->libelle==$salaire->libelle){
+                                $selected="selected";
+                            }else{
+                                $selected='';
+                            }
+                        $resultat.= " <option value='".$rubrique_salaire->libelle."'".$selected." >".$rubrique_salaire->libelle."</option>";
+                        }
+                    endforeach;
+                }
+
+                    $resultat .= "</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='" . $salaire->valeur . "'></div></div></div><hr width='800' color='blue'> ";
+                }
+            endforeach;
+
+        }else{
+            $salaires="";
+            $resultat="";
+        }
+     //   dd($resultat);
+
+        $tab[]=$salaires;
+        $tab[]=$resultat;
+        return $tab;
+    }
      public function monrecrutement($slug){
 
         $recrutement = Recrutement::where('slug','=',$slug)->first();

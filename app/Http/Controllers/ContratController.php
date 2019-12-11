@@ -6,14 +6,17 @@ use App\Categorie;
 use App\Contrat;
 use App\Definition;
 use App\Entite;
+use App\Metier\Json\Rubrique;
 use App\Nature_contrat;
 use App\Personne;
 use App\Recrutement;
 use App\Rubrique_salaire;
+use App\Salaire;
 use App\Services;
 use App\Typecontrat;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ContratController extends Controller
 {
@@ -38,11 +41,19 @@ $services = Services::all();
         $personne= Personne::where('slug', $slug)->get()->first();
 
         $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
-
-        $dernierSalaire= $contrat->salaires()->orderby('dateDebutS','DESC')->first();
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
-       // dd($categories);
+        $valeurSalaire= Array();
+        if(!is_null($contrat->valeurSalaire)){
+            $valeurSalairepartiels=\GuzzleHttp\json_decode($contrat->valeurSalaire);
+
+            foreach($valeurSalairepartiels as $valeurSalairepartiel):
+                $valeurSalaire[$valeurSalairepartiel->libelle]=$valeurSalairepartiel->valeur;
+
+                endforeach;
+        }
+
         $rubrique_salaires= Rubrique_salaire::all();
+     //   dd($valeurSalaire);
         $ancien_contrat=true;
         $services = Services::all();
         $typecontrats= Typecontrat::all();
@@ -50,16 +61,15 @@ $services = Services::all();
         $nature_contrats= Nature_contrat::all();
         $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','dernierSalaire','recrutements'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
 
     }
     public function listercat($id_definition){
-        $categories_initials = Categorie::where('id_definition','=',$id_definition)->select('id','libelle')->get();
-
-      //  dd($categories_initials);
+        $categories_initials = Categorie::where('id_definition','=',$id_definition)->distinct('libelle')->select('libelle')->get();
+    //    dd($categories_initials);
         $categories = Array();
         foreach($categories_initials as $lacategorie):
 
@@ -68,6 +78,7 @@ $services = Services::all();
             }
             endforeach;
 
+    //    dd($categories);
        return $categories;
     }
     public function lerecrutement($id_recrutement){
@@ -272,14 +283,38 @@ $entites= Entite::all();
         $regime= $parameters["regime"];
         $id_nature_contrat= $parameters["id_nature_contrat"];
 
+
+        //les rubriques du salaire
+        $rubriques = new Collection();
+        for($i = 0; $i <= count($request->input("rubrique"))-1; $i++ )
+        {
+            $rubrique = new Rubrique();
+
+            if( !empty($request->input("valeur")[$i])){
+                $rubrique->libelle = $request->input("rubrique")[$i];
+                $rubrique->valeur= $request->input("valeur")[$i];
+                $rubriques->add($rubrique);
+            }
+
+        }
+
         if(isset($parameters["id_categorie"])){
-            $id_categorie= $parameters["id_categorie"];
+            //dd($parameters["id_categorie"]);
+            $id_categorie=$parameters["id_categorie"];
+
         }else{
             $id_categorie='';
         }
 
         $contrat= new Contrat();
+        $salaire= new Salaire();
 
+        $salaire->id_personne=$personne->id;
+        $salaire->valeurSalaire=json_encode($rubriques->toArray());
+        $salaire->save();
+
+        $contrat->valeurSalaire=json_encode($rubriques->toArray());
+        $contrat->valeurSalaire=json_encode($rubriques->toArray());
         $contrat->matricule=$matricule;
         $contrat->position=$position;
         $contrat->periode_essaie=$periode_essaie;

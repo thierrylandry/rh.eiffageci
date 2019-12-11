@@ -634,6 +634,11 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
         'uses'=>'RecrutementController@liste_salaire',
         'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
+    Route::get('/liste_salaire_by_id/{id}',[
+        'as'=>'liste_salaire_by_id',
+        'uses'=>'RecrutementController@liste_salaire_by_id',
+        'roles' => ['Gestion_recrutement']
+    ])->middleware('auth');
 
     Route::get('/monrecrutement/{slug}',[
         'as'=>'monrecrutement',

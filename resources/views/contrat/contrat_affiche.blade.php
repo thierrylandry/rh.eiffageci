@@ -79,11 +79,8 @@
 
     <br>
 
-    @if(isset($contrat))
-    <form action="{{route('update_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-        @else
+
             <form action="{{route('save_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                @endif
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
@@ -97,7 +94,7 @@
                         <select class="form-control" name="id_recrutement" id="id_recrutement" required>
                             <option value="">SELECTIONNER</option>
                             @foreach($recrutements as $recrutement)
-                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} </option>
+                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect}} /{{$recrutement->NbrePersonne}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -137,7 +134,7 @@
                                 <option value="">SELECTIONNER</option>
                                 @if(isset($categories))
                                     @foreach($categories as $categorie)
-                                        <option {{isset($contrat) && $contrat->id_categorie==$categorie->id?'selected':''}} value="{{$categorie->libelle}}">{{$categorie->libelle}}</option>
+                                        <option {{isset($contrat) && $contrat->id_categorie==$categorie->libelle?'selected':''}} value="{{$categorie->libelle}}">{{$categorie->libelle}}</option>
 
                                     @endforeach;
                                 @endif
@@ -324,7 +321,7 @@
                             @foreach($rubrique_salaires as $rubrique_salaire)
                                 <?php $i++?>
                                 @if($i==1)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}} >{{$rubrique_salaire->libelle}}</option>
                                 @endif @endforeach
                         @endif
                     </select>
@@ -335,7 +332,7 @@
                 <label for="valeur[]">Valeur</label>
                 <div class="form-group col-sm-12">
                     <div class="form-line">
-                        <input type="text" name="valeur[]" id="Salaire_de_base3" class="valeur_c salaire_base3 form-control" placeholder="Valeur" value="" readonly>
+                        <input type="text" name="valeur[]" id="Salaire_de_base3" class="valeur_c Salaire_de_base salaire_base3 form-control" placeholder="Valeur" value="" readonly>
                     </div>
                 </div>
             </div>
@@ -361,7 +358,7 @@
                 <label for="valeur[]">Valeur</label>
                 <div class="form-group col-sm-12">
                     <div class="form-line">
-                        <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control" placeholder="Valeur" >
+                        <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control Sursalaire" placeholder="Valeur" value="" >
                     </div>
                 </div>
             </div>
@@ -387,7 +384,7 @@
                 <label for="valeur[]">Valeur</label>
                 <div class="form-group col-sm-12">
                     <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                        <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control Prime_de_salissure" placeholder="Valeur" value="">
                     </div>
                 </div>
             </div>
@@ -413,7 +410,7 @@
                 <label for="valeur[]">Valeur</label>
                 <div class="form-group col-sm-12">
                     <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                        <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control Prime_de_tenue_de_travail" placeholder="Valeur" value="">
                     </div>
                 </div>
             </div>
@@ -439,7 +436,7 @@
                 <label for="valeur[]">Valeur</label>
                 <div class="form-group col-sm-12">
                     <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                        <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="">
                     </div>
                 </div>
             </div>
@@ -449,6 +446,7 @@
         </div>
         <h5>Rubrique Additionnelle</h5>
         <div id="rubriques_petit" class="form-inline rubriques_petit" >
+
 
         </div>
         Ajouter une rubrique salariale
@@ -484,11 +482,6 @@
             </div>
             <hr width="100%" color="blue">
         </div>
-        <div class="modal-footer">
-            </br>
-            <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                Enregistrer</button>
-        </div>
     </div>
     <div class="col-sm-3"></div>
 </div>
@@ -511,10 +504,24 @@
     </form>
             <script src="{{ asset("js/jquery.min.js") }}"></script>
 <script>
+    function lister_les_categories(){
+        var id_definition=  $("#id_definition3").val();
+        $.get("../listercat/"+id_definition,function(data){
+            console.log(data);
+            var lesOptions;
+            $.each(data, function( index, value ) {
+                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+            });
+            $("#id_categorie3").empty();
+            $("#id_categorie3").append(lesOptions);
+            //  $("#id_categorie").trigger("chosen:updated");
+            // pour trouver le salcategorielle
+        });
+    }
     function trouvezur_de_salaire_cat(){
         var categorieLibelle=  $("#id_categorie3").val();
         var id_definition=  $("#id_definition3").val();
-        var regime=  $("#regime3 option:selected").html();
+        var regime=  $("#regime3").val();
         $.get("../recrutements/macategorie/"+categorieLibelle+"/"+id_definition+"/"+regime,function(data){
             console.log(data);
             var lesOptions;
@@ -535,18 +542,8 @@
     $("#id_definition3").change(function (e) {
         // alert("test");
         var id_definition=  $("#id_definition3").val();
-        $.get("../listercat/"+id_definition,function(data){
-            console.log(data);
-            var lesOptions;
-            $.each(data, function( index, value ) {
-                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
-            });
-            $("#id_categorie3").empty();
-            $("#id_categorie3").append(lesOptions);
-            //  $("#id_categorie").trigger("chosen:updated");
-            // pour trouver le salcategorielle
-            trouvezur_de_salaire_cat();
-        });
+        lister_les_categories();
+        trouvezur_de_salaire_cat();
 
     });
     $("#id_recrutement").change(function (e) {
@@ -557,40 +554,62 @@
             console.log(data);
 
             $("#recrutementSelectionne").text(data.posteAPouvoir+" "+data.NbrePersonne+""+data.NbrePersonneEffect+" "+data.assurance_maladie+" "+data.budgetMensuel);
+            $("#id_definition3").val(data.id_definition);
+            $("#id_categorie3").val(data.id_categorie);
+            $("#regime3").val(data.regime);
+            lister_les_categories();
+
+            var id_definition=  $("#id_definition3").val();
+            $.get("../listercat/"+id_definition,function(data){
+                console.log(data);
+                var lesOptions;
+                $.each(data, function( index, value ) {
+                    lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                });
+                $("#id_categorie3").empty();
+                $("#id_categorie3").append(lesOptions);
+                //  $("#id_categorie").trigger("chosen:updated");
+                // pour trouver le salcategorielle
+                trouvezur_de_salaire_cat();
+
+                //les condition de rémunérations
+                $(".rubriques_petit").empty();
+
+                $(".Salaire_de_base").val("");
+                $(".Sursalaire").val("");
+                $(".Prime_de_salissure").val("");
+                $(".Prime_de_tenue_de_travail").val("");
+                $(".Prime_de_transport").val("");
+
+                $.get("../recrutements/liste_salaire_by_id/"+id_recrutement,function(data){
+                    console.log(data[0]);
+                    if(typeof data[0][0]!='undefined') {
+                        $(".Salaire_de_base").val(data[0][0].valeur);
+                    }
+                    if(typeof data[0][1]!='undefined') {
+                        $(".Sursalaire").val(data[0][1].valeur);
+                    }
+                    if(typeof data[0][2]!='undefined') {
+                        $(".Prime_de_salissure").val(data[0][2].valeur);
+                    }
+                    if(typeof data[0][3]!='undefined') {
+                        $(".Prime_de_tenue_de_travail").val(data[0][3].valeur);
+                    }
+                    if(typeof data[0][4]!='undefined'){
+                        $(".Prime_de_transport").val(data[0][4].valeur);
+                    }
 
 
-            budgetMensuel: 800000
-            competenceRecherche: "["dzggrg","rgrgrr",null]"
-            created_at: "2019-11-22 15:23:43"
-            dateDebut: "2019-11-25"
-            debit_internet: null
-            descriptifFonction: "uyze_aàidazàihzci eifhih"
-            dureeMission: "1"
-            etat: 0
-            forfait: null
-            id: 1
-            id_categorie: 1
-            id_definition: null
-            id_entite: 1
-            id_service: 1
-            id_type_contrat: 1
-            id_uniteJour: 1
-            id_users: 1
-            id_valideur: 2
-            posteAPouvoir: "Conducteur de travaux"
-            primeTp: null
-            regime: null
-            salaire: null
-            salaireBase: null
-            slug: "conducteur-de-travaux122112019032343"
-            surSalaire: null
-            tache: "["vrgrrrgr",null]"
-            telephone_portable: 1
-            totalBrut: null
-            totalNet1part: null
-            totalNetparts: null
-            updated_at:
+                    $(".rubriques_petit").append(data[1]);
+
+                });
+                //fin de la liste
+            });
+
+
+
         });
+
 
     });
 

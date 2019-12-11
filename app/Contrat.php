@@ -28,9 +28,4 @@ class Contrat extends Model
         return $this->belongsTo('App\Typecontrat', 'id_type_contrat');
     }
 
-    public function salaires()
-    {
-
-        return $this->hasMany('App\Salaire', 'id_contrat');
-    }
 }

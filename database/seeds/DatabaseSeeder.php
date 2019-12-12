@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
        // $this->call(Liste_definitionSeeder::class);
        //  $this->call(Liste_administratifSeeder::class);
        //  $this->call(EntiteSeeder::class);
+         $this->call(ListeModifSeeder::class);
     }
 }

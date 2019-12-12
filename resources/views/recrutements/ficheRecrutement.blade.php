@@ -360,7 +360,7 @@
 
     <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
-        $('#id_entite').select2({ placeholder: 'Selectionner une entité'});
+        $('#id_entite').select2({ placeholder: 'Selectionner une entite'});
         $("#id_entite").prop("readonly", true);
         $('#service').select2({ placeholder: 'Selectionner un service'});
         $("#service").prop("readonly", true);

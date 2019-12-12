@@ -674,5 +674,19 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
         'as'=>'gestion',
         'uses'=>'ModificationController@lister_modification',
         'roles' => ['Gestion_recrutement']
+
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/lapersonne_contrat/{id}',[
+        'as'=>'lapersonne_contrat',
+        'uses'=>'ModificationController@lapersonne_contrat',
+        'roles' => ['Gestion_recrutement']
+
+    ])->middleware('roles')->middleware('auth');
+
+
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'RecrutementController@enregistrer_recrutement',
+        'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
 });

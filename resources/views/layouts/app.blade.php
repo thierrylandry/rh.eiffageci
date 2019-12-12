@@ -124,7 +124,7 @@
                                         <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
                                     </div>
                                     <div class="col-sm-7">
-                                        <select class="form-control regime" name="regime" id="regime">
+                                        <select class="form-control regime" name="regime" id="raregime">
                                             <option value="40H">40H</option>
                                             <option value="44H">44H</option>
                                         </select>
@@ -144,7 +144,7 @@
                                         <label for="text-input" class=" form-control-label">Service* :</label>
                                     </div>
                                     <div class="col-md-7">
-                                        <select class="form-control" name="service" id="service" required>
+                                        <select class="form-control" name="service" id="raservice" required>
                                             <option value="">SELECTIONNER UN SERVICE</option>
                                             @if(isset($services))
                                                 @foreach($services as $service)
@@ -216,7 +216,7 @@
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="zmdi zmdi-edit"></i> Enregistrer
                         </button>
-                        <button type="reset" class="btn btn-danger btn-sm" id="reset">
+                        <button type="reset" class="btn btn-danger btn-sm" id="rareset">
                             <i class="fa fa-ban"></i> Réinitialiser
                         </button>
                     </div>
@@ -337,7 +337,7 @@
                                             </div>
                                             <div class=" col-lg-4">
                                                 <label for="text-input" class=" form-control-label">Régime hebdomadaire</label>
-                                                <select class="form-control regime" name="regime" id="regime">
+                                                <select class="form-control regime" name="regime" id="crregime">
                                                     <option value="0">40H</option>
                                                     <option value="1">44H</option>
                                                 </select>

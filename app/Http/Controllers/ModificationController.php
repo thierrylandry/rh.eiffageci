@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Assurance_maladie;
 use App\Categorie;
+use App\Contrat;
 use App\Definition;
 use App\Entite;
 use App\Fonction;
 use App\Jobs\EnvoiesRefusRecrutement;
+use App\Listmodifavenant;
 use App\Metier\Json\Rubrique;
 use App\Modification;
 use App\Personne;
+use App\Personne_contrat;
+use App\Personne_presente;
 use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
@@ -34,9 +38,11 @@ class ModificationController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::all();
-        $personnes = Personne::all();
+       // dd(Auth::user()->id_service);
+        $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
         $fonctions = Fonction::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions'));
+        $Listmodifavenants=Listmodifavenant::all();
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','Listmodifavenants'));
     }
     public function modification($slug){
 
@@ -130,6 +136,18 @@ $j=0;
 
        // dd($id_categorie);
         return $catgorie;
+    }
+    public function lapersonne_contrat($id){
+
+        $personne = Personne_presente::find($id);
+
+        $resultat[0]= $personne;
+        $resultat['leservice']= $personne->leservice()->get();
+        $resultat['lafonction']= $personne->lafonction()->get();
+        $resultat['lecontrat']= $personne->lecontrat()->get();
+        $resultat['Listmodifavenants']=   $Listmodifavenants=Listmodifavenant::all();
+
+        return $resultat;
     }
 
     public function enregistrer_recrutement(Request $request ){

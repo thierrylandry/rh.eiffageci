@@ -154,14 +154,6 @@
             }else{
                 $('#rendu_img').attr('src','images/user.png');
             }
-        }
-
-        $("#photo").change(function() {
-            readURL(this);
-        });
-        $("#reset").click(function() {
-            $('#rendu_img').attr('src','images/user.png');
-        });
 
         $("#btnsupprimer").click(function(e){
            if(confirm("Voulez vous supprimer?")){

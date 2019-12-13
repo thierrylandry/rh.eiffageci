@@ -219,12 +219,41 @@
                         <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>
                 </li>
                 @endif
+
                 @if(Auth::user() != null && Auth::user()->hasRole('Conges'))
-                <li class="@yield('conges') @yield('') has-sub">
-                    <a class="js-arrow " href="{{route('conges')}}" target="_self">
-                        <i class="fas fa-calendar-alt" ></i>CONGES</a>
-                </li>
+                    <li class="@yield('conges') has-sub">
+                        <a class="js-arrow " href="#">
+                            <i class="fas fa-calendar-alt" ></i>ABSENCES</a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('recrutements')>
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
+                                <li class="@yield('recrutement.demande')">
+                                    <a href="{{route('recrutement.demande')}}">Permission</a>
+                                </li>
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
+                                <li class="@yield('recrutement.validation')">
+                                    <a href="{{route('recrutement.validation')}}">Congé</a>
+                                </li>
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+                                <li class="@yield('recrutement.gestion')">
+                                    <a href="{{route('recrutement.gestion')}}">Billet d'avion</a>
+                                </li>
+                            @endif
+
+                            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
+                                <li class="@yield('recrutement.gestion')">
+                                    <a class="js-arrow " href="{{route('conges')}}" target="_self">Planning</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
                 @endif
+
+
                 @if(Auth::user() != null && Auth::user()->hasRole('Parametrage'))
                     <li class="@yield('avantages') @yield('') has-sub">
                         <a class="js-arrow " href="{{route('avantages')}}" target="_self">

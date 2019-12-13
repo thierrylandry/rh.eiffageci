@@ -17,12 +17,12 @@ class CreateTableModification extends Migration
             $table->bigIncrements('id');
             $table->text('fonction')->nullable();
             $table->date('dateFinC')->nullable();
-            $table->integer('id_categorie')->nullable();
-            $table->foreign('id_categorie')->references('id')->on('categorie');
-            $table->date('id_contrat')->nullable();
+            $table->string('id_categorie')->nullable();
+            $table->integer('id_type_contrat')->nullable();
+            $table->integer('id_contrat')->nullable();
             $table->foreign('id_contrat')->references('id')->on('contrat');
-            $table->float('budgetMensuel')->nullable();
-            $table->float('regime')->nullable();
+            $table->string('budgetMensuel')->nullable();
+            $table->string('regime')->nullable();
             $table->date('dateEffet')->nullable();
             $table->integer('etat')->default(1);
             $table->integer('id_typeModification')->nullable();

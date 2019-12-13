@@ -6,6 +6,12 @@
     style="display: block;"
 @endsection
 @section('page')
+    <style>
+        .modifie{
+            background-color: lightskyblue;
+        }
+
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
@@ -31,8 +37,17 @@
 
         <form action="{{isset($modification)?route('modification.modifier'):route('modification.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
             @csrf
-            <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($modification)? $modification->slug:''}}" class="form-control" required>
+            <input type="hidden" id="text-input" name="id" placeholder="Nom" value="{{isset($modification)? $modification->id:''}}" class="form-control" required>
+            <input type="text"  name="listemodif" id="listemodif" placeholder="Nom" style="display: none" value="{{isset($modification)? $modification->slug:''}}" class="form-control" required>
 
+            <div class="card">
+                <div class="card-header">
+                    <strong>Liste des modifications </strong>
+                </div>
+                <div class="card-body" id="Ecran_affiche_liste" >
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card" style="height: 100% !important">
@@ -45,9 +60,9 @@
                                 <div class="col-12 col-md-6">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
                                     <select class="form-control" id="id_personne1" name="id_personne" >
-                                        <option value=""></option>
+                                        <option value="">Selectionner une personne</option>
                                         @foreach($personnes as $personne)
-                                            <option value="{{$personne->id}}" {{isset($modification) && $modification->id_personne==$personne->id?"selected":Auth::user()->id_entite==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
+                                            <option value="{{$personne->id}}" {{isset($modification) && $modification->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -59,7 +74,7 @@
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Service</label>
-
+                                    <input type="hidden" id="service1_initial"  value="">
                                     <select class="form-control" id="service1" name="service">
                                         <option value=""></option>
                                         @foreach($services as $service)
@@ -82,7 +97,9 @@
                             <div class="row">
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Fonction</label>
+                                    <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
+                                        <option valuue="">Selectionner une fonction</option>
                                         @foreach($fonctions as $fonction)
                                             <option value="{{$fonction->id}}" {{isset($modification) && $modification->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
                                         @endforeach
@@ -90,7 +107,7 @@
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Type de contrat</label>
-                                    <input type="hidden" id="id_type_contrat1_initial"  value="{{isset($modification)?$modification->id_type_contrat:""}}">
+                                    <input type="hidden" id="id_type_contrat1_initial"  value="">
                                     <select class="form-control" name="id_type_contrat"  id="id_type_contrat1" required>
                                         @foreach($typecontrats as $typecontrat)
                                             <option value="{{$typecontrat->id}}" {{isset($modification) && $modification->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
@@ -99,15 +116,17 @@
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de debut de contrat</label>
-                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control" value="{{isset($modification)? $modification->datedebutc:''}}" readonly/>
+                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control" value="" readonly/>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de fin de contrat</label>
-                                    <input type="date" name="datefinc1" id="datefinc1" class="form-control" value="{{isset($modification)? $modification->datefinc:''}}"/>
+                                    <input type="hidden" id="datefinc1_initial"  value="">
+                                    <input type="date" name="datefinc" id="datefinc1" class="form-control" value="{{isset($modification)? $modification->datefinc:''}}"/>
                                 </div>
 
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Définition</label>
+                                    <input type="hidden" id="dm_id_definition_initial"  value="">
                                     <select class="form-control" name="id_definition" id="dm_id_definition" required>
                                         @foreach($definitions as $definition)
                                             <option value="{{$definition->id}}" {{isset($definition) && $definition->id_categorie==$definition->id?"selected":""}}>{{$definition->libelle}}</option>
@@ -116,18 +135,21 @@
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Catégorie profesionnelle</label>
-                                    <select class="form-control" name="id_categorie" id="dm_id_categorie" required>
+                                    <input type="hidden" id="dm_id_categorie_initial"  value="">
+                                    <select class="form-control" name="id_categorie" id="dm_id_categorie">
                                     </select>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Régime</label>
-                                    <select class="form-control" name="regime" id="regime1" required>
+                                    <input type="hidden" id="regime1_initial"  value="">
+                                    <select class="form-control" name="regime" id="regime1" >
                                         <option value="40H">40H</option>
                                         <option value="44H">44H</option>
                                     </select>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
+                                    <input type="hidden" id="dm_budgetMensuel_initial"  value="">
                                     <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
                                 </div>
                             </div>
@@ -159,21 +181,18 @@
                         <table class="table table-borderles" id="table_recrutement">
                             <thead>
                             <tr>
-                                <th>slug</th>
+                                <th>ID</th>
                                 <th>STATUS</th>
-                                <th>NUMERO</th>
                                 <th>DEMANDEUR</th>
                                 <th>DIRECTION</th>
-                                <th>SERVICE</th>
-                                <th>POSTE</th>
-                                <th>CONTRAT</th>
+                                <th>LISTE DES MODIFICATIONS</th>
                                 <th>ACTION</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($modifications as $modification)
                                 <tr>
-                                    <td>{{$modification->slug}}</td>
+                                    <td>{{$modification->id}}</td>
                                     <td>    @if($modification->etat==1)
                                             <i class=" fa fa-check-circle-o" style="background-color: red"></i>
                                         @elseif($modification->etat==2)
@@ -184,12 +203,12 @@
                                             <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                         @endif
                                     </td>
-                                    <td>{{$modification->id}}</td>
                                     <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
                                     <td>{{$modification->user->entite->libelle}}</td>
-                                    <td>{{$modification->user->service->libelle}}</td>
-                                    <td>{{$modification->posteAPouvoir}}</td>
-                                    <td>{{$modification->type_contrat->libelle}}</td>
+                                    <td>@foreach(json_decode($modification->list_modif) as $modif)
+                                            <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}</button>
+                                    @endforeach
+                                    </td>
                                     <td>
                                         <div class="table-data-feature">
                                             @if($modification->etat==1)
@@ -240,6 +259,7 @@
     <script src="{{  URL::asset("vendor/select2/select2.min.js") }}"></script>
     <script>
         var listmodifavenant;
+        var listmodifeff = new Array();
         $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
        // $('#service1').select2();
         $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
@@ -256,21 +276,48 @@
             var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
             $('#age').html('Age : '+age+' Ans');
         });
+        function vider(){
+            $("#service1").val("");
+            $("#service1_initial").val("");
+            $("#matricule1").val("");
+            $("#id_fonction1").val("");
+            $("#id_fonction1_initial").val("");
+            $("#id_type_contrat1").val("");
+            $("#id_type_contrat1_initial").val("");
+            $("#datefinc1").val("");
+            $("#datefinc1_initial").val("");
+            $("#datedebutc1").val("");
+            $("#regime1").val("");
+            $("#regime1_initial").val("");
+            $("#dm_id_definition").val("");
+            $("#dm_id_definition_initial").val("");
+            $("#dm_id_categorie").val("");
+            $('#Ecran_affiche_liste').empty();
+            if($(".form-control").hasClass('modifie')){
+                $(".form-control").removeClass('modifie')
+            }
+        }
         $('#id_personne1').change(function(){
+            vider();
            var id_personne =$('#id_personne1').val();
             $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
                 console.log(data);
                 listmodifavenant=    data['Listmodifavenants'][0];
                 console.log(listmodifavenant);
                 $("#service1").val(data[0].service);
+                $("#service1_initial").val(data[0].service);
                 $("#matricule1").val(data[0].matricule);
                 $("#id_fonction1").val(data[0].fonction);
+                $("#id_fonction1_initial").val(data[0].fonction);
                 $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
                 $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
                 $("#datefinc1").val(data[0].datefinc);
+                $("#datefinc1_initial").val(data[0].datefinc);
                 $("#datedebutc1").val(data[0].datedebutc);
                 $("#regime1").val(data[0].regime);
+                $("#regime1_initial").val(data[0].regime);
                 $("#dm_id_definition").val(data[0].id_definition);
+                $("#dm_id_definition_initial").val(data[0].id_definition);
 
                 var tab= $.parseJSON(data[0].valeurSalaire);
                 var somme=0;
@@ -279,6 +326,7 @@
                     somme=somme+ parseInt(x);
                 })
                 $("#dm_budgetMensuel").val(somme);
+                $("#dm_budgetMensuel_initial").val(somme);
 
 
                 var id_definition=  data[0].id_definition;
@@ -293,6 +341,7 @@
                 });
 
                 $("#dm_id_categorie").val(data[0].id_categorie);
+                $("#dm_id_categorie_initial").val(data[0].id_categorie);
 
             });
         });
@@ -311,9 +360,185 @@
 
         });
 
+        function affiche_liste_modification(){
+            $('#Ecran_affiche_liste').empty();
+
+            var liste="";
+            $.each(listmodifeff,function(index,value){
+                liste+="<button type='button' class='btn btn-outline-primary'  style='font-size: 10pt!important;'disabled>"+value+"</button>";
+            });
+
+
+                $('#listemodif').val(JSON.stringify(listmodifeff));
+                $('#Ecran_affiche_liste').append(liste);
+        }
         //changer le type de contrat
         $("#id_type_contrat1").change(function(e){
-            id_type_contrat1_initial=$("#id_type_contrat1_initial").val();
+           var  id_type_contrat1_initial=$("#id_type_contrat1_initial").val();
+            var id_type_contrat1= $("#id_type_contrat1").val();
+            var removeItem="Le type de contrat";
+            if(id_type_contrat1_initial!==id_type_contrat1){
+               if(!$(this).hasClass("modifie")){
+                   $(this).addClass("modifie");
+                   listmodifeff.push(removeItem);
+               }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            console.log(listmodifeff);
+            affiche_liste_modification();
+        });
+        $("#service1").change(function(e){
+            var  variable_initial=$("#service1_initial").val();
+            var variable= $("#service1").val();
+            var removeItem="Le service";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+        });
+        $("#id_fonction1").change(function(e){
+            var  variable_initial=$("#id_fonction1_initial").val();
+            var variable= $("#id_fonction1").val();
+            var removeItem="La fonction";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#datefinc1").change(function(e){
+            var  variable_initial=$("#datefinc1_initial").val();
+            var variable= $("#datefinc1").val();
+            var removeItem="La date de fin";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#dm_id_definition").change(function(e){
+            var  variable_initial=$("#dm_id_definition_initial").val();
+            var variable= $("#dm_id_definition").val();
+            var removeItem="La définition";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != "La catégorie";
+                    });
+                    listmodifeff.push("La catégorie");
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#dm_id_categorie").change(function(e){
+            var  variable_initial=$("#dm_id_categorie_initial").val();
+            var variable= $("#dm_id_categorie").val();
+            var removeItem="La catégorie";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                   if( $.inArray(removeItem,listmodifeff)==-1){
+                       listmodifeff.push(removeItem);
+                   }
+
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#regime1").change(function(e){
+            var  variable_initial=$("#regime1_initial").val();
+            var variable= $("#regime1").val();
+            var removeItem="La durée hebdomadaire de travail";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#dm_budgetMensuel").change(function(e){
+            var  variable_initial=$("#dm_budgetMensuel_initial").val();
+            var variable= $("#dm_budgetMensuel").val();
+            var removeItem="Les conditions de rémunérations";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
         });
         $(document).ready(function() {
             var table= $('#table_recrutement').DataTable({

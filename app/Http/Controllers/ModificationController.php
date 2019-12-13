@@ -150,52 +150,63 @@ $j=0;
         return $resultat;
     }
 
-    public function enregistrer_recrutement(Request $request ){
+    public function enregistrer_modification(Request $request ){
+
 
         $parameters=$request->except(['_token']);
-        $posteAPouvoir=$parameters['posteAPouvoir'];
-        $id_entite=$parameters['id_entite'];
-        $id_service=$parameters['service'];
-        $descriptifFonction=$parameters['descriptifFonction'];
-        $competences=$parameters['competences'];
-        $taches=$parameters['taches'];
+        $listemodif=$parameters['listemodif'];
+        $id_personne=$parameters['id_personne'];
+        $service=$parameters['service'];
+        $id_fonction=$parameters['id_fonction'];
         $id_type_contrat=$parameters['id_type_contrat'];
-        $dateDebut=$parameters['dateDebut'];
-        $dureeMission=$parameters['dureeMission'];
+        $datefinc=$parameters['datefinc'];
+        $id_definition=$parameters['id_definition'];
+        $id_categorie=$parameters['id_categorie'];
+        $regime=$parameters['regime'];
         $budgetMensuel=$parameters['budgetMensuel'];
-        $telephone_portable=$parameters['telephone_portable'];
-        $forfait=$parameters['forfait'];
-        $debit_internet=$parameters['debit_internet'];
-        $assurance_maladie=$parameters['assurance_maladie'];
-        $nombre_personne=$parameters['nombre_personne'];
-        $id_uniteJour=$parameters['id_uniteJour'];
 
-        $recruement = new Recrutement();
+
+        $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
+       // dd($tab_list_modif);
+
+
+        $modification = new Modification();
         $date= new DateTime(null);
 
-        $recruement->posteAPouvoir=$posteAPouvoir;
-        $recruement->id_entite=$id_entite;
-        $recruement->id_service=$id_service;
-        $recruement->descriptifFonction=$descriptifFonction;
-        $recruement->competenceRecherche=json_encode($competences);
-        $recruement->tache=json_encode($taches);
-        $recruement->id_type_contrat=$id_type_contrat;
-        $recruement->dateDebut=$dateDebut;
-        $recruement->dureeMission=$dureeMission;
-        $recruement->budgetMensuel=$budgetMensuel;
-        $recruement->telephone_portable=$telephone_portable;
-        $recruement->forfait=$forfait;
-        $recruement->debit_internet=$debit_internet;
-        $recruement->assurance_maladie=$assurance_maladie;
-        $recruement->id_users=Auth::user()->id;
-        $recruement->NbrePersonne=$nombre_personne;
-        $recruement->id_uniteJour=$id_uniteJour;
-        $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
+        if(in_array ("Le type de contrat",$tab_list_modif)){
+            $modification->id_type_contrat=$id_type_contrat;
+        }
+        if(in_array ("La définition",$tab_list_modif)){
+            $modification->id_definition=$id_definition;
+        }
+        if(in_array ("La catégorie",$tab_list_modif)){
+            $modification->id_categorie=$id_categorie;
+        }
+        if(in_array ("La date de fin",$tab_list_modif)){
+            $modification->dateFinC=$datefinc;
+        }
+        if(in_array ("La durée hebdomadaire de travail",$tab_list_modif)){
+            $modification->regime=$regime;
+        }
+        if(in_array ("La fonction",$tab_list_modif)){
+            $modification->id_fonction=$id_fonction;
+        }
+        if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
+            $modification->budgetMensuel=$budgetMensuel;
+        }
+        if(in_array ("Le service",$tab_list_modif)){
+            $modification->service=$service;
+        }
+
+        $modification->list_modif=$listemodif;
+        $modification->id_personne=$id_personne;
+        $modification->id_users=Auth::user()->id;
 
 
-        $recruement->save();
 
-        return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
+        $modification->save();
+
+        return redirect()->back()->with('success',"La demande de modification a été  enregistrée avec succès");
 
     }
   public function ConditionRemuneration(Request $request ){

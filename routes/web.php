@@ -689,17 +689,23 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
         'uses'=>'ModificationController@enregistrer_modification',
         'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
-    Route::get('/consulter',[
+    Route::post('/modifier',[
+        'as'=>'modifier',
+        'uses'=>'ModificationController@modifier_modification',
+        'roles' => ['Demande_recrutement']
+    ])->middleware('roles')->middleware('auth');
+
+    Route::get('/consulter/{id}',[
         'as'=>'consulter',
-        'uses'=>'ModificationController@enregistrer_modification',
+        'uses'=>'ModificationController@afficher',
         'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
-    Route::get('/modification',[
+    Route::get('/modification/{id}',[
         'as'=>'modification',
-        'uses'=>'ModificationController@enregistrer_modification',
+        'uses'=>'ModificationController@modification',
         'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
-    Route::get('/supprimer',[
+    Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
         'uses'=>'ModificationController@enregistrer_modification',
         'roles' => ['Demande_recrutement']

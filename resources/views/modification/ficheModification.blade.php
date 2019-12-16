@@ -25,7 +25,7 @@
             <div class="table-data__tool  pull-right">
                 @if(isset($modification))
                     <div class="table-data__tool-right">
-                        <a href="{{route('modifications.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <a href="{{route('modification.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>DEMANDER UNE MODIFICATION</a>
                     </div>
                 @endif
@@ -69,7 +69,7 @@
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Matricule</label>
-                                   <input type="text" name="matricule" id="matricule1" class="form-control" readonly/>
+                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{$personne->matricule}}" readonly/>
                                 </div>
 
                                 <div class="col-12 col-md-3">
@@ -109,6 +109,7 @@
                                     <label for="text-input" class=" form-control-label">Type de contrat</label>
                                     <input type="hidden" id="id_type_contrat1_initial"  value="">
                                     <select class="form-control" name="id_type_contrat"  id="id_type_contrat1" required>
+                                        <option value="">Sélectionner un type de contrat</option>
                                         @foreach($typecontrats as $typecontrat)
                                             <option value="{{$typecontrat->id}}" {{isset($modification) && $modification->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
                                         @endforeach
@@ -116,7 +117,7 @@
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de debut de contrat</label>
-                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control" value="" readonly/>
+                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control" value="{{isset($personne)?$personne->datedebutc:''}}" readonly/>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de fin de contrat</label>
@@ -128,8 +129,9 @@
                                     <label for="text-input" class=" form-control-label">Définition</label>
                                     <input type="hidden" id="dm_id_definition_initial"  value="">
                                     <select class="form-control" name="id_definition" id="dm_id_definition" required>
+                                        <option value="">Sélectionner une définition</option>
                                         @foreach($definitions as $definition)
-                                            <option value="{{$definition->id}}" {{isset($definition) && $definition->id_categorie==$definition->id?"selected":""}}>{{$definition->libelle}}</option>
+                                            <option value="{{$definition->id}}" {{isset($definition) && $definition->id==$definition->id?"selected":""}}>{{$definition->libelle}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -142,7 +144,8 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Régime</label>
                                     <input type="hidden" id="regime1_initial"  value="">
-                                    <select class="form-control" name="regime" id="regime1" >
+                                    <select class="form-control" name="regime" id="regime1"  required>
+                                        <option value="">Sélectionner un régime</option>
                                         <option value="40H">40H</option>
                                         <option value="44H">44H</option>
                                     </select>
@@ -212,31 +215,31 @@
                                     <td>
                                         <div class="table-data-feature">
                                             @if($modification->etat==1)
-                                                <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{route("modification.modification",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <a href="{{route("modification.modification",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a  href="{{route("modification.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <a  href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
 
 
                                             @elseif($modification->etat==2)
-                                                <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-eye"></i>
                                                 </a>
                                             @elseif($modification->etat==3)
 
-                                                <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-eye"></i>
                                                 </a>
                                             @elseif($modification->etat==4)
-                                                <a href="{{route("modification.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-eye"></i>
                                                 </a>
-                                                <a href="{{route("modification.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <a href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
                                             @endif

@@ -44,24 +44,23 @@ class ModificationController extends Controller
         $Listmodifavenants=Listmodifavenant::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','Listmodifavenants'));
     }
-    public function modification($slug){
+    public function modification($id){
 
-        $modifications = Modification::where('slug','=',$slug)->first();
+        $modification = Modification::find($id);
+        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
-        $assurance_maladies= Assurance_maladie::all();
         $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
         // $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        $competences= json_decode($modifications->competenceRecherche);
-        $taches= json_decode($modifications->tache);
-        $uniteJours=uniteJour::all();
-        return view('modifications/ficheModification',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));
+        $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        $fonctions = Fonction::all();
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes'));
     }
-    public function afficher($slug){
+    public function afficher($id){
 
-        $modifications = Modification::where('slug','=',$slug)->first();
+        $modification = Modification::find($id)->first();
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
         $categories = Categorie::all();
@@ -70,7 +69,7 @@ class ModificationController extends Controller
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($modifications->competenceRecherche);
         $taches= json_decode($modifications->tache);
-        return view('modifications/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','competences','taches'));
+        return view('modification/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','competences','taches','modification'));
     }
     public function liste_salaire($slug){
 
@@ -201,6 +200,7 @@ $j=0;
         $modification->list_modif=$listemodif;
         $modification->id_personne=$id_personne;
         $modification->id_users=Auth::user()->id;
+        $modification->id_service=Auth::service()->id;
 
 
 

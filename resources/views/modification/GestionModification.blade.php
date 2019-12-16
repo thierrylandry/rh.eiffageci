@@ -50,7 +50,7 @@
                     <tbody>
                     @foreach($modifications as $modification)
                         <tr>
-                            <td>{{$modification->slug}}</td>
+                            <td>{{$modification->id}}</td>
                             <td>    @if($modification->etat==1)
                                         <i class=" fa fa-check-circle-o" style="background-color: red"></i>
                                         @elseif($modification->etat==2)
@@ -71,7 +71,7 @@
                                 <div class="table-data-feature">
                                 @if($modification->etat==1)
                                         @if($mode=="validation")
-                                        <a href="{{route('recrutement.ActionValider',$modification->slug)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                        <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                             <i class="zmdi zmdi-mail-send"></i> Valider
                                         </a>&nbsp;
                                         <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
@@ -80,14 +80,14 @@
                                         @endif
 
 
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="fa fa-eye"></i>
                                         </a>&nbsp;
                                     @if($mode=="gestion")
-                                        <a href="{{route("recrutement.modification",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <a href="{{route("modification.modification",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>&nbsp;
-                                        <a href="{{route("recrutement.supprimer",$modification->slug)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("modification.supprimer",$modification->id)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>&nbsp;
                                         @endif
@@ -98,16 +98,16 @@
                                             <i class="zmdi zmdi-format-indent-increase"></i> Condition de rémunération
                                         </a>&nbsp;
 
-                                        <a href="{{route("recrutement.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>&nbsp;
                                 @elseif($modification->etat==3)
 
-                                        <a href="{{route("recrutement.consulter",$recrutement->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        <a href="{{route("modification.consulter",$recrutement->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>&nbsp;
                                 @elseif($modification->etat==4)
-                                        <a href="{{route("recrutement.supprimer",$modification->slug)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("modification.supprimer",$modification->id)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>&nbsp;
                                 @endif

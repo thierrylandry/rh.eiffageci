@@ -23,6 +23,6 @@ class Absence extends Model
         return $this->belongsTo(Services::class, "id_service");
     }
     public function fonction(){
-        return $this->belongsTo(uniteJour::class, "id_uniteJour");
+        return $this->belongsTo(Fonction::class, "id_fonction");
     }
 }

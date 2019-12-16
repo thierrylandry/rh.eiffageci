@@ -24,7 +24,7 @@ class ContratController extends Controller
 
     public function contrat_new_user(){
         $personne= Personne::orderBy('id', 'desc')->get()->first();
-$services = Services::all();
+        $services = Services::all();
         $typecontrats= Typecontrat::all();
         $definitions = Definition::all();
         $entites= Entite::all();

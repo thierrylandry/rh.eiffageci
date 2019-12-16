@@ -59,23 +59,29 @@
 
                                 <div class="col-12 col-md-6">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    <select class="form-control" id="id_personne1" name="id_personne" >
+                                    @if(isset($modification))
+                                        <input class="form-control" value="{{$modification->personne->nom." ".$modification->personne->prenom}}" disabled/>
+                                        @else
+                                    <select class="form-control" id="id_personne1" name="id_personne">
                                         <option value="">Selectionner une personne</option>
+
                                         @foreach($personnes as $personne)
                                             <option value="{{$personne->id}}" {{isset($modification) && $modification->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
                                         @endforeach
+
                                     </select>
+                                    @endif
                                 </div>
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Matricule</label>
-                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{$personne->matricule}}" readonly/>
+                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{isset($modification)?$modification->personne->matricule:'ff'}}" readonly/>
                                 </div>
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Service</label>
                                     <input type="hidden" id="service1_initial"  value="">
-                                    <select class="form-control" id="service1" name="service">
+                                    <select class="form-control   modifie" id="service1" name="service">
                                         <option value=""></option>
                                         @foreach($services as $service)
                                             <option value="{{$service->id}}" {{isset($modification) && $modification->id_service==$service->id?"selected":Auth::user()->id_service==$service->id?"selected":""}} >{{$service->libelle}}</option>
@@ -122,7 +128,7 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de fin de contrat</label>
                                     <input type="hidden" id="datefinc1_initial"  value="">
-                                    <input type="date" name="datefinc" id="datefinc1" class="form-control" value="{{isset($modification)? $modification->datefinc:''}}"/>
+                                    <input type="date" name="datefinc" id="datefinc1" class="form-control" value="{{isset($personne)?$personne->datefinc:''}}"/>
                                 </div>
 
                                 <div class=" col-lg-4">
@@ -131,7 +137,7 @@
                                     <select class="form-control" name="id_definition" id="dm_id_definition" required>
                                         <option value="">Sélectionner une définition</option>
                                         @foreach($definitions as $definition)
-                                            <option value="{{$definition->id}}" {{isset($definition) && $definition->id==$definition->id?"selected":""}}>{{$definition->libelle}}</option>
+                                            <option value="{{$definition->id}}" {{isset($modification) && $definition->id==$modification->id_definition?"selected":""}}>{{$definition->libelle}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -303,7 +309,8 @@
         $('#id_personne1').change(function(){
             vider();
            var id_personne =$('#id_personne1').val();
-            $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
+
+            $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
                 console.log(data);
                 listmodifavenant=    data['Listmodifavenants'][0];
                 console.log(listmodifavenant);
@@ -333,7 +340,7 @@
 
 
                 var id_definition=  data[0].id_definition;
-                $.get("../listercat/"+id_definition,function(data){
+                $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                     console.log(data);
                     var lesOptions;
                     $.each(data, function( index, value ) {
@@ -351,7 +358,7 @@
         $("#dm_id_definition").change(function (e) {
             // alert("test");
             var id_definition=  $("#dm_id_definition").val();
-            $.get("../listercat/"+id_definition,function(data){
+            $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                 console.log(data);
                 var lesOptions;
                 $.each(data, function( index, value ) {

@@ -14,24 +14,24 @@ class Modification extends Model
         return $this->belongsTo(User::class, "id_users");
     }
     public function type_contrat(){
-        return $this->belongsTo(Typecontrat::class, "id_type_contrat");
+        return $this->belongsTo(Typecontrat::class, "id","id_type_contrat");
     }
     public function contrat(){
-        return $this->belongsTo(Contrat::class, "id_contrat");
+        return $this->belongsTo(Contrat::class, "id","id_contrat");
     }
     public function entite(){
-        return $this->belongsTo(Entite::class, "id_entite");
+        return $this->belongsTo(Entite::class, "id","id_entite");
     }
     public function service(){
-        return $this->belongsTo(Services::class, "id_service");
+        return $this->belongsTo(Services::class, "id","id_service");
     }
     public function personne(){
-        return $this->belongsTo(Personne::class, "id_personne");
+        return $this->hasOne(Personne::class, "id","id_personne");
     }
     public function categorie(){
-        return $this->belongsTo(Categorie::class, "id_categorie");
+        return $this->belongsTo(Categorie::class, "id","id_categorie");
     }
     public function fonction(){
-        return $this->belongsTo(Fonction::class, "id_fonction");
+        return $this->belongsTo(Fonction::class, "id","id_fonction");
     }
 }

@@ -226,19 +226,19 @@
                             <i class="fas fa-calendar-alt" ></i>ABSENCES</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('absences')>
 
-                                <li class="@yield('absences.demande')">
-                                    <a href="{{route('demande')}}">Permission</a>
+                                <li class="@yield('absence.demande')">
+                                    <a href="{{route('absence.demande')}}">Permission</a>
                                 </li>
 
                             @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
                                 <li class="@yield('absences.validation')">
-                                    <a href="{{route('validation')}}">Congé</a>
+                                    <a href="{{route('conges')}}">Congé</a>
                                 </li>
                             @endif
 
                             @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
                                 <li class="@yield('absences.gestion')">
-                                    <a href="{{route('gestion')}}">Billet d'avion</a>
+                                    <a href="{{route('conges')}}">Billet d'avion</a>
                                 </li>
                             @endif
 

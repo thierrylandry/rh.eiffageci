@@ -712,20 +712,22 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
     ])->middleware('roles')->middleware('auth');
 });
 
-//demande d'absences
-Route::get('/demande',[
-    'as'=>'demande',
-    'uses'=>'AbsenceController@demande_absence',
-])->middleware('auth');
+//Absences
+Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements'], function () {
+    Route::get('/demande', [
+        'as' => 'demande',
+        'uses' => 'AbsenceController@demande_absence',
+    ])->middleware('auth');
 
-Route::get('/validation',[
-    'as'=>'validation',
-    'uses'=>'AbsenceController@validation_absence',
-    'roles' => ['Validation_recrutement']
-])->middleware('roles')->middleware('auth');
+    Route::get('/validation', [
+        'as' => 'validation',
+        'uses' => 'AbsenceController@validation_absence',
+        'roles' => ['Validation_recrutement'],
+    ])->middleware('roles')->middleware('auth');
 
-Route::get('/gestion',[
-    'as'=>'gestion',
-    'uses'=>'AbsenceController@gestion_absence',
-    'roles' => ['Gestion_recrutement']
-])->middleware('auth');
+    Route::get('/gestion', [
+        'as' => 'gestion',
+        'uses' => 'AbsenceController@gestion_absence',
+        'roles' => ['Gestion_recrutement']
+    ])->middleware('auth');
+});

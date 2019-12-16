@@ -49,7 +49,7 @@
                         <div class="card-body" >
                             <div class="row form-group">
 
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
                                     <select class="form-control" id="id_personne1" name="id_personne" >
                                         <option value="">Selectionner une personne</option>
@@ -59,12 +59,23 @@
                                     </select>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Matricule</label>
                                    <input type="text" name="matricule" id="matricule1" class="form-control" readonly/>
                                 </div>
 
-                                <div class="col-12 col-md-3">
+                                <div class=" col-12 col-md-4">
+                                    <label for="text-input" class=" form-control-label">Direction</label>
+                                    <input type="hidden" id="id_fonction1_initial"  value="">
+                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
+                                        <option valuue="">Selectionner une fonction</option>
+                                        @foreach($entites as $entite)
+                                            <option value="{{$entite->id}}" {{isset($absence) && $absence->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Service</label>
                                     <input type="hidden" id="service1_initial"  value="">
                                     <select class="form-control" id="service1" name="service">
@@ -75,7 +86,7 @@
                                     </select>
                                 </div>
 
-                                <div class=" col-12 col-md-3">
+                                <div class=" col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Fonction</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
@@ -86,8 +97,8 @@
                                     </select>
                                 </div>
 
-                                <div class=" col-12 col-md-3">
-                                    <label for="text-input" class=" form-control-label">Direction</label>
+                                <div class=" col-12 col-md-4">
+                                    <label for="text-input" class=" form-control-label">Date d'embauche</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
                                         <option valuue="">Selectionner une fonction</option>
@@ -110,35 +121,21 @@
                         </div>
                         <div class="card-body" >
                             <div class="row">
-                                <div class=" col-lg-4">
-                                    <label for="text-input" class=" form-control-label">Fonction</label>
-                                    <input type="hidden" id="id_fonction1_initial"  value="">
-                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option valuue="">Selectionner une fonction</option>
-                                        @foreach($fonctions as $fonction)
-                                            <option value="{{$fonction->id}}" {{isset($absence) && $absence->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
-                                        @endforeach
-                                    </select>
+                                <div class=" col-lg-3">
+                                    <label for="text-input" class=" form-control-label">Date de départ souhaité</label>
+                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
                                 </div>
-
-                                <div class=" col-lg-4">
-                                    <label for="text-input" class=" form-control-label">Catégorie profesionnelle</label>
-                                    <input type="hidden" id="dm_id_categorie_initial"  value="">
-                                    <select class="form-control" name="id_categorie" id="dm_id_categorie">
-                                    </select>
+                                <div class=" col-lg-3">
+                                    <label for="text-input" class=" form-control-label">Date de retour souhaité</label>
+                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
                                 </div>
-                                <div class=" col-lg-4">
-                                    <label for="text-input" class=" form-control-label">Régime</label>
-                                    <input type="hidden" id="regime1_initial"  value="">
-                                    <select class="form-control" name="regime" id="regime1" >
-                                        <option value="40H">40H</option>
-                                        <option value="44H">44H</option>
-                                    </select>
+                                <div class=" col-lg-3">
+                                    <label for="text-input" class=" form-control-label">Date de reprise</label>
+                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
                                 </div>
-                                <div class=" col-lg-4">
-                                    <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                    <input type="hidden" id="dm_budgetMensuel_initial"  value="">
-                                    <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
+                                <div class=" col-lg-3">
+                                    <label for="text-input" class=" form-control-label">Nombre de jour(s) souhaité(s)</label>
+                                    <input type="number" name="dureeMission" class="form-control" value="{{isset($absence)? $absence->dureeMission:''}}"/>
                                 </div>
                             </div>
                         </div>

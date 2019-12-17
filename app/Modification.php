@@ -14,10 +14,10 @@ class Modification extends Model
         return $this->belongsTo(User::class, "id_users");
     }
     public function type_contrat(){
-        return $this->belongsTo(Typecontrat::class, "id","id_type_contrat");
+        return $this->belongsTo(Typecontrat::class,"id_type_contrat","id");
     }
     public function contrat(){
-        return $this->belongsTo(Contrat::class, "id","id_contrat");
+        return $this->belongsTo(Contrat::class, "id_contrat","id");
     }
     public function entite(){
         return $this->belongsTo(Entite::class, "id","id_entite");

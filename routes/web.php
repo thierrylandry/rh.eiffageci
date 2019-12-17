@@ -695,6 +695,17 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
         'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
 
+    Route::get('/ActionValider/{slug}',[
+        'as'=>'ActionValider',
+        'uses'=>'RecrutementController@ActionValider',
+        'roles' => ['Validation_recrutement']
+    ])->middleware('auth');
+
+    Route::post('/ActionRejeter',[
+        'as'=>'ActionRejeter',
+        'uses'=>'RecrutementController@ActionRejeter',
+        'roles' => ['Validation_recrutement']
+    ])->middleware('auth');
     Route::get('/consulter/{id}',[
         'as'=>'consulter',
         'uses'=>'ModificationController@afficher',

@@ -37,7 +37,7 @@ class ModificationController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $modifications = Modification::all();
+        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
        // dd(Auth::user()->id_service);
         $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
         $fonctions = Fonction::all();
@@ -47,7 +47,9 @@ class ModificationController extends Controller
     public function modification($id){
 
         $modification = Modification::find($id);
-        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $listmodif=json_decode($modification->list_modif);
+        $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
+      //  dd($modifications);
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
         $categories = Categorie::distinct('libelle')->get();
@@ -56,7 +58,7 @@ class ModificationController extends Controller
         // $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
         $fonctions = Fonction::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes'));
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes','listmodif'));
     }
     public function afficher($id){
 
@@ -200,7 +202,7 @@ $j=0;
         $modification->list_modif=$listemodif;
         $modification->id_personne=$id_personne;
         $modification->id_users=Auth::user()->id;
-        $modification->id_service=Auth::service()->id;
+        $modification->id_service=Auth::user()->service->id;
 
 
 
@@ -253,74 +255,61 @@ $j=0;
      */
     public function modifier_modification(Request $request){
 
+
         $parameters=$request->except(['_token']);
-        $slug=$parameters['slug'];
-        $posteAPouvoir=$parameters['posteAPouvoir'];
-        $id_entite=$parameters['id_entite'];
-        $id_service=$parameters['service'];
-        $descriptifFonction=$parameters['descriptifFonction'];
-        $competences=$parameters['competences'];
-        $taches=$parameters['taches'];
+        $id=$parameters['id'];
+        $listemodif=$parameters['listemodif'];
+        //$id_personne=$parameters['id_personne'];
+        $service=$parameters['service'];
+        $id_fonction=$parameters['id_fonction'];
         $id_type_contrat=$parameters['id_type_contrat'];
-        $dateDebut=$parameters['dateDebut'];
-        $dureeMission=$parameters['dureeMission'];
-        $telephone_portable=$parameters['telephone_portable'];
-        $forfait=$parameters['forfait'];
-        $debit_internet=$parameters['debit_internet'];
-        $assurance_maladie=$parameters['assurance_maladie'];
-        $nombre_personne=$parameters['nombre_personne'];
-
-        $recruement = Modification::where('slug','=',$slug)->first();
-
-        $recruement->posteAPouvoir=$posteAPouvoir;
-      /*  $recruement->id_entite=$id_entite;
-        $recruement->id_service=$id_service;*/
-        $recruement->descriptifFonction=$descriptifFonction;
+        $datefinc=$parameters['datefinc'];
+        $id_definition=$parameters['id_definition'];
+        $id_categorie=$parameters['id_categorie'];
+        $regime=$parameters['regime'];
+        $budgetMensuel=$parameters['budgetMensuel'];
 
 
-        $competences = new Collection();
-        for($i = 0; $i <= count($request->input("competences"))-1; $i++ )
-        {
-            $competence = new Element();
+        $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
 
-            if( !empty($request->input("competences")[$i])){
-                $competence->valeur = $request->input("competences")[$i];
 
-                $competences->add($competence);
-            }
+
+        $modification = Modification::find($id);
+        $date= new DateTime(null);
+//dd($tab_list_modif);
+        if(in_array ("Le type de contrat",$tab_list_modif)){
+            $modification->id_type_contrat=$id_type_contrat;
 
         }
-        $recruement->competenceRecherche=$competences;
-        $taches = new Collection();
-        for($i = 0; $i <= count($request->input("taches"))-1; $i++ )
-        {
-            $tache = new Element();
-
-            if( !empty($request->input("taches")[$i])){
-                $tache->valeur = $request->input("taches")[$i];
-
-                $taches->add($tache);
-            }
+        if(in_array ("La définition",$tab_list_modif)){
+            $modification->id_definition=$id_definition;
+        }
+        if(in_array ("La catégorie",$tab_list_modif)){
+            $modification->id_categorie=$id_categorie;
 
         }
-
-        $recruement->tache=$taches;
-        $recruement->id_type_contrat=$id_type_contrat;
-        $recruement->dateDebut=$dateDebut;
-        $recruement->dureeMission=$dureeMission;
-        $recruement->telephone_portable=$telephone_portable;
-        $recruement->forfait=$forfait;
-        $recruement->debit_internet=$debit_internet;
-        $recruement->assurance_maladie=$assurance_maladie;
-        $recruement->NbrePersonne=$nombre_personne;
-
-        $recruement->save();
-
-        return redirect()->back()->with('success',"La demande de recrutement a été  modifiée avec succès");
+        if(in_array ("La date de fin",$tab_list_modif)){
+            $modification->dateFinC=$datefinc;
+        }
+        if(in_array ("La durée hebdomadaire de travail",$tab_list_modif)){
+            $modification->regime=$regime;
+        }
+        if(in_array ("La fonction",$tab_list_modif)){
+            $modification->id_fonction=$id_fonction;
+        }
+        if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
+            $modification->budgetMensuel=$budgetMensuel;
+        }
+        if(in_array ("Le service",$tab_list_modif)){
+            $modification->service=$service;
+        }
+        $modification->list_modif=$listemodif;
+        $modification->save();
+        return redirect()->back()->with('success',"La demande de modification a été  modifiée avec succès");
     }
 
-    public function ActionValider($slug){
-        $recruement = Modification::where('slug','=',$slug)->first();
+    public function ActionValider($id){
+        $recruement = Modification::find($id);
         $date= new DateTime(null);
 
         $recruement->etat=2;
@@ -373,7 +362,7 @@ $j=0;
         $services = Services::all();
         $definitions = Definition::all();
         $rubrique_salaires= Rubrique_salaire::all();
-        return view('modification/GestionModification',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires'));
+        return view('modification/GestionModification',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires','mode'));
     }
     public function supprimer($slug){
 

@@ -9,7 +9,7 @@
     active
 @endsection
 @endif
-@section('modification')
+@section('modifications')
     style="display: block;"
 @endsection
 @section('page')
@@ -35,16 +35,13 @@
                 <table class="table table-borderles" id="table_recrutement">
                     <thead>
                     <tr>
-                        <th>slug</th>
+                        <th>ID</th>
                         <th>STATUS</th>
-                        <th>NUMERO</th>
                         <th>DEMANDEUR</th>
+                        <th>PERSONNE</th>
                         <th>DIRECTION</th>
-                        <th>SERVICE</th>
-                        <th>POSTE</th>
-                        <th>CONTRAT</th>
+                        <th>LISTE DES MODIFICATIONS</th>
                         <th>ACTION</th>
-                        <th>CONDITION DE REMUNERATION</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,70 +49,60 @@
                         <tr>
                             <td>{{$modification->id}}</td>
                             <td>    @if($modification->etat==1)
-                                        <i class=" fa fa-check-circle-o" style="background-color: red"></i>
-                                        @elseif($modification->etat==2)
-                                         <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
-                                    @elseif($modification->etat==3)
+                                    <i class=" fa fa-check-circle-o" style="background-color: red"></i>
+                                @elseif($modification->etat==2)
+                                    <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
+                                @elseif($modification->etat==3)
                                     <i class=" fa fa-check-circle-o" style="background-color: green"></i>
                                 @elseif($modification->etat==4)
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
-                                    @endif
+                                @endif
                             </td>
-                            <td>{{$modification->id}}</td>
                             <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
+                            <td>{{$modification->personne->nom}} {{$modification->personne->prenoms}}</td>
                             <td>{{$modification->user->entite->libelle}}</td>
-                            <td>{{$modification->user->service->libelle}}</td>
-                            <td>{{$modification->posteAPouvoir}}</td>
-                            <td>{{$modification->type_contrat->libelle}}</td>
+                            <td>@foreach(json_decode($modification->list_modif) as $modif)
+                                    <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}</button>
+                                @endforeach
+                            </td>
                             <td>
                                 <div class="table-data-feature">
-                                @if($modification->etat==1)
-                                        @if($mode=="validation")
-                                        <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
-                                            <i class="zmdi zmdi-mail-send"></i> Valider
-                                        </a>&nbsp;
-                                        <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
-                                            <i class="zmdi zmdi zmdi-close"></i> Rejeter
-                                        </a>&nbsp;
-                                        @endif
-
-
+                                    @if($modification->etat==1)
                                         <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="fa fa-eye"></i>
-                                        </a>&nbsp;
-                                    @if($mode=="gestion")
+                                        </a>
+                                    @if($mode!="validation")
                                         <a href="{{route("modification.modification",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
-                                        </a>&nbsp;
-                                        <a href="{{route("modification.supprimer",$modification->id)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        </a>
+
+                                        <a  href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
-                                        </a>&nbsp;
+                                        </a>
                                         @endif
 
 
-                                @elseif($modification->etat==2)
-                                        <a href="#" class="btn btn-warning btn_modal_condition_remuneration" data-toggle="modal" data-target="#modalconditionremuneration" data-placement="top" title="Condition de rémunération">
-                                            <i class="zmdi zmdi-format-indent-increase"></i> Condition de rémunération
-                                        </a>&nbsp;
+                                    @elseif($modification->etat==2)
+                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </a>
+                                    @elseif($modification->etat==3)
 
                                         <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
-                                        </a>&nbsp;
-                                @elseif($modification->etat==3)
-
-                                        <a href="{{route("modification.consulter",$recrutement->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                        </a>
+                                    @elseif($modification->etat==4)
+                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
-                                        </a>&nbsp;
-                                @elseif($modification->etat==4)
-                                        <a href="{{route("modification.supprimer",$modification->id)}}" id="btnsupprimer" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        </a>
+                                        <a href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
-                                        </a>&nbsp;
-                                @endif
+                                        </a>
+                                    @endif
                                 </div>
                             </td>
-                            <td>{{isset($modification)?$modification->salaire:''}}</td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
             </div>

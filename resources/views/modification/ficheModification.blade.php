@@ -37,15 +37,19 @@
 
         <form action="{{isset($modification)?route('modification.modifier'):route('modification.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
             @csrf
-            <input type="hidden" id="text-input" name="id" placeholder="Nom" value="{{isset($modification)? $modification->id:''}}" class="form-control" required>
-            <input type="text"  name="listemodif" id="listemodif" placeholder="Nom" style="display: none" value="{{isset($modification)? $modification->slug:''}}" class="form-control" required>
+            <input type="hidden" id="text-input" name="id" placeholder="Nom" value="{{isset($modification)? $modification->id:''}}" class="form-control">
+            <input type="text"  name="listemodif" id="listemodif" placeholder="Nom" style="display: none"  value="{{isset($listmodif)? str_replace('\u00e9','é',json_encode($listmodif)):''}}" class="form-control" required>
 
             <div class="card">
                 <div class="card-header">
                     <strong>Liste des modifications </strong>
                 </div>
                 <div class="card-body" id="Ecran_affiche_liste" >
-
+                    @if(isset($listmodif))
+                                @foreach($listmodif as $listmodi)
+                        <button type='button' class='btn btn-outline-primary'  style='font-size: 10pt!important;'disabled>{{$listmodi}}</button>
+                                    @endforeach
+                        @endif
                 </div>
             </div>
             <div class="row">
@@ -75,13 +79,13 @@
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Matricule</label>
-                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{isset($modification)?$modification->personne->matricule:'ff'}}" readonly/>
+                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{isset($modification)?$modification->personne->matricule:''}}" readonly/>
                                 </div>
 
                                 <div class="col-12 col-md-3">
                                     <label for="text-input" class=" form-control-label">Service</label>
                                     <input type="hidden" id="service1_initial"  value="">
-                                    <select class="form-control   modifie" id="service1" name="service">
+                                    <select class="form-control  {{isset($listmodif) && in_array('Le service',$listmodif)?'modifie':''}} " id="service1" name="service">
                                         <option value=""></option>
                                         @foreach($services as $service)
                                             <option value="{{$service->id}}" {{isset($modification) && $modification->id_service==$service->id?"selected":Auth::user()->id_service==$service->id?"selected":""}} >{{$service->libelle}}</option>
@@ -104,7 +108,7 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Fonction</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
-                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
+                                    <select class="form-control {{isset($listmodif) && in_array('La fonction',$listmodif)?'modifie':''}}" name="id_fonction" id="id_fonction1" required>
                                         <option valuue="">Selectionner une fonction</option>
                                         @foreach($fonctions as $fonction)
                                             <option value="{{$fonction->id}}" {{isset($modification) && $modification->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
@@ -114,7 +118,7 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Type de contrat</label>
                                     <input type="hidden" id="id_type_contrat1_initial"  value="">
-                                    <select class="form-control" name="id_type_contrat"  id="id_type_contrat1" required>
+                                    <select class="form-control {{isset($listmodif) && in_array('Le type de contrat',$listmodif)?'modifie':''}}" name="id_type_contrat"  id="id_type_contrat1" required>
                                         <option value="">Sélectionner un type de contrat</option>
                                         @foreach($typecontrats as $typecontrat)
                                             <option value="{{$typecontrat->id}}" {{isset($modification) && $modification->id_type_contrat==$typecontrat->id?"selected":""}}>{{$typecontrat->libelle}}</option>
@@ -123,18 +127,18 @@
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de debut de contrat</label>
-                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control" value="{{isset($personne)?$personne->datedebutc:''}}" readonly/>
+                                    <input type="date" name="datedebutc" id="datedebutc1" class="form-control " value="{{isset($personne)?$personne->datedebutc:''}}" readonly/>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Date de fin de contrat</label>
                                     <input type="hidden" id="datefinc1_initial"  value="">
-                                    <input type="date" name="datefinc" id="datefinc1" class="form-control" value="{{isset($personne)?$personne->datefinc:''}}"/>
+                                    <input type="date" name="datefinc" id="datefinc1" class="form-control  {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($personne)?$personne->datefinc:''}}"/>
                                 </div>
 
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Définition</label>
                                     <input type="hidden" id="dm_id_definition_initial"  value="">
-                                    <select class="form-control" name="id_definition" id="dm_id_definition" required>
+                                    <select class="form-control {{isset($listmodif) && in_array('La définition',$listmodif)?'modifie':''}}" name="id_definition" id="dm_id_definition" required>
                                         <option value="">Sélectionner une définition</option>
                                         @foreach($definitions as $definition)
                                             <option value="{{$definition->id}}" {{isset($modification) && $definition->id==$modification->id_definition?"selected":""}}>{{$definition->libelle}}</option>
@@ -144,22 +148,22 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Catégorie profesionnelle</label>
                                     <input type="hidden" id="dm_id_categorie_initial"  value="">
-                                    <select class="form-control" name="id_categorie" id="dm_id_categorie">
+                                    <select class="form-control {{isset($listmodif) && in_array('La catégorie',$listmodif)?'modifie':''}}" name="id_categorie" id="dm_id_categorie">
                                     </select>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Régime</label>
                                     <input type="hidden" id="regime1_initial"  value="">
-                                    <select class="form-control" name="regime" id="regime1"  required>
+                                    <select class="form-control {{isset($listmodif) && in_array('La durée hebdomadaire de travail',$listmodif)?'modifie':''}}" name="regime" id="regime1"  required>
                                         <option value="">Sélectionner un régime</option>
-                                        <option value="40H">40H</option>
-                                        <option value="44H">44H</option>
+                                        <option value="40H" {{isset($modification) && $modification->regime=="40H"?'selected':''}}>40H</option>
+                                        <option value="44H" {{isset($modification) && $modification->regime=="44H"?'selected':''}}>44H</option>
                                     </select>
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
                                     <input type="hidden" id="dm_budgetMensuel_initial"  value="">
-                                    <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
+                                    <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control {{isset($listmodif) && in_array('Le budget mensuel',$listmodif)?'modifie':''}}" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
                                 </div>
                             </div>
                         </div>
@@ -193,6 +197,7 @@
                                 <th>ID</th>
                                 <th>STATUS</th>
                                 <th>DEMANDEUR</th>
+                                <th>PERSONNE</th>
                                 <th>DIRECTION</th>
                                 <th>LISTE DES MODIFICATIONS</th>
                                 <th>ACTION</th>
@@ -213,6 +218,7 @@
                                         @endif
                                     </td>
                                     <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
+                                    <td>{{$modification->personne->nom}} {{$modification->personne->prenoms}}</td>
                                     <td>{{$modification->user->entite->libelle}}</td>
                                     <td>@foreach(json_decode($modification->list_modif) as $modif)
                                             <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}</button>
@@ -269,6 +275,13 @@
     <script>
         var listmodifavenant;
         var listmodifeff = new Array();
+
+        @if(isset($listmodif))
+
+                listmodifeff=<?php echo str_replace('\u00e9','é',json_encode($listmodif));?>
+
+        @endif
+
         $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
        // $('#service1').select2();
         $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
@@ -338,7 +351,6 @@
                 $("#dm_budgetMensuel").val(somme);
                 $("#dm_budgetMensuel_initial").val(somme);
 
-
                 var id_definition=  data[0].id_definition;
                 $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                     console.log(data);
@@ -369,7 +381,33 @@
             });
 
         });
+//exécuter sa au chargement de la page
+        @if(isset($modification))
+        var id_definition= "{{$modification->id_definition}}"+"ici";
+                @else
+        var id_definition="";
+                        @endif
 
+        $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+
+           // console.log(data);
+            var lesOptions;
+            $.each(data, function( index, value ) {
+                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+            });
+            $("#dm_id_categorie").empty();
+            $("#dm_id_categorie").append(lesOptions);
+        });
+        var id_personne="{{isset($modification)?$modification->id_personne:''}}";
+        $.get("{{URL::asset('modifications/lapersonne_contrat')}}/"+id_personne,function(data){
+            console.log(data);
+            $("#dm_id_categorie").val(data[0].id_categorie);
+            $("#dm_id_categorie_initial").val(data[0].id_categorie);
+                }
+        );
+
+
+        //fin
         function affiche_liste_modification(){
             $('#Ecran_affiche_liste').empty();
 

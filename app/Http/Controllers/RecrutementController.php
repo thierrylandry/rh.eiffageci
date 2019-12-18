@@ -117,7 +117,12 @@ $j=0;
         }
      //   dd($resultat);
 
-        $tab[]=$salaires;
+        if(isset($salaires)){
+            $tab[]=$salaires;
+        }else{
+            $tab[]="";
+        }
+
         $tab[]=$resultat;
         return $tab;
     }

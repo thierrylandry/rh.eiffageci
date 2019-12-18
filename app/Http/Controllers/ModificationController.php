@@ -69,9 +69,7 @@ class ModificationController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        $competences= json_decode($modifications->competenceRecherche);
-        $taches= json_decode($modifications->tache);
-        return view('modification/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','competences','taches','modification'));
+        return view('modification/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification'));
     }
     public function liste_salaire($slug){
 
@@ -155,6 +153,21 @@ $j=0;
 
 
         $parameters=$request->except(['_token']);
+        //dd($parameters);
+
+
+        //les valeurs initiales
+
+        $service1_initial=$parameters['service1_initial'];
+        $id_fonction1_initial=$parameters['id_fonction1_initial'];
+        $id_type_contrat1_initial=$parameters['id_type_contrat1_initial'];
+        $datefinc1_initial=$parameters['datefinc1_initial'];
+        $dm_id_definition_initial=$parameters['dm_id_definition_initial'];
+        $dm_id_categorie_initial=$parameters['dm_id_categorie_initial'];
+        $regime1_initial=$parameters['regime1_initial'];
+        $dm_budgetMensuel_initial=$parameters['dm_budgetMensuel_initial'];
+
+        //fin des valeurs initial
         $listemodif=$parameters['listemodif'];
         $id_personne=$parameters['id_personne'];
         $service=$parameters['service'];
@@ -173,30 +186,40 @@ $j=0;
 
         $modification = new Modification();
         $date= new DateTime(null);
-
+        $modification->id_typeModification=3;
         if(in_array ("Le type de contrat",$tab_list_modif)){
             $modification->id_type_contrat=$id_type_contrat;
+            $modification->id_type_contrat_initial=$id_type_contrat1_initial;
         }
         if(in_array ("La définition",$tab_list_modif)){
             $modification->id_definition=$id_definition;
+            $modification->id_definition_initial=$dm_id_definition_initial;
         }
         if(in_array ("La catégorie",$tab_list_modif)){
             $modification->id_categorie=$id_categorie;
+            $modification->id_categorie_initial=$dm_id_categorie_initial;
         }
         if(in_array ("La date de fin",$tab_list_modif)){
             $modification->dateFinC=$datefinc;
+            $modification->datefinc_initial=$datefinc1_initial;
+            $modification->id_typeModification=2;
         }
         if(in_array ("La durée hebdomadaire de travail",$tab_list_modif)){
             $modification->regime=$regime;
+            $modification->regime_initial=$regime1_initial;
+
         }
         if(in_array ("La fonction",$tab_list_modif)){
             $modification->id_fonction=$id_fonction;
+            $modification->id_fonction_initial=$id_fonction1_initial;
         }
         if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
             $modification->budgetMensuel=$budgetMensuel;
+            $modification->budgetMensuel_initial=$dm_budgetMensuel_initial;
         }
         if(in_array ("Le service",$tab_list_modif)){
             $modification->service=$service;
+            $modification->service_initial=$service1_initial;
         }
 
         $modification->list_modif=$listemodif;
@@ -277,6 +300,7 @@ $j=0;
         $modification = Modification::find($id);
         $date= new DateTime(null);
 //dd($tab_list_modif);
+        $modification->id_typeModification=3;
         if(in_array ("Le type de contrat",$tab_list_modif)){
             $modification->id_type_contrat=$id_type_contrat;
 
@@ -290,6 +314,7 @@ $j=0;
         }
         if(in_array ("La date de fin",$tab_list_modif)){
             $modification->dateFinC=$datefinc;
+            $modification->id_typeModification=3;
         }
         if(in_array ("La durée hebdomadaire de travail",$tab_list_modif)){
             $modification->regime=$regime;
@@ -313,11 +338,11 @@ $j=0;
         $date= new DateTime(null);
 
         $recruement->etat=2;
-        $recruement->id_valideur=Auth::user()->id;
+        $recruement->id_validateur=Auth::user()->id;
 
         $recruement->save();
 
-        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
+        return redirect()->route('modification.validation')->with('success',"La demande de recrutement a été  validée avec succès");
 
     }
     public function ActionRejeter(Request $request){

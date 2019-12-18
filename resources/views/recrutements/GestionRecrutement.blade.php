@@ -140,21 +140,6 @@
     </script>
     <script>
 
-
-        function readURL(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#rendu_img').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }else{
-                $('#rendu_img').attr('src','images/user.png');
-            }
-
         $("#btnsupprimer").click(function(e){
            if(confirm("Voulez vous supprimer?")){
 
@@ -211,13 +196,17 @@
 
                 $.get("../recrutements/liste_salaire/"+slug,function(data){
                     console.log(data[0]);
-                    $("#Salaire_de_base").val(data[0][0].valeur);
-                    $("#Sursalaire").val(data[0][1].valeur);
-                    $("#Prime_de_salissure").val(data[0][2].valeur);
-                    $("#Prime_de_tenue_de_travail").val(data[0][3].valeur);
-                    $("#Prime_de_transport").val(data[0][4].valeur);
+                    if(data[0]){
 
-                    $("#rubriques_petit").append(data[1]);
+                        $("#Salaire_de_base").val(data[0][0].valeur);
+                        $("#Sursalaire").val(data[0][1].valeur);
+                        $("#Prime_de_salissure").val(data[0][2].valeur);
+                        $("#Prime_de_tenue_de_travail").val(data[0][3].valeur);
+                        $("#Prime_de_transport").val(data[0][4].valeur);
+
+                        $("#rubriques_petit").append(data[1]);
+                    }
+
 
                 });
 

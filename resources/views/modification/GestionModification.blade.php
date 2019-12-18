@@ -37,6 +37,7 @@
                     <tr>
                         <th>ID</th>
                         <th>STATUS</th>
+                        <th>TYPE MODIFICATION</th>
                         <th>DEMANDEUR</th>
                         <th>PERSONNE</th>
                         <th>DIRECTION</th>
@@ -58,19 +59,33 @@
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                 @endif
                             </td>
+
+                            <td>@if(isset($modification->id_typeModification) && $modification->id_typeModification==2)
+                                    <span style="background-color:#57b846; color:white">Renouvellement</span>
+                                @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==3)
+                                    <span style="background-color:#00b5e9;  color:white">Avenant</span>
+                                @endif</td>
                             <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
                             <td>{{$modification->personne->nom}} {{$modification->personne->prenoms}}</td>
                             <td>{{$modification->user->entite->libelle}}</td>
-                            <td>@foreach(json_decode($modification->list_modif) as $modif)
-                                    <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}</button>
-                                @endforeach
+                            <td>
+
+                                   @foreach(json_decode($modification->list_modif) as $modif)
+                                       <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}
+                                       </button>
+                                   @endforeach
                             </td>
                             <td>
                                 <div class="table-data-feature">
                                     @if($modification->etat==1)
-                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
+                                        @if($mode=="validation")
+                                            <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i class="zmdi zmdi-mail-send"></i> Valider
+                                            </a>&nbsp;
+                                            <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
+                                                <i class="zmdi zmdi zmdi-close"></i> Rejeter
+                                            </a>&nbsp;
+                                        @endif
                                     @if($mode!="validation")
                                         <a href="{{route("modification.modification",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>

@@ -697,13 +697,13 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
 
     Route::get('/ActionValider/{slug}',[
         'as'=>'ActionValider',
-        'uses'=>'RecrutementController@ActionValider',
+        'uses'=>'ModificationController@ActionValider',
         'roles' => ['Validation_recrutement']
     ])->middleware('auth');
 
     Route::post('/ActionRejeter',[
         'as'=>'ActionRejeter',
-        'uses'=>'RecrutementController@ActionRejeter',
+        'uses'=>'ModificationController@ActionRejeter',
         'roles' => ['Validation_recrutement']
     ])->middleware('auth');
     Route::get('/consulter/{id}',[

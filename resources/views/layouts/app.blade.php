@@ -83,10 +83,30 @@
                     @csrf
                     <input type="hidden" id="id_personne" name="id_personne" placeholder="Nom" value="" class="form-control" required>
                     <input type="hidden" id="id_nature_contrat" name="id_nature_contrat" placeholder="Nom" value="" class="form-control" required>
-
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label for="text-input" class=" form-control-label">Joindre une demande de modification</label>
+                        </div>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="id_modification" id="id_modification1" required>
+                                <option value="">SELECTIONNER</option>
+                                @if(isset($modifications))
+                                    @foreach($modifications as $modification)
+                                        <option  value="{{$modification->id}}">@if(isset($modification->id_typeModification) && $modification->id_typeModification==2)
+                                                <span style="background-color:#57b846; color:white">Renouvellement</span>
+                                            @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==3)
+                                                <span style="background-color:#00b5e9;  color:white">Avenant</span>
+                                            @endif  @foreach(json_decode($modification->list_modif) as $modif)
+                                                <span  class="btn btn-outline-primary" disabled>{{$modif}}
+                                                </span>
+                                            @endforeach</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6 top-campaign ">
-
                             <div class="">
                                 <div class="row form-group">
                                     <div class="col-sm-5">

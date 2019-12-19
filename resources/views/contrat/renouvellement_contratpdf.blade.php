@@ -3,6 +3,9 @@
   <style>
     p, div{padding: 1px; margin: 0; text-align: justify}
     table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
+    .classtext{
+      color: #00aced;
+    }
   </style>
   <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>RENOUVELLEMENT DE CONTRAT DE TRAVAIL A DUREE DETERMINEE</u></h1>
 
@@ -23,21 +26,30 @@
         <table class="preambule">
           <tr>
             <td style="font-size: 10pt" width="40%"><b>Nom</b></td>
-            <td width="60%"><b></b></td>
+            <td width="60%" class="classtext"><b>{{$contrat->personne->nom}}</b></td>
           </tr>
           <tr>
             <td style="font-size: 10pt" width="40%" ><b>Prénoms</b></td>
-            <td width="60%"><b></b></td>
+            <td width="60%"  class="classtext"><b><b>{{$contrat->personne->prenom}}</b></b></td>
           </tr>
           <tr>
             <td style="font-size: 10pt" width="40%"><b>Sexe</b></td>
-            <td width="60%"></td>
+            <td width="60%"  class="classtext">
+             <b> @if($contrat->personne->sexe=="M")
+                 HOMME
+               @else
+                 FEMME
+               @endif</b>
+            </td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>Né(e) le</b></td>
-            <td width="60%"></td>
+            <td width="60%" class="classtext">
+              <b><?php $date = new DateTime($contrat->personne->datenaissance);
+                echo $date->format('d-m-Y');?></b>
+            </td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>A</b></td>
-            <td width="60%"></td>
+            <td width="60%"><b></b></td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>De</b></td>
             <td width="60%"></td>
@@ -46,19 +58,28 @@
             <td width="60%"></td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>Situation de famille</b></td>
-            <td width="60%"></td>
+            <td width="60%" class="classtext"><b>@if($contrat->personne->matrimonial=="1")
+                  CELIBATAIRE
+                @elseif($contrat->personne->matrimonial=="2")
+                 MARIE(E)
+                @elseif($contrat->personne->matrimonial=="3")
+                                 DIVORCE(E)
+                @elseif($contrat->personne->matrimonial=="4")
+                  VEUF(VE)
+                @endif
+              </b></td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>Domicilié à</b></td>
-            <td width="60%"></td>
+            <td width="60%" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>Nationalité</b></td>
-            <td width="60%"></td>
+            <td width="60%" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
           </tr><tr>
             <td style="font-size: 10pt" width="40%"><b>N° Carte Consulaire</b></td>
             <td width="60%"></td>
           </tr><tr>
-            <td style="font-size: 10pt" width="40%"><b>Fonction</b></td>
-            <td width="60%"></td>
+            <td style="font-size: 10pt" width="40%" ><b>Fonction</b></td>
+            <td width="60%" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
           </tr>
         </table>
       </td>
@@ -69,7 +90,7 @@
 
   <p style="text-align: right"><b><u>D’autre part,</u></b></p><br>
 
-  <p><b>La succursale Eiffage Génie Civil Côte d’Ivoire</b> et ________________ ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p><br>
+  <p><b>La succursale Eiffage Génie Civil Côte d’Ivoire</b> et <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p><br>
 
   <h1 style="padding: 0;text-align: center"><u>EXPOSE</u></h1>
 
@@ -84,7 +105,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 1</u> : Qualité</h1>
 
-  <p>L’Employé susnommé est recruté par l’Employeur en qualité de ________________.<br>
+  <p>L’Employé susnommé est recruté par l’Employeur en qualité de <b class="classtext">{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b>.<br>
     L’Employé qui accepte cette qualité, déclare avoir exprimé son engagement en toute liberté.<br>
     Il devra, en tout état de cause, fournir toute preuve de sa libération de son dernier Employeur.
   </p><br>
@@ -95,7 +116,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
 
-  <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle __________, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
+  <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
 
   <h1 style="padding: 0;text-align: left"><u>Article 4</u> : Dossier Administratif</h1>
 
@@ -112,7 +133,9 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 6</u> : Durée du contrat de travail</h1>
 
-  <p>Le présent contrat est établi pour une durée déterminée allant du ______________ au _____________,
+  <p>Le présent contrat est établi pour une durée déterminée allant du <b class="classtext">  <?php $date = new DateTime($contrat->datedebutc);
+      echo $date->format('d-m-Y');?></b> au <b class="classtext">  <?php $date = new DateTime($contrat->datefinc);
+      echo $date->format('d-m-Y');?></b>,
     conformément à la réglementation régissant les rapports entre Employeur et Employé, notamment la loi nouvelle n°2015-532 du 20 juillet 2015 portant Code de Travail en Côte d’ivoire et les textes subséquents pris pour son application.<br>
     A l’issu de cette période, les Parties peuvent mettre fin au présent contrat conformément aux dispositions du code du travail.<br>
     Toutefois il ne pourra être rompu avant le terme que par force majeur, accord commun ou faute lourde de l’une des parties.
@@ -121,13 +144,16 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 7</u> : Durée de travail - Horaires</h1>
 
-  <p>Le présent contrat est conclu et accepté pour des horaires de travail de __________ par semaine. La durée hebdomadaire ci-dessus indiquée est indicative,
+  <p>Le présent contrat est conclu et accepté pour des horaires de travail de <b class="classtext">{{isset($contrat->regime)?$contrat->regime:''}}</b> par semaine. La durée hebdomadaire ci-dessus indiquée est indicative,
     et pourra être modifiée en fonction des nécessités de service.
   </p><br><br>
 
   <h1 style="padding: 0;text-align: left"><u>Article 8</u> : Rémunération et accessoires</h1>
 
-  <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération <b>mensuelle brute de ______________________ F CFA</b> détaillée comme suit :</p>
+  <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération <b>mensuelle brute de <b class="classtext"><?php  $val=0;foreach(json_decode($contrat->valeurSalaire) as $valeur) :
+          $val+=$valeur->valeur;
+    endforeach;
+     echo $val;   ?></b> F CFA</b> détaillée comme suit :</p>
   <br>
   <br>
   <table style="margin: 0px; padding: 0px;">
@@ -138,26 +164,12 @@
             <td style="font-size: 10pt" width="40%" align="center"><b>Détail</b></td>
             <td style="font-size: 10pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
           </tr>
+          @foreach(json_decode($contrat->valeurSalaire) as $valeur)
           <tr>
-            <td style="font-size: 10pt" width="40%">Salaire de base catégoriel</td>
-            <td width="60%"></td>
+            <td style="font-size: 10pt" width="40%">{{$valeur->libelle}}</td>
+            <td width="60%"  class="classtext"><b>{{$valeur->valeur}}</b></td>
           </tr>
-          <tr>
-            <td style="font-size: 10pt" width="40%">Sursalaire</td>
-            <td width="60%"></td>
-          </tr>
-          <tr>
-            <td style="font-size: 10pt" width="40%">Prime salissure</td>
-            <td width="60%"></td>
-          </tr>
-          <tr>
-            <td style="font-size: 10pt" width="40%">Prime entretien de tenue</td>
-            <td width="60%"></td>
-          </tr>
-          <tr>
-            <td style="font-size: 10pt" width="40%">Indemnité de transport</td>
-            <td width="60%"></td>
-          </tr>
+            @endforeach
         </table>
       </td>
     </tr>
@@ -196,7 +208,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 12</u> : Avantages sociaux</h1>
 
-  <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants est prise en charge par l’Employeur à hauteur de ______% auprès d’une compagnie d’assurance locale.
+  <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants est prise en charge par l’Employeur à hauteur de {{isset($contrat->	couvertureMaladie)?$contrat->couvertureMaladie:''}}% auprès d’une compagnie d’assurance locale.
   </p><br>
 
   <h1 style="padding: 0;text-align: left"><u>Article 13</u> : Absence et Indisponibilité</h1>
@@ -227,7 +239,8 @@
   <p>Le présent contrat est établi en <b>deux (2)</b> exemplaires originaux exempt de tous droits de timbre et d’enregistrement, dont une <b>(01) copie originale</b> est remise à l’Employé.
   </p><br>
 
-  <p style="text-align: right">Fait à Abidjan, le __________________.</p><br><br>
+  <p style="text-align: right">Fait à Abidjan, le <b class="classtext"> <?php $date = new DateTime($contrat->created_at);
+      echo $date->format('d-m-Y');?></b>.</p><br><br>
 
   <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br>
   <br>

@@ -206,7 +206,7 @@ Route::get('/contratcdipdf',[
     'uses'=>'ContratController@contratcdipdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
-Route::get('/renouvellement_contratpdf',[
+Route::get('/renouvellement_contratpdf/{id}',[
     'as'=>'renouvellement_contratpdf',
     'uses'=>'ContratController@renouvellement_contratpdf',
     'roles' => ['Personnes']

@@ -17,7 +17,6 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
@@ -101,8 +100,8 @@
                                                     <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Avenant de contrat" id="modalbtnavenant" >Avenant</button>
                                                     @if($contrat->id_nature_contrat==1)
                                                     <a href="{{route("contratcddpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                        @elseif($contrat->id_nature_contrat==2)
-                                                        <a href="{{route("renouvellement_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
+                                                        @elseif($contrat->id_nature_contrat==2 &&  $contrat->id_type_contrat=2 || $contrat->id_type_contrat==4)
+                                                        <a href="{{route("renouvellement_contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
                                                         @elseif($contrat->id_nature_contrat==3)
                                                         <a href="{{route("avenant_type_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
                                                         <a href="{{route("avenant_renum_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le couriel</a>

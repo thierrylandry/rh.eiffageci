@@ -27,5 +27,15 @@ class Contrat extends Model
 
         return $this->belongsTo('App\Typecontrat', 'id_type_contrat');
     }
+    public function personne()
+    {
+
+        return $this->hasOne('App\Personne','id', 'id_personne');
+    }
+    public function commune()
+    {
+
+        return $this->hasOne('App\Commune','id', 'id_commune');
+    }
 
 }

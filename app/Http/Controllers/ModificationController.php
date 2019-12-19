@@ -374,7 +374,7 @@ $j=0;
         $services = Services::all();
         $definitions = Definition::all();
         $rubrique_salaires= Rubrique_salaire::all();
-        return view('recrutements/GestionRecrutement',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires'));
+        return view('modification/GestionModification',compact('entites','modifications','mode','typecontrats','categories','services','definitions','rubrique_salaires'));
     }
 
     public function valider_modification(){

@@ -101,6 +101,9 @@
                                         <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
+                                        <a href="{{route('affiche_contrat',['id'=>$modification->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                            <i class="zmdi zmdi-edit"></i> Créer le document
+                                        </a>
                                     @elseif($modification->etat==3)
 
                                         <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">

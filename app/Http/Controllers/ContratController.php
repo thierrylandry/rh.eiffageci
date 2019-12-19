@@ -7,6 +7,7 @@ use App\Contrat;
 use App\Definition;
 use App\Entite;
 use App\Metier\Json\Rubrique;
+use App\Modification;
 use App\Nature_contrat;
 use App\Personne;
 use App\Recrutement;
@@ -41,9 +42,12 @@ class ContratController extends Controller
         $personne= Personne::where('slug', $slug)->get()->first();
 
         $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
-        $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
+        if(isset($contrat)){
+            $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
+        }
+
         $valeurSalaire= Array();
-        if(!is_null($contrat->valeurSalaire)){
+        if(isset($contrat) && !is_null($contrat->valeurSalaire)){
             $valeurSalairepartiels=\GuzzleHttp\json_decode($contrat->valeurSalaire);
 
             foreach($valeurSalairepartiels as $valeurSalairepartiel):
@@ -110,8 +114,9 @@ class ContratController extends Controller
 
         $definitions = Definition::all();
 
+        $modifications =Modification::where('etat','=','2')->where('id_personne','=',$personne->id)->get();
 
-        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats','entites','services','typecontrats','definitions'));
+        return view('contrat/lister_contrat',compact('personne','services','typecontrats','contrats','entites','services','typecontrats','definitions','modifications'));
     }
 
     public function information_contrat($id){
@@ -333,9 +338,18 @@ $entites= Entite::all();
                           ->first();
      //   dd($ancien_contrat);
 
+
+        //si le  type est CDI alors date de fin == nul
+
+        if($type_de_contrat==2){
+            $contrat->dateFinC=null;
+        }
+        //
+
+
         // on regarde si il y a un ou plusieurs anciens contrats. Si oui alors récupéré celui qui a la date de debut la plus ressente
         if(!empty($ancien_contrat) ){
-            if($ancien_contrat->datedebutc < $dateDebutC){
+            if($ancien_contrat->dateFinC < $dateFinC || $type_de_contrat==2){
                 $ancien_contrat->etat=2;
                 $ancien_contrat->departDefinitif=date('d-m-Y');
                 $ancien_contrat->save();
@@ -372,7 +386,7 @@ $entites= Entite::all();
 
         $entite=$personne->id_entite;
 
-        return redirect()->route('lister_personne',['entite'=>$entite])->with('success',"Le contrat  a été ajouté avec succès");
+        return redirect()->back()->with('success',"Le contrat  a été ajouté avec succès");
     }
     public function save_renouvellezment_avenant( Request $request){
 
@@ -453,9 +467,11 @@ $entites= Entite::all();
 
         return $pdf->stream();
     }
-    public function renouvellement_contratpdf(){
+    public function renouvellement_contratpdf($id){
 
-        $pdf = PDF::loadView('contrat.renouvellement_contratpdf');
+        $contrat=Contrat::find($id);
+
+        $pdf = PDF::loadView('contrat.renouvellement_contratpdf',compact('contrat'));
 
         return $pdf->stream();
     }

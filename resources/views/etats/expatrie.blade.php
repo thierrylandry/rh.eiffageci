@@ -55,6 +55,7 @@
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>
                     <tr>
+                        <th>N°</th>
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>FONCTION</th>
@@ -67,9 +68,10 @@
                         <th>LIEN DE PARENTE</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody><?php  $i=1;?>
                     @foreach($expatries as $expatrie)
                         <tr class="tr-shadow">
+                            <td>{{$i++}}</td>
                             <td>{{$expatrie->nom}}</td>
                             <td>{{$expatrie->prenom}}</td>
                             <td>{{$expatrie->libelle}}</td>
@@ -90,6 +92,7 @@
                             @foreach($tabs as $familles)
                                 @if(!isset($familles->presence_effective) || isset($familles->presence_effective)&& $familles->presence_effective=="P")
                                 <tr class="tr-shadow">
+                                    <td>{{$i++}}</td>
                                     <td>{{isset($familles->nom_prenom)?explode(' ',$familles->nom_prenom)[0]:''}}</td>
                                     <td>
 
@@ -128,11 +131,12 @@
                             @endif
 
                     @endforeach
- 
+
                     @foreach($invites_presents as $invites_present)
 
                         @if($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)))
                         <tr class="tr-shadow">
+                            <td>{{$i++}}</td>
                             <td>{{$invites_present->nom}}</td>
                             <td>{{$invites_present->prenoms}}</td>
                             <td>{{$invites_present->fonction}}</td>
@@ -230,7 +234,7 @@
                     {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0,1, 2,3,4,5,6,7,8,9]
+                            columns: [ 0,1, 2,3,4,5,6,7,8,9,10]
                         },
                         text:"Copier",
                         filename: "<?php echo $nom?>",
@@ -242,7 +246,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9,10]
                         },
                         text:"Excel",
                         filename: "<?php echo $nom?>",
@@ -255,7 +259,7 @@
                     {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9,10]
                         },
                         text:"PDF",
                         filename: "<?php echo $nom?>",
@@ -267,7 +271,7 @@
                     {
                         extend: 'print',
                         exportOptions: {
-                            columns:  [ 0,1, 2,3,4,5,6,7,8,9]
+                            columns:  [ 0,1, 2,3,4,5,6,7,8,9,10]
                         },
                         text:"Imprimer",
                         filename: "<?php echo $nom?>",

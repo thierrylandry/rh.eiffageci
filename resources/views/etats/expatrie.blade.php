@@ -6,6 +6,39 @@
     style="display: block;"
 @endsection
 @section('page')
+    <?php
+    function trouver_date($sem, $annee, $j)
+    {
+        $jour_dans_le_mois = array();
+        $mois = 1;
+        $jour = 0;
+
+        for($a=1;$a<=365+date('L');$a++)
+        {
+            for($i=1;$i<=12;$i++)
+            {
+                $jour += date('t', mktime(0, 0, 0, $i, 1, date('Y')));
+                $jour_dans_le_mois[$i] = $jour;
+            }
+
+            $today = mktime(0, 0, 0, $mois, $a, date('Y'));
+            $semaine = date('W', $today);
+            $day = date('N', $today);
+            $date = date('d/m/Y', $today);
+            if(in_array($a, $jour_dans_le_mois)) $mois++;
+
+            if($semaine == $sem && $day == $j)
+                return $date;
+        }
+    }
+    ?>
+    <?php
+    $numsemaineActuel =date('W', strtotime("now"))+1;
+    $dateDebutSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),1);
+    $datefinSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),7);
+    $nom="Tableau synoptique N°".$numsemaineActuel." du ".$dateDebutSemaineActuel." au ".$datefinSemaineActuel;
+
+    ?>
 
     <div class="row">
         <div class="col-md-12">
@@ -97,6 +130,8 @@
                     @endforeach
 
                     @foreach($invites_presents as $invites_present)
+
+                        @if($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)))
                         <tr class="tr-shadow">
                             <td>{{$invites_present->nom}}</td>
                             <td>{{$invites_present->prenoms}}</td>
@@ -109,6 +144,7 @@
                             <td>{{date("d-m-Y",strtotime($invites_present->dateArrive)).'/'}} {{isset($invites_present->dateDepart)?date("d-m-Y",strtotime($invites_present->dateDepart)):'Indéterminé'}}</td>
                             <td>-</td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>
@@ -117,32 +153,6 @@
         </div>
     </div>
 
-    <?php
-    function trouver_date($sem, $annee, $j)
-    {
-        $jour_dans_le_mois = array();
-        $mois = 1;
-        $jour = 0;
-
-        for($a=1;$a<=365+date('L');$a++)
-        {
-            for($i=1;$i<=12;$i++)
-            {
-                $jour += date('t', mktime(0, 0, 0, $i, 1, date('Y')));
-                $jour_dans_le_mois[$i] = $jour;
-            }
-
-            $today = mktime(0, 0, 0, $mois, $a, date('Y'));
-            $semaine = date('W', $today);
-            $day = date('N', $today);
-            $date = date('d/m/Y', $today);
-            if(in_array($a, $jour_dans_le_mois)) $mois++;
-
-            if($semaine == $sem && $day == $j)
-                return $date;
-        }
-    }
-    ?>
 
 
     <script src="{{ asset("js/jquery.min.js") }}"></script>
@@ -212,13 +222,7 @@
 
                 return (res) ;
             }
-<?php
-        $numsemaineActuel =date('W', strtotime("now"))+1;
-        $dateDebutSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),1);
-        $datefinSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),7);
-        $nom="Tableau synoptique N°".$numsemaineActuel." du ".$dateDebutSemaineActuel." au ".$datefinSemaineActuel;
 
-        ?>
             var date =new Date();
             var table= $('#table_repertoire').DataTable({
                 dom: 'Bfrtip',

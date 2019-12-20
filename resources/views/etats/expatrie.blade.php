@@ -128,7 +128,7 @@
                             @endif
 
                     @endforeach
-
+ 
                     @foreach($invites_presents as $invites_present)
 
                         @if($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)))

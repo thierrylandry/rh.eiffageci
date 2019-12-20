@@ -131,7 +131,7 @@ Route::get('/contrat_new_user',[
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 
-Route::get('/contrat_new_user2/{slug}',[
+Route::get('/contrat_new_user2/{id}/{id_typeModification}',[
     'as'=>'contrat_new_user2',
     'uses'=>'ContratController@contrat_new_user2',
     'roles' => ['Personnes']
@@ -177,6 +177,11 @@ Route::get('/lister_contrat/{slug}',[
 Route::get('/information_contrat/{id}',[
     'as'=>'information_contrat',
     'uses'=>'ContratController@information_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/information_modification/{id}',[
+    'as'=>'information_modification',
+    'uses'=>'ModificationController@information_modification',
     'roles' => ['Personnes']
 ])->middleware('auth');
 Route::post('/save_renouvellezment_avenant',[

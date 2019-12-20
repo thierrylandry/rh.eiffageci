@@ -37,9 +37,20 @@ class ContratController extends Controller
         }
 
     }
-    public function contrat_new_user2($slug){
+    public function contrat_new_user2($id,$id_typeModification){
+
+        $modification=null;
+        $recrutement=null;
+        if($id_typeModification==2 || $id_typeModification==3){
+            $modification_recrutement= Modification::find($id);
+            $personne= Personne::find($modification_recrutement->id_personne);
+        }else{
+            $modification_recrutement= Recrutement::find($id);
+            $personne=null;
+        }
+
         $definitions = Definition::all();
-        $personne= Personne::where('slug', $slug)->get()->first();
+
 
         $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
         if(isset($contrat)){
@@ -53,11 +64,11 @@ class ContratController extends Controller
             foreach($valeurSalairepartiels as $valeurSalairepartiel):
                 $valeurSalaire[$valeurSalairepartiel->libelle]=$valeurSalairepartiel->valeur;
 
-                endforeach;
+            endforeach;
         }
 
         $rubrique_salaires= Rubrique_salaire::all();
-     //   dd($valeurSalaire);
+        //   dd($valeurSalaire);
         $ancien_contrat=true;
         $services = Services::all();
         $typecontrats= Typecontrat::all();
@@ -65,7 +76,7 @@ class ContratController extends Controller
         $nature_contrats= Nature_contrat::all();
         $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_nature_contrat','recrutement','modification_recrutement','id_typeModification'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -261,7 +272,7 @@ $entites= Entite::all();
 
 
         $parameters=$request->except(['_token']);
-
+        //    dd($parameters);
         $slug=$parameters["slug"];
 
         $personne = Personne::where('slug','=',$slug)->get()->first();
@@ -286,7 +297,8 @@ $entites= Entite::all();
         $position= $parameters["position"];
         $id_definition= $parameters["id_definition"];
         $regime= $parameters["regime"];
-        $id_nature_contrat= $parameters["id_nature_contrat"];
+        $id_nature_contrat= $parameters["id_typeModification"];
+        $id_recrutement_modification= $parameters["id_recrutement_modification"];
 
 
         //les rubriques du salaire
@@ -330,6 +342,18 @@ $entites= Entite::all();
         $contrat->id_service=$service;
         $contrat->id_nature_contrat=$id_nature_contrat;
         $contrat->regime=$regime;
+        if($id_nature_contrat==1){
+            $contrat->id_recrutement=$id_recrutement_modification;
+            $recrutement= Recrutement::find($id_recrutement_modification);
+            $recrutement->etat=3;
+            $recrutement->save();
+
+        }else{
+            $contrat->id_modification=$id_recrutement_modification;
+            $modification= Modification::find($id_recrutement_modification);
+            $modification->etat=3;
+            $modification->save();
+        }
 
 
         //changer l'etat de tout les anciens contrats
@@ -386,7 +410,7 @@ $entites= Entite::all();
 
         $entite=$personne->id_entite;
 
-        return redirect()->back()->with('success',"Le contrat  a été ajouté avec succès");
+        return redirect()->route('Modifications.gestion')->with('success',"Le contrat  a été ajouté avec succès");
     }
     public function save_renouvellezment_avenant( Request $request){
 

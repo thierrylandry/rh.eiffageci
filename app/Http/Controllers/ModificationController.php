@@ -403,4 +403,28 @@ $j=0;
 
     }
 
+    public function information_modification($id){
+        $modification = Modification::find($id);
+        $personne= Personne_presente::find($modification->id_personne);
+        $contrats = Contrat::find($personne->id_contrat);
+        $categories_initials = Categorie::where('id_definition','=',$contrats->id_definition)->get();
+        $tab[0]=$contrats;
+
+        $categories = Array();
+        foreach($categories_initials as $lacategorie):
+
+            if(!in_array($lacategorie,$categories)){
+                $categories[]=$lacategorie;
+            }
+        endforeach;
+
+        $tab[1]=$categories;
+
+
+        $tab[2]=$modification;
+
+        return $tab;
+
+    }
+
 }

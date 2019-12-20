@@ -101,7 +101,7 @@
                                         <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
                                             <i class="zmdi zmdi-eye"></i>
                                         </a>
-                                        <a href="{{route('affiche_contrat',['id'=>$modification->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                        <a href="{{route('contrat_new_user2',[$modification->id,$modification->id_typeModification])}}" class="btn btn-info"  title="Plus d'info">
                                             <i class="zmdi zmdi-edit"></i> Créer le document
                                         </a>
                                     @elseif($modification->etat==3)
@@ -175,6 +175,7 @@
                e.preventDefault;
            }
         })
+
     </script>
     <script>
 
@@ -199,8 +200,9 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            }).column(0).visible(false).column(9).visible(false);
+            }).column(0).visible(false);
             //table.DataTable().draw();
+
 
            // $("#slugrecrutement").
             $(".btn_rejeter").click(function(e){
@@ -208,6 +210,102 @@
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugrecrutement").val(slug);
+            });
+            function vider(){
+                $("#id_definition1").val("");
+                $("#id_categorie1").val("");
+                $("#matricule").val("");
+                $("#service").val("");
+                $("#couverture_maladie").val();
+                $("#type_contrat").val();
+                $("#email").val("");
+                $("#contact").val("");
+                $("#dateDebutC").val("");
+                $("#dateFinC").val("");
+                $("#periode_essaie").val("");
+                $("#position").val("");
+                $("#id_personne").val("");
+                $("#id_nature_contrat").val("");
+                $("#service").val("");
+                $("#regime").val("");
+            }
+            function information_modification(ici){
+                var data = table.row($(ici).closest('tr')).data();
+                var id=data[Object.keys(data)[0]];
+                $.get("../information_modification/"+id,function(data){
+                    console.log(data);
+
+                    if(!data[2].id_categorie.empty){
+
+                    }
+                    $("#id_definition1").val(data[0].id_definition);
+                    $("#id_categorie1").empty();
+
+                    var lesOptions;
+                    $.each(data[1], function( index, value ) {
+                        lesOptions+="<option value='"+value.id+"'>"+value.libelle+"</option>" ;
+                    });
+
+                    $("#id_categorie1").append(lesOptions);
+                    $("#id_categorie1").val(data[0].id_categorie);
+                    $("#matricule").val(data[0].matricule);
+                    $("#service").val(data[0].service);
+                    $("#couverture_maladie").val(data[0].couvertureMaladie);
+                    $("#type_contrat").val(data[0].id_type_contrat);
+                    $("#email").val(data[0].email);
+                    $("#contact").val(data[0].contact);
+                    $("#dateDebutC").val(data[0].datedebutc);
+                    $("#dateFinC").val(data[0].datefinc);
+                    $("#periode_essaie").val(data.periode_essaie);
+                    $("#position").val(data[0].position);
+                    $("#id_personne").val(data[0].id_personne);
+                    $("#service").val(data[0].id_service);
+                    $("#regime").val(data[0].regime);
+
+
+                });
+            }
+            $("#id_definition1").change(function (e) {
+                var id_definition=  $("#id_definition1").val();
+                $.get("../listercat/"+id_definition,function(data){
+                    console.log(data);
+                    var lesOptions;
+                    $.each(data, function( index, value ) {
+                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                    });
+                    $("#id_categorie1").empty();
+                    $("#id_categorie1").append(lesOptions);
+                    //  $("#id_categorie").trigger("chosen:updated");
+
+                });
+                //  alert("ddd");
+            });
+            $("#modalbtnrenouvellement").click(function (e) {
+                $typedoc=2;
+                vider();
+                $('#id_modification1').prop('readonly',true);
+                information_modification(this);
+                if($typedoc==2){
+                    $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',false);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                    $("#id_nature_contrat").val($typedoc);
+                }else if($typedoc==3){
+                    $("#titre_contrat").html("AVENANT DE CONTRAT")
+                    $("#dateDebutC").prop('readonly',true);
+                    $("#dateFinC").prop('readonly',true);
+                    $("#id_nature_contrat").val($typedoc);
+                    /*   $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);
+                     $("#dateDebutC").prop('readonly',true);*/
+                }
+
+
             });
             $(".btn_modal_condition_remuneration").click(function(e){
 

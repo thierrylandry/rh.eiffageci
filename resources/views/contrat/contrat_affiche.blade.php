@@ -87,16 +87,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="row form-group">
-                    <div class="col-sm-3">
-                        <label for="text-input" class=" form-control-label">Le recrutement :</label>
-                    </div>
+
                     <div class="col-sm-9">
-                        <select class="form-control" name="id_recrutement" id="id_recrutement" required>
-                            <option value="">SELECTIONNER</option>
-                            @foreach($recrutements as $recrutement)
-                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect}} /{{$recrutement->NbrePersonne}}</option>
-                            @endforeach
-                        </select>
+                        <input type="hidden" name="id_typeModification"  value="{{isset($id_typeModification)?$id_typeModification:''}}" required/>
+                        <input type="hidden" name="id_recrutement_modification"  value="{{isset($modification_recrutement)?$modification_recrutement->id:''}}" required/>
                     </div>
                 </div>
 

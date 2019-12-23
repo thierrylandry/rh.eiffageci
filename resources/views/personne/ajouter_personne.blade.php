@@ -336,7 +336,7 @@
                       </div>
                       <!--fin-->
                       <div class="col-12 col-md-9">
-                          <select name="commune" id="commune" required="required">
+                          <select name="commune" id="commune" required>
                               <option value=""></option>
                               @foreach($communes  as $commune):
                               <option value="{{$commune->id}}">{{$commune->libelle}}</option>

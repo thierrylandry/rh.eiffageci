@@ -283,7 +283,7 @@
                                     </div>
                                     <!--fin-->
                                     <div class="col-12 col-md-9">
-                                        <select name="commune" id="commune">
+                                        <select name="commune" id="commune" required>
                                             <option value=""></option>
                                             @foreach($communes  as $commune):
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Assurance_maladie;
 use App\Categorie;
 use App\Contrat;
 use App\Definition;
@@ -41,14 +42,16 @@ class ContratController extends Controller
 
         $modification=null;
         $recrutement=null;
+        $listmodif=null;
         if($id_typeModification==2 || $id_typeModification==3){
             $modification_recrutement= Modification::find($id);
             $personne= Personne::find($modification_recrutement->id_personne);
+            $listmodif=json_decode($modification_recrutement->list_modif);
         }else{
             $modification_recrutement= Recrutement::find($id);
             $personne=null;
         }
-
+//dd($modification_recrutement);
         $definitions = Definition::all();
 
 
@@ -75,8 +78,9 @@ class ContratController extends Controller
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
         $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
+        $assurance_maladies=Assurance_maladie::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_nature_contrat','recrutement','modification_recrutement','id_typeModification'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_typeModification','recrutement','modification_recrutement','id_typeModification','listmodif','assurance_maladies'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }

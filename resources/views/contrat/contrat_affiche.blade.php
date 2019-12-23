@@ -45,6 +45,10 @@
             background-color: white !important; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
             font-size: 1.7rem; }
+         .modifie{
+             background-color: lightskyblue;
+         }
+
 
     </style>
     <div class="row">
@@ -55,6 +59,7 @@
         </div>
     </div>
     </br>
+
 
     <div class="row">
         <div class="col-md-12">
@@ -84,7 +89,9 @@
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
-        <div class="row">
+
+
+                <div class="row">
             <div class="col-sm-12">
                 <div class="row form-group">
 
@@ -99,6 +106,70 @@
             </div>
 
         </div>
+                <div class="row">
+                    @foreach(json_decode($modification_recrutement->list_modif) as $modif)
+
+                        @switch($modif)
+                        @case("Le service")
+                        <button type="button" class="btn btn-outline-primary" disabled>
+                            <table style="border:1px;">
+                                <tr>
+                                    <td colspan="2">{{$modif}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nouvelle valeur</td>
+                                    <td>Ancienne valeur</td>
+                                </tr>
+                                <tr>
+                                    <td>{{isset($modification_recrutement)?$modification_recrutement->service->libelle:''}}</td>
+                                    <td>{{isset($contrat)?$contrat->service->libelle:''}}</td>
+                                </tr>
+                            </table>
+                        </button>
+                        @break
+
+                        @case("La durée hebdomadaire de travail")
+                        <button type="button" class="btn btn-outline-primary" disabled>
+                            <table>
+                                <tr>
+                                    <td colspan="2">{{$modif}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nouvelle valeur</td>
+                                    <td>Ancienne valeur</td>
+                                </tr>
+                                <tr>
+                                    <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
+                                    <td>{{isset($contrat)?$contrat->regime:''}}</td>
+                                </tr>
+                            </table>
+                        </button>
+                        @break
+                        @case("La fonction")
+                        <button type="button" class="btn btn-outline-primary" disabled>
+                            <table>
+                                <tr>
+                                    <td colspan="2">{{$modif}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nouvelle valeur</td>
+                                    <td>Ancienne valeur</td>
+                                </tr>
+                                <tr>
+                                    <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
+                                    <td>{{isset($contrat)?$contrat->fonction->libelle:''}}</td>
+                                </tr>
+                            </table>
+                        </button>
+                        @break
+                        @default
+                        <span>Something went wrong, please try again</span>
+                        @endswitch
+
+
+                    @endforeach
+                </div>
+                </br>
         <div class="row">
             <div class="col-sm-6 top-campaign ">
 
@@ -111,10 +182,15 @@
                             <label for="text-input" class=" form-control-label">Définition :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control" name="id_definition" id="id_definition3" required>
+                            <select class="form-control {{isset($listmodif) && in_array('La définition',$listmodif)?'modifie':''}} " name="id_definition" id="id_definition3" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($definitions as $definition)
-                                    <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}} value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                    <option @if(isset($modification_recrutement->id_definition) && $modification_recrutement->id_definition==$definition->id)
+                                            selected
+                                            @elseif($contrat->id_definition==$definition->id)
+                                            selected
+                                            @endif
+                                            value="{{$definition->id}}">{{$definition->libelle}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -124,7 +200,7 @@
                             <label for="text-input" class=" form-control-label">Catégorie :</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control id_categorie" name="id_categorie" id="id_categorie3">
+                            <select class="form-control {{isset($listmodif) && in_array('La catégorie',$listmodif)?'modifie':''}} id_categorie" name="id_categorie" id="id_categorie3">
                                 <option value="">SELECTIONNER</option>
                                 @if(isset($categories))
                                     @foreach($categories as $categorie)
@@ -140,7 +216,7 @@
                             <label for="text-input" class=" form-control-label">Régime </br>hebdomadaire</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control regime" name="regime" id="regime3">
+                            <select class="form-control regime {{isset($listmodif) && in_array('La durée hebdomadaire de travail',$listmodif)?'modifie':''}}" name="regime" id="regime3">
                                 <option value="40H">40H</option>
                                 <option value="44H">44H</option>
                             </select>
@@ -160,7 +236,7 @@
                             <label for="text-input" class=" form-control-label">Service :</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="service" id="service" required>
+                            <select class="form-control {{isset($listmodif) && in_array('Le service',$listmodif)?'modifie':''}}" name="service" id="service" required>
                                 <option value="">SELECTIONNER UN SERVICE</option>
                                 @foreach($services as $service)
                                     <option {{isset($contrat) && $contrat->id_service==$service->id?'selected':''}} value="{{$service->id}}">{{$service->libelle}}</option>
@@ -174,10 +250,10 @@
                         </div>
                         <div class="col-md-9">
                             <select class="form-control" name="couverture_maladie" id="couverture_maladie">
-                                <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
-                                <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
-                                <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>
-                                <option value="100M" {{isset($contrat) && $contrat->couvertureMaladie=="100M"?'selected':''}}>100M</option>
+                                @foreach($assurance_maladies as $assurance_maladie)
+                                    <option value="{{$assurance_maladie->libelle}}" {{isset($contrat) && $contrat->couvertureMaladie==$assurance_maladie->libelle?'selected':''}}>80</option>
+                                    @endforeach
+
                             </select>
                         </div>
                     </div>
@@ -186,7 +262,7 @@
                             <label for="text-input" class=" form-control-label">Type de contrat :</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="type_de_contrat" id="type_de_contrat1" required>
+                            <select class="form-control {{isset($listmodif) && in_array('Le type de contrat',$listmodif)?'modifie':''}}" name="type_de_contrat" id="type_de_contrat1" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($typecontrats as $typecontrat)
 
@@ -226,7 +302,7 @@
                             <label for="text-input" class=" form-control-label">Date de debut :</label>
                         </div>
                         <div class="form-group">
-                            <input type="hidden" id="dateDebutC_memoire" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}" />
+                            <input type="hidden" id="dateDebutC_memoire" class="form-control " value="{{isset($contrat)?$contrat->datedebutc:''}}" />
                             <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
                         </div>
                     </div>
@@ -236,7 +312,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
+                            <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
                         </div>
                     </div>
                     <div class="row form-group">

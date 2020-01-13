@@ -25,6 +25,10 @@ class Personne extends Model
     {
         return $this->hasMany(Conges::class,'id_personne');
     }
+    public function contrat()
+    {
+        return $this->hasMany(Contrat::class,'id_contrat');
+    }
 
     public function pays(){
         return $this->belongsTo(Pays::class, "nationalite");

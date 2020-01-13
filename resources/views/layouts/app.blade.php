@@ -86,7 +86,7 @@
                     <a href="{{route('recrutement.demande')}}" class="card col-sm-4">
                     <div  style="color: green">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-plus fa-10x"></i>
+                            <i class="fas fa-plus fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Demande</h4>
                         </div>
@@ -95,7 +95,7 @@
                     <a href="{{route('recrutement.validation')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            <i class="fas fa-clipboard-check fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Validation</h4>
                         </div>
@@ -105,7 +105,7 @@
                     <a href="{{route('recrutement.gestion')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-list-ol fa-10x"></i>
+                            <i class="fas fa-list-ol fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Gestion</h4>
                         </div>
@@ -135,7 +135,7 @@
                     <a href="{{route('modification.demande')}}" class="card col-sm-4">
                     <div style="color: deepskyblue">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-plus fa-10x"></i>
+                            <i class="fas fa-plus fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Demande</h4>
                         </div>
@@ -144,7 +144,7 @@
                     <a href="{{route('modification.validation')}}" class="card col-sm-4">
                     <div    style="color: deepskyblue">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            <i class="fas fa-clipboard-check fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Validation</h4>
                         </div>
@@ -154,7 +154,7 @@
                     <a href="{{route('modification.gestion')}}" class="card col-sm-4">
                     <div    style="color: deepskyblue">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-list-ol fa-10x"></i>
+                            <i class="fas fa-list-ol fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Gestion</h4>
                         </div>
@@ -184,7 +184,7 @@
                     <a href="{{route('absence.demande')}}" class="card col-sm-4">
                     <div style="color: yellow">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-plus fa-10x"></i>
+                            <i class="fas fa-plus fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Demande</h4>
                         </div>
@@ -193,7 +193,7 @@
                     <a href="{{route('absence.validation')}}" class="card col-sm-4">
                     <div   style="color: yellow">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            <i class="fas fa-clipboard-check fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Validation</h4>
                         </div>
@@ -202,7 +202,7 @@
                         </a>
                     <div class="card col-sm-4"   style="color: yellow">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-list-ol fa-10x"></i>
+                            <i class="fas fa-list-ol fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Gestion</h4>
                         </div>
@@ -230,14 +230,14 @@
                 <div class="row">
                     <div class="card col-sm-4" style="color: red">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-plus fa-10x"></i>
+                            <i class="fas fa-plus fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Demande</h4>
                         </div>
                     </div>
                     <div class="card col-sm-4"   style="color: red">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            <i class="fas fa-clipboard-check fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Validation</h4>
                         </div>
@@ -245,7 +245,7 @@
                     </div>
                     <div class="card col-sm-4"   style="color: red">
                         <div class="card-body" style="text-align: center;">
-                            <i class="fas fa-list-ol fa-10x"></i>
+                            <i class="fas fa-list-ol fa-6x"></i>
                             </br></br>
                             <h4 class="card-title mb-3">Gestion</h4>
                         </div>

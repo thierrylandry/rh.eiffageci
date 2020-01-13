@@ -100,7 +100,7 @@
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Service</label>
-                                    <input class="form-control" id="serviceabs" name="serviceabs" value="{{isset($absence)?$absence->personne->contrat_renouvelles->where('etat','=',1)->first()->service->libelle:''}}" readonly/>
+                                    <input class="form-control" id="serviceabs" name="serviceabs" value="{{ isset($absence)?$absence->personne->contrat_renouvelles->where('etat','=',1)->first()->service->libelle:''}}" readonly/>
                                 </div>
 
                                 <div class=" col-12 col-md-4">
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Nombre de jour(s) souhaité(s)</label>
-                                    <input type="number" name="jour" id="jour" class="form-control" value="{{isset($absence)? $absence->jour:''}}" readonly/>
+                                    <input type="number" name="jour" id="jour" class="form-control" value="{{isset($absence)? $absence->jour:''}}" required readonly/>
                                 </div>
                             </div>
                         </div>

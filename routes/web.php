@@ -762,11 +762,10 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
     Route::get('/modification/{id}',[
         'as'=>'modification',
         'uses'=>'AbsenceController@modification',
-        'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
     Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
-        'uses'=>'ModificationController@supprimer',
+        'uses'=>'AbsenceController@supprimer',
 
     ])->middleware('roles')->middleware('auth');
 

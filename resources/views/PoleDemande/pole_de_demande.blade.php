@@ -19,92 +19,92 @@
 
     <div class="row">
         <a href="#"  data-toggle="modal" data-target="#polerecrutement" data-placement="top" class="col-sm-3">
-        <div >
-            <div class="card" style="color: green">
+            <div >
+                <div class="card" style="color: green">
 
 
-                <div class="card-body" style="text-align: center;">
-                    <i class="fas fa-user-plus fa-10x"></i>
-                    </br></br>
-                    <h4 class="card-title mb-3">Recrutement</h4>
-                    </br>
-                    <p class="card-text" style="color: #0a0a0a">Effectuez et gérer vos demandes de recrutement
-                    </p>
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fas fa-user-plus fa-10x"></i>
+                        </br></br>
+                        <h4 class="card-title mb-3">Recrutement</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Effectuez et gérer vos demandes de recrutement
+                        </p>
+                    </div>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <!-- END DATA TABLE -->
-        </div>
         </a>
         <a href="#"  data-toggle="modal" data-target="#polemodification" data-placement="top" class="col-sm-3">
 
-        <div >
-            <div class="card" style="color: deepskyblue">
+            <div >
+                <div class="card" style="color: deepskyblue">
 
 
-                <div class="card-body" style="text-align: center;">
-                    <i class="fas fa-user fa-10x"></i>
-                    </br></br>
-                    <h4 class="card-title mb-3">Renouvellement & avenant</h4>
-                    </br>
-                    <p class="card-text" style="color: #0a0a0a">Effectuez et gérer vos renouvellement et avenant de contrat
-                    </p>
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fas fa-user fa-10x"></i>
+                        </br></br>
+                        <h4 class="card-title mb-3">Renouvellement & avenant</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Effectuez et gérer vos renouvellement et avenant de contrat
+                        </p>
+                    </div>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <!-- END DATA TABLE -->
-        </div>
-            </a>
+        </a>
         <a href="#"  data-toggle="modal" data-target="#poleabsence" data-placement="top" class="col-sm-3">
-        <div >
-            <div class="card" style="color: yellow">
+            <div >
+                <div class="card" style="color: yellow">
 
 
-                <div class="card-body" style="text-align: center;">
-                  <i class="fas fa-calendar fa-10x"></i>
-                    </br>
-                    </br>
-                    <h4 class="card-title mb-3">Absence</h4>
-                    </br>
-                    <p class="card-text" style="color: #0a0a0a">Demander,consulter et gérer vos absences
-                    </p>
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fas fa-calendar fa-10x"></i>
+                        </br>
+                        </br>
+                        <h4 class="card-title mb-3">Absence</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Demander,consulter et gérer vos absences
+                        </p>
+                    </div>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <!-- END DATA TABLE -->
-        </div>
-            </a>
+        </a>
         <a href="#"  data-toggle="modal" data-target="#poleavion" data-placement="top" class="col-sm-3">
-        <div >
-            <div class="card" style="color: red">
+            <div >
+                <div class="card" style="color: red">
 
 
-                <div class="card-body" style="text-align: center;">
-                    <i class="fab fa-avianex fa-10x"></i>
-                    </br></br>
-                    <h4 class="card-title mb-3">Billet d'avion</h4>
-                    </br>
-                    <p class="card-text" style="color: #0a0a0a">Gérez vos demandes de billet d'avion
-                    </p>
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fab fa-avianex fa-10x"></i>
+                        </br></br>
+                        <h4 class="card-title mb-3">Billet d'avion</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Gérez vos demandes de billet d'avion
+                        </p>
+                    </div>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <!-- END DATA TABLE -->
-        </div>
-            </a>
+        </a>
         <a href="#"  data-toggle="modal" data-target="#poleavion" data-placement="top" class="col-sm-3">
-        <div >
-            <div class="card" style="color: orange">
+            <div >
+                <div class="card" style="color: orange">
 
 
-                <div class="card-body" style="text-align: center;">
-                    <i class="fas fa-calendar fa-10x"></i>
-                    </br></br>
-                    <h4 class="card-title mb-3">Congé</h4>
-                    </br>
-                    <p class="card-text" style="color: #0a0a0a">Gérez vos demandes de congé
-                    </p>
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fas fa-calendar fa-10x"></i>
+                        </br></br>
+                        <h4 class="card-title mb-3">Congé</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Gérez vos demandes de congé
+                        </p>
+                    </div>
                 </div>
+                <!-- END DATA TABLE -->
             </div>
-            <!-- END DATA TABLE -->
-        </div>
-            </a>
+        </a>
     </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>

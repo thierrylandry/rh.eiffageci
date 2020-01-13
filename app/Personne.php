@@ -8,11 +8,14 @@ class Personne extends Model
 {
     //
     protected  $table="personne";
-    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','id_entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff','id_commune'];
+    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','id_entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff','id_commune','lieu_naissance','nom_pere','nom_mere'];
 
 
     public function societe(){
         return $this->belongsTo(Societe::class, "id_unite");
+    }
+    public function entite(){
+        return $this->belongsTo(Entite::class, "id_entite");
     }
 
     public function contrat_renouvelles(){

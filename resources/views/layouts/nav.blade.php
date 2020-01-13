@@ -139,6 +139,10 @@
                             @endforeach
                     </ul>
                 </li>
+                <li class="@yield('pole_demande')">
+                    <a class="js-arrow" href="{{route('pole_de_demande')}}">
+                        <i class="fas fa-question"></i>PÔLE DE DEMANDE</a>
+                </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
                     <li class="@yield('Recrutements') has-sub">
                         <a class="js-arrow " href="#">

@@ -16,13 +16,4 @@ class Absence extends Model
     public function personne(){
         return $this->belongsTo(Personne::class, "id_personne");
     }
-    public function entite(){
-        return $this->belongsTo(Entite::class, "id_entite");
-    }
-    public function service(){
-        return $this->belongsTo(Services::class, "id_service");
-    }
-    public function fonction(){
-        return $this->belongsTo(Fonction::class, "id_fonction");
-    }
 }

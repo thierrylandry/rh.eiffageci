@@ -69,6 +69,196 @@
     </div>
 </div>
 <!-- modal small -->
+<div class="modal fade" id="polerecrutement" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <i class="fas fa-user-plus fa-2x"></i>
+                <h5 class="modal-title" id="smallmodalLabel"> Recrutement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <a href="{{route('recrutement.demande')}}" class="card col-sm-4">
+                    <div  style="color: green">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-plus fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Demande</h4>
+                        </div>
+                    </div>
+                        </a>
+                    <a href="{{route('recrutement.validation')}}" class="card col-sm-4">
+                    <div    style="color: green">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Validation</h4>
+                        </div>
+
+                    </div>
+                        </a>
+                    <a href="{{route('recrutement.gestion')}}" class="card col-sm-4">
+                    <div    style="color: green">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-list-ol fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Gestion</h4>
+                        </div>
+
+                    </div>
+                        </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
+<div class="modal fade" id="polemodification" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-user fa-2x"></i>
+                <h5 class="modal-title" id="smallmodalLabel"> Renouvellement & avenant</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <a href="{{route('modification.demande')}}" class="card col-sm-4">
+                    <div style="color: deepskyblue">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-plus fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Demande</h4>
+                        </div>
+                    </div>
+                        </a>
+                    <a href="{{route('modification.validation')}}" class="card col-sm-4">
+                    <div    style="color: deepskyblue">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Validation</h4>
+                        </div>
+
+                    </div>
+                        </a>
+                    <a href="{{route('modification.gestion')}}" class="card col-sm-4">
+                    <div    style="color: deepskyblue">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-list-ol fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Gestion</h4>
+                        </div>
+
+                    </div>
+                        </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
+<div class="modal fade" id="poleabsence" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-calendar fa-2x"></i>
+                <h5 class="modal-title" id="smallmodalLabel"> Absence</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <a href="{{route('absence.demande')}}" class="card col-sm-4">
+                    <div style="color: yellow">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-plus fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Demande</h4>
+                        </div>
+                    </div>
+                        </a>
+                    <a href="{{route('absence.validation')}}" class="card col-sm-4">
+                    <div   style="color: yellow">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Validation</h4>
+                        </div>
+
+                    </div>
+                        </a>
+                    <div class="card col-sm-4"   style="color: yellow">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-list-ol fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Gestion</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
+<div class="modal fade" id="poleavion" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fab fa-avianex fa-2x"></i>
+                <h5 class="modal-title" id="smallmodalLabel"> Billet d'avion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="card col-sm-4" style="color: red">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-plus fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Demande</h4>
+                        </div>
+                    </div>
+                    <div class="card col-sm-4"   style="color: red">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-clipboard-check fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Validation</h4>
+                        </div>
+
+                    </div>
+                    <div class="card col-sm-4"   style="color: red">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-list-ol fa-10x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Gestion</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
 <div class="modal fade" id="RVmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -637,24 +827,24 @@
 
     <!-- Jquery JS-->
     <!-- Jquery JS-->
-    <script src="{{  URL::asset("vendor/jquery-3.2.1.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/jquery-3.2.1.min.js") }}"></script>
     <!-- Bootstrap JS-->
-    <script src="{{  URL::asset("vendor/bootstrap-4.1/popper.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/bootstrap-4.1/bootstrap.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/bootstrap-4.1/popper.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/bootstrap-4.1/bootstrap.min.js") }}"></script>
     <!-- Vendor JS       -->
-    <script src="{{  URL::asset("vendor/slick/slick.min.js") }}">
+    <script src="{{  URL::asset("public/vendor/slick/slick.min.js") }}">
     </script>
-    <script src="{{  URL::asset("vendor/wow/wow.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/animsition/animsition.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/bootstrap-progressbar/bootstrap-progressbar.min.js") }}">
+    <script src="{{  URL::asset("public/vendor/wow/wow.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/animsition/animsition.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js") }}">
     </script>
-    <script src="{{  URL::asset("vendor/counter-up/jquery.waypoints.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/counter-up/jquery.counterup.min.js") }}">
+    <script src="{{  URL::asset("public/vendor/counter-up/jquery.waypoints.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/counter-up/jquery.counterup.min.js") }}">
     </script>
-    <script src="{{  URL::asset("vendor/circle-progress/circle-progress.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
-    <script src="{{  URL::asset("vendor/chartjs/Chart.bundle.min.js") }}"></script>
-    <script src="{{  URL::asset("vendor/select2/select2.min.js") }}">
+    <script src="{{  URL::asset("public/vendor/circle-progress/circle-progress.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/perfect-scrollbar/perfect-scrollbar.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/chartjs/Chart.bundle.min.js") }}"></script>
+    <script src="{{  URL::asset("public/vendor/select2/select2.min.js") }}">
     </script>
     <script src="{{ asset("js/bootstrap.js") }}"></script>
     <script src="{{ asset("js/bootstrap-select.js") }}"></script>
@@ -674,7 +864,7 @@
 
 
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-    <script src="{{  URL::asset("js/jquery.ui.widget.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.ui.widget.js") }}"></script>
     <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
     <script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
     <!-- The Canvas to Blob plugin is included for image resizing functionality -->
@@ -685,13 +875,13 @@
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 
 
-    <script src="{{  URL::asset("js/jquery.iframe-transport.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload-process.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload-image.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload-audio.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload-video.js") }}"></script>
-    <script src="{{  URL::asset("js/jquery.fileupload-validate.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.iframe-transport.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload-process.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload-image.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload-audio.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload-video.js") }}"></script>
+    <script src="{{  URL::asset("public/js/jquery.fileupload-validate.js") }}"></script>
 </body>
 
 </html>

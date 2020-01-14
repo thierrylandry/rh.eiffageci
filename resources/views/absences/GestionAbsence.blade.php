@@ -1,18 +1,43 @@
 @extends('layouts.app')
 
-@if($mode=="gestion")
-        @section('modification.gestion')
-            active
-        @endsection
-@else
-@section('modification.validation')
+@section('pole_demande')
     active
 @endsection
-@endif
-@section('modifications')
+@section('pole_demande_block')
     style="display: block;"
 @endsection
 @section('page')
+    <div class="row">
+        <a href="{{route('absence.demande')}}" class="card col-sm-4">
+            <div style="color: yellow">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-plus fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Demande</h4>
+                </div>
+            </div>
+        </a>
+        <a href="{{route('absence.validation')}}" class="card col-sm-4">
+            <div   style="color: yellow">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-clipboard-check fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Validation</h4>
+                </div>
+
+            </div>
+        </a>
+        <a href="{{route('absence.gestion')}}" class="card col-sm-4">
+            <div    style="color: yellow">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-list-ol fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Gestion</h4>
+                </div>
+
+            </div>
+        </a>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
@@ -58,6 +83,8 @@
                                 @elseif($absence->etat==4)
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                 @endif
+
+                                {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
                             </td>
                             <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
                             <td>{{$absence->personne->nom}} {{$absence->personne->prenom}}</td>
@@ -67,19 +94,32 @@
                             <td>{{$absence->jour}}</td>
                             <td>
                                 <div class="table-data-feature">
-                                    @if($absence->etat==1 && $mode<>"validation")
+                                    @if($absence->etat==1)
+                                        @if($mode=="validation")
+                                            <a href="{{route('absence.ActionValider',$absence->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i class="zmdi zmdi-mail-send"></i> Valider
+                                            </a>&nbsp;
+                                            <a href="#" class="btn btn-danger btn_rejeter" id="btn_rejeter_absence" data-toggle="modal" data-target="#modalrefusdemande" data-placement="top" title="Rejeter">
+                                                <i class="zmdi zmdi zmdi-close"></i> Rejeter
+                                            </a>&nbsp;
+                                        @endif
+                                            @if($mode=="validation")
                                         <a href="{{route("absence.modification",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="zmdi zmdi-edit"></i>
                                         </a>
                                         <a  href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
-
+                                            @endif
 
                                     @elseif($absence->etat==2)
-
+                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
+                                            <i class="zmdi zmdi-format-indent-increase"></i> Préciser le type de permission
+                                        </a>&nbsp;
                                     @elseif($absence->etat==3)
-
+                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
+                                            <i class="zmdi zmdi-format-indent-increase"></i> Modifier le type de permission
+                                        </a>&nbsp;
                                     @elseif($absence->etat==4)
                                         <a href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
@@ -178,6 +218,40 @@
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugrecrutement").val(slug);
+            });
+            $("#btn_rejeter_absence").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                var objet="absence";
+                $("#id_dmd").val(slug);
+                $("#objet").val(objet);
+            });
+            $(".btn_type_permission").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                $("#id_abs").val(slug);
+                $("#id_permission").val("");
+                $.get("../absences/type_permission/"+slug,function(data){
+                    console.log(data);
+                    if(data){
+                        var res=JSON.parse(data);
+                        console.log(res);
+                        $("#id_permission").val(res.id_type_permission);
+                    }
+
+
+                });
+
+                $.get("../recrutements/monrecrutement/"+slug,function(data){
+                    // alert(data.id_definition);
+                    $(".id_definition").val(data.id_definition);
+                    $(".id_categorie").val(data.id_categorie);
+                    $(".regime").val(data.regime);
+                });
+
+
             });
             function vider(){
                 $("#id_definition1").val("");

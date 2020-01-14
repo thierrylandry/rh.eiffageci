@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('absences.demande')
+@section('pole_demande')
     active
 @endsection
-@section('absence')
+@section('pole_demande_block')
     style="display: block;"
 @endsection
 @section('page')
@@ -39,7 +39,8 @@
 
             </div>
         </a>
-        <div class="card col-sm-4"   style="color: yellow">
+        <a href="{{route('absence.gestion')}}" class="card col-sm-4">
+        <div    style="color: yellow">
             <div class="card-body" style="text-align: center;">
                 <i class="fas fa-list-ol fa-3x"></i>
                 </br></br>
@@ -47,7 +48,7 @@
             </div>
 
         </div>
-
+        </a>
     </div>
     </br>
     <div class="table-data__tool">
@@ -195,6 +196,7 @@
                                         @elseif($absence->etat==4)
                                             <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                         @endif
+                                        {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
                                     </td>
                                     <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
                                     <td>{{$absence->personne->nom}} {{$absence->personne->prenom}}</td>

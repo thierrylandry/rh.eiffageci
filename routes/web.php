@@ -748,12 +748,19 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
 });
 
 //Absences
+Route::post('/ActionRejeter',[
+    'as'=>'ActionRejeter',
+    'uses'=>'AbsenceController@ActionRejeter',
+])->middleware('auth');
 Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements'], function () {
     Route::get('/demande', [
         'as' => 'demande',
         'uses' => 'AbsenceController@demande_absence',
     ])->middleware('auth');
-
+    Route::get('/ActionValider/{id}',[
+        'as'=>'ActionValider',
+        'uses'=>'AbsenceController@ActionValider',
+        ])->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'AbsenceController@validation_absence',
@@ -782,6 +789,14 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
         'as'=>'modifier',
         'uses'=>'AbsenceController@modifier',
     ])->middleware('roles')->middleware('auth');
+    Route::post('/ajouter_type_permission',[
+        'as'=>'ajouter_type_permission',
+        'uses'=>'AbsenceController@ajouter_type_permission',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/type_permission/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'AbsenceController@type_permission',
+    ])->middleware('auth');
 });
 
 //pole de demande

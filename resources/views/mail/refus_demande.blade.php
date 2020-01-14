@@ -2,7 +2,7 @@
 
 <p>Bonjour,</p>
 
-<p>Votre demande de recrutement N°{{$recrutement->id}} pour le poste de {{$recrutement->posteAPouvoir}} a été réfusé pour les raisons suivantes :
+<p>Votre demande d'absence N°{{$absence->id}} pour le  {{$absence->debut}} au  {{$absence->fin}} et reprendre le travail le {{$absence->reprise}} a été réfuseé pour les raisons suivantes :
     <br>
 {{$motif}}
 <br>

@@ -83,6 +83,7 @@
 
             <div class="modal-body">
                 <div class="row">
+                    @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
                     <a href="{{route('recrutement.demande')}}" class="card col-sm-4">
                     <div  style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -92,6 +93,8 @@
                         </div>
                     </div>
                         </a>
+                    @endif
+                        @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
                     <a href="{{route('recrutement.validation')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -102,6 +105,8 @@
 
                     </div>
                         </a>
+                        @endif
+                        @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
                     <a href="{{route('recrutement.gestion')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -112,6 +117,7 @@
 
                     </div>
                         </a>
+                            @endif
 
                 </div>
             </div>
@@ -200,7 +206,8 @@
 
                     </div>
                         </a>
-                    <div class="card col-sm-4"   style="color: yellow">
+                    <a href="{{route('absence.gestion')}}" class="card col-sm-4" >
+                    <div   style="color: yellow">
                         <div class="card-body" style="text-align: center;">
                             <i class="fas fa-list-ol fa-6x"></i>
                             </br></br>
@@ -208,6 +215,7 @@
                         </div>
 
                     </div>
+                    </a>
 
                 </div>
             </div>
@@ -465,7 +473,48 @@
 
         </div>
     </div>
-</div><!-- modal small -->
+</div>
+<!-- modal small -->
+<div class="modal fade" id="modalrefusdemande" tabindex="-1" role="dialog" aria-labelledby="modalrefusdmdLaale" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalhistoriqueLabel">Refus de la demande</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form method="POST" action="{{route("ActionRejeter")}}">
+                    @csrf
+                    <div class="row">
+                        <input type="hidden" name="id_dmd" id="id_dmd" />
+                        <input type="hidden" name="objet" id="objet" />
+                        <div class="col-sm-12">
+                            <label>Motif de refus</label>
+                            <textarea class="form-control" name="motif">
+
+                        </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card-footer pull-right">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Réjeter la demande
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- modal small -->
 <div class="modal fade" id="modalrefusdmd" tabindex="-1" role="dialog" aria-labelledby="modalrefusdmdLaale" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
 
@@ -742,6 +791,49 @@
     </div>
 
         </div>
+    </div>
+</div>
+<!-- modal small -->
+<div class="modal fade" id="modaltype_permission" tabindex="-1" role="dialog" aria-labelledby="modaltype_permissionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xs" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalhistoriqueLabel">Type de permission</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+                <form method="post" action="{{route('absence.ajouter_type_permission')}}">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @csrf
+
+                        <input type="hidden" id="id_abs" name="id" value="" />
+                        <div class="form-group">
+                            <label for="text-input" class=" form-control-label">Type de permission</label>
+                           <select class="form-control" name="id_permission" id="id_permission" required>
+                               <option value="">Sélectionner un type de permission</option>
+                               @if(isset($type_permissions))
+                                   @foreach($type_permissions as $type_permission)
+                                       <option value="{{$type_permission->id}}">{{$type_permission->libelle}}</option>
+                                       @endforeach
+                                   @endif
+                           </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    Enregistrer</button>
+            </div>
+                </form>
+
+            </div>
     </div>
 </div>
 

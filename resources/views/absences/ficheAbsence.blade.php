@@ -68,7 +68,7 @@
                                     <label for="text-input" class=" form-control-label">Direction</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option valuue="">Selectionner une fonction</option>
+                                        <option value="">Selectionner une fonction</option>
                                         @foreach($entites as $entite)
                                             <option value="{{$entite->id}}" {{isset($absence) && $absence->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
                                         @endforeach
@@ -90,7 +90,7 @@
                                     <label for="text-input" class=" form-control-label">Fonction</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option valuue="">Selectionner une fonction</option>
+                                        <option value="">Selectionner une fonction</option>
                                         @foreach($fonctions as $fonction)
                                             <option value="{{$fonction->id}}" {{isset($absence) && $absence->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
                                         @endforeach
@@ -101,7 +101,7 @@
                                     <label for="text-input" class=" form-control-label">Date d'embauche</label>
                                     <input type="hidden" id="id_fonction1_initial"  value="">
                                     <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option valuue="">Selectionner une fonction</option>
+                                        <option value="">Selectionner une fonction</option>
                                         @foreach($entites as $entite)
                                             <option value="{{$entite->id}}" {{isset($absence) && $absence->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
                                         @endforeach

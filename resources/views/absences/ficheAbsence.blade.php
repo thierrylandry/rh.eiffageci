@@ -19,13 +19,43 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <a href="{{route('absence.demande')}}" class="card col-sm-4">
+            <div style="color: yellow">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-plus fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Demande</h4>
+                </div>
+            </div>
+        </a>
+        <a href="{{route('absence.validation')}}" class="card col-sm-4">
+            <div   style="color: yellow">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-clipboard-check fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Validation</h4>
+                </div>
+
+            </div>
+        </a>
+        <div class="card col-sm-4"   style="color: yellow">
+            <div class="card-body" style="text-align: center;">
+                <i class="fas fa-list-ol fa-3x"></i>
+                </br></br>
+                <h4 class="card-title mb-3">Gestion</h4>
+            </div>
+
+        </div>
+
+    </div>
     </br>
     <div class="table-data__tool">
         <div class="table-data__tool-left">
             <div class="table-data__tool  pull-right">
                 @if(isset($absence))
                     <div class="table-data__tool-right">
-                        <a href="{{route('absences.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <a href="{{route('absence.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>DEMANDER UNE ABSENCE</a>
                     </div>
                 @endif
@@ -35,10 +65,9 @@
     </div>
     <div class="row">
 
-        <form action="{{isset($absence)?route('modification.modifier'):route('modification.enregistrer')}}" method="post" enctype="multipart/form-data" class="form-horizontal col-lg-12">
+        <form action="{{isset($absence)?route('absence.modifier'):route('absence.enregistrer')}}" method="post" class="form-horizontal col-lg-12">
             @csrf
-            <input type="hidden" id="text-input" name="id" placeholder="Nom" value="{{isset($absence)? $absence->id:''}}" class="form-control" required>
-            <input type="text"  name="listemodif" id="listemodif" placeholder="Nom" style="display: none" value="{{isset($absence)? $absence->slug:''}}" class="form-control" required>
+            <input type="hidden" id="text-input" name="id" placeholder="Nom" value="{{isset($absence)? $absence->id:''}}" class="form-control">
 
             <div class="row">
                 <div class="col-lg-12">
@@ -51,7 +80,7 @@
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    <select class="form-control" id="id_personne1" name="id_personne" >
+                                    <select class="form-control" id="id_personne1" name="id_personne" required>
                                         <option value="">Selectionner une personne</option>
                                         @foreach($personnes as $personne)
                                             <option value="{{$personne->id}}" {{isset($absence) && $absence->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
@@ -61,51 +90,27 @@
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Matricule</label>
-                                   <input type="text" name="matricule" id="matricule1" class="form-control" readonly/>
+                                   <input type="text" name="matricule" id="matricule1" class="form-control" value="{{isset($absence)?$absence->personne->matricule:''}}" readonly/>
                                 </div>
 
                                 <div class=" col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Direction</label>
-                                    <input type="hidden" id="id_fonction1_initial"  value="">
-                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option value="">Selectionner une fonction</option>
-                                        @foreach($entites as $entite)
-                                            <option value="{{$entite->id}}" {{isset($absence) && $absence->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" name="id_entite" id="id_entite" value="{{isset($absence)?$absence->personne->entite->libelle:''}}" readonly/>
                                 </div>
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Service</label>
-                                    <input type="hidden" id="service1_initial"  value="">
-                                    <select class="form-control" id="service1" name="service">
-                                        <option value=""></option>
-                                        @foreach($services as $service)
-                                            <option value="{{$service->id}}" {{isset($absence) && $absence->id_service==$service->id?"selected":Auth::user()->id_service==$service->id?"selected":""}} >{{$service->libelle}}</option>
-                                        @endforeach;
-                                    </select>
+                                    <input class="form-control" id="serviceabs" name="serviceabs" value="{{ isset($absence)?$absence->personne->contrat_renouvelles->where('etat','=',1)->first()->service->libelle:''}}" readonly/>
                                 </div>
 
                                 <div class=" col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Fonction</label>
-                                    <input type="hidden" id="id_fonction1_initial"  value="">
-                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option value="">Selectionner une fonction</option>
-                                        @foreach($fonctions as $fonction)
-                                            <option value="{{$fonction->id}}" {{isset($absence) && $absence->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" name="id_fonction" id="id_fonctionabs" value="{{isset($absence)?$absence->personne->fonction()->first()->libelle:''}}" readonly/>
                                 </div>
 
                                 <div class=" col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Date d'embauche</label>
-                                    <input type="hidden" id="id_fonction1_initial"  value="">
-                                    <select class="form-control" name="id_fonction" id="id_fonction1" required>
-                                        <option value="">Selectionner une fonction</option>
-                                        @foreach($entites as $entite)
-                                            <option value="{{$entite->id}}" {{isset($absence) && $absence->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="date" class="form-control" name="dateEmbauhe" id="dateEmbauhe" value="{{isset($absence)?$absence->personne->contrat_renouvelles->where('etat','=',1)->first()->datedebutc:''}}" readonly/>
                                 </div>
 
                             </div>
@@ -117,25 +122,25 @@
                 <div class="col-lg-12"   >
                     <div class="card" style="height: 100% !important" >
                         <div class="card-header">
-                            <strong>Modification demandée</strong>
+                            <strong>Absence demandée</strong>
                         </div>
                         <div class="card-body" >
                             <div class="row">
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de départ souhaité</label>
-                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
+                                    <input type="date" name="debut" id="debut" class="form-control date" value="{{isset($absence)? $absence->debut:''}}" required/>
                                 </div>
                                 <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Date de retour souhaité</label>
-                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
+                                    <label for="text-input" class=" form-control-label">Date de fin souhaité</label>
+                                    <input type="date" name="fin" id="fin" class="form-control date" value="{{isset($absence)? $absence->fin:''}}" required/>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de reprise</label>
-                                    <input type="date" name="dateDebut" class="form-control" value="{{isset($absence)? $absence->dateDebut:''}}"/>
+                                    <input type="date" name="reprise" id="reprise" class="form-control" value="{{isset($absence)? $absence->reprise:''}}" required/>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Nombre de jour(s) souhaité(s)</label>
-                                    <input type="number" name="dureeMission" class="form-control" value="{{isset($absence)? $absence->dureeMission:''}}"/>
+                                    <input type="number" name="jour" id="jour" class="form-control" value="{{isset($absence)? $absence->jour:''}}" required readonly/>
                                 </div>
                             </div>
                         </div>
@@ -169,59 +174,51 @@
                                 <th>ID</th>
                                 <th>STATUS</th>
                                 <th>DEMANDEUR</th>
-                                <th>DIRECTION</th>
-                                <th>LISTE DES MODIFICATIONS</th>
+                                <th>TITULAIRE</th>
+                                <th>DATE DE DEPART SOUHAITE</th>
+                                <th>DATE DE FIN SOUHAITE</th>
+                                <th>DATE DE REPRISE</th>
+                                <th>NOMBRE DE JOUR</th>
                                 <th>ACTION</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($absences as $absence)
                                 <tr>
-                                    <td>{{$modification->id}}</td>
-                                    <td>    @if($modification->etat==1)
+                                    <td>{{$absence->id}}</td>
+                                    <td>    @if($absence->etat==1)
                                             <i class=" fa fa-check-circle-o" style="background-color: red"></i>
-                                        @elseif($modification->etat==2)
+                                        @elseif($absence->etat==2)
                                             <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
-                                        @elseif($modification->etat==3)
+                                        @elseif($absence->etat==3)
                                             <i class=" fa fa-check-circle-o" style="background-color: green"></i>
-                                        @elseif($modification->etat==4)
+                                        @elseif($absence->etat==4)
                                             <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                         @endif
                                     </td>
-                                    <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
-                                    <td>{{$modification->user->entite->libelle}}</td>
-                                    <td>@foreach(json_decode($modification->list_modif) as $modif)
-                                            <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}</button>
-                                    @endforeach
-                                    </td>
+                                    <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
+                                    <td>{{$absence->personne->nom}} {{$absence->personne->prenom}}</td>
+                                    <td>{{$absence->debut}}</td>
+                                    <td>{{$absence->fin}}</td>
+                                    <td>{{$absence->reprise}}</td>
+                                    <td>{{$absence->jour}}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            @if($modification->etat==1)
-                                                <a href="{{route("absence.consulter",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="{{route("absence.modification",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            @if($absence->etat==1)
+                                                <a href="{{route("absence.modification",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a  href="{{route("absence.supprimer",$modification->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <a  href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
 
 
-                                            @elseif($modification->etat==2)
-                                                <a href="{{route("absence.consulter",$absence->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="zmdi zmdi-eye"></i>
-                                                </a>
-                                            @elseif($modification->etat==3)
+                                            @elseif($absence->etat==2)
 
-                                                <a href="{{route("absence.consulter",$absence->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="zmdi zmdi-eye"></i>
-                                                </a>
-                                            @elseif($modification->etat==4)
-                                                <a href="{{route("absence.consulter",$absence->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="zmdi zmdi-eye"></i>
-                                                </a>
-                                                <a href="{{route("absence.supprimer",$absence->slug)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            @elseif($absence->etat==3)
+
+                                            @elseif($absence->etat==4)
+                                                <a href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
                                             @endif
@@ -246,11 +243,6 @@
         var listmodifavenant;
         var listmodifeff = new Array();
         $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
-       // $('#service1').select2();
-        $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
-        $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
-        $('#debit_internet').select2({ placeholder: 'Selectionner un debit internet'});
-        $('#assurance_maladie').select2({ placeholder: 'Selectionner un assurance maladie'});
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
@@ -263,19 +255,14 @@
         });
         function vider(){
             $("#service1").val("");
-            $("#service1_initial").val("");
+
             $("#matricule1").val("");
             $("#id_fonction1").val("");
-            $("#id_fonction1_initial").val("");
             $("#id_type_contrat1").val("");
-            $("#id_type_contrat1_initial").val("");
             $("#datefinc1").val("");
-            $("#datefinc1_initial").val("");
             $("#datedebutc1").val("");
             $("#regime1").val("");
-            $("#regime1_initial").val("");
             $("#dm_id_definition").val("");
-            $("#dm_id_definition_initial").val("");
             $("#dm_id_categorie").val("");
             $('#Ecran_affiche_liste').empty();
             if($(".form-control").hasClass('modifie')){
@@ -287,62 +274,16 @@
            var id_personne =$('#id_personne1').val();
             $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
                 console.log(data);
+
                 listmodifavenant=    data['Listmodifavenants'][0];
                 console.log(listmodifavenant);
-                $("#service1").val(data[0].service);
-                $("#service1_initial").val(data[0].service);
+                $("#serviceabs").val( data['leservice'][0].libelle);
                 $("#matricule1").val(data[0].matricule);
-                $("#id_fonction1").val(data[0].fonction);
-                $("#id_fonction1_initial").val(data[0].fonction);
-                $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
-                $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
-                $("#datefinc1").val(data[0].datefinc);
-                $("#datefinc1_initial").val(data[0].datefinc);
-                $("#datedebutc1").val(data[0].datedebutc);
-                $("#regime1").val(data[0].regime);
-                $("#regime1_initial").val(data[0].regime);
-                $("#dm_id_definition").val(data[0].id_definition);
-                $("#dm_id_definition_initial").val(data[0].id_definition);
-
-                var tab= $.parseJSON(data[0].valeurSalaire);
-                var somme=0;
-                $.each(tab,function(index, value ){
-                    var x=value.valeur;
-                    somme=somme+ parseInt(x);
-                })
-                $("#dm_budgetMensuel").val(somme);
-                $("#dm_budgetMensuel_initial").val(somme);
-
-
-                var id_definition=  data[0].id_definition;
-                $.get("../listercat/"+id_definition,function(data){
-                    console.log(data);
-                    var lesOptions;
-                    $.each(data, function( index, value ) {
-                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
-                    });
-                    $("#dm_id_categorie").empty();
-                    $("#dm_id_categorie").append(lesOptions);
-                });
-
-                $("#dm_id_categorie").val(data[0].id_categorie);
-                $("#dm_id_categorie_initial").val(data[0].id_categorie);
+                $("#id_fonctionabs").val( data['lafonction'][0].libelle);
+                $("#id_entite").val(data[0].id_entite);
+                $("#dateEmbauhe").val(data[0].datedebutc);
 
             });
-        });
-        $("#dm_id_definition").change(function (e) {
-            // alert("test");
-            var id_definition=  $("#dm_id_definition").val();
-            $.get("../listercat/"+id_definition,function(data){
-                console.log(data);
-                var lesOptions;
-                $.each(data, function( index, value ) {
-                    lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
-                });
-                $("#dm_id_categorie").empty();
-                $("#dm_id_categorie").append(lesOptions);
-            });
-
         });
 
         function affiche_liste_modification(){
@@ -550,10 +491,22 @@
             //table.DataTable().draw();
 
         } );
+
     </script>
     <script type="application/javascript">
-        $("#addcompetence").click(function (e) {
-            $($("#competencetemplate").html()).appendTo($("#competences"));
+        $(".date").change(function (e) {
+
+            var debut=new Date($("#debut").val());
+            var fin=new Date($("#fin").val());
+
+// end - start returns difference in milliseconds
+            var diff = new Date(fin - debut);
+
+// get days
+            var days = diff/1000/60/60/24;
+
+            console.log(days);
+            $('#jour').val(days);
         });
         $("#addtache").click(function (e) {
             $($("#tachetemplate").html()).appendTo($("#taches"));

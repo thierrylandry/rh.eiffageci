@@ -136,6 +136,11 @@ Route::get('/contrat_new_user2/{id}/{id_typeModification}',[
     'uses'=>'ContratController@contrat_new_user2',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::get('/contrat_embauche/{id}',[
+    'as'=>'contrat_embauche',
+    'uses'=>'ContratController@contrat_embauche',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/listercat/{id_definition}',[
     'as'=>'listercat',
     'uses'=>'ContratController@listercat',
@@ -157,6 +162,11 @@ Route::get('/recsalairecat/{id_contrat}',[
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::post('/save_contrat_recrutement',[
+    'as'=>'save_contrat_recrutement',
+    'uses'=>'ContratController@save_contrat_recrutement',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 Route::post('/update_contrat',[
@@ -201,9 +211,14 @@ Route::post('/rompre',[
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 
-Route::get('/contratcddpdf',[
+Route::get('/contratcddpdf/{id}',[
     'as'=>'contratcddpdf',
     'uses'=>'ContratController@contratcddpdf',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/contratpdf/{id}',[
+    'as'=>'contratpdf',
+    'uses'=>'ContratController@contratpdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
 Route::get('/contratcdipdf',[
@@ -216,12 +231,17 @@ Route::get('/renouvellement_contratpdf/{id}',[
     'uses'=>'ContratController@renouvellement_contratpdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
-Route::get('/avenant_type_contratpdf',[
+Route::get('/avenant_type_contratpdf/{id}',[
     'as'=>'avenant_type_contratpdf',
     'uses'=>'ContratController@avenant_type_contratpdf',
     'roles' => ['Personnes']
 ])->middleware('auth');
-Route::get('/avenant_renum_contratpdf',[
+Route::get('/avenant/{id}',[
+    'as'=>'avenant',
+    'uses'=>'ContratController@avenant',
+    'roles' => ['Personnes']
+])->middleware('auth');
+Route::get('/avenant_renum_contratpdf/{id}',[
     'as'=>'avenant_renum_contratpdf',
     'uses'=>'ContratController@avenant_renum_contratpdf',
     'roles' => ['Personnes']
@@ -683,8 +703,7 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
     ])->middleware('roles')->middleware('auth');
     Route::get('/lapersonne_contrat/{id}',[
         'as'=>'lapersonne_contrat',
-        'uses'=>'ModificationController@lapersonne_contrat',
-        'roles' => ['Gestion_recrutement']
+        'uses'=>'ModificationController@lapersonne_contrat'
 
     ])->middleware('roles')->middleware('auth');
 
@@ -740,10 +759,33 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
         'uses' => 'AbsenceController@validation_absence',
         'roles' => ['Validation_recrutement'],
     ])->middleware('roles')->middleware('auth');
+    Route::get('/modification/{id}',[
+        'as'=>'modification',
+        'uses'=>'AbsenceController@modification',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/supprimer/{id}',[
+        'as'=>'supprimer',
+        'uses'=>'AbsenceController@supprimer',
+
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion', [
         'as' => 'gestion',
         'uses' => 'AbsenceController@gestion_absence',
-        'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
+
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'AbsenceController@enregistrer',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/modifier',[
+        'as'=>'modifier',
+        'uses'=>'AbsenceController@modifier',
+    ])->middleware('roles')->middleware('auth');
 });
+
+//pole de demande
+Route::get('/pole_de_demande', [
+    'as' => 'pole_de_demande',
+    'uses' => 'PoleDemandeController@pole_de_demande',
+])->middleware('auth');

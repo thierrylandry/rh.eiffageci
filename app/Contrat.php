@@ -27,6 +27,11 @@ class Contrat extends Model
 
         return $this->belongsTo('App\Typecontrat', 'id_type_contrat');
     }
+    public function service()
+    {
+
+        return $this->belongsTo('App\Services', 'id_service');
+    }
     public function personne()
     {
 

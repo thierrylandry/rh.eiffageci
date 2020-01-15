@@ -163,7 +163,7 @@
                         </button>
                         @break
                         @default
-                        <span>Something went wrong, please try again</span>
+
                         @endswitch
 
 

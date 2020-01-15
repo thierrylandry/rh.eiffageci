@@ -752,6 +752,7 @@ Route::post('/ActionRejeter',[
     'as'=>'ActionRejeter',
     'uses'=>'AbsenceController@ActionRejeter',
 ])->middleware('auth');
+
 Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements'], function () {
     Route::get('/demande', [
         'as' => 'demande',
@@ -796,6 +797,53 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
     Route::get('/type_permission/{id}', [
         'as' => 'type_permission',
         'uses' => 'AbsenceController@type_permission',
+    ])->middleware('auth');
+});
+
+Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'], function () {
+    Route::get('/demande', [
+        'as' => 'demande',
+        'uses' => 'CongerController@demande_conges',
+    ])->middleware('auth');
+    Route::get('/ActionValider/{id}',[
+        'as'=>'ActionValider',
+        'uses'=>'CongerController@ActionValider',
+        ])->middleware('auth');
+    Route::get('/validation', [
+        'as' => 'validation',
+        'uses' => 'CongerController@validation_conges',
+        'roles' => ['Validation_recrutement'],
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/modification/{id}',[
+        'as'=>'modification',
+        'uses'=>'CongerController@modification',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/supprimer/{id}',[
+        'as'=>'supprimer',
+        'uses'=>'CongerController@supprimer',
+
+    ])->middleware('roles')->middleware('auth');
+
+    Route::get('/gestion', [
+        'as' => 'gestion',
+        'uses' => 'CongerController@gestion_conges',
+    ])->middleware('auth');
+
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'CongerController@enregistrer',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/modifier',[
+        'as'=>'modifier',
+        'uses'=>'CongerController@modifier',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/ajouter_type_permission',[
+        'as'=>'ajouter_type_permission',
+        'uses'=>'CongerController@ajouter_type_permission',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/type_permission/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'CongerController@type_permission',
     ])->middleware('auth');
 });
 

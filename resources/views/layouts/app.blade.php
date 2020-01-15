@@ -224,6 +224,55 @@
     </div>
 </div>
 <!-- modal small -->
+<div class="modal fade" id="poleconges" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modapolecongesl-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-calendar fa-2x"></i>
+                <h5 class="modal-title" id="smallmodalLabel"> Absence</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <a href="{{route('conges.demande')}}" class="card col-sm-4">
+                    <div style="color: orange">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-plus fa-6x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Demande</h4>
+                        </div>
+                    </div>
+                        </a>
+                    <a href="{{route('conges.validation')}}" class="card col-sm-4">
+                    <div   style="color: orange">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-clipboard-check fa-6x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Validation</h4>
+                        </div>
+
+                    </div>
+                        </a>
+                    <a href="{{route('conges.gestion')}}" class="card col-sm-4" >
+                    <div   style="color: orange">
+                        <div class="card-body" style="text-align: center;">
+                            <i class="fas fa-list-ol fa-6x"></i>
+                            </br></br>
+                            <h4 class="card-title mb-3">Gestion</h4>
+                        </div>
+
+                    </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
 <div class="modal fade" id="poleavion" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

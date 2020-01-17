@@ -8,8 +8,8 @@
 @endsection
 @section('page')
     <div class="row">
-        <a href="{{route('absence.demande')}}" class="card col-sm-4">
-            <div style="color: yellow">
+        <a href="{{route('conges.demande')}}" class="card col-sm-4">
+            <div style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-plus fa-3x"></i>
                     </br></br>
@@ -17,8 +17,8 @@
                 </div>
             </div>
         </a>
-        <a href="{{route('absence.validation')}}" class="card col-sm-4">
-            <div   style="color: yellow">
+        <a href="{{route('conges.validation')}}" class="card col-sm-4">
+            <div   style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-clipboard-check fa-3x"></i>
                     </br></br>
@@ -27,8 +27,8 @@
 
             </div>
         </a>
-        <a href="{{route('absence.gestion')}}" class="card col-sm-4">
-            <div    style="color: yellow">
+        <a href="{{route('conges.gestion')}}" class="card col-sm-4">
+            <div    style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-list-ol fa-3x"></i>
                     </br></br>
@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">Abscence - LISTE DES ABSENCES</h2>
+                <h2 class="title-1">CONGE - LISTE DES CONGES</h2>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
 
                 <div class="table-data__tool-right">
                     <a href="{{route('absence.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>DEMANDER UNE ABSENCE</a>
+                        <i class="zmdi zmdi-plus"></i>DEMANDER UN CONGE</a>
                 </div>
             </div>
             <div class="table-responsive m-b-40">
@@ -61,67 +61,75 @@
                     <tr>
                         <th>ID</th>
                         <th>STATUS</th>
+                        <th>SOLDE</th>
+                        <th>MOTIF DE LA DEMANDE</th>
                         <th>DEMANDEUR</th>
                         <th>TITULAIRE</th>
                         <th>DATE DE DEPART SOUHAITE</th>
                         <th>DATE DE FIN SOUHAITE</th>
                         <th>DATE DE REPRISE</th>
                         <th>NOMBRE DE JOUR</th>
+                        <th>ADRESSE PENDANT LES CONGES</th>
+                        <th>CONTACT TELEPHONIQUE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($absences as $absence)
+                    @foreach($conges as $conge)
                         <tr>
-                            <td>{{$absence->id}}</td>
-                            <td>    @if($absence->etat==1)
+                            <td>{{$conge->id}}</td>
+                            <td>    @if($conge->etat==1)
                                     <i class=" fa fa-check-circle-o" style="background-color: red"></i>
-                                @elseif($absence->etat==2)
+                                @elseif($conge->etat==2)
                                     <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
-                                @elseif($absence->etat==3)
+                                @elseif($conge->etat==3)
                                     <i class=" fa fa-check-circle-o" style="background-color: green"></i>
-                                @elseif($absence->etat==4)
+                                @elseif($conge->etat==4)
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                 @endif
-
-                                {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
+                                {{isset($conge->type_permission)?$conge->type_permission->libelle:''}}
                             </td>
-                            <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
-                            <td>{{$absence->personne->nom}} {{$absence->personne->prenom}}</td>
-                            <td>{{$absence->debut}}</td>
-                            <td>{{$absence->fin}}</td>
-                            <td>{{$absence->reprise}}</td>
-                            <td>{{$absence->jour}}</td>
+                            <td> <label class="switch switch-text switch-success"><input type="checkbox"class="switch-input" @if($conge->solde==1)checked @endif >
+                                    <span data-on="OUI" data-off="NON" class="switch-label" style="font-weight: bold"></span></label></td>
+                            <td>{{$conge->Type_conge->libelle}}</td>
+                            <td>{{$conge->user->nom}} {{$conge->user->prenoms}}</td>
+                            <td>{{$conge->personne->nom}} {{$conge->personne->prenom}}</td>
+                            <td>{{$conge->debut}}</td>
+                            <td>{{$conge->fin}}</td>
+                            <td>{{$conge->reprise}}</td>
+                            <td>{{$conge->jour}}</td>
+                            <td>{{$conge->adresse_pd_conges}}</td>
+                            <td>{{$conge->contact_telephonique}}</td>
                             <td>
                                 <div class="table-data-feature">
-                                    @if($absence->etat==1)
+                                    @if($conge->etat==1)
                                         @if($mode=="validation")
-                                            <a href="{{route('absence.ActionValider',$absence->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                            <a href="{{route('conges.ActionValider',$conge->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                                 <i class="zmdi zmdi-mail-send"></i> Valider
                                             </a>&nbsp;
                                             <a href="#" class="btn btn-danger btn_rejeter" id="btn_rejeter_absence" data-toggle="modal" data-target="#modalrefusdemande" data-placement="top" title="Rejeter">
                                                 <i class="zmdi zmdi zmdi-close"></i> Rejeter
                                             </a>&nbsp;
                                         @endif
-                                            @if($mode=="validation")
-                                        <a href="{{route("absence.modification",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </a>
-                                        <a  href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </a>
-                                            @endif
+                                        @if($mode=="validation")
+                                            <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
+                                        @endif
 
-                                    @elseif($absence->etat==2)
+                                    @elseif($conge->etat==2)
                                         <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
                                             <i class="zmdi zmdi-format-indent-increase"></i> Préciser le type de permission
                                         </a>&nbsp;
-                                    @elseif($absence->etat==3)
+                                    @elseif($conge->etat==3)
                                         <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
                                             <i class="zmdi zmdi-format-indent-increase"></i> Modifier le type de permission
                                         </a>&nbsp;
-                                    @elseif($absence->etat==4)
-                                        <a href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    @elseif($conge->etat==4)
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
                                     @endif
@@ -223,7 +231,7 @@
 
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
-                var objet="absence";
+                var objet="conge";
                 $("#id_dmd").val(slug);
                 $("#objet").val(objet);
             });

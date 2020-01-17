@@ -23,7 +23,7 @@ class CreateTableAbsconges extends Migration
             $table->date('debut');
             $table->date('fins');
             $table->date('reprise');
-            $table->integer('id_valideur');
+            $table->integer('id_valideur')->nullable();
             $table->string('adresse_pd_conges');
             $table->string('contact_telephonique');
             $table->timestamps();

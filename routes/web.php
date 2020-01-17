@@ -826,7 +826,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'],
 
     Route::get('/gestion', [
         'as' => 'gestion',
-        'uses' => 'CongerController@gestion_conges',
+        'uses' => 'CongerController@gestion_Absconge',
     ])->middleware('auth');
 
     Route::post('/enregistrer',[
@@ -844,6 +844,14 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'],
     Route::get('/type_permission/{id}', [
         'as' => 'type_permission',
         'uses' => 'CongerController@type_permission',
+    ])->middleware('auth');
+    Route::get('/lapersonne_contrat_conges/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'CongerController@type_permission',
+    ])->middleware('auth');
+    Route::get('/conges_mastorise/{id}', [
+        'as' => 'conges_mastorise',
+        'uses' => 'CongerController@conges_mastorise',
     ])->middleware('auth');
 });
 

@@ -7,6 +7,7 @@ use App\Conges;
 use App\Entite;
 use App\Personne;
 use App\Personne_presente;
+use App\Type_conges;
 use App\VarpersonneConges;
 use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
@@ -233,6 +234,38 @@ class CongerController extends Controller
 
         return view('conges/conges',compact('personnesConge','colors','conges'));
     }
+    public function conges_mastorise($id){
+
+        $personne= Personne_presente::find($id);
+        //dd($personnes);
+         //   dd($personnes->contrat_renouvelles()->where('datedebutc','<>',null)->orderBy('datedebutc','ASC')->first()->datedebutc);
+
+        //$personnesConge= Array();
+
+
+             //   $VarpersonneConges= new VarpersonneConges();
+
+
+           //     $nb_y=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->y;
+
+                //    dd(date_diff(new \DateTime('2020-01-14'),new \DateTime('now')));
+               // $nb_m=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->m;
+              //  $nb_d=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->d;
+             //   $jours=(($nb_y*12) +$nb_m)*2.5 +$nb_d/30;
+
+                if(isset($personne->jours_conges()->select("id_personne",DB::raw('sum(jour) as nb'))->groupBy('absconges.id_personne')->get()[0]->nb)){
+                    $personne->jours_conges()->select("id_personne",DB::raw('sum(jour) as nb'))->groupBy('absconges.id_personne')->get()[0]->nb;
+
+                    }
+
+
+
+
+
+
+
+        return date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->days;
+    }
     public function conges_save(Request $request){
         $parameters=$request->except(['_token']);
         $variconges= $parameters['variconges'];      //  dd( json_decode($variconges));
@@ -272,48 +305,49 @@ class CongerController extends Controller
         $entites = Entite::all();
         $personnes = Personne_presente::all();
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
-        return view('conges/ficheConges',compact('entites','personnes','conges'));
+        $type_motifs= Type_conges::all();
+        return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));
     }
     public function modification($id)
     {
-        $absence= Absence::find($id);
+        $conge= Absconges::find($id);
         $entites = Entite::all();
         $personnes = Personne_presente::all();
-        $absences = Absence::where('id_users',Auth::user()->id)->get();
+        $conges = Absconges::where('id_users',Auth::user()->id)->get();
         // $contrat= Contrat::where('id')
-        $contrat=Contrat::where('id_personne','=',$absence->id_personne)->where('etat','=',1)->first();
+        $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();
 
 
-        return view('absences/ficheAbsence',compact('entites','personnes','absences','absence','contrat'));
+        return view('Absconges/ficheAbsconge',compact('entites','personnes','absconges','absconge','contrat'));
     }
     public function ActionValider($id){
-        $absence = Absence::find($id);
+        $conge = Absconges::find($id);
 
-        $absence->etat=2;
-        $absence->id_valideur=Auth::user()->id;
+        $conge->etat=2;
+        $conge->id_valideur=Auth::user()->id;
 
-        $absence->save();
+        $conge->save();
 
-        return redirect()->route('modification.validation')->with('success',"La demande d'absence a été  validée avec succès");
+        return redirect()->route('conges.validation')->with('success',"La demande d'absconge a été  validée avec succès");
 
     }
     public function ActionRejeter(Request $request){
         $parameters=$request->except(['_token']);
 
         $objet=$parameters['objet'];
-        if($objet=="absence"){
+        if($objet=="conge"){
             $id_dmd=$parameters['id_dmd'];
 
             $motif=$parameters['motif'];
-            $absence = Absence::find($id_dmd);
+            $conge = Absconge::find($id_dmd);
 
-            $absence->etat=4;
-            $absence->id_valideur=Auth::user()->id;
+            $conge->etat=4;
+            $conge->id_valideur=Auth::user()->id;
 
-            $absence->save();
+            $conge->save();
 
             try{
-                $this->dispatch(new EnvoiesRefus($absence,$motif,$objet));
+                $this->dispatch(new EnvoiesRefus($conge,$motif,$objet));
             }catch(\Exception $exception){
                 return redirect()->back()->with('warning',"La demande a été réfusé avec succès mais le mail du motif n'est pas parti .");
             }
@@ -326,11 +360,24 @@ class CongerController extends Controller
 
     }
 
+    public function lapersonne_contrat_conges($id){
+
+        $personne = Personne_presente::find($id);
+
+        $resultat[0]= $personne;
+        $resultat['leservice']= $personne->leservice()->get();
+        $resultat['lafonction']= $personne->lafonction()->get();
+        $resultat['lecontrat']= $personne->lecontrat()->get();
+        $resultat['Listmodifavenants']=   $Listmodifavenants=Listmodifavenant::all();
+        $resultat['congesa']=   $Listmodifavenants=Listmodifavenant::all();
+
+        return $resultat;
+    }
     public function enregistrer(Request $request ){
 
 
         $parameters=$request->except(['_token']);
-        //dd($parameters);
+       // dd($parameters);
 
 
         //les valeurs initiales
@@ -339,23 +386,36 @@ class CongerController extends Controller
         $debut=$parameters['debut'];
         $fin=$parameters['fin'];
         $jour=$parameters['jour'];
+
         $reprise=$parameters['reprise'];
+        $id_motif_demande=$parameters['id_motif_demande'];
+        $adresse_pd_conges=$parameters['adresse_pd_conges'];
+        $contact_telephonique=$parameters['contact_telephonique'];
 
 
-        $absence = new Absence();
-        $absence->debut=$debut;
-        $absence->fin=$fin;
-        $absence->reprise=$reprise;
-        $absence->id_personne=$id_personne;
-        $absence->jour=$jour;
-        $absence->id_users=Auth::user()->id;
-        $absence->etat=1;
+        $conge = new Absconges();
+        $conge->debut=$debut;
+        $conge->fins=$fin;
+        if( isset($parameters['solde'])){
+            $conge->solde=1;
+        }else{
+            $conge->solde=0;
+        }
+
+        $conge->reprise=$reprise;
+        $conge->id_personne=$id_personne;
+        $conge->jour=$jour;
+        $conge->id_users=Auth::user()->id;
+        $conge->etat=1;
+        $conge->id_motif_demande=$id_motif_demande;
+        $conge->adresse_pd_conges=$adresse_pd_conges;
+        $conge->contact_telephonique=$contact_telephonique;
 
 
 
-        $absence->save();
+        $conge->save();
 
-        return redirect()->back()->with('success',"La demande d'absence a été  enregistrée avec succès");
+        return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");
 
     }
     public function modifier(Request $request ){
@@ -375,27 +435,27 @@ class CongerController extends Controller
         $reprise=$parameters['reprise'];
 
 
-        $absence = Absence::find($id);
-        $absence->debut=$debut;
-        $absence->fin=$fin;
-        $absence->reprise=$reprise;
-        $absence->jour=$jour;
-        $absence->id_personne=$id_personne;
-        $absence->id_users=Auth::user()->id;
-        $absence->etat=1;
+        $conge = Absconges::find($id);
+        $conge->debut=$debut;
+        $conge->fin=$fin;
+        $conge->reprise=$reprise;
+        $conge->jour=$jour;
+        $conge->id_personne=$id_personne;
+        $conge->id_users=Auth::user()->id;
+        $conge->etat=1;
 
 
 
-        $absence->save();
+        $conge->save();
 
-        return redirect()->back()->with('success',"La demande d'absence a été  modifiée avec succès");
+        return redirect()->back()->with('success',"La demande d'Absconge a été  modifiée avec succès");
 
     }
     public function type_permission($id){
 
-        $absence= Absence::find($id);
+        $conge= Absconges::find($id);
 
-        return \GuzzleHttp\json_encode($absence);
+        return \GuzzleHttp\json_encode($conge);
     }
     public function ajouter_type_permission(Request $request ){
 
@@ -409,34 +469,35 @@ class CongerController extends Controller
         $id=$parameters['id'];
         $id_permission=$parameters['id_permission'];
 
-        $absence = Absence::find($id);
-        $absence->etat=3;
-        $absence->id_type_permission=$id_permission;
+        $conge = Absconge::find($id);
+        $conge->etat=3;
+        $conge->id_type_permission=$id_permission;
 
 
-        $absence->save();
+        $conge->save();
 
-        return redirect()->back()->with('success',"La demande d'absence est prête, vous pouvez télécharger le fichier PDF");
+        return redirect()->back()->with('success',"La demande d'Absconge est prête, vous pouvez télécharger le fichier PDF");
 
     }
     public function supprimer($id){
-        $absence= Absence::find($id);
+        $conge= Absconges::find($id);
 
-        $absence->delete();
-        return redirect()->back()->with('success',"La demande d'absence a été  supprimée avec succès");
+        $conge->delete();
+        return redirect()->back()->with('success',"La demande d'Absconge a été  supprimée avec succès");
     }
-    public function validation_absence(){
-        $absences= Absence::where('etat','=',1)->get();
+    public function validation_conges(){
+        $conges = Absconges::where('etat','=',1)->get();
         $mode="validation";
         $entites=Entite::all();
 
-        return view('absences/GestionAbsence',compact('absences','mode','entites'));
+        return view('conges/GestionConge',compact('conges','mode','entites'));
     }
-    public function gestion_absence(){
-        $absences= Absence::where('etat','>=',2)->get();
-        $mode="gestion_absence";
+    public function gestion_Absconge(){
+        $mode="gestion_Absconge";
         $entites=Entite::all();
-        $type_permissions = Type_permission::all();
-        return view('absences/GestionAbsence',compact('absences','mode','entites','type_permissions'));
+        $type_motifs = Type_conges::all();
+        $conges = Absconges::where('etat','!=',1)->get();
+       // dd($conges);
+        return view('conges/GestionConge',compact('Absconges','mode','entites','type_motifs','mode','conges'));
     }
 }

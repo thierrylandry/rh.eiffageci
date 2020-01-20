@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Absconges;
 use App\Conges;
+use App\Entite;
 use App\Personne;
+use App\Personne_presente;
+use App\Type_conges;
 use App\VarpersonneConges;
 use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Array_;
@@ -229,6 +234,38 @@ class CongerController extends Controller
 
         return view('conges/conges',compact('personnesConge','colors','conges'));
     }
+    public function conges_mastorise($id){
+
+        $personne= Personne_presente::find($id);
+        //dd($personnes);
+         //   dd($personnes->contrat_renouvelles()->where('datedebutc','<>',null)->orderBy('datedebutc','ASC')->first()->datedebutc);
+
+        //$personnesConge= Array();
+
+
+             //   $VarpersonneConges= new VarpersonneConges();
+
+
+           //     $nb_y=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->y;
+
+                //    dd(date_diff(new \DateTime('2020-01-14'),new \DateTime('now')));
+               // $nb_m=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->m;
+              //  $nb_d=date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->d;
+             //   $jours=(($nb_y*12) +$nb_m)*2.5 +$nb_d/30;
+
+                if(isset($personne->jours_conges()->select("id_personne",DB::raw('sum(jour) as nb'))->groupBy('absconges.id_personne')->get()[0]->nb)){
+                    $personne->jours_conges()->select("id_personne",DB::raw('sum(jour) as nb'))->groupBy('absconges.id_personne')->get()[0]->nb;
+
+                    }
+
+
+
+
+
+
+
+        return date_diff(new \DateTime($personne->datedebutc),new \DateTime('now'))->days;
+    }
     public function conges_save(Request $request){
         $parameters=$request->except(['_token']);
         $variconges= $parameters['variconges'];      //  dd( json_decode($variconges));
@@ -261,5 +298,206 @@ class CongerController extends Controller
 
             endforeach;
         return 'ok';
+    }
+
+    public function demande_conges()
+    {
+        $entites = Entite::all();
+        $personnes = Personne_presente::all();
+        $conges = Absconges::where('id_users',Auth::user()->id)->get();
+        $type_motifs= Type_conges::all();
+        return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));
+    }
+    public function modification($id)
+    {
+        $conge= Absconges::find($id);
+        $entites = Entite::all();
+        $personnes = Personne_presente::all();
+        $conges = Absconges::where('id_users',Auth::user()->id)->get();
+        // $contrat= Contrat::where('id')
+        $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();
+
+
+        return view('Absconges/ficheAbsconge',compact('entites','personnes','absconges','absconge','contrat'));
+    }
+    public function ActionValider($id){
+        $conge = Absconges::find($id);
+
+        $conge->etat=2;
+        $conge->id_valideur=Auth::user()->id;
+
+        $conge->save();
+
+        return redirect()->route('conges.validation')->with('success',"La demande d'absconge a été  validée avec succès");
+
+    }
+    public function ActionRejeter(Request $request){
+        $parameters=$request->except(['_token']);
+
+        $objet=$parameters['objet'];
+        if($objet=="conge"){
+            $id_dmd=$parameters['id_dmd'];
+
+            $motif=$parameters['motif'];
+            $conge = Absconge::find($id_dmd);
+
+            $conge->etat=4;
+            $conge->id_valideur=Auth::user()->id;
+
+            $conge->save();
+
+            try{
+                $this->dispatch(new EnvoiesRefus($conge,$motif,$objet));
+            }catch(\Exception $exception){
+                return redirect()->back()->with('warning',"La demande a été réfusé avec succès mais le mail du motif n'est pas parti .");
+            }
+
+            return redirect()->back()->with('success',"La demande a été réfusé");
+        }
+
+
+        return redirect()->back()->with('success',"La demande a été réfusé");
+
+    }
+
+    public function lapersonne_contrat_conges($id){
+
+        $personne = Personne_presente::find($id);
+
+        $resultat[0]= $personne;
+        $resultat['leservice']= $personne->leservice()->get();
+        $resultat['lafonction']= $personne->lafonction()->get();
+        $resultat['lecontrat']= $personne->lecontrat()->get();
+        $resultat['Listmodifavenants']=   $Listmodifavenants=Listmodifavenant::all();
+        $resultat['congesa']=   $Listmodifavenants=Listmodifavenant::all();
+
+        return $resultat;
+    }
+    public function enregistrer(Request $request ){
+
+
+        $parameters=$request->except(['_token']);
+       // dd($parameters);
+
+
+        //les valeurs initiales
+
+        $id_personne=$parameters['id_personne'];
+        $debut=$parameters['debut'];
+        $fin=$parameters['fin'];
+        $jour=$parameters['jour'];
+
+        $reprise=$parameters['reprise'];
+        $id_motif_demande=$parameters['id_motif_demande'];
+        $adresse_pd_conges=$parameters['adresse_pd_conges'];
+        $contact_telephonique=$parameters['contact_telephonique'];
+
+
+        $conge = new Absconges();
+        $conge->debut=$debut;
+        $conge->fins=$fin;
+        if( isset($parameters['solde'])){
+            $conge->solde=1;
+        }else{
+            $conge->solde=0;
+        }
+
+        $conge->reprise=$reprise;
+        $conge->id_personne=$id_personne;
+        $conge->jour=$jour;
+        $conge->id_users=Auth::user()->id;
+        $conge->etat=1;
+        $conge->id_motif_demande=$id_motif_demande;
+        $conge->adresse_pd_conges=$adresse_pd_conges;
+        $conge->contact_telephonique=$contact_telephonique;
+
+
+
+        $conge->save();
+
+        return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");
+
+    }
+    public function modifier(Request $request ){
+
+
+        $parameters=$request->except(['_token']);
+        //dd($parameters);
+
+
+        //les valeurs initiales
+
+        $id=$parameters['id'];
+        $id_personne=$parameters['id_personne'];
+        $debut=$parameters['debut'];
+        $fin=$parameters['fin'];
+        $jour=$parameters['jour'];
+        $reprise=$parameters['reprise'];
+
+
+        $conge = Absconges::find($id);
+        $conge->debut=$debut;
+        $conge->fin=$fin;
+        $conge->reprise=$reprise;
+        $conge->jour=$jour;
+        $conge->id_personne=$id_personne;
+        $conge->id_users=Auth::user()->id;
+        $conge->etat=1;
+
+
+
+        $conge->save();
+
+        return redirect()->back()->with('success',"La demande d'Absconge a été  modifiée avec succès");
+
+    }
+    public function type_permission($id){
+
+        $conge= Absconges::find($id);
+
+        return \GuzzleHttp\json_encode($conge);
+    }
+    public function ajouter_type_permission(Request $request ){
+
+
+        $parameters=$request->except(['_token']);
+        //dd($parameters);
+
+
+        //les valeurs initiales
+
+        $id=$parameters['id'];
+        $id_permission=$parameters['id_permission'];
+
+        $conge = Absconge::find($id);
+        $conge->etat=3;
+        $conge->id_type_permission=$id_permission;
+
+
+        $conge->save();
+
+        return redirect()->back()->with('success',"La demande d'Absconge est prête, vous pouvez télécharger le fichier PDF");
+
+    }
+    public function supprimer($id){
+        $conge= Absconges::find($id);
+
+        $conge->delete();
+        return redirect()->back()->with('success',"La demande d'Absconge a été  supprimée avec succès");
+    }
+    public function validation_conges(){
+        $conges = Absconges::where('etat','=',1)->get();
+        $mode="validation";
+        $entites=Entite::all();
+
+        return view('conges/GestionConge',compact('conges','mode','entites'));
+    }
+    public function gestion_Absconge(){
+        $mode="gestion_Absconge";
+        $entites=Entite::all();
+        $type_motifs = Type_conges::all();
+        $conges = Absconges::where('etat','!=',1)->get();
+       // dd($conges);
+        return view('conges/GestionConge',compact('Absconges','mode','entites','type_motifs','mode','conges'));
     }
 }

@@ -8,8 +8,8 @@
 @endsection
 @section('page')
     <div class="row">
-        <a href="{{route('modification.demande')}}" class="card col-sm-4">
-            <div style="color: deepskyblue">
+        <a href="{{route('conges.demande')}}" class="card col-sm-4">
+            <div style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-plus fa-3x"></i>
                     </br></br>
@@ -17,8 +17,8 @@
                 </div>
             </div>
         </a>
-        <a href="{{route('modification.validation')}}" class="card col-sm-4">
-            <div    style="color: deepskyblue">
+        <a href="{{route('conges.validation')}}" class="card col-sm-4">
+            <div   style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-clipboard-check fa-3x"></i>
                     </br></br>
@@ -27,8 +27,8 @@
 
             </div>
         </a>
-        <a href="{{route('modification.gestion')}}" class="card col-sm-4">
-            <div    style="color: deepskyblue">
+        <a href="{{route('conges.gestion')}}" class="card col-sm-4">
+            <div    style="color: orange">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-list-ol fa-3x"></i>
                     </br></br>
@@ -37,12 +37,11 @@
 
             </div>
         </a>
-
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">MODIFICATION - LISTE DES DEMANDES DE MODIFICATIONS</h2>
+                <h2 class="title-1">CONGE - LISTE DES CONGES</h2>
             </div>
         </div>
     </div>
@@ -50,12 +49,11 @@
         <div class="col-md-12" >
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
-                @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
+
                 <div class="table-data__tool-right">
-                    <a href="{{route('modification.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>DEMANDER UNE MODIFICATION</a>
+                    <a href="{{route('absence.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>DEMANDER UN CONGE</a>
                 </div>
-                    @endif
             </div>
             <div class="table-responsive m-b-40">
                 <table class="table table-borderles" id="table_recrutement">
@@ -63,83 +61,75 @@
                     <tr>
                         <th>ID</th>
                         <th>STATUS</th>
-                        <th>TYPE MODIFICATION</th>
+                        <th>SOLDE</th>
+                        <th>MOTIF DE LA DEMANDE</th>
                         <th>DEMANDEUR</th>
-                        <th>PERSONNE</th>
-                        <th>DIRECTION</th>
-                        <th>LISTE DES MODIFICATIONS</th>
+                        <th>TITULAIRE</th>
+                        <th>DATE DE DEPART SOUHAITE</th>
+                        <th>DATE DE FIN SOUHAITE</th>
+                        <th>DATE DE REPRISE</th>
+                        <th>NOMBRE DE JOUR</th>
+                        <th>ADRESSE PENDANT LES CONGES</th>
+                        <th>CONTACT TELEPHONIQUE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($modifications as $modification)
+                    @foreach($conges as $conge)
                         <tr>
-                            <td>{{$modification->id}}</td>
-                            <td>    @if($modification->etat==1)
+                            <td>{{$conge->id}}</td>
+                            <td>    @if($conge->etat==1)
                                     <i class=" fa fa-check-circle-o" style="background-color: red"></i>
-                                @elseif($modification->etat==2)
+                                @elseif($conge->etat==2)
                                     <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
-                                @elseif($modification->etat==3)
+                                @elseif($conge->etat==3)
                                     <i class=" fa fa-check-circle-o" style="background-color: green"></i>
-                                @elseif($modification->etat==4)
+                                @elseif($conge->etat==4)
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                 @endif
+                                {{isset($conge->type_permission)?$conge->type_permission->libelle:''}}
                             </td>
-
-                            <td>@if(isset($modification->id_typeModification) && $modification->id_typeModification==2)
-                                    <span style="background-color:#57b846; color:white">Renouvellement</span>
-                                @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==3)
-                                    <span style="background-color:#00b5e9;  color:white">Avenant</span>
-                                @endif</td>
-                            <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
-                            <td>{{$modification->personne->nom}} {{$modification->personne->prenoms}}</td>
-                            <td>{{$modification->user->entite->libelle}}</td>
-                            <td>
-
-                                   @foreach(json_decode($modification->list_modif) as $modif)
-                                       <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}
-                                       </button>
-                                   @endforeach
-                            </td>
+                            <td> <label class="switch switch-text switch-success"><input type="checkbox"class="switch-input" @if($conge->solde==1)checked @endif >
+                                    <span data-on="OUI" data-off="NON" class="switch-label" style="font-weight: bold"></span></label></td>
+                            <td>{{$conge->Type_conge->libelle}}</td>
+                            <td>{{$conge->user->nom}} {{$conge->user->prenoms}}</td>
+                            <td>{{$conge->personne->nom}} {{$conge->personne->prenom}}</td>
+                            <td>{{$conge->debut}}</td>
+                            <td>{{$conge->fin}}</td>
+                            <td>{{$conge->reprise}}</td>
+                            <td>{{$conge->jour}}</td>
+                            <td>{{$conge->adresse_pd_conges}}</td>
+                            <td>{{$conge->contact_telephonique}}</td>
                             <td>
                                 <div class="table-data-feature">
-                                    @if($modification->etat==1)
+                                    @if($conge->etat==1)
                                         @if($mode=="validation")
-                                            <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                            <a href="{{route('conges.ActionValider',$conge->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                                 <i class="zmdi zmdi-mail-send"></i> Valider
                                             </a>&nbsp;
-                                            <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
+                                            <a href="#" class="btn btn-danger btn_rejeter" id="btn_rejeter_absence" data-toggle="modal" data-target="#modalrefusdemande" data-placement="top" title="Rejeter">
                                                 <i class="zmdi zmdi zmdi-close"></i> Rejeter
                                             </a>&nbsp;
                                         @endif
-                                    @if($mode!="validation")
-                                        <a href="{{route("modification.modification",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </a>
-
-                                        <a  href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </a>
+                                        @if($mode=="validation")
+                                            <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
                                         @endif
 
-
-                                    @elseif($modification->etat==2)
-                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-eye"></i>
-                                        </a>
-                                        <a href="{{route('contrat_new_user2',[$modification->id,$modification->id_typeModification])}}" class="btn btn-info"  title="Plus d'info">
-                                            <i class="zmdi zmdi-edit"></i> Créer le document
-                                        </a>
-                                    @elseif($modification->etat==3)
-
-                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-eye"></i>
-                                        </a>
-                                    @elseif($modification->etat==4)
-                                        <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-eye"></i>
-                                        </a>
-                                        <a href="{{route("modification.supprimer",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    @elseif($conge->etat==2)
+                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
+                                            <i class="zmdi zmdi-format-indent-increase"></i> Préciser le type de permission
+                                        </a>&nbsp;
+                                    @elseif($conge->etat==3)
+                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
+                                            <i class="zmdi zmdi-format-indent-increase"></i> Modifier le type de permission
+                                        </a>&nbsp;
+                                    @elseif($conge->etat==4)
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
                                     @endif
@@ -236,6 +226,40 @@
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 $("#slugrecrutement").val(slug);
+            });
+            $("#btn_rejeter_absence").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                var objet="conge";
+                $("#id_dmd").val(slug);
+                $("#objet").val(objet);
+            });
+            $(".btn_type_permission").click(function(e){
+
+                var data = table.row($(this).closest('tr')).data();
+                var slug=data[Object.keys(data)[0]];
+                $("#id_abs").val(slug);
+                $("#id_permission").val("");
+                $.get("../absences/type_permission/"+slug,function(data){
+                    console.log(data);
+                    if(data){
+                        var res=JSON.parse(data);
+                        console.log(res);
+                        $("#id_permission").val(res.id_type_permission);
+                    }
+
+
+                });
+
+                $.get("../recrutements/monrecrutement/"+slug,function(data){
+                    // alert(data.id_definition);
+                    $(".id_definition").val(data.id_definition);
+                    $(".id_categorie").val(data.id_categorie);
+                    $(".regime").val(data.regime);
+                });
+
+
             });
             function vider(){
                 $("#id_definition1").val("");

@@ -47,6 +47,7 @@ class ContratController extends Controller
             $modification_recrutement= Modification::find($id);
             $personne= Personne::find($modification_recrutement->id_personne);
             $listmodif=json_decode($modification_recrutement->list_modif);
+            $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
         }else{
             $modification_recrutement= Recrutement::find($id);
             $personne=null;
@@ -55,7 +56,7 @@ class ContratController extends Controller
         $definitions = Definition::all();
 
 
-        $contrat= Contrat::where('id_personne','=',$personne->id)->orderby('datedebutc','desc')->first();
+
         if(isset($contrat)){
             $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         }

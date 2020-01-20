@@ -748,12 +748,20 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
 });
 
 //Absences
+Route::post('/ActionRejeter',[
+    'as'=>'ActionRejeter',
+    'uses'=>'AbsenceController@ActionRejeter',
+])->middleware('auth');
+
 Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements'], function () {
     Route::get('/demande', [
         'as' => 'demande',
         'uses' => 'AbsenceController@demande_absence',
     ])->middleware('auth');
-
+    Route::get('/ActionValider/{id}',[
+        'as'=>'ActionValider',
+        'uses'=>'AbsenceController@ActionValider',
+        ])->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'AbsenceController@validation_absence',
@@ -782,6 +790,69 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
         'as'=>'modifier',
         'uses'=>'AbsenceController@modifier',
     ])->middleware('roles')->middleware('auth');
+    Route::post('/ajouter_type_permission',[
+        'as'=>'ajouter_type_permission',
+        'uses'=>'AbsenceController@ajouter_type_permission',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/type_permission/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'AbsenceController@type_permission',
+    ])->middleware('auth');
+});
+
+Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'], function () {
+    Route::get('/demande', [
+        'as' => 'demande',
+        'uses' => 'CongerController@demande_conges',
+    ])->middleware('auth');
+    Route::get('/ActionValider/{id}',[
+        'as'=>'ActionValider',
+        'uses'=>'CongerController@ActionValider',
+        ])->middleware('auth');
+    Route::get('/validation', [
+        'as' => 'validation',
+        'uses' => 'CongerController@validation_conges',
+        'roles' => ['Validation_recrutement'],
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/modification/{id}',[
+        'as'=>'modification',
+        'uses'=>'CongerController@modification',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/supprimer/{id}',[
+        'as'=>'supprimer',
+        'uses'=>'CongerController@supprimer',
+
+    ])->middleware('roles')->middleware('auth');
+
+    Route::get('/gestion', [
+        'as' => 'gestion',
+        'uses' => 'CongerController@gestion_Absconge',
+    ])->middleware('auth');
+
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'CongerController@enregistrer',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/modifier',[
+        'as'=>'modifier',
+        'uses'=>'CongerController@modifier',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/ajouter_type_permission',[
+        'as'=>'ajouter_type_permission',
+        'uses'=>'CongerController@ajouter_type_permission',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/type_permission/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'CongerController@type_permission',
+    ])->middleware('auth');
+    Route::get('/lapersonne_contrat_conges/{id}', [
+        'as' => 'type_permission',
+        'uses' => 'CongerController@type_permission',
+    ])->middleware('auth');
+    Route::get('/conges_mastorise/{id}', [
+        'as' => 'conges_mastorise',
+        'uses' => 'CongerController@conges_mastorise',
+    ])->middleware('auth');
 });
 
 //pole de demande

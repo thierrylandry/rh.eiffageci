@@ -21,4 +21,8 @@ class Personne_presente extends Model
 
             return $this->belongsTo('App\Contrat', 'id_contrat');
     }
+    public function jours_conges()
+    {
+        return $this->hasMany(Absconges::class,'id_personne');
+    }
 }

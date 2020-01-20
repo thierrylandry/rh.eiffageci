@@ -1,11 +1,43 @@
 @extends('layouts.app')
-@section('modification.demande')
+@section('pole_demande')
     active
 @endsection
-@section('modifications')
+@section('pole_demande_block')
     style="display: block;"
 @endsection
 @section('page')
+    <div class="row">
+        <a href="{{route('modification.demande')}}" class="card col-sm-4">
+            <div style="color: deepskyblue">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-plus fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Demande</h4>
+                </div>
+            </div>
+        </a>
+        <a href="{{route('modification.validation')}}" class="card col-sm-4">
+            <div    style="color: deepskyblue">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-clipboard-check fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Validation</h4>
+                </div>
+
+            </div>
+        </a>
+        <a href="{{route('modification.gestion')}}" class="card col-sm-4">
+            <div    style="color: deepskyblue">
+                <div class="card-body" style="text-align: center;">
+                    <i class="fas fa-list-ol fa-3x"></i>
+                    </br></br>
+                    <h4 class="card-title mb-3">Gestion</h4>
+                </div>
+
+            </div>
+        </a>
+
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">

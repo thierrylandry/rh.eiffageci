@@ -45,9 +45,9 @@
             background-color: white !important; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
             font-size: 1.7rem; }
-         .modifie{
-             background-color: lightskyblue;
-         }
+        .modifie{
+            background-color: #5aa5f5;
+        }
 
 
     </style>
@@ -69,7 +69,7 @@
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_contrat',$personne->slug)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('lister_contrat',$personne->id)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
             </div>
@@ -78,20 +78,188 @@
     </div>
 
 
-    @if(isset($ancien_contrat))
-        <div class="alert alert-warning">Attention les valeurs du dernier contrat sont pré-chargées</div>
-    @endif()
+    <div class="card-body">
+        <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
+        <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
+        <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
+        <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+    </div>
+    <div class="top-campaign">Ci-dessous les modification à apporter:</br>
+        <div class="row">
+            @if(isset($modification_recrutement))
+            @foreach(json_decode($modification_recrutement->list_modif) as $modif)
+
+                @switch($modif)
+                @case("Le service")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table style="border:1px;">
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->service()->first()->libelle:''}}</td>
+                            <td>{{isset($contrat)?$contrat->service()->first()->libelle:''}}</td>
+                        </tr>
+                    </table>
+
+                </button>
+                @break
+
+                @case("La durée hebdomadaire de travail")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
+                            <td>{{isset($contrat)?$contrat->regime:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("La fonction")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
+                            <td>{{isset($contrat->fonction)?$contrat->fonction()->first()->libelle:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("Le type de contrat")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->type_contrat->libelle:''}}</td>
+                            <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("La date de fin")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->dateFinC:''}}</td>
+                            <td>{{isset($contrat)?$contrat->datefinc:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("La définition")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement->definition)?$modification_recrutement->definition->libelle:''}}</td>
+                            <td>{{isset($contrat->definition)?$contrat->definition->libelle:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("La catégorie")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->id_categorie:''}}</td>
+                            <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @case("Le budget mensuel")
+                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
+                    <table>
+                        <tr>
+                            <td colspan="2">{{$modif}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nouvelle valeur</td>
+                            <td>Ancienne valeur</td>
+                        </tr>
+                        <tr>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->budgetMensuel:''}}</td>
+                            <td>
+                                <?php $affiche=0;
+                                if(isset($contrat->valeurSalaire)){
+                                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                                        $affiche+=$valeurSalaire->valeur;
+                                    endforeach;
+                                    echo $affiche;
+                                }
+
+
+                                ?></td>
+                        </tr>
+                    </table>
+                </button>
+                @break
+                @default
+
+                @endswitch
+
+
+            @endforeach
+                @endif
+        </div>
+        </br>
+    </div>
+
 
     <br>
 
 
-            <form action="{{route('save_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{route('save_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
 
 
-                <div class="row">
+        <div class="row">
             <div class="col-sm-12">
                 <div class="row form-group">
 
@@ -101,77 +269,12 @@
                     </div>
                 </div>
 
-                    <div class="alert alert-success" id="recrutementSelectionne"></div>
+                <div class="alert alert-success" id="recrutementSelectionne"></div>
 
             </div>
 
         </div>
-                @if(isset($modification_recrutement))
-                <div class="row">
-                    @foreach(json_decode($modification_recrutement->list_modif) as $modif)
 
-                        @switch($modif)
-                        @case("Le service")
-                        <button type="button" class="btn btn-outline-primary" disabled>
-                            <table style="border:1px;">
-                                <tr>
-                                    <td colspan="2">{{$modif}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nouvelle valeur</td>
-                                    <td>Ancienne valeur</td>
-                                </tr>
-                                <tr>
-                                    <td>{{isset($modification_recrutement)?$modification_recrutement->service->libelle:''}}</td>
-                                    <td>{{isset($contrat)?$contrat->service->libelle:''}}</td>
-                                </tr>
-                            </table>
-                        </button>
-                        @break
-
-                        @case("La durée hebdomadaire de travail")
-                        <button type="button" class="btn btn-outline-primary" disabled>
-                            <table>
-                                <tr>
-                                    <td colspan="2">{{$modif}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nouvelle valeur</td>
-                                    <td>Ancienne valeur</td>
-                                </tr>
-                                <tr>
-                                    <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
-                                    <td>{{isset($contrat)?$contrat->regime:''}}</td>
-                                </tr>
-                            </table>
-                        </button>
-                        @break
-                        @case("La fonction")
-                        <button type="button" class="btn btn-outline-primary" disabled>
-                            <table>
-                                <tr>
-                                    <td colspan="2">{{$modif}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nouvelle valeur</td>
-                                    <td>Ancienne valeur</td>
-                                </tr>
-                                <tr>
-                                    <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
-                                    <td>{{isset($contrat)?$contrat->fonction->libelle:''}}</td>
-                                </tr>
-                            </table>
-                        </button>
-                        @break
-                        @default
-
-                        @endswitch
-
-
-                    @endforeach
-                </div>
-                @endif
-                </br>
         <div class="row">
             <div class="col-sm-6 top-campaign ">
 
@@ -187,12 +290,7 @@
                             <select class="form-control {{isset($listmodif) && in_array('La définition',$listmodif)?'modifie':''}} " name="id_definition" id="id_definition3" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($definitions as $definition)
-                                    <option @if(isset($modification_recrutement->id_definition) && $modification_recrutement->id_definition==$definition->id)
-                                            selected
-                                            @elseif(isset($contrat->id_definition) && $contrat->id_definition==$definition->id)
-                                            selected
-                                            @endif
-                                            value="{{$definition->id}}">{{$definition->libelle}}</option>
+                                    <option {{isset($contrat) && $contrat->id_definition==$definition->id?'selected':''}}  value="{{$definition->id}}">{{$definition->libelle}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -219,8 +317,8 @@
                         </div>
                         <div class="col-sm-9">
                             <select class="form-control regime {{isset($listmodif) && in_array('La durée hebdomadaire de travail',$listmodif)?'modifie':''}}" name="regime" id="regime3">
-                                <option value="40H">40H</option>
-                                <option value="44H">44H</option>
+                                <option  {{isset($contrat) && $contrat->regime=="40H"?'selected':''}} value="40H">40H</option>
+                                <option {{isset($contrat) && $contrat->regime=="44H"?'selected':''}} value="44H">44H</option>
                             </select>
                         </div>
 
@@ -254,7 +352,7 @@
                             <select class="form-control" name="couverture_maladie" id="couverture_maladie">
                                 @foreach($assurance_maladies as $assurance_maladie)
                                     <option value="{{$assurance_maladie->libelle}}" {{isset($contrat) && $contrat->couvertureMaladie==$assurance_maladie->libelle?'selected':''}}>80</option>
-                                    @endforeach
+                                @endforeach
 
                             </select>
                         </div>
@@ -305,7 +403,15 @@
                         </div>
                         <div class="form-group">
                             <input type="hidden" id="dateDebutC_memoire" class="form-control " value="{{isset($contrat)?$contrat->datedebutc:''}}" />
-                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
+                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   readonly/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-4">
+                            <label for="text-input" class=" form-control-label">Date de debut de la modification:</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="date_debutc_eff" id="date_debutc_eff" class="form-control" value="{{isset($modification_recrutement->date_debutc_eff)?$modification_recrutement->date_debutc_eff:''}}"   required/>
                         </div>
                     </div>
 
@@ -327,22 +433,22 @@
                     </div>
 
                     @if(isset($contrat))
-                    <div class="row form-group">
-                        <div class="col col-md-4">
-                            <label for="text-input" class=" form-control-label">Date de rupture d'essai :</label>
+                        <div class="row form-group">
+                            <div class="col col-md-4">
+                                <label for="text-input" class=" form-control-label">Date de rupture d'essai :</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="ruptureEssai" value="{{isset($contrat)?$contrat->ruptureEssaie:''}}" class="form-control" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="date" name="ruptureEssai" value="{{isset($contrat)?$contrat->ruptureEssaie:''}}" class="form-control" />
+                        <div class="row form-group">
+                            <div class="col col-md-4">
+                                <label for="text-input" class=" form-control-label">Date depart définitif :</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("Y-m-d",strtotime($contrat->departDefinitif)):''}}" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-4">
-                            <label for="text-input" class=" form-control-label">Date depart définitif :</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" name="departdefinitif" class="form-control" value="{{isset($contrat) && $contrat->departDefinitif!=''? $newDate = date("Y-m-d",strtotime($contrat->departDefinitif)):''}}" />
-                        </div>
-                    </div>
                     @endif
                     <div class="row form-group">
                         <div class="col col-md-4">
@@ -359,9 +465,9 @@
                         </div>
                         <div class="form-group">
                             <select name="position" class="form-control">
-                                    <option value="1" {{isset($contrat) && $contrat->position==1 ?'selected':''}}>Chantier</option>
-                                    <option value="2" {{isset($contrat) && $contrat->position==2 ?'selected':''}}>Bureau</option>
-                                    <option value="3" {{isset($contrat) && $contrat->position==3 ?'selected':''}}>Femme de ménage</option>
+                                <option value="1" {{isset($contrat) && $contrat->position==1 ?'selected':''}}>Chantier</option>
+                                <option value="2" {{isset($contrat) && $contrat->position==2 ?'selected':''}}>Bureau</option>
+                                <option value="3" {{isset($contrat) && $contrat->position==3 ?'selected':''}}>Femme de ménage</option>
                             </select>
                         </div>
                     </div>
@@ -372,199 +478,221 @@
             </div>
         </div>
 
-                <div class="row">
+        <div class="row">
 
-                    <div class="col-lg-12">
-                        <div class="card" style="height: 100% !important">
-                            <div class="card-header">
-                                <strong>Condition de rémunération</strong>
+            <div class="col-lg-12">
+                <div class="card" style="height: 100% !important">
+                    <div class="card-header">
+                        <strong>Condition de rémunération</strong>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div id="rubriques" class="form-inline">
+                                    <?php $i=0; ?>
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="  type_c form-control input-field rubrique" readonly="true" style="width: 260px">
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==1)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}} >{{$rubrique_salaire->libelle}}</option>
+                                                        @endif @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <?php
+                                                if(isset($contrat->valeurSalaire)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                                ?>
+                                                <input type="text" name="valeur[]" id="Salaire_de_base3" class="valeur_c Salaire_de_base salaire_base3 form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                <?php $i=0; ?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==2)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==2?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if(isset($contrat->valeurSalaire)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                    ?>
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur {{$libelle}}</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control Sursalaire" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                <?php $i=0; ?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==3)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==3?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if(isset($contrat->valeurSalaire)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                    ?>
+
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control Prime_de_salissure" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                <?php $i=0; ?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==4)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==4?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if(isset($contrat->valeurSalaire)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                    ?>
+
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control Prime_de_tenue_de_travail" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                <?php $i=0; ?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==5)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==5?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if(isset($contrat->valeurSalaire)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                    ?>
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                    </br>
+
+                                </div>
+                                <h5>Rubrique Additionnelle</h5>
+                                <div id="rubriques_petit" class="form-inline rubriques_petit" >
+                                    @if(isset($resultat))
+                                        <?php echo($resultat)?>
+                                    @endif
+
+                                </div>
+                                Ajouter une rubrique salariale
+                                <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float addrubrique" id="addrubrique">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </button>
+                                <div id="rubriquetemplate" class="row clearfix rubriquetemplate" style="display: none">
+
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]" class="type_c form-control input-field">
+                                                <?php $i=0?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++;?>
+                                                        @if($i>=6)
+                                                            <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr width="100%" color="blue">
+                                </div>
                             </div>
-                            <div class="card-body" >
-<div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-        <div id="rubriques" class="form-inline">
-            <?php $i=0; ?>
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]"  class="  type_c form-control input-field rubrique" readonly="true" style="width: 260px">
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++?>
-                                @if($i==1)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}} >{{$rubrique_salaire->libelle}}</option>
-                                @endif @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" id="Salaire_de_base3" class="valeur_c Salaire_de_base salaire_base3 form-control" placeholder="Valeur" value="" readonly>
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
-                        <?php $i=0; ?>
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++?>
-                                @if($i==2)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==2?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                @endif
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control Sursalaire" placeholder="Valeur" value="" >
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
-                        <?php $i=0; ?>
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++?>
-                                @if($i==3)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==3?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                @endif
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control Prime_de_salissure" placeholder="Valeur" value="">
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
-                        <?php $i=0; ?>
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++?>
-                                @if($i==4)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==4?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                @endif
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control Prime_de_tenue_de_travail" placeholder="Valeur" value="">
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
-                        <?php $i=0; ?>
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++?>
-                                @if($i==5)
-                                    <option value="{{$rubrique_salaire->libelle}}" {{$i==5?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
-                                @endif
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="">
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-            </br>
-
-        </div>
-        <h5>Rubrique Additionnelle</h5>
-        <div id="rubriques_petit" class="form-inline rubriques_petit" >
-
-
-        </div>
-        Ajouter une rubrique salariale
-        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float addrubrique" id="addrubrique">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        </button>
-        <div id="rubriquetemplate" class="row clearfix rubriquetemplate" style="display: none">
-
-            <div class=" form-control-label">
-                <label for="rubrique[]">Rubrique</label>
-                <div class="form-group col-sm-12">
-                    <select type="text" name="rubrique[]" class="type_c form-control input-field">
-                        <?php $i=0?>
-                        @if(isset($rubrique_salaires))
-                            @foreach($rubrique_salaires as $rubrique_salaire)
-                                <?php $i++;?>
-                                @if($i>=6)
-                                    <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
-                                @endif
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-control-label">
-                <label for="valeur[]">Valeur</label>
-                <div class="form-group col-sm-12">
-                    <div class="form-line">
-                        <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                    </div>
-                </div>
-            </div>
-            <hr width="100%" color="blue">
-        </div>
-    </div>
-    <div class="col-sm-3"></div>
-</div>
-
-
-                            </div>
+                            <div class="col-sm-3"></div>
                         </div>
-                    </div>
 
+
+                    </div>
                 </div>
-                </br>
+            </div>
+
+        </div>
+        </br>
         <div class="card-footer pull-right">
             <button type="submit" class="btn btn-primary btn-sm">
                 <i class="zmdi zmdi-edit"></i> Enregistrer
@@ -574,65 +702,50 @@
             </button>
         </div>
     </form>
-            <script src="{{ asset("js/jquery.min.js") }}"></script>
-<script>
-    function lister_les_categories(){
-        var id_definition=  $("#id_definition3").val();
-        $.get("../listercat/"+id_definition,function(data){
-            console.log(data);
-            var lesOptions;
-            $.each(data, function( index, value ) {
-                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+    <script src="{{ asset("js/jquery.min.js") }}"></script>
+    <script>
+        function lister_les_categories(){
+            var id_definition=  $("#id_definition3").val();
+            var lien="{{URL::asset('')}}";
+            $.get(lien+"/listercat/"+id_definition,function(data){
+                console.log(data);
+                var lesOptions;
+                $.each(data, function( index, value ) {
+                    lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                });
+                $("#id_categorie3").empty();
+                $("#id_categorie3").append(lesOptions);
+                //  $("#id_categorie").trigger("chosen:updated");
+                // pour trouver le salcategorielle
             });
-            $("#id_categorie3").empty();
-            $("#id_categorie3").append(lesOptions);
-            //  $("#id_categorie").trigger("chosen:updated");
-            // pour trouver le salcategorielle
-        });
-    }
-    function trouvezur_de_salaire_cat(){
-        var categorieLibelle=  $("#id_categorie3").val();
-        var id_definition=  $("#id_definition3").val();
-        var regime=  $("#regime3").val();
-        $.get("../recrutements/macategorie/"+categorieLibelle+"/"+id_definition+"/"+regime,function(data){
-            console.log(data);
-            var lesOptions;
-            if(data!=""){
+        }
+        function trouvezur_de_salaire_cat(){
+            var categorieLibelle=  $("#id_categorie3").val();
+            var id_definition=  $("#id_definition3").val();
+            var regime=  $("#regime3").val();
+            var lien="{{URL::asset('')}}";
+            $.get(lien+"recrutements/macategorie/"+categorieLibelle+"/"+id_definition+"/"+regime,function(data){
+                console.log(data);
+                var lesOptions;
+                if(data!=""){
 
-                $("#Salaire_de_base3").val(data.salCategoriel);
+                    $("#Salaire_de_base3").val(data.salCategoriel);
 
-            }else{
-                $("#Salaire_de_base3").val("");
-            }
+                }else{
+                    $("#Salaire_de_base3").val("");
+                }
 
-            /*  $("#id_categorie").empty();
-             $("#id_categorie").append(lesOptions);*/
-            //  $("#id_categorie").trigger("chosen:updated");
+                /*  $("#id_categorie").empty();
+                 $("#id_categorie").append(lesOptions);*/
+                //  $("#id_categorie").trigger("chosen:updated");
 
-        });
-    }
-    $("#id_definition3").change(function (e) {
-        // alert("test");
-        var id_definition=  $("#id_definition3").val();
-        lister_les_categories();
-        trouvezur_de_salaire_cat();
-
-    });
-    $("#id_recrutement").change(function (e) {
-        // alert("test");
-        var id_recrutement=  $("#id_recrutement").val();
-        $("#recrutementSelectionne").empty();
-        $.get("../lerecrutement/"+id_recrutement,function(data){
-            console.log(data);
-
-            $("#recrutementSelectionne").text(data.posteAPouvoir+" "+data.NbrePersonne+""+data.NbrePersonneEffect+" "+data.assurance_maladie+" "+data.budgetMensuel);
-            $("#id_definition3").val(data.id_definition);
-            $("#id_categorie3").val(data.id_categorie);
-            $("#regime3").val(data.regime);
-            lister_les_categories();
+            });
+        }
+        $("#id_definition3").change(function (e) {
 
             var id_definition=  $("#id_definition3").val();
-            $.get("../listercat/"+id_definition,function(data){
+            var lien="{{URL::asset('')}}";
+            $.get(lien+"/listercat/"+id_definition,function(data){
                 console.log(data);
                 var lesOptions;
                 $.each(data, function( index, value ) {
@@ -643,62 +756,93 @@
                 //  $("#id_categorie").trigger("chosen:updated");
                 // pour trouver le salcategorielle
                 trouvezur_de_salaire_cat();
-
-                //les condition de rémunérations
-                $(".rubriques_petit").empty();
-
-                $(".Salaire_de_base").val("");
-                $(".Sursalaire").val("");
-                $(".Prime_de_salissure").val("");
-                $(".Prime_de_tenue_de_travail").val("");
-                $(".Prime_de_transport").val("");
-
-                $.get("../recrutements/liste_salaire_by_id/"+id_recrutement,function(data){
-                    console.log(data[0]);
-                    if(typeof data[0][0]!='undefined') {
-                        $(".Salaire_de_base").val(data[0][0].valeur);
-                    }
-                    if(typeof data[0][1]!='undefined') {
-                        $(".Sursalaire").val(data[0][1].valeur);
-                    }
-                    if(typeof data[0][2]!='undefined') {
-                        $(".Prime_de_salissure").val(data[0][2].valeur);
-                    }
-                    if(typeof data[0][3]!='undefined') {
-                        $(".Prime_de_tenue_de_travail").val(data[0][3].valeur);
-                    }
-                    if(typeof data[0][4]!='undefined'){
-                        $(".Prime_de_transport").val(data[0][4].valeur);
-                    }
-
-
-                    $(".rubriques_petit").append(data[1]);
-
-                });
-                //fin de la liste
             });
 
 
 
+
         });
+        $("#id_recrutement").change(function (e) {
+            // alert("test");
+            var id_recrutement=  $("#id_recrutement").val();
+            $("#recrutementSelectionne").empty();
+            $.get("../lerecrutement/"+id_recrutement,function(data){
+                console.log(data);
+
+                $("#recrutementSelectionne").text(data.posteAPouvoir+" "+data.NbrePersonne+""+data.NbrePersonneEffect+" "+data.assurance_maladie+" "+data.budgetMensuel);
+                $("#id_definition3").val(data.id_definition);
+                $("#id_categorie3").val(data.id_categorie);
+                $("#regime3").val(data.regime);
+                lister_les_categories();
+
+                var id_definition=  $("#id_definition3").val();
+                $.get("../listercat/"+id_definition,function(data){
+                    console.log(data);
+                    var lesOptions;
+                    $.each(data, function( index, value ) {
+                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                    });
+                    $("#id_categorie3").empty();
+                    $("#id_categorie3").append(lesOptions);
+                    //  $("#id_categorie").trigger("chosen:updated");
+                    // pour trouver le salcategorielle
+                    trouvezur_de_salaire_cat();
+
+                    //les condition de rémunérations
+                    $(".rubriques_petit").empty();
+
+                    $(".Salaire_de_base").val("");
+                    $(".Sursalaire").val("");
+                    $(".Prime_de_salissure").val("");
+                    $(".Prime_de_tenue_de_travail").val("");
+                    $(".Prime_de_transport").val("");
+
+                    $.get("../recrutements/liste_salaire_by_id/"+id_recrutement,function(data){
+                        console.log(data[0]);
+                        if(typeof data[0][0]!='undefined') {
+                            $(".Salaire_de_base").val(data[0][0].valeur);
+                        }
+                        if(typeof data[0][1]!='undefined') {
+                            $(".Sursalaire").val(data[0][1].valeur);
+                        }
+                        if(typeof data[0][2]!='undefined') {
+                            $(".Prime_de_salissure").val(data[0][2].valeur);
+                        }
+                        if(typeof data[0][3]!='undefined') {
+                            $(".Prime_de_tenue_de_travail").val(data[0][3].valeur);
+                        }
+                        if(typeof data[0][4]!='undefined'){
+                            $(".Prime_de_transport").val(data[0][4].valeur);
+                        }
 
 
-    });
+                        $(".rubriques_petit").append(data[1]);
 
-    $("#id_categorie3").change(function (e) {
-        trouvezur_de_salaire_cat();
-    })      ;
-    $("#regime3").change(function (e) {
-        // alert("test");
-        trouvezur_de_salaire_cat();
-        //  alert("ddd");
-    })
-
-</script>
-            <script type="application/javascript">
-                $(".addrubrique").click(function (e) {
-                    $($(".rubriquetemplate").html()).appendTo($(".rubriques_petit"));
+                    });
+                    //fin de la liste
                 });
 
-            </script>
+
+
+            });
+
+
+        });
+
+        $("#id_categorie3").change(function (e) {
+            trouvezur_de_salaire_cat();
+        })      ;
+        $("#regime3").change(function (e) {
+            // alert("test");
+            trouvezur_de_salaire_cat();
+            //  alert("ddd");
+        })
+
+    </script>
+    <script type="application/javascript">
+        $(".addrubrique").click(function (e) {
+            $($(".rubriquetemplate").html()).appendTo($(".rubriques_petit"));
+        });
+
+    </script>
 @endsection

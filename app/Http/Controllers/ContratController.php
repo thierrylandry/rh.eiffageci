@@ -80,7 +80,7 @@ class ContratController extends Controller
             $modification_recrutement= Recrutement::find($id);
             $personne=null;
         }
-        //dd($modification_recrutement);
+        //dd($modification_recrutement->list_modif);
         $definitions = Definition::all();
 
 
@@ -176,13 +176,13 @@ class ContratController extends Controller
         $contrat= Contrat::find($id);
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
-
         $services = Services::all();
         $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats'));
+        $assurance_maladies= Assurance_maladie::all();
+        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies'));
     }
 
     public function lister_contrat($slug){

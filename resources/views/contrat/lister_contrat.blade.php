@@ -28,7 +28,7 @@
                 </div>&nbsp;
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('contrat_new_user2',[$personne->slug,1])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('creer_contrat',[$personne->id,1])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN CONTRAT</a>
                 </div>
             </div>

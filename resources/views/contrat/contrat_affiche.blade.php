@@ -106,6 +106,7 @@
             </div>
 
         </div>
+                @if(isset($modification_recrutement))
                 <div class="row">
                     @foreach(json_decode($modification_recrutement->list_modif) as $modif)
 
@@ -169,6 +170,7 @@
 
                     @endforeach
                 </div>
+                @endif
                 </br>
         <div class="row">
             <div class="col-sm-6 top-campaign ">
@@ -187,7 +189,7 @@
                                 @foreach($definitions as $definition)
                                     <option @if(isset($modification_recrutement->id_definition) && $modification_recrutement->id_definition==$definition->id)
                                             selected
-                                            @elseif($contrat->id_definition==$definition->id)
+                                            @elseif(isset($contrat->id_definition) && $contrat->id_definition==$definition->id)
                                             selected
                                             @endif
                                             value="{{$definition->id}}">{{$definition->libelle}}</option>

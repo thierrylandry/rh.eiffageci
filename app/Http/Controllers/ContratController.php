@@ -87,6 +87,26 @@ class ContratController extends Controller
         }
 
     }
+    public function creer_contrat($id){
+
+        $personne= Personne::find($id);
+        $rubrique_salaires= Rubrique_salaire::all();
+        //   dd($valeurSalaire);
+        $ancien_contrat=true;
+        $services = Services::all();
+        $typecontrats= Typecontrat::all();
+        $entites= Entite::all();
+        $nature_contrats= Nature_contrat::all();
+        $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
+        $assurance_maladies=Assurance_maladie::all();
+        $definitions = Definition::all();
+        if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_typeModification','recrutement','modification_recrutement','id_typeModification','listmodif','assurance_maladies'));
+        }else{
+            return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
+        }
+
+    }
     public function listercat($id_definition){
         $categories_initials = Categorie::where('id_definition','=',$id_definition)->distinct('libelle')->select('libelle')->get();
     //    dd($categories_initials);

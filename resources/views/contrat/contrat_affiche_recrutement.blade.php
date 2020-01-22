@@ -45,6 +45,7 @@
             background-color: white !important; }
         .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
             font-size: 1.7rem; }
+
     </style>
     <div class="row">
         <div class="col-md-12">
@@ -63,7 +64,7 @@
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('lister_contrat',$personne->slug)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{url()->previous()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
                 </div>&nbsp;
             </div>
@@ -71,19 +72,19 @@
 
     </div>
 
-
-    @if(isset($ancien_contrat))
-        <div class="alert alert-warning">Attention les valeurs du dernier contrat sont pré-chargées</div>
-    @endif()
-
+    <div class="card-body">
+        <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
+        <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
+        <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
+        <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+    </div>
     <br>
 
 
-    <form action="{{route('save_contrat_creer_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{route('save_contrat_recrutement')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
-        <input type="hidden" id="text-input" name="id_typeModification" placeholder="Nom" value="1" class="form-control" required>
         <div class="row">
             <div class="col-sm-12">
                 <div class="row form-group">
@@ -91,11 +92,15 @@
                         <label for="text-input" class=" form-control-label">Le recrutement :</label>
                     </div>
                     <div class="col-sm-9">
-                        <select class="form-control" name="id_recrutement_modification" id="id_recrutement" required>
+                        <select class="form-control" name="id_recrutement" id="id_recrutement" required>
                             <option value="">SELECTIONNER</option>
+
                             @foreach($recrutements as $recrutement)
-                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect}} /{{$recrutement->NbrePersonne}}</option>
+                                @if($recrutement->NbrePersonne!=$recrutement->NbrePersonneEffect)
+                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect!=""?$recrutement->NbrePersonneEffect:0}} /{{$recrutement->NbrePersonne}}</option>
+                                @endif
                             @endforeach
+
                         </select>
                     </div>
                 </div>
@@ -526,13 +531,17 @@
                 console.log(data);
                 var lesOptions;
                 if(data!=""){
+
                     $("#Salaire_de_base3").val(data.salCategoriel);
+
                 }else{
                     $("#Salaire_de_base3").val("");
                 }
+
                 /*  $("#id_categorie").empty();
                  $("#id_categorie").append(lesOptions);*/
                 //  $("#id_categorie").trigger("chosen:updated");
+
             });
         }
         $("#id_definition3").change(function (e) {
@@ -540,6 +549,7 @@
             var id_definition=  $("#id_definition3").val();
             lister_les_categories();
             trouvezur_de_salaire_cat();
+
         });
         $("#id_recrutement").change(function (e) {
             // alert("test");
@@ -547,11 +557,13 @@
             $("#recrutementSelectionne").empty();
             $.get("../lerecrutement/"+id_recrutement,function(data){
                 console.log(data);
+
                 $("#recrutementSelectionne").text(data.posteAPouvoir+" "+data.NbrePersonne+""+data.NbrePersonneEffect+" "+data.assurance_maladie+" "+data.budgetMensuel);
                 $("#id_definition3").val(data.id_definition);
                 $("#id_categorie3").val(data.id_categorie);
                 $("#regime3").val(data.regime);
                 lister_les_categories();
+
                 var id_definition=  $("#id_definition3").val();
                 $.get("../listercat/"+id_definition,function(data){
                     console.log(data);
@@ -564,13 +576,16 @@
                     //  $("#id_categorie").trigger("chosen:updated");
                     // pour trouver le salcategorielle
                     trouvezur_de_salaire_cat();
+
                     //les condition de rémunérations
                     $(".rubriques_petit").empty();
+
                     $(".Salaire_de_base").val("");
                     $(".Sursalaire").val("");
                     $(".Prime_de_salissure").val("");
                     $(".Prime_de_tenue_de_travail").val("");
                     $(".Prime_de_transport").val("");
+
                     $.get("../recrutements/liste_salaire_by_id/"+id_recrutement,function(data){
                         console.log(data[0]);
                         if(typeof data[0][0]!='undefined') {
@@ -588,12 +603,21 @@
                         if(typeof data[0][4]!='undefined'){
                             $(".Prime_de_transport").val(data[0][4].valeur);
                         }
+
+
                         $(".rubriques_petit").append(data[1]);
+
                     });
                     //fin de la liste
                 });
+
+
+
             });
+
+
         });
+
         $("#id_categorie3").change(function (e) {
             trouvezur_de_salaire_cat();
         })      ;
@@ -602,10 +626,12 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
+
     </script>
     <script type="application/javascript">
         $(".addrubrique").click(function (e) {
             $($(".rubriquetemplate").html()).appendTo($(".rubriques_petit"));
         });
+
     </script>
 @endsection

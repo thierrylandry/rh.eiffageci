@@ -28,7 +28,7 @@
                 </div>&nbsp;
                 <div class="table-data__tool-right">
 
-                    <a href="{{route('creer_contrat',[$personne->id,1])}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <a href="{{route('contrat_embauche',$personne->id)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>AJOUTER UN CONTRAT</a>
                 </div>
             </div>
@@ -61,12 +61,12 @@
                         <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
                             <td>{{$contrat->id}}</td>
                             <td>@if(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==1)
-                            <span style="background-color:#57b846; color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                    <span style="background-color:#57b846; color:white">{{$contrat->nature_contrat->libelle}}</span>
                                 @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==2)
                                     <span style="background-color:#00b5e9;  color:white">{{$contrat->nature_contrat->libelle}}</span>
-                                        @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==3)
-                                            <span style="background-color:#4bb1b1;  color:white">{{$contrat->nature_contrat->libelle}}</span>
-                                    @endif
+                                @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==3)
+                                    <span style="background-color:#4bb1b1;  color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                @endif
                             </td>
                             <td>{{$contrat->matricule}}</td>
                             <td>@foreach($typecontrats as $typecontrat)
@@ -96,28 +96,25 @@
                                             <div class="btn-group">
                                                 <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary">Action</button>
                                                 <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
-                                                    <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Renouvellement de contrat" id="modalbtnrenouvellement">Renouvellement de contrat</button>
-                                                    <button type="button" tabindex="0" class="dropdown-item"  data-toggle="modal" data-target="#RVmodal" data-placement="top" title="Avenant de contrat" id="modalbtnavenant" >Avenant</button>
                                                     @if($contrat->id_nature_contrat==1)
-                                                    <a href="{{route("contratcddpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                        @elseif($contrat->id_nature_contrat==2 &&  $contrat->id_type_contrat=2 || $contrat->id_type_contrat==4)
+                                                        <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
+                                                    @elseif($contrat->id_nature_contrat==2 &&  $contrat->id_type_contrat=2 || $contrat->id_type_contrat==4)
                                                         <a href="{{route("renouvellement_contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                        @elseif($contrat->id_nature_contrat==3)
-                                                        <a href="{{route("avenant_type_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                        <a href="{{route("avenant_renum_contratpdf")}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le couriel</a>
+                                                    @elseif($contrat->id_nature_contrat==3)
+                                                        <a href="{{route("avenant",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
+                                    @endif
 
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
                                     @if($contrat->etat==1)
-                                    <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="zmdi zmdi-minus-circle-outline"></i>
-                                    </a>
+                                        <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                            <i class="zmdi zmdi-minus-circle-outline"></i>
+                                        </a>
                                     @endif
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                         <i class="zmdi zmdi-delete"></i>
@@ -189,24 +186,24 @@
                     { responsivePriority: 2, targets: -1 }
                 ]
             }).column(0).visible(false);
-function vider(){
-    $("#id_definition1").val("");
-    $("#id_categorie1").val("");
-    $("#matricule").val("");
-    $("#service").val("");
-    $("#couverture_maladie").val();
-    $("#type_contrat").val();
-    $("#email").val("");
-    $("#contact").val("");
-    $("#dateDebutC").val("");
-    $("#dateFinC").val("");
-    $("#periode_essaie").val("");
-    $("#position").val("");
-    $("#id_personne").val("");
-    $("#id_nature_contrat").val("");
-    $("#service").val("");
-    $("#regime").val("");
-}
+            function vider(){
+                $("#id_definition1").val("");
+                $("#id_categorie1").val("");
+                $("#matricule").val("");
+                $("#service").val("");
+                $("#couverture_maladie").val();
+                $("#type_contrat").val();
+                $("#email").val("");
+                $("#contact").val("");
+                $("#dateDebutC").val("");
+                $("#dateFinC").val("");
+                $("#periode_essaie").val("");
+                $("#position").val("");
+                $("#id_personne").val("");
+                $("#id_nature_contrat").val("");
+                $("#service").val("");
+                $("#regime").val("");
+            }
             function information_contrat(ici){
                 var data = table.row($(ici).closest('tr')).data();
                 var id=data[Object.keys(data)[0]];
@@ -245,7 +242,7 @@ function vider(){
                 vider();
                 information_contrat(this);
                 if($typedoc==2){
-                $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
+                    $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
                     $("#dateDebutC").prop('readonly',true);
                     $("#dateFinC").prop('readonly',false);
                     /*   $("#dateDebutC").prop('readonly',true);
@@ -271,7 +268,7 @@ function vider(){
                 vider();
                 information_contrat(this);
                 if($typedoc==2){
-                $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
+                    $("#titre_contrat").html("RENOUVELLEMENT DE CONTRAT")
                     $("#dateDebutC").prop('readonly',true);
                     $("#dateFinC").prop('readonly',false);
                     $("#id_nature_contrat").val($typedoc);

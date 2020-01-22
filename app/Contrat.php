@@ -15,6 +15,11 @@ class Contrat extends Model
 
         return $this->belongsTo('App\Categorie', 'id_categorie');
     }
+    public function modification()
+    {
+
+        return $this->belongsTo('App\Modification', 'id_modification');
+    }
 
     public function nature_contrat()
     {
@@ -27,20 +32,24 @@ class Contrat extends Model
 
         return $this->belongsTo('App\Typecontrat', 'id_type_contrat');
     }
-    public function service()
-    {
-
-        return $this->belongsTo('App\Services', 'id_service');
-    }
     public function personne()
     {
-
         return $this->hasOne('App\Personne','id', 'id_personne');
     }
     public function commune()
     {
 
         return $this->hasOne('App\Commune','id', 'id_commune');
+    }
+    public function definition()
+    {
+
+        return $this->hasOne('App\Definition','id', 'id_definition');
+    }
+    public function service()
+    {
+
+        return $this->belongsTo('App\Services','id_service','id');
     }
 
 }

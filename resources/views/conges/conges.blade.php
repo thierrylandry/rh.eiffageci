@@ -43,7 +43,7 @@
                                 <tr>
                                         <td>{{$personneC->personne_id}}</td>
                                         <td> <div class="external-event"  style="background-color:
-{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ $personneC->personne_id.' '.$personneC->nom_prenom}}</div> </td>
+{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ isset($personneC->personne_id)?$personneC->personne_id.' '.$personneC->nom_prenom:''}}</div> </td>
                                         <td>{{intval($personneC->jours)-intval($personneC->jour_conges)}}</td>
                                         <td>{{$personneC->jour_conges}}</td>
                                 </tr>

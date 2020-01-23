@@ -92,7 +92,7 @@
                                     <span style="background-color:#00b5e9;  color:white">Avenant</span>
                                 @endif</td>
                             <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
-                            <td>{{$modification->personne->nom}} {{$modification->personne->prenoms}}</td>
+                            <td>{{isset($modification->personne->nom)?$modification->personne->nom:''}} {{isset($modification->personne->prenoms)?$modification->personne->prenoms:''}}</td>
                             <td>{{$modification->user->entite->libelle}}</td>
                             <td>
 

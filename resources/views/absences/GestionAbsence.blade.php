@@ -87,7 +87,7 @@
                                 {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
                             </td>
                             <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
-                            <td>{{$absence->personne->nom}} {{$absence->personne->prenom}}</td>
+                            <td>{{isset($absence->personne->nom)?$absence->personne->nom:''}} {{isset($absence->personne->prenoms)?$absence->personne->prenoms:''}}</td>
                             <td>{{$absence->debut}}</td>
                             <td>{{$absence->fin}}</td>
                             <td>{{$absence->reprise}}</td>

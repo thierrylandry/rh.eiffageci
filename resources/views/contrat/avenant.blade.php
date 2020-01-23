@@ -5,6 +5,7 @@
         table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
         .classtext{
             color: #00aced;
+            font-family: "alamain";
         }
 
         #header, #footer {

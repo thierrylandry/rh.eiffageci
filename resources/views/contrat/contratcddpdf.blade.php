@@ -3,8 +3,10 @@
     <style>
         p, div{padding: 1px; margin: 0; text-align: justify}
         table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
+
         .classtext{
             color: #00aced;
+            font-family: "alamain";
         }
     </style>
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE DETERMINEE</u></h1><br>

@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">CONTRAT - ETABLISSEMENT</h2>
+                <h2 class="title-1">CONTRAT - CORRECTION DU CONTRAT</h2>
             </div>
         </div>
     </div>
@@ -84,176 +84,7 @@
         <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
         <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
     </div>
-    <div class="top-campaign">Ci-dessous les modification à apporter:</br>
-        <div class="row">
-            @if(isset($modification_recrutement))
-            @foreach(json_decode($modification_recrutement->list_modif) as $modif)
-
-                @switch($modif)
-                @case("Le service")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table style="border:1px;">
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->service()->first()->libelle:''}}</td>
-                            <td>{{isset($contrat)?$contrat->service()->first()->libelle:''}}</td>
-                        </tr>
-                    </table>
-
-                </button>
-                @break
-
-                @case("La durée hebdomadaire de travail")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
-                            <td>{{isset($contrat)?$contrat->regime:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("La fonction")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
-                            <td>{{isset($contrat->fonction)?$contrat->fonction()->first()->libelle:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("Le type de contrat")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->type_contrat->libelle:''}}</td>
-                            <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("La date de fin")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->dateFinC:''}}</td>
-                            <td>{{isset($contrat)?$contrat->datefinc:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("La définition")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement->definition)?$modification_recrutement->definition->libelle:''}}</td>
-                            <td>{{isset($contrat->definition)?$contrat->definition->libelle:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("La catégorie")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->id_categorie:''}}</td>
-                            <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @case("Le budget mensuel")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
-                        <tr>
-                            <td colspan="2">{{$modif}}</td>
-                        </tr>
-                        <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
-                        </tr>
-                        <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->budgetMensuel:''}}</td>
-                            <td>
-                                <?php $affiche=0;
-                                if(isset($contrat->valeurSalaire)){
-                                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
-                                        $affiche+=$valeurSalaire->valeur;
-                                    endforeach;
-                                    echo $affiche;
-                                }
-
-
-                                ?></td>
-                        </tr>
-                    </table>
-                </button>
-                @break
-                @default
-
-                @endswitch
-
-
-            @endforeach
-                @endif
-        </div>
-        </br>
-    </div>
-
-
-    <br>
-
-
-    <form action="{{route('save_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{route('save_correction_contrat')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>
         <input type="hidden" id="text-input" name="id_contrat" placeholder="Nom" value="{{isset($contrat)? $contrat->id:''}}" class="form-control" required>
@@ -268,9 +99,6 @@
                         <input type="hidden" name="id_recrutement_modification"  value="{{isset($modification_recrutement)?$modification_recrutement->id:''}}" required/>
                     </div>
                 </div>
-
-                <div class="alert alert-success" id="recrutementSelectionne"></div>
-
             </div>
 
         </div>
@@ -500,7 +328,7 @@
                                                         <?php $i++;?>
 
                                                         @if($i==1)
-                                                                <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
                                                             <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}} >{{$rubrique_salaire->libelle}}</option>
                                                             @break
                                                         @endif @endforeach
@@ -697,7 +525,7 @@
         </br>
         <div class="card-footer pull-right">
             <button type="submit" class="btn btn-primary btn-sm">
-                <i class="zmdi zmdi-edit"></i> Enregistrer
+                <i class="zmdi zmdi-edit"></i> Modifier
             </button>
             <button type="reset" class="btn btn-danger btn-sm" id="reset">
                 <i class="fa fa-ban"></i> Réinitialiser

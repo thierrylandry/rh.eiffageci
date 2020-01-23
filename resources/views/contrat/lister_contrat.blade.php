@@ -8,6 +8,20 @@
 @section('page')
     <style>
         .grey{ background-color: lightgrey !important;}
+        @font-face {
+            font-family: "alamain";
+            src: url('alamain1.ttf');
+        }
+        @font-face {
+            font-family: "alamain";
+            font-style: italic;
+            src: url('alamain1.ttf');
+        }
+        @font-face {
+            font-family: "alamain";
+            font-weight: bold;
+            src: url('alamain1.ttf');
+        }
     </style>
     <div class="row">
         <div class="col-md-12">

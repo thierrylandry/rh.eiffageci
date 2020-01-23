@@ -33,8 +33,10 @@ class ContratController extends Controller
         $definitions = Definition::all();
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
+        $recrutements=Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
+        $rubrique_salaires= Rubrique_salaire::all();
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites','nature_contrats'));
+            return view('contrat/contrat_new_user',compact('personne','services','typecontrats','definitions','entites','nature_contrats','recrutements','rubrique_salaires'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }
@@ -174,6 +176,8 @@ class ContratController extends Controller
     }
     public function affiche_contrat($id){
         $contrat= Contrat::find($id);
+        //dd(json_decode($contrat->valeurSalaire));
+        $rubrique_salaires= Rubrique_salaire::all();
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
         $services = Services::all();
@@ -182,7 +186,7 @@ class ContratController extends Controller
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
         $assurance_maladies= Assurance_maladie::all();
-        return view('contrat/contrat_affiche',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies'));
+        return view('contrat/contrat_pour_correction',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies','rubrique_salaires'));
     }
 
     public function lister_contrat($slug){
@@ -192,7 +196,6 @@ class ContratController extends Controller
         $contrats = Contrat::where('id_personne','=',$personne->id)
             ->orderBy('datedebutc','DESC')->get();
         $entites= Entite::all();
-
         $definitions = Definition::all();
 
         $modifications =Modification::where('etat','=','2')->where('id_personne','=',$personne->id)->get();
@@ -477,6 +480,135 @@ class ContratController extends Controller
 
         return redirect()->back()->with('success',"Le contrat  a été ajouté avec succès");
     }
+    public function save_correction_contrat( Request $request){
+
+
+
+        $parameters=$request->except(['_token']);
+          // dd($parameters);
+        $slug=$parameters["slug"];
+
+        $personne = Personne::where('slug','=',$slug)->get()->first();
+
+        $matricule=trim(str_replace(' ','',$parameters["matricule"]));
+        $couverture_maladie=$parameters["couverture_maladie"];
+        $dateDebutC=$parameters["dateDebutC"];
+        $date_debutc_eff=$parameters["date_debutc_eff"];
+        $dateFinC= $parameters["dateFinC"];
+        $type_de_contrat= $parameters["type_de_contrat"];
+        $service= $parameters["service"];
+        $periode_essaie= $parameters["periode_essaie"];
+        $email= $parameters["email"];
+        $contact= $parameters["contact"];
+        $position= $parameters["position"];
+        $id_definition= $parameters["id_definition"];
+        $regime= $parameters["regime"];
+        $id_typeModification= $parameters["id_typeModification"];
+        $id_recrutement_modification= $parameters["id_recrutement_modification"];
+
+
+        //les rubriques du salaire
+        $rubriques = new Collection();
+        for($i = 0; $i <= count($request->input("rubrique"))-1; $i++ )
+        {
+            $rubrique = new Rubrique();
+
+            if( !empty($request->input("valeur")[$i])){
+                $rubrique->libelle = $request->input("rubrique")[$i];
+                $rubrique->valeur= $request->input("valeur")[$i];
+                $rubriques->add($rubrique);
+            }
+
+        }
+
+        if(isset($parameters["id_categorie"])){
+            //dd($parameters["id_categorie"]);
+            $id_categorie=$parameters["id_categorie"];
+
+        }else{
+            $id_categorie='';
+        }
+
+        $contrat= Contrat::find($parameters['id_contrat']);
+        $salaire= new Salaire();
+
+        $salaire->id_personne=$personne->id;
+        $salaire->valeurSalaire=json_encode($rubriques->toArray());
+        $salaire->save();
+
+        $contrat->valeurSalaire=json_encode($rubriques->toArray());
+        $contrat->matricule=$matricule;
+        $contrat->position=$position;
+        $contrat->periode_essaie=$periode_essaie;
+        $contrat->couvertureMaladie=$couverture_maladie;
+        $contrat->dateDebutC=$dateDebutC;
+        $contrat->date_debutc_eff=$date_debutc_eff;
+        $contrat->dateFinC=$dateFinC;
+        $contrat->id_type_contrat=$type_de_contrat;
+        $contrat->id_service=$service;
+        $contrat->id_nature_contrat=$id_typeModification;
+        $contrat->regime=$regime;
+
+        $contrat->id_modification=$id_recrutement_modification;
+
+
+
+        //changer l'etat de tout les anciens contrats
+        $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
+            ->orderby('date_debutc_eff','DESC')
+            ->first();
+        //   dd($ancien_contrat);
+
+
+        //si le  type est CDI alors date de fin == nul
+
+        if($type_de_contrat==2){
+            $contrat->dateFinC=null;
+        }
+        //
+
+
+        // on regarde si il y a un ou plusieurs anciens contrats. Si oui alors récupéré celui qui a la date de debut la plus ressente
+        if(!empty($ancien_contrat) ){
+            if($ancien_contrat->dateFinC < $dateFinC || $type_de_contrat==2){
+                $ancien_contrat->etat=2;
+                $ancien_contrat->departDefinitif=date('d-m-Y');
+                $ancien_contrat->save();
+                $personne->matricule=$matricule;
+                $personne->service=$service;
+                //            dd("ancien contrat : ".$ancien_contrat->datedebutc." NOUVEAU CONTRAT :".$dateDebutC);
+            }else{
+                $contrat->etat=2;
+
+                if(!empty($ancien_contrat)){
+                    $contrat->departDefinitif=$ancien_contrat->departDefinitif;
+                }else{
+                    $contrat->departDefinitif=date('d-m-Y');
+                }
+
+            }
+        }else{
+
+            $personne->matricule=$matricule;
+            $personne->service=$service;
+        }
+
+
+        $contrat->id_personne=$personne->id;
+        $contrat->email=$email;
+        $contrat->contact=$contact;
+        $contrat->id_definition=$id_definition;
+        if(isset($parameters["id_categorie"])){
+            $contrat->id_categorie=$id_categorie;
+        }
+
+        $personne->save();
+        $contrat->save();
+
+        $entite=$personne->id_entite;
+
+        return redirect()->back()->with('success',"Le contrat  a été mis à jour avec succès");
+    }
     public function save_contrat_recrutement( Request $request){
 
 
@@ -686,6 +818,7 @@ class ContratController extends Controller
 
 
         return $pdf->stream();
+        //return view('contrat.contratcdipdf',compact('contrat'));
     }
     public function contratCDIpdf(){
 

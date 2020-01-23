@@ -169,6 +169,11 @@ Route::post('/save_contrat',[
     'uses'=>'ContratController@save_contrat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::post('/save_correction_contrat',[
+    'as'=>'save_correction_contrat',
+    'uses'=>'ContratController@save_correction_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat_creer_contrat',[
     'as'=>'save_contrat_creer_contrat',
     'uses'=>'ContratController@save_contrat_creer_contrat',

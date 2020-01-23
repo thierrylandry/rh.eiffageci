@@ -3,6 +3,10 @@
     <style>
         p, div{padding: 1px; margin: 0; text-align: justify}
         table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
+        .classtext{
+            color: #00aced;
+            font-family: "alamain";
+        }
     </style>
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE INDETERMINEE</u></h1><br>
 
@@ -23,53 +27,71 @@
                 <table class="preambule">
                     <tr>
                         <td style="font-size: 10pt" width="40%"><b>Nom</b></td>
-                        <td width="60%"><b></b></td>
+                        <td width="60%" class="classtext"><b>{{$contrat->personne->nom}}</b></td>
                     </tr>
                     <tr>
                         <td style="font-size: 10pt" width="40%" ><b>Prénoms</b></td>
-                        <td width="60%"><b></b></td>
+                        <td width="60%"  class="classtext"><b><b>{{$contrat->personne->prenom}}</b></b></td>
                     </tr>
                     <tr>
                         <td style="font-size: 10pt" width="40%"><b>Sexe</b></td>
-                        <td width="60%"></td>
+                        <td width="60%"  class="classtext">
+                            <b> @if($contrat->personne->sexe=="M")
+                                    HOMME
+                                @else
+                                    FEMME
+                                @endif</b>
+                        </td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>Né(e) le</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext">
+                            <b><?php $date = new DateTime($contrat->personne->datenaissance);
+                                echo $date->format('d-m-Y');?></b>
+                        </td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>A</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->lieu_naissance)?$contrat->personne->lieu_naissance:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>De</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->nom_pere)?$contrat->personne->nom_pere:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>Et de</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->nom_mere)?$contrat->personne->nom_mere:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>Situation de famille</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>@if($contrat->personne->matrimonial=="1")
+                                    CELIBATAIRE
+                                @elseif($contrat->personne->matrimonial=="2")
+                                    MARIE(E)
+                                @elseif($contrat->personne->matrimonial=="3")
+                                    DIVORCE(E)
+                                @elseif($contrat->personne->matrimonial=="4")
+                                    VEUF(VE)
+                                @endif
+                            </b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>Domicilié à</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>Nationalité</b></td>
-                        <td width="60%"></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 10pt" width="40%"><b>N° Carte Consulaire</b></td>
                         <td width="60%"></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Fonction</b></td>
-                        <td width="60%"></td>
+                        <td style="font-size: 10pt" width="40%" ><b>Fonction</b></td>
+                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
                     </tr>
                 </table>
             </td>
         </tr>
-    </table>
+    </table><br>
 
     <p>Etant dénommée  pour la rédaction des présentes <b>« l’Employé »,</b></p>
 
     <p style="text-align: right"><b><u>D’autre part,</u></b></p><br>
 
-    <p><b>Eiffage Génie Civil Côte d’Ivoire</b> et ________________ ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p>
+    <p><b>Eiffage Génie Civil Côte d’Ivoire</b> et <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p>
 
     <h1 style="padding: 0;text-align: center"><u>EXPOSE</u></h1>
 
@@ -83,18 +105,18 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 1</u> : Qualité</h1>
 
-    <p>L’Employé susnommé est recruté par l’Employeur en qualité de ________________.<br>
-       L’Employé qui accepte cette qualité, déclare avoir exprimé son engagement en toute liberté.<br>
-       Il devra, en tout état de cause, fournir toute preuve de sa libération de son dernier Employeur.
+    <p>L’Employé susnommé est recruté par l’Employeur en qualité de  <b class="classtext">{{isset($contrat->personne->fonction)?$contrat->personne->fonction()->first()->libelle:''}}</b>.<br>
+        L’Employé qui accepte cette qualité, déclare avoir exprimé son engagement en toute liberté.<br>
+        Il devra, en tout état de cause, fournir toute preuve de sa libération de son dernier Employeur.
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des fonctions</h1>
 
-    <p>Sous l’autorité du Responsable ______________, l'Employé sera chargée d’exécuter les tâches qui lui seront définies par son supérieur hiérarchique et dans sa fiche de poste</p><br>
+    <p>Sous l’autorité du Responsable  <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b>, l'Employé sera chargée d’exécuter les tâches qui lui seront définies par son supérieur hiérarchique et dans sa fiche de poste</p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
 
-    <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle __________, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
+    <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle  <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 4</u> : Dossier Administratif</h1>
 
@@ -109,24 +131,33 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 6</u> : Durée du contrat de travail</h1>
 
-    <p>Le présent contrat est établi pour une durée indéterminée. Il prend effet à partir du _______________.
+    <p>Le présent contrat est établi pour une durée indéterminée. Il prend effet à partir du  <b class="classtext">{{isset($contrat->date_debutc_eff)?$contrat->date_debutc_eff:''}}</b>.
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de _____________ renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
-        En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge _____________________ avant la fin de ladite période.
+    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext">{{isset($contrat->ruptureEssaie)?$contrat->ruptureEssaie:''}}</b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
+        En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 8</u> : Durée de travail</h1>
 
-    <p>Le présent contrat est conclu et accepté pour une durée de travail de __________________ par semaine. Toutefois, compte tenu de la classification de l’Employé dans la catégorie « __________________________»,
+    <p>Le présent contrat est conclu et accepté pour une durée de travail de <b class="classtext">{{isset($contrat->regime)?$contrat->regime:''}}</b> par semaine. Toutefois, compte tenu de la classification de l’Employé dans la catégorie « <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>»,
         il sera tenue à une obligation de résultat et toute heure de travail effectuée au-delà de la durée hebdomadaire ne pourra donner lieu à des heures supplémentaires rémunérées.</p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 9</u> : Rémunération et accessoires</h1>
 
-    <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération mensuelle brute de __________________________ F CFA détaillée comme suit :</p>
+    <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération mensuelle brute de <b class="classtext"><?php $affiche=0;
+            if(isset($contrat->valeurSalaire)){
+                foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                    $affiche+=$valeurSalaire->valeur;
+                endforeach;
+                echo $affiche;
+            }
+
+
+            ?></b> F CFA détaillée comme suit :</p>
     <br>
     <br>
     <table style="margin: 0px; padding: 0px;">
@@ -137,26 +168,14 @@
                         <td style="font-size: 10pt" width="40%" align="center"><b>Détail</b></td>
                         <td style="font-size: 10pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
                     </tr>
-                    <tr>
-                        <td style="font-size: 10pt" width="40%">Salaire de base catégoriel</td>
-                        <td width="60%"></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 10pt" width="40%">Sursalaire</td>
-                        <td width="60%"></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 10pt" width="40%">Prime salissure</td>
-                        <td width="60%"></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 10pt" width="40%">Prime entretien de tenue</td>
-                        <td width="60%"></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 10pt" width="40%">Indemnité de transport</td>
-                        <td width="60%"></td>
-                    </tr>
+                    @if(isset($contrat->valeurSalaire))
+                        @foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire)
+                            <tr>
+                                <td style="font-size: 10pt" width="40%">{{$valeurSalaire->libelle}}</td>
+                                <td width="60%">{{$valeurSalaire->valeur}}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </table>
             </td>
         </tr>
@@ -164,7 +183,7 @@
 
     <p>Au titre de la gratification, l’Employé percevra une gratification égale à ¾ du salaire catégoriel, pour une présence effective dans l’entreprise du 1er janvier au 31 décembre.
         S’il est engagé, démissionne ou est licencié au cours de l’année, il percevra une gratification calculée au prorata du temps de service effectué au cours de ladite année.
-<br>
+        <br>
         Au titre des congés-payés, et conformément aux dispositions du Code de Travail, l’Employé bénéficiera de 2,5 jours ouvrables de congés payés par mois de service effectif.
         En cas de départ en congés il percevra une indemnité compensatrice de congés payés fixée selon les dispositions du Code du Travail Ivoirien.
 
@@ -178,7 +197,7 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 11</u> : Avantages sociaux</h1>
 
-    <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants à charge est prise en charge par l’Employeur à hauteur de _____% auprès d’une compagnie d’assurance locale.
+    <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants à charge est prise en charge par l’Employeur à hauteur de <b class="classtext">{{isset($contrat->couvertureMaladie)?$contrat->couvertureMaladie:''}}</b>% auprès d’une compagnie d’assurance locale.
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 12</u> : Sécurité –Induction</h1>
@@ -230,17 +249,18 @@
     <p>Le présent contrat est établi en <b>deux (2)</b> exemplaires originaux exempt de tous droits de timbre et d’enregistrement, dont une <b>(01) copie originale</b> est remise à l’Employé.
     </p><br><br><br>
 
-    <p style="text-align: right">Fait à Abidjan, le __________________.</p><br><br><br><br>
+    <p style="text-align: right">Fait à Abidjan, le  <b class="classtext"><?php $date = new DateTime($contrat->created_at);
+            echo $date->format('d-m-Y');?></b>.</p>
 
     <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br>
-    <br>
     <br>
     <div class="signature">
         <table style="margin: 0; padding: 0; ">
             <tr>
                 <td width="40%" align="left">
                     <p style="font-size: 12pt; margin-left: 0;">L’Employeur</p><br><br>
-                    <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b></p>
+                    <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b> </p>
+                    <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
                 </td>
                 <td width="5%" >
                     <p style="font-size: 12pt;">L’Employé</p><br><br>

@@ -136,6 +136,11 @@ Route::get('/contrat_new_user2/{id}/{id_typeModification}',[
     'uses'=>'ContratController@contrat_new_user2',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
+Route::get('/creer_contrat/{id}',[
+    'as'=>'creer_contrat',
+    'uses'=>'ContratController@creer_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
 Route::get('/contrat_embauche/{id}',[
     'as'=>'contrat_embauche',
     'uses'=>'ContratController@contrat_embauche',
@@ -162,6 +167,16 @@ Route::get('/recsalairecat/{id_contrat}',[
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::post('/save_correction_contrat',[
+    'as'=>'save_correction_contrat',
+    'uses'=>'ContratController@save_correction_contrat',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::post('/save_contrat_creer_contrat',[
+    'as'=>'save_contrat_creer_contrat',
+    'uses'=>'ContratController@save_contrat_creer_contrat',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat_recrutement',[

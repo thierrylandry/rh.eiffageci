@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Fontfaces CSS-->
+    <link href="{{  URL::asset("css/font-face.css") }}" rel="stylesheet" media="all">
 </head>
 <style>
+
     p, div{padding: 2px; margin: 0;}
     table{background-color:#fff;border-spacing:0;border-collapse:collapse;}
     td,th{padding:8px;}

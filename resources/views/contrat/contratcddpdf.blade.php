@@ -255,9 +255,9 @@
     </p><br><br><br>
 
     <p style="text-align: right">Fait à Abidjan, le <?php $date = new DateTime($contrat->created_at);
-        echo $date->format('d-m-Y');?></b>.</p><br><br><br><br>
+        echo $date->format('d-m-Y');?></b>.</p>
 
-    <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br><br><br>
+    <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p>
 
    <div class="signature">
        <table style="margin: 0; padding: 0; ">

@@ -184,7 +184,7 @@
                             <label for="text-input" class=" form-control-label">Couverture maladie:</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control" name="couverture_maladie" id="couverture_maladie">
+                            <select class="form-control assurance_maladie" name="couverture_maladie" id="couverture_maladie">
                                 <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
                                 <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
                                 <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>
@@ -238,7 +238,7 @@
                         </div>
                         <div class="form-group">
                             <input type="hidden" id="dateDebutC_memoire" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}" />
-                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
+                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control dateDebutC3" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
                         </div>
                     </div>
 
@@ -561,6 +561,8 @@
                 $("#recrutementSelectionne").text(data.posteAPouvoir+" "+data.NbrePersonne+""+data.NbrePersonneEffect+" "+data.assurance_maladie+" "+data.budgetMensuel);
                 $("#id_definition3").val(data.id_definition);
                 $("#id_categorie3").val(data.id_categorie);
+                $(".dateDebutC3").val(data.dateDebut);
+                $(".assurance_maladie").val(data.assurance_maladie);
                 $("#regime3").val(data.regime);
                 lister_les_categories();
 

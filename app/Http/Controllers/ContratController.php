@@ -428,7 +428,7 @@ class ContratController extends Controller
         $ancien_contrat=  Contrat::where('id_personne','=',$personne->id)
             ->orderby('date_debutc_eff','DESC')
             ->first();
-        //   dd($ancien_contrat);
+           //dd($ancien_contrat);
 
 
         //si le  type est CDI alors date de fin == nul
@@ -546,7 +546,7 @@ class ContratController extends Controller
         $contrat->dateFinC=$dateFinC;
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
-        $contrat->id_nature_contrat=$id_typeModification;
+      //  $contrat->id_nature_contrat=$id_typeModification;
         $contrat->regime=$regime;
 
         $contrat->id_modification=$id_recrutement_modification;
@@ -679,6 +679,9 @@ class ContratController extends Controller
 
         $recrutement=Recrutement::find($id_recrutement);
         $recrutement->NbrePersonneEffect+=1;
+        if($recrutement->NbrePersonneEffect==$recrutement->NbrePersonne){
+            $recrutement->etat=3;
+        }
         $recrutement->save();
 
         //changer l'etat de tout les anciens contrats
@@ -697,7 +700,7 @@ class ContratController extends Controller
                 $personne->service=$service;
                 //            dd("ancien contrat : ".$ancien_contrat->datedebutc." NOUVEAU CONTRAT :".$dateDebutC);
             }else{
-                $contrat->etat=2;
+               // $contrat->etat=2;
 
                 if(!empty($ancien_contrat)){
                     $contrat->departDefinitif=$ancien_contrat->departDefinitif;

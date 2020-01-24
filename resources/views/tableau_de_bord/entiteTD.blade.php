@@ -26,7 +26,7 @@
                             <thead>
                             <tr><?php $somme =0; ?>
                                 @foreach($effectifglobaux as $res)
-                                <?php $somme += $res->y; ?>
+                                    <?php $somme += $res->y; ?>
                                 @endforeach
                                 <th style="width: 100%">Effectifs {{$lentite->libelle}}</th>
                                 <th style="min-width: 50px; max-width: 50px">{{$somme}}</th>
@@ -35,11 +35,11 @@
                             </thead>
                             <tbody>
                             @foreach($effectifglobaux as $res)
-                                    <tr class="tr-shadow">
-                                        <td>{{$res->name}}</td>
-                                        <td>{{$res->y}}</td>
-                                        <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
-                                    </tr>
+                                <tr class="tr-shadow">
+                                    <td>{{$res->name}}</td>
+                                    <td>{{$res->y}}</td>
+                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -155,7 +155,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
-                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                    <td>{{intval($somme)!=0?number_format(($res->y/$somme)*100,1):''}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -182,7 +182,7 @@
                             <tr><?php $somme =0; ?>
                                 @foreach($repartition_homme_femme as $res)
                                     @if($res->entite==1)
-                                    <?php $somme += $res->y; ?>
+                                        <?php $somme += $res->y; ?>
                                     @endif
                                 @endforeach
                                 <th style="width: 100%">Répartition H/F chantier {{$lentite->libelle}}</th>
@@ -193,11 +193,11 @@
                             <tbody>
                             @foreach($repartition_homme_femme as $res)
                                 @if($res->entite==1)
-                                <tr class="tr-shadow">
-                                    <td> {{$res->name}}</td>
-                                    <td>{{$res->y}}</td>
-                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
-                                </tr>
+                                    <tr class="tr-shadow">
+                                        <td> {{$res->name}}</td>
+                                        <td>{{$res->y}}</td>
+                                        <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                    </tr>
                                 @endif
                             @endforeach
                             </tbody>
@@ -213,7 +213,8 @@
                 </div>
             </div>
         </div>
-    </div>    <div class="row break">
+    </div>
+    <div class="row break">
         <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -254,7 +255,8 @@
                 </div>
             </div>
         </div>
-    </div>    <div class="row break">
+    </div>
+    <div class="row break">
         <div class="col-lg-6 tableau">
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -474,7 +476,7 @@
                                 <tr class="tr-shadow">
                                     <td> {{$res->name}}</td>
                                     <td>{{$res->y}}</td>
-                                    <td>{{number_format(($res->y/$somme)*100,1)}}%</td>
+                                    <td>{{intval($somme)!=0?number_format(($res->y/$somme)*100,1):''}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -508,27 +510,27 @@
                             </thead>
                             <tbody>
                             @for($i=0;$i<sizeof($repartition_entrees);$i++)
-                                <tr class="tr-shadow">
-                                    <td> {{$repartition_entrees[$i]->name}}</td>
+        <tr class="tr-shadow">
+            <td> {{$repartition_entrees[$i]->name}}</td>
                                     <td> {{$repartition_entrees[$i]->y}}</td>
                                     <td> {{$repartition_sorties[$i]->y}}</td>
                                 </tr>
                             @endfor
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
-            <div class="au-card m-b-30">
-                <div class="au-card-inner">
-                    <div id="bilan_entre_sorti" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
-                </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
-    -->
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+<div class="au-card m-b-30">
+<div class="au-card-inner">
+    <div id="bilan_entre_sorti" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>
+</div>
+</div>
+</div>
+</div>
+-->
     <div class="row break">
         <div class="col-lg-6 tableau" >
             <div class="card" style="height: 100% !important">
@@ -594,7 +596,7 @@
             @foreach($repartition_homme_femme as $res)
                     @if($res->entite==1)
                     {{"{name:"}} '{{$res->name}}' {{",y:".$res->y."}"}},
-                    @endif
+            @endif
             @endforeach
         ];        var repartition_homme_femme_bureau=[
             @foreach($repartition_homme_femme as $res)
@@ -657,7 +659,7 @@
         ];
         var categories=[
             @foreach($effectif_par_mois as $res)
-            "{{$res->name}}",
+                    "{{$res->name}}",
             @endforeach
         ];
         var qualification_contractuelle=[
@@ -1336,71 +1338,71 @@
             },
         });
         /*
-        Highcharts.chart('bilan_entre_sorti', {
-            credits: {
-                enabled: false
-            },
-            exporting: { enabled: false },
-            chart: {
-                type: 'column',
-                width: 600
-            },
-            title: {
-                text: 'BILAN ENTREES SORTIES'
-            },
-            subtitle: {
-            },
-            xAxis: {
-                categories: [
-                    'Novembre-{{date('Y')-1}}',
-                    'Decembre-{{date('Y')-1}}',
-                    'Janvier-{{date('Y')}}',
-                    'Fevrier-{{date('Y')}}',
-                    'Mars-{{date('Y')}}',
-                    'Avril-{{date('Y')}}',
-                    'Mais-{{date('Y')}}',
-                    'juin-{{date('Y')}}',
-                    'juillet-{{date('Y')}}',
-                    'Aout-{{date('Y')}}',
-                    'Septembre-{{date('Y')}}',
-                    'Octobre-{{date('Y')}}',
-                    'Novembre-{{date('Y')}}',
-                    'Decembre-{{date('Y')}}',
-                    'Total'
-                ],
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Rainfall (mm)'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Entrées',
-                data: repartition_entrees
+         Highcharts.chart('bilan_entre_sorti', {
+         credits: {
+         enabled: false
+         },
+         exporting: { enabled: false },
+         chart: {
+         type: 'column',
+         width: 600
+         },
+         title: {
+         text: 'BILAN ENTREES SORTIES'
+         },
+         subtitle: {
+         },
+         xAxis: {
+         categories: [
+         'Novembre-{{date('Y')-1}}',
+         'Decembre-{{date('Y')-1}}',
+         'Janvier-{{date('Y')}}',
+         'Fevrier-{{date('Y')}}',
+         'Mars-{{date('Y')}}',
+         'Avril-{{date('Y')}}',
+         'Mais-{{date('Y')}}',
+         'juin-{{date('Y')}}',
+         'juillet-{{date('Y')}}',
+         'Aout-{{date('Y')}}',
+         'Septembre-{{date('Y')}}',
+         'Octobre-{{date('Y')}}',
+         'Novembre-{{date('Y')}}',
+         'Decembre-{{date('Y')}}',
+         'Total'
+         ],
+         crosshair: true
+         },
+         yAxis: {
+         min: 0,
+         title: {
+         text: 'Rainfall (mm)'
+         }
+         },
+         tooltip: {
+         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+         '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+         footerFormat: '</table>',
+         shared: true,
+         useHTML: true
+         },
+         plotOptions: {
+         column: {
+         pointPadding: 0.2,
+         borderWidth: 0
+         }
+         },
+         series: [{
+         name: 'Entrées',
+         data: repartition_entrees
 
-            }, {
-                name: 'Sorties',
-                data: repartition_sorties
+         }, {
+         name: 'Sorties',
+         data: repartition_sorties
 
-            }]
-        });
-*/
+         }]
+         });
+         */
         Highcharts.chart('effectif_par_mois', {
             credits: {
                 enabled: false

@@ -94,6 +94,7 @@
                             <td>{{$recrutement->posteAPouvoir}}</td>
                             <td>{{$recrutement->type_contrat->libelle}}</td>
                             <td>
+                                {{isset($recrutement)?'budget mensuel '.$recrutement->budgetMensuel:''}}
                                 <div class="table-data-feature">
                                 @if($recrutement->etat==1)
                                         @if($mode=="validation")

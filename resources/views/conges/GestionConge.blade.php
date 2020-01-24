@@ -93,7 +93,7 @@
                                     <span data-on="OUI" data-off="NON" class="switch-label" style="font-weight: bold"></span></label></td>
                             <td>{{$conge->Type_conge->libelle}}</td>
                             <td>{{$conge->user->nom}} {{$conge->user->prenoms}}</td>
-                            <td>{{$conge->personne->nom}} {{$conge->personne->prenom}}</td>
+                            <td>{{isset($conge->personne->nom)?$conge->personne->nom:''}} {{isset($conge->personne->prenom)?$conge->personne->prenom:''}}</td>
                             <td>{{$conge->debut}}</td>
                             <td>{{$conge->fin}}</td>
                             <td>{{$conge->reprise}}</td>

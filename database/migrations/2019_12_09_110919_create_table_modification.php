@@ -20,7 +20,7 @@ class CreateTableModification extends Migration
             $table->string('id_categorie')->nullable();
             $table->integer('id_type_contrat')->nullable();
             $table->integer('id_contrat')->nullable();
-            $table->foreign('id_contrat')->references('id')->on('contrat');
+            //$table->foreign('id_contrat')->references('id')->on('contrat');
             $table->string('budgetMensuel')->nullable();
             $table->string('regime')->nullable();
             $table->date('dateEffet')->nullable();

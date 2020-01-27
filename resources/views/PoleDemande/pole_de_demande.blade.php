@@ -18,7 +18,6 @@
     </div>
 
     <div class="row">
-        @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
         <a href="#"  data-toggle="modal" data-target="#polerecrutement" data-placement="top" class="col-sm-3">
             <div >
                 <div class="card" style="color: green">
@@ -36,9 +35,6 @@
                 <!-- END DATA TABLE -->
             </div>
         </a>
-        @endif
-            @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement') || Auth::user()->hasRole('Gestion_recrutement') || Auth::user()->hasRole('Validation_recrutement'))
-
             <a href="#"  data-toggle="modal" data-target="#polemodification" data-placement="top" class="col-sm-3">
 
             <div >
@@ -57,7 +53,7 @@
                 <!-- END DATA TABLE -->
             </div>
         </a>
-            @endif
+        
         <a href="#"  data-toggle="modal" data-target="#poleabsence" data-placement="top" class="col-sm-3">
             <div >
                 <div class="card" style="color: yellow">

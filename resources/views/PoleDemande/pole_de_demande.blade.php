@@ -53,7 +53,7 @@
                 <!-- END DATA TABLE -->
             </div>
         </a>
-        
+
         <a href="#"  data-toggle="modal" data-target="#poleabsence" data-placement="top" class="col-sm-3">
             <div >
                 <div class="card" style="color: yellow">

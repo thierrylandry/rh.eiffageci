@@ -13,7 +13,8 @@ class CreateTableRecrutement extends Migration
      */
     public function up()
     {
-        Schema::create('recrutement', function (Blueprint $table) {
+        if(!Schema::hasTable('recrutement'))
+        {Schema::create('recrutement', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('posteAPouvoir')->nullable();
             $table->text('competenceRecherche')->nullable();
@@ -37,6 +38,7 @@ class CreateTableRecrutement extends Migration
           // $table->unsignedBigInteger('id_avantagedotation')->nullable();
             $table->timestamps();
         });
+    }
     }
 
     /**

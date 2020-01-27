@@ -133,8 +133,9 @@
                                     <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                         <i class="zmdi zmdi-delete"></i>
                                     </a>
+                                        @if($contrat->id_nature_contrat==1)
                                         <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-
+                                        @endif
 
                                 </div>
                             </td>

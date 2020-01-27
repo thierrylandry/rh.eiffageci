@@ -13,7 +13,8 @@ class CreateTableAbsence extends Migration
      */
     public function up()
     {
-        Schema::create('absence', function (Blueprint $table) {
+        if(!Schema::hasTable('modification','id'))
+        {Schema::create('absence', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('jour')->nullable();
             $table->date('debut')->nullable();
@@ -27,7 +28,7 @@ class CreateTableAbsence extends Migration
             $table->foreign('id_users')->references('id')->on('users');
             $table->timestamps();
         });
-    }
+    }}
 
     /**
      * Reverse the migrations.

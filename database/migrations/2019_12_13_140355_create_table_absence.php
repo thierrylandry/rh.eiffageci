@@ -22,7 +22,7 @@ class CreateTableAbsence extends Migration
             $table->date('date')->nullable();
             $table->integer('etat')->nullable();
             $table->integer('id_personne')->nullable();
-            $table->foreign('id_personne')->references('id')->on('personne');
+            //$table->foreign('id_personne')->references('id')->on('personne');
             $table->integer('id_users')->nullable();
             $table->foreign('id_users')->references('id')->on('users');
             $table->timestamps();

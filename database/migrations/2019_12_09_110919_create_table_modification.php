@@ -13,7 +13,8 @@ class CreateTableModification extends Migration
      */
     public function up()
     {
-        Schema::create('modification', function (Blueprint $table) {
+        if(!Schema::hasTable('modification','id'))
+        {Schema::create('modification', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('fonction')->nullable();
             $table->date('dateFinC')->nullable();
@@ -30,6 +31,7 @@ class CreateTableModification extends Migration
             $table->timestamps();
 
         });
+    }
     }
 
     /**

@@ -601,49 +601,49 @@ Route::get('/personne_contrat',[
 ])->middleware('auth');
 
 //recrutement
-Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recrutements'], function () {
+Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
 
     Route::get('/demande',[
         'as'=>'demande',
         'uses'=>'RecrutementController@ajouter_recrutement',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'RecrutementController@enregistrer_recrutement',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion',[
         'as'=>'gestion',
         'uses'=>'RecrutementController@lister_recrutement',
-        'roles' => ['Gestion_recrutement']
+        'roles' => ['Ressource_humaine']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/validation',[
         'as'=>'validation',
         'uses'=>'RecrutementController@valider_recrutement',
-        'roles' => ['Validation_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/ActionValider/{slug}',[
         'as'=>'ActionValider',
         'uses'=>'RecrutementController@ActionValider',
-        'roles' => ['Validation_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
 
     Route::post('/ActionRejeter',[
         'as'=>'ActionRejeter',
         'uses'=>'RecrutementController@ActionRejeter',
-        'roles' => ['Validation_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/modification/{slug}',[
         'as'=>'modification',
         'uses'=>'RecrutementController@modification',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_service']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/consulter/{slug}',[
         'as'=>'consulter',
@@ -654,66 +654,64 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.','roles' =>'Recr
     Route::get('/supprimer/{slug}',[
         'as'=>'supprimer',
         'uses'=>'RecrutementController@supprimer',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_service']
+    ])->middleware('roles')->middleware('auth');
 
     Route::post('/modifier',[
         'as'=>'modifier',
         'uses'=>'RecrutementController@modifier_recrutement',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_service']
+    ])->middleware('roles')->middleware('auth');
 
     Route::post('/ConditionRemuneration',[
         'as'=>'ConditionRemuneration',
         'uses'=>'RecrutementController@ConditionRemuneration',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Ressource_humaine']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/liste_salaire/{slug}',[
         'as'=>'liste_salaire',
         'uses'=>'RecrutementController@liste_salaire',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Ressource_humaine']
+    ])->middleware('roles')->middleware('auth');
     Route::get('/liste_salaire_by_id/{id}',[
         'as'=>'liste_salaire_by_id',
         'uses'=>'RecrutementController@liste_salaire_by_id',
-        'roles' => ['Gestion_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Ressource_humaine']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/monrecrutement/{slug}',[
         'as'=>'monrecrutement',
         'uses'=>'RecrutementController@monrecrutement',
-        'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
 
     Route::get('/macategorie/{categorieLibelle}/{id_definition}/{regime}',[
         'as'=>'macategorie',
         'uses'=>'RecrutementController@macategorie',
-        'roles' => ['Gestion_recrutement']
     ])->middleware('auth');
 
 
 });
 
 //demande de modification de contrat
-Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Recrutements'], function () {
+Route::group(['prefix' => 'modifications', 'as' => 'modification.'], function () {
 
     Route::get('/demande',[
         'as'=>'demande',
         'uses'=>'ModificationController@demande_modification',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/validation',[
         'as'=>'validation',
         'uses'=>'ModificationController@valider_modification',
-        'roles' => ['Validation_recrutement']
-    ])->middleware('auth');
+        'roles' => ['Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion',[
         'as'=>'gestion',
         'uses'=>'ModificationController@lister_modification',
-        'roles' => ['Gestion_recrutement']
+        'roles' => ['Ressource_humaine']
 
     ])->middleware('roles')->middleware('auth');
     Route::get('/lapersonne_contrat/{id}',[
@@ -726,12 +724,12 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'ModificationController@enregistrer_modification',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
     Route::post('/modifier',[
         'as'=>'modifier',
         'uses'=>'ModificationController@modifier_modification',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/ActionValider/{slug}',[
@@ -748,17 +746,16 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.','roles' =>'Re
     Route::get('/consulter/{id}',[
         'as'=>'consulter',
         'uses'=>'ModificationController@afficher',
-        'roles' => ['Demande_recrutement']
     ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',
         'uses'=>'ModificationController@modification',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
     Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
         'uses'=>'ModificationController@enregistrer_modification',
-        'roles' => ['Demande_recrutement']
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 });
 
@@ -767,8 +764,8 @@ Route::post('/ActionRejeter',[
     'as'=>'ActionRejeter',
     'uses'=>'AbsenceController@ActionRejeter',
 ])->middleware('auth');
-
-Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements'], function () {
+//Absences
+Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Ressource_humaine'], function () {
     Route::get('/demande', [
         'as' => 'demande',
         'uses' => 'AbsenceController@demande_absence',
@@ -776,11 +773,12 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
     Route::get('/ActionValider/{id}',[
         'as'=>'ActionValider',
         'uses'=>'AbsenceController@ActionValider',
+        'roles'=>['Chef_de_service']
         ])->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'AbsenceController@validation_absence',
-        'roles' => ['Validation_recrutement'],
+        'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',
@@ -795,6 +793,7 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
     Route::get('/gestion', [
         'as' => 'gestion',
         'uses' => 'AbsenceController@gestion_absence',
+        'roles'=>['Ressource_humaine']
     ])->middleware('auth');
 
     Route::post('/enregistrer',[
@@ -808,14 +807,16 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Recrutements
     Route::post('/ajouter_type_permission',[
         'as'=>'ajouter_type_permission',
         'uses'=>'AbsenceController@ajouter_type_permission',
+        'roles'=>['Ressource_humaine']
     ])->middleware('roles')->middleware('auth');
     Route::get('/type_permission/{id}', [
         'as' => 'type_permission',
         'uses' => 'AbsenceController@type_permission',
+        'roles'=>['Ressource_humaine']
     ])->middleware('auth');
 });
-
-Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'], function () {
+//conges
+Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::get('/demande', [
         'as' => 'demande',
         'uses' => 'CongerController@demande_conges',
@@ -823,11 +824,12 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'],
     Route::get('/ActionValider/{id}',[
         'as'=>'ActionValider',
         'uses'=>'CongerController@ActionValider',
+        'roles'=>['Chef_de_service']
         ])->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'CongerController@validation_conges',
-        'roles' => ['Validation_recrutement'],
+        'roles' => ['Chef_de_service'],
     ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',
@@ -836,13 +838,13 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'],
     Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
         'uses'=>'CongerController@supprimer',
-
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion', [
         'as' => 'gestion',
         'uses' => 'CongerController@gestion_Absconge',
-    ])->middleware('auth');
+        'roles'=>['Ressource_humaine'],
+    ])->middleware('roles')->middleware('auth');
 
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
@@ -855,11 +857,13 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.','roles' =>'Recrutements'],
     Route::post('/ajouter_type_permission',[
         'as'=>'ajouter_type_permission',
         'uses'=>'CongerController@ajouter_type_permission',
+        'roles'=>['Ressource_humaine']
     ])->middleware('roles')->middleware('auth');
     Route::get('/type_permission/{id}', [
         'as' => 'type_permission',
         'uses' => 'CongerController@type_permission',
-    ])->middleware('auth');
+        'roles'=>['Ressource_humaine']
+    ])->middleware('roles')->middleware('auth');
     Route::get('/lapersonne_contrat_conges/{id}', [
         'as' => 'type_permission',
         'uses' => 'CongerController@type_permission',

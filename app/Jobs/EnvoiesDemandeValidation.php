@@ -63,7 +63,7 @@ class EnvoiesDemandeValidation implements ShouldQueue
          $lien=$this->lien;
          $contacts= $this->contacts;
 
-        Mail::send('mail/refus_demande',compact('lien'),function($message)use ($objet,$contacts)
+        Mail::send('mail/demande_validation',compact('lien'),function($message)use ($objet,$contacts)
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject($objet);

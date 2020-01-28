@@ -67,9 +67,8 @@ class EnvoiesDemandeValidation implements ShouldQueue
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject($objet);
-            foreach($contacts as $contact):
-            $message ->to($contact);
-                endforeach;
+            $message ->to($contacts);
+
         });
     }
 }

@@ -9,6 +9,7 @@ use App\Debit_internet;
 use App\Definition;
 use App\Entite;
 use App\Forfait;
+use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
 use App\Recrutement;
@@ -16,6 +17,7 @@ use App\Rubrique_salaire;
 use App\Services;
 use App\Typecontrat;
 use App\uniteJour;
+use App\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -240,8 +242,36 @@ $j=0;
 
         $recruement->save();
 
+        $users =User::all();
+        foreach($users as $user):
+            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
+            $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
+        endforeach;
+
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
 
+    }
+    public function je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($les_droits,$email){
+
+
+        if(in_array('Chef_de_service',$les_droits)){
+            $this->dispacth(new EnvoiesDemandeValidation(1,$email));
+        }
+
+
+    }
+    public function dit_moi_qui_tu_es_je_te_dirai_tes_droits($id_users){
+
+        $roles=DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id','=',$id_users)
+            ->select('roles.name')->get();
+        $tab_roles= Array();
+        foreach($roles as $rol):
+            $tab_roles[]=$rol->name;
+        endforeach;
+
+        return $tab_roles;
     }
   public function ConditionRemuneration(Request $request ){
 

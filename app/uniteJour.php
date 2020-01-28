@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class uniteJour extends Model
 {
     //
-    protected  $table="unitejour";
+    protected  $table="uniteJour";
     protected $fillable= ['*'];
 }

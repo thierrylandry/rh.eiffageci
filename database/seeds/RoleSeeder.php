@@ -66,5 +66,26 @@ class RoleSeeder extends Seeder
         $role_Admin->description="VALIDATION DE RECRUTEMENT";
         $role_Admin->save();
 
+        $role_Admin = new Role();
+        $role_Admin->name="Recrutements";
+        $role_Admin->description="Recrutements";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Chef_de_projet";
+        $role_Admin->description="CHEF DE PROJET";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Chef_de_service";
+        $role_Admin->description="CHEF DE SERVICE";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Ressource_humaine";
+        $role_Admin->description="RESSOURCE HUMAINE";
+        $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="Assitante_direction";
+        $role_Admin->description="ASSISTANTE DE DIRECTION";
+        $role_Admin->save();
+
     }
 }

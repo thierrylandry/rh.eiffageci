@@ -257,18 +257,10 @@ $j=0;
 
 
         if(in_array('Chef_de_projet',$les_droits)){
-          //  dd($email);
+        //    dd($les_droits);
           //  $envoie=new EnvoiesDemandeValidation(1,$email);
 
-            $lien=asset('recrutements/validation');
-            Mail::send('mail/demande_validation',compact('lien'),function($message)use ($email)
-            {
-                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                    ->subject("recrutement");
-                $message ->to($email);
-
-            });
-           // $this->dispacth(new EnvoiesDemandeValidation(1,$email));
+            $this->dispacth(new EnvoiesDemandeValidation(1,$email));
         }
 
 

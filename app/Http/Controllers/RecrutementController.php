@@ -257,10 +257,7 @@ $j=0;
 
 
         if(in_array('Chef_de_projet',$les_droits)){
-        //    dd($les_droits);
-          //  $envoie=new EnvoiesDemandeValidation(1,$email);
-
-            $this->dispacth(new EnvoiesDemandeValidation(1,$email));
+            $this->dispatch(new EnvoiesDemandeValidation(1,$email));
         }
 
 

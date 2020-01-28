@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Absconges;
 use App\Conges;
 use App\Entite;
+use App\Jobs\EnvoiesDemandeValidation;
 use App\Personne;
 use App\Personne_presente;
 use App\Type_conges;
+use App\User;
 use App\VarpersonneConges;
 use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
@@ -414,9 +416,37 @@ class CongerController extends Controller
 
 
         $conge->save();
+        $users =User::all();
+        foreach($users as $user):
+            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
+            $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
+        endforeach;
 
         return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");
 
+    }
+
+    public function je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($les_droits,$email){
+
+
+        if(in_array('Chef_de_service',$les_droits)){
+            $this->dispatch(new EnvoiesDemandeValidation(4,$email));
+        }
+
+
+    }
+    public function dit_moi_qui_tu_es_je_te_dirai_tes_droits($id_users){
+
+        $roles=DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id','=',$id_users)
+            ->select('roles.name')->get();
+        $tab_roles= Array();
+        foreach($roles as $rol):
+            $tab_roles[]=$rol->name;
+        endforeach;
+
+        return $tab_roles;
     }
     public function modifier(Request $request ){
 

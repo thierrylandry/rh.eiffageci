@@ -36,7 +36,7 @@
                 <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
                 <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
                 <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> Gérer documents administratifs</a>
-                <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+                <a href="{{route('lister_contrat',$personne->id)}}" class="btn btn-outline-danger">Gérer les contrats</a>
             </div>
             <form action="{{route('modifier_personne')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                 @csrf

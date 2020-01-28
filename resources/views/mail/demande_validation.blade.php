@@ -1,8 +1,8 @@
 <p>Bonjour,</p>
 
-<p>Votre avez une nouvelle demande à valider :
+<p>Vous avez une nouvelle demande à valider  <br><br>
 
-
+Cliquez ici pour consulter 👉 : {{$lien}}
 
 <p>Dans l’attente, et en vous remerciant par avance,<br>
     <br>

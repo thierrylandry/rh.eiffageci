@@ -3,13 +3,13 @@
 <p>Vous avez une nouvelle demande à traiter.<br><br>
 
     Cliquez ici pour consulter 👉 : {{$lien}}
+</p>
 
 <p>Dans l’attente, et en vous remerciant par avance,<br><br>
 
-<p>
-    Cordialement,
-    <br>
-</p>
+    <p>
+        Cordialement,<br>
+    </p>
 
 </p>
 

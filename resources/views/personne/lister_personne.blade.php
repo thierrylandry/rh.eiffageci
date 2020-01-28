@@ -67,7 +67,7 @@
                                     <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
                                         <i class="zmdi zmdi-attachment-alt" title="document administratif"></i>
                                     </a>
-                                    <a href="{{route('lister_contrat',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
+                                    <a href="{{route('lister_contrat',['slug'=>$personne->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
                                         <i class="zmdi zmdi-folder-person" title="les contrats"></i>
                                     </a>
 

@@ -22,6 +22,8 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Metier\Json\Element;
 
@@ -254,8 +256,19 @@ $j=0;
     public function je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($les_droits,$email){
 
 
-        if(in_array('Chef_de_service',$les_droits)){
-            $this->dispacth(new EnvoiesDemandeValidation(1,$email));
+        if(in_array('Chef_de_projet',$les_droits)){
+          //  dd($email);
+          //  $envoie=new EnvoiesDemandeValidation(1,$email);
+
+            $lien=asset('recrutements/validation');
+            Mail::send('mail/demande_validation',compact('lien'),function($message)use ($email)
+            {
+                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                    ->subject("recrutement");
+                $message ->to($email);
+
+            });
+           // $this->dispacth(new EnvoiesDemandeValidation(1,$email));
         }
 
 

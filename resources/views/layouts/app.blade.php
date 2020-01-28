@@ -83,7 +83,7 @@
 
             <div class="modal-body">
                 <div class="row">
-                    @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Demande_recrutement'))
+
                     <a href="{{route('recrutement.demande')}}" class="card col-sm-4">
                     <div  style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -93,8 +93,6 @@
                         </div>
                     </div>
                         </a>
-                    @endif
-                        @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Validation_recrutement'))
                     <a href="{{route('recrutement.validation')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -105,8 +103,6 @@
 
                     </div>
                         </a>
-                        @endif
-                        @if(Auth::user() != null && Auth::user()->hasRole('Recrutements') || Auth::user()->hasRole('Gestion_recrutement'))
                     <a href="{{route('recrutement.gestion')}}" class="card col-sm-4">
                     <div    style="color: green">
                         <div class="card-body" style="text-align: center;">
@@ -117,7 +113,7 @@
 
                     </div>
                         </a>
-                            @endif
+
 
                 </div>
             </div>

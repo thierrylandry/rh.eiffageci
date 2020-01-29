@@ -372,7 +372,7 @@
                                     if(isset($contrat->valeurSalaire) && isset($libelle)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
                                     ?>
                                     <div class="form-control-label">
-                                        <label for="valeur[]">Valeur {{isset($libelle)?$libelle}}</label>
+                                        <label for="valeur[]">Valeur {{isset($libelle)?$libelle:''}}</label>
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control Sursalaire" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">

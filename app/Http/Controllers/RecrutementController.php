@@ -10,6 +10,7 @@ use App\Definition;
 use App\Entite;
 use App\Forfait;
 use App\Jobs\EnvoiesDemandeValidation;
+use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
 use App\Recrutement;
@@ -393,8 +394,22 @@ $j=0;
         $recruement->id_valideur=Auth::user()->id;
 
         $recruement->save();
+        $users =User::all();
+        foreach($users as $user):
+            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
+            $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
+        endforeach;
 
         return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
+
+    }
+    public function je_connais_tes_droits_je_te_notifie_pour_la_gestion($les_droits,$email){
+
+
+        if(in_array('Ressource_humaine',$les_droits)){
+            $this->dispatch(new EnvoiesDemandeValider(1,$email));
+        }
+
 
     }
     public function ActionRejeter(Request $request){

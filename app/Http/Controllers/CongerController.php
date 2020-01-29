@@ -6,6 +6,7 @@ use App\Absconges;
 use App\Conges;
 use App\Entite;
 use App\Jobs\EnvoiesDemandeValidation;
+use App\Jobs\EnvoiesDemandeValider;
 use App\Personne;
 use App\Personne_presente;
 use App\Type_conges;
@@ -329,8 +330,22 @@ class CongerController extends Controller
         $conge->id_valideur=Auth::user()->id;
 
         $conge->save();
+        $users =User::all();
+        foreach($users as $user):
+            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
+            $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
+        endforeach;
 
         return redirect()->route('conges.validation')->with('success',"La demande d'absconge a été  validée avec succès");
+
+    }
+    public function je_connais_tes_droits_je_te_notifie_pour_la_gestion($les_droits,$email){
+
+
+        if(in_array('Ressource_humaine',$les_droits)){
+            $this->dispatch(new EnvoiesDemandeValider(4,$email));
+        }
+
 
     }
     public function ActionRejeter(Request $request){

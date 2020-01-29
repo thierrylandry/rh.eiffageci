@@ -113,7 +113,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des fonctions</h1>
 
-  <p>Sous l’autorité du Responsable _____________, l'Employé sera chargé d’exécuter les tâches telles que définies dans la fiche de poste qui lui sera remise.</p><br>
+  <p>Sous l’autorité du Responsable <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b>, l'Employé sera chargé d’exécuter les tâches telles que définies dans la fiche de poste qui lui sera remise.</p><br>
 
   <h1 style="padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
 

@@ -165,12 +165,14 @@
             <td style="font-size: 10pt" width="40%" align="center"><b>Détail</b></td>
             <td style="font-size: 10pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
           </tr>
+          @if(isset($contrat->valeurSalaire))
           @foreach(json_decode($contrat->valeurSalaire) as $valeur)
           <tr>
             <td style="font-size: 10pt" width="40%">{{$valeur->libelle}}</td>
             <td width="60%"  class="classtext"><b>{{$valeur->valeur}}</b></td>
           </tr>
             @endforeach
+            @endif
         </table>
       </td>
     </tr>

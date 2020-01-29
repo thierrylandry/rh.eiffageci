@@ -151,10 +151,10 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 8</u> : Rémunération et accessoires</h1>
 
-  <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération <b>mensuelle brute de <b class="classtext"><?php  $val=0;foreach(json_decode($contrat->valeurSalaire) as $valeur) :
+  <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération <b>mensuelle brute de <b class="classtext"><?php  if(isset($contrat->valeurSalaire){$val=0;foreach(json_decode($contrat->valeurSalaire) as $valeur) :
           $val+=$valeur->valeur;
     endforeach;
-     echo $val;   ?></b> F CFA</b> détaillée comme suit :</p>
+     echo $val;  } ?></b> F CFA</b> détaillée comme suit :</p>
   <br>
   <br>
   <table style="margin: 0px; padding: 0px;">

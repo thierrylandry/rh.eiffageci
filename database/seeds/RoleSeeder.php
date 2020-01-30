@@ -86,6 +86,10 @@ class RoleSeeder extends Seeder
         $role_Admin->name="Assitante_direction";
         $role_Admin->description="ASSISTANTE DE DIRECTION";
         $role_Admin->save();
+        $role_Admin = new Role();
+        $role_Admin->name="RRH";
+        $role_Admin->description="RESPONSABLE DE RESSOURCES HUMAINES";
+        $role_Admin->save();
 
     }
 }

@@ -171,7 +171,7 @@ Route::post('/save_contrat',[
 Route::post('/save_correction_contrat',[
     'as'=>'save_correction_contrat',
     'uses'=>'ContratController@save_correction_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['RRH']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat_creer_contrat',[
     'as'=>'save_contrat_creer_contrat',

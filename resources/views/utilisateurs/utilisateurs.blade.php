@@ -232,7 +232,7 @@
                     $('#nom').val(data.nom);
                     $('#prenom').val(data.prenom);
                     $('#id_service').val(data.service);
-                    $('#id_entite').val(data.nom);
+                    $('#id_entite').val(data.id_entite);
                 });
             });
             var table= $('#table_utilisateur').DataTable({

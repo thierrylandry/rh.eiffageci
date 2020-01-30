@@ -860,4 +860,5 @@ class ContratController extends Controller
 
         return $pdf->stream();
     }
+
 }

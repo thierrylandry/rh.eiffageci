@@ -6,7 +6,7 @@
     style="display: block;"
 @endsection
 @section('page')
-    <style>
+    <style xmlns:Auth="http://symfony.com/schema/routing">
         .modifie{
             background-color: lightskyblue;
         }
@@ -97,12 +97,15 @@
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
                                     @if(isset($modification))
                                         <input class="form-control" value="{{$modification->personne->nom." ".$modification->personne->prenom}}" disabled/>
-                                        @else
+                                        @elseif(!isset($modification) && isset(Auth::user()->id_personne) && !Auth::user()->hasRole('Ressource_humaine'))
+                                         <input type="text" class="form-control" value="{{isset(Auth::user()->id_personne)?Auth::user()->nom.' '.Auth::user()->prenoms:''}}" disabled/>
+                                            <input type="hidden" id="id_personne1" name="id_personne" value="{{isset(Auth::user()->id_personne)?Auth::user()->id_personne:''}}" />
+                                        @elseif(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
                                     <select class="form-control" id="id_personne1" name="id_personne">
                                         <option value="">Selectionner une personne</option>
 
                                         @foreach($personnes as $personne)
-                                            <option value="{{$personne->id}}" {{isset($modification) && $modification->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
+                                            <option value="{{$personne->id}}" {{!isset($modification) && Auth::user()->id_personne==$personne->id?'selected':''}} {{isset($modification) && $modification->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
                                         @endforeach
 
                                     </select>
@@ -317,7 +320,12 @@
 
         @endif
 
-        $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
+
+                @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
+              $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
+                @endif
+
+
        // $('#service1').select2();
         $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
         $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
@@ -354,53 +362,60 @@
                 $(".form-control").removeClass('modifie')
             }
         }
-        $('#id_personne1').change(function(){
-            vider();
-           var id_personne =$('#id_personne1').val();
 
-            $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
-                console.log(data);
-                listmodifavenant=    data['Listmodifavenants'][0];
-                console.log(listmodifavenant);
-                $("#service1").val(data[0].service);
-                $("#service1_initial").val(data[0].service);
-                $("#matricule1").val(data[0].matricule);
-                $("#id_fonction1").val(data[0].fonction);
-                $("#id_fonction1_initial").val(data[0].fonction);
-                $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
-                $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
-                $("#datefinc1").val(data[0].datefinc);
-                $("#datefinc1_initial").val(data[0].datefinc);
-                $("#datedebutc1").val(data[0].datedebutc);
-                $("#regime1").val(data[0].regime);
-                $("#regime1_initial").val(data[0].regime);
-                $("#dm_id_definition").val(data[0].id_definition);
-                $("#dm_id_definition_initial").val(data[0].id_definition);
+        auchangement();
+function auchangement(){
+    vider();
+    var id_personne =$('#id_personne1').val();
 
-                var tab= $.parseJSON(data[0].valeurSalaire);
-                var somme=0;
-                $.each(tab,function(index, value ){
-                    var x=value.valeur;
-                    somme=somme+ parseInt(x);
-                })
-                $("#dm_budgetMensuel").val(somme);
-                $("#dm_budgetMensuel_initial").val(somme);
+    $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
+        console.log(data);
+        listmodifavenant=    data['Listmodifavenants'][0];
+        console.log(listmodifavenant);
+        $("#service1").val(data[0].service);
+        $("#service1_initial").val(data[0].service);
+        $("#matricule1").val(data[0].matricule);
+        $("#id_fonction1").val(data[0].fonction);
+        $("#id_fonction1_initial").val(data[0].fonction);
+        $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
+        $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
+        $("#datefinc1").val(data[0].datefinc);
+        $("#datefinc1_initial").val(data[0].datefinc);
+        $("#datedebutc1").val(data[0].datedebutc);
+        $("#regime1").val(data[0].regime);
+        $("#regime1_initial").val(data[0].regime);
+        $("#dm_id_definition").val(data[0].id_definition);
+        $("#dm_id_definition_initial").val(data[0].id_definition);
 
-                var id_definition=  data[0].id_definition;
-                $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-                    console.log(data);
-                    var lesOptions;
-                    $.each(data, function( index, value ) {
-                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
-                    });
-                    $("#dm_id_categorie").empty();
-                    $("#dm_id_categorie").append(lesOptions);
-                });
+        var tab= $.parseJSON(data[0].valeurSalaire);
+        var somme=0;
+        $.each(tab,function(index, value ){
+            var x=value.valeur;
+            somme=somme+ parseInt(x);
+        })
+        $("#dm_budgetMensuel").val(somme);
+        $("#dm_budgetMensuel_initial").val(somme);
 
-                $("#dm_id_categorie").val(data[0].id_categorie);
-                $("#dm_id_categorie_initial").val(data[0].id_categorie);
-
+        var id_definition=  data[0].id_definition;
+        $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+            console.log(data);
+            var lesOptions;
+            $.each(data, function( index, value ) {
+                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
             });
+            $("#dm_id_categorie").empty();
+            $("#dm_id_categorie").append(lesOptions);
+        });
+
+        $("#dm_id_categorie").val(data[0].id_categorie);
+        $("#dm_id_categorie_initial").val(data[0].id_categorie);
+
+    });
+}
+
+
+        $('#id_personne1').change(function(){
+            auchangement();
         });
         $("#dm_id_definition").change(function (e) {
             // alert("test");
@@ -650,6 +665,10 @@
         } );
     </script>
     <script type="application/javascript">
+        @if(!isset($modification) && isset(Auth::user()->id_personne))
+
+        document.getElementById("id_personne1").disabled = true;
+        @endif
         $("#addcompetence").click(function (e) {
             $($("#competencetemplate").html()).appendTo($("#competences"));
         });

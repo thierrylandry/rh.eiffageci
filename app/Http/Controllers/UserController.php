@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Entite;
+use App\Personne;
+use App\Personne_contrat;
+use App\Personne_presente;
 use App\Role;
 use App\Services;
 use App\User;
@@ -18,7 +21,8 @@ class UserController extends Controller
         $roles=  Role::all();
         $entites = Entite::all();
         $services= Services::all();
-        return view('utilisateurs/utilisateurs',compact('utilisateurs','roles','entites','services'));
+        $personnes = Personne::all();
+        return view('utilisateurs/utilisateurs',compact('utilisateurs','roles','entites','services','personnes'));
 
     }
     public function modifier_utilisateur($id){
@@ -27,7 +31,8 @@ class UserController extends Controller
         $roles=  Role::all();
         $entites = Entite::all();
         $services= Services::all();
-        return view('utilisateurs/utilisateurs',compact('utilisateurs','utilisateur','roles','entites','services'));
+        $personnes = Personne::all();
+        return view('utilisateurs/utilisateurs',compact('utilisateurs','utilisateur','roles','entites','services','personnes'));
 
     }
     public function supprimer_utilisateur($id){
@@ -35,6 +40,11 @@ class UserController extends Controller
         $utilisateur->delete();
 
         return redirect()->route('utilisateur')->with('success',"L'utilisateur a été supprimer avec succès");
+
+    }
+    public function lapersonne($id){
+        $personne= Personne_presente::find($id);
+        return $personne;
 
     }
     public function modifier_user(Request $request){
@@ -47,7 +57,7 @@ class UserController extends Controller
         $mdp=$parameters['password'];
         $id_service=$parameters['id_service'];
         $id_entite=$parameters['id_entite'];
-
+        $id_personne=$parameters['id_personne'];
 
         $utilisateur =  User::find($id);
         $utilisateur->nom=$nom;
@@ -55,6 +65,7 @@ class UserController extends Controller
         $utilisateur->email=$email;
         $utilisateur->id_service=$id_service;
         $utilisateur->id_entite=$id_entite;
+        $utilisateur->id_personne=$id_personne;
         if(Hash::needsRehash($mdp)){
 
             $utilisateur->password =Hash::make($mdp);
@@ -89,6 +100,7 @@ class UserController extends Controller
         $mdp=$parameters['password'];
         $id_service=$parameters['id_service'];
         $id_entite=$parameters['id_entite'];
+        $id_personne=$parameters['id_personne'];
 
         $utilisateur = new User();
         $utilisateur->nom=$nom;
@@ -96,6 +108,7 @@ class UserController extends Controller
         $utilisateur->email=$email;
         $utilisateur->id_service=$id_service;
         $utilisateur->id_entite=$id_entite;
+        $utilisateur->id_personne=$id_personne;
         //$utilisateur->password=$mdp;
         if(Hash::needsRehash($mdp)){
 

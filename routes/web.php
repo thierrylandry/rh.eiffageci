@@ -878,3 +878,8 @@ Route::get('/pole_de_demande', [
     'as' => 'pole_de_demande',
     'uses' => 'PoleDemandeController@pole_de_demande',
 ])->middleware('auth');
+Route::get('/lapersonne/{id}',[
+    'as'=>'lapersonne',
+    'uses'=>'UserController@lapersonne'
+
+])->middleware('roles')->middleware('auth');

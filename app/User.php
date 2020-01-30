@@ -67,4 +67,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function personne(){
+
+        return $this->hasOne('App\Personne','id','id_personne');
+    }
 }

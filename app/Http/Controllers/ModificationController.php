@@ -44,7 +44,7 @@ class ModificationController extends Controller
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
        // dd(Auth::user()->id_service);
         $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
-      //  dd($personnes);
+        //dd(Auth::user());
         $fonctions = Fonction::all();
         $Listmodifavenants=Listmodifavenant::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','Listmodifavenants'));

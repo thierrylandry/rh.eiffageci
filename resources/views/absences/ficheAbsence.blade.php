@@ -78,15 +78,23 @@
                         </div>
                         <div class="card-body" >
                             <div class="row form-group">
-
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    <select class="form-control" id="id_personne1" name="id_personne" required>
-                                        <option value="">Selectionner une personne</option>
-                                        @foreach($personnes as $personne)
-                                            <option value="{{$personne->id}}" {{isset($absence) && $absence->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
-                                        @endforeach
-                                    </select>
+                                    @if(isset($absence))
+                                        <input class="form-control" value="{{$absence->personne->nom." ".$absence->personne->prenom}}" disabled/>
+                                    @elseif(!isset($absence) && isset(Auth::user()->id_personne) && !Auth::user()->hasRole('Ressource_humaine'))
+                                        <input type="text" class="form-control" value="{{isset(Auth::user()->id_personne)?Auth::user()->nom.' '.Auth::user()->prenoms:''}}" disabled/>
+                                        <input type="hidden" id="id_personne1" name="id_personne" value="{{isset(Auth::user()->id_personne)?Auth::user()->id_personne:''}}" />
+                                    @elseif(!isset($absence) && Auth::user()->hasRole('Ressource_humaine'))
+                                        <select class="form-control" id="id_personne1" name="id_personne">
+                                            <option value="">Selectionner une personne</option>
+
+                                            @foreach($personnes as $personne)
+                                                <option value="{{$personne->id}}" {{!isset($absence) && Auth::user()->id_personne==$personne->id?'selected':''}} {{isset($absence) && $absence->id_personne==$personne->id?"selected":""}} >{{$personne->nom }} {{$personne->prenom }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    @endif
                                 </div>
 
                                 <div class="col-12 col-md-4">
@@ -244,7 +252,9 @@
     <script>
         var listmodifavenant;
         var listmodifeff = new Array();
-        $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
+        @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
+            $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
+                @endif
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
@@ -271,9 +281,10 @@
                 $(".form-control").removeClass('modifie')
             }
         }
-        $('#id_personne1').change(function(){
+        auchangement();
+        function   auchangement(){
             vider();
-           var id_personne =$('#id_personne1').val();
+            var id_personne =$('#id_personne1').val();
             $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
                 console.log(data);
 
@@ -286,6 +297,9 @@
                 $("#dateEmbauhe").val(data[0].datedebutc);
 
             });
+        }
+        $('#id_personne1').change(function(){
+            auchangement();
         });
 
         function affiche_liste_modification(){

@@ -38,6 +38,22 @@
 
                         @endif
                         @csrf
+                            <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="domaine">Personne</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select class="form-control " id="personne" name="id_personne"  required >
+                                    <option value=""></option>
+                                    @foreach($personnes as $personne)
+                                            <option value="{{$personne->id}}" {{isset($utilisateur->personne) && $utilisateur->personne->id==$personne->id?'selected':''}} >{{isset($personne->matricule)?$personne->matricule:''}} {{$personne->nom}} {{$personne->prenom}}</option>
+
+                                    @endforeach
+                                </select>
+
+                            </div>
+                            </div>
+                            </br>
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <img src="{{isset($utilisateur) && $utilisateur->photo!=''? Storage::url('app/images/users/'.$utilisateur->photo):URL::asset('images/user.png')}}" name="photo" id="rendu_img" alt="" />
@@ -52,7 +68,7 @@
                                 <label for="text-input" class=" form-control-label">Nom *</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="nom" placeholder="Nom" class="form-control" value="{{isset($utilisateur)?$utilisateur->nom:''}}" required>
+                                <input type="text"  name="nom" id="nom" placeholder="Nom" class="form-control" value="{{isset($utilisateur)?$utilisateur->nom:''}}" required>
                                 <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
@@ -61,7 +77,7 @@
                                 <label for="text-input" class=" form-control-label">Prénoms *</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="prenom" placeholder="Prénoms" class="form-control" value="{{isset($utilisateur)?$utilisateur->prenoms:''}}" required>
+                                <input type="text"  name="prenom" id="prenom" placeholder="Prénoms" class="form-control" value="{{isset($utilisateur)?$utilisateur->prenoms:''}}" required>
                                 <small class="form-text text-muted">une chaine de caractère</small>
                             </div>
                         </div>
@@ -70,7 +86,7 @@
                                 <label for="text-input" class=" form-control-label">E-mail</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="email" placeholder="E-mail" class="form-control" value="{{isset($utilisateur)?$utilisateur->email:''}}" required>
+                                <input type="text"  name="email" id="email" placeholder="E-mail" class="form-control" value="{{isset($utilisateur)?$utilisateur->email:''}}" required>
                             </div>
                         </div>
                             <div class="row form-group">
@@ -113,7 +129,7 @@
                                     <label for="text-input" class=" form-control-label">L'entité *</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="id_entite" class="form-control" required>
+                                    <select name="id_entite" name="id_entite"  class="form-control" required>
                                         <option value=""></option>
                                         @foreach($entites as $entite)
                                             <option value="{{$entite->id}}" {{isset($utilisateur) && $utilisateur->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
@@ -126,7 +142,7 @@
                                     <label for="text-input" class=" form-control-label">Service</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="id_service" class="form-control">
+                                    <select name="id_service" id="id_service" class="form-control">
                                         <option value=""></option>
                                         @foreach($services as $service)
                                             <option value="{{$service->id}}" {{isset($utilisateur) && $utilisateur->id_service==$service->id?"selected":""}}>{{$service->libelle}}</option>
@@ -206,6 +222,19 @@
                     $('#confmdp').val('');
                 }
             });
+            $('#personne').on('change',function (e) {
+                var personne= $('#personne').val();
+                $.get("{{URL::asset('lapersonne')}}/"+personne,function(data){
+
+                    if(data==""){
+                        alert("Cette personne n'a pas de contrat actif");
+                    }
+                    $('#nom').val(data.nom);
+                    $('#prenom').val(data.nom);
+                    $('#id_service').val(data.service);
+                    $('#id_entite').val(data.nom);
+                });
+            });
             var table= $('#table_utilisateur').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
@@ -227,6 +256,7 @@
                 ]
             }).column(0).visible(false);
             //table.DataTable().draw();
+            var $personne= $('#personne').select2({ placeholder: 'Selectionner une personne'});
             var $selectrole= $('#roles').select2({ placeholder: 'Selectionner le(s) rôle(s)'});
             $("#checkbox").click(function(){
 

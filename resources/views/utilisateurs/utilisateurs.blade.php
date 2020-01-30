@@ -43,7 +43,7 @@
                                 <label for="domaine">Personne</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select class="form-control " id="personne" name="id_personne"  required >
+                                <select class="form-control " id="personne" name="id_personne"  >
                                     <option value=""></option>
                                     @foreach($personnes as $personne)
                                             <option value="{{$personne->id}}" {{isset($utilisateur->personne) && $utilisateur->personne->id==$personne->id?'selected':''}} >{{isset($personne->matricule)?$personne->matricule:''}} {{$personne->nom}} {{$personne->prenom}}</option>

@@ -230,7 +230,7 @@
                         alert("Cette personne n'a pas de contrat actif");
                     }
                     $('#nom').val(data.nom);
-                    $('#prenom').val(data.nom);
+                    $('#prenom').val(data.prenom);
                     $('#id_service').val(data.service);
                     $('#id_entite').val(data.nom);
                 });

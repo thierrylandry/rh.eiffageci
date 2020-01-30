@@ -215,7 +215,7 @@ class HomeController extends Controller
             ->where('temps','<',3)
             ->select("ancienete.id_personne","temps")
             ->get();
-        dd($anciennete_contrat_moins_3_mois_);
+        //dd($anciennete_contrat_moins_3_mois_);
         $anciennete_contrat__3_a_6_mois_ = DB::table('personne_presente')
             ->where("id_entite","=",$id)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')

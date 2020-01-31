@@ -155,11 +155,11 @@
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de retour dernier congés</label>
-                                    <input type="number" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
+                                    <input type="date" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de reprise dernier congés</label>
-                                    <input type="number" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
+                                    <input type="date" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
                                 </div>
 
                             </div>

@@ -43,7 +43,12 @@ class ModificationController extends Controller
         $definitions = Definition::all();
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
        // dd(Auth::user()->id_service);
-        $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+        $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
+
         //dd(Auth::user());
         $fonctions = Fonction::all();
         $Listmodifavenants=Listmodifavenant::all();
@@ -61,7 +66,11 @@ class ModificationController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         // $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
         $fonctions = Fonction::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes','listmodif'));
     }

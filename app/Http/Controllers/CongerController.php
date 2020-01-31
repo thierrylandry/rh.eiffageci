@@ -306,7 +306,11 @@ class CongerController extends Controller
     public function demande_conges()
     {
         $entites = Entite::all();
-        $personnes = Personne_presente::all();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
         $type_motifs= Type_conges::all();
         return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));
@@ -315,7 +319,11 @@ class CongerController extends Controller
     {
         $conge= Absconges::find($id);
         $entites = Entite::all();
-        $personnes = Personne_presente::all();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
         // $contrat= Contrat::where('id')
         $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();

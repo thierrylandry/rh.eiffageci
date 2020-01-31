@@ -24,7 +24,11 @@ class AbsenceController extends Controller
     public function demande_absence()
     {
         $entites = Entite::all();
-        $personnes = Personne_presente::all();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
         return view('absences/ficheAbsence',compact('entites','personnes','absences'));
     }
@@ -32,7 +36,11 @@ class AbsenceController extends Controller
     {
         $absence= Absence::find($id);
         $entites = Entite::all();
-        $personnes = Personne_presente::all();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::all();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+        }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
        // $contrat= Contrat::where('id')
         $contrat=Contrat::where('id_personne','=',$absence->id_personne)->where('etat','=',1)->first();

@@ -330,7 +330,7 @@ class CongerController extends Controller
         $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();
         $type_motifs= Type_conges::all();
 
-        return view('conges/ficheConges',compact('entites','personnes','conges','absconge','contrat','type_motifs'));
+        return view('conges/ficheConges',compact('entites','personnes','conges','conge','contrat','type_motifs'));
     }
     public function information_conges_prec($id)
     {

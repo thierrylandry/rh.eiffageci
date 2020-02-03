@@ -357,10 +357,9 @@
         function   auchangement(){
             vider();
             var id_personne =$('#id_personne1').val();
-           // var route="{{asset('../modifications/lapersonne_contrat/')}}";
-            $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
+            var route="{{asset('')}}";
+            $.get(route+"/modifications/lapersonne_contrat/"+id_personne,function(data){
                 console.log(data);
-
                 listmodifavenant=    data['Listmodifavenants'][0];
                 console.log(listmodifavenant);
                 $("#serviceabs").val( data['leservice'][0].libelle);
@@ -371,7 +370,7 @@
 
             });
 
-            $.get("../conges/information_conges_prec/"+id_personne,function(data){
+            $.get(route+"/conges/information_conges_prec/"+id_personne,function(data){
                 console.log(data);
                 $("#nbrjouracqui").val( data['nombrecongesAqui']);
                 $("#nbrjouraccorde").val( data['nombrecongesAccorde']);

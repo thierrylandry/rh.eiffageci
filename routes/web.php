@@ -834,6 +834,10 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
         'as'=>'modification',
         'uses'=>'CongerController@modification',
     ])->middleware('roles')->middleware('auth');
+    Route::get('/information_conges_prec/{id}',[
+        'as'=>'information_conges_prec',
+        'uses'=>'CongerController@information_conges_prec',
+    ])->middleware('roles')->middleware('auth');
     Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
         'uses'=>'CongerController@supprimer',

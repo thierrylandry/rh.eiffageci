@@ -125,7 +125,7 @@
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Adresse pendant les congés</label>
-                                    <input type="text" name="adresse_pd_conges" id="adresse_pd_conges" class="form-control" value="{{isset($conge)?$conge->adresse_pd_conges:''}}" />
+                                    <input type="text" name="adresse_pd_conges" id="adresse_pd_conges" class="form-control" value="{{isset($conge)?$conge->adresse_pd_conges:''}}" required/>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Contact téléphonique</label>
@@ -155,11 +155,11 @@
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de retour dernier congés</label>
-                                    <input type="date" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
+                                    <input type="date" id="dateretourdernierconges"  class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de reprise dernier congés</label>
-                                    <input type="date" name="jour" id="jour" class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
+                                    <input type="date" id="datereprisedernierconges"  class="form-control" value="{{isset($conge)? $conge->jour:''}}" required readonly/>
                                 </div>
 
                             </div>
@@ -287,10 +287,10 @@
                                     <td>
                                         <div class="table-data-feature">
                                             @if($conge->etat==1)
-                                                <a href="{{route("absence.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a  href="{{route("absence.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <a  href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
 
@@ -300,7 +300,7 @@
                                             @elseif($conge->etat==3)
 
                                             @elseif($conge->etat==4)
-                                                <a href="{{route("absence.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
                                             @endif
@@ -357,6 +357,7 @@
         function   auchangement(){
             vider();
             var id_personne =$('#id_personne1').val();
+           // var route="{{asset('../modifications/lapersonne_contrat/')}}";
             $.get("../modifications/lapersonne_contrat/"+id_personne,function(data){
                 console.log(data);
 
@@ -368,6 +369,14 @@
                 $("#id_entite").val(data[0].id_entite);
                 $("#dateEmbauhe").val(data[0].datedebutc);
 
+            });
+
+            $.get("../conges/information_conges_prec/"+id_personne,function(data){
+                console.log(data);
+                $("#nbrjouracqui").val( data['nombrecongesAqui']);
+                $("#nbrjouraccorde").val( data['nombrecongesAccorde']);
+                $("#dateretourdernierconges").val( data['dernierconge'].fins);
+                $("#datereprisedernierconges").val( data['dernierconge'].reprise);
             });
         }
         $('#id_personne1').change(function(){
@@ -587,6 +596,7 @@
             var debut=new Date($("#debut").val());
             var fin=new Date($("#fin").val());
 
+            $('#reprise').val($("#fin").val());
 // end - start returns difference in milliseconds
             var diff = new Date(fin - debut);
 

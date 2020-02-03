@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Absconges;
 use App\Conges;
+use App\Contrat;
 use App\Entite;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
@@ -327,9 +328,48 @@ class CongerController extends Controller
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
         // $contrat= Contrat::where('id')
         $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();
+        $type_motifs= Type_conges::all();
+
+        return view('conges/ficheConges',compact('entites','personnes','conges','absconge','contrat','type_motifs'));
+    }
+    public function information_conges_prec($id)
+    {
+            $conges= Absconges::where('id_personne','=',$id)
+                                ->where('etat','<=',2)
+                                ->select('id_personne',DB::raw('sum(jour) as jourconges'))
+                                ->groupby('id_personne')
+                                ->first();
+
+        $dernierconge = Absconges::where('id_personne','=',$id)
+                                    ->orderBy('debut','DESC')
+                                    ->first();
 
 
-        return view('Absconges/ficheAbsconge',compact('entites','personnes','absconges','absconge','contrat'));
+        $personne= Personne::find($id);
+
+        $VarpersonneConges= new VarpersonneConges();
+        $VarpersonneConges->personne_id=$id;
+        $VarpersonneConges->nom_prenom=$personne->nom.' '.$personne->prenom;
+        $datedebutc= Personne_presente::find($id)->datedebutc;
+
+        $VarpersonneConges->nb_y=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->y;
+
+        //   dd(date_diff(new \DateTime($datedebutc),new \DateTime('now')));
+        $VarpersonneConges->nb_m=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->m;
+        $VarpersonneConges->nb_d=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->d;
+        $VarpersonneConges->jours=(($VarpersonneConges->nb_y*12) +$VarpersonneConges->nb_m)*2.5 +$VarpersonneConges->nb_d/30  ;
+
+        $tabconges=array();
+        if(isset($conges) && isset($dernierconge) && isset($personne)){
+            $tabconges['nombrecongesAccorde']=$conges->jourconges;
+            $tabconges['dernierconge']=$dernierconge;
+            $tabconges['nombrecongesAqui']=number_format($VarpersonneConges->jours, 0, '.', '');
+        }
+
+
+
+        return $tabconges;
+
     }
     public function ActionValider($id){
         $conge = Absconges::find($id);

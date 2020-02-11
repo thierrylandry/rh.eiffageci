@@ -76,7 +76,7 @@
         <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
         <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
         <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
-        <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+        <a href="{{route('lister_contrat',$personne->id)}}" class="btn btn-outline-danger">Gérer les contrats</a>
     </div>
     <br>
     <div class="row">
@@ -169,7 +169,7 @@
                             <label for="text-input" class=" form-control-label">Régime </br>hebdomadaire</label>
                         </div>
                         <div class="col-sm-9">
-                            <select class="form-control regime" name="regime" id="regime3">
+                            <select class="form-control regime" name="regime" id="regime3" required>
                                 <option value="40H">40H</option>
                                 <option value="44H">44H</option>
                             </select>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="form-group">
                             <input type="hidden" id="dateDebutC_memoire" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}" />
-                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
+                            <input type="date" name="dateDebutC" class="form-control dateDebutC" value="{{isset($contrat)?$contrat->datedebutc:''}}"   required/>
                         </div>
                     </div>
 
@@ -265,7 +265,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
+                            <input type="date" name="dateFinC" class="form-control dateFinC" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -273,7 +273,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin de la période d'éssai :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="periode_essaie" class="form-control" value="{{isset($contrat)?$contrat->periode_essaie:''}}"/>
+                            <input type="date" name="periode_essaie" class="form-control periode_essaie" value="{{isset($contrat)?$contrat->periode_essaie:''}}"/>
                         </div>
                     </div>
 
@@ -644,6 +644,19 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
+
+        //rendre la date de fin de contrat obligatoire en fonction du type de contrat
+        $('#type_de_contrat1').change(function (e){
+l
+            var typecontrat= $('#type_de_contrat1').val();
+           // alert(typecontrat);
+            if(typecontrat==1){
+                $('.dateFinC').prop('required',true);
+            }else{
+                $('.dateFinC').prop('required',false);
+            }
+
+        });
 
     </script>
     <script type="application/javascript">

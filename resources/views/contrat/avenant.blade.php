@@ -41,7 +41,7 @@
         @break
 
         @case("La durée hebdomadaire de travail")
-        <p>- <b class="classtext"> {{$modif}} {{$contratprec->regime}} devient {{$contrat->regime}} </b> </p>
+        <p>- <b class="classtext"> {{"le régime hebdomadaire"}} {{$contratprec->regime}} devient {{$contrat->regime}} </b> </p>
         @break
         @case("La fonction")
         <p>- <b class="classtext"> {{$modif}} devient {{$contrat->personne->fonction()->first()->libelle}} </b> </p>

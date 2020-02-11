@@ -76,7 +76,7 @@
         <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
         <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
         <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> gérer les dossiers</a>
-        <a href="{{route('lister_contrat',$personne->slug)}}" class="btn btn-outline-danger">Gérer les contrats</a>
+        <a href="{{route('lister_contrat',$personne->id)}}" class="btn btn-outline-danger">Gérer les contrats</a>
     </div>
     <br>
 
@@ -184,7 +184,7 @@
                             <label for="text-input" class=" form-control-label">Couverture maladie:</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control assurance_maladie" name="couverture_maladie" id="couverture_maladie">
+                            <select class="form-control assurance_maladie" name="couverture_maladie" id="couverture_maladie" required>
                                 <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
                                 <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
                                 <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>
@@ -247,7 +247,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
+                            <input type="date" name="dateFinC" class="form-control dateFinC" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -628,6 +628,18 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
+        //rendre la date de fin de contrat obligatoire en fonction du type de contrat
+        $('#type_de_contrat1').change(function (e){
+
+            var typecontrat= $('#type_de_contrat1').val();
+            // alert(typecontrat);
+            if(typecontrat==1){
+                $('.dateFinC').prop('required',true);
+            }else{
+                $('.dateFinC').prop('required',false);
+            }
+
+        });
 
     </script>
     <script type="application/javascript">

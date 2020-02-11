@@ -62,7 +62,7 @@ Route::get('/Ajouter_personne/{entite}',[
 Route::get('/lister_personne/{entite}',[
     'as'=>'lister_personne',
     'uses'=>'PersonneController@lister_personne',
-    'roles' => ['Personnes']
+    'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
 Route::post('/enregistrer_personne',[
     'as'=>'enregistrer_personne',
@@ -77,12 +77,12 @@ Route::get('/supprimer_personne/{slug}',[
 Route::get('/detail_personne/{slug}',[
     'as'=>'detail_personne',
     'uses'=>'PersonneController@detail_personne',
-    'roles' => ['Personnes']
+    'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
 Route::post('/modifier_personne',[
     'as'=>'modifier_personne',
     'uses'=>'PersonneController@modifier_personne',
-    'roles' => ['Personnes']
+    'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
 Route::get('/fiche_personnel/{slug}',[
     'as'=>'fiche_personnel',

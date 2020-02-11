@@ -143,7 +143,7 @@
                     <a class="js-arrow" href="{{route('pole_de_demande')}}">
                         <i class="fas fa-question"></i>PÔLE DE DEMANDE</a>
                 </li>
-                @if(Auth::user() != null && Auth::user()->hasRole('Personnes'))
+                @if(Auth::user() != null && (Auth::user()->hasRole('Personnes') || Auth::user()->hasRole('Gestion_expatrie') ))
                     <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
                         <a class="js-arrow " href="#">
                             <i class="fas fa-users open" ></i>PERSONNES</a>

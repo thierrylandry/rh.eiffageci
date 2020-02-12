@@ -197,7 +197,7 @@ Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
     'roles' => ['Personnes']
-])->middleware('auth');
+])->middleware('auth')->middleware('roles');
 Route::get('/information_contrat/{id}',[
     'as'=>'information_contrat',
     'uses'=>'ContratController@information_contrat',

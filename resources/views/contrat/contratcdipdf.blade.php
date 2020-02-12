@@ -91,7 +91,7 @@
 
     <p style="text-align: right"><b><u>D’autre part,</u></b></p><br>
 
-    <p><b>Eiffage Génie Civil Côte d’Ivoire</b> et <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p>
+    <p><b>Eiffage Génie Civil Côte d’Ivoire</b> et Monsieur ou Madame <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p>
 
     <h1 style="padding: 0;text-align: center"><u>EXPOSE</u></h1>
 
@@ -116,7 +116,7 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
 
-    <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle  <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
+    <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle  <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}})</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 4</u> : Dossier Administratif</h1>
 
@@ -136,7 +136,7 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext">{{isset($contrat->ruptureEssaie)?$contrat->ruptureEssaie:''}}</b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
+    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext">{{isset($contrat->periode_essaie)?$contrat->periode_essaie:''}}</b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.
     </p><br>
@@ -259,11 +259,21 @@
             <tr>
                 <td width="40%" align="left">
                     <p style="font-size: 12pt; margin-left: 0;">L’Employeur</p><br><br>
-                    <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b> </p>
+                <td width="5%" >
+                    <p style="font-size: 12pt;">L’Employé</p><br><br>
+                </td>
+            </tr>           <tr>
+                <td width="40%" align="left">
+                    <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b></p>
+                </td>
+                <td width="5%" >
+                    <b class="classtext" style="font-size: 12pt;">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b>
+                </td>
+            </tr>           <tr>
+                <td width="40%" align="left">
                     <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
                 </td>
                 <td width="5%" >
-                    <p style="font-size: 12pt;">L’Employé</p><br><br>
                     <p style="font-size: 12pt;">____________________</p>
                 </td>
             </tr>

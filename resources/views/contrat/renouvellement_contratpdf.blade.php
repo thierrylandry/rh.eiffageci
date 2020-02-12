@@ -91,7 +91,7 @@
 
   <p style="text-align: right"><b><u>D’autre part,</u></b></p><br>
 
-  <p><b>La succursale Eiffage Génie Civil Côte d’Ivoire</b> et <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p><br>
+  <p><b>La succursale Eiffage Génie Civil Côte d’Ivoire</b> et Monsieur et Madame <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p><br>
 
   <h1 style="padding: 0;text-align: center"><u>EXPOSE</u></h1>
 
@@ -253,10 +253,21 @@
       <tr>
         <td width="40%" align="left">
           <p style="font-size: 12pt; margin-left: 0;">L’Employeur</p><br><br>
+        <td width="5%" >
+          <p style="font-size: 12pt;">L’Employé</p><br><br>
+        </td>
+      </tr>           <tr>
+        <td width="40%" align="left">
           <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b></p>
         </td>
         <td width="5%" >
-          <p style="font-size: 12pt;">L’Employé</p><br><br>
+          <b class="classtext" style="font-size: 12pt;">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b>
+        </td>
+      </tr>           <tr>
+        <td width="40%" align="left">
+          <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
+        </td>
+        <td width="5%" >
           <p style="font-size: 12pt;">____________________</p>
         </td>
       </tr>

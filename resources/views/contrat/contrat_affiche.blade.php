@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                             <td>{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
-                            <td>{{isset($contrat->fonction)?$contrat->fonction()->first()->libelle:''}}</td>
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->fonction_initial()->first()->libelle:''}}</td>
                         </tr>
                     </table>
                 </button>
@@ -171,8 +171,8 @@
                             <td>Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->dateFinC:''}}</td>
-                            <td>{{isset($contrat)?$contrat->datefinc:''}}</td>
+                            <td>{{isset($modification_recrutement)?date("d-m-Y", strtotime($modification_recrutement->dateFinC)):''}}</td>
+                            <td>{{isset($contrat)?date("d-m-Y", strtotime($contrat->datefinc)):''}}</td>
                         </tr>
                     </table>
                 </button>

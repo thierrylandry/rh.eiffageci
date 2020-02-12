@@ -23,7 +23,7 @@ class Modification extends Model
         return $this->belongsTo(Entite::class, "id","id_entite");
     }
     public function service(){
-        return $this->belongsTo(Services::class, "id_service","id");
+        return $this->belongsTo(Services::class, "service","id");
     }
     public function personne(){
         return $this->hasOne(Personne::class, "id","id_personne");
@@ -33,5 +33,8 @@ class Modification extends Model
     }
     public function fonction(){
         return $this->belongsTo(Fonction::class,"id_fonction", "id");
+    }
+    public function fonction_initial(){
+        return $this->belongsTo(Fonction::class,"id_fonction_initial", "id");
     }
 }

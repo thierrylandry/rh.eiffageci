@@ -87,7 +87,7 @@ Route::post('/modifier_personne',[
 Route::get('/fiche_personnel/{slug}',[
     'as'=>'fiche_personnel',
     'uses'=>'PersonneController@fiche_personnel',
-    'roles' => ['Personnes']
+    'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
 Route::get('/document_administratif/{slug}',[
     'as'=>'document_administratif',

@@ -4565,6 +4565,10 @@ section {
     -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
 }
+.tr-shadow:hover{
+    background-color: greenyellow;
+
+}
 
 .table-data__tool {
     display: -webkit-box;

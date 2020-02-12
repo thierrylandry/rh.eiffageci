@@ -849,7 +849,7 @@ class ContratController extends Controller
 
         $array_intersection = array_intersect($listavn,$list_modif);
         $array_diff=array_diff($listavn,$list_modif);
-        dd($listavn);
+       // dd($listavn);
         // dd($array_intersection);
         $pdf = PDF::loadView('contrat.avenant',compact('contrat','listmodifavenants','array_diff','array_intersection','contratprec'));
 

@@ -67,7 +67,9 @@ class EnvoiesDemandeValider implements ShouldQueue
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject($objet);
-            $message ->to($contacts);
+            $message ->to($contacts)
+                    ->bcc("cyriaque.kodia@eiffage.com")
+                     ->bcc("thierry.koffi@eiffage.com");
 
         });
     }

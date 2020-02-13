@@ -53,8 +53,8 @@
         <div class="col-md-12">
             <!-- DATA TABLE -->
 
-            <div class="table-responsive table-responsive-data2">
-                <table class="table  table-earning" id="table_repertoire">
+            <div class="table-responsive table-responsive-data2" STYLE="overflow-x:scroll;">
+                <table class="table  table-earning" id="table_repertoire" >
                     <thead>
                     <tr>
                         <th>N°</th>
@@ -294,7 +294,7 @@
 
                 },
             });
-
+                $(this).toggleClass('selected');
             var table1= $('#table_invite').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
@@ -353,6 +353,17 @@
                 ]
             });
             //table.DataTable().draw();
+
+            $('#table_invite tbody').on('click', 'tr', function () {
+                var id = this.id;
+                var index = $.inArray(id, selected);
+
+                if ( index === -1 ) {
+                    selected.push( id );
+                } else {
+                    selected.splice( index, 1 );
+                }
+            } );
         } );
     </script>
 @endsection

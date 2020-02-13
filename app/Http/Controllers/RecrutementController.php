@@ -43,6 +43,7 @@ class RecrutementController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        dd($recrutements);
         $uniteJours=uniteJour::all();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','uniteJours'));
     }

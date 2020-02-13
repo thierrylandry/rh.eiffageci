@@ -137,6 +137,7 @@ public function pmodifier_invite($id){
     return view('invite/gestion_invite',compact('invites','invite','payss','entites'));
 }public function pmodifier_passage($id){
 
+    $entites= Entite::all();
     $passage= Passage::find($id);
     if(isset($passage)){
 
@@ -148,7 +149,7 @@ public function pmodifier_invite($id){
 
 
 
-    return view('invite/gestion_passage',compact('invite','passage'));
+    return view('invite/gestion_passage',compact('invite','passage','entites'));
 }
 public function passage_invite($id){
 

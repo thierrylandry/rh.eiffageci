@@ -160,7 +160,7 @@
         <div class="col-md-12">
             <!-- DATA TABLE -->
 </br>
-            <div class="table-responsive table-responsive-data2">
+            <div class="table-responsive table-responsive-data2" STYLE="overflow-x:scroll;">
                 <table class="table   table-earning" id="table_repertoire">
                     <thead>
                     <tr>

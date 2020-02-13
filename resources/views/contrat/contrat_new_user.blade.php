@@ -647,7 +647,6 @@
 
         //rendre la date de fin de contrat obligatoire en fonction du type de contrat
         $('#type_de_contrat1').change(function (e){
-l
             var typecontrat= $('#type_de_contrat1').val();
            // alert(typecontrat);
             if(typecontrat==1){

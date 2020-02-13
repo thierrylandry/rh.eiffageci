@@ -63,7 +63,7 @@ class EnvoiesDemandeValider implements ShouldQueue
         $lien=$this->lien;
         $contacts= $this->contacts;
 
-        Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts)
+      /*  Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts)
         {
             $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                 ->subject($objet);
@@ -72,5 +72,19 @@ class EnvoiesDemandeValider implements ShouldQueue
                      ->bcc("thierry.koffi@eiffage.com");
 
         });
+      */
+
+        if(isset($contrats[0])){
+            Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts )
+            {
+                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                    ->subject($objet);
+                foreach($contacts as $em):
+                    $message ->to($em);
+                endforeach;
+                $message->bcc("cyriaque.kodia@eiffage.com");
+                $message->bcc("thierry.koffi@eiffage.com");
+            });
+        }
     }
 }

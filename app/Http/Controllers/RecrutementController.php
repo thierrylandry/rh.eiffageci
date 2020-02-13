@@ -252,6 +252,17 @@ $j=0;
             $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
         endforeach;
 
+        $contact=Array();
+        foreach($users as $user):
+
+            if($user->hasRole('Chef_de_projet')){
+                 $contact[]=$user->email;
+
+            }
+
+        endforeach;
+        $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
+
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
 
     }

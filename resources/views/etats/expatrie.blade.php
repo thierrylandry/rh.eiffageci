@@ -136,7 +136,7 @@
 
                     @foreach($invites_presents as $invites_present)
 
-                        @if(($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)) ) || $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)))
+                        @if(($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)) ) || $datefinSemaineActuel>=date("d-m-Y",strtotime($invites_present->dateDepart)))
                         <tr class="tr-shadow">
                             <td>{{$i++}}</td>
                             <td>{{$invites_present->nom}}</td>

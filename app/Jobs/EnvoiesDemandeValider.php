@@ -73,7 +73,7 @@ class EnvoiesDemandeValider implements ShouldQueue
 
         });
       */
-
+/*
         if(isset($contrats[0])){
             Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts )
             {
@@ -86,5 +86,6 @@ class EnvoiesDemandeValider implements ShouldQueue
                 $message->bcc("thierry.koffi@eiffage.com");
             });
         }
+*/
     }
 }

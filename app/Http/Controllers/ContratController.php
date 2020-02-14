@@ -46,6 +46,7 @@ class ContratController extends Controller
         $personne = Personne::find($id);
 
         $contrat=Array();
+        $categories=Array();
         if(isset($personne->contrat_renouvelles)){
             $contrat= $personne->contrat_renouvelles()->orderby('date_debutc_eff','desc')->first();
 

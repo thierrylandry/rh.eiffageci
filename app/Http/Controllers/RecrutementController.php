@@ -251,7 +251,7 @@ $j=0;
             $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
             $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
         endforeach;
-
+/*
         $contact=Array();
         foreach($users as $user):
 
@@ -261,8 +261,9 @@ $j=0;
             }
 
         endforeach;
-        $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
 
+        $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
+*/
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
 
     }

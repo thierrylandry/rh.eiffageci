@@ -353,16 +353,12 @@
                 ]
             });
             //table.DataTable().draw();
+            $('#table_invite tbody').on( 'click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
 
-            $('#table_invite tbody').on('click', 'tr', function () {
-                var id = this.id;
-                var index = $.inArray(id, selected);
-
-                if ( index === -1 ) {
-                    selected.push( id );
-                } else {
-                    selected.splice( index, 1 );
-                }
+            $('#button').click( function () {
+                alert( table.rows('.selected').data().length +' row(s) selected' );
             } );
         } );
     </script>

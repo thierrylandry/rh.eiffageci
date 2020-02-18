@@ -203,6 +203,13 @@
                     { responsivePriority: 2, targets: -1 }
                 ]
             }).column(0).visible(false);
+            $('#table_employe tbody').on( 'click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
+
+            $('#button').click( function () {
+                alert( table.rows('.selected').data().length +' row(s) selected' );
+            } );
             function vider(){
                 $("#id_definition1").val("");
                 $("#id_categorie1").val("");

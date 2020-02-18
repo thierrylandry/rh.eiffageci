@@ -76,8 +76,46 @@
             <td style="font-size: 10pt" width="40%"><b>Nationalité</b></td>
             <td width="60%" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
           </tr><tr>
-            <td style="font-size: 10pt" width="40%"><b>N° Carte Consulaire</b></td>
-            <td width="60%"></td>
+            @foreach($pieces as $piece)
+              @switch($piece->type_p_piece)
+              @case('CNI')
+              <td style="font-size: 10pt" width="40%"><b>
+                  Carte nationnal d'identité
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+              @break;
+              @case('PSP')
+
+              <td style="font-size: 10pt" width="40%"><b>
+                  Passeport
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+              @break;
+              @case('cc')
+
+              <td style="font-size: 10pt" width="40%"><b>
+                  Carte consulaire
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+              @break;
+              @case('vis')
+
+              <td style="font-size: 10pt" width="40%"><b>
+                  Visa
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+              @break;
+              @case('cr')
+
+              <td style="font-size: 10pt" width="40%"><b>
+                  Carte de résident
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+              @break;
+              @case('ATTN')
+              <td style="font-size: 10pt" width="40%"><b>
+                  Attestation nationnal d'identité
+                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+
+              @break;
+              @endswitch
+              @break
+            @endforeach
           </tr><tr>
             <td style="font-size: 10pt" width="40%" ><b>Fonction</b></td>
             <td width="60%" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>

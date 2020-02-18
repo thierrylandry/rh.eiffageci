@@ -801,11 +801,11 @@ class ContratController extends Controller
     }
     public function contratpdf($id){
         $contrat = Contrat::find($id);
-
+            $pieces=json_decode($contrat->personne->pieces);
         if($contrat->id_type_contrat==1){
-            $pdf = PDF::loadView('contrat.contratcddpdf',compact('contrat'));
+            $pdf = PDF::loadView('contrat.contratcddpdf',compact('contrat','pieces'));
         }elseif($contrat->id_type_contrat==2){
-            $pdf = PDF::loadView('contrat.contratcdipdf',compact('contrat'));
+            $pdf = PDF::loadView('contrat.contratcdipdf',compact('contrat','pieces'));
         }
 
 
@@ -821,8 +821,8 @@ class ContratController extends Controller
     public function renouvellement_contratpdf($id){
 
         $contrat=Contrat::find($id);
-
-        $pdf = PDF::loadView('contrat.renouvellement_contratpdf',compact('contrat'));
+        $pieces=json_decode($contrat->personne->pieces);
+        $pdf = PDF::loadView('contrat.renouvellement_contratpdf',compact('contrat','pieces'));
 
         return $pdf->stream();
     }

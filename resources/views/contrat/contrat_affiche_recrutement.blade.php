@@ -97,7 +97,7 @@
 
                             @foreach($recrutements as $recrutement)
                                 @if($recrutement->NbrePersonne!=$recrutement->NbrePersonneEffect)
-                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect!=""?$recrutement->NbrePersonneEffect:0}} /{{$recrutement->NbrePersonne}}</option>
+                                <option {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} {{isset($contrat) && $contrat->id_recrutement==$recrutement->id?'selected':''}} value="{{$recrutement->id}}">{{$recrutement->id}} {{$recrutement->posteAPouvoir}} {{$recrutement->type_contrat->libelle}}  Durée de mission: {{$recrutement->dureeMission}} {{$recrutement->unitejour->libelle}} Nombre de personne : {{$recrutement->NbrePersonneEffect!=""?$recrutement->NbrePersonneEffect:0}} /{{$recrutement->NbrePersonne}}</option>
                                 @endif
                             @endforeach
 

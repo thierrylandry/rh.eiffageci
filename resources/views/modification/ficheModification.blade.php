@@ -143,7 +143,7 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Fonction</label>
                                     <input type="hidden" id="id_fonction1_initial" name="id_fonction1_initial"  value="">
-                                    <select class="form-control {{isset($listmodif) && in_array('La fonction',$listmodif)?'modifie':''}}" name="id_fonction" id="id_fonction1" required>
+                                    <select class="form-control {{isset($listmodif) && in_array('La fonction',$listmodif)?'modifie':''}}" name="id_fonction" id="id_fonction1" disabled required>
                                         <option valuue="">Selectionner une fonction</option>
                                         @foreach($fonctions as $fonction)
                                             <option value="{{$fonction->id}}" {{isset($modification) && $modification->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>

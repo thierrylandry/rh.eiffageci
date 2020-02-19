@@ -92,16 +92,16 @@
                 @switch($modif)
                 @case("Le service")
                 <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table style="border:1px;">
+                    <table border="1" style="border:1px;">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->service()->first()->libelle:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->service()->first()->libelle:''}}</td>
                             <td>{{isset($contrat)?$contrat->service()->first()->libelle:''}}</td>
                         </tr>
                     </table>
@@ -110,118 +110,110 @@
                 @break
 
                 @case("La durée hebdomadaire de travail")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
                             <td>{{isset($contrat)?$contrat->regime:''}}</td>
                         </tr>
                     </table>
-                </button>
+
                 @break
                 @case("La fonction")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
                             <td>{{isset($modification_recrutement)?$modification_recrutement->fonction_initial()->first()->libelle:''}}</td>
                         </tr>
                     </table>
-                </button>
+
                 @break
                 @case("Le type de contrat")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->type_contrat->libelle:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->type_contrat->libelle:''}}</td>
                             <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
                         </tr>
                     </table>
-                </button>
+
                 @break
                 @case("La date de fin")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?date("d-m-Y", strtotime($modification_recrutement->dateFinC)):''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?date("d-m-Y", strtotime($modification_recrutement->dateFinC)):''}}</td>
                             <td>{{isset($contrat)?date("d-m-Y", strtotime($contrat->datefinc)):''}}</td>
                         </tr>
                     </table>
-                </button>
                 @break
                 @case("La définition")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement->definition)?$modification_recrutement->definition->libelle:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement->definition)?$modification_recrutement->definition->libelle:''}}</td>
                             <td>{{isset($contrat->definition)?$contrat->definition->libelle:''}}</td>
                         </tr>
                     </table>
-                </button>
+
                 @break
                 @case("La catégorie")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td>{{isset($modification_recrutement)?$modification_recrutement->id_categorie:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->id_categorie:''}}</td>
                             <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
                         </tr>
                     </table>
-                </button>
                 @break
                 @case("Le budget mensuel")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table>
+                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
                         <tr>
-                            <td>Nouvelle valeur</td>
-                            <td>Ancienne valeur</td>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
                         </tr>
-                        <tr>
+                        <tr style="color: #00a2e3;">
                             <td>{{isset($modification_recrutement)?$modification_recrutement->budgetMensuel:''}}</td>
                             <td>
                                 <?php $affiche=0;
@@ -236,7 +228,6 @@
                                 ?></td>
                         </tr>
                     </table>
-                </button>
                 @break
                 @default
 

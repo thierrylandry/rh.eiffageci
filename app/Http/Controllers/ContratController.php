@@ -7,6 +7,7 @@ use App\Categorie;
 use App\Contrat;
 use App\Definition;
 use App\Entite;
+use App\Fonction;
 use App\Listmodifavenant;
 use App\Metier\Json\Rubrique;
 use App\Modification;
@@ -111,6 +112,7 @@ class ContratController extends Controller
         $nature_contrats= Nature_contrat::all();
         $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
         $assurance_maladies=Assurance_maladie::all();
+        $fonctions =Fonction::all();
 
         $resultat="";
         if(!empty($contrat->valeurSalaire)){
@@ -149,7 +151,7 @@ class ContratController extends Controller
         }
 
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
-            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_typeModification','recrutement','modification_recrutement','id_typeModification','listmodif','assurance_maladies','resultat'));
+            return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_typeModification','recrutement','modification_recrutement','id_typeModification','listmodif','assurance_maladies','resultat','fonctions'));
         }else{
             return redirect()->back()->with('error',"Cette personne n'a pas subit les entretiens préliminaires donc ne peut pas avoir de contrat");
         }

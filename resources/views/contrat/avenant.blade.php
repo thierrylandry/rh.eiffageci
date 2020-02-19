@@ -67,7 +67,41 @@
 
     @endforeach
         @else
-        <p>Cet avenant modifie uniquement <b class="classtext"> {{implode(', ',$array_intersection)}}</b> à compter du {{isset($contrat->date_debutc_eff)?$contrat->date_debutc_eff:''}}.
+        <p>Cet avenant modifie uniquement <b class="classtext">
+        @foreach($array_intersection as $modif)
+
+            @switch($modif)
+            @case("Le service")
+            <b class="classtext"> {{$modif}} {{$contratprec->service->libelle}} devient {{$contrat->service->libelle}} </b>
+            @break
+
+            @case("La durée hebdomadaire de travail")
+             <b class="classtext"> {{"le régime hebdomadaire"}} {{$contratprec->regime}} devient {{$contrat->regime}} </b>
+            @break
+            @case("La fonction")
+             <b class="classtext"> {{$modif}} devient {{$contrat->personne->fonction()->first()->libelle}} </b>
+
+            @break
+            @case("Le type de contrat")
+
+             <b class="classtext"> {{$modif}} {{$contratprec->type_contrat->libelle}} devient {{$contrat->type_contrat->libelle}} </b>
+            @break
+            @case("La date de fin")
+            <b class="classtext"> {{$modif}} {{$contratprec->datefinc}} devient {{$contrat->datefinc}} </b>
+            @break
+            @case("La catégorie")
+            <b class="classtext"> {{$modif}} {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}}) qui devient {{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b>
+            @break
+            @case("Le budget mensuel")
+                    <b class="classtext"> Salaire</b>
+            @break
+            @default
+
+            @endswitch
+
+
+            @endforeach</b> à compter du <?php if(isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
+                echo $date->format('d-m-Y');}?>.
     @endif
     <br>
     @if(!empty($array_diff))

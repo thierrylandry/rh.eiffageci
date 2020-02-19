@@ -427,11 +427,21 @@ Route::get('/supprimer_passage/{id}',[
 Route::get('/fin_contrat',[
     'as'=>'fin_contrat',
     'uses'=>'EtatsController@fin_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Ressource_humaine']
+])->middleware('auth')->middleware('roles');
+//fin contrat par service
+Route::get('/fin_contrat_service/{id_service}',[
+    'as'=>'fin_contrat_service',
+    'uses'=>'EtatsController@fin_contrat_service',
+    'roles' => ['Chef_de_service']
 ])->middleware('auth')->middleware('roles');
 Route::get('/mailfin_contrat',[
     'as'=>'mailfin_contrat',
     'uses'=>'EtatsController@mailfin_contrat',
+]);
+Route::get('/mailfin_contrat_service',[
+    'as'=>'mailfin_contrat_service',
+    'uses'=>'EtatsController@mailfin_contrat_service',
 ]);
  //parametre création des utilisateurs
 Route::get('/utilisateur',[

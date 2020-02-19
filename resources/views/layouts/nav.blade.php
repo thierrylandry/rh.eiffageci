@@ -202,6 +202,9 @@
                         <li class="@yield('fin_contrat')">
                             <a href="{{route('fin_contrat')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat</a>
                         </li>
+                        <li class="@yield('fin_contrat_service')">
+                            <a href="{{route('fin_contrat_service',Auth::user()->service->id)}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat du service {{Auth::user()->service->libelle}}</a>
+                        </li>
                         <li class="@yield('expatrie')">
                             <a href="{{route('expatrie')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i> Expatriés et invités presents</a>
                         </li>

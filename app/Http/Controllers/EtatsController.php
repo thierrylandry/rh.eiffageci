@@ -8,6 +8,7 @@ use App\Jobs\EnvoieFincontrat;
 use App\Liste_telephonique;
 use App\Personne;
 use App\Personne_contrat;
+use App\Services;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;;
 use Illuminate\Http\Request;
@@ -27,6 +28,12 @@ $repertoires= Liste_telephonique::all();
         $contrats= Fin_contrat::all();
         $entites= Entite::all();
         return view('etats/fin_contrat',compact('contrats','entites'));
+    }
+    public function fin_contrat_service($id_service){
+        $service =Services::find($id_service);
+        $contrats= DB::select('call fin_contrat_service('.$id_service.')');
+        $entites= Entite::all();
+        return view('etats/fin_contrat_service',compact('contrats','entites','service'));
     }
     public function personne_contrat(){
         $contrats= Personne_contrat::all();
@@ -101,6 +108,40 @@ $repertoires= Liste_telephonique::all();
                 $message->bcc("thierry.koffi@eiffage.com");
             });
         }
+
+        //return view('mail/mailfincontrat',compact('contrats'));
+    }
+    public function mailfin_contrat_service(){
+        $services=Services::all();
+
+        foreach($services as $service):
+        $contrats= DB::select('call fin_contrat_service('.$service->id.')');
+        $users = User::where('id_service','=',$service->id)->get();
+
+        foreach($users as $user):
+
+            if($user->hasRole('Chef_de_service')){
+                if($user->email!="admin@eiffage.com" && $user->email!="chamie.diomande@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
+                    $contact[]=$user->email;
+                    }
+            }
+
+        endforeach;
+
+
+        if(isset($contrats[0])){
+            Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact,$service)
+            {
+                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT DU SERVICE ".$service->libelle);
+                foreach($contact as $em):
+                    $message ->to($em);
+                endforeach;
+                $message->bcc("cyriaque.kodia@eiffage.com");
+                $message->bcc("thierry.koffi@eiffage.com");
+            });
+        }
+        endforeach;
 
         //return view('mail/mailfincontrat',compact('contrats'));
     }

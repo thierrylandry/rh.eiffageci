@@ -155,7 +155,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
 
-  <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
+  <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}})</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
 
   <h1 style="padding: 0;text-align: left"><u>Article 4</u> : Dossier Administratif</h1>
 

@@ -10,6 +10,7 @@ use App\Entite;
 use App\Fonction;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
+use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Listmodifavenant;
 use App\Metier\Json\Rubrique;
@@ -246,11 +247,20 @@ $j=0;
         $modification->save();
 
         $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
         foreach($users as $user):
-            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
-            $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
+
+            if($user->hasRole('Chef_de_projet')){
+                $contact[]=$user->email;
+
+            }
+
         endforeach;
 
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(2,$contact));
+        }
         return redirect()->back()->with('success',"La demande de modification a été  enregistrée avec succès");
 
     }
@@ -385,10 +395,30 @@ $j=0;
 
         $recruement->save();
         $users =User::all();
+        /*
         foreach($users as $user):
             $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
             $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
         endforeach;
+        */
+        $contact=Array();
+        $contactdemandeur=Array();
+        foreach($users as $user):
+
+            if($user->hasRole('Ressource_humaine')){
+                $contact[]=$user->email;
+
+            }
+
+        endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValider(2,$contact));
+        }
+        $contactdemandeur[]=$recruement->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(2,$contactdemandeur,$recruement));
+        }
 
 
         return redirect()->route('modification.validation')->with('success',"La demande de recrutement a été  validée avec succès");

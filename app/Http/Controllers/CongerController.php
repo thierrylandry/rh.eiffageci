@@ -8,6 +8,7 @@ use App\Contrat;
 use App\Entite;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
+use App\Jobs\EnvoiesInformationDemandeur;
 use App\Personne;
 use App\Personne_presente;
 use App\Type_conges;
@@ -379,10 +380,25 @@ class CongerController extends Controller
 
         $conge->save();
         $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
         foreach($users as $user):
-            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
-            $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
+
+            if($user->hasRole('Ressource_humaine')){
+                $contact[]=$user->email;
+
+            }
+
         endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValider(4,$contact));
+        }
+        $contactdemandeur[]=$conge->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(4,$contactdemandeur,$conge));
+        }
+
 
         return redirect()->route('conges.validation')->with('success',"La demande d'absconge a été  validée avec succès");
 
@@ -480,10 +496,20 @@ class CongerController extends Controller
 
         $conge->save();
         $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
         foreach($users as $user):
-            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
-            $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
+
+            if($user->hasRole('Chef_de_service')){
+                $contact[]=$user->email;
+
+            }
+
         endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
+        }
 
         return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");
 

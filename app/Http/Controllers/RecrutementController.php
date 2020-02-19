@@ -11,6 +11,7 @@ use App\Entite;
 use App\Forfait;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
+use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
 use App\Recrutement;
@@ -247,11 +248,12 @@ $j=0;
         $recruement->save();
 
         $users =User::all();
+        /*
         foreach($users as $user):
             $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
             $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
         endforeach;
-/*
+         */
         $contact=Array();
         foreach($users as $user):
 
@@ -262,8 +264,11 @@ $j=0;
 
         endforeach;
 
-        $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
-*/
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
+        }
+
+
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
 
     }
@@ -408,11 +413,30 @@ $j=0;
 
         $recruement->save();
         $users =User::all();
+        /*
         foreach($users as $user):
             $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
             $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
         endforeach;
+        */
+        $contact=Array();
+        $contactdemandeur=Array();
+        foreach($users as $user):
 
+            if($user->hasRole('Ressource_humaine')){
+                $contact[]=$user->email;
+
+            }
+
+        endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValider(1,$contact));
+        }
+        $contactdemandeur[]=$recruement->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(1,$contactdemandeur,$recruement));
+        }
         return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
 
     }

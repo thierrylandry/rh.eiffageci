@@ -8,6 +8,7 @@ use App\Entite;
 use App\Fonction;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
+use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefus;
 use App\Personne;
 use App\Personne_presente;
@@ -56,12 +57,26 @@ class AbsenceController extends Controller
 
         $absence->save();
         $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
         foreach($users as $user):
-            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
-            $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
+
+            if($user->hasRole('Ressource_humaine')){
+                $contact[]=$user->email;
+
+            }
+
         endforeach;
 
-        return redirect()->route('modification.validation')->with('success',"La demande d'absence a été  validée avec succès");
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValider(3,$contact));
+        }
+        $contactdemandeur[]=$absence->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(3,$contactdemandeur,$absence));
+        }
+
+        return redirect()->route('absence.validation')->with('success',"La demande d'absence a été  validée avec succès");
 
     }
     public function je_connais_tes_droits_je_te_notifie_pour_la_gestion($les_droits,$email){
@@ -131,11 +146,20 @@ class AbsenceController extends Controller
 
         $absence->save();
         $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
         foreach($users as $user):
-            $mes_droits =  $this->dit_moi_qui_tu_es_je_te_dirai_tes_droits($user->id);
-            $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
+
+            if($user->hasRole('Chef_de_service')){
+                $contact[]=$user->email;
+
+            }
+
         endforeach;
 
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(3,$contact));
+        }
         return redirect()->back()->with('success',"La demande d'absence a été  enregistrée avec succès");
 
     }

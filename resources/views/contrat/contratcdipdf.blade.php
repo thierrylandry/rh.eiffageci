@@ -7,6 +7,11 @@
             /*color: #00aced;*/
 
         }
+        .signature{
+            position:relative;
+            page-break-before: always;
+            bottom:250px;
+        }
     </style>
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE INDETERMINEE</u></h1><br>
 

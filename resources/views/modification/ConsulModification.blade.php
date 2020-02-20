@@ -71,7 +71,7 @@
             <div class="card-body" >
                 <div class="row">
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="row">
                             @if(isset($modification))
                                 <table border="1" style="border:1px; text-align: center" width="100%">

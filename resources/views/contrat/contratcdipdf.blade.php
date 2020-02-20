@@ -304,11 +304,9 @@
 
     <div class="signature">
         <div style="min-height: 700.748031px;height:700.748031px;"></div>
-        <p style="text-align: right">Fait à Abidjan, le  <b class="classtext"><?php $date = new DateTime($contrat->created_at);
+        <p style="text-align: right">Fait à Abidjan, le <b class="classtext"> <?php $date = new DateTime($contrat->created_at);
                 echo $date->format('d-m-Y');?></b>.</p>
-
-        <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br>
-        <br>
+        <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p>
         <table style="margin: 0; padding: 0; ">
             <tr>
                 <td width="40%" align="left">
@@ -323,7 +321,8 @@
                 <td width="5%" >
                     <b class="classtext" style="font-size: 12pt;">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b>
                 </td>
-            </tr>           <tr>
+            </tr>
+            <tr>
                 <td width="40%" align="left">
                     <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
                 </td>

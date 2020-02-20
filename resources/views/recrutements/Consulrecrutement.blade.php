@@ -71,11 +71,11 @@
             <div class="card-body" >
                 <div class="row">
                     <div class="col-sm-4">
-                        <p> Poste à pouvoir : <b>{{isset($recrutement)? $recrutement->postApouvoir:''}}</b></p>
-                        <p> Nombre de personne : <b>{{isset($recrutement)? $recrutement->nombre_personne:''}}</b></p>
+                        <p> Poste à pouvoir : <b>{{isset($recrutement)? $recrutement->posteApouvoir:''}}</b></p>
+                        <p> Nombre de personne : <b>{{isset($recrutement)? $recrutement->NbrePersonne:''}}</b></p>
                     </div>
                     <div class="col-sm-4">
-                        <p> Date de naissance :  {{\Carbon\Carbon::parse(isset($personne)? $personne->datenaissance:'')->format('d-m-Y')}}</p>
+                        <p> Date de debut :  {{\Carbon\Carbon::parse(isset($personne)? $personne->dateDebut:'')->format('d-m-Y')}}</p>
                         <p> Entité : {{isset($recrutement)?  $recrutement->entite->libelle:''}}</p>
                     </div>
                     <div class="col-sm-4">
@@ -149,7 +149,7 @@
                 <div class="card-body" >
                     <div class="row">
                         <div class="col-sm-3">
-                            <p> Date de début : <b>{{isset($recrutement)? $recrutement->dateDebut:''}}</b></p>
+                            <p> Date de début : <b>{{\Carbon\Carbon::parse(isset($personne)? $personne->dateDebut:'')->format('d-m-Y')}}</b></p>
 
                         </div>
                         <div class="col-sm-3">

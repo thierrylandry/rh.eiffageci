@@ -101,7 +101,7 @@
                             <ul>
                                 @if(isset($competences))
                                     @foreach($competences as $competence)
-                                        @if(!empty($competence))
+                                        @if(!isset($competence))
                                             <li>{{$competence}}</li>
                                         @endif
                                     @endforeach
@@ -125,7 +125,7 @@
                             <ul>
                                 @if(isset($taches))
                                     @foreach($taches as $tache)
-                                        @if(!empty($tache))
+                                        @if(!isset($tache))
                                             <li>{{$tache}}</li>
                                         @endif
                                     @endforeach

@@ -72,7 +72,148 @@
                 <div class="row">
 
                     <div class="col-sm-6">
-                        {{$modification->list_modif}}
+                        <div class="row">
+                            @if(isset($modification))
+                                <table border="1" style="border:1px; text-align: center" width="100%">
+                                    @foreach(json_decode($modification->list_modif) as $modif)
+
+                                        @switch($modif)
+                                        @case("Le service")
+
+
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->service()->first()->libelle:''}}</td>
+                                            <td>{{isset($contrat)?$contrat->service()->first()->libelle:''}}</td>
+                                        </tr>
+
+
+
+                                        @break
+
+                                        @case("La durée hebdomadaire de travail")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->regime:''}}</td>
+                                            <td>{{isset($contrat)?$contrat->regime:''}}</td>
+                                        </tr>
+
+                                        @break
+                                        @case("La fonction")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->fonction()->first()->libelle:''}}</td>
+                                            <td>{{isset($modification)?$modification->fonction_initial()->first()->libelle:''}}</td>
+                                        </tr>
+
+                                        @break
+                                        @case("Le type de contrat")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->type_contrat->libelle:''}}</td>
+                                            <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
+                                        </tr>
+
+                                        @break
+                                        @case("La date de fin")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?date("d-m-Y", strtotime($modification->dateFinC)):''}}</td>
+                                            <td>{{isset($contrat)?date("d-m-Y", strtotime($contrat->datefinc)):''}}</td>
+                                        </tr>
+                                        @break
+                                        @case("La définition")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification->definition)?$modification->definition->libelle:''}}</td>
+                                            <td>{{isset($contrat->definition)?$contrat->definition->libelle:''}}</td>
+                                        </tr>
+
+                                        @break
+                                        @case("La catégorie")
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->id_categorie:''}}</td>
+                                            <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
+                                        </tr>
+
+                                        @break
+                                        @case("Le budget mensuel")
+
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr style="color: #00a2e3;">
+                                            <td>{{isset($modification)?$modification->budgetMensuel:''}}</td>
+                                            <td>
+                                                <?php $affiche=0;
+                                                if(isset($contrat->valeurSalaire)){
+                                                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                                                        $affiche+=$valeurSalaire->valeur;
+                                                    endforeach;
+                                                    echo $affiche;
+                                                }
+
+
+                                                ?></td>
+                                        </tr>
+
+                                        @break
+                                        @default
+
+                                        @endswitch
+                                    @endforeach
+                                </table>
+                            @endif
+                        </div>
+                        </br>
+                    </div>
                     </div>
 
                 </div>

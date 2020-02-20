@@ -310,6 +310,7 @@
     </p><br><br><br>
 
     <div class="signature">
+        <div style="min-height: 700.748031px;height:700.748031px;"></div>
         <p style="text-align: right">Fait à Abidjan, le <b class="classtext"> <?php $date = new DateTime($contrat->created_at);
                 echo $date->format('d-m-Y');?></b>.</p>
         <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p>

@@ -296,12 +296,14 @@
     <p>Le présent contrat est établi en <b>deux (2)</b> exemplaires originaux exempt de tous droits de timbre et d’enregistrement, dont une <b>(01) copie originale</b> est remise à l’Employé.
     </p><br><br><br>
 
-    <p style="text-align: right">Fait à Abidjan, le  <b class="classtext"><?php $date = new DateTime($contrat->created_at);
-            echo $date->format('d-m-Y');?></b>.</p>
 
-    <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br>
-    <br>
     <div class="signature">
+        <div style="min-height: 700.748031px;height:700.748031px;"></div>
+        <p style="text-align: right">Fait à Abidjan, le  <b class="classtext"><?php $date = new DateTime($contrat->created_at);
+                echo $date->format('d-m-Y');?></b>.</p>
+
+        <p style="text-align: left; font-size: 10pt">Signature précédée de la mention «Lu et approuvé»</p><br>
+        <br>
         <table style="margin: 0; padding: 0; ">
             <tr>
                 <td width="40%" align="left">

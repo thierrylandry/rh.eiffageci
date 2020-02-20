@@ -188,12 +188,12 @@
 
                     </div>
                     <div class="col-sm-3">
-                        <p> Débit internet : {{isset($recrutement)? $recrutement->forfait:''}} </p>
+                        <p> Débit internet : <b>{{isset($recrutement)? $recrutement->forfait:''}}</b> </p>
 
 
                     </div>
                     <div class="col-sm-3">
-                        <p> Assurance : {{isset($recrutement)?  $recrutement->debit_internet:''}}</p>
+                        <p> Assurance : <b>{{isset($recrutement)?  $recrutement->debit_internet:''}}</b></p>
 
 
                     </div>
@@ -211,7 +211,11 @@
                 </div>
                 <div class="card-body" >
                     <div class="row">
+                        <div class="col-sm-3">
+                            <p> Budget mensuel : <b>{{isset($recrutement->budgetMensuel)?$recrutement->budgetMensuel:''}}</b></p>
 
+
+                        </div>
                     </div>
                 </div>
             </div>

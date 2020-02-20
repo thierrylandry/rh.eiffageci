@@ -259,7 +259,7 @@
                                             <span style="background-color:#00b5e9;  color:white">Avenant</span>
                                         @endif</td>
                                     <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
-                                    <td>{{isset($modification->personne->nom)?$modification->personne->nom:''}} {{isset($modification->personne->prenoms)?$modification->personne->prenoms:''}}</td>
+                                    <td>{{isset($modification->personne->nom)?$modification->personne->nom:''}} {{isset($modification->personne->prenom)?$modification->personne->prenom:''}}</td>
                                     <td>{{$modification->user->entite->libelle}}</td>
                                     <td>@foreach(json_decode($modification->list_modif) as $modif)
                                             <button type="button" class="btn btn-outline-primary" title="ici" disabled>{{$modif}}</button>

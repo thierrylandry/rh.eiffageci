@@ -87,12 +87,13 @@
     <div class="top-campaign">Ci-dessous les modification à apporter:</br>
         <div class="row">
             @if(isset($modification_recrutement))
+                <table border="1" style="border:1px; text-align: center" width="100%">
             @foreach(json_decode($modification_recrutement->list_modif) as $modif)
 
                 @switch($modif)
                 @case("Le service")
-                <button type="button" class="btn btn-outline-primary" disabled style="margin:10px">
-                    <table border="1" style="border:1px;">
+
+
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -104,13 +105,12 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->service()->first()->libelle:''}}</td>
                             <td>{{isset($contrat)?$contrat->service()->first()->libelle:''}}</td>
                         </tr>
-                    </table>
 
-                </button>
+
+
                 @break
 
                 @case("La durée hebdomadaire de travail")
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -122,12 +122,9 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->regime:''}}</td>
                             <td>{{isset($contrat)?$contrat->regime:''}}</td>
                         </tr>
-                    </table>
 
                 @break
                 @case("La fonction")
-
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -139,11 +136,9 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
                             <td>{{isset($modification_recrutement)?$modification_recrutement->fonction_initial()->first()->libelle:''}}</td>
                         </tr>
-                    </table>
 
                 @break
                 @case("Le type de contrat")
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -155,11 +150,9 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->type_contrat->libelle:''}}</td>
                             <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
                         </tr>
-                    </table>
 
                 @break
                 @case("La date de fin")
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -171,10 +164,8 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?date("d-m-Y", strtotime($modification_recrutement->dateFinC)):''}}</td>
                             <td>{{isset($contrat)?date("d-m-Y", strtotime($contrat->datefinc)):''}}</td>
                         </tr>
-                    </table>
                 @break
                 @case("La définition")
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -186,11 +177,9 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement->definition)?$modification_recrutement->definition->libelle:''}}</td>
                             <td>{{isset($contrat->definition)?$contrat->definition->libelle:''}}</td>
                         </tr>
-                    </table>
 
                 @break
                 @case("La catégorie")
-                    <table border="1" class="table col-sm-3">
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -202,10 +191,10 @@
                             <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->id_categorie:''}}</td>
                             <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
                         </tr>
-                    </table>
+
                 @break
                 @case("Le budget mensuel")
-                    <table border="1" class="table col-sm-3">
+
                         <tr>
                             <td colspan="2">{{$modif}}</td>
                         </tr>
@@ -227,14 +216,13 @@
 
                                 ?></td>
                         </tr>
-                    </table>
+
                 @break
                 @default
 
                 @endswitch
-
-
             @endforeach
+                </table>
                 @endif
         </div>
         </br>

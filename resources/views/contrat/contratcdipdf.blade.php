@@ -4,8 +4,8 @@
         p, div{padding: 1px; margin: 0; text-align: justify}
         table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
         .classtext{
-            color: #00aced;
-            font-family: "alamain";
+            /*color: #00aced;*/
+
         }
     </style>
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE INDETERMINEE</u></h1><br>
@@ -26,16 +26,16 @@
             <td width="100%">
                 <table class="preambule">
                     <tr>
-                        <td style="font-size: 10pt" width="40%"><b>Nom</b></td>
-                        <td width="60%" class="classtext"><b>{{$contrat->personne->nom}}</b></td>
+                        <td style="font-size: 12pt" width="40%"><b>Nom</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{$contrat->personne->nom}}</b></td>
                     </tr>
                     <tr>
-                        <td style="font-size: 10pt" width="40%" ><b>Prénoms</b></td>
-                        <td width="60%"  class="classtext"><b><b>{{$contrat->personne->prenom}}</b></b></td>
+                        <td style="font-size: 12pt" width="40%" ><b>Prénoms</b></td>
+                        <td width="60%" style="font-size: 12pt"  class="classtext"><b><b>{{$contrat->personne->prenom}}</b></b></td>
                     </tr>
                     <tr>
                         <td style="font-size: 10pt" width="40%"><b>Sexe</b></td>
-                        <td width="60%"  class="classtext">
+                        <td width="60%"  class="classtext" style="font-size: 12pt">
                             <b> @if($contrat->personne->sexe=="M")
                                     HOMME
                                 @else
@@ -43,23 +43,23 @@
                                 @endif</b>
                         </td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Né(e) le</b></td>
-                        <td width="60%" class="classtext">
+                        <td style="font-size: 12pt" width="40%"><b>Né(e) le</b></td>
+                        <td width="60%" style="font-size: 12pt"class="classtext">
                             <b><?php $date = new DateTime($contrat->personne->datenaissance);
                                 echo $date->format('d-m-Y');?></b>
                         </td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>A</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->lieu_naissance)?$contrat->personne->lieu_naissance:''}}</b></td>
+                        <td style="font-size: 12pt" width="40%"><b>A</b></td>
+                        <td width="60%" style="font-size: 12pt"><b></b></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>De</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->nom_pere)?$contrat->personne->nom_pere:''}}</b></td>
+                        <td style="font-size: 12pt" width="40%"><b>De</b></td>
+                        <td width="60%" style="font-size: 12pt"></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Et de</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->nom_mere)?$contrat->personne->nom_mere:''}}</b></td>
+                        <td style="font-size: 12pt" width="40%"><b>Et de</b></td>
+                        <td width="60%" style="font-size: 12pt"></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Situation de famille</b></td>
-                        <td width="60%" class="classtext"><b>@if($contrat->personne->matrimonial=="1")
+                        <td style="font-size: 12pt" width="40%"><b>Situation de famille</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>@if($contrat->personne->matrimonial=="1")
                                     CELIBATAIRE
                                 @elseif($contrat->personne->matrimonial=="2")
                                     MARIE(E)
@@ -70,53 +70,62 @@
                                 @endif
                             </b></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Domicilié à</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
+                        <td style="font-size: 12pt" width="40%"><b>Domicilié à</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
                     </tr><tr>
-                        <td style="font-size: 10pt" width="40%"><b>Nationalité</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
-                    </tr><tr>
-                        @foreach($pieces as $piece)
-                            @switch($piece->type_p_piece)
-                            @case('CNI')
+                        <td style="font-size: 12pt" width="40%"><b>Nationalité</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 12pt" width="40%" ><b>Fonction</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
+                    </tr>               @foreach($pieces as $piece)
+                        @switch($piece->type_p_piece)
+                        @case('CNI')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Carte nationnal d'identité
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-                            @break;
-                            @case('PSP')
-
+                        </tr>
+                        @break;
+                        @case('PSP')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Passeport
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-                            @break;
-                            @case('cc')
-
+                        </tr>
+                        @break;
+                        @case('cc')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Carte consulaire
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-                            @break;
-                            @case('vis')
-
+                        </tr>
+                        @break;
+                        @case('vis')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Visa
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-                            @break;
-                            @case('cr')
-
+                        </tr>
+                        @break;
+                        @case('cr')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Carte de résident
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-                            @break;
-                            @case('ATTN')
+                        </tr>
+                        @break;
+                        @case('ATTN')
+                        <tr>
                             <td style="font-size: 10pt" width="40%"><b>
                                     Attestation nationnal d'identité
                                 </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
-
-                            @break;
-                            @endswitch
-                            @break
-                        @endforeach
-                    </tr><tr>
+                        </tr>
+                        @break;
+                        @endswitch
+                        @break
+                    @endforeach<tr>
                         <td style="font-size: 10pt" width="40%" ><b>Fonction</b></td>
                         <td width="60%" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
                     </tr>
@@ -203,14 +212,14 @@
             <td width="100%">
                 <table class="preambule" style="margin-left: 50px; padding: 0px; width: 100%">
                     <tr>
-                        <td style="font-size: 10pt" width="40%" align="center"><b>Détail</b></td>
-                        <td style="font-size: 10pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
+                        <td style="font-size: 12pt" width="40%" align="center"><b>Détail</b></td>
+                        <td style="font-size: 12pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
                     </tr>
                     @if(isset($contrat->valeurSalaire))
-                        @foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire)
+                        @foreach(json_decode($contrat->valeurSalaire) as $valeur)
                             <tr>
-                                <td style="font-size: 10pt" width="40%">{{$valeurSalaire->libelle}}</td>
-                                <td width="60%">{{$valeurSalaire->valeur}}</td>
+                                <td style="font-size: 12pt" width="40%">{{$valeur->libelle}}</td>
+                                <td width="60%"  class="classtext" style="font-size: 12pt"><b>{{$valeur->valeur}}</b></td>
                             </tr>
                         @endforeach
                     @endif

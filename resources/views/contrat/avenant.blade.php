@@ -4,8 +4,8 @@
         p, div{padding: 1px; margin: 0; text-align: justify}
         table{background-color:#fff;border-spacing:0;margin:5px;border-collapse:collapse;width:80%;}
         .classtext{
-            color: #00aced;
-            font-family: "alamain";
+            /*color: #00aced;*/
+
         }
 
         #header, #footer {
@@ -22,6 +22,10 @@
             bottom: 50px;
             height: 200px;
             width: 700px;
+        }
+        .signature{
+            position: fixed;
+            bottom:300px;
         }
     </style>
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>AVENANT AU CONTRAT DE TRAVAIL</u></h1><br>

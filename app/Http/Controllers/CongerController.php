@@ -617,6 +617,6 @@ class CongerController extends Controller
         $type_motifs = Type_conges::all();
         $conges = Absconges::where('etat','!=',1)->get();
        // dd($conges);
-        return view('conges/GestionConge',compact('Absconges','mode','entites','type_motifs','mode','conges'));
+        return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges'));
     }
 }

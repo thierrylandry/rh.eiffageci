@@ -81,6 +81,7 @@ class RecrutementController extends Controller
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
+      //  dd($competences[0]);
         return view('recrutements/Consulrecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches'));
     }
     public function liste_salaire($slug){

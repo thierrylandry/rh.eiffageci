@@ -181,6 +181,7 @@ class ContratController extends Controller
         $contrat= Contrat::find($id);
         //dd(json_decode($contrat->valeurSalaire));
         $rubrique_salaires= Rubrique_salaire::all();
+        $rubrique_salaires= Rubrique_salaire::all();
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
         $services = Services::all();
@@ -189,7 +190,46 @@ class ContratController extends Controller
         $entites= Entite::all();
         $nature_contrats= Nature_contrat::all();
         $assurance_maladies= Assurance_maladie::all();
-        return view('contrat/contrat_pour_correction',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies','rubrique_salaires'));
+        $resultat="";
+        if(!empty($contrat->valeurSalaire)){
+
+            $salaires=\GuzzleHttp\json_decode($contrat->valeurSalaire);
+
+
+            $j=0;
+            foreach($salaires as $salaire ):
+                $j++;
+                dd($salaire);
+                if($j>5) {
+                    $resultat .= "<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
+
+
+                    $selected='';
+
+                    if(isset($rubrique_salaires)){
+
+                        $i=0;
+                        foreach($rubrique_salaires as $rubrique_salaire):
+                            $i++;
+
+                            if($i>5){
+                                if($rubrique_salaire->libelle==$salaire->libelle){
+                                    $selected="selected";
+                                }else{
+                                    $selected='';
+                                }
+                                $resultat.= " <option value='".$rubrique_salaire->libelle."'".$selected." >".$rubrique_salaire->libelle."</option>";
+                            }
+                        endforeach;
+                    }
+
+                    $resultat .= "</select></div></div><div class='form-control-label'> <label for='valeur[]'>Valeur</label><div class='form-group col-sm-12'><div class='form-line'><input type='text' name='valeur[]' class='valeur_c form-control' placeholder='Valeur' value='" . $salaire->valeur . "'></div></div></div><hr width='800' color='blue'> ";
+                }
+            endforeach;
+
+        }
+
+        return view('contrat/contrat_pour_correction',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies','rubrique_salaires','resultat'));
     }
 
     public function lister_contrat($slug){
@@ -488,7 +528,7 @@ class ContratController extends Controller
 
 
         $parameters=$request->except(['_token']);
-          // dd($parameters);
+   //       dd($parameters);
         $slug=$parameters["slug"];
 
         $personne = Personne::where('slug','=',$slug)->get()->first();
@@ -534,7 +574,7 @@ class ContratController extends Controller
 
         $contrat= Contrat::find($parameters['id_contrat']);
         $salaire= new Salaire();
-
+//dd($rubriques);
         $salaire->id_personne=$personne->id;
         $salaire->valeurSalaire=json_encode($rubriques->toArray());
         $salaire->save();

@@ -263,6 +263,19 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">La fonction :</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control {{isset($listmodif) && in_array('La fonction',$listmodif)?'modifie':''}} " name="id_fonction" id="id_fonction3" required>
+                                <option value="">SELECTIONNER</option>
+                                @foreach($fonctions as $fonction)
+                                    <option {{isset($contrat->personne->fonction) && $contrat->personne->fonction==$fonction->id?'selected':''}}  value="{{$fonction->id}}">{{$fonction->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-3">
                             <label for="text-input" class=" form-control-label">Définition :</label>
                         </div>
                         <div class="col-sm-9">

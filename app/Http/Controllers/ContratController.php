@@ -149,7 +149,7 @@ class ContratController extends Controller
             endforeach;
 
         }
-
+//dd($contrat->personne->fonction);
         if($personne->entretien_cs==1 && $personne->entretien_rh==1 && ($personne->visite_medicale==1 || $personne->date_visite!="")){
             return view('contrat/contrat_affiche',compact('personne','services','typecontrats','definitions','entites','nature_contrats','contrat','ancien_contrat','categories','rubrique_salaires','recrutements','valeurSalaire','id_typeModification','recrutement','modification_recrutement','id_typeModification','listmodif','assurance_maladies','resultat','fonctions'));
         }else{
@@ -519,7 +519,6 @@ class ContratController extends Controller
         if(isset($parameters["id_categorie"])){
             $contrat->id_categorie=$id_categorie;
         }
-
         $personne->save();
         $contrat->save();
 
@@ -636,7 +635,7 @@ class ContratController extends Controller
         if(isset($parameters["id_categorie"])){
             $contrat->id_categorie=$id_categorie;
         }
-
+        $personne->fonction=$parameters['id_fonction'];
         $personne->save();
         $contrat->save();
 

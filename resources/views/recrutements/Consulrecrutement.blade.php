@@ -93,7 +93,7 @@
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-header">
-                    <strong>Compétence recherchée</strong>
+                    <strong>Compétence(s) recherchée(s)</strong>
                 </div>
                 <div class="card-body" >
                     <div class="row">
@@ -117,7 +117,7 @@
         <div class="col-lg-6">
             <div class="card" style="height: 100% !important">
                 <div class="card-header">
-                    <strong>Responsabilité ou tâche</strong>
+                    <strong>Responsabilité(s) ou tâche(s)</strong>
                 </div>
                 <div class="card-body" >
                     <div class="row">

@@ -181,7 +181,11 @@ class ContratController extends Controller
         $contrat= Contrat::find($id);
         //dd(json_decode($contrat->valeurSalaire));
         $rubrique_salaires= Rubrique_salaire::all();
-        $rubrique_salaires= Rubrique_salaire::all();
+        $rubrique_salaires_limite_5= Rubrique_salaire::orderBy('id','asc')->limit(5)->get();
+        $libelrubrique= Array();
+        foreach($rubrique_salaires_limite_5 as $sal):
+            $libelrubrique[]=$sal->libelle;
+            endforeach;
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
         $services = Services::all();
@@ -199,8 +203,8 @@ class ContratController extends Controller
             $j=0;
             foreach($salaires as $salaire ):
                 $j++;
-                dd($salaire);
-                if($j>5) {
+             //   dd($rubrique_salaires_limite_5);
+                if(!in_array($salaire->libelle,$libelrubrique)) {
                     $resultat .= "<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
 
 

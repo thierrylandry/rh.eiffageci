@@ -133,12 +133,18 @@ class AbsenceController extends Controller
         $reprise=$parameters['reprise'];
 
 
+
         $absence = new Absence();
         $absence->debut=$debut;
         $absence->fin=$fin;
         $absence->reprise=$reprise;
         $absence->id_personne=$id_personne;
         $absence->jour=$jour;
+        if(isset($parameters['motif_perso'])){
+            $motif=$parameters['motif_perso'];
+            $absence->motif_perso=$motif;
+        }
+
         $absence->id_users=Auth::user()->id;
         $absence->etat=1;
 
@@ -202,6 +208,7 @@ class AbsenceController extends Controller
         $reprise=$parameters['reprise'];
 
 
+
         $absence = Absence::find($id);
         $absence->debut=$debut;
         $absence->fin=$fin;
@@ -210,6 +217,11 @@ class AbsenceController extends Controller
         $absence->id_personne=$id_personne;
         $absence->id_users=Auth::user()->id;
         $absence->etat=1;
+        if(isset($parameters['motif_perso'])){
+            $motif=$parameters['motif_perso'];
+            $absence->motif_perso=$motif;
+        }
+
 
 
 

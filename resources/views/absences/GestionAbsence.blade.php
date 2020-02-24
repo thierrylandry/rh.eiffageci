@@ -63,6 +63,7 @@
                         <th>STATUS</th>
                         <th>DEMANDEUR</th>
                         <th>TITULAIRE</th>
+                        <th>MOTIF</th>
                         <th>DATE DE DEPART SOUHAITE</th>
                         <th>DATE DE FIN SOUHAITE</th>
                         <th>DATE DE REPRISE</th>
@@ -88,6 +89,7 @@
                             </td>
                             <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
                             <td>{{isset($absence->personne->nom)?$absence->personne->nom:''}} {{isset($absence->personne->prenom)?$absence->personne->prenom:''}}</td>
+                            <td>{{isset($absence->motif_perso)?$absence->motif_perso:''}}</td>
                             <td>{{$absence->debut}}</td>
                             <td>{{$absence->fin}}</td>
                             <td>{{$absence->reprise}}</td>

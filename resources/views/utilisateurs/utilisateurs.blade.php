@@ -94,7 +94,7 @@
                                 <label for="domaine">Les Roles</label>
                                     </div>
                             <div class="col-12 col-md-9">
-                                <select class="form-control " id="roles" name="roles[]"  multiple required >
+                                <select class="form-control " id="roles" name="roles[]"  multiple >
                                     @foreach($roles as $role)
                                         @if(isset($utilisateur) and $utilisateur->hasRole($role->name))
                                             <option value="{{$role->name}}" selected>{{$role->description}}</option>

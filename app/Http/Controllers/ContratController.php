@@ -76,6 +76,7 @@ class ContratController extends Controller
         $modification=null;
         $recrutement=null;
         $listmodif=null;
+
         if($id_typeModification==2 || $id_typeModification==3){
             $modification_recrutement= Modification::find($id);
             $personne= Personne::find($modification_recrutement->id_personne);
@@ -467,6 +468,7 @@ class ContratController extends Controller
         $contrat->id_modification=$id_recrutement_modification;
         $modification= Modification::find($id_recrutement_modification);
         $modification->etat=3;
+        $modification->id_typeModification=$id_typeModification;
         $modification->save();
 
 

@@ -231,7 +231,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>STATUS</th>
-                                <th>TYPE MODIFICATION</th>
+                                <th>TYPE MODIFICATION <MARQUEE > (Ce type peut changer au cours de la procédure à la convenance des RHs)</MARQUEE></th>
                                 <th>DEMANDEUR</th>
                                 <th>PERSONNE</th>
                                 <th>DIRECTION</th>

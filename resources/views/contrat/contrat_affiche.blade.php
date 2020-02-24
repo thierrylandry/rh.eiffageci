@@ -243,7 +243,6 @@
                 <div class="row form-group">
 
                     <div class="col-sm-9">
-                        <input type="hidden" name="id_typeModification"  value="{{isset($id_typeModification)?$id_typeModification:''}}" required/>
                         <input type="hidden" name="id_recrutement_modification"  value="{{isset($modification_recrutement)?$modification_recrutement->id:''}}" required/>
                     </div>
                 </div>
@@ -258,8 +257,21 @@
             <div class="col-sm-6 top-campaign ">
 
                 <div class="">
-                    <div class="col-sm-9">
-                        <input type="hidden" name="id_nature_contrat" id="id_nature_contrat" value="1">
+                    <div class="row form-group">
+                    <div class="col-sm-3">
+                        <label for="text-input" class=" form-control-label">La nature du contrat :</label>
+                    </div>
+                        <div class="col-sm-9">
+                            <select class="form-control " name="id_typeModification" id="id_typeModification" required>
+                                <option value="">SELECTIONNER</option>
+                                @foreach($nature_contrats as $nature_contrat)
+                                    @if($nature_contrat->id>1)
+                                        <option {{ $id_typeModification==$nature_contrat->id?'selected':''}}  value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">

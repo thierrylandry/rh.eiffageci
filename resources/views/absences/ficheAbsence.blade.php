@@ -80,12 +80,6 @@
                             <div class="row form-group">
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    @if(isset($absence))
-                                        <input class="form-control" value="{{$absence->personne->nom." ".$absence->personne->prenom}}" disabled/>
-                                    @elseif(!isset($absence) && isset(Auth::user()->id_personne) && !Auth::user()->hasRole('Ressource_humaine'))
-                                        <input type="text" class="form-control" value="{{isset(Auth::user()->id_personne)?Auth::user()->nom.' '.Auth::user()->prenoms:''}}" disabled/>
-                                        <input type="hidden" id="id_personne1" name="id_personne" value="{{isset(Auth::user()->id_personne)?Auth::user()->id_personne:''}}" />
-                                    @elseif(!isset($absence) && Auth::user()->hasRole('Ressource_humaine'))
                                         <select class="form-control" id="id_personne1" name="id_personne">
                                             <option value="">Selectionner une personne</option>
 
@@ -94,7 +88,6 @@
                                             @endforeach
 
                                         </select>
-                                    @endif
                                 </div>
 
                                 <div class="col-12 col-md-4">

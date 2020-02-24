@@ -82,11 +82,6 @@
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
                                     @if(isset($conge))
-                                        <input class="form-control" value="{{$conge->personne->nom." ".$conge->personne->prenom}}" disabled/>
-                                    @elseif(!isset($conge) && isset(Auth::user()->id_personne) && !Auth::user()->hasRole('Ressource_humaine'))
-                                        <input type="text" class="form-control" value="{{isset(Auth::user()->id_personne)?Auth::user()->nom.' '.Auth::user()->prenoms:''}}" disabled/>
-                                        <input type="hidden" id="id_personne1" name="id_personne" value="{{isset(Auth::user()->id_personne)?Auth::user()->id_personne:''}}" />
-                                    @elseif(!isset($conge) && Auth::user()->hasRole('Ressource_humaine'))
                                         <select class="form-control" id="id_personne1" name="id_personne">
                                             <option value="">Selectionner une personne</option>
 

@@ -56,13 +56,13 @@
                         </td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>A</b></td>
-                        <td width="60%" style="font-size: 12pt"><b></b></td>
+                        <td width="60%" style="font-size: 12pt"><b>{{isset($contrat->personne->lieu_naissance)?$contrat->personne->lieu_naissance:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>De</b></td>
-                        <td width="60%" style="font-size: 12pt"></td>
+                        <td width="60%" style="font-size: 12pt"><b>{{isset($contrat->personne->noms_pere)?$contrat->personne->noms_pere:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Et de</b></td>
-                        <td width="60%" style="font-size: 12pt"></td>
+                        <td width="60%" style="font-size: 12pt"><b>{{isset($contrat->personne->noms_mere)?$contrat->personne->noms_mere:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Situation de famille</b></td>
                         <td width="60%" style="font-size: 12pt" class="classtext"><b>@if($contrat->personne->matrimonial=="1")
@@ -81,10 +81,6 @@
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Nationalité</b></td>
                         <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt" width="40%" ><b>Fonction</b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
                     </tr>
 
                                 @foreach($pieces as $piece)
@@ -136,8 +132,8 @@
                                 @endforeach
 
                     <tr>
-                        <td style="font-size: 10pt" width="40%" ><b>Fonction</b></td>
-                        <td width="60%" class="classtext"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
+                        <td style="font-size: 12pt" width="40%" ><b>Fonction</b></td>
+                        <td width="60%" class="classtext" style="font-size: 12pt"><b>{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}</b></td>
                     </tr>
                 </table>
             </td>

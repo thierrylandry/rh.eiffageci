@@ -81,7 +81,7 @@
 
                                 <div class="col-12 col-md-4">
                                     <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    @if(isset($conge))
+
                                         <select class="form-control" id="id_personne1" name="id_personne">
                                             <option value="">Selectionner une personne</option>
 
@@ -90,7 +90,6 @@
                                             @endforeach
 
                                         </select>
-                                    @endif
                                 </div>
 
                                 <div class="col-12 col-md-4">

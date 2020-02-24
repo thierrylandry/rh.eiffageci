@@ -637,7 +637,7 @@ class ContratController extends Controller
         if(isset($parameters["id_categorie"])){
             $contrat->id_categorie=$id_categorie;
         }
-        $personne->fonction=$parameters['id_fonction'];
+       // $personne->fonction=$parameters['id_fonction'];
         $personne->save();
         $contrat->save();
 

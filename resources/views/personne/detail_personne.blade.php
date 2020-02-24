@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="text-input" class=" form-control-label">Nom et prénom de la mère mère *</label>
+                                        <label for="text-input" class=" form-control-label">Nom et prénom de la mère *</label>
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="text-input" name="noms_mere" placeholder="Nom et prénoms de la mère" class="form-control" value="{{isset($personne)? $personne->noms_mere:''}}" required>

@@ -83,11 +83,14 @@ class UserController extends Controller
 
 
         $utilisateur->save();
-        $roles=$parameters['roles'];
-        $utilisateur->roles()->detach();
-        foreach ($roles as $role):
-            $utilisateur->roles()->attach(Role::where('name',$role)->first());
-        endforeach;
+        if(isset($parameters['roles'])){
+            $roles=$parameters['roles'];
+            $utilisateur->roles()->detach();
+            foreach ($roles as $role):
+                $utilisateur->roles()->attach(Role::where('name',$role)->first());
+            endforeach;
+        }
+
 
         return redirect()->route('utilisateur')->with('success',"L'utilisateur a été modifier avec succès");
     }
@@ -127,11 +130,13 @@ class UserController extends Controller
 
 
         $utilisateur->save();
-        $roles=$parameters['roles'];
-        $utilisateur->roles()->detach();
-        foreach ($roles as $role):
-            $utilisateur->roles()->attach(Role::where('name',$role)->first());
-        endforeach;
+        if(isset($parameters['roles'])){
+            $roles=$parameters['roles'];
+            $utilisateur->roles()->detach();
+            foreach ($roles as $role):
+                $utilisateur->roles()->attach(Role::where('name',$role)->first());
+            endforeach;
+        }
         return redirect()->route('utilisateur')->with('success',"L'utilisateur a été crée avec succès");
 
     }

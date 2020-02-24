@@ -204,6 +204,7 @@
                             <thead>
                             <tr>
                                 <th>MATRICULE</th>
+                                <th class="">NATURE </br>CONTRAT</th>
                                 <th class="">TYPE </br>CONTRAT</th>
                                 <th>COUVERTURE </br>MALADIE</th>
                                 <th>SERVICE</th>

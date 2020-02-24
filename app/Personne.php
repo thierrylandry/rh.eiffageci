@@ -8,7 +8,7 @@ class Personne extends Model
 {
     //
     protected  $table="personne";
-    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','id_entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff','id_commune','lieu_naissance','nom_pere','nom_mere'];
+    protected $fillable= ['id','nom','prenom','datenaissance','sexe','nationalite','matrimonial','enfant','cnps','pointure','id_entite','id_unite','id_createur','id_modificateur','contact','email','image','situationmat','slug','surete','matricule','service','adresse','whatsapp','sattelitaire','presenceEff','id_commune','lieu_naissance','noms_pere','noms_mere'];
 
 
     public function societe(){

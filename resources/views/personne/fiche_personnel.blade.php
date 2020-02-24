@@ -50,6 +50,9 @@
                           <p> Nom : <b>{{isset($personne)? $personne->nom:''}}</b></p>
                           <p> Prénom : <b>{{isset($personne)? $personne->prenom:''}}</b></p>
                           <p> Date de naissance :  {{\Carbon\Carbon::parse(isset($personne)? $personne->datenaissance:'')->format('d-m-Y')}}</p>
+                           <p>lieu de naissance : {{isset($personne) && isset($personne->lieu_naissance)? $personne->lieu_naissance:''}}</p>
+                           <p>Nom du père : {{isset($personne) && isset($personne->noms_pere)? $personne->noms_pere:''}}</p>
+                           <p>Nom de la mère : {{isset($personne) && isset($personne->noms_mere)? $personne->noms_mere:''}}</p>
                            <p id="age">   </p>
                            <p> Sexe : {{isset($personne)&& $personne->sexe=='M'? 'Masculin':'Féminin'}}</p>
                            <p>Nationalité : @foreach($payss as $pays)

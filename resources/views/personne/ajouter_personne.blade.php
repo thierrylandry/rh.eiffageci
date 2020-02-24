@@ -189,6 +189,32 @@
 
                   </div>
                   <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Lieu de naissance*</label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                          <input type="text" id="lieu_naissance" name="lieu_naissance"  class="form-control" required>
+
+                      </div>
+
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Nom et prénom du père *</label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                          <input type="text" id="text-input" name="noms_pere" placeholder="Nom et prénoms du père" class="form-control" required>
+                      </div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">
+                          <label for="text-input" class=" form-control-label">Nom et prénom de la mère mère *</label>
+                      </div>
+                      <div class="col-12 col-md-9">
+                          <input type="text" id="text-input" name="noms_mere" placeholder="Nom et prénoms de la mère" class="form-control" required>
+                      </div>
+                  </div>
+                  <div class="row form-group">
 
                       <div class="col-12 col-md-9">
                           <p id="age" style="color: red">   </p>

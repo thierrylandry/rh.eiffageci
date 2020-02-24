@@ -106,6 +106,9 @@ class PersonneController extends Controller
         $whatsapp=$parameters['whatsapp'];
         $sattelitaire=$parameters['sattelitaire'];
         $id_commune=$parameters['commune'];
+        $lieu_naissance=$parameters['lieu_naissance'];
+        $noms_pere=$parameters['noms_pere'];
+        $noms_mere=$parameters['noms_mere'];
 
         if(isset($parameters['entretien_cs'])){
             $entretien_cs=$parameters['entretien_cs'];
@@ -175,6 +178,9 @@ class PersonneController extends Controller
         $personne->whatsapp=$whatsapp;
         $personne->sattelitaire=$sattelitaire;
         $personne->id_commune=$id_commune;
+        $personne->lieu_naissance=$lieu_naissance;
+        $personne->noms_pere=$noms_pere;
+        $personne->noms_mere=$noms_mere;
 
 
 //les pieces jointes _piece
@@ -285,6 +291,10 @@ class PersonneController extends Controller
         $sattelitaire=$parameters['sattelitaire'];
         $presenceEff=$parameters['presenceEff'];
 
+        $lieu_naissance=$parameters['lieu_naissance'];
+        $noms_pere=$parameters['noms_pere'];
+        $noms_mere=$parameters['noms_mere'];
+
         $id_commune=$parameters['commune'];
 
         if(isset($parameters['entretien_cs'])){
@@ -334,6 +344,9 @@ class PersonneController extends Controller
         $personne->sattelitaire=$sattelitaire;
         $personne->presenceEff=$presenceEff;
         $personne->id_commune=$id_commune;
+        $personne->lieu_naissance=$lieu_naissance;
+        $personne->noms_pere=$noms_pere;
+        $personne->noms_mere=$noms_mere;
 
 
         if(isset($entretien_cs)){

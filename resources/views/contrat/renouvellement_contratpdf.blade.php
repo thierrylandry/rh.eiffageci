@@ -85,44 +85,44 @@
             @switch($piece->type_p_piece)
             @case('CNI')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Carte nationnal d'identité
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @case('PSP')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Passeport
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @case('cc')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Carte consulaire
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @case('vis')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Visa
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @case('cr')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Carte de résident
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @case('ATTN')
             <tr>
-              <td style="font-size: 10pt" width="40%"><b>
+              <td style="font-size: 12pt" width="40%"><b>
                   Attestation nationnal d'identité
-                </b></td><td width="60%" class="classtext"><b>{{$piece->num_p_piece}}</b></td>
+                </b></td><td width="60%" class="classtext" style="font-size: 12pt"><b>{{$piece->num_p_piece}}</b></td>
             </tr>
             @break;
             @endswitch

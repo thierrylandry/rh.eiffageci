@@ -198,17 +198,17 @@
                     <strong>Contrats </strong>
                 </div>
                 <div class="card-body" >
-                    <div class="row" >
+                    <div class="row" style="overflow-x: auto; " >
 
                         <table class="table  table-earning col-sm-12" id="table_employe">
                             <thead>
                             <tr>
+                                <th class="">NATURE</th>
                                 <th>MATRICULE</th>
-                                <th class="">NATURE </br>CONTRAT</th>
                                 <th class="">TYPE </br>CONTRAT</th>
                                 <th>COUVERTURE </br>MALADIE</th>
                                 <th>SERVICE</th>
-                                <th>DATE DEBUT</th>
+                                <th>DATE DEBUT EFFECTIF</th>
                                 <th>DATE FIN</th>
                                 <th>DATE DE </br>DEPART DEFINITIF</th>
                                 <th>PERIODE </br> ESSAI</th>
@@ -217,6 +217,15 @@
                             <tbody>
                             @foreach($contrats as $contrat)
                                 <tr class="tr-shadow @if($contrat->etat==2) grey @endif">
+                                    <td>
+                                        @if(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==1)
+                                            <span style="background-color:#57b846; color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                        @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==2)
+                                            <span style="background-color:#00b5e9;  color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                        @elseif(isset($contrat->nature_contrat->id) && $contrat->nature_contrat->id==3)
+                                            <span style="background-color:#4bb1b1;  color:white">{{$contrat->nature_contrat->libelle}}</span>
+                                        @endif
+                                    </td>
                                     <td>{{$contrat->matricule}}</td>
                                     <td>@foreach($typecontrats as $typecontrat)
                                             @if($typecontrat->id==$contrat->id_type_contrat)
@@ -231,7 +240,7 @@
                                             @endif
                                         @endforeach</td>
                                     <td>
-                                        {{ isset($contrat->datedebutc)?date("d-m-Y",strtotime($contrat->datedebutc)):'' }}
+                                        {{ isset($contrat->datedebutc)&& $contrat->nature_contrat->id==1 ?date("d-m-Y",strtotime($contrat->datedebutc)):date("d-m-Y",strtotime($contrat->date_debutc_eff)) }}
                                     </td>
                                     <td> {{ isset($contrat->datefinc) ?date("d-m-Y",strtotime($contrat->datefinc)):'' }}</td>
                                     <td>

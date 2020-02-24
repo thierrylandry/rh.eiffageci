@@ -286,7 +286,12 @@
                 $("#serviceabs").val( data['leservice'][0].libelle);
                 $("#matricule1").val(data[0].matricule);
                 $("#id_fonctionabs").val( data['lafonction'][0].libelle);
-                $("#id_entite").val(data[0].id_entite);
+                if(data[0].id_entite==1){
+                    $("#id_entite").val("EIffage PHB");
+                }else{
+                    $("#id_entite").val(data[0].id_entite);
+                }
+
                 $("#dateEmbauhe").val(data[0].datedebutc);
 
             });

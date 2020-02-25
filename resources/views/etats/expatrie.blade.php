@@ -136,7 +136,6 @@
                     @endforeach
 
                     @foreach($invites_presents as $invites_present)
-                        
                         <tr class="tr-shadow">
                             <td>{{$i++}}</td>
                             <td>{{$invites_present->nom}}</td>

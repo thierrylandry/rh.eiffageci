@@ -154,9 +154,10 @@ class AbsenceController extends Controller
         $users =User::all();
         $contact=Array();
         $contactdemandeur=Array();
+        $personne = Personne::find($id_personne);
         foreach($users as $user):
 
-            if($user->hasRole('Chef_de_service')){
+            if($user->hasRole('Chef_de_service') && $personne->service==$user->id_service){
                 $contact[]=$user->email;
 
             }

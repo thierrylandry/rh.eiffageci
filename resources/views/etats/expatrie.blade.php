@@ -33,8 +33,9 @@
     }
     ?>
     <?php
-    $numsemaineActuel =date('W', strtotime("now"))+1;
+    $numsemaineActuel =date('W', strtotime("now"));
 
+    $date_jour= date('d-m-Y', strtotime("now"));
     $dateDebutSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),1);
    // dd($dateDebutSemaineActuel);
     $datefinSemaineActuel =trouver_date($numsemaineActuel,date('Y', strtotime("now")),7);
@@ -136,7 +137,7 @@
 
                     @foreach($invites_presents as $invites_present)
 
-                        @if(($dateDebutSemaineActuel>= date("d-m-Y",strtotime($invites_present->dateArrive)) && $datefinSemaineActuel<=date("d-m-Y",strtotime($invites_present->dateDepart)) ) || $datefinSemaineActuel>=date("d-m-Y",strtotime($invites_present->dateDepart)))
+                        @if(($date_jour<=date("d-m-Y",strtotime($invites_present->dateDepart)) ))
                         <tr class="tr-shadow">
                             <td>{{$i++}}</td>
                             <td>{{$invites_present->nom}}</td>

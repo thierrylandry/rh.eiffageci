@@ -147,7 +147,7 @@
                             <td>{{$invites_present->contact}}</td>
                             <td>{{$invites_present->whatsapp}}</td>
                             <td>{{$invites_present->sattelitaire}}</td>
-                            <td>{{isset($invites_present->dateArrive)?date("d-m-Y",strtotime($invites_present->dateArrive)).'/':''}} {{isset($invites_present->dateDepart)?date("d-m-Y",strtotime($invites_present->dateDepart)):'PERMANANT'}}</td>
+                            <td>{{isset($invites_present->dateArrive)?date("d-m-Y",strtotime($invites_present->dateArrive)).'/':''}} {{isset($invites_present->dateDepart)?date("d-m-Y",strtotime($invites_present->dateDepart)):'PERMANENT'}}</td>
                             <td>-</td>
                         </tr>
                         @endif

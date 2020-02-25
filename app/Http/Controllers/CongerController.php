@@ -606,8 +606,8 @@ class CongerController extends Controller
         return redirect()->back()->with('success',"La demande d'Absconge a été  supprimée avec succès");
     }
     public function validation_conges(){
-        $conges = DB::table('absconges')->Join('personne','personne.id','=','absconges.id_personne')->Join('type_conges','type_conges.id','=','absconges.id_motif_demande')->where('service','=',Auth::user()->id_service)->where('etat','=',1)->get();
-      //  dd($conges);
+        $conges = Absconges::where('etat','=',1)->get();
+        //dd($conges);
         $mode="validation";
         $entites=Entite::all();
 

@@ -136,8 +136,7 @@
                     @endforeach
 
                     @foreach($invites_presents as $invites_present)
-
-                        @if(($date_jour<=date("d-m-Y",strtotime($invites_present->dateDepart)) ))
+                        
                         <tr class="tr-shadow">
                             <td>{{$i++}}</td>
                             <td>{{$invites_present->nom}}</td>
@@ -151,7 +150,7 @@
                             <td>{{isset($invites_present->dateArrive)?date("d-m-Y",strtotime($invites_present->dateArrive)).'/':''}} {{isset($invites_present->dateDepart)?date("d-m-Y",strtotime($invites_present->dateDepart)):'PERMANENT'}}</td>
                             <td>-</td>
                         </tr>
-                        @endif
+
                     @endforeach
                     </tbody>
                 </table>

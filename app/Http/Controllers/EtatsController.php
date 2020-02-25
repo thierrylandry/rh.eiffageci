@@ -54,7 +54,7 @@ $repertoires= Liste_telephonique::all();
             ->leftjoin('pays', 'invite.nationalite','=','pays.id')
             ->where('dateDepart','>=',DB::raw('CURDATE()'))
             ->orWhereNull('dateDepart')->get();
-dd($invites_presents);
+//dd($invites_presents);
         return view('etats/expatrie',compact('expatries','invites_presents','entites'));
     }
     public function expatriepdf(){

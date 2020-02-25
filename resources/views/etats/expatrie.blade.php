@@ -353,7 +353,7 @@
                 ]
             });
             //table.DataTable().draw();
-            $('#table_invite tbody').on( 'click', 'tr', function () {
+            $('#table_repertoire tbody').on( 'click', 'tr', function () {
                 $(this).toggleClass('selected');
             } );
 

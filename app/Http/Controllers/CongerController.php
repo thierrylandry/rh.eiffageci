@@ -606,8 +606,13 @@ class CongerController extends Controller
         return redirect()->back()->with('success',"La demande d'Absconge a été  supprimée avec succès");
     }
     public function validation_conges(){
-        $conges = Absconges::where('etat','=',1)->get();
-        //dd($conges);
+        $conges = DB::table('absconges')
+            ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
+            ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
+            ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','=',1)
+            ->where('personne.service','=',Auth::user()->id_service)
+            ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
+      //  dd($conges);
         $mode="validation";
         $entites=Entite::all();
 
@@ -617,7 +622,11 @@ class CongerController extends Controller
         $mode="gestion_Absconge";
         $entites=Entite::all();
         $type_motifs = Type_conges::all();
-        $conges = Absconges::where('etat','!=',1)->get();
+        $conges = DB::table('absconges')
+            ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
+            ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
+            ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','!=',1)
+            ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
        // dd($conges);
         return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges'));
     }

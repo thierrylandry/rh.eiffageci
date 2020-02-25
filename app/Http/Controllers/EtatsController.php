@@ -52,7 +52,7 @@ $repertoires= Liste_telephonique::all();
         $invites_presents= DB::table('invite')
             ->leftjoin('passage', 'invite.id','=','passage.id_invite')
             ->leftjoin('pays', 'invite.nationalite','=','pays.id')
-            ->where('dateDepart','>=',DB::raw('CURDATE()'))
+           // ->where('dateDepart','>=',DB::raw('CURDATE()'))
             ->orWhereNull('dateDepart')->get();
 //dd($invites_presents);
         return view('etats/expatrie',compact('expatries','invites_presents','entites'));

@@ -61,7 +61,7 @@
                 <table class="table table-borderles" id="table_recrutement">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>NUMERO</th>
                         <th>STATUS</th>
                         <th>TYPE MODIFICATION <MARQUEE > (Ce type peut changer au cours de la procédure à la convenance des RHs)</MARQUEE></th>
                         <th>DEMANDEUR</th>
@@ -105,6 +105,9 @@
                                 <div class="table-data-feature">
                                     @if($modification->etat==1)
                                         @if($mode=="validation")
+                                            <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                <i class="zmdi zmdi-eye"></i>
+                                            </a>
                                             <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                                 <i class="zmdi zmdi-mail-send"></i> Valider
                                             </a>&nbsp;
@@ -226,7 +229,8 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            }).column(0).visible(false);
+            });
+            //..column(0).visible(false)
             //table.DataTable().draw();
 
 

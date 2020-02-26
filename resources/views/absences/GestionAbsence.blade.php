@@ -87,8 +87,8 @@
 
                                 {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
                             </td>
-                            <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
-                            <td>{{isset($absence->personne->nom)?$absence->personne->nom:''}} {{isset($absence->personne->prenom)?$absence->personne->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$absence->personne->slug])}}" target="_blank">Consulter la fiche</a></td>
+                            <td>{{$absence->nom_users}} {{$absence->prenoms_users}}</td>
+                            <td>{{isset($absence->nom)?$absence->nom:''}} {{isset($absence->prenom)?$absence->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$absence->slug])}}" target="_blank">Consulter la fiche</a></td>
                             <td>{{isset($absence->motif_perso)?$absence->motif_perso:''}}</td>
                             <td>{{$absence->debut}}</td>
                             <td>{{$absence->fin}}</td>

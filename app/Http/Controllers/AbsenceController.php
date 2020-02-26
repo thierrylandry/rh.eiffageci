@@ -266,19 +266,27 @@ class AbsenceController extends Controller
         return redirect()->back()->with('success',"La demande d'absence a été  supprimée avec succès");
     }
     public function validation_absence(){
-                $absences= Absence::where('etat','=',1)->get();
+        $absences = DB::table('absence')
+            ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
+            ->leftJoin('personne','personne.id','=','absence.id_personne')
+            ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
+            ->where('personne.service','=',Auth::user()->id_service)
+            ->where('personne.id','!=',Auth::user()->id_personne)
+            ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                //$absences= Absence::where('etat','=',1)->get();
                 $mode="validation";
         $entites=Entite::all();
 
                 return view('absences/GestionAbsence',compact('absences','mode','entites'));
             }
     public function gestion_absence(){
-        /*$absences = DB::table('absence')
+        $absences = DB::table('absence')
             ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
             ->leftJoin('personne','personne.id','=','absence.id_personne')
-            ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','!=',1)
-            ->select('absence.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
-             */  $absences= Absence::where('etat','>=',2)->get();
+            ->leftJoin('users','users.id','=','absence.id_users')->where('etat','>=',2)
+            ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+
+             //  $absences= Absence::where('etat','>=',2)->get();
                 $mode="gestion_absence";
         $entites=Entite::all();
         $type_permissions = Type_permission::all();

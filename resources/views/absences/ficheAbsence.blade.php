@@ -207,9 +207,12 @@
                                     <td>{{$absence->user->nom}} {{$absence->user->prenoms}}</td>
                                     <td>{{isset($absence->personne->nom)?$absence->personne->nom:''}} {{isset($absence->personne->prenom)?$absence->personne->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$absence->personne->slug])}}" target="_blank">Consulter la fiche</a></td>
                                     <td>{{isset($absence->motif_perso)?$absence->motif_perso:''}}</td>
-                                    <td>{{$absence->debut}}</td>
-                                    <td>{{$absence->fin}}</td>
-                                    <td>{{$absence->reprise}}</td>
+                                    <td><?php $date = new DateTime($absence->debut);
+                                        echo $date->format('d-m-Y');?></td>
+                                    <td><?php $date = new DateTime($absence->fin);
+                                        echo $date->format('d-m-Y');?></td>
+                                    <td><?php $date = new DateTime($absence->reprise);
+                                        echo $date->format('d-m-Y');?></td>
                                     <td>{{$absence->jour}}</td>
                                     <td>
                                         <div class="table-data-feature">

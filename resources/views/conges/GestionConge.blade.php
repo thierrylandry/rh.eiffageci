@@ -94,9 +94,12 @@
                             <td>{{$conge->libelle_type_conges}}</td>
                             <td>{{$conge->nom_users}} {{$conge->prenoms_users}}</td>
                             <td>{{isset($conge->nom)?$conge->nom:''}} {{isset($conge->prenom)?$conge->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$conge->slug])}}" target="_blank">Consulter la fiche</a></td>
-                            <td>{{$conge->debut}}</td>
-                            <td>{{$conge->fins}}</td>
-                            <td>{{$conge->reprise}}</td>
+                            <td><?php $date = new DateTime($conge->debut);
+                                echo $date->format('d-m-Y');?></td>
+                            <td><?php $date = new DateTime($conge->fins);
+                                echo $date->format('d-m-Y');?></td>
+                            <td><?php $date = new DateTime($conge->reprise);
+                                echo $date->format('d-m-Y');?></td>
                             <td>{{$conge->jour}}</td>
                             <td>{{$conge->adresse_pd_conges}}</td>
                             <td>{{$conge->contact_telephonique}}</td>

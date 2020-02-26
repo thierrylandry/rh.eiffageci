@@ -366,6 +366,8 @@ class CongerController extends Controller
             $tabconges['nombrecongesAccorde']=$conges->jourconges;
             $tabconges['dernierconge']=$dernierconge;
             $tabconges['nombrecongesAqui']=number_format($VarpersonneConges->jours, 0, '.', '');
+        }else{
+            $tabconges['nombrecongesAqui']=number_format($VarpersonneConges->jours, 0, '.', '');
         }
 
 

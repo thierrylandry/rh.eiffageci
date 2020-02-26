@@ -372,8 +372,13 @@
                 console.log(data);
                 $("#nbrjouracqui").val( data['nombrecongesAqui']);
                 $("#nbrjouraccorde").val( data['nombrecongesAccorde']);
-                $("#dateretourdernierconges").val( data['dernierconge'].fins);
-                $("#datereprisedernierconges").val( data['dernierconge'].reprise);
+                if(typeof(data['dernierconge'])!="undefined"){
+                    $("#dateretourdernierconges").val( data['dernierconge'].fins);
+                }
+                if(typeof (data['dernierconge'])!="undefined"){
+                    $("#dateretourdernierconges").val( data['dernierconge'].reprise);
+                }
+
             });
         }
         $('#id_personne1').change(function(){

@@ -12,6 +12,7 @@ use App\Jobs\EnvoiesInformationDemandeur;
 use App\Personne;
 use App\Personne_presente;
 use App\Type_conges;
+use App\Type_permission;
 use App\User;
 use App\VarpersonneConges;
 use Faker\Provider\cs_CZ\DateTime;
@@ -625,12 +626,13 @@ class CongerController extends Controller
         $mode="gestion_Absconge";
         $entites=Entite::all();
         $type_motifs = Type_conges::all();
+        $type_permissions= Type_permission::all();
         $conges = DB::table('absconges')
             ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
             ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
             ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','!=',1)
             ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
        // dd($conges);
-        return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges'));
+        return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges','type_permissions'));
     }
 }

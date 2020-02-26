@@ -614,7 +614,7 @@ class CongerController extends Controller
                 ->leftJoin('personne','personne.id','=','absconges.id_personne')
                 ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','=',1)
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
-                ->leftJoin('roles','user_rolerole_id','=','roles.id')
+                ->leftJoin('roles','user_role.role_id','=','roles.id')
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->orWhere('role.name','=','Chef_de_service')
             //    ->where('personne.id','!=',Auth::user()->id_personne)

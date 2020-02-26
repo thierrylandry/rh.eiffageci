@@ -373,7 +373,6 @@
 
                 $("#dateretourdernierconges").val("");
                 $("#dateretourdernierconges").val("");
-            }
             $.get(route+"/conges/information_conges_prec/"+id_personne,function(data){
                 console.log(data);
                 $("#nbrjouracqui").val( data['nombrecongesAqui']);

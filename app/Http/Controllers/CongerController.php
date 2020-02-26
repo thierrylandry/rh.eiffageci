@@ -501,7 +501,7 @@ class CongerController extends Controller
         $personne= Personne::find($id_personne);
         foreach($users as $user):
 
-            if($user->hasRole('Chef_de_service') && $personne->service==$user->id_service){
+            if($user->hasRole('Chef_de_service') && $personne->service==$user->id_service && $personne->id!=Auth::user()->id_personne){
                 $contact[]=$user->email;
 
             }

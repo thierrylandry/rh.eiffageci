@@ -273,7 +273,7 @@
                                     <td>{{$conge->user->nom}} {{$conge->user->prenoms}}</td>
                                     <td>{{isset($conge->personne->nom)?$conge->personne->nom:''}} {{isset($conge->personne->prenom)?$conge->personne->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$conge->personne->slug])}}" target="_blank">Consulter la fiche</a></td>
                                     <td>{{$conge->debut}}</td>
-                                    <td>{{$conge->fin}}</td>
+                                    <td>{{$conge->fins}}</td>
                                     <td>{{$conge->reprise}}</td>
                                     <td>{{$conge->jour}}</td>
                                     <td>{{$conge->adresse_pd_conges}}</td>

@@ -84,7 +84,7 @@ class EnvoiesDemandeValidation implements ShouldQueue
                 foreach($contacts as $em):
                     $message ->to($em);
                 endforeach;
-                $message->bcc("cyriaque.kodia@eiffage.com");
+             //   $message->bcc("cyriaque.kodia@eiffage.com");
                 $message->bcc("thierry.koffi@eiffage.com");
             });
         }

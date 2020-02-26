@@ -121,13 +121,9 @@
                                         @endif
 
                                     @elseif($conge->etat==2)
-                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
-                                            <i class="zmdi zmdi-format-indent-increase"></i> Préciser le type de permission
-                                        </a>&nbsp;
+
                                     @elseif($conge->etat==3)
-                                        <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
-                                            <i class="zmdi zmdi-format-indent-increase"></i> Modifier le type de permission
-                                        </a>&nbsp;
+
                                     @elseif($conge->etat==4)
                                         <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>

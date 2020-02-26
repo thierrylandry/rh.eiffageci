@@ -273,7 +273,12 @@ class AbsenceController extends Controller
                 return view('absences/GestionAbsence',compact('absences','mode','entites'));
             }
     public function gestion_absence(){
-                $absences= Absence::where('etat','>=',2)->get();
+       /* $absences = DB::table('absence')
+            ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
+            ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
+            ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','!=',1)
+            ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
+             */   $absences= Absence::where('etat','>=',2)->get();
                 $mode="gestion_absence";
         $entites=Entite::all();
         $type_permissions = Type_permission::all();

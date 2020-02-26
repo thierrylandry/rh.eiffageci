@@ -196,16 +196,16 @@
                             </div>
                             <div class="row">
                                 <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Date de départ souhaité</label>
+                                    <label for="text-input" class=" form-control-label">Date de départ</label>
                                     <input type="date" name="debut" id="debut" class="form-control date" value="{{isset($conge)? $conge->debut:''}}" required/>
                                 </div>
                                 <div class=" col-lg-3">
-                                    <label for="text-input" class=" form-control-label">Date de fin souhaité</label>
-                                    <input type="date" name="fin" id="fin" class="form-control date" value="{{isset($conge)? $conge->fins:''}}" required/>
+                                    <label for="text-input" class=" form-control-label">Date de fin</label>
+                                    <input type="date" name="fin" id="fin" class="form-control" value="{{isset($conge)? $conge->fins:''}}" readonly required/>
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Date de reprise</label>
-                                    <input type="date" name="reprise" id="reprise" class="form-control" value="{{isset($conge)? $conge->reprise:''}}" required/>
+                                    <input type="date" name="reprise" id="reprise" class="form-control date" value="{{isset($conge)? $conge->reprise:''}}" required/>
                                 </div>
 
                             </div>
@@ -601,14 +601,24 @@
         $(".date").change(function (e) {
 
             var debut=new Date($("#debut").val());
-            var fin=new Date($("#fin").val());
+            var reprise=new Date($("#reprise").val());
 
-            $('#reprise').val($("#fin").val());
+            reprise= new Date(reprise);
+
+
+
+            var fin=reprise;
+            var  finmoins1=reprise.getDate()-1;
+            fin.setDate(finmoins1);
+        //    alert(fin);
+            var fin = fin.toISOString().split('T')[0];
+            //$("#datePicker").val(today);
+            $('#fin').val(fin);
 // end - start returns difference in milliseconds
-            var diff = new Date(fin - debut);
+            var diff = new Date(reprise - debut);
 
 // get days
-            var days = diff/1000/60/60/24;
+            var days = (diff/1000/60/60/24)+1;
 
             console.log(days);
             $('#jour').val(days);

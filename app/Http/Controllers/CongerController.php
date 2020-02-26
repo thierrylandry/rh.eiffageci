@@ -609,8 +609,8 @@ class CongerController extends Controller
     public function validation_conges(){
 
         $conges = DB::table('absconges')
-            ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
-            ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
+            ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+            ->leftJoin('personne','personne.id','=','absconges.id_personne')
             ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','=',1)
             ->where('personne.service','=',Auth::user()->id_service)
             ->where('personne.id','!=',Auth::user()->id_personne)
@@ -628,8 +628,8 @@ class CongerController extends Controller
         $type_motifs = Type_conges::all();
         $type_permissions= Type_permission::all();
         $conges = DB::table('absconges')
-            ->leftJoin('type_conges','type_conges.id','=','absconges.id_personne')
-            ->leftJoin('personne','personne.id','=','absconges.id_motif_demande')
+            ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+            ->leftJoin('personne','personne.id','=','absconges.id_personne')
             ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','!=',1)
             ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
        // dd($conges);

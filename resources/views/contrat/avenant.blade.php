@@ -41,25 +41,25 @@
 
         @switch($modif)
         @case("Le service")
-        <p>- <b class="classtext"> {{$modif}} qui était {{$contratprec->service->libelle}} devient {{$contrat->service->libelle}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}} </b>  qui était {{$contratprec->service->libelle}} devient <b class="classtext">{{$contrat->service->libelle}} </b>  </p>
         @break
 
         @case("La durée hebdomadaire de travail")
-        <p>- <b class="classtext"> {{"Le régime hebdomadaire"}} qui était {{$contratprec->regime}} devient {{$contrat->regime}} </b> </p>
+        <p>- <b class="classtext"> {{"Le régime hebdomadaire"}}</b> qui était {{$contratprec->regime}} devient <b class="classtext">{{$contrat->regime}} </b> </p>
         @break
         @case("La fonction")
-        <p>- <b class="classtext"> {{$modif}} qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient {{$contrat->personne->fonction()->first()->libelle}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}}</b>  qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient <b class="classtext">{{$contrat->personne->fonction()->first()->libelle}} </b> </p>
 
         @break
         @case("Le type de contrat")
 
-        <p>- <b class="classtext"> {{$modif}} qui était {{$contratprec->type_contrat->libelle}} devient {{$contrat->type_contrat->libelle}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}} </b> qui était {{$contratprec->type_contrat->libelle}} devient <b class="classtext">{{$contrat->type_contrat->libelle}} </b> </p>
         @break
         @case("La date de fin")
-        <p>- <b class="classtext"> {{$modif}} de contrat qui était {{$contratprec->datefinc}} devient {{$contrat->datefinc}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}}</b>  de contrat qui était {{$contratprec->datefinc}} devient <b class="classtext">{{$contrat->datefinc}} </b> </p>
         @break
         @case("La catégorie")
-        <p>- <b class="classtext"> {{$modif}} qui était {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}}) devient {{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b> </p>
+        <p>- <b class="classtext"> {{$modif}} </b> qui était {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}}) </b> devient <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b> </p>
         @break
         @case("Les conditions de rémunérations")
         <p>- <b class="classtext"> Le salaire</b>
@@ -74,7 +74,7 @@
                 }
 
 
-                ?> F CFA et qui devient: <b class="classtext"><?php $affiche=0;
+                ?> F CFA  devient <b class="classtext"><?php $affiche=0;
                 if(isset($contrat->valeurSalaire)){
                     foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                         $affiche+=$valeurSalaire->valeur;
@@ -151,7 +151,7 @@
                 }
 
 
-                ?> F CFA et qui devient: <b class="classtext"><?php $affiche=0;
+                ?> F CFA  devient <b class="classtext"><?php $affiche=0;
                     if(isset($contrat->valeurSalaire)){
                         foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                             $affiche+=$valeurSalaire->valeur;

@@ -48,7 +48,7 @@
         <p>- <b class="classtext"> {{"Le régime hebdomadaire"}} qui était {{$contratprec->regime}} devient {{$contrat->regime}} </b> </p>
         @break
         @case("La fonction")
-        <p>- <b class="classtext"> {{$modif}} devient {{$contrat->personne->fonction()->first()->libelle}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}} qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient {{$contrat->personne->fonction()->first()->libelle}} </b> </p>
 
         @break
         @case("Le type de contrat")
@@ -59,7 +59,7 @@
         <p>- <b class="classtext"> {{$modif}} de contrat qui était {{$contratprec->datefinc}} devient {{$contrat->datefinc}} </b> </p>
         @break
         @case("La catégorie")
-        <p>- <b class="classtext"> {{$modif}} qui était {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} (({{isset($contratprec->definition)?$contratprec->definition->libelle:''}})) devient {{isset($contrat->id_categorie)?$contrat->id_categorie:''}} (({{isset($contrat->definition)?$contrat->definition->libelle:''}})) </b> </p>
+        <p>- <b class="classtext"> {{$modif}} qui était {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}}) devient {{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b> </p>
         @break
         @case("Les conditions de rémunérations")
         <p>- <b class="classtext"> Le salaire</b>
@@ -125,7 +125,7 @@
              <b class="classtext"> {{"le régime hebdomadaire"}} {{$contratprec->regime}} devient {{$contrat->regime}} </b>
             @break
             @case("La fonction")
-             <b class="classtext"> {{$modif}} devient {{$contrat->personne->fonction()->first()->libelle}} </b>
+             <b class="classtext"> {{$modif}} qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient {{$contrat->personne->fonction()->first()->libelle}} </b>
 
             @break
             @case("Le type de contrat")

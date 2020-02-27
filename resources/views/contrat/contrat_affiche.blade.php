@@ -193,10 +193,10 @@
                         </tr>
 
                 @break
-                @case("Le budget mensuel")
+                @case("Les conditions de rémunérations")
 
                         <tr>
-                            <td colspan="2">{{$modif}}</td>
+                            <td colspan="2">{{"Le Salaire"}}</td>
                         </tr>
                         <tr>
                             <td width="50%">Nouvelle valeur</td>

@@ -888,6 +888,7 @@ class ContratController extends Controller
         $contratprec= Contrat::where([['id_personne','=',$contrat->personne->id],['etat','=',2]])->orderby('date_debutc_eff','desc')->first();
 
         $listmodifavenants = Listmodifavenant::all();
+        //dd($listmodifavenants);
         $listavn= Array();
         foreach($listmodifavenants as $listavenant):
             $listavn []= $listavenant->libelle;

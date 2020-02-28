@@ -239,7 +239,7 @@
                             <label for="text-input" class=" form-control-label">Date de debut de la modification:</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="date_debutc_eff" id="date_debutc_eff" class="form-control" value="{{isset($modification_recrutement->date_debutc_eff)?$modification_recrutement->date_debutc_eff:''}}"  />
+                            <input type="date" name="date_debutc_eff" id="date_debutc_eff" class="form-control" value="{{isset($modification_recrutement->date_debutc_eff)?$modification_recrutement->date_debutc_eff:''}}{{!isset($modification_recrutement->date_debutc_eff) && isset($contrat->date_debutc_eff)?$contrat->date_debutc_eff:''}}"  />
                         </div>
                     </div>
 

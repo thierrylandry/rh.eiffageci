@@ -118,25 +118,25 @@
 
             @switch($modif)
             @case("Le service")
-            <b class="classtext"> {{"le service"}} {{$contratprec->service->libelle}} devient {{$contrat->service->libelle}} </b>
+            <b class="classtext"> {{"le service"}}</b> qui etait <b class="classtext">{{$contratprec->service->libelle}}</b>  devient <b class="classtext">{{$contrat->service->libelle}} </b>
             @break
 
             @case("La durée hebdomadaire de travail")
-             <b class="classtext"> {{"le régime hebdomadaire"}} {{$contratprec->regime}} devient {{$contrat->regime}} </b>
+             <b class="classtext"> {{"le régime hebdomadaire"}} </b> qui etait <b class="classtext"> {{$contratprec->regime}}</b>  devient <b class="classtext">{{$contrat->regime}} </b>
             @break
             @case("La fonction")
-             <b class="classtext"> {{$modif}} qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient {{$contrat->personne->fonction()->first()->libelle}} </b>
+             <b class="classtext"> {{$modif}} </b> qui était <b class="classtext">{{$contrat->modification->fonction_initial()->first()->libelle}}</b> devient <b class="classtext">{{$contrat->personne->fonction()->first()->libelle}} </b>
 
             @break
             @case("Le type de contrat")
 
-             <b class="classtext"> {{"le type de contrat"}} {{$contratprec->type_contrat->libelle}} devient {{$contrat->type_contrat->libelle}} </b>
+             <b class="classtext"> {{"le type de contrat"}} </b> qui était <b class="classtext">{{$contratprec->type_contrat->libelle}}</b>  devient <b class="classtext">{{$contrat->type_contrat->libelle}} </b>
             @break
             @case("La date de fin")
-            <b class="classtext"> {{"la date de fin de contrat"}} {{$contratprec->datefinc}} devient {{$contrat->datefinc}} </b>
+            <b class="classtext"> {{"la date de fin de contrat"}}</b> qui était <b class="classtext"> {{$contratprec->datefinc}} </b>  devient <b class="classtext">{{$contrat->datefinc}} </b>
             @break
             @case("La catégorie")
-            <b class="classtext"> {{"la categorie"}} {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}}) qui devient {{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b>
+            <b class="classtext"> {{"la categorie"}} </b> qui était <b class="classtext"> {{isset($contratprec->id_categorie)?$contratprec->id_categorie:''}} ({{isset($contratprec->definition)?$contratprec->definition->libelle:''}})</b>  devient <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}}) </b>
             @break
             @case("Les conditions de rémunérations")
         <b class="classtext"> le salaire</b>

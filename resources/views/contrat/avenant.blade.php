@@ -142,7 +142,7 @@
         <b class="classtext"> le salaire</b>
             @if(in_array("Les conditions de rémunérations",$array_intersection))
 
-                qui était de <?php $affiche=0;
+                qui était de  <b class="classtext"><?php $affiche=0;
                 if(isset($contratprec->valeurSalaire)){
                     foreach(json_decode($contratprec->valeurSalaire) as $valeurSalaire):
                         $affiche+=$valeurSalaire->valeur;
@@ -151,7 +151,7 @@
                 }
 
 
-                ?> F CFA  devient <b class="classtext"><?php $affiche=0;
+                ?></b> F CFA  devient <b class="classtext"><?php $affiche=0;
                     if(isset($contrat->valeurSalaire)){
                         foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                             $affiche+=$valeurSalaire->valeur;
@@ -219,7 +219,7 @@
                     <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
                 </td>
                 <td width="5%" >
-                    <p style="font-size: 12pt;">____________________</p>
+                    <p style="font-size: 12pt; color: white;">____________________</p>
                 </td>
             </tr>
         </table>

@@ -315,6 +315,7 @@ class CongerController extends Controller
             $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
         }
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
+      //  dd($conges);
         $type_motifs= Type_conges::all();
         return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));
     }
@@ -623,7 +624,7 @@ class CongerController extends Controller
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->orWhere('roles.name','=','Chef_de_service')
             //    ->where('personne.id','!=',Auth::user()->id_personne)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service')->get();
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }else{
             $conges = DB::table('absconges')
@@ -632,7 +633,7 @@ class CongerController extends Controller
                 ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','=',1)
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service')->get();
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }
         // dd($conges);
@@ -651,7 +652,7 @@ class CongerController extends Controller
             ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
             ->leftJoin('personne','personne.id','=','absconges.id_personne')
             ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','>=',2)
-            ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug')->get();
+            ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
        // dd($conges);
         return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges','type_permissions'));
     }

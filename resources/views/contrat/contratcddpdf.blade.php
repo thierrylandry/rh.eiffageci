@@ -8,12 +8,36 @@
             /*color: #00aced;*/
 
         }
-        .signature{
-            position:relative;
-            page-break-before: always;
-            bottom:250px;
-        }
+
+        <?php $affiche=0;
+         if(isset($contrat->valeurSalaire)){
+                foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                    $affiche+=1;
+                endforeach;
+                echo $affiche;
+            }
+        ?>
     </style>
+
+    @if($affiche>5)
+        <style>
+            .signature{
+                position:relative;
+                page-break-before: always;
+                bottom:250px;
+            }
+        </style>
+    @else
+        <style>
+            .signature{
+                position:absolute;
+                /* page-break-before: always;*/
+                bottom:0px;
+            }
+        </style>
+
+    @endif
+
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE DETERMINEE</u></h1><br>
 
     <h1 style="font-size: 10pt; padding: 0;text-align: left"><u>ENTRE LES SOUSSIGNES</u></h1>
@@ -22,7 +46,6 @@
        sise à Avenue Lamblin Tour BIAO 8è étage, Abidjan, N°CC : 1739936Z, RCCM : CI-ABJ-2017-B22961 représenté par Monsieur Nicolas DESCAMPS,
        son Directeur Projet.
     </p><br>
-
     <p>Etant dénommée pour la rédaction des présentes <b>« l’Employeur »,</b></p>
 
    <p style="text-align: right"><b><u>D’une part,</u></b></p>
@@ -77,7 +100,7 @@
                             </b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Domicilié à</b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->commune->libelle)?$contrat->personne->commune->libelle:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Nationalité</b></td>
                         <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
@@ -194,7 +217,7 @@
 
    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de: <b class="classtext">{{isset($contrat->periode_essaie)?$contrat->periode_essaie:''}}</b>.
+    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de <b class="classtext">1 mois</b>.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche
     </p><br>
 

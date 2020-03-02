@@ -887,6 +887,52 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     ])->middleware('auth');
 });
 
+//billet d'avion
+
+Route::group(['prefix' => 'billet_avion', 'as' => 'billet_avions.'], function () {
+    Route::get('/demande', [
+        'as' => 'demande',
+        'uses' => 'Billet_avionController@demande_billet_avion',
+    ])->middleware('auth');
+    Route::get('/ActionValider/{id}',[
+        'as'=>'ActionValider',
+        'uses'=>'Billet_avionController@ActionValider',
+        'roles'=>['Chef_de_service']
+        ])->middleware('auth');
+    Route::get('/validation', [
+        'as' => 'validation',
+        'uses' => 'Billet_avionController@validation_billet_avion',
+        'roles' => ['Chef_de_service'],
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/modification/{id}',[
+        'as'=>'modification',
+        'uses'=>'Billet_avionController@modification',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/information_conges_prec/{id}',[
+        'as'=>'information_conges_prec',
+        'uses'=>'Billet_avionController@information_billet_avion_prec',
+    ])->middleware('roles')->middleware('auth');
+    Route::get('/supprimer/{id}',[
+        'as'=>'supprimer',
+        'uses'=>'Billet_avionController@supprimer',
+    ])->middleware('roles')->middleware('auth');
+
+    Route::get('/gestion', [
+        'as' => 'gestion',
+        'uses' => 'Billet_avionController@gestion_billet_avion',
+        'roles'=>['Ressource_humaine'],
+    ])->middleware('roles')->middleware('auth');
+
+    Route::post('/enregistrer',[
+        'as'=>'enregistrer',
+        'uses'=>'Billet_avionController@enregistrer',
+    ])->middleware('roles')->middleware('auth');
+    Route::post('/modifier',[
+        'as'=>'modifier',
+        'uses'=>'Billet_avionController@modifier',
+    ])->middleware('roles')->middleware('auth');
+});
+
 //pole de demande
 Route::get('/pole_de_demande', [
     'as' => 'pole_de_demande',

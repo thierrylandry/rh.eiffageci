@@ -14,7 +14,7 @@
                 foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                     $affiche+=1;
                 endforeach;
-                echo $affiche;
+             //   echo $affiche;
             }
         ?>
     </style>

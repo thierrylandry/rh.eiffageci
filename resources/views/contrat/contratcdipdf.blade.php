@@ -7,12 +7,33 @@
             /*color: #00aced;*/
 
         }
-        .signature{
-            position:relative;
-            page-break-before: always;
-            bottom:250px;
-        }
     </style>
+    <?php $affiche=0;
+    if(isset($contrat->valeurSalaire)){
+        foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+            $affiche+=1;
+        endforeach;
+        // echo $affiche;
+    }
+    ?>
+    @if($affiche>5)
+        <style>
+            .signature{
+                position:relative;
+                page-break-before: always;
+                bottom:250px;
+            }
+        </style>
+    @else
+        <style>
+            .signature{
+                position:absolute;
+                /* page-break-before: always;*/
+                bottom:0px;
+            }
+        </style>
+
+    @endif
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>CONTRAT DE TRAVAIL A DUREE INDETERMINEE</u></h1><br>
 
     <h1 style="font-size: 10pt; padding: 0;text-align: left"><u>ENTRE LES SOUSSIGNES</u></h1>
@@ -76,7 +97,7 @@
                             </b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Domicilié à</b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
+                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->commune->libelle)?$contrat->personne->commune->libelle:''}}</b></td>
                     </tr><tr>
                         <td style="font-size: 12pt" width="40%"><b>Nationalité</b></td>
                         <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>

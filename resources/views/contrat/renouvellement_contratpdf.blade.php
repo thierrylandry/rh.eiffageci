@@ -7,11 +7,33 @@
       /*color: #00aced;*/
 
     }
-    .signature{
-      position:fixed;
-      bottom:250px;
-    }
   </style>
+  <?php $affiche=0;
+  if(isset($contrat->valeurSalaire)){
+    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+      $affiche+=1;
+    endforeach;
+   // echo $affiche;
+  }
+  ?>
+  @if($affiche>5)
+    <style>
+      .signature{
+        position:relative;
+        page-break-before: always;
+        bottom:250px;
+      }
+    </style>
+  @else
+    <style>
+      .signature{
+        position:absolute;
+        /* page-break-before: always;*/
+        bottom:0px;
+      }
+    </style>
+
+  @endif
   <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>RENOUVELLEMENT DE CONTRAT DE TRAVAIL A DUREE DETERMINEE</u></h1>
 
   <h1 style="font-size: 10pt; padding: 0;text-align: left"><u>ENTRE LES SOUSSIGNES</u></h1>
@@ -75,7 +97,7 @@
               </b></td>
           </tr><tr>
             <td style="font-size: 12pt" width="40%"><b>Domicilié à</b></td>
-            <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->commune->libelle)?$contrat->commune->libelle:''}}</b></td>
+            <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->commune->libelle)?$contrat->personne->commune->libelle:''}}</b></td>
           </tr><tr>
             <td style="font-size: 12pt" width="40%"><b>Nationalité</b></td>
             <td width="60%" style="font-size: 12pt" class="classtext"><b>{{isset($contrat->personne->pays)?strtoupper($contrat->personne->pays->nom_fr_fr):''}}</b></td>
@@ -198,7 +220,7 @@
 
   <p>Le présent contrat est conclu et accepté pour des horaires de travail de <b class="classtext">{{isset($contrat->regime)?$contrat->regime:''}}</b> par semaine. La durée hebdomadaire ci-dessus indiquée est indicative,
     et pourra être modifiée en fonction des nécessités de service.
-  </p><br><br>
+  </p>
 
   <h1 style="padding: 0;text-align: left"><u>Article 8</u> : Rémunération et accessoires</h1>
 

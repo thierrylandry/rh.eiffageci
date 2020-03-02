@@ -93,7 +93,7 @@
                         <div class="card-body" >
                             <div class="row form-group">
 
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
                                     <select class="form-control" id="id_personne1" name="id_personne">
                                         <option value="">Selectionner une personne</option>
 

@@ -94,6 +94,7 @@
                             <div class="row form-group">
 
                                 <div class="col-12 col-md-4">
+                                    <label for="text-input" class=" form-control-label">Personne concernée</label>
                                     <select class="form-control" id="id_personne1" name="id_personne">
                                         <option value="">Selectionner une personne</option>
 

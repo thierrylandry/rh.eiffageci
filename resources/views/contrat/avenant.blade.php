@@ -45,7 +45,7 @@
         @break
 
         @case("La durée hebdomadaire de travail")
-        <p>- <b class="classtext"> {{"Le régime hebdomadaire"}}</b> qui était {{$contratprec->regime}} devient <b class="classtext">{{$contrat->regime}} </b> </p>
+        <p>- <b class="classtext"> {{"Le régime horraire"}}</b> qui était {{$contratprec->regime}} devient <b class="classtext">{{$contrat->regime}} </b> </p>
         @break
         @case("La fonction")
         <p>- <b class="classtext"> {{$modif}}</b>  qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient <b class="classtext">{{$contrat->personne->fonction()->first()->libelle}} </b> </p>
@@ -122,7 +122,7 @@
             @break
 
             @case("La durée hebdomadaire de travail")
-             <b class="classtext"> {{"le régime hebdomadaire"}} </b> qui etait <b class="classtext"> {{$contratprec->regime}}</b>  devient <b class="classtext">{{$contrat->regime}} </b>
+             <b class="classtext"> {{"le régime horraire"}} </b> qui etait <b class="classtext"> {{$contratprec->regime}}</b>  devient <b class="classtext">{{$contrat->regime}} </b>
             @break
             @case("La fonction")
              <b class="classtext"> {{$modif}} </b> qui était <b class="classtext">{{$contrat->modification->fonction_initial()->first()->libelle}}</b> devient <b class="classtext">{{$contrat->personne->fonction()->first()->libelle}} </b>

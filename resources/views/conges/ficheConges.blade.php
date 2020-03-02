@@ -321,9 +321,8 @@
     <script>
         var listmodifavenant;
         var listmodifeff = new Array();
-        @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
          $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
-                @endif
+
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));

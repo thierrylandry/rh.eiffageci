@@ -94,13 +94,6 @@
                             <div class="row form-group">
 
                                 <div class="col-12 col-md-6">
-                                    <label for="text-input" class=" form-control-label">Personne concernée</label>
-                                    @if(isset($modification))
-                                        <input class="form-control" value="{{$modification->personne->nom." ".$modification->personne->prenom}}" disabled/>
-                                        @elseif(!isset($modification) && isset(Auth::user()->id_personne) && !Auth::user()->hasRole('Ressource_humaine'))
-                                         <input type="text" class="form-control" value="{{isset(Auth::user()->id_personne)?Auth::user()->nom.' '.Auth::user()->prenoms:''}}" disabled/>
-                                            <input type="hidden" id="id_personne1" name="id_personne" value="{{isset(Auth::user()->id_personne)?Auth::user()->id_personne:''}}" />
-                                        @elseif(!isset($modification) && (Auth::user()->hasRole('Ressource_humaine') || Auth::user()->hasRole('Chef_de_service')))
                                     <select class="form-control" id="id_personne1" name="id_personne">
                                         <option value="">Selectionner une personne</option>
 
@@ -109,7 +102,7 @@
                                         @endforeach
 
                                     </select>
-                                    @endif
+
                                 </div>
 
                                 <div class="col-12 col-md-3">

@@ -221,7 +221,7 @@
 </div>
 <!-- modal small -->
 <div class="modal fade" id="poleconges" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-    <div class="modal-dialog modapolecongesl-lg" role="document">
+    <div class="modal-dialog modapolecongesl-lg modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <i class="fas fa-calendar fa-2x"></i>

@@ -20,4 +20,5 @@ Artisan::command('inspire', function () {
 
 Artisan::command('rhfincontrat', function () {
     echo (new \App\Http\Controllers\EtatsController())->mailfin_contrat();
+    echo (new \App\Http\Controllers\EtatsController())->mailfin_contrat_service();
 })->describe('Notifier les RH sur les contrats à terme');

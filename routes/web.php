@@ -774,7 +774,7 @@ Route::post('/ActionRejeter',[
     'uses'=>'AbsenceController@ActionRejeter',
 ])->middleware('auth');
 //Absences
-Route::group(['prefix' => 'absences', 'as' => 'absence.','roles' =>'Ressource_humaine'], function () {
+Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
     Route::get('/demande', [
         'as' => 'demande',
         'uses' => 'AbsenceController@demande_absence',
@@ -843,7 +843,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::get('/modification/{id}',[
         'as'=>'modification',
         'uses'=>'CongerController@modification',
-    ])->middleware('auth');
+    ])->middleware('roles')->middleware('auth');
     Route::get('/information_conges_prec/{id}',[
         'as'=>'information_conges_prec',
         'uses'=>'CongerController@information_conges_prec',
@@ -862,7 +862,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'CongerController@enregistrer',
-    ])->middleware('auth');
+    ])->middleware('roles')->middleware('auth');
     Route::post('/modifier',[
         'as'=>'modifier',
         'uses'=>'CongerController@modifier',

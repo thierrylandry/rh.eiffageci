@@ -843,7 +843,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::get('/modification/{id}',[
         'as'=>'modification',
         'uses'=>'CongerController@modification',
-    ])->middleware('roles')->middleware('auth');
+    ])->middleware('auth');
     Route::get('/information_conges_prec/{id}',[
         'as'=>'information_conges_prec',
         'uses'=>'CongerController@information_conges_prec',
@@ -862,7 +862,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'CongerController@enregistrer',
-    ])->middleware('roles')->middleware('auth');
+    ])->middleware('auth');
     Route::post('/modifier',[
         'as'=>'modifier',
         'uses'=>'CongerController@modifier',

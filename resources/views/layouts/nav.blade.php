@@ -191,14 +191,14 @@
                         <i class="fas fa-user-times" ></i>SANCTIONS</a>
                 </li>
                 @endif
+                <li class="@yield('repertoire')">
+                    <a href="{{route('repertoire')}}"><i class="fa fa-phone-square" aria-hidden="true"></i> Repertoire</a>
+                </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Etats'))
                 <li class="@yield('repertoire') @yield('fin_contrat')  has-sub">
                     <a class="js-arrow " href="#">
                         <i class="fa fa-list" ></i>ETATS</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('etats')>
-                        <li class="@yield('repertoire')">
-                             <a href="{{route('repertoire')}}"><i class="fa fa-phone-square" aria-hidden="true"></i> Repertoire</a>
-                        </li>
                         <li class="@yield('fin_contrat')">
                             <a href="{{route('fin_contrat')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat</a>
                         </li>

@@ -363,8 +363,7 @@ Route::post('/enregistrer_salaire',[
 Route::get('/repertoire',[
     'as'=>'repertoire',
     'uses'=>'EtatsController@repertoire',
-    'roles' => ['Etats']
-])->middleware('auth')->middleware('roles');
+])->middleware('roles');
 
 Route::get('/expatrie',[
     'as'=>'expatrie',

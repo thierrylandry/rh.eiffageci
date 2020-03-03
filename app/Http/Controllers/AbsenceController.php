@@ -278,8 +278,7 @@ class AbsenceController extends Controller
                 ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
-                ->where('personne.service','=',Auth::user()->id_service)
-                ->where('personne.id','!=',Auth::user()->id_personne)
+                ->orWhere('roles.name','=','Chef_de_service')
                 ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
 
         }else{

@@ -9,6 +9,7 @@ use App\Liste_telephonique;
 use App\Personne;
 use App\Personne_contrat;
 use App\Services;
+use App\Typecontrat;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;;
 use Illuminate\Http\Request;
@@ -27,13 +28,15 @@ $repertoires= Liste_telephonique::all();
     public function fin_contrat(){
         $contrats= Fin_contrat::all();
         $entites= Entite::all();
-        return view('etats/fin_contrat',compact('contrats','entites'));
+        $typecontrats= Typecontrat::all();
+        return view('etats/fin_contrat',compact('contrats','entites','typecontrats'));
     }
     public function fin_contrat_service($id_service){
         $service =Services::find($id_service);
         $contrats= DB::select('call fin_contrat_service('.$id_service.')');
         $entites= Entite::all();
-        return view('etats/fin_contrat_service',compact('contrats','entites','service'));
+        $typecontrats= Typecontrat::all();
+        return view('etats/fin_contrat_service',compact('contrats','entites','service','typecontrats'));
     }
     public function personne_contrat(){
         $contrats= Personne_contrat::all();

@@ -56,6 +56,69 @@ class ModificationController extends Controller
         $Listmodifavenants=Listmodifavenant::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','Listmodifavenants'));
     }
+    public function save_renouvellement_multiple( Request $request){
+
+
+
+        $parameters=$request->except(['_token']);
+//dd($parameters);
+        $lesid=explode(',',$parameters["id_personnetype_contratrenouvellement"]);
+        $dateFinC=$parameters['dateFinC'];
+        $type_de_contrat=$parameters['type_de_contrat'];
+        $listemodif=Array();
+        if($dateFinC!="") {
+            $listemodif[] = "La date de fin";
+
+        }
+        if($type_de_contrat!=""){
+            $listemodif[]="Le type de contrat";
+
+        }
+        $tab_list_modif=\GuzzleHttp\json_encode($listemodif);
+        foreach($lesid as $id):
+
+            $personne_presente= Personne_presente::where('id','=',$id)->first();
+            $modification = new Modification();
+        if($id!=""){
+            if($dateFinC!="") {
+                $modification->dateFinC=$dateFinC;
+                $modification->datefinc_initial=$personne_presente->datefinc;
+            }
+            if($type_de_contrat!=""){
+                $modification->id_type_contrat=$type_de_contrat;
+                $modification->id_type_contrat_initial=$personne_presente->id_typecontrat;
+            }
+
+            $modification->id_typeModification=2;
+            $modification->list_modif=$tab_list_modif;
+            $modification->id_personne=$id;
+
+            $modification->id_users=Auth::user()->id;
+            $modification->id_service=Auth::user()->service->id;
+            $modification->save();
+        }
+
+
+        endforeach;
+
+        $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
+        foreach($users as $user):
+
+            if($user->hasRole('Chef_de_projet')){
+                $contact[]=$user->email;
+
+            }
+
+        endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(2,$contact));
+        }
+
+        return redirect()->back()->with('success',"Les demandes de renouvellement ont été ajoutées avec succès");
+    }
     public function modification($id){
 
         $modification = Modification::find($id);

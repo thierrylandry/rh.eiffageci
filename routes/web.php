@@ -213,6 +213,11 @@ Route::post('/save_renouvellezment_avenant',[
     'uses'=>'ContratController@save_renouvellezment_avenant',
     'roles' => ['Personnes']
 ])->middleware('auth');
+Route::post('/save_renouvellement_multiple',[
+    'as'=>'save_renouvellement_multiple',
+    'uses'=>'ModificationController@save_renouvellement_multiple',
+    'roles' => ['Personnes']
+])->middleware('auth');
 
 Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',

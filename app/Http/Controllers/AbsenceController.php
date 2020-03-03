@@ -269,13 +269,31 @@ class AbsenceController extends Controller
         return redirect()->back()->with('success',"La demande d'absence a été  supprimée avec succès");
     }
     public function validation_absence(){
-        $absences = DB::table('absence')
-            ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
-            ->leftJoin('personne','personne.id','=','absence.id_personne')
-            ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
-            ->where('personne.service','=',Auth::user()->id_service)
-            ->where('personne.id','!=',Auth::user()->id_personne)
-            ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+
+
+        if(Auth::user()->hasRole('Chef_de_projet')){
+            $absences = DB::table('absence')
+                ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
+                ->leftJoin('personne','personne.id','=','absence.id_personne')
+                ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
+                ->leftJoin('user_role','user_role.user_id','=','users.id')
+                ->leftJoin('roles','user_role.role_id','=','roles.id')
+                ->where('personne.service','=',Auth::user()->id_service)
+                ->where('personne.id','!=',Auth::user()->id_personne)
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+
+        }else{
+            $absences = DB::table('absence')
+                ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
+                ->leftJoin('personne','personne.id','=','absence.id_personne')
+                ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
+                ->where('personne.service','=',Auth::user()->id_service)
+                ->where('personne.id','!=',Auth::user()->id_personne)
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+
+        }
+
+
                 //$absences= Absence::where('etat','=',1)->get();
                 $mode="validation";
         $entites=Entite::all();

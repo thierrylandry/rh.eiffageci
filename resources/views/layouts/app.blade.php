@@ -312,11 +312,11 @@
     </div>
 </div>
 <!-- modal small -->
-<div class="modal fade" id="RVmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+<div class="modal fade" id="RVmodal1" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titre_contrat">Renouvellement ou avenant</h5>
+                <h5 class="modal-title" id="titre_contrat">Renouvellement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -468,6 +468,72 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="date" name="dateFinC" id="dateFinC" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer pull-right">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="zmdi zmdi-edit"></i> Enregistrer
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm" id="rareset">
+                            <i class="fa fa-ban"></i> Réinitialiser
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="RVmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titre_contrat">Renouvellement</h5>
+                <button type="button" class="close" data-dismiss="modal" id="closebtn" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('save_renouvellement_multiple')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <input type="hidden" id="id_personnetype_contratrenouvellement" name="id_personnetype_contratrenouvellement" placeholder="" value="" class="form-control" required>
+                    <div class="row">
+                        <div class="col-sm-12"></div>
+                        <div class="col-sm-6 top-campaign ">
+                            <div class="">
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="text-input" class=" form-control-label">Renouveller le type de contrat ?:</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="form-control" name="type_de_contrat" id="type_contratrenouvellement">
+                                            <option value="">SELECTIONNER</option>
+                                            @if(isset($typecontrats))
+                                                @foreach($typecontrats as $typecontrat)
+                                                    <option value="{{$typecontrat->id}}" >{{$typecontrat->libelle}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6 top-campaign ">
+                            <div class="">
+                                <div class="row form-group">
+                                    <div class="col col-md-5">
+                                        <label for="text-input" class=" form-control-label">Renouveller la date de fin de contrat?:</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="dateFinC" id="dateFinCrenouvellement" class="form-control"/>
                                     </div>
                                 </div>
                             </div>

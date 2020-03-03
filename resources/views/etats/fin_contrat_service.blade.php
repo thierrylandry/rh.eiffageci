@@ -21,6 +21,7 @@
                 <table class="table  table-earning" id="table_repertoire">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>TYPE DE CONTRAT</th>
@@ -30,6 +31,7 @@
                     <tbody>
                     @foreach($contrats as $contrat)
                         <tr class="tr-shadow">
+                            <td>{{$contrat->id_p}}</td>
                             <td>{{$contrat->nom}}</td>
                             <td>{{$contrat->prenom}}</td>
                             <td>{{$contrat->libelle}}</td>
@@ -41,6 +43,13 @@
             </div>
             <!-- END DATA TABLE -->
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#RVmodal" id="renouveller"> Renouveller</button>
+
+        </div>
+
     </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
@@ -82,6 +91,18 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
+                "columnDefs": [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                            'selectRow': true
+                        }
+                    },
+                    { "width": "10%", "targets": 2 }
+                ],
+                "select": {
+                    'style': 'multi'
+                },
                 "order": [[ 1, "desc" ]],
                 "ordering":true,
                 "paging": false,
@@ -89,10 +110,7 @@
                 "createdRow": function( row, data, dataIndex){
 
                 },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 },
-                    { responsivePriority: 2, targets: -1 }
-                ]
+
             });
             //table.DataTable().draw();
             $('#table_repertoire tbody').on( 'click', 'tr', function () {
@@ -102,6 +120,30 @@
             $('#button').click( function () {
                 alert( table.rows('.selected').data().length +' row(s) selected' );
             } );
+
+            $('#renouveller').click(function(e){
+                var rows_selected = table.column(0).checkboxes.selected();
+                console.log(rows_selected);
+                var mavariable="";
+                $.each(rows_selected, function(index, rowId){
+                    // Create a hidden element
+                  //  console.log(rowId);
+                    mavariable=mavariable+','+rowId;
+
+                });
+
+
+                if(mavariable==""){
+                    alert("Veuillez selectionner au moins un élément");
+                    location.reload(true);
+                    e.preventDefault();
+                  //  $("#RVmodal").modal('toggle');
+                   // $('#RVmodal').modal('show');
+                }{
+                    $("#id_personnetype_contratrenouvellement").val(mavariable);
+                }
+                //console.log(mavariable);
+            });
         } );
     </script>
 @endsection

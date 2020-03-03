@@ -275,7 +275,7 @@ class AbsenceController extends Controller
             $absences = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
-                ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
+                ->leftJoin('users','users.id','=','absence.id_users')->where('absence.etat','=',1)
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
                 ->orWhere('roles.name','=','Chef_de_service')
@@ -285,7 +285,7 @@ class AbsenceController extends Controller
             $absences = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
-                ->leftJoin('users','users.id','=','absence.id_users')->where('etat','=',1)
+                ->leftJoin('users','users.id','=','absence.id_users')->where('absence.etat','=',1)
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();

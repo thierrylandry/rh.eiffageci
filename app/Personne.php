@@ -27,7 +27,7 @@ class Personne extends Model
     }
     public function contrat()
     {
-        return $this->hasMany(Contrat::class,'id_contrat');
+        return $this->hasMany(Contrat::class,'id_personne');
     }
 
     public function pays(){

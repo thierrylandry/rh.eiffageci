@@ -659,4 +659,46 @@ class CongerController extends Controller
        // dd($conges);
         return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges','type_permissions'));
     }
+    public function conges_validation_collective(Request $request){
+
+        $parameters=$request->except(['_token']);
+
+        $mavariable=$parameters['mavariable'];
+
+        $tab_id= explode(',',$mavariable);
+        //   dd($tab_id);
+        foreach($tab_id as $id):
+            if($id!=""){
+                $conge = Absconges::find($id);
+
+                $conge->etat=2;
+                $conge->id_valideur=Auth::user()->id;
+
+                $conge->save();
+                $contactdemandeur[]=$conge->user()->first()->email;
+                if(!empty($contactdemandeur)){
+                    $this->dispatch(new EnvoiesInformationDemandeur(4,$contactdemandeur,$conge));
+                }
+            }
+        endforeach;
+        if($id!="") {
+            $users = User::all();
+            $contact = Array();
+            $contactdemandeur = Array();
+            foreach ($users as $user):
+
+                if ($user->hasRole('Ressource_humaine')) {
+                    $contact[] = $user->email;
+
+                }
+
+            endforeach;
+
+            if (!empty($contact)) {
+                $this->dispatch(new EnvoiesDemandeValider(4, $contact));
+            }
+        }
+
+
+    }
 }

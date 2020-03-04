@@ -312,4 +312,46 @@ class AbsenceController extends Controller
         $type_permissions = Type_permission::all();
                 return view('absences/GestionAbsence',compact('absences','mode','entites','type_permissions'));
             }
+    public function absences_validation_collective(Request $request){
+
+        $parameters=$request->except(['_token']);
+
+        $mavariable=$parameters['mavariable'];
+
+        $tab_id= explode(',',$mavariable);
+     //   dd($tab_id);
+        foreach($tab_id as $id):
+            if($id!=""){
+        $absence = Absence::find($id);
+
+            $absence->etat=2;
+            $absence->id_valideur=Auth::user()->id;
+
+            $absence->save();
+        $contactdemandeur[]=$absence->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(3,$contactdemandeur,$absence));
+        }
+            }
+        endforeach;
+        if($id!="") {
+            $users = User::all();
+            $contact = Array();
+            $contactdemandeur = Array();
+            foreach ($users as $user):
+
+                if ($user->hasRole('Ressource_humaine')) {
+                    $contact[] = $user->email;
+
+                }
+
+            endforeach;
+
+            if (!empty($contact)) {
+                $this->dispatch(new EnvoiesDemandeValider(3, $contact));
+            }
+        }
+
+
+    }
 }

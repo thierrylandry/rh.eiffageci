@@ -797,6 +797,11 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
         'uses' => 'AbsenceController@validation_absence',
         'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
+    Route::post('/absences_validation_collective', [
+        'as' => 'absences_validation_collective',
+        'uses' => 'AbsenceController@absences_validation_collective',
+        'roles'=>['Chef_de_service','Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',
         'uses'=>'AbsenceController@modification',
@@ -843,6 +848,11 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
         'uses'=>'CongerController@ActionValider',
         'roles'=>['Chef_de_service']
         ])->middleware('auth');
+    Route::post('/conges_validation_collective', [
+        'as' => 'conges_validation_collective',
+        'uses' => 'CongerController@conges_validation_collective',
+        'roles'=>['Chef_de_service','Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'CongerController@validation_conges',

@@ -179,7 +179,7 @@
                         <div class="col-md-9">
                             <select class="form-control" name="couverture_maladie" id="couverture_maladie">
                                 @foreach($assurance_maladies as $assurance_maladie)
-                                    <option value="{{$assurance_maladie->libelle}}" {{isset($contrat) && $contrat->couvertureMaladie==$assurance_maladie->libelle?'selected':''}}>80</option>
+                                    <option value="{{$assurance_maladie->libelle}}" {{isset($contrat) && $contrat->couvertureMaladie==$assurance_maladie->libelle?'selected':''}}>{{$assurance_maladie->libelle}}</option>
                                 @endforeach
 
                             </select>
@@ -231,7 +231,7 @@
                         </div>
                         <div class="form-group">
                             <input type="hidden" id="dateDebutC_memoire" class="form-control " value="{{isset($contrat)?$contrat->datedebutc:''}}" />
-                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"   readonly/>
+                            <input type="date" name="dateDebutC" id="dateDebutC" class="form-control" value="{{isset($contrat)?$contrat->datedebutc:''}}"/>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -243,6 +243,7 @@
                         </div>
                     </div>
 
+                    @if(isset($contrat) && $contrat->id_type_contrat!=2)
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
@@ -251,6 +252,7 @@
                             <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
                         </div>
                     </div>
+                    @endif
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin de la période d'éssai :</label>

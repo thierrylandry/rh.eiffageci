@@ -149,7 +149,27 @@ $repertoires= Liste_telephonique::all();
         //return view('mail/mailfincontrat',compact('contrats'));
     }
 
+    public function force_envoie_mail(){
+        $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
+        $personne= Personne::find($id_personne);
+        foreach($users as $user):
 
+            if($conge->user->hasRole('Chef_de_service') && $conge->user->id_personne!=$personne->id && $user->hasRole('Chef_de_projet')){
+                $contact[]=$user->email;
+            }
+            if($user->hasRole('Chef_de_service') && $personne->service==$user->id_service && $personne->id!=Auth::user()->id_personne){
+                $contact[]=$user->email;
+
+            }
+
+        endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
+        }
+    }
     public function informatique(){
 
         $lespersonnes= DB::table('personne')

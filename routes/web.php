@@ -370,6 +370,10 @@ Route::get('/expatrie',[
     'uses'=>'EtatsController@expatrie',
     'roles' => ['Etats']
 ])->middleware('auth')->middleware('roles');
+Route::get('/force_envoie_mail',[
+    'as'=>'force_envoie_mail',
+    'uses'=>'EtatsController@force_envoie_mail',
+])->middleware('auth');
 Route::get('/expatriepdf',[
     'as'=>'expatriepdf',
     'uses'=>'EtatsController@expatriepdf',

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Absconges;
 use App\Entite;
 use App\Fin_contrat;
 use App\Jobs\EnvoieFincontrat;
+use App\Jobs\EnvoiesDemandeValidation;
 use App\Liste_telephonique;
 use App\Personne;
 use App\Personne_contrat;
@@ -153,18 +155,18 @@ $repertoires= Liste_telephonique::all();
         $users =User::all();
         $contact=Array();
         $contactdemandeur=Array();
-        $personne= Personne::find($id_personne);
+       // $personne= Personne::find($id_personne);
+        $conges= Absconges::where('etat','=',1)->get();
+        foreach($conges as $conge):
         foreach($users as $user):
 
-            if($conge->user->hasRole('Chef_de_service') && $conge->user->id_personne!=$personne->id && $user->hasRole('Chef_de_projet')){
+            if($conge->user->hasRole('Chef_de_service') && !$user->hasRole('Chef_de_projet')){
                 $contact[]=$user->email;
             }
-            if($user->hasRole('Chef_de_service') && $personne->service==$user->id_service && $personne->id!=Auth::user()->id_personne){
-                $contact[]=$user->email;
 
-            }
 
         endforeach;
+            endforeach;
 
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation(4,$contact));

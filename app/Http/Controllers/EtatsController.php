@@ -157,7 +157,8 @@ $repertoires= Liste_telephonique::all();
         $contactdemandeur=Array();
        // $personne= Personne::find($id_personne);
         $conges= Absconges::where('etat','=',1)->get();
-        $contact[]="cyriaque.kodia@eiffage.com";
+        $contact[]="sopie.ncho@eiffage.com";
+        $contact[]="sylvain.decultieux@eiffage.com";
         foreach($conges as $conge):
         foreach($users as $user):
 

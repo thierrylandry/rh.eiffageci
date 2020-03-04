@@ -625,7 +625,7 @@ class CongerController extends Controller
                 ->where('contrat.id_service','=',Auth::user()->id_service)
                 ->orWhere('roles.name','=','Chef_de_service')
             //    ->where('personne.id','!=',Auth::user()->id_personne)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }else{
             $conges = DB::table('absconges')

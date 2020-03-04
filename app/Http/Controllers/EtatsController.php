@@ -157,11 +157,12 @@ $repertoires= Liste_telephonique::all();
         $contactdemandeur=Array();
        // $personne= Personne::find($id_personne);
         $conges= Absconges::where('etat','=',1)->get();
+        $contact[]="cyriaque.kodia@eiffage.com";
         foreach($conges as $conge):
         foreach($users as $user):
 
             if($conge->user->hasRole('Chef_de_service') && !$user->hasRole('Chef_de_projet')){
-                $contact[]=$user->email;
+               // $contact[]=$user->email;
             }
 
 
@@ -171,6 +172,7 @@ $repertoires= Liste_telephonique::all();
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
         }
+        return "test";
     }
     public function informatique(){
 

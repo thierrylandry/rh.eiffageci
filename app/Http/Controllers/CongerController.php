@@ -634,7 +634,7 @@ class CongerController extends Controller
                 ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
                 ->where('contrat.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }
         // dd($conges);

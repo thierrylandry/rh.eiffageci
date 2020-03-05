@@ -709,6 +709,8 @@
         </div>
     </form>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
+    <script src="{{ asset("js/select2.full.js") }}">
+    </script>
     <script>
 
         $('.lafonction').select2({ placeholder: 'Select an option'});

@@ -2,9 +2,6 @@
 @section('repertoire')
     active
 @endsection
-@section('etats')
-    style="display: block;"
-@endsection
 @section('page')
     <div class="row">
         <div class="col-md-12">

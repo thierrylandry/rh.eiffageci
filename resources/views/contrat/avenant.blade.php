@@ -63,7 +63,7 @@
         @break
         @case("Les conditions de rémunérations")
         <p>- <b class="classtext"> Le salaire</b>
-        @if(in_array("Les conditions de rémunérations",$array_intersection)|| in_array("La catégorie",$array_intersection))
+        @if(in_array("Les conditions de rémunérations",$array_intersection))
 
             qui était de <?php $affiche=0;
                 if(isset($contratprec->valeurSalaire)){

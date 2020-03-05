@@ -557,6 +557,12 @@ function auchangement(){
                         return value != "La catégorie";
                     });
                     listmodifeff.push("La catégorie");
+
+                    //nouveau
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != "Les conditions de rémunérations";
+                    });
+                    listmodifeff.push("Les conditions de rémunérations");
                 }
             }else{
                 if($(this).hasClass("modifie")){
@@ -579,8 +585,14 @@ function auchangement(){
                    if( $.inArray(removeItem,listmodifeff)==-1){
                        listmodifeff.push(removeItem);
                    }
+                    //nouveau
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != "Les conditions de rémunérations";
+                    });
+                    listmodifeff.push("Les conditions de rémunérations");
 
                 }
+
             }else{
                 if($(this).hasClass("modifie")){
                     $(this).removeClass("modifie");

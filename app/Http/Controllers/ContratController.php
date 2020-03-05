@@ -542,8 +542,12 @@ class ContratController extends Controller
         $couverture_maladie=$parameters["couverture_maladie"];
         $dateDebutC=$parameters["dateDebutC"];
         $date_debutc_eff=$parameters["date_debutc_eff"];
-        $dateFinC= $parameters["dateFinC"];
+
+
         $type_de_contrat= $parameters["type_de_contrat"];
+        if($type_de_contrat!=2){
+            $dateFinC= $parameters["dateFinC"];
+        }
         $service= $parameters["service"];
         $periode_essaie= $parameters["periode_essaie"];
         $email= $parameters["email"];
@@ -591,7 +595,10 @@ class ContratController extends Controller
         $contrat->couvertureMaladie=$couverture_maladie;
         $contrat->dateDebutC=$dateDebutC;
         $contrat->date_debutc_eff=$date_debutc_eff;
-        $contrat->dateFinC=$dateFinC;
+        if($type_de_contrat!=2){
+            $contrat->dateFinC=$dateFinC;
+        }
+
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
       //  $contrat->id_nature_contrat=$id_typeModification;

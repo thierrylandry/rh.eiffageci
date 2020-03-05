@@ -243,16 +243,16 @@
                         </div>
                     </div>
 
-                    @if(isset($contrat) && $contrat->id_type_contrat!=2)
+
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($contrat)?$contrat->datefinc:''}}"/>
+                            <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($contrat)?$contrat->datefinc:''}}" @if(isset($contrat) && $contrat->id_type_contrat==2) readonly @endif/>
                         </div>
                     </div>
-                    @endif
+
                     <div class="row form-group">
                         <div class="col col-md-4">
                             <label for="text-input" class=" form-control-label">Date de fin de la période d'éssai :</label>

@@ -725,6 +725,12 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.'], function ()
         'roles' => ['Chef_de_projet']
     ])->middleware('roles')->middleware('auth');
 
+    Route::post('/modifications_validation_collective', [
+        'as' => 'modifications_validation_collective',
+        'uses' => 'ModificationController@modifications_validation_collective',
+        'roles'=>['Chef_de_service','Chef_de_projet']
+    ])->middleware('roles')->middleware('auth');
+
     Route::get('/gestion',[
         'as'=>'gestion',
         'uses'=>'ModificationController@lister_modification',

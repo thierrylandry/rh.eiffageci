@@ -156,6 +156,15 @@
             <!-- END DATA TABLE -->
         </div>
     </div>
+    @if($mode=="validation")
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn btn-success"  id="valider"> <i class="zmdi zmdi-mail-send"></i> Validation multiple</button>
+
+            </div>
+
+        </div>
+    @endif
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
 
@@ -225,10 +234,18 @@
                 "createdRow": function( row, data, dataIndex){
 
                 },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 },
-                    { responsivePriority: 2, targets: -1 }
-                ]
+                "columnDefs": [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                            'selectRow': true
+                        }
+                    },
+                    { "width": "10%", "targets": 2 }
+                ],
+                "select": {
+                    'style': 'multi'
+                },
             });
             //..column(0).visible(false)
             //table.DataTable().draw();
@@ -295,6 +312,36 @@
 
                 });
             }
+            $('#valider').click(function(e){
+                var rows_selected = table.column(0).checkboxes.selected();
+                console.log(rows_selected);
+                var mavariable="";
+                $.each(rows_selected, function(index, rowId){
+                    // Create a hidden element
+                    //  console.log(rowId);
+                    mavariable=mavariable+','+rowId;
+
+                });
+
+
+                if(mavariable==""){
+                    alert("Veuillez selectionner au moins un élément");
+                    //  $("#RVmodal").modal('toggle');
+                    // $('#RVmodal').modal('show');
+                }else{
+                    // $("#id_personnetype_contratrenouvellement").val(mavariable);
+                    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+                    $.post("modifications_validation_collective",{mavariable:mavariable,_token: "{{ csrf_token() }}"},
+                            function (data) {
+                                console.log(data);
+                                if(data==""){
+                                    location.reload();
+                                }
+                            }
+                    );
+                }
+                //console.log(mavariable);
+            });
             $("#id_definition1").change(function (e) {
                 var id_definition=  $("#id_definition1").val();
                 $.get("../listercat/"+id_definition,function(data){

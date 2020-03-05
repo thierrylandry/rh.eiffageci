@@ -579,5 +579,47 @@ $j=0;
         return $tab;
 
     }
+    public function modifications_validation_collective(Request $request){
+
+        $parameters=$request->except(['_token']);
+
+        $mavariable=$parameters['mavariable'];
+
+        $tab_id= explode(',',$mavariable);
+        //   dd($tab_id);
+        foreach($tab_id as $id):
+            if($id!=""){
+                $modification = Modification::find($id);
+
+                $modification->etat=2;
+                $modification->id_validateur=Auth::user()->id;
+
+                $modification->save();
+                $contactdemandeur[]=$modification->user()->first()->email;
+                if(!empty($contactdemandeur)){
+                    $this->dispatch(new EnvoiesInformationDemandeur(2,$contactdemandeur,$modification));
+                }
+            }
+        endforeach;
+        if($id!="") {
+            $users = User::all();
+            $contact = Array();
+            $contactdemandeur = Array();
+            foreach ($users as $user):
+
+                if ($user->hasRole('Ressource_humaine')) {
+                    $contact[] = $user->email;
+
+                }
+
+            endforeach;
+
+            if (!empty($contact)) {
+                $this->dispatch(new EnvoiesDemandeValider(2, $contact));
+            }
+        }
+
+
+    }
 
 }

@@ -711,7 +711,7 @@
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script>
 
-        $('#lafonction').select2({ placeholder: 'Select an option'});
+        $('.lafonction').select2({ placeholder: 'Select an option'});
         function lister_les_categories(){
             var id_definition=  $("#id_definition3").val();
             var lien="{{URL::asset('')}}";

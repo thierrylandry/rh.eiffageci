@@ -142,7 +142,7 @@ class ModificationController extends Controller
     public function afficher($id){
 
         $modification = Modification::find($id);
-       dd(json_decode($modification->list_modif));
+       //dd(json_decode($modification->list_modif));
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
         $categories = Categorie::all();

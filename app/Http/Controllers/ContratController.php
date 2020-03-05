@@ -624,17 +624,10 @@ class ContratController extends Controller
 
 
         // on regarde si il y a un ou plusieurs anciens contrats. Si oui alors récupéré celui qui a la date de debut la plus ressente
-        if(!empty($ancien_contrat) ){
-            if($ancien_contrat->dateFinC < $dateFinC || $type_de_contrat==2){
-                $personne->matricule=$matricule;
-                $personne->service=$service;
-                //            dd("ancien contrat : ".$ancien_contrat->datedebutc." NOUVEAU CONTRAT :".$dateDebutC);
-            }
-        }else{
+
 
             $personne->matricule=$matricule;
             $personne->service=$service;
-        }
 
 
         $contrat->id_personne=$personne->id;

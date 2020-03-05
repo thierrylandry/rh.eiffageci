@@ -249,7 +249,7 @@
                             <label for="text-input" class=" form-control-label">Date de fin :</label>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}}" value="{{isset($contrat)?$contrat->datefinc:''}}" @if(isset($contrat) && $contrat->id_type_contrat==2) readonly @endif/>
+                            <input type="date" name="dateFinC" class="form-control {{isset($listmodif) && in_array('La date de fin',$listmodif)?'modifie':''}} dateFinC" value="{{isset($contrat)?$contrat->datefinc:''}}" @if(isset($contrat) && $contrat->id_type_contrat==2) readonly @endif/>
                         </div>
                     </div>
 
@@ -535,6 +535,16 @@
     </form>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script>
+        var typecontrat= $('#type_de_contrat1').val();
+        // alert(typecontrat);
+        if(typecontrat==1){
+            $('.dateFinC').prop('required',true);
+            $('.dateFinC').prop('readonly',false);
+        }else{
+            $('.dateFinC').prop('required',false);
+            $('.dateFinC').prop('readonly',true);
+        }
+
         function lister_les_categories(){
             var id_definition=  $("#id_definition3").val();
             var lien="{{URL::asset('')}}";
@@ -669,6 +679,20 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
+        //rendre la date de fin de contrat obligatoire en fonction du type de contrat
+        $('#type_de_contrat1').change(function (e){
+
+            var typecontrat= $('#type_de_contrat1').val();
+            // alert(typecontrat);
+            if(typecontrat==1){
+                $('.dateFinC').prop('required',true);
+                $('.dateFinC').prop('readonly',false);
+            }else{
+                $('.dateFinC').prop('required',false);
+                $('.dateFinC').prop('readonly',true);
+            }
+
+        });
 
     </script>
     <script type="application/javascript">

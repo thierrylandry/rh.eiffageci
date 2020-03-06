@@ -847,7 +847,7 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
-
+        trouvezur_de_salaire_cat();
     </script>
     <script type="application/javascript">
         $(".addrubrique").click(function (e) {

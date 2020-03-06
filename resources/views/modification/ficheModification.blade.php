@@ -399,11 +399,10 @@ function auchangement(){
             });
             $("#dm_id_categorie").empty();
             $("#dm_id_categorie").append(lesOptions);
-            $("#dm_id_categorie_initial").val(data[0].id_categorie);
-            $("#dm_id_categorie").val(data[0].id_categorie);
         });
 
-
+        $("#dm_id_categorie_initial").val(data[0].id_categorie);
+        $("#dm_id_categorie").val(data[0].id_categorie);
 
     });
 }

@@ -425,7 +425,7 @@ function auchangement(){
                 $("#dm_id_categorie").append(lesOptions);
             });
 
-            setTimeout(function(){ $("#dm_id_categorie").val($("#dm_id_categorie").val($("#dm_id_categorie_initial").val())); }, 1000);
+            setTimeout(function(){ $("#dm_id_categorie").val($("#dm_id_categorie_initial").val()); }, 1000);
 
         });
 //exécuter sa au chargement de la page

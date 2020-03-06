@@ -571,6 +571,20 @@ function auchangement(){
                     listmodifeff =jQuery.grep(listmodifeff, function(value) {
                         return value != removeItem;
                     });
+                    if(!$("#dm_budgetMensuel").hasClass("modifie")){
+                        //nouveau
+                        listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                            return value != "Les conditions de rémunérations";
+                        });
+                        // listmodifeff.push("Les conditions de rémunérations");
+                    }
+                    if(!$("#dm_id_categorie").hasClass("modifie")){
+                        //nouveau
+                        listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                            return value != "La catégorie";
+                        });
+                        // listmodifeff.push("Les conditions de rémunérations");
+                    }
                 }
             }
             affiche_liste_modification();
@@ -600,6 +614,13 @@ function auchangement(){
                     listmodifeff =jQuery.grep(listmodifeff, function(value) {
                         return value != removeItem;
                     });
+                    if(!$("#dm_budgetMensuel").hasClass("modifie")){
+                        //nouveau
+                        listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                            return value != "Les conditions de rémunérations";
+                        });
+                       // listmodifeff.push("Les conditions de rémunérations");
+                    }
                 }
             }
             affiche_liste_modification();
@@ -632,7 +653,10 @@ function auchangement(){
             if(variable_initial!==variable){
                 if(!$(this).hasClass("modifie")){
                     $(this).addClass("modifie");
-                    listmodifeff.push(removeItem);
+                    if( $.inArray('Les conditions de rémunérations' , animaux) == -1){
+                        listmodifeff.push(removeItem);
+                    }
+
                 }
             }else{
                 if($(this).hasClass("modifie")){
@@ -640,6 +664,14 @@ function auchangement(){
                     listmodifeff =jQuery.grep(listmodifeff, function(value) {
                         return value != removeItem;
                     });
+
+                    if(!$("#dm_id_categorie").hasClass("modifie")){
+                        //nouveau
+                        listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                            return value != "Les conditions de rémunérations";
+                        });
+                        // listmodifeff.push("Les conditions de rémunérations");
+                    }
                 }
             }
             affiche_liste_modification();

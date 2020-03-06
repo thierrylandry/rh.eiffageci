@@ -207,7 +207,7 @@
 
   <h1 style="padding: 0;text-align: left"><u>Article 6</u> : Durée du contrat de travail</h1>
 
-  <p>Le présent contrat est établi pour une durée déterminée allant du <b class="classtext">  <?php $date = new DateTime($contrat->datedebutc);
+  <p>Le présent contrat est établi pour une durée déterminée allant du <b class="classtext">  <?php $date = new DateTime($contrat->date_debutc_eff);
       echo $date->format('d-m-Y');?></b> au <b class="classtext">  <?php $date = new DateTime($contrat->datefinc);
       echo $date->format('d-m-Y');?></b>,
     conformément à la réglementation régissant les rapports entre Employeur et Employé, notamment la loi nouvelle n°2015-532 du 20 juillet 2015 portant Code de Travail en Côte d’ivoire et les textes subséquents pris pour son application.<br>

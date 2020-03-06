@@ -402,7 +402,8 @@ function auchangement(){
         });
 
         $("#dm_id_categorie_initial").val(data[0].id_categorie);
-        $("#dm_id_categorie").val(data[0].id_categorie);
+        setTimeout(function(){ $("#dm_id_categorie").val(data[0].id_categorie); }, 3000);
+
 
     });
 }

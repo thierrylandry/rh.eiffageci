@@ -604,7 +604,7 @@ class ContratController extends Controller
       //  $contrat->id_nature_contrat=$id_typeModification;
         $contrat->regime=$regime;
 
-        $contrat->id_modification=$id_recrutement_modification;
+      //  $contrat->id_modification=$id_recrutement_modification;
 
 
 

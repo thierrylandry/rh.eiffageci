@@ -526,7 +526,7 @@ class ContratController extends Controller
 
         $entite=$personne->id_entite;
 
-        return redirect()->back()->with('success',"Le contrat  a été ajouté avec succès");
+        return redirect()->route('lister_contrat',$personne->id)->with('success',"Le contrat  a été ajouté avec succès");
     }
     public function save_correction_contrat( Request $request){
 

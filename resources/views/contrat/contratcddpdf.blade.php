@@ -350,10 +350,10 @@
             </tr>
             <tr>
                 <td width="40%" align="left">
-                    <p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>
+                    {{--<p><img src="{{ asset("images/Signature_Nicolas.jpg") }}"  width="200px"/></p>--}}
                 </td>
                 <td width="5%" >
-                    <p style="font-size: 12pt;color:white">____________________</p>
+                    {{--<p style="font-size: 12pt;color:white">____________________</p>--}}
                 </td>
             </tr>
         </table>

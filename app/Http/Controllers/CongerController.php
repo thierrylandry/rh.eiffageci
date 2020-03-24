@@ -517,7 +517,7 @@ class CongerController extends Controller
         endforeach;
 
         if(!empty($contact)){
-            $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
+         //   $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
         }
 
         return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");
@@ -617,17 +617,18 @@ class CongerController extends Controller
 
         if(Auth::user()->hasRole('Chef_de_projet')){
             $conges = DB::table('absconges')
-                ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
-                ->leftJoin('personne','personne.id','=','absconges.id_personne')
-                ->leftJoin('contrat','personne.id','=','contrat.id_personne')->where('contrat.etat','=',1)
-                ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
+                ->Join('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->Join('personne','personne.id','=','absconges.id_personne')
+                ->Join('contrat','personne.id','=','contrat.id_personne')
+                ->Join('users','users.id','=','absconges.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
-                ->leftJoin('roles','user_role.role_id','=','roles.id')
-                ->where('contrat.id_service','=',Auth::user()->id_service)
-                ->orWhere('roles.name','=','Chef_de_service')
+                ->Join('roles','user_role.role_id','=','roles.id')
+                ->where('absconges.etat','=',1)
+                ->where('roles.name','=','Chef_de_service')
+                ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absconges.etat','=',1]])
             //    ->where('personne.id','!=',Auth::user()->id_personne)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
-
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
+//dd($conges);
         }else{
             $conges = DB::table('absconges')
                 ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')

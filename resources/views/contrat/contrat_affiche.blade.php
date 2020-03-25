@@ -265,9 +265,9 @@
                             <select class="form-control " name="id_typeModification" id="id_typeModification" required>
                                 <option value="">SELECTIONNER</option>
                                 @foreach($nature_contrats as $nature_contrat)
-                                    @if($nature_contrat->id>1)
+
                                         <option {{ $id_typeModification==$nature_contrat->id?'selected':''}}  value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
-                                    @endif
+                                   
                                 @endforeach
                             </select>
                         </div>

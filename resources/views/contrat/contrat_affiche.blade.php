@@ -267,7 +267,7 @@
                                 @foreach($nature_contrats as $nature_contrat)
 
                                         <option {{ $id_typeModification==$nature_contrat->id?'selected':''}}  value="{{$nature_contrat->id}}">{{$nature_contrat->libelle}}</option>
-                                   
+
                                 @endforeach
                             </select>
                         </div>

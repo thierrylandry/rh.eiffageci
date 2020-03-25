@@ -25,6 +25,7 @@
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>TYPE DE CONTRAT</th>
+                        <th>DATE D'EMBAUCHE</th>
                         <th>DATE FIN</th>
                     </tr>
                     </thead>
@@ -35,6 +36,7 @@
                             <td>{{$contrat->nom}}</td>
                             <td>{{$contrat->prenom}}</td>
                             <td>{{$contrat->libelle}}</td>
+                            <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datedebutc)->format('d-m-Y')}}</td>
                             <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datefinc)->format('d-m-Y')}}</td>
                         </tr>
                     @endforeach

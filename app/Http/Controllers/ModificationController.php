@@ -49,6 +49,7 @@ class ModificationController extends Controller
         }else{
             $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
         }
+        dd($personnes);
 
         //dd(Auth::user());
      //   dd($modifiaction);

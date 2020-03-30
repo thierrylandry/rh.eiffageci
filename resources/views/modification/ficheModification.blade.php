@@ -706,7 +706,7 @@ function auchangement(){
         } );
     </script>
     <script type="application/javascript">
-        @if(!isset($modification) && isset(Auth::user()->id_personne))
+        @if(!isset($modification) && isset(Auth::user()->id_personne) && Auth::user()->hasRole('Ressource_humaine'))
 
         document.getElementById("id_personne1").disabled = true;
         @endif

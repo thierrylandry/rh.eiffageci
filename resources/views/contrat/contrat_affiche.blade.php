@@ -133,7 +133,7 @@
                             <td width="50%">Ancienne valeur</td>
                         </tr>
                         <tr>
-                            <td style="color: #00a2e3;">{{isset($modification_recrutement)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
+                            <td style="color: #00a2e3;">{{isset($modification_recrutement->fonction()->first()->libelle)?$modification_recrutement->fonction()->first()->libelle:''}}</td>
                             <td>{{isset($modification_recrutement->fonction_initial()->first()->libelle)?$modification_recrutement->fonction_initial()->first()->libelle:''}}</td>
                         </tr>
 

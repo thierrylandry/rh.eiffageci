@@ -254,7 +254,7 @@
     <script>
         var listmodifavenant;
         var listmodifeff = new Array();
-        @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine') && Auth::user()->hasRole('Chef_de_service'))
+        @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine') || Auth::user()->hasRole('Chef_de_service'))
             $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
                 @endif
         var dob = new Date($('#datenaissancet').val());

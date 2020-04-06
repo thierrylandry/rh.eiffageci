@@ -26,9 +26,9 @@ class AbsenceController extends Controller
     {
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::all();
+            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
         return view('absences/ficheAbsence',compact('entites','personnes','absences'));
@@ -38,9 +38,9 @@ class AbsenceController extends Controller
         $absence= Absence::find($id);
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::all();
+            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
        // $contrat= Contrat::where('id')

@@ -793,6 +793,10 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
         'as' => 'demande',
         'uses' => 'AbsenceController@demande_absence',
     ])->middleware('auth');
+    Route::get('/telecharger_doc_absence/{id}', [
+        'as' => 'telecharger_doc_absence',
+        'uses' => 'AbsenceController@telecharger_doc_absence',
+    ])->middleware('auth');
     Route::get('/ActionValider/{id}',[
         'as'=>'ActionValider',
         'uses'=>'AbsenceController@ActionValider',

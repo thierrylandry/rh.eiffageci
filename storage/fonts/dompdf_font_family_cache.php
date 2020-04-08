@@ -100,4 +100,24 @@
   'alamain' => array(
     'normal' => $fontDir . '/alamain-normal_8b0dee0d5e574fb66385e9602060f599',
   ),
+  'fontawesome' => array(
+    'normal' => $fontDir . '/fontawesome-normal_0724c470262294a5b1dea9756d8e1cc0',
+  ),
+  'font awesome 5 brands' => array(
+    'normal' => $fontDir . '/font-awesome-5-brands-normal_839a5667314ee7c581ec87d460b214a2',
+  ),
+  'font awesome 5 free' => array(
+    'normal' => $fontDir . '/font-awesome-5-free-normal_c739fc86597b223b8e1ebe3d510fb0fb',
+    '900' => $fontDir . '/font-awesome-5-free-900_0de9d20343cd1a1ffaf34587a140775e',
+  ),
+  'material-design-iconic-font' => array(
+    'normal' => $fontDir . '/material-design-iconic-font-normal_720e47c6976d3150f68baa019f4f8a2b',
+  ),
+  'font awesome\\ 5 brands' => array(
+    'normal' => $fontDir . '/font-awesome-5-brands-normal_839a5667314ee7c581ec87d460b214a2',
+  ),
+  'font awesome\\ 5 free' => array(
+    'normal' => $fontDir . '/font-awesome-5-free-normal_c739fc86597b223b8e1ebe3d510fb0fb',
+    '900' => $fontDir . '/font-awesome-5-free-900_0de9d20343cd1a1ffaf34587a140775e',
+  ),
 ) ?>

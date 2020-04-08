@@ -15,6 +15,7 @@ use App\Personne_presente;
 use App\Services;
 use App\Type_permission;
 use App\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -353,5 +354,14 @@ class AbsenceController extends Controller
         }
 
 
+    }
+    public function telecharger_doc_absence($id){
+
+        $absence = Absence::find($id);
+        $personne= Personne_presente::find($absence->id_personne);
+       // dd($absence->personne);
+        $pdf = PDF::loadView('absences.documentAbs',compact('absence','personne'));
+        return $pdf->stream();
+      //  return view('absences/documentAbs',compact('absence','personne'));
     }
 }

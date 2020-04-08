@@ -228,7 +228,9 @@
                                             @elseif($absence->etat==2)
 
                                             @elseif($absence->etat==3)
-
+                                                <a href="{{route('absence.telecharger_doc_absence',$absence->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                                    <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                                </a>&nbsp;
                                             @elseif($absence->etat==4)
                                                 <a href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>

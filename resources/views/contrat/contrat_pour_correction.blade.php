@@ -684,7 +684,7 @@
 
             var typecontrat= $('#type_de_contrat1').val();
             // alert(typecontrat);
-            if(typecontrat==1){
+            if(typecontrat==1 || typecontrat==3){
                 $('.dateFinC').prop('required',true);
                 $('.dateFinC').prop('readonly',false);
             }else{

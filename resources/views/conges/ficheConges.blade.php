@@ -293,9 +293,13 @@
 
 
                                             @elseif($conge->etat==2)
-
+                                                <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                                    <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                                </a>&nbsp;
                                             @elseif($conge->etat==3)
-
+                                                <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                                    <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                                </a>&nbsp;
                                             @elseif($conge->etat==4)
                                                 <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>

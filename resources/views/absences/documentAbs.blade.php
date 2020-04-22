@@ -107,33 +107,37 @@
 </div>
 <main class="page">
     <h1 style="font-size: 14pt; padding: 0;text-align: center"><u>AUTORISATION D'ABSENCE</u></h1>
-
-    <table style="margin-left: 50px; padding: 0px; width: 100%">
+    </br>
+    <table style="width: 210px;border: 0.3pt solid #000000;">
+        <tr style="background-color:#6c757d; color: white; border: 1px">
+            <td>N° de la demande:</td>
+            <td style="background-color:white; color: black">{{$personne->id}}</td>
+        </tr>
+    </table>
+    </br>
+    </br>
+    <table class="preambule"  style="width: 100%; text-align: center">
+        <tr style="background-color:#6c757d; color: white">
+            <td style="font-size: 12pt"  class="classtext"><b>Matricule</b></td>
+            <td style="font-size: 12pt"  class="classtext"><b>Nom</b></td>
+            <td style="font-size: 12pt"   class="classtext"><b>Prénoms</b></td>
+        </tr>
         <tr>
-            <td width="100%">
-                <table class="preambule">
-                    <tr>
-                        <td style="font-size: 12pt" width="40%"><b><strong>N° de la demande</strong></b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><strong><b>{{$absence->id}}</strong></b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt" width="40%"><b>Matricule</b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{$personne->matricule}}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt" width="40%"><b>Nom</b></td>
-                        <td width="60%" style="font-size: 12pt" class="classtext"><b>{{$absence->personne->nom}}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt" width="40%" ><b>Prénoms</b></td>
-                        <td width="60%" style="font-size: 12pt"  class="classtext"><b><b>{{$absence->personne->prenom}}</b></b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size: 12pt" width="40%" ><b>Fonction</b></td>
-                        <td width="60%" class="classtext" style="font-size: 12pt"><b>{{isset($personne->lafonction)?strtoupper($personne->lafonction->libelle):''}}</b></td>
-                    </tr>
-                </table>
-            </td>
+            <td  style="font-size: 12pt" ><b>{{$personne->matricule}}</b></td>
+            <td  style="font-size: 12pt" ><b>{{$absence->personne->nom}}</b></td>
+            <td  style="font-size: 12pt" ><b><b>{{$absence->personne->prenom}}</b></b></td>
+        </tr>
+        <tr style="background-color: #6c757d; color: white">
+            <td style="font-size: 12pt"  ><b>Fonction</b></td>
+            <td style="font-size: 12pt" width="40%" ><b>Service</b></td>
+            <td style="font-size: 12pt" width="40%" ><b>Date d'embauche</b></td>
+
+        </tr>
+        <tr>
+            <td  class="classtext" style="font-size: 12pt"><b>{{isset($personne->lafonction)?strtoupper($personne->lafonction->libelle):''}}</b></td>
+            <td  class="classtext" style="font-size: 12pt"><b>{{isset($personne->leservice)?strtoupper($personne->leservice->libelle):''}}</b></td>
+            <td  class="classtext" style="font-size: 12pt"><b><?php if(isset($personne->datedebutc)){$date = new DateTime($personne->datedebutc);
+                        echo $date->format('d-m-Y');}?></b></td>
         </tr>
     </table><br>
 
@@ -147,11 +151,9 @@
 
     <p>Il (Elle)  devra reprendre le service le:<b> <?php if(isset($absence->reprise)){$date = new DateTime($absence->reprise);
                 echo $date->format('d-m-Y');}?></b> </p><br>
-    <table style="margin-left: 50px; padding: 0px; width: 100%">
-        <tr>
-            <td width="100%">
-                <table class="preambule">
-                    <tr>
+
+                <table class="preambule"  style="width: 100%; text-align: center; margin-top: 100px">
+                    <tr style="background-color:#6c757d; color: white; border: 1px; font-size: 12pt;" class="classtext">
                         <td style="font-size: 12pt; text-align: center" class="classtext" ><b>Demandeur</b></td>
                         <td  style="font-size: 12pt; text-align: center" class="classtext"><b>Supérieur Hiérarchique</b></td>
                         <td  style="font-size: 12pt; text-align: center" class="classtext"><b>Service RH</b></td>
@@ -162,22 +164,18 @@
                         <td classtext="classtext" style="text-align: center">@if($absence->id_type_permission!='')<img src="{{asset('public/images/check.png')}}" width="100px"/> @endif</td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
     </br>
-    <table style="margin-left: 50px; padding: 0px; width: 100%">
-        <tr>
-            <td width="100%">
-                <table class="preambule">
+    </br></br>
+    </br>
+
+                <table class="preambule"  style="width: 100%; text-align: center;margin-top: 100px;margin-bottom: 20px">
                     <tr>
-                        <td style="font-size: 12pt; text-align: center; width: 50%" class="classtext" ><b>Mentions obligatoires à indiquer par la RRH (Coche une case)</b></td>
+                        <td style="background-color:#6c757d; color: white; border: 1px; font-size: 12pt;" class="classtext" ><b>Mentions obligatoires à indiquer par la RRH (Coche une case)</b></td>
                         <td  style="font-size: 12pt; text-align: center; width: 50%" class="classtext"><b>{{isset($absence->type_permission)?$absence->type_permission->libelle:''}}</b></td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
+
+
     </br>
     </br>
     <p style="text-align: right">Fait à Abidjan, le <?php if(isset($absence->created_at)){$date = new DateTime($absence->created_at);

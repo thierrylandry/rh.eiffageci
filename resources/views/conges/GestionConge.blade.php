@@ -49,11 +49,7 @@
         <div class="col-md-12" >
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
-
-                <div class="table-data__tool-right">
-                    <a href="{{route('absence.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>DEMANDER UN CONGE</a>
-                </div>
+                
             </div>
             <div class="table-responsive m-b-40">
                 <table class="table table-borderles" id="table_recrutement">
@@ -124,9 +120,13 @@
                                         @endif
 
                                     @elseif($conge->etat==2)
-
+                                            <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                        </a>&nbsp;
                                     @elseif($conge->etat==3)
-
+                                        <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                        </a>&nbsp;
                                     @elseif($conge->etat==4)
                                         <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>

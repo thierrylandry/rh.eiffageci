@@ -15,6 +15,7 @@ use App\Type_conges;
 use App\Type_permission;
 use App\User;
 use App\VarpersonneConges;
+use Barryvdh\DomPDF\Facade as PDF;
 use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -646,6 +647,56 @@ class CongerController extends Controller
         $entites=Entite::all();
 
         return view('conges/GestionConge',compact('conges','mode','entites'));
+    }
+    public function telecharger_doc_conge($id){
+
+        $conge = Absconges::find($id);
+        $personne= Personne_presente::find($conge->id_personne);
+
+        $conges= Absconges::where('id_personne','=',$id)
+            ->where('etat','<=',2)
+            ->select('id_personne',DB::raw('sum(jour) as jourconges'))
+            ->groupby('id_personne')
+            ->first();
+
+        $dernierconge = Absconges::where('id_personne','=',$id)
+            ->orderBy('debut','DESC')
+            ->first();
+
+        /* */
+        $personne= Personne::find($id);
+
+        $VarpersonneConges= new VarpersonneConges();
+        $VarpersonneConges->personne_id=$id;
+        $VarpersonneConges->nom_prenom=$personne->nom.' '.$personne->prenom;
+        $datedebutc= Personne_presente::find($id)->datedebutc;
+
+        $VarpersonneConges->nb_y=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->y;
+
+        //   dd(date_diff(new \DateTime($datedebutc),new \DateTime('now')));
+        $VarpersonneConges->nb_m=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->m;
+        $VarpersonneConges->nb_d=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->d;
+        $VarpersonneConges->jours=(($VarpersonneConges->nb_y*12) +$VarpersonneConges->nb_m)*2.5 +$VarpersonneConges->nb_d/30  ;
+
+        $tabconges=array();
+        $tabconges['nombrecongesAccorde']='';
+        $tabconges['dernierconge']='';
+        $tabconges['nombrecongesAqui']='';
+        if(isset($conges) && isset($dernierconge) && isset($personne)){
+            $tabconges['nombrecongesAccorde']=$conges->jourconges;
+            $tabconges['dernierconge']=$dernierconge;
+            $tabconges['nombrecongesAqui']=number_format($VarpersonneConges->jours, 0, '.', '');
+        }else{
+            $tabconges['nombrecongesAqui']=number_format($VarpersonneConges->jours, 0, '.', '');
+        }
+
+
+
+        /* */
+        // dd($absence->personne);
+        $pdf = PDF::loadView('conges.documentConge',compact('conge','personne','conges','tabconges'));
+        return $pdf->stream();
+        //  return view('conges/documentConge',compact('conge','personne'));
     }
     public function gestion_Absconge(){
         $mode="gestion_Absconge";

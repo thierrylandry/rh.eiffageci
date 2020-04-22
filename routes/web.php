@@ -858,6 +858,10 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
         'uses'=>'CongerController@ActionValider',
         'roles'=>['Chef_de_service']
         ])->middleware('auth');
+    Route::get('/telecharger_doc_conge/{id}', [
+        'as' => 'telecharger_doc_conge',
+        'uses' => 'CongerController@telecharger_doc_conge',
+    ])->middleware('auth');
     Route::post('/conges_validation_collective', [
         'as' => 'conges_validation_collective',
         'uses' => 'CongerController@conges_validation_collective',

@@ -11,6 +11,9 @@
                 @endforeach
         </ul>
     <br>
+    @if($adresse!="")
+    <p>Vous pouvez la consulter sur <a href="{{$adresse}}">cliquez ici</a></p>
+    @endif
     <p>Dans l’attente, et en vous remerciant par avance,<br>
         <br>
     <p>

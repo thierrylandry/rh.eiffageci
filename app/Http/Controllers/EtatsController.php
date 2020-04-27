@@ -100,9 +100,9 @@ $repertoires= Liste_telephonique::all();
         //$contact[]="thierry.koffi@eiffage.com";
         //  $this->dispatch(new EnvoieFincontrat($contact,$contrats) );
       //  dd($contrats);
-
+        $adresse="";
         if(isset($contrats[0])){
-            Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact )
+            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact )
             {
                 $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                     ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");
@@ -122,7 +122,7 @@ $repertoires= Liste_telephonique::all();
         foreach($services as $service):
         $contrats= DB::select('call fin_contrat_service('.$service->id.')');
         $users = User::where('id_service','=',$service->id)->get();
-
+            $contact = Array();
         foreach($users as $user):
 
             if($user->hasRole('Chef_de_service')){
@@ -133,9 +133,10 @@ $repertoires= Liste_telephonique::all();
 
         endforeach;
 
+            $adresse="http://172.20.73.3/rh.eiffageci/fin_contrat_service/".$service->id;
 
         if(isset($contrats[0])){
-            Mail::send('mail/mailfincontrat',compact('contrats'),function($message)use ($contact,$service)
+            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact,$service)
             {
                 $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
                     ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT DU SERVICE ".$service->libelle);
@@ -146,9 +147,10 @@ $repertoires= Liste_telephonique::all();
                 $message->bcc("thierry.koffi@eiffage.com");
             });
         }
-        endforeach;
 
-        //return view('mail/mailfincontrat',compact('contrats'));
+        endforeach;
+ //return $contact;
+        return view('mail/mailfincontrat',compact('contrats'));
     }
 
     public function force_envoie_mail(){

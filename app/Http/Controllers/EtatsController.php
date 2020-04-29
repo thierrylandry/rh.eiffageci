@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Absconges;
 use App\Entite;
 use App\Fin_contrat;
+use App\Fin_contrat_traite;
 use App\Jobs\EnvoieFincontrat;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Liste_telephonique;
@@ -15,6 +16,7 @@ use App\Typecontrat;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -36,9 +38,18 @@ $repertoires= Liste_telephonique::all();
     public function fin_contrat_service($id_service){
         $service =Services::find($id_service);
         $contrats= DB::select('call fin_contrat_service('.$id_service.')');
+        $fincontrat_traites = Fin_contrat_traite::where('id_service','=',$id_service)
+            ->where('datefinc','>=',Carbon::now()->format('Y-m-d'))
+            ->where('datefinc','<', Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'))
+                                                ->get();
+        //dd(Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'));
+        $list_traites= Array();
+        foreach($fincontrat_traites as $fincontrat_traite):
+            $list_traites[]=$fincontrat_traite->id_personne;
+            endforeach;
         $entites= Entite::all();
         $typecontrats= Typecontrat::all();
-        return view('etats/fin_contrat_service',compact('contrats','entites','service','typecontrats'));
+        return view('etats/fin_contrat_service',compact('contrats','entites','service','typecontrats','fincontrat_traites','list_traites'));
     }
     public function personne_contrat(){
         $contrats= Personne_contrat::all();

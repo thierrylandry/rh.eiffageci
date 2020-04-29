@@ -7,6 +7,7 @@ use App\Categorie;
 use App\Contrat;
 use App\Definition;
 use App\Entite;
+use App\Fin_contrat_traite;
 use App\Fonction;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValider;
@@ -77,7 +78,23 @@ class ModificationController extends Controller
         }
         $tab_list_modif=\GuzzleHttp\json_encode($listemodif);
         foreach($lesid as $id):
+            // on remplie le tableau des demandes traitées
+            $contrats= DB::select('call fin_contrat_service('.Auth::user()->service->id.')');
+            foreach($contrats as $contrat):
+                if($contrat->id_p==$id){
+                    $fin_contrat_traite = new Fin_contrat_traite();
+                    $fin_contrat_traite->id_personne=$id;
+                    $fin_contrat_traite->id_service=Auth::user()->service->id;
+                    $fin_contrat_traite->nom=$contrat->nom;
+                    $fin_contrat_traite->prenom=$contrat->prenom;
+                    $fin_contrat_traite->libelle=$contrat->libelle;
+                    $fin_contrat_traite->datedebutc=$contrat->datedebutc;
+                    $fin_contrat_traite->datefinc=$contrat->datefinc;
+                    $fin_contrat_traite->save();
+                }
 
+                endforeach;
+            // fin du remplissement du tableau des demandes traitées
             $personne_presente= Personne_presente::where('id','=',$id)->first();
             $modification = new Modification();
         if($id!=""){

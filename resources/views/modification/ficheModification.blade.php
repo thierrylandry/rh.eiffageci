@@ -393,7 +393,7 @@ function auchangement(){
         var id_definition=  data[0].id_definition;
         $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
             console.log(data);
-            var lesOptions;
+            var lesOptions="<option value=''>Selectionner une catégorie</option>";
             $.each(data, function( index, value ) {
                 lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
             });
@@ -417,7 +417,7 @@ function auchangement(){
             var id_definition=  $("#dm_id_definition").val();
             $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                 console.log(data);
-                var lesOptions;
+                var lesOptions="<option value=''>Selectionner une catégorie</option>";
                 $.each(data, function( index, value ) {
                     lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
                 });
@@ -438,7 +438,7 @@ function auchangement(){
         $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
 
            // console.log(data);
-            var lesOptions;
+                            var lesOptions="<option value=''>Selectionner une catégorie</option>";
             $.each(data, function( index, value ) {
                 lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
             });

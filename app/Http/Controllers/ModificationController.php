@@ -251,7 +251,7 @@ $j=0;
 
 
         $parameters=$request->except(['_token']);
-        dd($parameters);
+       // dd($parameters);
 
 
         //les valeurs initiales
@@ -273,7 +273,12 @@ $j=0;
         $id_type_contrat=$parameters['id_type_contrat'];
         $datefinc=$parameters['datefinc'];
         $id_definition=$parameters['id_definition'];
-        $id_categorie=$parameters['id_categorie'];
+        if(isset($parameters['id_categorie'])){
+            $id_categorie=$parameters['id_categorie'];
+        }else{
+            $id_categorie=$dm_id_categorie_initial;
+        }
+
         $regime=$parameters['regime'];
         $budgetMensuel=$parameters['budgetMensuel'];
 

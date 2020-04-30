@@ -251,7 +251,7 @@ $j=0;
 
 
         $parameters=$request->except(['_token']);
-        //dd($parameters);
+        dd($parameters);
 
 
         //les valeurs initiales

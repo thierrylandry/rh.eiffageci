@@ -8,7 +8,7 @@
 
         }
     </style>
-    <?php $affiche=0;
+    <?php use Illuminate\Support\Carbon;$affiche=0;
     if(isset($contrat->valeurSalaire)){
         foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
             $affiche+=1;
@@ -204,12 +204,21 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 6</u> : Durée du contrat de travail</h1>
 
-    <p>Le présent contrat est établi pour une durée indéterminée. Il prend effet à partir du  <b class="classtext">{{isset($contrat->date_debutc_eff)?$contrat->date_debutc_eff:''}}</b>.
+    <p>Le présent contrat est établi pour une durée indéterminée. Il prend effet à partir du  <b class="classtext"><?php if( isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
+            echo $date->format('d-m-Y');}?></b>.
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext">{{isset($contrat->periode_essaie)?$contrat->periode_essaie:''}}</b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
+    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext"><?php if(isset($contrat->periode_essaie)){
+                $datetime1 = Carbon::createFromDate($contrat->debutc);
+                $datetime2 = Carbon::createFromDate($contrat->periode_essaie);
+                $interval = $datetime1->diffInMonths($datetime2);
+              //  $nbmonth= $interval->format('%m');
+               // $nbyear = $interval->format('%y');
+                $resultat=12-$interval;
+                 echo $resultat.' Mois';
+            }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.
     </p><br>

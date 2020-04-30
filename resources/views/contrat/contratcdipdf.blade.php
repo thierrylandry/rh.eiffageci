@@ -207,8 +207,10 @@
     <p>Le présent contrat est établi pour une durée indéterminée. Il prend effet à partir du  <b class="classtext"><?php if( isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
             echo $date->format('d-m-Y');}?></b>.
     </p><br>
+    <?php $i=6?>
+    @if(isset($contrat->periode_essaie))
 
-    <h1 style="padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Période d’essai -Visite Médicale</h1>
 
     <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext"><?php if(isset($contrat->periode_essaie)){
                 $datetime1 = Carbon::createFromDate($contrat->debutc);
@@ -222,13 +224,13 @@
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.
     </p><br>
-
-    <h1 style="padding: 0;text-align: left"><u>Article 8</u> : Durée de travail</h1>
+    @endif
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Durée de travail</h1>
 
     <p>Le présent contrat est conclu et accepté pour une durée de travail de <b class="classtext">{{isset($contrat->regime)?$contrat->regime:''}}</b> par semaine. Toutefois, compte tenu de la classification de l’Employé dans la catégorie « <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}}</b>»,
         il sera tenue à une obligation de résultat et toute heure de travail effectuée au-delà de la durée hebdomadaire ne pourra donner lieu à des heures supplémentaires rémunérées.</p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 9</u> : Rémunération et accessoires</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Rémunération et accessoires</h1>
 
     <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération mensuelle brute de <b class="classtext"><?php $affiche=0;
             if(isset($contrat->valeurSalaire)){
@@ -271,24 +273,24 @@
 
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 10</u> : Immatriculation sociale de l’Employé</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Immatriculation sociale de l’Employé</h1>
 
     <p>L’Employé fera l’objet de déclaration à la Caisse Nationale de Prévoyance Sociale (CNPS) par l’Employeur afin de bénéficier des avantages sociaux qu’offre cette structure
         tant sur le plan des accidents de travail, des maladies professionnelles qu’en cas de maternité.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 11</u> : Avantages sociaux</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Avantages sociaux</h1>
 
     <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants à charge est prise en charge par l’Employeur à hauteur de <b class="classtext">{{isset($contrat->couvertureMaladie)?$contrat->couvertureMaladie:''}}</b>% auprès d’une compagnie d’assurance locale.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 12</u> : Sécurité –Induction</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Sécurité –Induction</h1>
 
     <p>Engagé sur le projet de l’Employeur, l’Employé bénéficiera, dès la signature du présent contrat, d'une formation renforcée à la sécurité ainsi que d'un accueil et d'une information adaptés assuré par le service de Sécurité.
         A ce titre, l’Employé s’engage à se soumettre au respect strict des consignes d’hygiène et de sécurité, entre autres le port des équipements de protection individuelle, le respect des zones balisées …etc.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 13</u> : Les obligations professionnelles</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Les obligations professionnelles</h1>
 
     <p>L’Employé s’engage :<br>
         -A respecter les prescriptions du Règlement Intérieur en vigueur dans la société.<br>
@@ -300,33 +302,33 @@
 
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 14</u> : Clause de non concurrence – clause de confidentialité</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Clause de non concurrence – clause de confidentialité</h1>
 
     <p>Il est interdit à l’Employé d’exercer, même en dehors de son temps de travail, toute activité à caractère professionnel susceptible de concurrencer l’entreprise ou de nuire à la bonne exécution des services convenus.
         L’Employé a également l’obligation de s’abstenir de divulguer tout fait ou renseignement confidentiel acquis au service de l’employeur.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 15</u> : Avantages personnels</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Avantages personnels</h1>
 
     <p>L’Employé s’interdit de solliciter ou d’accepter, tant pour elle-même que pour ses proches, un quelconque avantage personnel qui pourrait, tant en raison de sa nature que de son importance,
         influencer ou donner l’apparence qu’elle pourrait influencer le jugement ou les activités de l’Employé dans l’accomplissement de ses tâches pour l’Employeur.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 16</u> : Absence et Indisponibilité</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Absence et Indisponibilité</h1>
 
     <p>En cas d’absence pour maladie, accidents non professionnels ou toute autre cause, l’Employé devra <b>immédiatement</b> aviser l’Employeur et produire un justificatif dans les 72 heures.</p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 17</u> : Matériels et documents</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Matériels et documents</h1>
 
     <p>Tous les matériels et documents de travail confiés à l’Employée pour l’exécution de ses tâches sont la propriété de l’Employeur.
         L’Employé devra les restituer à la première demande ou dès la cessation de ses fonctions.
     </p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 18</u> : Juridiction compétente</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Juridiction compétente</h1>
 
     <p>Tout litige ou différent relève de la compétence exclusive des juridictions de la République de Côte d’Ivoire.</p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 19</u> : Exemplaires</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Exemplaires</h1>
 
     <p>Le présent contrat est établi en <b>deux (2)</b> exemplaires originaux exempt de tous droits de timbre et d’enregistrement, dont une <b>(01) copie originale</b> est remise à l’Employé.
     </p><br><br><br>

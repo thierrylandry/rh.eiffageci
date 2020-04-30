@@ -706,9 +706,9 @@ function auchangement(){
         } );
     </script>
     <script type="application/javascript">
-        @if((!isset($modification)  ) && (!Auth::user()->hasRole('Ressource_humaine') || !Auth::user()->hasRole('Chef_de_service')))
+        @if((!isset($modification)  && isset(Auth::user()->id_personne)) && (!Auth::user()->hasRole('Ressource_humaine') || !Auth::user()->hasRole('Chef_de_service')))
 
-        document.getElementById("id_personne1").disabled = true;
+      //  document.getElementById("id_personne1").disabled = true;
         @else document.getElementById("id_personne1").disabled = false;
         @endif
         $("#addcompetence").click(function (e) {

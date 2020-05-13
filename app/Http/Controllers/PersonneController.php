@@ -12,6 +12,7 @@ use App\Metier\Json\Famille;
 use App\Metier\Json\Piece;
 use App\Pays;
 use App\Personne;
+use App\Personne_presente;
 use App\Services;
 use App\Societe;
 use App\Typecontrat;
@@ -41,9 +42,47 @@ class PersonneController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(300);
         $entites= Entite::all();
+            $variable="tout";
+//dd($personnes->first()->fonction()->first()->libelle);
+        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
+    }
+    public function lister_personne_active($entite)
+    {
+        $variable="active";
+        $personnesactives = Personne_presente::all();
+        $tab = Array();
+        foreach($personnesactives as $pers):
+            $tab[]=$pers->id;
+            endforeach;
+        $personnes= Personne::with("fonction","pays","societe")
+            ->where('id_entite','=',$entite)
+            ->whereIn('id',$tab)
+            ->orderBy('id', 'desc')
+            ->paginate(300);
+        $entites= Entite::all();
+      //  dd($personnes);
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entites','entite'));
+        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
+    }
+    public function lister_personne_non_active($entite)
+    {
+        $variable="non_active";
+        $personnesactives = Personne_presente::all();
+        $tab = Array();
+        foreach($personnesactives as $pers):
+            $tab[]=$pers->id;
+            endforeach;
+        $personnes= Personne::with("fonction","pays","societe")
+            ->where('id_entite','=',$entite)
+            ->whereNotIn('id',$tab)
+            ->orderBy('id', 'desc')
+            ->paginate(300);
+        $entites= Entite::all();
+      //  dd($personnes);
+
+//dd($personnes->first()->fonction()->first()->libelle);
+        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
     }
     public function fiche_personnel($slug)
     {

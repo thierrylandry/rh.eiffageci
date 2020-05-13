@@ -1,18 +1,33 @@
 @extends('layouts.app')
-@section('lister_personne'.$entite)
-    active
-@endsection
+@if($variable=="tout")
 @section('lister_personne')
     active
 @endsection
 @section('lister_personne_block')
     style="display: block;"
 @endsection
+    @elseif($variable=="active")
+@section('lister_personne_active')
+    active
+@endsection
+@section('lister_personne_block_active')
+    style="display: block;"
+@endsection
+    @else
+@section('lister_personne_non_active')
+    active
+@endsection
+@section('lister_personne_block_non_active')
+    style="display: block;"
+@endsection
+@endif
+
+
 @section('page')
    <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PERSONNE-LISTE  @foreach($entites as $enti)
+                <h2 class="title-1">PERSONNE @if($variable=="tout") ACTIVE/NON ACTIVE @elseif($variable=="active") ACTIVE @else NON ACTIVE @endif- LISTE  @foreach($entites as $enti)
 
                                                         @if($enti->id==$entite)
                       {{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}

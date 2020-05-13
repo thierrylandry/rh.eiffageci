@@ -64,6 +64,16 @@ Route::get('/lister_personne/{entite}',[
     'uses'=>'PersonneController@lister_personne',
     'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
+Route::get('/lister_personne_active/{entite}',[
+    'as'=>'lister_personne_active',
+    'uses'=>'PersonneController@lister_personne_active',
+    'roles' => ['Personnes','Gestion_expatrie']
+])->middleware('auth')->middleware('roles');
+Route::get('/lister_personne_non_active/{entite}',[
+    'as'=>'lister_personne_non_active',
+    'uses'=>'PersonneController@lister_personne_non_active',
+    'roles' => ['Personnes','Gestion_expatrie']
+])->middleware('auth')->middleware('roles');
 Route::post('/enregistrer_personne',[
     'as'=>'enregistrer_personne',
     'uses'=>'PersonneController@enregistrer_personne',

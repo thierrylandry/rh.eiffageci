@@ -9,7 +9,7 @@
 
         }
 
-        <?php $affiche=0;
+        <?php use Illuminate\Support\Carbon;$affiche=0;
          if(isset($contrat->valeurSalaire)){
                 foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                     $affiche+=1;

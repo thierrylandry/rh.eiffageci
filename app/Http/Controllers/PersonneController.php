@@ -50,7 +50,7 @@ class PersonneController extends Controller
         $entites= Entite::all();
             $variable="tout";
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
+        return view('personne/lister_personne',compact('personnes','entites','variable'));
     }
     public function lister_personne_active()
     {
@@ -69,7 +69,7 @@ class PersonneController extends Controller
       //  dd($personnes);
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
+        return view('personne/lister_personne',compact('personnes','entites','variable'));
     }
     public function lister_personne_non_active($entite)
     {
@@ -88,7 +88,7 @@ class PersonneController extends Controller
       //  dd($personnes);
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
+        return view('personne/lister_personne',compact('personnes','entites','variable'));
     }
     public function fiche_personnel($slug)
     {

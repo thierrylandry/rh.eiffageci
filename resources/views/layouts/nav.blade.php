@@ -145,7 +145,7 @@
                     <a class="js-arrow" href="{{route('pole_de_demande')}}">
                         <i class="fas fa-question"></i>PÔLE DE DEMANDE</a>
                 </li>
-                @if(Auth::user() != null && (Auth::user()->hasRole('Personnes') || Auth::user()->hasRole('Gestion_expatrie') ))
+                @if(Auth::user() != null && (Auth::user()->hasRole('Gestion_rh') ))
                     <li class="@yield('gestion_rh') @yield('lister_personne') @yield('lister_personne_active') @yield('lister_personne_non_active') has-sub">
                         <a class="js-arrow " href="{{route("gestion_rh")}}">
                             <i class="fas fa-users open" ></i>GESTION RH</a>
@@ -158,7 +158,7 @@
 
                 </li>
                 @endif
-                @if(Auth::user() != null && Auth::user()->hasRole('Salaires'))
+                @if(Auth::user() != null && Auth::user()->hasRole('Salaires')|| Auth::user()->hasRole('Gestion_rh'))
                 <li class="@yield('salaires')  has-sub">
                     <a class="js-arrow " href="{{route('salaires')}}">
                         <i class="fas fa-money-bill-alt" ></i>SALAIRES</a>

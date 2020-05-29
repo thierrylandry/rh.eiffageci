@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <a href="{{route("lister_personne_active")}}"  class="col-sm-4">
+        <a href="{{route("lister_personne_active")}}"  class="col-sm-3">
             <div >
                 <div class="card" style="color: green">
 
@@ -35,7 +35,7 @@
                 <!-- END DATA TABLE -->
             </div>
         </a>
-        <a href="{{route("lister_personne_non_active")}}"  class="col-sm-4">
+        <a href="{{route("lister_personne_non_active")}}"  class="col-sm-3">
 
             <div >
                 <div class="card" style="color: red">
@@ -54,7 +54,7 @@
             </div>
         </a>
 
-        <a href="{{route("lister_personne")}}"  data-placement="top" class="col-sm-4">
+        <a href="{{route("lister_personne")}}"  data-placement="top" class="col-sm-3">
             <div >
                 <div class="card" style="color: deepskyblue">
 
@@ -66,6 +66,23 @@
                         <h4 class="card-title mb-3">Tout le personnel</h4>
                         </br>
                         <p class="card-text" style="color: #0a0a0a">Consulter la liste du personnel...
+                        </p>
+                    </div>
+                </div>
+                <!-- END DATA TABLE -->
+            </div>
+        </a>
+        <a href="{{route('recrutement.avenant_general')}}"   class="col-sm-3">
+            <div >
+                <div class="card" style="color: black">
+
+
+                    <div class="card-body" style="text-align: center;">
+                        <i class="fas fa-book fa-10x"></i>
+                        </br></br>
+                        <h4 class="card-title mb-3">AVENANT GENERAL</h4>
+                        </br>
+                        <p class="card-text" style="color: #0a0a0a">Permet de générer des demandes d'avenant Groupé
                         </p>
                     </div>
                 </div>

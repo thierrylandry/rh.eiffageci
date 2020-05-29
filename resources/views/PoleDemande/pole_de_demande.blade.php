@@ -106,23 +106,6 @@
                 <!-- END DATA TABLE -->
             </div>
         </a>
-        <a href="{{route('recrutement.avenant_general')}}"   class="col-sm-3">
-            <div >
-                <div class="card" style="color: black">
-
-
-                    <div class="card-body" style="text-align: center;">
-                        <i class="fas fa-book fa-10x"></i>
-                        </br></br>
-                        <h4 class="card-title mb-3">AVENANT GENERAL</h4>
-                        </br>
-                        <p class="card-text" style="color: #0a0a0a">Permet de générer des demandes d'avenant Groupé
-                        </p>
-                    </div>
-                </div>
-                <!-- END DATA TABLE -->
-            </div>
-        </a>
     </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>

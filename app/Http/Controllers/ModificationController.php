@@ -620,7 +620,7 @@ $j=0;
                 $modification->save();
                 $contactdemandeur[]=$modification->user()->first()->email;
                 if(!empty($contactdemandeur)){
-                    $this->dispatch(new EnvoiesInformationDemandeur(2,$contactdemandeur,$modification));
+                //    $this->dispatch(new EnvoiesInformationDemandeur(2,$contactdemandeur,$modification));
                 }
             }
         endforeach;
@@ -634,7 +634,6 @@ $j=0;
                     $contact[] = $user->email;
 
                 }
-
             endforeach;
 
             if (!empty($contact)) {

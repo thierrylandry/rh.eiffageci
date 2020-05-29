@@ -57,32 +57,32 @@ Route::get('/globalExport',[
 Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/gestion_rh',[
     'as'=>'gestion_rh',
     'uses'=>'PersonneController@gestion_rh',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/lister_personne',[
     'as'=>'lister_personne',
     'uses'=>'PersonneController@lister_personne',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/lister_personne_active',[
     'as'=>'lister_personne_active',
     'uses'=>'PersonneController@lister_personne_active',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/lister_personne_non_active',[
     'as'=>'lister_personne_non_active',
     'uses'=>'PersonneController@lister_personne_non_active',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/enregistrer_personne',[
     'as'=>'enregistrer_personne',
     'uses'=>'PersonneController@enregistrer_personne',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_personne/{slug}',[
     'as'=>'supprimer_personne',
@@ -92,48 +92,48 @@ Route::get('/supprimer_personne/{slug}',[
 Route::get('/detail_personne/{slug}',[
     'as'=>'detail_personne',
     'uses'=>'PersonneController@detail_personne',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/modifier_personne',[
     'as'=>'modifier_personne',
     'uses'=>'PersonneController@modifier_personne',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/fiche_personnel/{slug}',[
     'as'=>'fiche_personnel',
     'uses'=>'PersonneController@fiche_personnel',
-    'roles' => ['Personnes','Gestion_expatrie']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/document_administratif/{slug}',[
     'as'=>'document_administratif',
     'uses'=>'PersonneController@document_administratif',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/document_administratif_new_user',[
     'as'=>'document_administratif_new_user',
     'uses'=>'PersonneController@document_administratif_new_user',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_document',[
     'as'=>'save_document',
     'uses'=>'PersonneController@save_document',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_document_new_user',[
     'as'=>'save_document_new_user',
     'uses'=>'PersonneController@save_document_new_user',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/download_doc/{slug}/{pj}',[
     'as'=>'download_doc',
     'uses'=>'PersonneController@download_doc',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_doc/{slug}/{pj}{id}',[
     'as'=>'supprimer_doc',
     'uses'=>'PersonneController@supprimer_doc',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/test/{slug}',[
     'as'=>'test',
@@ -143,23 +143,23 @@ Route::get('/test/{slug}',[
 Route::get('/contrat_new_user',[
     'as'=>'contrat_new_user',
     'uses'=>'ContratController@contrat_new_user',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/contrat_new_user2/{id}/{id_typeModification}',[
     'as'=>'contrat_new_user2',
     'uses'=>'ContratController@contrat_new_user2',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/creer_contrat/{id}',[
     'as'=>'creer_contrat',
     'uses'=>'ContratController@creer_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/contrat_embauche/{id}',[
     'as'=>'contrat_embauche',
     'uses'=>'ContratController@contrat_embauche',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/listercat/{id_definition}',[
     'as'=>'listercat',
@@ -169,19 +169,19 @@ Route::get('/listercat/{id_definition}',[
 Route::get('/lerecrutement/{id_recrutement}',[
     'as'=>'lerecrutement',
     'uses'=>'ContratController@lerecrutement',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 
 
 Route::get('/recsalairecat/{id_contrat}',[
     'as'=>'recsalairecat',
     'uses'=>'SalaireController@recsalairecat',
-    'roles' => ['Salaires']
+    'roles' => ['Salaires','Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_correction_contrat',[
     'as'=>'save_correction_contrat',
@@ -191,94 +191,94 @@ Route::post('/save_correction_contrat',[
 Route::post('/save_contrat_creer_contrat',[
     'as'=>'save_contrat_creer_contrat',
     'uses'=>'ContratController@save_contrat_creer_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_contrat_recrutement',[
     'as'=>'save_contrat_recrutement',
     'uses'=>'ContratController@save_contrat_recrutement',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/update_contrat',[
     'as'=>'update_contrat',
     'uses'=>'ContratController@update_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/affiche_contrat/{id}',[
     'as'=>'affiche_contrat',
     'uses'=>'ContratController@affiche_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/lister_contrat/{slug}',[
     'as'=>'lister_contrat',
     'uses'=>'ContratController@lister_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/information_contrat/{id}',[
     'as'=>'information_contrat',
     'uses'=>'ContratController@information_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/information_modification/{id}',[
     'as'=>'information_modification',
     'uses'=>'ModificationController@information_modification',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::post('/save_renouvellezment_avenant',[
     'as'=>'save_renouvellezment_avenant',
     'uses'=>'ContratController@save_renouvellezment_avenant',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::post('/save_renouvellement_multiple',[
     'as'=>'save_renouvellement_multiple',
     'uses'=>'ModificationController@save_renouvellement_multiple',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 
 Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',
     'uses'=>'ContratController@rupture_contrat',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/rompre',[
     'as'=>'rompre',
     'uses'=>'ContratController@rompre',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 
 Route::get('/contratcddpdf/{id}',[
     'as'=>'contratcddpdf',
     'uses'=>'ContratController@contratcddpdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/contratpdf/{id}',[
     'as'=>'contratpdf',
     'uses'=>'ContratController@contratpdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/contratcdipdf',[
     'as'=>'contratcdipdf',
     'uses'=>'ContratController@contratcdipdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/renouvellement_contratpdf/{id}',[
     'as'=>'renouvellement_contratpdf',
     'uses'=>'ContratController@renouvellement_contratpdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/avenant_type_contratpdf/{id}',[
     'as'=>'avenant_type_contratpdf',
     'uses'=>'ContratController@avenant_type_contratpdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/avenant/{id}',[
     'as'=>'avenant',
     'uses'=>'ContratController@avenant',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 Route::get('/avenant_renum_contratpdf/{id}',[
     'as'=>'avenant_renum_contratpdf',
     'uses'=>'ContratController@avenant_renum_contratpdf',
-    'roles' => ['Personnes']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth');
 
 Route::get('/Ajouter_partenaire',[
@@ -349,19 +349,19 @@ Route::get('/supprimer_entite',[
 Route::get('/effectif',[
     'as'=>'effectif',
     'uses'=>'EffectifController@effectif',
-    'roles' => ['Effectifs']
+    'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 //pour le salaire
 
 Route::get('/salaires',[
     'as'=>'salaires',
     'uses'=>'SalaireController@salaires',
-    'roles' => ['Salaires']
+    'roles' => ['Salaires','Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/liste_salaire/{slug}',[
     'as'=>'liste_salaire',
     'uses'=>'SalaireController@liste_salaire',
-    'roles' => ['Salaires']
+    'roles' => ['Salaires','Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/Ajouter_salaire/{slug}',[
     'as'=>'Ajouter_salaire',
@@ -371,7 +371,7 @@ Route::get('/Ajouter_salaire/{slug}',[
 Route::post('/enregistrer_salaire',[
     'as'=>'enregistrer_salaire',
     'uses'=>'SalaireController@enregistrer_salaire',
-    'roles' => ['Salaires']
+    'roles' => ['Salaires','Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 //etat
 

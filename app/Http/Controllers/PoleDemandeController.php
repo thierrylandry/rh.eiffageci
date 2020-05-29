@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entite;
+use App\Jobs\EnvoiesDemandeCollectif;
 use App\Jobs\EnvoiesDemandeValider;
 use App\Listmodifavenant;
 use App\Modification;
@@ -30,8 +31,9 @@ class PoleDemandeController extends Controller
         endforeach;
         $listmodificationavenants=Listmodifavenant::all();
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('id_entite','=',Auth::user()->id_entite)
             ->whereIn('id',$tab)
+            ->where('id_entite','=',Auth::user()->id_entite)
+
             ->orderBy('id', 'desc')
             ->paginate(300);
         $entites= Entite::all();
@@ -45,48 +47,63 @@ class PoleDemandeController extends Controller
         $parameters=$request->except(['_token']);
 
         $mavariable=$parameters['mavariable'];
-
+        $liste_avenant=$parameters['liste_avenant'];
+       // dd($mavariable);
         $tab_id= explode(',',$mavariable);
+      //  dd($tab_id);
         //   dd($tab_id);
         $lesServices= Array();
+        $nb =0;
         foreach($tab_id as $id):
-            if($id!=""){
-                $modification = new  Modification();
 
-                $id_service =Personne_presente_le_service::find($id)->id_service;
-                if(!in_array($id_service,$lesServices)){
-                    $lesServices=$id_service;
+            if($id!=""){
+                $nb++;
+                $modification = new  Modification();
+//dd($id);
+                $varr=Personne_presente_le_service::find($id);
+                if(isset($varr)){
+                    $id_service =$varr->id_service;
+                    //  dd($id_service);
+                    if(!in_array($id_service,$lesServices)){
+                        $lesServices[]=$id_service;
+                    }
+                    $modification->id_personne=$id;
+                    $modification->etat=1;
+                    $modification->id_typeModification=3;
+                    $modification->id_service=$id_service;
+                    $modification->list_modif=\GuzzleHttp\json_encode($liste_avenant);
+                    $modification->id_users=Auth::user()->id;
+
+                    $modification->save();
+                    $contactdemandeur[]=$modification->user()->first()->email;
                 }
 
-                $modification->id_personne=$id;
-                $modification->etat=1;
-                $modification->id_service=$id_service;
-                $modification->id_users=Auth::user()->id;
 
-                $modification->save();
-                $contactdemandeur[]=$modification->user()->first()->email;
+
             }
         endforeach;
         if(!empty($lesServices)) {
 
             foreach($lesServices as $service):
-            $users = User::where('id_servie','=',$service)->get();
+            $users = User::where('id_service','=',$service)->get();
             $contact = Array();
             foreach ($users as $user):
 
-                if ($user->hasRole('Chef_de_service')) {
+                if ($user->hasRole('Chef_de_projet')) {
                     $contact[] = $user->email;
 
                 }
 
+
             endforeach;
 
+               // dd($contact);
             if (!empty($contact)) {
-                $this->dispatch(new EnvoiesDemandeValider(6, $contact));
+                $this->dispatch(new EnvoiesDemandeCollectif(6, $contact,$nb));
             }
             endforeach;
         }
-
+        return redirect()->back()->with('success',"Les demandes d'avenant générales ont été enregistré avec succès");
 
     }
 }

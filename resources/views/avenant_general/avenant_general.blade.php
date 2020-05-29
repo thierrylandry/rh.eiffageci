@@ -26,6 +26,8 @@
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
+                    <button class="btn btn-success valider" data-toggle="modal" data-target="#RVmodalcoisir"> <i class="zmdi zmdi-mail-send"></i> SOUMETTRE LA DEMANDE</button>
+
                     <a href="{{route('pole_de_demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-arrow-back"></i>POLE DE DEMANDE</a>
                 </div>
@@ -42,7 +44,6 @@
                         <th>FONCTION</th>
                         <th>ENTITE</th>
                         <th>SOCIETE</th>
-                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -59,25 +60,6 @@
                             <td>{{ $personne->getEntiteString() }}
                             </td>
                             <td>{{ $personne->id_unite ? $personne->societe->libelleUnite : ""}}</td>
-                            <td> <div class="table-data-feature">
-                                    <a href="{{route('fiche_personnel',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="fa fa-eye" aria-hidden="true" title="Fiche personnelle"></i>
-                                    </a>
-                                    <a href="{{route('detail_personne',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                        <i class="zmdi zmdi-more" title="modifier les infos"></i>
-                                    </a>
-                                    <a href="{{route('document_administratif',['slug'=>$personne->slug])}}" class="item" data-toggle="tooltip" data-placement="top" title="Document administratif">
-                                        <i class="zmdi zmdi-attachment-alt" title="document administratif"></i>
-                                    </a>
-                                    <a href="{{route('lister_contrat',['slug'=>$personne->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Les contrats">
-                                        <i class="zmdi zmdi-folder-person" title="les contrats"></i>
-                                    </a>
-
-                                    <a href="{{route('supprimer_personne',['slug'=>$personne->slug])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                                        <i class="zmdi zmdi-delete" title="supprimer"></i>
-                                    </a>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                     {{ $personnes->links() }}
@@ -90,7 +72,7 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-3"></div>
                 <div class="col-sm-3">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#RVmodalcoisir" id="valider"> <i class="zmdi zmdi-mail-send"></i> SOUMETTRE LA DEMANDE</button>
+                    <button class="btn btn-success valider" data-toggle="modal" data-target="#RVmodalcoisir"> <i class="zmdi zmdi-mail-send"></i> SOUMETTRE LA DEMANDE</button>
 
                 </div>
 
@@ -165,7 +147,15 @@
                 },
             });
             //table.DataTable().draw();
+            $("#checkboxlisteavenant").click(function(){
 
+                if($("#checkboxlisteavenant").is(':checked') ){
+                    $("#liste_avenant > option").prop("selected","selected");
+                }else{
+                    $("#liste_avenant > option").removeAttr("selected");
+                }
+                $selectListeAvenant.trigger('change');
+            });
             $('#table_employe tbody').on( 'click', 'tr', function () {
                 $(this).toggleClass('selected');
             } );
@@ -173,7 +163,7 @@
             $('#button').click( function () {
                 alert( table.rows('.selected').data().length +' row(s) selected' );
             } );
-            $('#valider').click(function(e){
+            $('.valider').click(function(e){
 
                 var rows_selected = table.column(0).checkboxes.selected();
                 console.log(rows_selected);
@@ -192,8 +182,9 @@
                     alert("Veuillez selectionner au moins un élément");
                     //  $("#RVmodal").modal('toggle');
                     // $('#RVmodal').modal('show');
+                    $('#closebtn').trigger('click');
                 }else{
-                    // $("#id_personnetype_contratrenouvellement").val(mavariable);
+                     $("#mavariable").val(mavariable);
                     var csrf_token = $('meta[name="csrf-token"]').attr('content');
              /*       $.post(route+"/avenant_collectif",{mavariable:mavariable,_token: "{{ csrf_token() }}"},
                             function (data) {

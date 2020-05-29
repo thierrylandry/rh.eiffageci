@@ -565,7 +565,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('save_avenant_general')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{route('avenant_collectif')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
                     <input type="hidden" id="id_personnetype_contratrenouvellement" name="id_personnetype_contratrenouvellement" placeholder="" value="" class="form-control" required>
                     <div class="row">
@@ -576,6 +576,7 @@
                                     <div class="col-md-5">
                                         <label for="text-input" class=" form-control-label">Choisir les axes du renouvellement général ?:</label>
                                     </div>
+                                    <input type="hidden" id="mavariable" name="mavariable" value="" required/>
                                     <div class="col-md-7">
                                         <select class="form-control" name="liste_avenant[]" multiple id="liste_avenant">
                                             <option value="">SELECTIONNER</option>

@@ -1,6 +1,6 @@
 <p>Bonjour,</p>
 
-<p>Les Ressources Humaines ont lancé des demandes d'avenant général concernant certains membres de votre équippe. Vous avez la possibilité de les d'activer uniquement pour les personnes souhaitées<br><br>
+<p>Vous avez une demande {{$nb}} demande(s) d'avenant(s) générales)<br><br>
 
     Cliquez ici pour consulter 👉 : {{$lien}}
 </p>

@@ -37,7 +37,7 @@ class PoleDemandeController extends Controller
         $entites= Entite::all();
 
 //dd($personnes->first()->fonction()->first()->libelle);
-        return view('avenant_general/avenant_general',compact('personnes','entites','entite','listmodificationavenants'));
+        return view('avenant_general/avenant_general',compact('personnes','entites','listmodificationavenants'));
     }
 
     public function avenant_collectif(Request $request){

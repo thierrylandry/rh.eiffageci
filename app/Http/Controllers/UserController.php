@@ -90,6 +90,13 @@ class UserController extends Controller
                 $utilisateur->roles()->attach(Role::where('name',$role)->first());
             endforeach;
         }
+        if(isset($parameters['chantiers'])){
+            $chantiers=$parameters['chantiers'];
+            $utilisateur->chantiers()->detach();
+            foreach ($chantiers as $chantier):
+                $utilisateur->chantiers()->attach(Entite::where('libelle',$chantier)->first());
+            endforeach;
+        }
 
 
         return redirect()->route('utilisateur')->with('success',"L'utilisateur a été modifier avec succès");
@@ -137,6 +144,14 @@ class UserController extends Controller
                 $utilisateur->roles()->attach(Role::where('name',$role)->first());
             endforeach;
         }
+        if(isset($parameters['chantiers'])){
+            $chantiers=$parameters['chantiers'];
+            $utilisateur->chantiers()->detach();
+            foreach ($chantiers as $chantier):
+                $utilisateur->chantiers()->attach(Entite::where('libelle',$chantier)->first());
+            endforeach;
+        }
+
         return redirect()->route('utilisateur')->with('success',"L'utilisateur a été crée avec succès");
 
     }

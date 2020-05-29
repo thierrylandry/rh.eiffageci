@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('lister_personne'.$entite)
+@section('lister_personne')
     active
     @endsection
 @section('Ajouter_personne_block')
@@ -86,7 +86,7 @@
         <div class="table-data__tool-left">
         </div>
         <div class="table-data__tool-right">
-            <a href="{{route('lister_personne',$entite)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <a href="{{route('lister_personne')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-view-list"></i>LISTER LES PERSONNES</a>
         </div>
     </div>
@@ -442,8 +442,9 @@
                           <div class="col-12 col-md-9">
                               <select name="entite" id="disabledSelect" class="form-control">
                                   @foreach($entites as $entite)
-
+                                        @if($entite->id==Auth::user()->id_chantier_connecte)
                                       <option value="{{$entite->id}}"> {{$entite->libelle}}</option>
+                                      @endif
                                   @endforeach
                               </select>
                           </div>

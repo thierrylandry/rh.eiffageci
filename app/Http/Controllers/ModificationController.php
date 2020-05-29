@@ -46,9 +46,9 @@ class ModificationController extends Controller
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
        // dd(Auth::user()->id_service);
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::orderBy('nom', 'ASC')->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
        // dd($personnes);
 
@@ -150,9 +150,9 @@ class ModificationController extends Controller
         $definitions = Definition::all();
         // $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::orderBy('nom', 'ASC')->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $fonctions = Fonction::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes','listmodif'));

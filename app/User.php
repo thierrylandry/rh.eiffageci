@@ -71,4 +71,15 @@ class User extends Authenticatable
 
         return $this->hasOne('App\Personne','id','id_personne');
     }
+    public function chantiers()
+    {
+        return $this->belongsToMany('App\Entite', 'user_chantier', 'user_id', 'chantier_id');
+    }
+    public function hasChantier($chantier)
+    {
+        if ($this->chantiers()->where('libelle', $chantier)->first()) {
+            return true;
+        }
+        return false;
+    }
 }

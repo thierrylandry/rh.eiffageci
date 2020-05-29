@@ -15,6 +15,7 @@ class EnvoiesDemandeValider implements ShouldQueue
     private $objet;
     private $lien;
     private $contacts;
+    private $typedemande;
 
     /**
      * Create a new job instance.
@@ -43,10 +44,15 @@ class EnvoiesDemandeValider implements ShouldQueue
             case 5: $this->objet="VALIDATION DE BILLET D'AVION";
                     $this->lien=asset('billets/gestion');
                 break;
+//envoyez au chef de service pour qu'il sache qu'il y a des demandes collectives en cours
+            case 6: $this->objet="DEMANDE D'AVENANT COLLECTIF";
+                    $this->lien=asset('modifications/demande');
+                break;
 
 
         }
         $this->contacts=$contacts;
+        $this->typedemande=$typedemande;
         //
 
     }
@@ -73,19 +79,35 @@ class EnvoiesDemandeValider implements ShouldQueue
 
         });
       */
+      if($this->typedemande!=6){
+          if(isset($contacts[0])){
+              Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts )
+              {
+                  $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                      ->subject($objet);
+                  foreach($contacts as $em):
+                      $message ->to($em);
+                  endforeach;
+                  $message->bcc("cyriaque.kodia@eiffage.com");
+                  $message->bcc("thierry.koffi@eiffage.com");
+              });
+          }
+      }else{
+          if(isset($contacts[0])){
+              Mail::send('mail/demande_avenant_groupe',compact('lien'),function($message)use ($objet,$contacts )
+              {
+                  $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
+                      ->subject($objet);
+                  foreach($contacts as $em):
+                      $message ->to($em);
+                  endforeach;
+                  $message->bcc("cyriaque.kodia@eiffage.com");
+                  $message->bcc("thierry.koffi@eiffage.com");
+              });
+          }
+      }
 
-        if(isset($contacts[0])){
-            Mail::send('mail/demande_valider',compact('lien'),function($message)use ($objet,$contacts )
-            {
-                $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                    ->subject($objet);
-                foreach($contacts as $em):
-                    $message ->to($em);
-                endforeach;
-                $message->bcc("cyriaque.kodia@eiffage.com");
-                $message->bcc("thierry.koffi@eiffage.com");
-            });
-        }
+
 
     }
 }

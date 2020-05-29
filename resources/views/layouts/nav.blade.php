@@ -133,9 +133,11 @@
                             <a href="{{route("global")}}" >Groupement</a>
                         </li>
                         @foreach($entites as $enti)
+                            @if($enti->id==Auth::user()->id_chantier_connecte)
                             <li class="@yield('tableau_de_bord'.$enti->id)">
                                 <a href="{{route("tableau_de_bord",$enti->id)}}">{{$enti->libelle}}</a>
                             </li>
+                            @endif
                             @endforeach
                     </ul>
                 </li>
@@ -144,41 +146,9 @@
                         <i class="fas fa-question"></i>PÔLE DE DEMANDE</a>
                 </li>
                 @if(Auth::user() != null && (Auth::user()->hasRole('Personnes') || Auth::user()->hasRole('Gestion_expatrie') ))
-                    <li class="@yield('Ajouter_personne_active') @yield('lister_personne_active') has-sub">
-                        <a class="js-arrow " href="#">
-                            <i class="fas fa-users open" ></i>PERSONNES ACTIVES</a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block_active')>
-                            @foreach($entites as $enti)
-                                <li class="@yield('lister_personne_active'.$enti->id)">
-                                    <a href="{{route("lister_personne_active",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endif @if(Auth::user() != null && (Auth::user()->hasRole('Personnes') || Auth::user()->hasRole('Gestion_expatrie') ))
-                    <li class="@yield('Ajouter_personne_non_active') @yield('lister_personne_non_active') has-sub">
-                        <a class="js-arrow " href="#">
-                            <i class="fas fa-users open" ></i>PERSONNES NON ACTIVES</a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block_non_active')>
-                            @foreach($entites as $enti)
-                                <li class="@yield('lister_personne_non_active'.$enti->id)">
-                                    <a href="{{route("lister_personne_non_active",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endif
-                @if(Auth::user() != null && (Auth::user()->hasRole('Personnes') || Auth::user()->hasRole('Gestion_expatrie') ))
-                    <li class="@yield('Ajouter_personne') @yield('lister_personne') has-sub">
-                        <a class="js-arrow " href="#">
-                            <i class="fas fa-users open" ></i>PERSONNES ACTIVES/NON ACTIVES</a>
-                        <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('Ajouter_personne_block') >
-                            @foreach($entites as $enti)
-                                <li class="@yield('lister_personne'.$enti->id)">
-                                    <a href="{{route("lister_personne",$enti->id)}}">{{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                    <li class="@yield('gestion_rh') @yield('lister_personne') @yield('lister_personne_active') @yield('lister_personne_non_active') has-sub">
+                        <a class="js-arrow " href="{{route("gestion_rh")}}">
+                            <i class="fas fa-users open" ></i>GESTION RH</a>
                     </li>
                 @endif
                 @if(Auth::user() != null && Auth::user()->hasRole('Invites'))

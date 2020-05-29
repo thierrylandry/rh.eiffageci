@@ -555,6 +555,59 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="RVmodalcoisir" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titre_contrat">Liste des modifications de l'avenant</h5>
+                <button type="button" class="close" data-dismiss="modal" id="closebtn" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('save_avenant_general')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <input type="hidden" id="id_personnetype_contratrenouvellement" name="id_personnetype_contratrenouvellement" placeholder="" value="" class="form-control" required>
+                    <div class="row">
+                        <div class="col-sm-12"></div>
+                        <div class="col-sm-12 top-campaign ">
+                            <div class="">
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="text-input" class=" form-control-label">Choisir les axes du renouvellement général ?:</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="form-control" name="liste_avenant[]" multiple id="liste_avenant">
+                                            <option value="">SELECTIONNER</option>
+                                            @if(isset($listmodificationavenants))
+                                                @foreach($listmodificationavenants as $liste)
+                                                    <option value="{{$liste->libelle}}" >{{$liste->libelle}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        <input type="checkbox" id="checkboxlisteavenant" >Selectionner Tout
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer pull-right">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="zmdi zmdi-edit"></i> Enregistrer
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm" id="rareset">
+                            <i class="fa fa-ban"></i> Réinitialiser
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- modal small -->
 <div class="modal fade" id="modalhistorique" tabindex="-1" role="dialog" aria-labelledby="modalhistoriqueLabel" aria-hidden="true">

@@ -43,7 +43,8 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+       // dd($recrutements);
         $uniteJours=uniteJour::all();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','uniteJours'));
     }
@@ -59,7 +60,7 @@ class RecrutementController extends Controller
         $categories = Categorie::distinct('libelle')->get();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
         $uniteJours=uniteJour::all();
@@ -77,7 +78,7 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
+        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         $competences= json_decode($recrutement->competenceRecherche);
         $taches= json_decode($recrutement->tache);
       //  dd($competences[0]);

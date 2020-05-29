@@ -107,6 +107,24 @@
                                 <input type="checkbox" id="checkbox" >Selectionner Tout
                             </div>
                             </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="domaine">Entité en charge</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select data-placeholder="Choisir les entités" id="id_entite_en_charge" name="chantiers[]" multiple class="standardSelect">
+                                            @foreach($entites as $entite)
+                                                @if(isset($utilisateur) && $utilisateur->hasChantier($entite->libelle))
+
+                                                    <option value="{{$entite->libelle}}" selected>{{$entite->libelle}} </option>
+                                                @else
+                                                    <option value="{{$entite->libelle}}" >{{$entite->libelle}} </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <input type="checkbox" id="checkbox2" >Selectionner Tout
+                                    </div>
+                                    </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Mot de passe</label>
@@ -129,7 +147,7 @@
                                     <label for="text-input" class=" form-control-label">L'entité *</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="id_entite" name="id_entite"  class="form-control" required>
+                                    <select id="id_entite" name="id_entite"  class="form-control" required>
                                         <option value=""></option>
                                         @foreach($entites as $entite)
                                             <option value="{{$entite->id}}" {{isset($utilisateur) && $utilisateur->id_entite==$entite->id?"selected":""}}>{{$entite->libelle}}</option>
@@ -172,6 +190,7 @@
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>EMAIL</th>
+                        <th>Entité a la charge</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -182,6 +201,18 @@
                             <td>{{$utilisateur->nom}}</td>
                             <td>{{$utilisateur->prenoms}}</td>
                             <td>{{$utilisateur->email}}</td>
+                            <td>
+                                <ol>
+
+                                        @foreach($utilisateur->chantiers()->get() as $chantier )
+                                            <li>
+                                                {{$chantier->libelle}}
+                                            </li>
+                                        @endforeach
+
+                                </ol>
+
+                            </td>
                             <td>
                                 <a href="{{route('supprimer_utilisateur',['id'=>$utilisateur->id])}}"  class="btn btn-danger col-sm-4 pull-right">
                                     <i class=" fa fa-trash"></i>
@@ -214,7 +245,6 @@
     <script>
 
         $(document).ready(function() {
-
             $('#confmdp').on('change',function (e) {
                 var  confmdp=$('#confmdp').val();
                 var  mdp=$('#mdp').val();
@@ -258,6 +288,7 @@
             //table.DataTable().draw();
             var $personne= $('#personne').select2({ placeholder: 'Selectionner une personne'});
             var $selectrole= $('#roles').select2({ placeholder: 'Selectionner le(s) rôle(s)'});
+            var $selectchantier= $('#id_entite_en_charge').select2({ placeholder: 'Selectionner le(s) entite(s)'});
             $("#checkbox").click(function(){
 
                 if($("#checkbox").is(':checked') ){
@@ -266,6 +297,15 @@
                     $("#roles > option").removeAttr("selected");
                 }
                 $selectrole.trigger('change');
+            });
+            $("#checkbox2").click(function(){
+
+                if($("#checkbox2").is(':checked') ){
+                    $("#id_entite_en_charge > option").prop("selected","selected");
+                }else{
+                    $("#id_entite_en_charge > option").removeAttr("selected");
+                }
+                $selectchantier.trigger('change');
             });
         } );
         function readURL(input) {

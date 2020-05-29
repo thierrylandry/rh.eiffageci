@@ -14,21 +14,7 @@
         </div>
     </div>
     </br>
-    <div class="table-data__tool">
-        <div class="table-data__tool-left">
-        </div>
-        <div class="table-data__tool-right">
-            <a href="{{back()->getTargetUrl()}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                <i class="zmdi zmdi-long-arrow-return"></i>PRECEDENT</a>
-
-        </div>
-    </div>
-    <div class="card-body">
-        <a  href="{{route('fiche_personnel',$personne->slug)}}" class="btn btn-outline-primary">Consulter la fiche</a>
-        <a  href="{{route('detail_personne',$personne->slug)}}" class="btn btn-outline-secondary">Modifier les informations</a>
-        <a href="{{route('document_administratif',$personne->slug)}}" class="btn btn-outline-success"> Gérer les documents administratifs</a>
-        <a href="{{route('lister_contrat',$personne->id)}}" class="btn btn-outline-danger">Gérer les contrats</a>
-    </div>
+    @include('personne.menu_retour')
     <form action="{{route('save_document')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         @csrf
         <input type="hidden" id="text-input" name="slug" placeholder="Nom" value="{{isset($personne)? $personne->slug:''}}" class="form-control" required>

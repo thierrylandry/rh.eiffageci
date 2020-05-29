@@ -27,9 +27,9 @@ class AbsenceController extends Controller
     {
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
         return view('absences/ficheAbsence',compact('entites','personnes','absences'));
@@ -39,9 +39,9 @@ class AbsenceController extends Controller
         $absence= Absence::find($id);
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
        // $contrat= Contrat::where('id')
@@ -279,6 +279,7 @@ class AbsenceController extends Controller
                 ->leftJoin('users','users.id','=','absence.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->orWhere('roles.name','=','Chef_de_service') ->where('absence.etat','=',1)
                 ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
 
@@ -289,6 +290,7 @@ class AbsenceController extends Controller
                 ->leftJoin('users','users.id','=','absence.id_users')->where('absence.etat','=',1)
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
 
         }
@@ -305,6 +307,7 @@ class AbsenceController extends Controller
             ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
             ->leftJoin('personne','personne.id','=','absence.id_personne')
             ->leftJoin('users','users.id','=','absence.id_users')->where('etat','>=',2)
+            ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
             ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
 
              //  $absences= Absence::where('etat','>=',2)->get();

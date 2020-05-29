@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('tableau_de_bord',1);
+    return redirect()->route('tableau_de_bord');
 });
 
 Auth::routes();
@@ -23,7 +23,7 @@ Route::get('erreur', [
 ]);
 
 
-Route::get('/tableau_de_bord/{id}',[
+Route::get('/tableau_de_bord',[
     'as'=>'tableau_de_bord',
     'uses'=>'HomeController@tableau_de_bord',
 ])->middleware('auth')->middleware('roles');
@@ -54,22 +54,27 @@ Route::get('/globalExport',[
 
 
 
-Route::get('/Ajouter_personne/{entite}',[
+Route::get('/Ajouter_personne',[
     'as'=>'Ajouter_personne',
     'uses'=>'PersonneController@ajouter_personne',
     'roles' => ['Personnes']
 ])->middleware('auth')->middleware('roles');
-Route::get('/lister_personne/{entite}',[
+Route::get('/gestion_rh',[
+    'as'=>'gestion_rh',
+    'uses'=>'PersonneController@gestion_rh',
+    'roles' => ['Personnes']
+])->middleware('auth')->middleware('roles');
+Route::get('/lister_personne',[
     'as'=>'lister_personne',
     'uses'=>'PersonneController@lister_personne',
     'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
-Route::get('/lister_personne_active/{entite}',[
+Route::get('/lister_personne_active',[
     'as'=>'lister_personne_active',
     'uses'=>'PersonneController@lister_personne_active',
     'roles' => ['Personnes','Gestion_expatrie']
 ])->middleware('auth')->middleware('roles');
-Route::get('/lister_personne_non_active/{entite}',[
+Route::get('/lister_personne_non_active',[
     'as'=>'lister_personne_non_active',
     'uses'=>'PersonneController@lister_personne_non_active',
     'roles' => ['Personnes','Gestion_expatrie']
@@ -635,7 +640,11 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
         'uses'=>'RecrutementController@ajouter_recrutement',
         'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
-
+    Route::get('/avenant_general',[
+        'as'=>'avenant_general',
+        'uses'=>'PoleDemandeController@avenant_general',
+        'roles' => ['Ressource_humaine']
+    ])->middleware('auth')->middleware('roles');
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'RecrutementController@enregistrer_recrutement',
@@ -980,8 +989,23 @@ Route::get('/pole_de_demande', [
     'as' => 'pole_de_demande',
     'uses' => 'PoleDemandeController@pole_de_demande',
 ])->middleware('auth');
+Route::post('/avenant_collectif', [
+    'as' => 'avenant_collectif',
+    'uses' => 'PoleDemandeController@avenant_collectif',
+])->middleware('auth');
+Route::post('/save_avenant_general', [
+    'as' => 'save_avenant_general',
+    'uses' => 'PoleDemandeController@save_avenant_general',
+])->middleware('auth');
 Route::get('/lapersonne/{id}',[
     'as'=>'lapersonne',
     'uses'=>'UserController@lapersonne'
 
 ])->middleware('roles')->middleware('auth');
+
+
+
+Route::get('/liste_chantier/{email}',[
+    'as'=>'liste_chantier',
+    'uses'=>'EntiteController@liste_chantier',
+]);

@@ -51,11 +51,20 @@
                             @csrf
                             <div class="form-group">
                                 <label>Adresse E-mail</label>
-                                <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                <input class="au-input au-input--full" type="email" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label>Mot de passe</label>
-                                <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Entité</label></div>
+                                <div class="col-12 col-md-9">
+
+                                    <select data-placeholder="Sélectionner un projet..." class="standardSelect form-control" tabindex="1" name="id_chantier" id="chantier">
+
+                                    </select>
+                                </div>
                             </div>
                             <div class="login-checkbox">
                                 <label>
@@ -104,7 +113,81 @@
 
 <!-- Main JS-->
 <script src="js/main.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        var email=jQuery('#email').val();
+        jQuery("#chantier").html('');
+        jQuery.get("liste_chantier/"+email,function(data) {
+            console.log(data);
+            //   console.log(data);
 
+            var option="";
+            jQuery.each(data,function(index, value){
+                option+="<option value='"+value.id+"'>"+value.libelle+"</opption>"
+            });
+            //alert(option);
+
+            jQuery("#chantier").html(option);
+
+        });
+
+        jQuery("#email").change(function (){
+            var email=jQuery('#email').val();
+            jQuery("#chantier").html('');
+            jQuery.get("liste_chantier/"+email,function(data) {
+                console.log(data);
+                //   console.log(data);
+
+                var option="";
+                jQuery.each(data,function(index, value){
+                    option+="<option value='"+value.id+"'>"+value.libelle+"</opption>"
+                });
+                //alert(option);
+
+                jQuery("#chantier").html(option);
+
+            });
+        })
+        jQuery("#password").change(function (){
+            var email=jQuery('#email').val();
+            jQuery("#chantier").html('');
+            jQuery.get("liste_chantier/"+email,function(data) {
+                console.log(data);
+                //   console.log(data);
+
+                var option="";
+                jQuery.each(data,function(index, value){
+                    option+="<option value='"+value.id+"'>"+value.libelle+"</opption>"
+                });
+                //alert(option);
+
+                jQuery("#chantier").html(option);
+
+            });
+        })
+        jQuery("#chantier").click(function (){
+
+            var email=jQuery('#email').val();
+            if(email==''){
+                jQuery("#chantier").html('');
+                jQuery.get("liste_chantier/"+email,function(data) {
+                    console.log(data);
+                    //   console.log(data);
+
+                    var option="";
+                    jQuery.each(data,function(index, value){
+                        option+="<option value='"+value.id+"'>"+value.libelle+"</opption>"
+                    });
+                    //alert(option);
+
+                    jQuery("#chantier").html(option);
+
+                });
+            }
+
+        })
+    });
+</script>
 </body>
 
 </html>

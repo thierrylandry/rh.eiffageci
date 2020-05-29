@@ -1,36 +1,21 @@
 @extends('layouts.app')
-@if($variable=="tout")
-@section('lister_personne')
+
+@section('pole_demande')
     active
 @endsection
-@section('lister_personne_block')
+@section('pole_demande_block')
     style="display: block;"
 @endsection
-    @elseif($variable=="active")
-@section('lister_personne_active')
-    active
-@endsection
-@section('lister_personne_block_active')
-    style="display: block;"
-@endsection
-    @else
-@section('lister_personne_non_active')
-    active
-@endsection
-@section('lister_personne_block_non_active')
-    style="display: block;"
-@endsection
-@endif
 
 
 @section('page')
-   <div class="row">
+    <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">PERSONNE @if($variable=="tout") ACTIVE/NON ACTIVE @elseif($variable=="active") ACTIVE @else NON ACTIVE @endif- LISTE  @foreach($entites as $enti)
+                        <h2 class="title-1">AVENANT GENERAL - LISTE  @foreach($entites as $enti)
 
-                                                        @if($enti->id==Auth::user()->id_chantier_connecte)
-                      {{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}
+                        @if($enti->id==Auth::user()->id_chantier_connecte)
+                            {{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}
                         @endif
                     @endforeach</h2>
             </div>
@@ -41,14 +26,15 @@
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
-                    <a href="{{route('Ajouter_personne',Auth::user()->id_chantier_connecte)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
+                    <a href="{{route('pole_de_demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-arrow-back"></i>POLE DE DEMANDE</a>
                 </div>
             </div>
             <div class="table-responsive m-b-40">
                 <table class="table table-borderles" id="table_employe">
                     <thead>
                     <tr>
+                        <th>MATRICULE</th>
                         <th>MATRICULE</th>
                         <th>NOM & PRENOM</th>
                         <th>SEXE</th>
@@ -62,12 +48,13 @@
                     <tbody>
                     @foreach($personnes as $personne)
                         <tr class="tr-shadow">
+                            <td>{{isset($personne->matricule)?$personne->id:''}}</td>
                             <td>{{isset($personne->matricule)?$personne->matricule:''}}</td>
                             <td>{{$personne->nom.' '.$personne->prenom}}</td>
                             <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
                             <td>{{$personne->pays->nom_fr_fr}}</td>
                             <td>
-                               {{isset($personne->fonction()->first()->libelle)?$personne->fonction()->first()->libelle:''}}
+                                {{isset($personne->fonction()->first()->libelle)?$personne->fonction()->first()->libelle:''}}
                             </td>
                             <td>{{ $personne->getEntiteString() }}
                             </td>
@@ -98,6 +85,16 @@
                 </table>
             </div>
             <!-- END DATA TABLE -->
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success" data-toggle="modal" data-target="#RVmodalcoisir" id="valider"> <i class="zmdi zmdi-mail-send"></i> SOUMETTRE LA DEMANDE</button>
+
+                </div>
+
+            </div>
         </div>
     </div>
     <script src="{{ asset("js/jquery.min.js") }}"></script>
@@ -137,6 +134,7 @@
     <script>
 
         $(document).ready(function() {
+            var $selectListeAvenant= $('#liste_avenant').select2({ placeholder: 'Selectionner'});
             var table= $('#table_employe').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
@@ -153,10 +151,18 @@
                 "createdRow": function( row, data, dataIndex){
 
                 },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 },
-                    { responsivePriority: 2, targets: -1 }
-                ]
+                "columnDefs": [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                            'selectRow': true
+                        }
+                    },
+                    { "width": "10%", "targets": 2 }
+                ],
+                "select": {
+                    'style': 'multi'
+                },
             });
             //table.DataTable().draw();
 
@@ -167,9 +173,43 @@
             $('#button').click( function () {
                 alert( table.rows('.selected').data().length +' row(s) selected' );
             } );
+            $('#valider').click(function(e){
+
+                var rows_selected = table.column(0).checkboxes.selected();
+                console.log(rows_selected);
+                var mavariable="";
+                var route="{{asset('')}}"
+
+                $.each(rows_selected, function(index, rowId){
+                    // Create a hidden element
+                    //  console.log(rowId);
+                    mavariable=mavariable+','+rowId;
+
+                });
+
+
+                if(mavariable==""){
+                    alert("Veuillez selectionner au moins un élément");
+                    //  $("#RVmodal").modal('toggle');
+                    // $('#RVmodal').modal('show');
+                }else{
+                    // $("#id_personnetype_contratrenouvellement").val(mavariable);
+                    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+             /*       $.post(route+"/avenant_collectif",{mavariable:mavariable,_token: "{{ csrf_token() }}"},
+                            function (data) {
+                                console.log(data);
+                                if(data==""){
+                                    //location.reload();
+                                    alert("Demande d'avenant générale éffectué");
+                                }
+                            }
+                    );*/
+                }
+                //console.log(mavariable);
+            });
         } );
-$(".current").click(function (){
-   alert("eee");
-});
+        $(".current").click(function (){
+            alert("eee");
+        });
     </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Entite;
 use App\Personne;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Vardiag;
@@ -30,8 +31,11 @@ class HomeController extends Controller
     {
         return view('/');
     }
-    public function tableau_de_bord($id)
+    public function tableau_de_bord()
     {
+
+        $id_entite_connecter=Auth::user()->id_chantier_connecte;
+       // dd($id_entite_connecter);
         $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as entite','effectif as nb');
         $effectifglobaux_tab=DB::table('personne_presente')
@@ -40,7 +44,7 @@ class HomeController extends Controller
             ->join('entite','personne_presente.id_entite','=','entite.id')
             ->where('contrat.etat','=',1)
         //       ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where('id_entite','=',$id)
+            ->where('id_entite','=',$id_entite_connecter)
             ->groupBy('unite.id_unite','id_entite')
             ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne_presente.id) as nb'))
            // ->union($soustraitant)
@@ -60,7 +64,7 @@ class HomeController extends Controller
 
         $camanbert_tab=DB::table('personne_presente')
                     ->select('libelle',DB::raw('count(*) as nb'))
-                    ->where('id_entite','=',$id)
+                    ->where('id_entite','=',$id_entite_connecter)
                      ->groupBy('libelle')->get();
        // dd($camanbert_tab);
         $camanberts= Array();
@@ -75,7 +79,7 @@ class HomeController extends Controller
         $commune_tab=DB::table('personne_presente')
                     ->select(DB::raw('commune.libelle as commune'),DB::raw('count(*) as nb'))
                     ->leftJoin('commune','commune.id','=','personne_presente.id_commune')
-                    ->where('id_entite','=',$id)
+                    ->where('id_entite','=',$id_entite_connecter)
                      ->groupBy('id_commune','commune.libelle')->get();
        // dd($commune_tab);
         $communes= Array();
@@ -90,7 +94,7 @@ class HomeController extends Controller
         //fin tableau sur le nombre de CDD CDI
         $repartition_nationalite_tab = DB::table('personne_presente')
             ->join('pays','pays.id','=','personne_presente.nationalite')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->select("pays.nom_fr_fr",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('personne_presente.nationalite')
@@ -107,7 +111,7 @@ class HomeController extends Controller
 
 
         $repartition_homme_femme_tab= DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->select("personne_presente.sexe",DB::raw('count(personne_presente.id) as nb'),"position")
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('position','personne_presente.sexe')
@@ -154,28 +158,28 @@ class HomeController extends Controller
 
         endforeach;
         $tranche_age_moin30_ans= DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','<',30)
             ->get();
      //   dd($tranche_age_moin30_ans);
         $tranche_age_de_30_a_39_ans= DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','>=',30)
             ->where('personne_age.age','<=',39)
             ->get();
         $tranche_age_de_40_a_49_ans= DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','>=',40)
             ->where('personne_age.age','<=',49)
             ->get();
         $tranche_age_de50_ans= DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('personne_age','personne_age.id','=','personne_presente.id')
             // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('personne_age.age','>=',50)
@@ -207,7 +211,7 @@ class HomeController extends Controller
         //dd($repartition_tranche_age);
 
         $anciennete_contrat_moins_3_mois_ = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->where('contrat.etat','=',1)
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
@@ -217,7 +221,7 @@ class HomeController extends Controller
             ->get();
         //dd($anciennete_contrat_moins_3_mois_);
         $anciennete_contrat__3_a_6_mois_ = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->where('contrat.etat','=',1)
             //     ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
@@ -228,7 +232,7 @@ class HomeController extends Controller
             ->get();
 
         $anciennete_contrat__7_a_10_mois_ = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->where('contrat.etat','=',1)
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
@@ -238,7 +242,7 @@ class HomeController extends Controller
             ->select("ancienete.id_personne","temps")
             ->get();
         $anciennete_contrat__11_a_12_mois_ = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->where('contrat.etat','=',1)
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
@@ -248,7 +252,7 @@ class HomeController extends Controller
             ->select("ancienete.id_personne","temps")
             ->get();
         $anciennete_contrat_superieur_a_12_mois_ = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->where('contrat.etat','=',1)
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
@@ -292,7 +296,7 @@ class HomeController extends Controller
 
         //repartition par service
         $repartition_service_tab = DB::table('personne_presente')
-            ->where("id_entite","=",$id)
+            ->where("id_entite","=",$id_entite_connecter)
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->join('services','services.id','=','personne_presente.service')
             ->select("services.libelle",DB::raw('count(personne_presente.id) as nb'))
@@ -321,7 +325,7 @@ class HomeController extends Controller
         // qualification contractuelle
         $cadre = DB::table('personne_presente')
             // ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->where([['definition.id','=',1],['id_entite','=',$id]])
+            ->where([['definition.id','=',1],['id_entite','=',$id_entite_connecter]])
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -329,7 +333,7 @@ class HomeController extends Controller
         $agent_de_maitrise = DB::table('personne_presente')
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',2)
-            ->where('id_entite','=',$id)
+            ->where('id_entite','=',$id_entite_connecter)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -339,7 +343,7 @@ class HomeController extends Controller
         $employe = DB::table('personne_presente')
             //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',3)
-            ->where('id_entite','=',$id)
+            ->where('id_entite','=',$id_entite_connecter)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -347,7 +351,7 @@ class HomeController extends Controller
         $chauffeur = DB::table('personne_presente')
             //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',5)
-            ->where('id_entite','=',$id)
+            ->where('id_entite','=',$id_entite_connecter)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -362,14 +366,14 @@ class HomeController extends Controller
             ->groupBy('definition.id')*/
          //   ->tosql();
      //   dd($ouvrier);
-        $ouvrier=DB::select('call proc_ouvrier('.$id.')');
+        $ouvrier=DB::select('call proc_ouvrier('.$id_entite_connecter.')');
 
            // ->get()->first();
        // dd($ouvrier);
         $stagiaire = DB::table('personne_presente')
             //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('definition.id','=',6)
-            ->where('id_entite','=',$id)
+            ->where('id_entite','=',$id_entite_connecter)
             ->join('definition','definition.id','=','personne_presente.id_definition')
             ->select("definition.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('definition.id')
@@ -423,9 +427,9 @@ class HomeController extends Controller
         }
 
 //debut entrée
-        $entrees= DB::select('call proc_entrees('.$id.')');
+        $entrees= DB::select('call proc_entrees('.$id_entite_connecter.')');
       //  $entrees= [];
-        $sorties= DB::select('call proc_sortie('.$id.')');
+        $sorties= DB::select('call proc_sortie('.$id_entite_connecter.')');
        // dd($sorties);
        // $sorties= [];
         $annee_moins1=date('Y')-1;
@@ -597,7 +601,7 @@ class HomeController extends Controller
 
 
         $entites=Entite::all();
-        $lentite=Entite::find($id);
+        $lentite=Entite::find($id_entite_connecter);
         return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
     }

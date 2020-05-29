@@ -18,6 +18,7 @@ use App\Societe;
 use App\Typecontrat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -26,19 +27,24 @@ use App\UploadHandler;
 class PersonneController extends Controller
 {
     //
-    public function ajouter_personne($entite)
+    public function ajouter_personne()
     {
         $societes=Societe::all();
         $payss=Pays::all();
         $fonctions =Fonction::orderBy('id', 'ASC')->get();
         $entites= Entite::all();
         $communes = Commune::all();
-        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entite','entites','communes'));
+        return view('personne/ajouter_personne',compact('societes','payss','fonctions','entites','communes'));
     }
-    public function lister_personne($entite)
+    public function gestion_rh()
+    {
+        $entites= Entite::all();
+        return view('personne/gestion_rh',compact('entites'));
+    }
+    public function lister_personne()
     {
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('id_entite','=',$entite)
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->orderBy('id', 'desc')
             ->paginate(300);
         $entites= Entite::all();
@@ -46,16 +52,16 @@ class PersonneController extends Controller
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','entite','variable'));
     }
-    public function lister_personne_active($entite)
+    public function lister_personne_active()
     {
         $variable="active";
-        $personnesactives = Personne_presente::all();
+        $personnesactives = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         $tab = Array();
         foreach($personnesactives as $pers):
             $tab[]=$pers->id;
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('id_entite','=',$entite)
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(300);
@@ -74,7 +80,7 @@ class PersonneController extends Controller
             $tab[]=$pers->id;
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
-            ->where('id_entite','=',$entite)
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereNotIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(300);
@@ -109,7 +115,7 @@ class PersonneController extends Controller
     public function document_administratif_new_user()
     {
 
-        $personne= Personne::orderBy('id', 'desc')->get()->first();
+        $personne= Personne::where('personne.id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('id', 'desc')->get()->first();
         $doc_admins= Administratif::where('id_personne','=',$personne->id)->get();
         $list_administratif= Liste_Administratif::all();
         $entites= Entite::all();

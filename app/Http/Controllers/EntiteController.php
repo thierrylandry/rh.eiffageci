@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entite;
+use App\User;
 use Illuminate\Http\Request;
 
 class EntiteController extends Controller
@@ -60,6 +61,13 @@ class EntiteController extends Controller
         $entite->delete();
 
         return redirect()->back()->with('success',"Le partenaire a été supprimé avec succès");
+
+    }
+    public function liste_chantier($email){
+
+        $user= User::where('email','=',$email)->first();
+
+        return $user->chantiers()->get();
 
     }
 }

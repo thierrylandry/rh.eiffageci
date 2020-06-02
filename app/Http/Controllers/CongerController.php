@@ -498,7 +498,7 @@ class CongerController extends Controller
         $conge->adresse_pd_conges=$adresse_pd_conges;
         $conge->contact_telephonique=$contact_telephonique;
 
-
+dd(Auth::user()->id);
 
         $conge->save();
         $users =User::all();

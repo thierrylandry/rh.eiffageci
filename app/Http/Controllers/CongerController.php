@@ -309,7 +309,7 @@ class CongerController extends Controller
 
     public function demande_conges()
     {
-        dd(Auth::user()->id_chantier_connecte);
+       // dd(Auth::user()->id_chantier_connecte);
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
             $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();

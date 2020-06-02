@@ -36,6 +36,8 @@ class HomeController extends Controller
 
         if(isset(Auth::user()->id_chantier_connecte)){
             $id_entite_connecter=Auth::user()->id_chantier_connecte;
+        }else{
+            $id_entite_connecter=1;
         }
 
        // dd($id_entite_connecter);

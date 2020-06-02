@@ -34,7 +34,10 @@ class HomeController extends Controller
     public function tableau_de_bord()
     {
 
-        $id_entite_connecter=Auth::user()->id_chantier_connecte;
+        if(isset(Auth::user()->id_chantier_connecte)){
+            $id_entite_connecter=Auth::user()->id_chantier_connecte;
+        }
+
        // dd($id_entite_connecter);
         $soustraitant = DB::table('partenaire')
             ->select('nom as libelleUnite','effectif as entite','effectif as nb');

@@ -309,6 +309,7 @@ class CongerController extends Controller
 
     public function demande_conges()
     {
+        dd(Auth::user()->id_chantier_connecte);
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
             $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
@@ -709,6 +710,7 @@ class CongerController extends Controller
             ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
             ->leftJoin('personne','personne.id','=','absconges.id_personne')
             ->leftJoin('users','users.id','=','absconges.id_users')->where('etat','>=',2)
+            ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
             ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
        // dd($conges);
         return view('conges/GestionConge',compact('mode','entites','type_motifs','mode','conges','type_permissions'));

@@ -34,8 +34,8 @@ class HomeController extends Controller
     public function tableau_de_bord()
     {
 
-        if(isset(Auth::user()->id_chantier_connecte)){
-            $id_entite_connecter=Auth::user()->id_chantier_connecte;
+        if(isset(Auth()->user()->id_chantier_connecte)){
+            $id_entite_connecter=Auth()->user()->id_chantier_connecte;
         }else{
             $id_entite_connecter=1;
         }

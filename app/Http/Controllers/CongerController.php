@@ -312,11 +312,11 @@ class CongerController extends Controller
        // dd(Auth::user()->id_chantier_connecte);
         $entites = Entite::all();
         if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+            $personnes = Personne_presente::where('id_entite','=',Auth()->user()->id_chantier_connecte)->get();
         }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+            $personnes = Personne_presente::where('service','=',Auth()->user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         }
-        $conges = Absconges::where('id_users',Auth::user()->id)->get();
+        $conges = Absconges::where('id_users',Auth()->user()->id)->get();
       //  dd($conges);
         $type_motifs= Type_conges::all();
         return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));

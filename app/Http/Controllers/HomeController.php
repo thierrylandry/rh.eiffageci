@@ -213,53 +213,33 @@ class HomeController extends Controller
         $repartition_tranche_age[]=$vardiag;
         //dd($repartition_tranche_age);
 
-        $anciennete_contrat_moins_3_mois_ = DB::table('personne_presente')
+        $anciennete_contrat_moins_3_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
-            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->join('ancienete','ancienete.id_personne','=','personne_presente.id')
             ->where('temps','<',3)
             ->select("ancienete.id_personne","temps")
             ->get();
         //dd($anciennete_contrat_moins_3_mois_);
-        $anciennete_contrat__3_a_6_mois_ = DB::table('personne_presente')
+        $anciennete_contrat__3_a_6_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
-            //     ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->join('ancienete','ancienete.id_personne','=','personne_presente.id')
             ->where('temps','>=',3)
             ->where('temps','<=',6)
             ->select("ancienete.id_personne","temps")
             ->get();
 
-        $anciennete_contrat__7_a_10_mois_ = DB::table('personne_presente')
+        $anciennete_contrat__7_a_10_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
-            //  ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->join('ancienete','ancienete.id_personne','=','personne_presente.id')
             ->where('temps','>=',7)
             ->where('temps','<=',10)
             ->select("ancienete.id_personne","temps")
             ->get();
-        $anciennete_contrat__11_a_12_mois_ = DB::table('personne_presente')
+        $anciennete_contrat__11_a_12_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
-            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->join('ancienete','ancienete.id_personne','=','personne_presente.id')
             ->where('temps','>=',11)
             ->where('temps','<=',12)
             ->select("ancienete.id_personne","temps")
             ->get();
-        $anciennete_contrat_superieur_a_12_mois_ = DB::table('personne_presente')
+        $anciennete_contrat_superieur_a_12_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
-            ->join('contrat','contrat.id_personne','=','personne_presente.id')
-            ->where('contrat.etat','=',1)
-            //   ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
-            ->join('ancienete','ancienete.id_personne','=','personne_presente.id')
             ->where('temps','>',12)
             ->select("ancienete.id_personne","temps")
             ->get();

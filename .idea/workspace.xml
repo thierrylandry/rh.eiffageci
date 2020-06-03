@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,14 +97,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contratcddpdf.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contratcddpdf.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="934">
-              <caret line="230" column="15" selection-start-line="230" selection-start-column="15" selection-end-line="230" selection-end-column="15" />
+              <caret line="230" column="29" selection-start-line="230" selection-start-column="14" selection-end-line="230" selection-end-column="29" />
               <folding>
                 <element signature="e#12720#12772#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contratcdipdf.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="222" column="30" selection-start-line="222" selection-start-column="30" selection-end-line="222" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,16 +163,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthServiceProvider.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -191,7 +191,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_04_29_155838_add_table_fin_contrat_traite.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EtatsController.php" />
         <option value="$PROJECT_DIR$/resources/views/etats/fin_contrat_service.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/modification/ficheModification.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/avenant_generale/avenant_general.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EntiteController.php" />
@@ -231,6 +230,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php" />
       </list>
     </option>
   </component>
@@ -978,14 +978,7 @@
       <workItem from="1590751514009" duration="16914000" />
       <workItem from="1591098178701" duration="1817000" />
       <workItem from="1591109754414" duration="13630000" />
-      <workItem from="1591181700110" duration="8000000" />
-    </task>
-    <task id="LOCAL-00599" summary="correction bug sur le lien">
-      <created>1583495241796</created>
-      <option name="number" value="00599" />
-      <option name="presentableId" value="LOCAL-00599" />
-      <option name="project" value="LOCAL" />
-      <updated>1583495241796</updated>
+      <workItem from="1591181700110" duration="8105000" />
     </task>
     <task id="LOCAL-00600" summary="correction bug sur le lien">
       <created>1586186830300</created>
@@ -1323,11 +1316,18 @@
       <option name="project" value="LOCAL" />
       <updated>1591190328212</updated>
     </task>
-    <option name="localTasksCounter" value="648" />
+    <task id="LOCAL-00648" summary="correction bug sur le lien">
+      <created>1591190366311</created>
+      <option name="number" value="00648" />
+      <option name="presentableId" value="LOCAL-00648" />
+      <option name="project" value="LOCAL" />
+      <updated>1591190366311</updated>
+    </task>
+    <option name="localTasksCounter" value="649" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2413637000" />
+    <option name="totallyTimeSpent" value="2413742000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1619,13 +1619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -1885,10 +1878,18 @@
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="934">
-          <caret line="230" column="15" selection-start-line="230" selection-start-column="15" selection-end-line="230" selection-end-column="15" />
+          <caret line="230" column="29" selection-start-line="230" selection-start-column="14" selection-end-line="230" selection-end-column="29" />
           <folding>
             <element signature="e#12720#12772#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="222" column="30" selection-start-line="222" selection-start-column="30" selection-end-line="222" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -219,7 +219,8 @@
               //  $nbmonth= $interval->format('%m');
                // $nbyear = $interval->format('%y');
                 $resultat=12-$interval;
-                 echo $resultat.' Mois';
+               //  echo $resultat.' Mois';
+                echo '1 Mois';
             }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.

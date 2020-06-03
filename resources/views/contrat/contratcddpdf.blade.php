@@ -224,7 +224,7 @@
                 //  $nbmonth= $interval->format('%m');
                 // $nbyear = $interval->format('%y');
                 $resultat=12-$interval;
-                echo $interval.' Mois';
+                echo $resultat.' Mois';
             }  ?></b>.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche
     </p><br>

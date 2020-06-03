@@ -217,7 +217,7 @@
 
    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de <b class="classtext">1<?php if(isset($contrat->periode_essaie)){
+    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de <b class="classtext"><?php if(isset($contrat->periode_essaie)){
                 $datetime1 = Carbon::parse(new DateTime($contrat->debutc));
                // $datetime1 = Carbon::parse('13-01-2020');
                 $datetime2 = Carbon::parse(new DateTime($contrat->periode_essaie));
@@ -228,7 +228,7 @@
               //  var_dump($interval);
               //  $resultat=12-$interval;
                // echo $datetime1 .' '.$datetime2;
-               // echo $interval.' Mois';
+               echo '1 Mois';
             }  ?></b>.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche
     </p><br>

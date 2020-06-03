@@ -565,7 +565,7 @@ class CongerController extends Controller
 
         $conge = Absconges::find($id);
         $conge->debut=$debut;
-        $conge->fin=$fin;
+        $conge->fins=$fin;
         $conge->reprise=$reprise;
         $conge->jour=$jour;
         $conge->id_personne=$id_personne;

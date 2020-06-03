@@ -386,7 +386,7 @@ class ContratController extends Controller
 
 
         $contrat->save();
-        return redirect()->route('lister_contrat',['slug'=>$slug])->with('success',"Le contrat  a été rompu");
+        return redirect()->route('lister_contrat',['slug'=>$contrat->id_personne])->with('success',"Le contrat  a été rompu");
     }
     public function save_contrat( Request $request){
 

@@ -47,7 +47,6 @@ class HomeController extends Controller
             ->join('unite','unite.id_unite','=','personne_presente.id_unite')
             ->join('contrat','contrat.id_personne','=','personne_presente.id')
             ->join('entite','personne_presente.id_entite','=','entite.id')
-            ->where('contrat.etat','=',1)
         //       ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('id_entite','=',$id_entite_connecter)
             ->groupBy('unite.id_unite','id_entite')

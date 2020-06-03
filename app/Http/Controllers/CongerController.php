@@ -498,8 +498,6 @@ class CongerController extends Controller
         $conge->adresse_pd_conges=$adresse_pd_conges;
         $conge->contact_telephonique=$contact_telephonique;
 
-dd(Auth::user()->id);
-
         $conge->save();
         $users =User::all();
         $contact=Array();
@@ -626,8 +624,8 @@ dd(Auth::user()->id);
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->Join('roles','user_role.role_id','=','roles.id')
                 ->where('absconges.etat','=',1)
-                ->where('roles.name','=','Chef_de_service')
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->where('roles.name','=','Chef_de_service')
                 ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absconges.etat','=',1]])
             //    ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();

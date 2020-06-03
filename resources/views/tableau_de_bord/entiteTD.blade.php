@@ -532,7 +532,7 @@
 </div>
 -->
     <div class="row break">
-        <div class="col-lg-6 tableau" >
+        <div class="col-lg-12 tableau" >
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
                     <div class="table-responsive table-responsive-data2">

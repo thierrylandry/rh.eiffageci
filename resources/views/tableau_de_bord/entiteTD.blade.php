@@ -562,7 +562,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-12 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+        <div class="col-lg-12 col-xs-12	col-sm-12	col-md-12	col-lg-12 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="effectif_par_mois" style="min-width: 310px; height: 310px; max-width: 600px; margin: 0 auto"></div>

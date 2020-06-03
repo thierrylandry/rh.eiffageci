@@ -46,7 +46,6 @@ class HomeController extends Controller
         $effectifglobaux_tab=DB::table('personne_presente')
             ->leftJoin('unite','unite.id_unite','=','personne_presente.id_unite')
             ->leftJoin('contrat','contrat.id_personne','=','personne_presente.id')
-            ->leftJoin('entite','personne_presente.id_entite','=','entite.id')
         //       ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->where('id_entite','=',$id_entite_connecter)
             ->groupBy('unite.id_unite','id_entite')

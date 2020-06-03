@@ -80,11 +80,11 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="282">
-              <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
               <folding>
-                <element signature="e#24577#34133#0#PHP" expanded="false" />
-                <element signature="e#34138#41384#0#PHP" expanded="false" />
-                <element signature="e#41390#41476#0#PHP" expanded="false" />
+                <element signature="e#24656#34212#0#PHP" expanded="false" />
+                <element signature="e#34217#41463#0#PHP" expanded="false" />
+                <element signature="e#41469#41555#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -830,14 +830,7 @@
       <workItem from="1590751514009" duration="16914000" />
       <workItem from="1591098178701" duration="1817000" />
       <workItem from="1591109754414" duration="13630000" />
-      <workItem from="1591181700110" duration="13824000" />
-    </task>
-    <task id="LOCAL-00604" summary="test">
-      <created>1586970088557</created>
-      <option name="number" value="00604" />
-      <option name="presentableId" value="LOCAL-00604" />
-      <option name="project" value="LOCAL" />
-      <updated>1586970088557</updated>
+      <workItem from="1591181700110" duration="13862000" />
     </task>
     <task id="LOCAL-00605" summary="correction bug sur le lien">
       <created>1587558314247</created>
@@ -1175,11 +1168,18 @@
       <option name="project" value="LOCAL" />
       <updated>1591200411804</updated>
     </task>
-    <option name="localTasksCounter" value="653" />
+    <task id="LOCAL-00653" summary="correction bug sur le lien">
+      <created>1591200490167</created>
+      <option name="number" value="00653" />
+      <option name="presentableId" value="LOCAL-00653" />
+      <option name="project" value="LOCAL" />
+      <updated>1591200490167</updated>
+    </task>
+    <option name="localTasksCounter" value="654" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2419461000" />
+    <option name="totallyTimeSpent" value="2419499000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1744,11 +1744,11 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
-          <caret line="47" column="82" selection-start-line="47" selection-start-column="82" selection-end-line="47" selection-end-column="82" />
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
           <folding>
-            <element signature="e#24577#34133#0#PHP" expanded="false" />
-            <element signature="e#34138#41384#0#PHP" expanded="false" />
-            <element signature="e#41390#41476#0#PHP" expanded="false" />
+            <element signature="e#24656#34212#0#PHP" expanded="false" />
+            <element signature="e#34217#41463#0#PHP" expanded="false" />
+            <element signature="e#41469#41555#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

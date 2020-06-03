@@ -598,8 +598,6 @@ class HomeController extends Controller
         $effectifglobaux_tabx = DB::table('personne_presente')
             ->join('unite','unite.id_unite','=','personne_presente.id_unite')
             ->join('entite','entite.id','=','personne_presente.id_entite')
-            //   ->where('contrat.etat','=',1)
-            //    ->whereBetween(DB::raw('CAST(NOW() AS DATE)'), array(DB::raw('contrat.datedebutc'), DB::raw('contrat.datefinc')))
             ->groupBy('unite.id_unite','id_entite')
             ->select(DB::raw("CONCAT(libelleUnite,' ',entite.libelle)  as libelleUnite"),'id_entite',DB::raw('count(personne_presente.id) as nb'))
             // ->union($effectifglobaux_tab3)

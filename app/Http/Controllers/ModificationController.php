@@ -44,7 +44,7 @@ class ModificationController extends Controller
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->id_service)->get();
-        dd(Auth::user()->id_chantier_connecte);
+       // dd(Auth::user()->id_chantier_connecte);
         if(Auth::user()->hasRole('Ressource_humaine')){
             $personnes = Personne_presente::orderBy('nom', 'ASC')->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('prenom', 'ASC')->get();
         }else{

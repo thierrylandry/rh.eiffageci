@@ -71,7 +71,7 @@ class PersonneController extends Controller
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));
     }
-    public function lister_personne_non_active($entite)
+    public function lister_personne_non_active()
     {
         $variable="non_active";
         $personnesactives = Personne_presente::all();

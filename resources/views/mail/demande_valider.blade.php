@@ -2,7 +2,7 @@
 
 <p>Vous avez une nouvelle demande à traiter.<br><br>
 
-    Cliquez ici pour consulter 👉 : {{$lien}}
+    Cliquez ici pour consulter 👉 : <a href="{{$lien}}">cliquez ici</a>
 </p>
 
 <p>Dans l’attente, et en vous remerciant par avance,<br><br>

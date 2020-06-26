@@ -30,14 +30,14 @@ $repertoires= Liste_telephonique::all();
         return view('etats/repertoire',compact('repertoires','entites'));
     }
     public function fin_contrat(){
-        $contrats= Fin_contrat::all();
+        $contrats= Fin_contrat::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         $entites= Entite::all();
         $typecontrats= Typecontrat::all();
         return view('etats/fin_contrat',compact('contrats','entites','typecontrats'));
     }
     public function fin_contrat_service($id_service){
         $service =Services::find($id_service);
-        $contrats= DB::select('call fin_contrat_service('.$id_service.')');
+        $contrats= DB::select('call fin_contrat_service('.$id_service.','.Auth::user()->id_chantier_connecte.')');
         $fincontrat_traites = Fin_contrat_traite::where('id_service','=',$id_service)
             ->where('datefinc','>=',Carbon::now()->format('Y-m-d'))
             ->where('datefinc','<', Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'))
@@ -94,12 +94,14 @@ $repertoires= Liste_telephonique::all();
 
     public function mailfin_contrat(){
 
-        $contrats= Fin_contrat::all();
-        $users = User::all();
+        $entites =Entite::all();
+        foreach($entites as $entite):
+        $contrats= Fin_contrat::where('id_entite','=',$entite->id)->get();
+            $users = User::all();
 
         foreach($users as $user):
 
-            if($user->hasRole('Personnes')){
+            if($user->hasRole('Gestion_rh') && $user->id_entite==$entite->id){
                 if($user->email!="admin@eiffage.com" && $user->email!="chamie.diomande@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
                     $contact[]=$user->email;
                     }
@@ -113,10 +115,10 @@ $repertoires= Liste_telephonique::all();
       //  dd($contrats);
         $adresse="";
         if(isset($contrats[0])){
-            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact )
+            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact,$entite )
             {
                 $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT");
+                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT ".$entite->libelle);
                 foreach($contact as $em):
                     $message ->to($em);
                 endforeach;
@@ -124,19 +126,23 @@ $repertoires= Liste_telephonique::all();
                 $message->bcc("thierry.koffi@eiffage.com");
             });
         }
+        endforeach;
 
         //return view('mail/mailfincontrat',compact('contrats'));
     }
     public function mailfin_contrat_service(){
         $services=Services::all();
 
+        $entites =Entite::all();
+        foreach($entites as $entite):
+
         foreach($services as $service):
-        $contrats= DB::select('call fin_contrat_service('.$service->id.')');
+        $contrats= DB::select('call fin_contrat_service('.$service->id.','.$entite->id.')');
         $users = User::where('id_service','=',$service->id)->get();
             $contact = Array();
         foreach($users as $user):
 
-            if($user->hasRole('Chef_de_service')){
+            if($user->hasRole('Chef_de_service') && $user->id_entite==$entite->id){
                 if($user->email!="admin@eiffage.com" && $user->email!="chamie.diomande@eiffage.com" && $user->email!="nicolas.descamps@eiffage.com" && $user->email!="test@eiffage.com" ){
                     $contact[]=$user->email;
                     }
@@ -147,10 +153,10 @@ $repertoires= Liste_telephonique::all();
             $adresse="http://172.20.73.3/rh.eiffageci/fin_contrat_service/".$service->id;
 
         if(isset($contrats[0])){
-            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact,$service)
+            Mail::send('mail/mailfincontrat',compact('contrats','adresse'),function($message)use ($contact,$service,$entite)
             {
                 $message->from("noreply@eiffage.com" ,"ROBOT PRO-RH ")
-                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT DU SERVICE ".$service->libelle);
+                    ->subject("LISTE DES PERSONNES EN FIN DE CONTRAT DU SERVICE ".$service->libelle." ".$entite->libelle);
                 foreach($contact as $em):
                     $message ->to($em);
                 endforeach;
@@ -159,6 +165,7 @@ $repertoires= Liste_telephonique::all();
             });
         }
 
+        endforeach;
         endforeach;
  //return $contact;
         return view('mail/mailfincontrat',compact('contrats'));

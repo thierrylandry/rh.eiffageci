@@ -61,11 +61,11 @@ class PersonneController extends Controller
             $tab[]=$pers->id;
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);
         $entites= Entite::all();
-      //  dd($tab);
 
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));

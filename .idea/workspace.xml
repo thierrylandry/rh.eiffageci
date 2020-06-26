@@ -76,8 +76,8 @@
       <file leaf-file-name="PersonneController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+            <state relative-caret-position="639">
+              <caret line="70" column="65" selection-start-line="70" selection-start-column="56" selection-end-line="70" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -863,14 +863,7 @@
       <workItem from="1592821631742" duration="780000" />
       <workItem from="1592839775977" duration="5996000" />
       <workItem from="1593098525520" duration="252000" />
-      <workItem from="1593180966549" duration="1380000" />
-    </task>
-    <task id="LOCAL-00621" summary="séparation">
-      <created>1589383631007</created>
-      <option name="number" value="00621" />
-      <option name="presentableId" value="LOCAL-00621" />
-      <option name="project" value="LOCAL" />
-      <updated>1589383631007</updated>
+      <workItem from="1593180966549" duration="1626000" />
     </task>
     <task id="LOCAL-00622" summary="correction bug sur le lien">
       <created>1589545108807</created>
@@ -1208,11 +1201,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593182502220</updated>
     </task>
-    <option name="localTasksCounter" value="670" />
+    <task id="LOCAL-00670" summary="correction bug sur le lien">
+      <created>1593182555526</created>
+      <option name="number" value="00670" />
+      <option name="presentableId" value="LOCAL-00670" />
+      <option name="project" value="LOCAL" />
+      <updated>1593182555526</updated>
+    </task>
+    <option name="localTasksCounter" value="671" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2443408000" />
+    <option name="totallyTimeSpent" value="2443654000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1705,8 +1705,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+        <state relative-caret-position="639">
+          <caret line="70" column="65" selection-start-line="70" selection-start-column="56" selection-end-line="70" selection-end-column="65" />
           <folding />
         </state>
       </provider>

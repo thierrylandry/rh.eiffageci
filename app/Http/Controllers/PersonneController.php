@@ -66,7 +66,7 @@ class PersonneController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(300);
         $entites= Entite::all();
-        dd($personnes);
+        dd($tab);
 
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));

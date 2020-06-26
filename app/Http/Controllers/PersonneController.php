@@ -63,7 +63,7 @@ class PersonneController extends Controller
         $personnes= Personne::with("fonction","pays","societe")
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(2000);
         $entites= Entite::all();
       //  dd($tab);
 

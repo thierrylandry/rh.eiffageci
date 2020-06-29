@@ -79,7 +79,7 @@ class ModificationController extends Controller
         $tab_list_modif=\GuzzleHttp\json_encode($listemodif);
         foreach($lesid as $id):
             // on remplie le tableau des demandes traitées
-            $contrats= DB::select('call fin_contrat_service('.Auth::user()->service->id.')');
+            $contrats= DB::select('call fin_contrat_service('.Auth::user()->service->id.','.Auth::user()->id_chantier_connecte.')');
             foreach($contrats as $contrat):
                 if($contrat->id_p==$id){
                     $fin_contrat_traite = new Fin_contrat_traite();

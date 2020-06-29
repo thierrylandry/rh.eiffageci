@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +76,8 @@
       <file leaf-file-name="contrat_affiche_recrutement.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="187" column="70" selection-start-line="187" selection-start-column="70" selection-end-line="187" selection-end-column="70" />
+            <state relative-caret-position="415">
+              <caret line="188" column="133" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="133" />
               <folding />
             </state>
           </provider>
@@ -105,7 +103,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ficheModification.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ficheModification.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/modification/ficheModification.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4480">
@@ -127,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contrat_new_user.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="contrat_new_user.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="205" column="70" selection-start-line="205" selection-start-column="70" selection-end-line="205" selection-end-column="70" />
+            <state relative-caret-position="454">
+              <caret line="206" column="133" selection-start-line="206" selection-start-column="133" selection-end-line="206" selection-end-column="133" />
               <folding />
             </state>
           </provider>
@@ -202,9 +200,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EtatsController.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php" />
       </list>
     </option>
   </component>
@@ -917,14 +915,7 @@
       <workItem from="1592839775977" duration="5996000" />
       <workItem from="1593098525520" duration="252000" />
       <workItem from="1593180966549" duration="6777000" />
-      <workItem from="1593426082901" duration="1051000" />
-    </task>
-    <task id="LOCAL-00624" summary="correction bug sur le lien">
-      <created>1590759859032</created>
-      <option name="number" value="00624" />
-      <option name="presentableId" value="LOCAL-00624" />
-      <option name="project" value="LOCAL" />
-      <updated>1590759859032</updated>
+      <workItem from="1593426082901" duration="1758000" />
     </task>
     <task id="LOCAL-00625" summary="correction bug sur le lien">
       <created>1590760084631</created>
@@ -1262,11 +1253,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593193189326</updated>
     </task>
-    <option name="localTasksCounter" value="673" />
+    <task id="LOCAL-00673" summary="envoie de mail fin contrat par projet.">
+      <created>1593429337744</created>
+      <option name="number" value="00673" />
+      <option name="presentableId" value="LOCAL-00673" />
+      <option name="project" value="LOCAL" />
+      <updated>1593429337745</updated>
+    </task>
+    <option name="localTasksCounter" value="674" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2449856000" />
+    <option name="totallyTimeSpent" value="2450563000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1714,38 +1712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="356" column="31" selection-start-line="356" selection-start-column="31" selection-end-line="356" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="205" column="70" selection-start-line="205" selection-start-column="70" selection-end-line="205" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="187" column="70" selection-start-line="187" selection-start-column="70" selection-end-line="187" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="180" column="70" selection-start-line="180" selection-start-column="70" selection-end-line="180" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/modification/ConsulModification.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1769,6 +1735,38 @@
           <folding>
             <marker date="1588268366844" expanded="true" signature="26322:26348" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="188" column="133" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="356" column="31" selection-start-line="356" selection-start-column="31" selection-end-line="356" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="180" column="70" selection-start-line="180" selection-start-column="70" selection-end-line="180" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="206" column="133" selection-start-line="206" selection-start-column="133" selection-end-line="206" selection-end-column="133" />
+          <folding />
         </state>
       </provider>
     </entry>

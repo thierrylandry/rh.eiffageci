@@ -186,6 +186,7 @@
                         <div class="col-md-9">
                             <select class="form-control assurance_maladie" name="couverture_maladie" id="couverture_maladie" required>
                                 <option value="">SELECTIONNER</option>
+                                <option value="0%" {{isset($contrat) && $contrat->couvertureMaladie=="0%"?'selected':''}}>0%</option>
                                 <option value="80" {{isset($contrat) && $contrat->couvertureMaladie=="80"?'selected':''}}>80</option>
                                 <option value="80R" {{isset($contrat) && $contrat->couvertureMaladie=="80R"?'selected':''}}>80R</option>
                                 <option value="100" {{isset($contrat) && $contrat->couvertureMaladie=="100"?'selected':''}}>100</option>

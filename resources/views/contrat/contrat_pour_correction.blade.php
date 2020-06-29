@@ -178,6 +178,7 @@
                         </div>
                         <div class="col-md-9">
                             <select class="form-control" name="couverture_maladie" id="couverture_maladie">
+                                <option value="">SELECTIONNER</option>
                                 @foreach($assurance_maladies as $assurance_maladie)
                                     <option value="{{$assurance_maladie->libelle}}" {{isset($contrat) && $contrat->couvertureMaladie==$assurance_maladie->libelle?'selected':''}}>{{$assurance_maladie->libelle}}</option>
                                 @endforeach

@@ -611,6 +611,11 @@ class CongerController extends Controller
         $conge= Absconges::find($id);
 
         $conge->delete();
+        $contactdemandeur = Array();
+        $contactdemandeur[]=$conge->user()->first()->email;
+        if(!empty($contactdemandeur)){
+            $this->dispatch(new EnvoiesInformationDemandeur(6,$contactdemandeur,$conge));
+        }
         return redirect()->back()->with('success',"La demande d'Absconge a été  supprimée avec succès");
     }
     public function validation_conges(){

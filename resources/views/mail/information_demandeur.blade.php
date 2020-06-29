@@ -26,6 +26,11 @@
 </p>
 @break;
 
+@case(6)<p>Votre demande de congé n°{{$demande->id}} à été supprimée.<br><br>
+
+</p>
+@break;
+
 
 @endswitch
 

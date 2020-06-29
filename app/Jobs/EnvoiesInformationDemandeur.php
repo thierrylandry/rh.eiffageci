@@ -38,11 +38,14 @@ class EnvoiesInformationDemandeur implements ShouldQueue
                    // $this->lien=asset('absences/validation');
                 break;
 
-            case 4: $this->objet="DEMANDE DE CONGE VALIDE";
+            case 4: $this->objet="DEMANDE DE CONGE VALIDEE";
                    // $this->lien=asset('conges/validation');
                 break;
 
             case 5: $this->objet="DEMANDE DE BILLET D'AVION";
+                    //$this->lien=asset('billets/validation');
+                break;
+            case 6: $this->objet="DEMANDE DE CONGE ANNULEE";
                     //$this->lien=asset('billets/validation');
                 break;
 

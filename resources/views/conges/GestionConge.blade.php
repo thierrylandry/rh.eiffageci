@@ -114,7 +114,7 @@
                                             <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
-                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
                                                 <i class="zmdi zmdi-delete"></i>
                                             </a>
                                         @endif
@@ -123,12 +123,18 @@
                                             <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
                                             <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
                                         </a>&nbsp;
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
                                     @elseif($conge->etat==3)
                                         <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
                                             <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
                                         </a>&nbsp;
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
                                     @elseif($conge->etat==4)
-                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
                                     @endif
@@ -490,5 +496,9 @@
             trouvezur_de_salaire_cat();
             //  alert("ddd");
         })
+        $('.confirmons').click( function (e) {
+            //   table.row('.selected').remove().draw( false );
+            if(confirm('Voulez vous supprimer la demande de congé?')){}else{e.preventDefault(); e.returnValue = false; return false; }
+        } );
     </script>
 @endsection

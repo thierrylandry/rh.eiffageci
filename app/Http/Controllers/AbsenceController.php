@@ -276,7 +276,7 @@ class AbsenceController extends Controller
             $absences = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
-                ->leftJoin('users','users.id_personne','=','absence.id_personne')
+                ->leftJoin('users','users.id','=','absence.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
                 ->leftJoin('contrat','personne.id','=','contrat.id_personne')

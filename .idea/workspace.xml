@@ -78,8 +78,8 @@
       <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="281" column="158" selection-start-line="281" selection-start-column="158" selection-end-line="281" selection-end-column="158" />
+            <state relative-caret-position="150">
+              <caret line="266" column="37" selection-start-line="266" selection-start-column="37" selection-end-line="266" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -830,14 +830,7 @@
       <workItem from="1593098525520" duration="252000" />
       <workItem from="1593180966549" duration="6777000" />
       <workItem from="1593426082901" duration="8535000" />
-      <workItem from="1593635090430" duration="1924000" />
-    </task>
-    <task id="LOCAL-00635" summary="correction bug sur le lien">
-      <created>1591140985075</created>
-      <option name="number" value="00635" />
-      <option name="presentableId" value="LOCAL-00635" />
-      <option name="project" value="LOCAL" />
-      <updated>1591140985075</updated>
+      <workItem from="1593635090430" duration="2167000" />
     </task>
     <task id="LOCAL-00636" summary="correction bug sur le lien">
       <created>1591142029067</created>
@@ -1175,11 +1168,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593636872145</updated>
     </task>
-    <option name="localTasksCounter" value="684" />
+    <task id="LOCAL-00684" summary="envoie de mail fin contrat par projet.">
+      <created>1593637022334</created>
+      <option name="number" value="00684" />
+      <option name="presentableId" value="LOCAL-00684" />
+      <option name="project" value="LOCAL" />
+      <updated>1593637022334</updated>
+    </task>
+    <option name="localTasksCounter" value="685" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2459264000" />
+    <option name="totallyTimeSpent" value="2459507000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1685,8 +1685,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="281" column="158" selection-start-line="281" selection-start-column="158" selection-end-line="281" selection-end-column="158" />
+        <state relative-caret-position="150">
+          <caret line="266" column="37" selection-start-line="266" selection-start-column="37" selection-end-line="266" selection-end-column="37" />
           <folding />
         </state>
       </provider>

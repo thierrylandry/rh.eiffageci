@@ -276,15 +276,13 @@ class AbsenceController extends Controller
             $absences = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
-                ->Join('contrat','personne.id','=','contrat.id_personne')
                 ->leftJoin('users','users.id','=','absence.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
-                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-                ->where('roles.name','=','Chef_de_service')
-                ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1]])
-              //  ->where('roles.name','=','Chef_de_service')->where('absence.etat','=',1)->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-               ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->leftJoin('contrat','personne.id','=','contrat.id_personne')
+                ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absconges.etat','=',1]])
+                ->where('roles.name','=','Chef_de_service')->where('absence.etat','=',1)->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
         }else{
             dd('ici');
             $absences = DB::table('absence')

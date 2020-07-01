@@ -274,13 +274,12 @@ class AbsenceController extends Controller
 
         if(Auth::user()->hasRole('Chef_de_projet')){
             $absences = DB::table('absence')
-                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
                 ->leftJoin('users','users.id','=','absence.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
-                ->orWhere('roles.name','=','Chef_de_service') ->where('absence.etat','=',1)
+                ->orWhere('roles.name','=','Chef_de_service')->where('absence.etat','=',1) ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
 
        dd($absences);

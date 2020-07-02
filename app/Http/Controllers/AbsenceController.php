@@ -286,6 +286,7 @@ class AbsenceController extends Controller
                 ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1]])
                 ->groupBy('absence.id')
                 ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->tosql();
+        dd($absences);
         }else{
           //  dd('ici');
             $absences = DB::table('absence')

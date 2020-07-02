@@ -283,10 +283,9 @@ class AbsenceController extends Controller
 
                 ->where('absence.etat','=',1)->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)->where('absence.id_personne','==','users.id_personne')
                 ->where('roles.name','=','Chef_de_service')
-                ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1]])
+                ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1],['absence.id_personne','==','users.id_personne']])
                 ->groupBy('absence.id')
-                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->tosql();
-        dd($absences);
+                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
         }else{
           //  dd('ici');
             $absences = DB::table('absence')

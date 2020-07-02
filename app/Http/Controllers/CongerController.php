@@ -569,7 +569,7 @@ class CongerController extends Controller
         $conge->reprise=$reprise;
         $conge->jour=$jour;
         $conge->id_personne=$id_personne;
-        $conge->id_users=Auth::user()->id;
+       // $conge->id_users=Auth::user()->id;
         $conge->etat=1;
 
 

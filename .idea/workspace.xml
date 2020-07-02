@@ -58,8 +58,8 @@
       <file leaf-file-name="CongerController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="571" column="9" selection-start-line="571" selection-start-column="9" selection-end-line="571" selection-end-column="9" />
+            <state relative-caret-position="403">
+              <caret line="508" column="57" selection-start-line="508" selection-start-column="57" selection-end-line="508" selection-end-column="57" />
               <folding>
                 <element signature="e#12225#13266#0#PHP" expanded="false" />
                 <element signature="e#13272#13990#0#PHP" expanded="false" />
@@ -69,6 +69,16 @@
                 <element signature="e#17733#18603#0#PHP" expanded="false" />
                 <element signature="e#18609#19127#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1826">
+              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,16 +138,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="16764">
               <caret line="781" column="68" selection-start-line="781" selection-start-column="68" selection-end-line="781" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contrat_affiche_recrutement.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4136">
-              <caret line="188" column="48" selection-start-line="188" selection-start-column="48" selection-end-line="188" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -828,14 +828,7 @@
       <workItem from="1593098525520" duration="252000" />
       <workItem from="1593180966549" duration="6777000" />
       <workItem from="1593426082901" duration="8535000" />
-      <workItem from="1593635090430" duration="10177000" />
-    </task>
-    <task id="LOCAL-00659" summary="correction bug sur le lien">
-      <created>1591282145082</created>
-      <option name="number" value="00659" />
-      <option name="presentableId" value="LOCAL-00659" />
-      <option name="project" value="LOCAL" />
-      <updated>1591282145082</updated>
+      <workItem from="1593635090430" duration="11190000" />
     </task>
     <task id="LOCAL-00660" summary="correction bug sur le lien">
       <created>1591282817484</created>
@@ -1173,11 +1166,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593650334910</updated>
     </task>
-    <option name="localTasksCounter" value="708" />
+    <task id="LOCAL-00708" summary="envoie de mail fin contrat par projet.">
+      <created>1593651089503</created>
+      <option name="number" value="00708" />
+      <option name="presentableId" value="LOCAL-00708" />
+      <option name="project" value="LOCAL" />
+      <updated>1593651089503</updated>
+    </task>
+    <option name="localTasksCounter" value="709" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2467517000" />
+    <option name="totallyTimeSpent" value="2468530000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1372,14 +1372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3168">
-          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3740">
@@ -1491,6 +1483,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1498,6 +1491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1671,10 +1665,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="571" column="9" selection-start-line="571" selection-start-column="9" selection-end-line="571" selection-end-column="9" />
+        <state relative-caret-position="403">
+          <caret line="508" column="57" selection-start-line="508" selection-start-column="57" selection-end-line="508" selection-end-column="57" />
           <folding>
             <element signature="e#12225#13266#0#PHP" expanded="false" />
             <element signature="e#13272#13990#0#PHP" expanded="false" />

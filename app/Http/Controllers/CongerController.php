@@ -506,7 +506,8 @@ class CongerController extends Controller
       //  dd($personne->contrat()->where('etat','=',1)->first()->id_personne);
         foreach($users as $user):
 
-            if($conge->user->hasRole('Chef_de_service') && $conge->user->id_personne!=$personne->id && $user->hasRole('Chef_de_projet')){
+            //&& $conge->user->id_personne!=$personne->id
+            if($conge->user->hasRole('Chef_de_service')  && $user->hasRole('Chef_de_projet')){
                 $contact[]=$user->email;
             }
             if($user->hasRole('Chef_de_service') && $personne->contrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=Auth::user()->id_personne){

@@ -671,7 +671,7 @@ class CongerController extends Controller
             ->first();
 
         /* */
-        $personne= Personne::find($id);
+        $personne= Personne::find($conge->id_personne);
 
         $VarpersonneConges= new VarpersonneConges();
         $VarpersonneConges->personne_id=$id;

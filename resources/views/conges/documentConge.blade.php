@@ -173,8 +173,8 @@
             <td  style="font-size: 12pt" ><b>{{$tabconges['nombrecongesAccorde']}}</b></td>
             <td  style="font-size: 12pt" ><b><b><?php if(isset($tabconges['dernierconge']->fin)){$date = new DateTime($tabconges['dernierconge']->reprise);
                             echo $date->format('d-m-Y');}?></b></b></td>
-            <td  style="font-size: 12pt" ><b><b><?php if(isset($tabconges['dernierconge']->reprise)){$date = new DateTime($tabconges['dernierconge']->reprise);
-                            echo $date->format('d-m-Y');}?></b></b></td>
+            <td  style="font-size: 12pt" ><b><?php if(isset($conge->debut)){$date = new DateTime($conge->debut);
+                        echo $date->format('d-m-Y');}?></b></td>
         </tr>
     </table>
     <br>

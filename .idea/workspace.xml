@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/conges/documentConge.blade.php" afterPath="$PROJECT_DIR$/resources/views/conges/documentConge.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CongerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CongerController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CongerController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CongerController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="673" column="53" selection-start-line="673" selection-start-column="53" selection-end-line="673" selection-end-column="53" />
+            <state relative-caret-position="476">
+              <caret line="615" column="9" selection-start-line="615" selection-start-column="9" selection-end-line="615" selection-end-column="9" />
               <folding>
                 <element signature="e#12225#13266#0#PHP" expanded="false" />
                 <element signature="e#13272#13990#0#PHP" expanded="false" />
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="documentConge.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="documentConge.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/conges/documentConge.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
+            <state relative-caret-position="762">
               <caret line="175" column="114" selection-start-line="175" selection-start-column="114" selection-end-line="175" selection-end-column="114" />
               <folding />
             </state>
@@ -88,7 +88,7 @@
       <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3124">
+            <state relative-caret-position="762">
               <caret line="158" column="26" selection-start-line="158" selection-start-column="26" selection-end-line="158" selection-end-column="26" />
               <folding />
             </state>
@@ -211,8 +211,8 @@
         <option value="$PROJECT_DIR$/resources/views/mail/information_demandeur.blade.php" />
         <option value="$PROJECT_DIR$/app/Jobs/EnvoiesInformationDemandeur.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CongerController.php" />
         <option value="$PROJECT_DIR$/resources/views/conges/documentConge.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CongerController.php" />
       </list>
     </option>
   </component>
@@ -256,8 +256,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -833,14 +833,9 @@
       <workItem from="1593635090430" duration="11387000" />
       <workItem from="1593690185203" duration="890000" />
       <workItem from="1593778049063" duration="1202000" />
-      <workItem from="1593796283382" duration="823000" />
-    </task>
-    <task id="LOCAL-00662" summary="correction bug sur le lien">
-      <created>1592320078161</created>
-      <option name="number" value="00662" />
-      <option name="presentableId" value="LOCAL-00662" />
-      <option name="project" value="LOCAL" />
-      <updated>1592320078161</updated>
+      <workItem from="1593796283382" duration="835000" />
+      <workItem from="1594026374022" duration="209000" />
+      <workItem from="1594642005183" duration="1172000" />
     </task>
     <task id="LOCAL-00663" summary="correction bug sur le lien">
       <created>1592486128968</created>
@@ -1178,11 +1173,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593796993422</updated>
     </task>
-    <option name="localTasksCounter" value="711" />
+    <task id="LOCAL-00711" summary="envoie de mail fin contrat par projet.">
+      <created>1593797116604</created>
+      <option name="number" value="00711" />
+      <option name="presentableId" value="LOCAL-00711" />
+      <option name="project" value="LOCAL" />
+      <updated>1593797116604</updated>
+    </task>
+    <option name="localTasksCounter" value="712" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2471642000" />
+    <option name="totallyTimeSpent" value="2473035000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1197,7 +1199,7 @@
     <frame x="-8" y="2" width="1934" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28848225" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29709366" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.160451" sideWeight="0.55209225" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31740063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1501,7 +1503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
           <caret line="77" column="31" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1593,7 +1594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7832">
           <caret line="356" column="31" selection-start-line="356" selection-start-column="31" selection-end-line="356" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1648,14 +1648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3124">
-          <caret line="158" column="26" selection-start-line="158" selection-start-column="26" selection-end-line="158" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3168">
@@ -1664,10 +1656,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/conges/documentConge.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="762">
+          <caret line="175" column="114" selection-start-line="175" selection-start-column="114" selection-end-line="175" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="762">
+          <caret line="158" column="26" selection-start-line="158" selection-start-column="26" selection-end-line="158" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CongerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="673" column="53" selection-start-line="673" selection-start-column="53" selection-end-line="673" selection-end-column="53" />
+        <state relative-caret-position="476">
+          <caret line="615" column="9" selection-start-line="615" selection-start-column="9" selection-end-line="615" selection-end-column="9" />
           <folding>
             <element signature="e#12225#13266#0#PHP" expanded="false" />
             <element signature="e#13272#13990#0#PHP" expanded="false" />
@@ -1679,14 +1687,6 @@
             <element signature="e#28439#29434#0#PHP" expanded="false" />
             <element signature="e#29439#30622#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/conges/documentConge.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="175" column="114" selection-start-line="175" selection-start-column="114" selection-end-line="175" selection-end-column="114" />
-          <folding />
         </state>
       </provider>
     </entry>

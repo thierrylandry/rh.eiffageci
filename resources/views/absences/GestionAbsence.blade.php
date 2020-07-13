@@ -121,6 +121,9 @@
                                         <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
                                             <i class="zmdi zmdi-format-indent-increase"></i> Préciser le type de permission
                                         </a>&nbsp;
+                                        <a href="{{route("absence.supprimer",$absence->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
                                     @elseif($absence->etat==3)
                                         <a href="#" class="btn btn-warning btn_type_permission" data-toggle="modal" data-target="#modaltype_permission" data-placement="top" title="Préciser le type de permission">
                                             <i class="zmdi zmdi-format-indent-increase"></i> Modifier le type de permission
@@ -128,8 +131,11 @@
                                         <a href="{{route('absence.telecharger_doc_absence',$absence->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
                                             <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
                                         </a>&nbsp;
+                                        <a href="{{route("absence.supprimer",$absence->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
                                     @elseif($absence->etat==4)
-                                        <a href="{{route("absence.supprimer",$absence->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <a href="{{route("absence.supprimer",$absence->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </a>
                                     @endif
@@ -240,6 +246,10 @@
 
 
            // $("#slugrecrutement").
+            $('.confirmons').click( function (e) {
+                //   table.row('.selected').remove().draw( false );
+                if(confirm("Voulez vous supprimer la demande d'absence?")){}else{e.preventDefault(); e.returnValue = false; return false; }
+            } );
             $(".btn_rejeter").click(function(e){
 
                 var data = table.row($(this).closest('tr')).data();

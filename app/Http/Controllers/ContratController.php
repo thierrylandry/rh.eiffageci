@@ -421,7 +421,9 @@ class ContratController extends Controller
         $regime= $parameters["regime"];
         $id_typeModification= $parameters["id_typeModification"];
         $id_recrutement_modification= $parameters["id_recrutement_modification"];
-
+        $vehicule=$parameters['vehicule'];
+        $logement=$parameters['logement'];
+        $gratification=$parameters['gratification'];
 
         //les rubriques du salaire
         $rubriques = new Collection();
@@ -464,6 +466,10 @@ class ContratController extends Controller
         $contrat->id_service=$service;
         $contrat->id_nature_contrat=$id_typeModification;
         $contrat->regime=$regime;
+
+        $contrat->vehicule=$vehicule;
+        $contrat->logement=$logement;
+        $contrat->gratification=$gratification;
 
         $contrat->id_modification=$id_recrutement_modification;
         $modification= Modification::find($id_recrutement_modification);
@@ -557,7 +563,9 @@ class ContratController extends Controller
         $regime= $parameters["regime"];
         $id_typeModification= $parameters["id_typeModification"];
         $id_recrutement_modification= $parameters["id_recrutement_modification"];
-
+        $vehicule=$parameters['vehicule'];
+        $logement=$parameters['logement'];
+        $gratification=$parameters['gratification'];
 
         //les rubriques du salaire
         $rubriques = new Collection();
@@ -595,6 +603,10 @@ class ContratController extends Controller
         $contrat->couvertureMaladie=$couverture_maladie;
         $contrat->dateDebutC=$dateDebutC;
         $contrat->date_debutc_eff=$date_debutc_eff;
+
+        $contrat->logement=$logement;
+        $contrat->vehicule=$vehicule;
+        $contrat->gratification=$gratification;
         if($type_de_contrat!=2){
             $contrat->dateFinC=$dateFinC;
         }

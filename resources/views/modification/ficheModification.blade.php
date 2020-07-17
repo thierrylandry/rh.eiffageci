@@ -194,6 +194,33 @@
                                     <input type="hidden" id="dm_budgetMensuel_initial"  name="dm_budgetMensuel_initial" value="">
                                     <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control {{isset($listmodif) && in_array('Le budget mensuel',$listmodif)?'modifie':''}}" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
                                 </div>
+
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Logement</label>
+                                    <input type="hidden" id="dm_logement_initial" name="dm_logement_initial"  value="">
+                                    <select class="form-control dotation_nature {{isset($listmodif) && in_array('Les dotations en nature',$listmodif)?'modifie':''}}" name="logement" id="logement2">
+                                        <option value="" {{isset($modification) && $modification->logement==""?'selected':''}}>NON</option>
+                                        <option value="Logement" {{isset($modification) && $modification->logement=="Logement"?'selected':''}}>OUI</option>
+
+                                    </select>
+                                </div>
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Vehicule</label>
+                                    <input type="hidden" id="vehicule_initial"  name="vehicule_initial" value="">
+                                    <select class="form-control dotation_nature {{isset($listmodif) && in_array('Les dotations en nature',$listmodif)?'modifie':''}}" name="vehicule" id="vehicule1"  required>
+                                        <option value="">Sélectionner une dotation en vehicule</option>
+                                        <option value="véhicule de service" {{isset($modification) && $modification->vehicule=="véhicule de service"?'selected':''}}>Véhicule de service</option>
+                                        <option value="Véhicule de fonction" {{isset($modification) && $modification->vehicule=="Véhicule de fonction"?'selected':''}}>Véhicule de fonction</option>
+                                    </select>
+                                </div>
+                                <div class=" col-lg-4">
+                                    <label for="text-input" class=" form-control-label">Gratification</label>
+                                    <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
+                                    <select class="form-control dotation_nature {{isset($listmodif) && in_array('Les dotations en nature',$listmodif)?'modifie':''}}" name="gratification" id="gratification1"  required>
+                                        <option value="">Sélectionner une gratification</option>
+                                        <option value="Gratification de 100% salaire net" {{isset($modification) && $modification->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -317,10 +344,10 @@
 
                 @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
               $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
-                @endif
+        @endif
 
 
-       // $('#service1').select2();
+        // $('#service1').select2();
         $('#telephone_portable').select2({ placeholder: 'Selectionner un téléphone portable'});
         $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
         $('#debit_internet').select2({ placeholder: 'Selectionner un debit internet'});
@@ -355,58 +382,74 @@
             if($(".form-control").hasClass('modifie')){
                 $(".form-control").removeClass('modifie')
             }
+            $("#logement2").val("");
+            $("#dm_logement_initial").val("");
+
+            $("#vehicule1").val("");
+            $("#vehicule_initial").val("");
+
+            $("#gratification1").val("");
+            $("#gratification_initial").val("");
         }
 
         auchangement();
-function auchangement(){
-    vider();
-    var id_personne =$('#id_personne1').val();
+        function auchangement(){
+            vider();
+            var id_personne =$('#id_personne1').val();
 
-    $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
-        console.log(data);
-        listmodifavenant=    data['Listmodifavenants'][0];
-        console.log(listmodifavenant);
-        $("#service1").val(data[0].service);
-        $("#service1_initial").val(data[0].service);
-        $("#matricule1").val(data[0].matricule);
-        $("#id_fonction1").val(data[0].fonction);
-        $("#id_fonction1_initial").val(data[0].fonction);
-        $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
-        $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
-        $("#datefinc1").val(data[0].datefinc);
-        $("#datefinc1_initial").val(data[0].datefinc);
-        $("#datedebutc1").val(data[0].datedebutc);
-        $("#regime1").val(data[0].regime);
-        $("#regime1_initial").val(data[0].regime);
-        $("#dm_id_definition").val(data[0].id_definition);
-        $("#dm_id_definition_initial").val(data[0].id_definition);
+            $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
+                console.log(data);
+                listmodifavenant=    data['Listmodifavenants'][0];
+                console.log(listmodifavenant);
+                $("#service1").val(data[0].service);
+                $("#service1_initial").val(data[0].service);
+                $("#matricule1").val(data[0].matricule);
+                $("#id_fonction1").val(data[0].fonction);
+                $("#id_fonction1_initial").val(data[0].fonction);
+                $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
+                $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
+                $("#datefinc1").val(data[0].datefinc);
+                $("#datefinc1_initial").val(data[0].datefinc);
+                $("#datedebutc1").val(data[0].datedebutc);
+                $("#regime1").val(data[0].regime);
+                $("#regime1_initial").val(data[0].regime);
+                $("#dm_id_definition").val(data[0].id_definition);
+                $("#dm_id_definition_initial").val(data[0].id_definition);
+                    $("#logement2").val(data[0].logement);
+               $("#dm_logement_initial").val(data[0].logement);
 
-        var tab= $.parseJSON(data[0].valeurSalaire);
-        var somme=0;
-        $.each(tab,function(index, value ){
-            var x=value.valeur;
-            somme=somme+ parseInt(x);
-        })
-        $("#dm_budgetMensuel").val(somme);
-        $("#dm_budgetMensuel_initial").val(somme);
+                $("#vehicule1").val(data[0].vehicule);
+                $("#vehicule_initial").val(data[0].vehicule);
 
-        var id_definition=  data[0].id_definition;
-        $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-            console.log(data);
-            var lesOptions="<option value=''>Selectionner une catégorie</option>";
-            $.each(data, function( index, value ) {
-                lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                $("#gratification1").val(data[0].gratification);
+                $("#gratification_initial").val(data[0].gratification);
+
+                var tab= $.parseJSON(data[0].valeurSalaire);
+                var somme=0;
+                $.each(tab,function(index, value ){
+                    var x=value.valeur;
+                    somme=somme+ parseInt(x);
+                })
+                $("#dm_budgetMensuel").val(somme);
+                $("#dm_budgetMensuel_initial").val(somme);
+
+                var id_definition=  data[0].id_definition;
+                $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+                    console.log(data);
+                    var lesOptions="<option value=''>Selectionner une catégorie</option>";
+                    $.each(data, function( index, value ) {
+                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                    });
+                    $("#dm_id_categorie").empty();
+                    $("#dm_id_categorie").append(lesOptions);
+                });
+
+                $("#dm_id_categorie_initial").val(data[0].id_categorie);
+                setTimeout(function(){ $("#dm_id_categorie").val(data[0].id_categorie); }, 1000);
+
+
             });
-            $("#dm_id_categorie").empty();
-            $("#dm_id_categorie").append(lesOptions);
-        });
-
-        $("#dm_id_categorie_initial").val(data[0].id_categorie);
-        setTimeout(function(){ $("#dm_id_categorie").val(data[0].id_categorie); }, 1000);
-
-
-    });
-}
+        }
 
 
         $('#id_personne1').change(function(){
@@ -428,17 +471,17 @@ function auchangement(){
             setTimeout(function(){ $("#dm_id_categorie").val($("#dm_id_categorie_initial").val()); }, 1000);
 
         });
-//exécuter sa au chargement de la page
-        @if(isset($modification))
+        //exécuter sa au chargement de la page
+                @if(isset($modification))
         var id_definition= "{{$modification->id_definition}}"+"ici";
                 @else
         var id_definition="";
-                        @endif
+        @endif
 
-        $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+$.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
 
-           // console.log(data);
-                            var lesOptions="<option value=''>Selectionner une catégorie</option>";
+            // console.log(data);
+            var lesOptions="<option value=''>Selectionner une catégorie</option>";
             $.each(data, function( index, value ) {
                 lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
             });
@@ -447,9 +490,9 @@ function auchangement(){
         });
         var id_personne="{{isset($modification)?$modification->id_personne:''}}";
         $.get("{{URL::asset('modifications/lapersonne_contrat')}}/"+id_personne,function(data){
-            console.log(data);
-            $("#dm_id_categorie").val(data[0].id_categorie);
-            $("#dm_id_categorie_initial").val(data[0].id_categorie);
+                    console.log(data);
+                    $("#dm_id_categorie").val(data[0].id_categorie);
+                    $("#dm_id_categorie_initial").val(data[0].id_categorie);
                 }
         );
 
@@ -464,19 +507,19 @@ function auchangement(){
             });
 
 
-                $('#listemodif').val(JSON.stringify(listmodifeff));
-                $('#Ecran_affiche_liste').append(liste);
+            $('#listemodif').val(JSON.stringify(listmodifeff));
+            $('#Ecran_affiche_liste').append(liste);
         }
         //changer le type de contrat
         $("#id_type_contrat1").change(function(e){
-           var  id_type_contrat1_initial=$("#id_type_contrat1_initial").val();
+            var  id_type_contrat1_initial=$("#id_type_contrat1_initial").val();
             var id_type_contrat1= $("#id_type_contrat1").val();
             var removeItem="Le type de contrat";
             if(id_type_contrat1_initial!==id_type_contrat1){
-               if(!$(this).hasClass("modifie")){
-                   $(this).addClass("modifie");
-                   listmodifeff.push(removeItem);
-               }
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff.push(removeItem);
+                }
             }else{
                 if($(this).hasClass("modifie")){
                     $(this).removeClass("modifie");
@@ -511,6 +554,85 @@ function auchangement(){
             var  variable_initial=$("#id_fonction1_initial").val();
             var variable= $("#id_fonction1").val();
             var removeItem="La fonction";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $(".dotation_nature").change(function(e){
+            var  variable_initial_logement=$("#dm_logement_initial").val();
+            var variable_logement= $("#logement2").val();
+            var  variable_initial_vehicule=$("#vehicule_initial").val();
+            var variable_vehicule= $("#vehicule1").val();
+            var  variable_initial_gratification=$("#gratification_initial").val();
+            var variable_gratification= $("#gratification1").val();
+            var removeItem="Les dotations en nature";
+            if(variable_initial_logement!==variable_logement || variable_initial_vehicule!==variable_vehicule || variable_initial_gratification!==variable_gratification){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+
+                if(variable_initial_logement==variable_logement && variable_initial_vehicule==variable_vehicule && variable_initial_gratification==variable_gratification){
+                    if($(this).hasClass("modifie")){
+                        $(this).removeClass("modifie");
+                        listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                            return value != removeItem;
+                        });
+                    }
+                }else{
+
+                }
+            }
+
+            affiche_liste_modification();
+
+        });
+        $("#vehicule1").change(function(e){
+            var  variable_initial=$("#vehicule_initial").val();
+            var variable= $("#vehicule1").val();
+            var removeItem="Les dotations en nature";
+            if(variable_initial!==variable){
+                if(!$(this).hasClass("modifie")){
+                    $(this).addClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                    listmodifeff.push(removeItem);
+                }
+            }else{
+                if($(this).hasClass("modifie")){
+                    $(this).removeClass("modifie");
+                    listmodifeff =jQuery.grep(listmodifeff, function(value) {
+                        return value != removeItem;
+                    });
+                }
+            }
+            affiche_liste_modification();
+
+        });
+        $("#gratification1").change(function(e){
+            var  variable_initial=$("#gratification_initial").val();
+            var variable= $("#gratification1").val();
+            var removeItem="Les dotations en nature";
             if(variable_initial!==variable){
                 if(!$(this).hasClass("modifie")){
                     $(this).addClass("modifie");
@@ -599,9 +721,9 @@ function auchangement(){
             if(variable_initial!==variable){
                 if(!$(this).hasClass("modifie")){
                     $(this).addClass("modifie");
-                   if( $.inArray(removeItem,listmodifeff)==-1){
-                       listmodifeff.push(removeItem);
-                   }
+                    if( $.inArray(removeItem,listmodifeff)==-1){
+                        listmodifeff.push(removeItem);
+                    }
                     //nouveau
                     listmodifeff =jQuery.grep(listmodifeff, function(value) {
                         return value != "Les conditions de rémunérations";
@@ -621,7 +743,7 @@ function auchangement(){
                         listmodifeff =jQuery.grep(listmodifeff, function(value) {
                             return value != "Les conditions de rémunérations";
                         });
-                       // listmodifeff.push("Les conditions de rémunérations");
+                        // listmodifeff.push("Les conditions de rémunérations");
                     }
                 }
             }
@@ -708,7 +830,7 @@ function auchangement(){
     <script type="application/javascript">
         @if((!isset($modification)  && isset(Auth::user()->id_personne)) && (!Auth::user()->hasRole('Ressource_humaine') || !Auth::user()->hasRole('Chef_de_service')))
 
-      //  document.getElementById("id_personne1").disabled = true;
+        //  document.getElementById("id_personne1").disabled = true;
         @else document.getElementById("id_personne1").disabled = false;
         @endif
         $("#addcompetence").click(function (e) {

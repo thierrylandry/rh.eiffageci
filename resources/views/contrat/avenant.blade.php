@@ -40,6 +40,18 @@
     @foreach($array_intersection as $modif)
 
         @switch($modif)
+            @case("Les dotations en nature")
+                <b class="classtext">les dotations en nature</b> qui sont composées désormait:
+    @if($contrat->logement!='')
+        <p>-  <b class="classtext">D'un logement</b></p>
+    @endif
+    @if($contrat->vehicule!='')
+        <p>-  <b class="classtext">D'un {{$contrat->vehicule}}</b></p>
+    @endif
+    @if($contrat->gratification!='')
+        <p>-  <b class="classtext">D'une {{$contrat->gratification}}</b></p>
+    @endif
+    @break
         @case("Le service")
         <p>- <b class="classtext"> {{$modif}} </b>  qui était {{$contratprec->service->libelle}} devient <b class="classtext">{{$contrat->service->libelle}} </b>  </p>
         @break
@@ -117,7 +129,19 @@
         @foreach($array_intersection as $modif)
 
             @switch($modif)
-            @case("Le service")
+            @case("Les dotations en nature")
+            <b class="classtext">les dotations en nature</b> qui sont composées désormait:
+        @if($contrat->logement!='')
+            <p>-  <b class="classtext">D'un logement</b></p>
+        @endif
+        @if($contrat->vehicule!='')
+            <p>-  <b class="classtext">D'un {{$contrat->vehicule}}</b></p>
+        @endif
+        @if($contrat->gratification!='')
+            <p>-  <b class="classtext">D'une {{$contrat->gratification}}</b></p>
+        @endif
+            @break
+                @case("Le service")
             <b class="classtext"> {{"le service"}}</b> qui etait <b class="classtext">{{$contratprec->service->libelle}}</b>  devient <b class="classtext">{{$contrat->service->libelle}} </b>
             @break
 

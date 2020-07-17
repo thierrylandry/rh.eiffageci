@@ -218,6 +218,54 @@
                         </tr>
 
                 @break
+                        @case("Les dotations en nature")
+
+                        <tr>
+                            <td colspan="2">{{"Le Logement"}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
+                        </tr>
+                        <tr style="color: #00a2e3;">
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->logement:''}}</td>
+                            <td>{{isset($contrat)?$contrat->logement:''}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{"Le Logement"}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
+                        </tr>
+                        <tr style="color: #00a2e3;">
+                            <td>{{isset($modification_recrutement) && $modification_recrutement->logement!=''?'OUI':'NON'}}</td>
+                            <td>{{isset($contrat)&& $contrat->logement!=''?'OUI':'NON'}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{"Vehicule"}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
+                        </tr>
+                        <tr style="color: #00a2e3;">
+                            <td>{{isset($modification_recrutement)?$modification_recrutement->vehicule:''}}</td>
+                            <td>{{isset($contrat)?$contrat->vehicule:''}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{"Gratification"}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50%">Nouvelle valeur</td>
+                            <td width="50%">Ancienne valeur</td>
+                        </tr>
+                        <tr style="color: #00a2e3;">
+                            <td>{{isset($modification_recrutement)  && $modification_recrutement->gratification!=''?$modification_recrutement->gratification:''}}</td>
+                            <td>{{isset($contrat) && $contrat->gratification!=''?$contrat->gratification:''}}</td>
+                        </tr>
+
+                @break
                 @default
 
                 @endswitch
@@ -473,6 +521,34 @@
                                 <option value="1" {{isset($contrat) && $contrat->position==1 ?'selected':''}}>Chantier</option>
                                 <option value="2" {{isset($contrat) && $contrat->position==2 ?'selected':''}}>Bureau</option>
                                 <option value="3" {{isset($contrat) && $contrat->position==3 ?'selected':''}}>Femme de ménage</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Logement</label>
+                            <input type="hidden" id="dm_logement_initial" name="dm_logement_initial"  value="">
+                            <select class="form-control dotation_nature" name="logement" id="logement2">
+                                <option value="" {{isset($contrat) && $contrat->logement==""?'selected':''}}>NON</option>
+                                <option value="Logement" {{isset($contrat) && $contrat->logement=="Logement"?'selected':''}}>OUI</option>
+
+                            </select>
+                        </div>
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Vehicule</label>
+                            <input type="hidden" id="vehicule_initial"  name="vehicule_initial" value="">
+                            <select class="form-control dotation_nature" name="vehicule" id="vehicule1"  required>
+                                <option value="">Sélectionner une dotation en vehicule</option>
+                                <option value="véhicule de service" {{isset($contrat) && $contrat->vehicule=="véhicule de service"?'selected':''}}>Véhicule de service</option>
+                                <option value="Véhicule de fonction" {{isset($contrat) && $contrat->vehicule=="Véhicule de fonction"?'selected':''}}>Véhicule de fonction</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Gratification</label>
+                            <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
+                            <select class="form-control dotation_nature" name="gratification" id="gratification1"  required>
+                                <option value="">Sélectionner une gratification</option>
+                                <option value="Gratification de 100% salaire net" {{isset($contrat) && $contrat->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
                             </select>
                         </div>
                     </div>

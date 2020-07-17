@@ -281,6 +281,9 @@ $j=0;
 
         $regime=$parameters['regime'];
         $budgetMensuel=$parameters['budgetMensuel'];
+        $vehicule=$parameters['vehicule'];
+        $logement=$parameters['logement'];
+        $gratification=$parameters['gratification'];
 
 
         $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
@@ -329,6 +332,10 @@ $j=0;
         $modification->id_personne=$id_personne;
         $modification->id_users=Auth::user()->id;
         $modification->id_service=Auth::user()->service->id;
+
+        $modification->vehicule=$vehicule;
+        $modification->logement=$logement;
+        $modification->gratification=$gratification;
 
 
 
@@ -433,6 +440,9 @@ $j=0;
         $regime=$parameters['regime'];
         $budgetMensuel=$parameters['budgetMensuel'];
 
+        $vehicule=$parameters['vehicule'];
+        $logement=$parameters['logement'];
+        $gratification=$parameters['gratification'];
 
         $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
 
@@ -470,6 +480,12 @@ $j=0;
             $modification->service=$service;
         }
         $modification->list_modif=$listemodif;
+
+        $modification->vehicule=$vehicule;
+        $modification->logement=$logement;
+        $modification->gratification=$gratification;
+
+
         $modification->save();
         return redirect()->back()->with('success',"La demande de modification a été  modifiée avec succès");
     }

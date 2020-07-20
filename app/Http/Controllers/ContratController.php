@@ -604,9 +604,32 @@ class ContratController extends Controller
         $contrat->dateDebutC=$dateDebutC;
         $contrat->date_debutc_eff=$date_debutc_eff;
 
+
         $contrat->logement=$logement;
         $contrat->vehicule=$vehicule;
         $contrat->gratification=$gratification;
+        $list_modif= \GuzzleHttp\json_decode($contrat->modification->list_modif) ;
+        if($contrat->logement!="" || $contrat->vehicule!="" || $contrat->gratification!=""){
+
+          if(!in_array("Les dotations en nature",$list_modif)){
+              $list_modif[]="Les dotations en nature";
+              $contrat->modification->list_modif=\GuzzleHttp\json_encode($list_modif);
+              $contrat->modification->save();
+          }
+
+        }else{
+            if(in_array("Les dotations en nature",$list_modif)){
+                $listmodinew= Array();
+                foreach($list_modif as $modif):
+                    if($modif!="Les dotations en nature"){
+                        $listmodinew[]=$modif;
+                    }
+                endforeach;
+                $list_modif=$listmodinew;
+                $contrat->modification->list_modif=\GuzzleHttp\json_encode($list_modif);
+                $contrat->modification->save();
+            }
+        }
         if($type_de_contrat!=2){
             $contrat->dateFinC=$dateFinC;
         }

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/avenant.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/avenant.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="888">
-              <caret line="816" column="48" selection-start-line="816" selection-start-column="41" selection-end-line="816" selection-end-column="48" />
+            <state relative-caret-position="580">
+              <caret line="931" column="16" selection-start-line="931" selection-start-column="16" selection-end-line="931" selection-end-column="16" />
               <folding>
                 <element signature="e#21260#26360#0#PHP" expanded="false" />
                 <element signature="e#24079#24332#0#PHP" expanded="false" />
@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="avenant.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="avenant.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/avenant.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+            <state relative-caret-position="396">
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -202,8 +202,8 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_07_17_163147_add_dotation_nature_to_contrat.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/avenant.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
       </list>
     </option>
   </component>
@@ -898,14 +898,7 @@
       <workItem from="1594854009668" duration="4843000" />
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
-      <workItem from="1595241543188" duration="13918000" />
-    </task>
-    <task id="LOCAL-00671" summary="correction bug sur le lien">
-      <created>1593182804519</created>
-      <option name="number" value="00671" />
-      <option name="presentableId" value="LOCAL-00671" />
-      <option name="project" value="LOCAL" />
-      <updated>1593182804519</updated>
+      <workItem from="1595241543188" duration="14027000" />
     </task>
     <task id="LOCAL-00672" summary="envoie de mail fin contrat par projet.">
       <created>1593193189326</created>
@@ -1243,11 +1236,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595268533293</updated>
     </task>
-    <option name="localTasksCounter" value="720" />
+    <task id="LOCAL-00720" summary="avenant dotation en nature">
+      <created>1595269334255</created>
+      <option name="number" value="00720" />
+      <option name="presentableId" value="LOCAL-00720" />
+      <option name="project" value="LOCAL" />
+      <updated>1595269334255</updated>
+    </task>
+    <option name="localTasksCounter" value="721" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2521085000" />
+    <option name="totallyTimeSpent" value="2521194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1731,18 +1731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="888">
-          <caret line="816" column="48" selection-start-line="816" selection-start-column="41" selection-end-line="816" selection-end-column="48" />
-          <folding>
-            <element signature="e#21260#26360#0#PHP" expanded="false" />
-            <element signature="e#24079#24332#0#PHP" expanded="false" />
-            <element signature="e#26365#31317#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/avenant_renum_contratpdf.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1769,9 +1757,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/avenant.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+        <state relative-caret-position="396">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="931" column="16" selection-start-line="931" selection-start-column="16" selection-end-line="931" selection-end-column="16" />
+          <folding>
+            <element signature="e#21260#26360#0#PHP" expanded="false" />
+            <element signature="e#24079#24332#0#PHP" expanded="false" />
+            <element signature="e#26365#31317#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

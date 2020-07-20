@@ -929,7 +929,7 @@ class ContratController extends Controller
             $listavn []= $listavenant->libelle;
         endforeach;
         $list_modif=\GuzzleHttp\json_decode($contrat->modification->list_modif);
-
+dd($list_modif);
 
         $array_intersection = array_intersect($listavn,$list_modif);
         $array_diff=array_diff($listavn,$list_modif);

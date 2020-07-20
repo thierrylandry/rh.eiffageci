@@ -36,7 +36,6 @@
     @if(sizeof($array_intersection)>=2)
     <p>Cet avenant modifie uniquement le contrat de travail  sur les points ci-dessous à compter du  <b class="classtext"><?php if(isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
             echo $date->format('d-m-Y');}?></b> :
-tast
     @foreach($array_intersection as $modif)
 
         @switch($modif)

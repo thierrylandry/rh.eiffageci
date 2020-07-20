@@ -48,8 +48,8 @@
       <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="931" column="16" selection-start-line="931" selection-start-column="16" selection-end-line="931" selection-end-column="16" />
+            <state relative-caret-position="558">
+              <caret line="930" column="80" selection-start-line="930" selection-start-column="80" selection-end-line="930" selection-end-column="80" />
               <folding>
                 <element signature="e#21260#26360#0#PHP" expanded="false" />
                 <element signature="e#24079#24332#0#PHP" expanded="false" />
@@ -898,14 +898,7 @@
       <workItem from="1594854009668" duration="4843000" />
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
-      <workItem from="1595241543188" duration="14027000" />
-    </task>
-    <task id="LOCAL-00672" summary="envoie de mail fin contrat par projet.">
-      <created>1593193189326</created>
-      <option name="number" value="00672" />
-      <option name="presentableId" value="LOCAL-00672" />
-      <option name="project" value="LOCAL" />
-      <updated>1593193189326</updated>
+      <workItem from="1595241543188" duration="14083000" />
     </task>
     <task id="LOCAL-00673" summary="envoie de mail fin contrat par projet.">
       <created>1593429337744</created>
@@ -1243,11 +1236,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595269334255</updated>
     </task>
-    <option name="localTasksCounter" value="721" />
+    <task id="LOCAL-00721" summary="avenant dotation en nature">
+      <created>1595269443723</created>
+      <option name="number" value="00721" />
+      <option name="presentableId" value="LOCAL-00721" />
+      <option name="project" value="LOCAL" />
+      <updated>1595269443723</updated>
+    </task>
+    <option name="localTasksCounter" value="722" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2521194000" />
+    <option name="totallyTimeSpent" value="2521250000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1765,8 +1765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="931" column="16" selection-start-line="931" selection-start-column="16" selection-end-line="931" selection-end-column="16" />
+        <state relative-caret-position="558">
+          <caret line="930" column="80" selection-start-line="930" selection-start-column="80" selection-end-line="930" selection-end-column="80" />
           <folding>
             <element signature="e#21260#26360#0#PHP" expanded="false" />
             <element signature="e#24079#24332#0#PHP" expanded="false" />

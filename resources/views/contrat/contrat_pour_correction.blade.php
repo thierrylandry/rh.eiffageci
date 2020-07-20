@@ -315,7 +315,7 @@
                         <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Vehicule</label>
                             <input type="hidden" id="vehicule_initial"  name="vehicule_initial" value="">
-                            <select class="form-control dotation_nature" name="vehicule" id="vehicule1"  required>
+                            <select class="form-control dotation_nature" name="vehicule" id="vehicule1">
                                 <option value="">Sélectionner une dotation en vehicule</option>
                                 <option value="véhicule de service" {{isset($contrat) && $contrat->vehicule=="véhicule de service"?'selected':''}}>Véhicule de service</option>
                                 <option value="Véhicule de fonction" {{isset($contrat) && $contrat->vehicule=="Véhicule de fonction"?'selected':''}}>Véhicule de fonction</option>
@@ -324,7 +324,7 @@
                         <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Gratification</label>
                             <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
-                            <select class="form-control dotation_nature" name="gratification" id="gratification1"  required>
+                            <select class="form-control dotation_nature" name="gratification" id="gratification1">
                                 <option value="">Sélectionner une gratification</option>
                                 <option value="Gratification de 100% salaire net" {{isset($contrat) && $contrat->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
                             </select>

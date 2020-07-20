@@ -212,7 +212,7 @@
             @endswitch
 
 
-            @endforeach </br>A compter du <?php if(isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
+            @endforeach<br>à compter du <?php if(isset($contrat->date_debutc_eff)){$date = new DateTime($contrat->date_debutc_eff);
                 echo $date->format('d-m-Y');}?>.
     @endif
     <br>

@@ -564,6 +564,7 @@ class HomeController extends Controller
             $vardiagEffectif->name = $cumule_entrees[$i]->name;
 
             if($cumule_entrees[$i]->name!="" || !is_null($cumule_entrees[$i]->name)){
+
                 for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
                     if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name){
                         $vardiagEffectif = New Vardiag();

@@ -554,7 +554,7 @@ class HomeController extends Controller
             }
         }
       //  dd($cumule_entrees);
-        dd($cumule_sortis);
+      //  dd($cumule_sortis);
 
         $effectif_par_mois= Array();
 
@@ -564,8 +564,8 @@ class HomeController extends Controller
             $vardiagEffectif->name = $cumule_entrees[$i]->name;
 
             if($cumule_entrees[$i]->name!="" || !is_null($cumule_entrees[$i]->name)){
-                $vardiagEffectif->y = $cumule_entrees[$i]->y;
-                $effectif_par_mois[$i] = $vardiagEffectif;
+              //  $vardiagEffectif->y = $cumule_entrees[$i]->y;
+               // $effectif_par_mois[$i] = $vardiagEffectif;
                 for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
                     if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name){
                         $vardiagEffectif = New Vardiag();

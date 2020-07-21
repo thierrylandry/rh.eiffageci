@@ -35,8 +35,8 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="555" column="6" selection-start-line="555" selection-start-column="6" selection-end-line="555" selection-end-column="6" />
+            <state relative-caret-position="44">
+              <caret line="556" column="5" selection-start-line="556" selection-start-column="5" selection-end-line="556" selection-end-column="5" />
               <folding>
                 <element signature="e#18181#18541#0#PHP" expanded="false" />
                 <element signature="e#22856#32233#0#PHP" expanded="false" />
@@ -753,14 +753,7 @@
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
       <workItem from="1595241543188" duration="14254000" />
-      <workItem from="1595336249405" duration="4881000" />
-    </task>
-    <task id="LOCAL-00684" summary="envoie de mail fin contrat par projet.">
-      <created>1593637022334</created>
-      <option name="number" value="00684" />
-      <option name="presentableId" value="LOCAL-00684" />
-      <option name="project" value="LOCAL" />
-      <updated>1593637022334</updated>
+      <workItem from="1595336249405" duration="4919000" />
     </task>
     <task id="LOCAL-00685" summary="envoie de mail fin contrat par projet.">
       <created>1593637264230</created>
@@ -1098,11 +1091,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595374805483</updated>
     </task>
-    <option name="localTasksCounter" value="733" />
+    <task id="LOCAL-00733" summary="avenant dotation en nature">
+      <created>1595374893837</created>
+      <option name="number" value="00733" />
+      <option name="presentableId" value="LOCAL-00733" />
+      <option name="project" value="LOCAL" />
+      <updated>1595374893837</updated>
+    </task>
+    <option name="localTasksCounter" value="734" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2526302000" />
+    <option name="totallyTimeSpent" value="2526340000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1619,8 +1619,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="555" column="6" selection-start-line="555" selection-start-column="6" selection-end-line="555" selection-end-column="6" />
+        <state relative-caret-position="44">
+          <caret line="556" column="5" selection-start-line="556" selection-start-column="5" selection-end-line="556" selection-end-column="5" />
           <folding>
             <element signature="e#18181#18541#0#PHP" expanded="false" />
             <element signature="e#22856#32233#0#PHP" expanded="false" />

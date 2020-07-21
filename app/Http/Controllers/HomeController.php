@@ -532,7 +532,7 @@ class HomeController extends Controller
         $cumule_entrees= Array();
         foreach ($entrees as $vardiag) {
             if($vardiag->mois!="" || !is_null($vardiag->mois)) {
-                $runningSum += $vardiag->entree;
+                $runningSum = $vardiag->entree;
 
                 $vardiagCumul = New Vardiag();
                 $vardiagCumul->name = $vardiag->mois;
@@ -546,7 +546,7 @@ class HomeController extends Controller
         $cumule_sortis= Array();
         foreach ($sorties as $vardiag) {
             if($vardiag->mois!="" || !is_null($vardiag->mois)) {
-                $runningSum += $vardiag->sortie;
+                $runningSum = $vardiag->sortie;
                 $vardiagCumul = New Vardiag();
                 $vardiagCumul->name = $vardiag->mois;
                 $vardiagCumul->y = $runningSum;
@@ -554,7 +554,7 @@ class HomeController extends Controller
             }
         }
       //  dd($cumule_entrees);
-        dd($cumule_sortis);
+     //   dd($cumule_sortis);
 
         $effectif_par_mois= Array();
 

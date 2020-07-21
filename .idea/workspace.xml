@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,76 +32,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="162" column="39" selection-start-line="162" selection-start-column="39" selection-end-line="162" selection-end-column="39" />
+            <state relative-caret-position="22">
+              <caret line="556" column="29" selection-start-line="556" selection-start-column="29" selection-end-line="556" selection-end-column="29" />
               <folding>
-                <element signature="e#21260#26360#0#PHP" expanded="false" />
-                <element signature="e#24079#24332#0#PHP" expanded="false" />
-                <element signature="e#26365#31317#0#PHP" expanded="false" />
+                <element signature="e#18181#18541#0#PHP" expanded="false" />
+                <element signature="e#22858#32235#0#PHP" expanded="false" />
+                <element signature="e#32240#39486#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EtatsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
+      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="avenant.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/contrat/avenant.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fin_contrat_service.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat_service.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3084">
-              <caret line="223" column="27" selection-start-line="223" selection-start-column="16" selection-end-line="223" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contrat_pour_correction.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1892">
-              <caret line="86" column="50" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contrat_affiche.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="406" column="209" selection-start-line="406" selection-start-column="209" selection-end-line="406" selection-end-column="209" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="148" column="30" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="551">
+              <caret line="532" column="5" selection-start-line="532" selection-start-column="5" selection-end-line="532" selection-end-column="5" />
+              <folding>
+                <element signature="e#23538#23569#0#HTML" expanded="true" />
+                <element signature="e#23876#23895#0#HTML" expanded="true" />
+                <element signature="e#24724#24797#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +96,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/avenant_general/avenant_general.blade.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" />
-        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contratcdipdf.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -174,6 +127,7 @@
         <option value="$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php" />
         <option value="$PROJECT_DIR$/app/Fin_contrat.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
       </list>
     </option>
   </component>
@@ -248,6 +202,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tableau_de_bord" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,14 +757,7 @@
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
       <workItem from="1595241543188" duration="14254000" />
-      <workItem from="1595336249405" duration="1710000" />
-    </task>
-    <task id="LOCAL-00678" summary="envoie de mail fin contrat par projet.">
-      <created>1593635276253</created>
-      <option name="number" value="00678" />
-      <option name="presentableId" value="LOCAL-00678" />
-      <option name="project" value="LOCAL" />
-      <updated>1593635276254</updated>
+      <workItem from="1595336249405" duration="3131000" />
     </task>
     <task id="LOCAL-00679" summary="envoie de mail fin contrat par projet.">
       <created>1593635536041</created>
@@ -1094,11 +1095,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595337061539</updated>
     </task>
-    <option name="localTasksCounter" value="727" />
+    <task id="LOCAL-00727" summary="avenant dotation en nature">
+      <created>1595344185138</created>
+      <option name="number" value="00727" />
+      <option name="presentableId" value="LOCAL-00727" />
+      <option name="project" value="LOCAL" />
+      <updated>1595344185138</updated>
+    </task>
+    <option name="localTasksCounter" value="728" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2523131000" />
+    <option name="totallyTimeSpent" value="2524552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1508,27 +1516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9042">
-          <caret line="417" column="21" selection-start-line="417" selection-start-column="8" selection-end-line="417" selection-end-column="21" />
-          <folding>
-            <element signature="e#17778#18138#0#PHP" expanded="false" />
-            <element signature="e#18181#18541#0#PHP" expanded="false" />
-            <element signature="e#22858#32235#0#PHP" expanded="false" />
-            <element signature="e#32240#39486#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_pour_correction.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1892">
@@ -1574,14 +1561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1606,6 +1585,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="406" column="209" selection-start-line="406" selection-start-column="209" selection-end-line="406" selection-end-column="209" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EtatsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -1618,11 +1613,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="406" column="209" selection-start-line="406" selection-start-column="209" selection-end-line="406" selection-end-column="209" />
-          <folding />
+        <state relative-caret-position="22">
+          <caret line="556" column="29" selection-start-line="556" selection-start-column="29" selection-end-line="556" selection-end-column="29" />
+          <folding>
+            <element signature="e#18181#18541#0#PHP" expanded="false" />
+            <element signature="e#22858#32235#0#PHP" expanded="false" />
+            <element signature="e#32240#39486#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="532" column="5" selection-start-line="532" selection-start-column="5" selection-end-line="532" selection-end-column="5" />
+          <folding>
+            <element signature="e#23538#23569#0#HTML" expanded="true" />
+            <element signature="e#23876#23895#0#HTML" expanded="true" />
+            <element signature="e#24724#24797#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

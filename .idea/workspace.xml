@@ -73,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
-              <caret line="38" column="109" selection-start-line="38" selection-start-column="109" selection-end-line="38" selection-end-column="109" />
+              <caret line="38" column="111" selection-start-line="38" selection-start-column="111" selection-end-line="38" selection-end-column="111" />
               <folding />
             </state>
           </provider>
@@ -931,14 +931,7 @@
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
       <workItem from="1595241543188" duration="14254000" />
-      <workItem from="1595336249405" duration="380000" />
-    </task>
-    <task id="LOCAL-00675" summary="envoie de mail fin contrat par projet.">
-      <created>1593433578269</created>
-      <option name="number" value="00675" />
-      <option name="presentableId" value="LOCAL-00675" />
-      <option name="project" value="LOCAL" />
-      <updated>1593433578269</updated>
+      <workItem from="1595336249405" duration="470000" />
     </task>
     <task id="LOCAL-00676" summary="envoie de mail fin contrat par projet.">
       <created>1593433963529</created>
@@ -1276,11 +1269,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595269650498</updated>
     </task>
-    <option name="localTasksCounter" value="724" />
+    <task id="LOCAL-00724" summary="avenant dotation en nature">
+      <created>1595336640407</created>
+      <option name="number" value="00724" />
+      <option name="presentableId" value="LOCAL-00724" />
+      <option name="project" value="LOCAL" />
+      <updated>1595336640407</updated>
+    </task>
+    <option name="localTasksCounter" value="725" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2521801000" />
+    <option name="totallyTimeSpent" value="2521891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1783,7 +1783,7 @@
     <entry file="file://$PROJECT_DIR$/resources/views/etats/fin_contrat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
-          <caret line="38" column="109" selection-start-line="38" selection-start-column="109" selection-end-line="38" selection-end-column="109" />
+          <caret line="38" column="111" selection-start-line="38" selection-start-column="111" selection-end-line="38" selection-end-column="111" />
           <folding />
         </state>
       </provider>

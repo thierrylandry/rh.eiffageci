@@ -553,7 +553,7 @@ class HomeController extends Controller
                 $cumule_sortis[] = $vardiagCumul;
             }
         }
-      //  dd($cumule_entrees);
+        dd($cumule_entrees);
      //   dd($cumule_sortis);
 
         $effectif_par_mois= Array();

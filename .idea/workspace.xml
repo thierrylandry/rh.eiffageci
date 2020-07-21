@@ -4,7 +4,6 @@
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="555" column="6" selection-start-line="555" selection-start-column="6" selection-end-line="555" selection-end-column="6" />
+            <state relative-caret-position="440">
+              <caret line="556" column="5" selection-start-line="556" selection-start-column="5" selection-end-line="556" selection-end-column="5" />
               <folding>
                 <element signature="e#18181#18541#0#PHP" expanded="false" />
                 <element signature="e#22856#32233#0#PHP" expanded="false" />
@@ -754,14 +753,7 @@
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
       <workItem from="1595241543188" duration="14254000" />
-      <workItem from="1595336249405" duration="3862000" />
-    </task>
-    <task id="LOCAL-00680" summary="envoie de mail fin contrat par projet.">
-      <created>1593635832709</created>
-      <option name="number" value="00680" />
-      <option name="presentableId" value="LOCAL-00680" />
-      <option name="project" value="LOCAL" />
-      <updated>1593635832709</updated>
+      <workItem from="1595336249405" duration="3931000" />
     </task>
     <task id="LOCAL-00681" summary="envoie de mail fin contrat par projet.">
       <created>1593636025625</created>
@@ -1099,11 +1091,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595371723776</updated>
     </task>
-    <option name="localTasksCounter" value="729" />
+    <task id="LOCAL-00729" summary="avenant dotation en nature">
+      <created>1595373259608</created>
+      <option name="number" value="00729" />
+      <option name="presentableId" value="LOCAL-00729" />
+      <option name="project" value="LOCAL" />
+      <updated>1595373259608</updated>
+    </task>
+    <option name="localTasksCounter" value="730" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2525283000" />
+    <option name="totallyTimeSpent" value="2525352000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1620,8 +1619,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="555" column="6" selection-start-line="555" selection-start-column="6" selection-end-line="555" selection-end-column="6" />
+        <state relative-caret-position="440">
+          <caret line="556" column="5" selection-start-line="556" selection-start-column="5" selection-end-line="556" selection-end-column="5" />
           <folding>
             <element signature="e#18181#18541#0#PHP" expanded="false" />
             <element signature="e#22856#32233#0#PHP" expanded="false" />

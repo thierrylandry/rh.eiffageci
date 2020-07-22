@@ -61,7 +61,7 @@ class PersonneController extends Controller
             $tab[]=$pers->id;
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
-           // ->where('id_entite','=',Auth::user()->id_chantier_connecte)
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);

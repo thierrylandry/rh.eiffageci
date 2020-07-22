@@ -560,8 +560,8 @@ class HomeController extends Controller
 
         for($i=0;$i<sizeof($cumule_entrees);$i++) {
 
-            $vardiagEffectif = New Vardiag();
-            $vardiagEffectif->name = $cumule_entrees[$i]->name;
+            $vardiagEffectif1 = New Vardiag();
+            $vardiagEffectif1->name = $cumule_entrees[$i]->name;
 
             if($cumule_entrees[$i]->name!="" || !is_null($cumule_entrees[$i]->name)){
 
@@ -574,8 +574,8 @@ class HomeController extends Controller
                         $effectif_par_mois[$i] = $vardiagEffectif;
                     }
                 }
-                  $vardiagEffectif->y = $cumule_entrees[$i]->y;
-                 $effectif_par_mois[$i] = $vardiagEffectif;
+                  $vardiagEffectif1->y = $cumule_entrees[$i]->y;
+                 $effectif_par_mois[$i] = $vardiagEffectif1;
             }
 
 

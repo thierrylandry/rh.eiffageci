@@ -64,8 +64,7 @@ class PersonneController extends Controller
             ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
-            ->toSql();
-        dd($personnes);
+            ->paginate(2000);
         $entites= Entite::all();
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));

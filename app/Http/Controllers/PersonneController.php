@@ -56,6 +56,7 @@ class PersonneController extends Controller
     {
         $variable="active";
         $personnesactives = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+        dd($personnesactives);
         $tab = Array();
         foreach($personnesactives as $pers):
             $tab[]=$pers->id;

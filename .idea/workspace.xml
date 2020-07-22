@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +32,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="484">
@@ -42,6 +42,16 @@
                 <element signature="e#22866#32243#0#PHP" expanded="false" />
                 <element signature="e#32248#39494#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonneController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,7 +110,6 @@
         <option value="$PROJECT_DIR$/resources/views/mail/demande_avenant_groupe.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/mail/demande_validation.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/mail/demande_valider.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EtatsController.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_new_user.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche_recrutement.blade.php" />
@@ -124,6 +133,7 @@
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
       </list>
     </option>
   </component>
@@ -753,14 +763,7 @@
       <workItem from="1594900149829" duration="14690000" />
       <workItem from="1594989271858" duration="8007000" />
       <workItem from="1595241543188" duration="14254000" />
-      <workItem from="1595336249405" duration="6119000" />
-    </task>
-    <task id="LOCAL-00689" summary="envoie de mail fin contrat par projet.">
-      <created>1593637863867</created>
-      <option name="number" value="00689" />
-      <option name="presentableId" value="LOCAL-00689" />
-      <option name="project" value="LOCAL" />
-      <updated>1593637863867</updated>
+      <workItem from="1595336249405" duration="6257000" />
     </task>
     <task id="LOCAL-00690" summary="envoie de mail fin contrat par projet.">
       <created>1593638981186</created>
@@ -1098,11 +1101,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595375584915</updated>
     </task>
-    <option name="localTasksCounter" value="738" />
+    <task id="LOCAL-00738" summary="avenant dotation en nature">
+      <created>1595376137069</created>
+      <option name="number" value="00738" />
+      <option name="presentableId" value="LOCAL-00738" />
+      <option name="project" value="LOCAL" />
+      <updated>1595376137069</updated>
+    </task>
+    <option name="localTasksCounter" value="739" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2527540000" />
+    <option name="totallyTimeSpent" value="2527678000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1422,14 +1432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4708">
-          <caret line="235" column="23" selection-start-line="235" selection-start-column="23" selection-end-line="235" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4264">
@@ -1626,6 +1628,14 @@
             <element signature="e#22866#32243#0#PHP" expanded="false" />
             <element signature="e#32248#39494#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

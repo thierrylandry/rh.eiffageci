@@ -60,8 +60,7 @@ class PersonneController extends Controller
         foreach($personnesactives as $pers):
             $tab[]=$pers->id;
             endforeach;
-        $personnes= Personne::all()
-            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
+        $personnes= Personne::where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);

@@ -60,12 +60,13 @@ class PersonneController extends Controller
         foreach($personnesactives as $pers):
             $tab[]=$pers->id;
             endforeach;
-        $personnes= Personne::where('id_entite','=',Auth::user()->id_chantier_connecte)
+        $personnes= Personne::with("fonction","pays","societe")
+            ->where('id_entite','=',Auth::user()->id_chantier_connecte)
             ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);
         $entites= Entite::all();
-dd($personnes);
+//dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));
     }
     public function lister_personne_non_active()

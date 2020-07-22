@@ -56,14 +56,13 @@ class PersonneController extends Controller
     {
         $variable="active";
         $personnesactives = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
-        dd($personnesactives);
         $tab = Array();
         foreach($personnesactives as $pers):
             $tab[]=$pers->id;
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
             ->where('id_entite','=',Auth::user()->id_chantier_connecte)
-            ->whereIn('id',$tab)
+            ->whereNotIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);
         $entites= Entite::all();

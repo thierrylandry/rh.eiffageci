@@ -62,10 +62,20 @@ class PersonneController extends Controller
             endforeach;
         $personnes= Personne::with("fonction","pays","societe")
             ->where('id_entite','=',Auth::user()->id_chantier_connecte)
-            ->whereNotIn('id',$tab)
+            ->whereIn('id',$tab)
             ->orderBy('id', 'desc')
             ->paginate(2000);
         $entites= Entite::all();
+
+        foreach($personnesactives as $pers):
+            foreach($personnes as $perspetit):
+                if($pers->id==$perspetit->id){
+
+                }else{
+                   dd($pers);
+                }
+                endforeach;
+            endforeach;
 
 //dd($personnes->first()->fonction()->first()->libelle);
         return view('personne/lister_personne',compact('personnes','entites','variable'));

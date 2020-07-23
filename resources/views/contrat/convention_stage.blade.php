@@ -169,161 +169,57 @@
 
     <h1 style="padding: 0;text-align: left"><u>Article 1</u> : Qualité</h1>
 
-    <p>L’entreprise accepte d'accueillir Monsieur ou Madame <b>{{$contrat->personne->nom}}</b> <b>{{$contrat->personne->prenom}}</b>
-    </p><br>
+    <p>L’entreprise accepte d'accueillir Monsieur ou Madame <b>{{$contrat->personne->nom}}</b> <b>{{$contrat->personne->prenom}}</b> pour effectuer un stage de fins de formation et de perfectionnement professionnel.
+    </p><br><br>
+    <p>Ce stage aura pour objet essentiel de permettre au stagiaire de se familiariser avec au service <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b> de l'entreprise.</p><br>
 
-    <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des fonctions</h1>
+    <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des objectifs</h1>
 
-    <p>Sous l’autorité du Responsable <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b>, l'Employé sera chargé d’exécuter les tâches telles que définies dans la fiche de poste qui lui sera remise.</p><br>
+    <p>Le stagiaire s'engage a travailler avec l'équipe des <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b> pour l'atteinte des objectifs lié au poste.</p><br>
+    </br>
+    <p>l'entreprise s'engage, pour sa part, à tout mettre en oeuvre pour aider le stagiaire à son insertion dans l'entreprise..</p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 3</u> : Classement de la catégorie professionnelle </h1>
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 3</u> : Encadrement du stagiaire </h1>
 
-    <p>Les parties conviennent que l’Employé est classé dans la catégorie professionnelle <b class="classtext">{{isset($contrat->id_categorie)?$contrat->id_categorie:''}} ({{isset($contrat->definition)?$contrat->definition->libelle:''}})</b>, <b>du secteur des Bâtiments, des Travaux Publics et activités connexes.</b></p><br>
+    <p>Le stagiaire effectuera son stage au sein du service <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b> et aura pour tuteur le responsable dudit service</p><br>
+    <p>Le tuteur du stage sera chargé d'assurer le suivi du stagiaire et d'optimiser les conditions de réalisation du stage.</p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 4</u> : Dossier Administratif</h1>
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 4</u> : Durée du stage-Renouvellement</h1>
 
-    <p>L’Employé s’engage à fournir dans les meilleurs délais tous les documents personnels nécessaires à la constitution de son dossier administratif. Il s’engage également à ouvrir
-        un compte bancaire auprès d’un établissement financier pour assurer le virement de son salaire.</p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 5</u> : Lieu de travail-Mobilité</h1>
-
-    <p>Le lieu de travail est fixé à Abidjan. Pour les nécessités du travail, l’Employé embauché par l’Employeur pourra faire l’objet d’affectation ou de déplacement non seulement sur
-        le territoire Ivoirien mais également à l’étranger pour les missions qui lui seront assignées.</p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 6</u> : Durée du contrat de travail</h1>
-
-    <p>Le présent contrat est établi pour une durée déterminée allant du <b class="classtext"><?php if(isset($contrat->date_debutc_eff)){ $date = new DateTime($contrat->date_debutc_eff);
+    <p>Ce stage se déroulera du <b class="classtext"><?php if(isset($contrat->date_debutc_eff)){ $date = new DateTime($contrat->date_debutc_eff);
                 echo $date->format('d-m-Y');}?></b> au <b class="classtext"><?php if(isset($contrat->datefinc)){ $date = new DateTime($contrat->datefinc);
-                echo $date->format('d-m-Y');}?></b>, conformément à la réglementation régissant les rapports entre Employeur et Employé,
-        notamment la loi nouvelle n°2015-532 du 20 juillet 2015 portant Code de Travail en Côte d’ivoire et les textes subséquents pris pour son application.
-        A l’issu de cette période, les parties peuvent mettre fin au présent contrat conformément aux dispositions du code du travail. Toutefois il ne pourra être rompu avant le terme que par force majeur,
-        accord commun ou faute lourde de l’une des parties.
-    </p><br>
+                echo $date->format('d-m-Y');}?></b>.</p><br>
+    <p>La convention de stage peut être prolongée ou renouvelée par simple avenant après accord des parties et ne pourra excédéer une durée de 12 mois, renouvellement compris.</p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 7</u> : Période d’essai -Visite Médicale</h1>
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 5</u> : Indemnité-Prime de stage</h1>
 
-    <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de <b class="classtext"><?php if(isset($contrat->periode_essaie)){
-                $datetime1 = Carbon::parse(new DateTime($contrat->debutc));
-                // $datetime1 = Carbon::parse('13-01-2020');
-                $datetime2 = Carbon::parse(new DateTime($contrat->periode_essaie));
-                //  $datetime2 = Carbon::parse('13-02-2020');
-                $interval = $datetime2->diffInMOnths($datetime1);
-                //  $nbmonth= $interval->format('%m');
-                // $nbyear = $interval->format('%y');
-                //  var_dump($interval);
-                //  $resultat=12-$interval;
-                // echo $datetime1 .' '.$datetime2;
-                echo '1 Mois';
-            }  ?></b>.
-        Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche
-    </p><br>
+    <p>Au cours de son stage, le stagiaire percevera une gratification (prime de stage) d'un montant net de cent cinquante mille (150 000) XOF </p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 8</u> : Durée de travail</h1>
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 6</u> : Avantages sociaux</h1>
 
-    <p>Le présent contrat est conclu et accepté pour une durée de travail de <b class="classtext">{{isset($contrat->regime)?$contrat->regime:''}}</b> par semaine. La durée hebdomadaire ci-dessus indiquée est indicative,
-        et pourra être modifiée en fonction des nécessités de service.</p><br>
+    <p>La présente convention n'est pas un contrat de travail.</p><br>
+    <p>Toutefois, en qualité de stagiaire accueillie hors convention de stageè-ecole, le stagiaire sera assigné au régime général de la sécurité sociale et sera couverte, au titre de la  législation sur les accidents du travail tant pour l'accident dans l'entreprise que pour le trajet.</p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 9</u> : Rémunération et accessoires</h1>
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 7</u> : Fin du stage-Résilliation</h1>
 
-    <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération mensuelle brute de <b class="classtext"><?php $affiche=0;
-            if(isset($contrat->valeurSalaire)){
-                foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
-                    $affiche+=$valeurSalaire->valeur;
-                endforeach;
-                echo $affiche;
-            }
+    <p>A l'issue du stage, le chef d'entreprise remettra à la stagiaire un certificat indiquant la nature et la durée du stage.</p><br>
+    <p>Il peut être mis fin à la présente convention, d'une manière concertée entre les parites( entre l'entreprise et la stagiaire). En cas de résilliation unilattérale, une notification écrite préable sera effectuée par l'une des parties. </p><br>
 
+    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 8</u> : Obligation du stagiaire</h1>
 
-            ?></b> F CFA détaillée comme suit :</p><br>
+    <p>durant son stage, le stagiaire sera soumis aux rêgles applicables dans l'entreprise en matière de discipline, de sécurité, d'horaires de travail et aux differentes notes de service.</p><br>
+    <p>Il est tenu au respect du secret professionnel et à la discretion concernant les activités de l'entreprise.</p><br>
+    <p>Le stagiaire déclare avoir pris connaissance du règlement intérieur de l'entreprise et s'engage à s'y confomrer durant tout la durée de son stage. </p><br>
+    <br>
+    <p>En cas de manquement, l'entreprise se reserve le droit de mettre fin au stage en respectant les dispositions fixées à <b class="classtext">l'alinéa 2 de l'article 7 de la présente convention</b> </p><br>
 
-    <table style="margin: 0px; padding: 0px;">
-        <tr>
-            <td width="100%">
-                <table class="preambule" style="margin-left: 50px; padding: 0px; width: 100%">
-                    <tr>
-                        <td style="font-size: 12pt" width="40%" align="center"><b>Détail</b></td>
-                        <td style="font-size: 12pt" width="60%" align="center"><b>Valeur en F CFA</b></td>
-                    </tr>
-                    @if(isset($contrat->valeurSalaire))
-                        @foreach(json_decode($contrat->valeurSalaire) as $valeur)
-                            <tr>
-                                <td style="font-size: 12pt" width="40%">{{$valeur->libelle}}</td>
-                                <td width="60%"  class="classtext" style="font-size: 12pt"><b>{{$valeur->valeur}}</b></td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </table>
-            </td>
-        </tr>
-    </table><br>
+<h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 9</u> : Juridiction compétente</h1>
 
-    <p>Au titre de la gratification, l’Employé percevra une gratification égale à ¾ du salaire catégoriel,
-        pour une présence effective dans l’entreprise du 1er janvier au 31 décembre. S’il est engagé, démissionne ou est licencié au cours de l’année,
-        il percevra une gratification calculée au prorata du temps de service effectué au cours de ladite année.
-        Au titre des congés-payés, et conformément aux dispositions du Code de Travail, l’Employé bénéficiera de 2,5 jours ouvrables de congés payés par mois de service effectif.
-        En cas de départ en congés, il percevra une indemnité compensatrice de congés payés fixée selon les dispositions du Code du Travail Ivoirien.
-    </p><br>
+    <p>La présente convention est régie exclusivement par le droit ivoirien.</p><br>
+    <p>Tout litige non rédsolu par voie amiable sera soumis à la compétence de la juridiction ivoirienne compétente.</p><br>
+    <br>
+    <p>Elle est etablie en deux(2) exemplaires originaux dont l'un sera remis au stagiaire.</p><br>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 10</u> : Immatriculation sociale de l’Employé</h1>
-
-    <p>L’Employé fera l’objet de déclaration à la Caisse Nationale de Prévoyance Sociale (CNPS) par l’Employeur afin de bénéficier
-        des avantages sociaux qu’offre cette structuretant sur le plan des accidents de travail, des maladies professionnelles qu’en cas de maternité.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 11</u> : Avantages sociaux</h1>
-
-    <p>La couverture maladie de l’employé, de sa conjointe et de ses enfants à charge est prise en charge
-        par l’Employeur à hauteur de <b class="classtext">{{isset($contrat->couvertureMaladie)?$contrat->couvertureMaladie:''}}</b>% auprès d’une compagnie d’assurance locale après la période d’essai.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 12</u> : Sécurité –Induction</h1>
-
-    <p>Engagé sur le projet de l’Employeur, l’Employé bénéficiera, dès la signature du présent contrat, d'une formation renforcée à la sécurité ainsi que
-        d'un accueil et d'une information adaptés assuré par le service de Sécurité. A ce titre, l’Employé s’engage à se soumettre au respect strict des consignes d’hygiène et de sécurité,
-        entre autres le port des équipements de protection individuelle, le respect des zones balisées …etc.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 13</u> : Les obligations professionnelles</h1>
-
-    <p>L’Employé s’engage :<br>
-        -A respecter les prescriptions en vigueur dans la société.<br>
-        -A respecter les horaires de travail.<br>
-        -A se conformer aux directives et instructions émanant de sa hiérarchie.<br>
-        -A ne se livrer à aucune activité professionnelle autre que celle pour laquelle il a été engagé, ni s’intéresser, soit directement, soit indirectement à des entreprises de nature à concurrencer l’employeur.<br>
-        -A ne pas exercer d’activité professionnelle complémentaire de quelle que nature que ce soit sans autorisation expresse de l’Employeur.<br>
-        -A se soumettre au respect strict des consignes d’hygiène et sécurité, entre autres le port des équipements de protection individuelle…etc.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 14</u> : Clause de non concurrence – clause de confidentialité</h1>
-
-    <p>Il est interdit à l’Employé d’exercer, même en dehors de son temps de travail, toute activité à caractère professionnel susceptible de concurrencer l’entreprise ou de nuire à la bonne exécution des services convenus.
-        L’Employé a également l’obligation de s’abstenir de divulguer tout fait ou renseignement confidentiel acquis au service de l’employeur.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 15</u> : Avantages personnels</h1>
-
-    <p>L’Employé s’interdit de solliciter ou d’accepter, tant pour elle-même que pour ses proches, un quelconque avantage personnel qui pourrait, tant en raison de sa nature que de son importance,
-        influencer ou donner l’apparence qu’elle pourrait influencer le jugement ou les activités de l’Employé dans l’accomplissement de ses tâches pour l’Employeur.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 16</u> : Absence et Indisponibilité</h1>
-
-    <p>En cas d’absence pour maladie, accidents non professionnels ou toute autre cause, l’Employé devra <b>immédiatement</b> aviser l’Employeur et produire un justificatif dans les 72 heures.</p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 17</u> : Matériels et documents</h1>
-
-    <p>Tous les matériels et documents de travail confiés à l’Employée pour l’exécution de ses tâches sont la propriété de l’Employeur.
-        L’Employé devra les restituer à la première demande ou dès la cessation de ses fonctions.
-    </p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 18</u> : Juridiction compétente</h1>
-
-    <p>Tout litige ou différent relève de la compétence exclusive des juridictions de la République de Côte d’Ivoire.</p><br>
-
-    <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 19</u> : Exemplaires</h1>
-
-    <p>Le présent contrat est établi en <b>deux (2)</b> exemplaires originaux exempt de tous droits de timbre et d’enregistrement, dont une <b>(01) copie originale</b> est remise à l’Employé.
-    </p><br><br><br>
 
     <div class="signature">
         <div style="min-height: 700.748031px;height:700.748031px;"></div>

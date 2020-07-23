@@ -888,6 +888,8 @@ class ContratController extends Controller
             $pdf = PDF::loadView('contrat.contratcddpdf',compact('contrat','pieces'));
         }elseif($contrat->id_type_contrat==2){
             $pdf = PDF::loadView('contrat.contratcdipdf',compact('contrat','pieces'));
+        }elseif($contrat->id_type_contrat==3){
+            $pdf = PDF::loadView('contrat.convention_stage',compact('contrat','pieces'));
         }
 
 

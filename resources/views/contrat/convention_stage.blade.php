@@ -171,7 +171,7 @@
 
     <p>L’entreprise accepte d'accueillir Monsieur ou Madame <b>{{$contrat->personne->nom}}</b> <b>{{$contrat->personne->prenom}}</b> pour effectuer un stage de fins de formation et de perfectionnement professionnel.
     </p><br><br>
-    <p>Ce stage aura pour objet essentiel de permettre au stagiaire de se familiariser avec au service <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b> de l'entreprise.</p><br>
+    <p>Ce stage aura pour objet essentiel de permettre au stagiaire de se familiariser avec le service <b class="classtext">{{isset($contrat->service)?$contrat->service->libelle:''}}</b> de l'entreprise.</p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des objectifs</h1>
 
@@ -186,7 +186,7 @@
 
     <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 4</u> : Durée du stage-Renouvellement</h1>
 
-    <p>Ce stage se déroulera du <b class="classtext"><?php if(isset($contrat->date_debutc_eff)){ $date = new DateTime($contrat->date_debutc_eff);
+    <p>Ce stage se déroulera du <b class="classtext"><?php if(isset($contrat->datedebutc)){ $date = new DateTime($contrat->datedebutc);
                 echo $date->format('d-m-Y');}?></b> au <b class="classtext"><?php if(isset($contrat->datefinc)){ $date = new DateTime($contrat->datefinc);
                 echo $date->format('d-m-Y');}?></b>.</p><br>
     <p>La convention de stage peut être prolongée ou renouvelée par simple avenant après accord des parties et ne pourra excédéer une durée de 12 mois, renouvellement compris.</p><br>
@@ -211,7 +211,7 @@
     <p>Il est tenu au respect du secret professionnel et à la discretion concernant les activités de l'entreprise.</p><br>
     <p>Le stagiaire déclare avoir pris connaissance du règlement intérieur de l'entreprise et s'engage à s'y confomrer durant tout la durée de son stage. </p><br>
     <br>
-    <p>En cas de manquement, l'entreprise se reserve le droit de mettre fin au stage en respectant les dispositions fixées à <b class="classtext">l'alinéa 2 de l'article 7 de la présente convention</b> </p><br>
+    <p>En cas de manquement, l'entreprise se reserve le droit de mettre fin au stage en respectant les dispositions fixées à <b class="classtext">l'alinéa 2 de l'article 7 de la présente convention</b>. </p><br>
 
 <h1 style="font-size: 12pt; padding: 0;text-align: left"><u>Article 9</u> : Juridiction compétente</h1>
 

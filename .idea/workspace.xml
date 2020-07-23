@@ -69,10 +69,10 @@
       <file leaf-file-name="convention_stage.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1305">
-              <caret line="220" column="91" selection-start-line="220" selection-start-column="91" selection-end-line="220" selection-end-column="91" />
+            <state relative-caret-position="307">
+              <caret line="173" column="94" selection-start-line="173" selection-start-column="94" selection-end-line="173" selection-end-column="94" />
               <folding>
-                <element signature="e#12611#12663#0#HTML" expanded="true" />
+                <element signature="e#12602#12654#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -836,14 +836,7 @@
       <workItem from="1595241543188" duration="14254000" />
       <workItem from="1595336249405" duration="8393000" />
       <workItem from="1595417247410" duration="925000" />
-      <workItem from="1595503575267" duration="7815000" />
-    </task>
-    <task id="LOCAL-00702" summary="envoie de mail fin contrat par projet.">
-      <created>1593649632473</created>
-      <option name="number" value="00702" />
-      <option name="presentableId" value="LOCAL-00702" />
-      <option name="project" value="LOCAL" />
-      <updated>1593649632473</updated>
+      <workItem from="1595503575267" duration="8129000" />
     </task>
     <task id="LOCAL-00703" summary="envoie de mail fin contrat par projet.">
       <created>1593649708103</created>
@@ -1181,11 +1174,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595513489172</updated>
     </task>
-    <option name="localTasksCounter" value="751" />
+    <task id="LOCAL-00751" summary="avenant dotation en nature">
+      <created>1595531631490</created>
+      <option name="number" value="00751" />
+      <option name="presentableId" value="LOCAL-00751" />
+      <option name="project" value="LOCAL" />
+      <updated>1595531631490</updated>
+    </task>
+    <option name="localTasksCounter" value="752" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2538554000" />
+    <option name="totallyTimeSpent" value="2538868000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1709,10 +1709,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="220" column="91" selection-start-line="220" selection-start-column="91" selection-end-line="220" selection-end-column="91" />
+        <state relative-caret-position="307">
+          <caret line="173" column="94" selection-start-line="173" selection-start-column="94" selection-end-line="173" selection-end-column="94" />
           <folding>
-            <element signature="e#12611#12663#0#HTML" expanded="true" />
+            <element signature="e#12602#12654#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

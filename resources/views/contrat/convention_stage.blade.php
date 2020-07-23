@@ -163,28 +163,13 @@
         </tr>
     </table><br>
 
-    <p>Etant dénommée  pour la rédaction des présentes <b>« l’Employé »,</b></p>
+    <p>Etant dénommée  pour la rédaction des présentes <b>« l’Employé stagiaire»,</b></p>
 
-    <p style="text-align: right"><b><u>D’autre part,</u></b></p><br>
+    <h1 style="font-size: 12pt; padding: 0;text-align: center"><u>IL A ETE CONVENUE CE QUI SUIT :</u></h1>
 
-    <p><b>Eiffage Génie Civil Côte d’Ivoire</b> et Monsieur ou Madame <b class="classtext">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b> ci-après désignés ensemble dans le corps du présent acte <b>« les Parties »</b> et individuellement <b>« la Partie »</b> ou par la dénomination ci-dessus.</p>
+    <h1 style="padding: 0;text-align: left"><u>Article 1</u> : Qualité</h1>
 
-    <h1 style="font-size: 12pt; padding: 0;text-align: center"><u>EXPOSE</u></h1>
-
-    <h1 style="font-size: 11pt; padding: 0;text-align: center">IL A ETE PREALABLEMENT EXPOSE CE QUI SUIT :</h1>
-
-    <p>Le présent contrat de travail et ses suites ou avenants sont établis conformément aux dispositions de la loi nouvelle n°2015-532 du 20 juillet 2015
-        portant Code du Travail de la Côte d’Ivoire et les textes réglementant son application, ainsi qu’aux dispositions de la Convention Collective Interprofessionnelle
-        du 19 juillet 1977 et les avenants et décisions de commissions mixtes  qui ont modifié et complété cette convention ou qui viendraient à la modifier ou à la compléter.
-    </p><br>
-
-    <h1 style="padding: 0;text-align: center"><u>CECI EXPOSE, IL A ETE CONVENU CE QUI SUIT :</u></h1>
-
-    <h1 style="padding: 0;text-align: left"><u>Article 1</u> : Engagement-Qualité</h1>
-
-    <p>L’Employé susnommé est recruté par l’Employeur en qualité de <b class="classtext">{{isset($contrat->personne->fonction)?strtoupper($contrat->personne->fonction()->first()->libelle):''}}.</b><br>
-        L’Employé qui accepte cette qualité, déclare avoir exprimé son engagement en toute liberté.<br>
-        Il devra, en tout état de cause, fournir toute preuve de sa libération de son dernier Employeur.
+    <p>L’entreprise accepte d'accueillir Monsieur ou Madame <b>{{$contrat->personne->nom}}</b> <b>{{$contrat->personne->prenom}}</b>
     </p><br>
 
     <h1 style="padding: 0;text-align: left"><u>Article 2</u> : Définition des fonctions</h1>

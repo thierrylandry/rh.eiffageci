@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,21 +66,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="convention_stage.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="convention_stage.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="647">
-              <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+            <state relative-caret-position="427">
+              <caret line="171" column="132" selection-start-line="171" selection-start-column="132" selection-end-line="171" selection-end-column="132" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="891" column="58" selection-start-line="891" selection-start-column="58" selection-end-line="891" selection-end-column="58" />
+            <state relative-caret-position="495">
+              <caret line="889" column="59" selection-start-line="889" selection-start-column="59" selection-end-line="889" selection-end-column="59" />
               <folding>
                 <element signature="e#564#1506#0#PHP" expanded="false" />
                 <element signature="e#1511#2561#0#PHP" expanded="false" />
@@ -180,8 +179,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
+        <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
       </list>
     </option>
   </component>
@@ -835,14 +834,7 @@
       <workItem from="1595241543188" duration="14254000" />
       <workItem from="1595336249405" duration="8393000" />
       <workItem from="1595417247410" duration="925000" />
-      <workItem from="1595503575267" duration="1490000" />
-    </task>
-    <task id="LOCAL-00700" summary="envoie de mail fin contrat par projet.">
-      <created>1593644731528</created>
-      <option name="number" value="00700" />
-      <option name="presentableId" value="LOCAL-00700" />
-      <option name="project" value="LOCAL" />
-      <updated>1593644731528</updated>
+      <workItem from="1595503575267" duration="2837000" />
     </task>
     <task id="LOCAL-00701" summary="envoie de mail fin contrat par projet.">
       <created>1593644805025</created>
@@ -1180,11 +1172,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595378377828</updated>
     </task>
-    <option name="localTasksCounter" value="749" />
+    <task id="LOCAL-00749" summary="avenant dotation en nature">
+      <created>1595505234047</created>
+      <option name="number" value="00749" />
+      <option name="presentableId" value="LOCAL-00749" />
+      <option name="project" value="LOCAL" />
+      <updated>1595505234047</updated>
+    </task>
+    <option name="localTasksCounter" value="750" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2532229000" />
+    <option name="totallyTimeSpent" value="2533576000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1681,18 +1680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="175" column="23" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="891" column="58" selection-start-line="891" selection-start-column="58" selection-end-line="891" selection-end-column="58" />
+        <state relative-caret-position="495">
+          <caret line="889" column="59" selection-start-line="889" selection-start-column="59" selection-end-line="889" selection-end-column="59" />
           <folding>
             <element signature="e#564#1506#0#PHP" expanded="false" />
             <element signature="e#1511#2561#0#PHP" expanded="false" />
@@ -1711,6 +1702,14 @@
             <element signature="e#26365#31317#0#PHP" expanded="false" />
             <element signature="e#31322#33738#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="171" column="132" selection-start-line="171" selection-start-column="132" selection-end-line="171" selection-end-column="132" />
+          <folding />
         </state>
       </provider>
     </entry>

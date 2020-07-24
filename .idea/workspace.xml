@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,10 +32,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
+            <state relative-caret-position="309">
               <caret line="568" column="102" selection-start-line="568" selection-start-column="102" selection-end-line="568" selection-end-column="102" />
               <folding>
                 <element signature="e#18181#18541#0#PHP" expanded="false" />
@@ -56,12 +56,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31284">
-              <caret line="1422" column="32" selection-start-line="1422" selection-start-column="32" selection-end-line="1422" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="589">
+              <caret line="496" column="4" selection-start-line="496" selection-start-column="4" selection-end-line="496" selection-end-column="4" />
+              <folding>
+                <element signature="e#23542#23573#0#HTML" expanded="true" />
+                <element signature="e#23880#23899#0#HTML" expanded="true" />
+                <element signature="e#24728#24801#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,11 +176,11 @@
         <option value="$PROJECT_DIR$/app/Fin_contrat.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
-        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
       </list>
     </option>
   </component>
@@ -853,14 +857,7 @@
       <workItem from="1595336249405" duration="8393000" />
       <workItem from="1595417247410" duration="925000" />
       <workItem from="1595503575267" duration="8489000" />
-      <workItem from="1595587008602" duration="2740000" />
-    </task>
-    <task id="LOCAL-00707" summary="envoie de mail fin contrat par projet.">
-      <created>1593650334910</created>
-      <option name="number" value="00707" />
-      <option name="presentableId" value="LOCAL-00707" />
-      <option name="project" value="LOCAL" />
-      <updated>1593650334910</updated>
+      <workItem from="1595587008602" duration="2851000" />
     </task>
     <task id="LOCAL-00708" summary="envoie de mail fin contrat par projet.">
       <created>1593651089503</created>
@@ -1198,11 +1195,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595601614243</updated>
     </task>
-    <option name="localTasksCounter" value="756" />
+    <task id="LOCAL-00756" summary="avenant dotation en nature">
+      <created>1595601749353</created>
+      <option name="number" value="00756" />
+      <option name="presentableId" value="LOCAL-00756" />
+      <option name="project" value="LOCAL" />
+      <updated>1595601749353</updated>
+    </task>
+    <option name="localTasksCounter" value="757" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2541968000" />
+    <option name="totallyTimeSpent" value="2542079000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1657,14 +1661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31284">
-          <caret line="1422" column="32" selection-start-line="1422" selection-start-column="32" selection-end-line="1422" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contrat/contratcddpdf.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1725,12 +1721,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
+        <state relative-caret-position="309">
           <caret line="568" column="102" selection-start-line="568" selection-start-column="102" selection-end-line="568" selection-end-column="102" />
           <folding>
             <element signature="e#18181#18541#0#PHP" expanded="false" />
             <element signature="e#23064#32441#0#PHP" expanded="false" />
             <element signature="e#32446#39692#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="496" column="4" selection-start-line="496" selection-start-column="4" selection-end-line="496" selection-end-column="4" />
+          <folding>
+            <element signature="e#23542#23573#0#HTML" expanded="true" />
+            <element signature="e#23880#23899#0#HTML" expanded="true" />
+            <element signature="e#24728#24801#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

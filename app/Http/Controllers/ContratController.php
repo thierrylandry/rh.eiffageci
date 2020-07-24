@@ -77,7 +77,7 @@ class ContratController extends Controller
         $recrutement=null;
         $listmodif=null;
 
-        if($id_typeModification==2 || $id_typeModification==3){
+        if($id_typeModification==2 || $id_typeModification==3 || $id_typeModification==1){
             $modification_recrutement= Modification::find($id);
             $personne= Personne::find($modification_recrutement->id_personne);
             $listmodif=json_decode($modification_recrutement->list_modif);

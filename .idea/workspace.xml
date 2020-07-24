@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" afterPath="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
@@ -97,6 +97,19 @@
                 <element signature="e#24106#24359#0#PHP" expanded="false" />
                 <element signature="e#26392#31344#0#PHP" expanded="false" />
                 <element signature="e#31349#33765#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GestionModification.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+              <folding>
+                <element signature="e#3997#4042#0#HTML" expanded="true" />
+                <element signature="e#4459#4509#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -140,7 +153,6 @@
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/app/Jobs/EnvoiesDemandeValider.php" />
         <option value="$PROJECT_DIR$/app/Jobs/EnvoiesDemandeCollectif.php" />
-        <option value="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/PoleDemande/pole_de_demande.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/personne/gestion_rh.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
@@ -180,6 +192,7 @@
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
+        <option value="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
       </list>
     </option>
   </component>
@@ -292,6 +305,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tableau_de_bord" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rh.eiffageci" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modification" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -834,14 +869,7 @@
       <workItem from="1595336249405" duration="8393000" />
       <workItem from="1595417247410" duration="925000" />
       <workItem from="1595503575267" duration="8489000" />
-      <workItem from="1595587008602" duration="589000" />
-    </task>
-    <task id="LOCAL-00704" summary="envoie de mail fin contrat par projet.">
-      <created>1593649756023</created>
-      <option name="number" value="00704" />
-      <option name="presentableId" value="LOCAL-00704" />
-      <option name="project" value="LOCAL" />
-      <updated>1593649756023</updated>
+      <workItem from="1595587008602" duration="824000" />
     </task>
     <task id="LOCAL-00705" summary="envoie de mail fin contrat par projet.">
       <created>1593649884922</created>
@@ -1179,11 +1207,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595531943795</updated>
     </task>
-    <option name="localTasksCounter" value="753" />
+    <task id="LOCAL-00753" summary="avenant dotation en nature">
+      <created>1595587607542</created>
+      <option name="number" value="00753" />
+      <option name="presentableId" value="LOCAL-00753" />
+      <option name="project" value="LOCAL" />
+      <updated>1595587607542</updated>
+    </task>
+    <option name="localTasksCounter" value="754" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2539817000" />
+    <option name="totallyTimeSpent" value="2540052000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1488,13 +1523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4264">
-          <caret line="337" column="35" selection-start-line="337" selection-start-column="35" selection-end-line="337" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/personne/ajouter_personne.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17864">
@@ -1707,6 +1735,17 @@
             <element signature="e#24106#24359#0#PHP" expanded="false" />
             <element signature="e#26392#31344#0#PHP" expanded="false" />
             <element signature="e#31349#33765#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding>
+            <element signature="e#3997#4042#0#HTML" expanded="true" />
+            <element signature="e#4459#4509#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

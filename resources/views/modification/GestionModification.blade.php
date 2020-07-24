@@ -90,6 +90,8 @@
                                     <span style="background-color:#57b846; color:white">Renouvellement</span>
                                 @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==3)
                                     <span style="background-color:#00b5e9;  color:white">Avenant</span>
+                                @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==1)
+                                    <span style="background-color:yellowgreen;  color:white">Contrat</span>
                                 @endif</td>
                             <td>{{$modification->user->nom}} {{$modification->user->prenoms}}</td>
                             <td>{{isset($modification->personne->nom)?$modification->personne->nom:''}} {{isset($modification->personne->prenom)?$modification->personne->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$modification->personne->slug])}}" target="_blank">Consulter la fiche</a>  </td>

@@ -566,12 +566,15 @@ class HomeController extends Controller
             if($cumule_entrees[$i]->name!="" || !is_null($cumule_entrees[$i]->name)){
 
                 for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
-                    if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name){
+                    if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name && $cumule_sortis[$j]->y!=0){
                         $vardiagEffectif = New Vardiag();
 
                         $vardiagEffectif->name = $cumule_entrees[$i]->name;
                         $vardiagEffectif->y = $cumule_entrees[$i]->y - $cumule_sortis[$j]->y;
                         $effectif_par_mois[$i] = $vardiagEffectif;
+                    }else{
+                        $vardiagEffectif1->y = $cumule_entrees[$i]->y;
+                        $effectif_par_mois[$i] = $vardiagEffectif1;
                     }
                 }
                  // $vardiagEffectif1->y = $cumule_entrees[$i]->y;

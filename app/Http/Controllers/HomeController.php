@@ -574,8 +574,8 @@ class HomeController extends Controller
                         $effectif_par_mois[$i] = $vardiagEffectif;
                     }
                 }
-                  $vardiagEffectif1->y = $cumule_entrees[$i]->y;
-                 $effectif_par_mois[$i] = $vardiagEffectif1;
+                 // $vardiagEffectif1->y = $cumule_entrees[$i]->y;
+                 //$effectif_par_mois[$i] = $vardiagEffectif1;
             }
 
 

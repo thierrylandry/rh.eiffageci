@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="avenant dotation en nature">
+    <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +32,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -79,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2398">
-              <caret line="374" column="45" selection-start-line="374" selection-start-column="45" selection-end-line="374" selection-end-column="45" />
+            <state relative-caret-position="639">
+              <caret line="632" column="13" selection-start-line="632" selection-start-column="13" selection-end-line="632" selection-end-column="13" />
               <folding>
                 <element signature="e#564#1506#0#PHP" expanded="false" />
                 <element signature="e#1511#2561#0#PHP" expanded="false" />
@@ -94,9 +93,8 @@
                 <element signature="e#10822#11309#0#PHP" expanded="false" />
                 <element signature="e#11315#15121#0#PHP" expanded="false" />
                 <element signature="e#15126#15385#0#PHP" expanded="false" />
-                <element signature="e#21287#26387#0#PHP" expanded="false" />
-                <element signature="e#24106#24359#0#PHP" expanded="false" />
-                <element signature="e#26392#31344#0#PHP" expanded="false" />
+                <element signature="e#24175#24452#0#PHP" expanded="false" />
+                <element signature="e#26548#31500#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -206,10 +204,10 @@
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
       </list>
     </option>
   </component>
@@ -888,14 +886,7 @@
       <workItem from="1595503575267" duration="8489000" />
       <workItem from="1595587008602" duration="14546000" />
       <workItem from="1595810184249" duration="2418000" />
-      <workItem from="1595845746815" duration="9272000" />
-    </task>
-    <task id="LOCAL-00710" summary="envoie de mail fin contrat par projet.">
-      <created>1593796993422</created>
-      <option name="number" value="00710" />
-      <option name="presentableId" value="LOCAL-00710" />
-      <option name="project" value="LOCAL" />
-      <updated>1593796993422</updated>
+      <workItem from="1595845746815" duration="10080000" />
     </task>
     <task id="LOCAL-00711" summary="envoie de mail fin contrat par projet.">
       <created>1593797116604</created>
@@ -1233,11 +1224,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595601949273</updated>
     </task>
-    <option name="localTasksCounter" value="759" />
+    <task id="LOCAL-00759" summary="avenant dotation en nature">
+      <created>1595869426630</created>
+      <option name="number" value="00759" />
+      <option name="presentableId" value="LOCAL-00759" />
+      <option name="project" value="LOCAL" />
+      <updated>1595869426631</updated>
+    </task>
+    <option name="localTasksCounter" value="760" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2565464000" />
+    <option name="totallyTimeSpent" value="2566272000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1720,27 +1718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2398">
-          <caret line="374" column="45" selection-start-line="374" selection-start-column="45" selection-end-line="374" selection-end-column="45" />
-          <folding>
-            <element signature="e#564#1506#0#PHP" expanded="false" />
-            <element signature="e#1511#2561#0#PHP" expanded="false" />
-            <element signature="e#6713#7211#0#PHP" expanded="false" />
-            <element signature="e#7216#7363#0#PHP" expanded="false" />
-            <element signature="e#7368#10170#0#PHP" expanded="false" />
-            <element signature="e#10176#10816#0#PHP" expanded="false" />
-            <element signature="e#10822#11309#0#PHP" expanded="false" />
-            <element signature="e#11315#15121#0#PHP" expanded="false" />
-            <element signature="e#15126#15385#0#PHP" expanded="false" />
-            <element signature="e#21287#26387#0#PHP" expanded="false" />
-            <element signature="e#24106#24359#0#PHP" expanded="false" />
-            <element signature="e#26392#31344#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1756,6 +1733,26 @@
           <folding>
             <element signature="e#22109#31486#0#PHP" expanded="false" />
             <element signature="e#31491#38737#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="632" column="13" selection-start-line="632" selection-start-column="13" selection-end-line="632" selection-end-column="13" />
+          <folding>
+            <element signature="e#564#1506#0#PHP" expanded="false" />
+            <element signature="e#1511#2561#0#PHP" expanded="false" />
+            <element signature="e#6713#7211#0#PHP" expanded="false" />
+            <element signature="e#7216#7363#0#PHP" expanded="false" />
+            <element signature="e#7368#10170#0#PHP" expanded="false" />
+            <element signature="e#10176#10816#0#PHP" expanded="false" />
+            <element signature="e#10822#11309#0#PHP" expanded="false" />
+            <element signature="e#11315#15121#0#PHP" expanded="false" />
+            <element signature="e#15126#15385#0#PHP" expanded="false" />
+            <element signature="e#24175#24452#0#PHP" expanded="false" />
+            <element signature="e#26548#31500#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

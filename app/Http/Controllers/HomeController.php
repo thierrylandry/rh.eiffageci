@@ -423,51 +423,6 @@ class HomeController extends Controller
 
         endforeach;
 
-        // dd($tab_allege);
-        $vardiag = New Vardiag();
-        if(isset($tab_allege["11:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[11]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege["11:".$annee_moins1];
-            $repartition_entrees[]=$vardiag;
-        }else{
-            $vardiag->name="Novembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_entrees[]=$vardiag;
-        }
-        $vardiag = New Vardiag();
-        if(isset($tab_allege["12:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[12]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege["12:".$annee_moins1];
-            $repartition_entrees[]=$vardiag;
-        }else{
-            $vardiag->name="Décembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_entrees[]=$vardiag;
-        }
-
-
-        for( $i=1; $i<=12; $i++){
-            $vardiag = New Vardiag();
-
-            if(isset($tab_allege[$i.":".date('Y')])){
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-
-                $vardiag->y=$tab_allege[$i.":".date('Y')];
-            }else{
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-            }
-            $repartition_entrees[]=$vardiag;
-        }
-
-
 //fin entree
         //debut sorti
 
@@ -479,36 +434,9 @@ class HomeController extends Controller
             $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
 
         endforeach;
+//dd($tab_allege_sorti);
 
 
-        $vardiag = New Vardiag();
-        if(isset($tab_allege_sorti["11:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[11]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege_sorti["11:".$annee_moins1];
-            $repartition_sorties[]=$vardiag;
-        }else{
-            $vardiag->name="Novembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_sorties[]=$vardiag;
-        }
-        $vardiag = New Vardiag();
-        if(isset($tab_allege_sorti["12:".$annee_moins1])){
-
-
-            $vardiag->name=$a_mois[12]."-".$annee_moins1;
-
-            $vardiag->y=$tab_allege_sorti["12:".$annee_moins1];
-            $repartition_sorties[]=$vardiag;
-        }else{
-            $vardiag->name="Décembre-".$annee_moins1;
-
-            $vardiag->y=0;
-            $repartition_sorties[]=$vardiag;
-        }
 
 
         for( $i=1; $i<=12; $i++){
@@ -532,11 +460,11 @@ class HomeController extends Controller
         $cumule_entrees= Array();
         foreach ($entrees as $vardiag) {
             if($vardiag->mois!="" || !is_null($vardiag->mois)) {
-                $runningSum += $vardiag->entree;
+                $runningSum = $vardiag->entree;
 
                 $vardiagCumul = New Vardiag();
                 $vardiagCumul->name = $vardiag->mois;
-                $vardiagCumul->y = $runningSum;
+                $vardiagCumul->y = $vardiag->entree;
                 $cumule_entrees[] = $vardiagCumul;
             }
         }
@@ -546,51 +474,83 @@ class HomeController extends Controller
         $cumule_sortis= Array();
         foreach ($sorties as $vardiag) {
             if($vardiag->mois!="" || !is_null($vardiag->mois)) {
-                $runningSum += $vardiag->sortie;
+                $runningSum = $vardiag->sortie;
                 $vardiagCumul = New Vardiag();
                 $vardiagCumul->name = $vardiag->mois;
-                $vardiagCumul->y = $runningSum;
+                $vardiagCumul->y = $vardiag->sortie;
                 $cumule_sortis[] = $vardiagCumul;
             }
         }
-      //  dd($cumule_entrees);
-      //  dd($cumule_sortis);
+       // dd($cumule_entrees);
+        //dd($cumule_sortis);
+        $months = array();
 
-        $effectif_par_mois= Array();
 
-        for($i=0;$i<sizeof($cumule_entrees);$i++) {
+       // dd($entrees[0]);
+        $liste_name= array();
+        for ($y = $entrees[0]->annee; $y <= date('Y'); $y++) {
+            $currentMonth = $entrees[0]->numeromois;
 
-            $vardiagEffectif1 = New Vardiag();
-            $vardiagEffectif1->name = $cumule_entrees[$i]->name;
+            for ($x = $currentMonth; $x < $currentMonth + 12; $x++) {
 
-            if($cumule_entrees[$i]->name!="" || !is_null($cumule_entrees[$i]->name)){
-
-                for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
-                    if($cumule_entrees[$i]->name==$cumule_sortis[$j]->name && $cumule_sortis[$j]->y!=0){
-                        $vardiagEffectif = New Vardiag();
-
-                        $vardiagEffectif->name = $cumule_entrees[$i]->name;
-                        $vardiagEffectif->y = $cumule_entrees[$i]->y - $cumule_sortis[$j]->y;
-                        $effectif_par_mois[$i] = $vardiagEffectif;
-                    }else{
-                        $vardiagEffectif1->y = $cumule_entrees[$i]->y;
-                        $effectif_par_mois[$i] = $vardiagEffectif1;
-                    }
+                $liste_name[] = date('F', mktime(0, 0, 0, $x, 1)).'-'.$y;
+                if(date('F', mktime(0, 0, 0, $x, 1)).'-'.$y==date('F').'-'.date('Y')){
+                    break;
                 }
-                 // $vardiagEffectif1->y = $cumule_entrees[$i]->y;
-                 //$effectif_par_mois[$i] = $vardiagEffectif1;
+
             }
 
+        }
+       // dd($liste_name);
+        $effectif_par_mois= Array();
 
+
+        $valeur=0;
+        foreach($liste_name as $lelibelle) {
+            $vardiagEffectif1 = New Vardiag();
+            $valeur+=intval($this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle)-$this->donne_moi_une_date_je_te_dis_qui_est_parti($cumule_sortis,$lelibelle));
+            $vardiagEffectif1->name=$lelibelle;
+            $vardiagEffectif1->y=$valeur;
+            $effectif_par_mois[]=$vardiagEffectif1;
         }
 
-        //dd($effectif_par_mois);
+      //  dd($effectif_par_mois);
 
 
         $entites=Entite::all();
         $lentite=Entite::find($id_entite_connecter);
         return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
+    }
+    public function donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$date_libelle){
+        $resultat=0;
+        for ($j = 0; $j < sizeof($cumule_entrees); $j++) {
+            if($date_libelle==$cumule_entrees[$j]->name){
+                $vardiagEffectif = New Vardiag();
+
+                $vardiagEffectif->name = $date_libelle;
+                $vardiagEffectif->y =$cumule_entrees[$j]->y;
+               // $effectif_par_mois[$i] = $vardiagEffectif;
+                $resultat= $vardiagEffectif->y;
+                break;
+            }
+        }
+        return $resultat;
+    }
+    public function donne_moi_une_date_je_te_dis_qui_est_parti($cumule_sortis,$date_libelle){
+        $resultat=0;
+        for ($j = 0; $j < sizeof($cumule_sortis); $j++) {
+            if($date_libelle==$cumule_sortis[$j]->name){
+                $vardiagEffectif = New Vardiag();
+
+                $vardiagEffectif->name = $date_libelle;
+                $vardiagEffectif->y =$cumule_sortis[$j]->y;
+               // $effectif_par_mois[$i] = $vardiagEffectif;
+                $resultat= $vardiagEffectif->y;
+                break;
+            }
+        }
+        return $resultat;
     }
     public function globale()
     {

@@ -1009,3 +1009,7 @@ Route::get('/liste_chantier/{email}',[
     'as'=>'liste_chantier',
     'uses'=>'EntiteController@liste_chantier',
 ]);
+Route::get('/mise_a_jour_date_debut_c/',[
+    'as'=>'mise_a_jour_date_debut_c',
+    'uses'=>'PersonneController@mise_a_jour_date_debut_c',
+]);

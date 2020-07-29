@@ -412,7 +412,6 @@ class HomeController extends Controller
 //debut entrée
         $entrees= DB::select('call proc_entrees('.$id_entite_connecter.')');
       //  $entrees= [];
-        $sorties= DB::select('call proc_sortie('.$id_entite_connecter.')');
         $personne_sortie= DB::select('call personne_sortie('.$id_entite_connecter.')');
         $personne_sortie_unique= Array();
         foreach($personne_sortie as $pers):
@@ -474,19 +473,6 @@ class HomeController extends Controller
                 $vardiagCumul->name = $vardiag->mois;
                 $vardiagCumul->y = $vardiag->entree;
                 $cumule_entrees[] = $vardiagCumul;
-            }
-        }
-
-        //cumules des entrees
-        $runningSum = 0;
-        $cumule_sortis= Array();
-        foreach ($sorties as $vardiag) {
-            if($vardiag->mois!="" || !is_null($vardiag->mois)) {
-                $runningSum = $vardiag->sortie;
-                $vardiagCumul = New Vardiag();
-                $vardiagCumul->name = $vardiag->mois;
-                $vardiagCumul->y = $vardiag->sortie;
-                $cumule_sortis[] = $vardiagCumul;
             }
         }
        // dd($cumule_entrees);

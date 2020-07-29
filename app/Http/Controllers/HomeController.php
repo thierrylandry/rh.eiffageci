@@ -530,7 +530,7 @@ class HomeController extends Controller
         return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
     }
-    public function compte_sortie($personne_sortie_unique,$mois,$annee){
+    public function compte_sortie($personne_sortie_unique,$mois){
         $res=0;
         foreach($personne_sortie_unique as $pers):
 

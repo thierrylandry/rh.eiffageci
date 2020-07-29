@@ -413,7 +413,15 @@ class HomeController extends Controller
         $entrees= DB::select('call proc_entrees('.$id_entite_connecter.')');
       //  $entrees= [];
         $sorties= DB::select('call proc_sortie('.$id_entite_connecter.')');
-       // dd($sorties);
+        $personne_sortie= DB::select('call personne_sortie('.$id_entite_connecter.')');
+        $personne_sortie_unique= Array();
+        foreach($personne_sortie as $pers):
+            if(!is_null($pers->departDefinitif!=null)){
+                $personne_sortie_unique[$pers->id]=$pers;
+            }
+            endforeach;
+
+        //dd($sorties);
        // $sorties= [];
         $annee_moins1=date('Y')-1;
         $tab_allege= Array();
@@ -508,7 +516,7 @@ class HomeController extends Controller
         $valeur=0;
         foreach($liste_name as $lelibelle) {
             $vardiagEffectif1 = New Vardiag();
-            $valeur+=intval($this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle)-$this->donne_moi_une_date_je_te_dis_qui_est_parti($cumule_sortis,$lelibelle));
+            $valeur+=intval($this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle)-$this->compte_sortie($personne_sortie_unique,$lelibelle));
             $vardiagEffectif1->name=$lelibelle;
             $vardiagEffectif1->y=$valeur;
             $effectif_par_mois[]=$vardiagEffectif1;
@@ -521,6 +529,16 @@ class HomeController extends Controller
         $lentite=Entite::find($id_entite_connecter);
         return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
 
+    }
+    public function compte_sortie($personne_sortie_unique,$mois,$annee){
+        $res=0;
+        foreach($personne_sortie_unique as $pers):
+
+            if($pers->mois =$mois){
+                $res++;
+            }
+            endforeach;
+        return $res;
     }
     public function donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$date_libelle){
         $resultat=0;

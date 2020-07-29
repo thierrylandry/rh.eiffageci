@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,14 +32,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="513" column="51" selection-start-line="513" selection-start-column="51" selection-end-line="513" selection-end-column="51" />
+            <state relative-caret-position="198">
+              <caret line="518" column="149" selection-start-line="518" selection-start-column="149" selection-end-line="518" selection-end-column="149" />
               <folding>
-                <element signature="e#22109#31486#0#PHP" expanded="false" />
-                <element signature="e#31491#38737#0#PHP" expanded="false" />
+                <element signature="e#22682#32059#0#PHP" expanded="false" />
+                <element signature="e#32064#39310#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -56,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="22">
               <caret line="527" column="72" selection-start-line="527" selection-start-column="72" selection-end-line="527" selection-end-column="72" />
               <folding />
             </state>
@@ -82,8 +81,8 @@
       <file leaf-file-name="ContratController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7986">
-              <caret line="632" column="13" selection-start-line="632" selection-start-column="13" selection-end-line="632" selection-end-column="13" />
+            <state relative-caret-position="425">
+              <caret line="383" column="24" selection-start-line="383" selection-start-column="24" selection-end-line="383" selection-end-column="24" />
               <folding>
                 <element signature="e#564#1506#0#PHP" expanded="false" />
                 <element signature="e#1511#2561#0#PHP" expanded="false" />
@@ -203,12 +202,12 @@
         <option value="$PROJECT_DIR$/resources/views/contrat/contrat_affiche.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contrat/convention_stage.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/modification/GestionModification.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/app/Personne.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -252,8 +251,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -462,6 +459,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -856,14 +855,8 @@
       <workItem from="1595587008602" duration="14546000" />
       <workItem from="1595810184249" duration="2418000" />
       <workItem from="1595845746815" duration="12886000" />
-      <workItem from="1595942676292" duration="688000" />
-    </task>
-    <task id="LOCAL-00712" summary="envoie de mail fin contrat par projet.">
-      <created>1594644216410</created>
-      <option name="number" value="00712" />
-      <option name="presentableId" value="LOCAL-00712" />
-      <option name="project" value="LOCAL" />
-      <updated>1594644216411</updated>
+      <workItem from="1595942676292" duration="1292000" />
+      <workItem from="1596027080743" duration="2653000" />
     </task>
     <task id="LOCAL-00713" summary="envoie de mail fin contrat par projet.">
       <created>1594645403169</created>
@@ -1201,11 +1194,18 @@
       <option name="project" value="LOCAL" />
       <updated>1595871073000</updated>
     </task>
-    <option name="localTasksCounter" value="761" />
+    <task id="LOCAL-00761" summary="avenant dotation en nature">
+      <created>1595952129376</created>
+      <option name="number" value="00761" />
+      <option name="presentableId" value="LOCAL-00761" />
+      <option name="project" value="LOCAL" />
+      <updated>1595952129376</updated>
+    </task>
+    <option name="localTasksCounter" value="762" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2569766000" />
+    <option name="totallyTimeSpent" value="2573023000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1220,17 +1220,17 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14393125" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14607948" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109852776" sideWeight="0.5725027" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109852776" sideWeight="0.57411385" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31740063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19167389" sideWeight="0.46883005" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109852776" sideWeight="0.42749733" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.109852776" sideWeight="0.42588615" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1665,37 +1665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="513" column="51" selection-start-line="513" selection-start-column="51" selection-end-line="513" selection-end-column="51" />
-          <folding>
-            <element signature="e#22109#31486#0#PHP" expanded="false" />
-            <element signature="e#31491#38737#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7986">
-          <caret line="632" column="13" selection-start-line="632" selection-start-column="13" selection-end-line="632" selection-end-column="13" />
-          <folding>
-            <element signature="e#564#1506#0#PHP" expanded="false" />
-            <element signature="e#1511#2561#0#PHP" expanded="false" />
-            <element signature="e#6713#7211#0#PHP" expanded="false" />
-            <element signature="e#7216#7363#0#PHP" expanded="false" />
-            <element signature="e#7368#10170#0#PHP" expanded="false" />
-            <element signature="e#10176#10816#0#PHP" expanded="false" />
-            <element signature="e#10822#11309#0#PHP" expanded="false" />
-            <element signature="e#11315#15121#0#PHP" expanded="false" />
-            <element signature="e#15126#15385#0#PHP" expanded="false" />
-            <element signature="e#24175#24452#0#PHP" expanded="false" />
-            <element signature="e#26548#31500#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22088">
@@ -1724,9 +1693,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="22">
           <caret line="527" column="72" selection-start-line="527" selection-start-column="72" selection-end-line="527" selection-end-column="72" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContratController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="383" column="24" selection-start-line="383" selection-start-column="24" selection-end-line="383" selection-end-column="24" />
+          <folding>
+            <element signature="e#564#1506#0#PHP" expanded="false" />
+            <element signature="e#1511#2561#0#PHP" expanded="false" />
+            <element signature="e#6713#7211#0#PHP" expanded="false" />
+            <element signature="e#7216#7363#0#PHP" expanded="false" />
+            <element signature="e#7368#10170#0#PHP" expanded="false" />
+            <element signature="e#10176#10816#0#PHP" expanded="false" />
+            <element signature="e#10822#11309#0#PHP" expanded="false" />
+            <element signature="e#11315#15121#0#PHP" expanded="false" />
+            <element signature="e#15126#15385#0#PHP" expanded="false" />
+            <element signature="e#24175#24452#0#PHP" expanded="false" />
+            <element signature="e#26548#31500#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="518" column="149" selection-start-line="518" selection-start-column="149" selection-end-line="518" selection-end-column="149" />
+          <folding>
+            <element signature="e#22682#32059#0#PHP" expanded="false" />
+            <element signature="e#32064#39310#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

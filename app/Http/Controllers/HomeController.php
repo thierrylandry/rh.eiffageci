@@ -435,32 +435,7 @@ class HomeController extends Controller
 
 
         $annee_moins1=date('Y')-1;
-        $tab_allege_sorti= Array();
-        foreach ($sorties as $sortie):
-
-            $tab_allege_sorti[$sortie->numeromois.':'.$sortie->annee]=$sortie->sortie;
-
-        endforeach;
 //dd($tab_allege_sorti);
-
-
-
-
-        for( $i=1; $i<=12; $i++){
-            $vardiag = New Vardiag();
-
-            if(isset($tab_allege_sorti[$i.":".date('Y')])){
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-
-                $vardiag->y=$entree->entree;
-            }else{
-                $vardiag->name=$a_mois[$i]."-".date('Y');
-            }
-            $repartition_sorties[]=$vardiag;
-        }
-
-
-
         //tableau des effectif par mois
 //cumules des entrees
         $runningSum = 0;

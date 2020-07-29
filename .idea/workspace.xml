@@ -35,14 +35,14 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="413" column="23" selection-start-line="413" selection-start-column="23" selection-end-line="413" selection-end-column="23" />
+            <state relative-caret-position="161">
+              <caret line="437" column="24" selection-start-line="437" selection-start-column="24" selection-end-line="437" selection-end-column="24" />
               <folding>
-                <element signature="e#20696#20951#0#PHP" expanded="false" />
-                <element signature="e#20956#21539#0#PHP" expanded="false" />
-                <element signature="e#21544#22124#0#PHP" expanded="false" />
-                <element signature="e#22129#31506#0#PHP" expanded="false" />
-                <element signature="e#31511#38757#0#PHP" expanded="false" />
+                <element signature="e#20122#20377#0#PHP" expanded="false" />
+                <element signature="e#20382#20965#0#PHP" expanded="false" />
+                <element signature="e#20970#21550#0#PHP" expanded="false" />
+                <element signature="e#21555#30932#0#PHP" expanded="false" />
+                <element signature="e#30937#38183#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -859,14 +859,7 @@
       <workItem from="1595810184249" duration="2418000" />
       <workItem from="1595845746815" duration="12886000" />
       <workItem from="1595942676292" duration="1292000" />
-      <workItem from="1596027080743" duration="3113000" />
-    </task>
-    <task id="LOCAL-00716" summary="avenant dotation en nature">
-      <created>1595244078575</created>
-      <option name="number" value="00716" />
-      <option name="presentableId" value="LOCAL-00716" />
-      <option name="project" value="LOCAL" />
-      <updated>1595244078575</updated>
+      <workItem from="1596027080743" duration="3196000" />
     </task>
     <task id="LOCAL-00717" summary="avenant dotation en nature">
       <created>1595245011362</created>
@@ -1204,11 +1197,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596034222211</updated>
     </task>
-    <option name="localTasksCounter" value="765" />
+    <task id="LOCAL-00765" summary="avenant dotation en nature">
+      <created>1596034335677</created>
+      <option name="number" value="00765" />
+      <option name="presentableId" value="LOCAL-00765" />
+      <option name="project" value="LOCAL" />
+      <updated>1596034335677</updated>
+    </task>
+    <option name="localTasksCounter" value="766" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2573483000" />
+    <option name="totallyTimeSpent" value="2573566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1724,14 +1724,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="413" column="23" selection-start-line="413" selection-start-column="23" selection-end-line="413" selection-end-column="23" />
+        <state relative-caret-position="161">
+          <caret line="437" column="24" selection-start-line="437" selection-start-column="24" selection-end-line="437" selection-end-column="24" />
           <folding>
-            <element signature="e#20696#20951#0#PHP" expanded="false" />
-            <element signature="e#20956#21539#0#PHP" expanded="false" />
-            <element signature="e#21544#22124#0#PHP" expanded="false" />
-            <element signature="e#22129#31506#0#PHP" expanded="false" />
-            <element signature="e#31511#38757#0#PHP" expanded="false" />
+            <element signature="e#20122#20377#0#PHP" expanded="false" />
+            <element signature="e#20382#20965#0#PHP" expanded="false" />
+            <element signature="e#20970#21550#0#PHP" expanded="false" />
+            <element signature="e#21555#30932#0#PHP" expanded="false" />
+            <element signature="e#30937#38183#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

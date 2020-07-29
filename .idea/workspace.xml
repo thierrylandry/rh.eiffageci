@@ -35,11 +35,11 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="532" column="63" selection-start-line="532" selection-start-column="63" selection-end-line="532" selection-end-column="63" />
+            <state relative-caret-position="505">
+              <caret line="536" column="28" selection-start-line="536" selection-start-column="28" selection-end-line="536" selection-end-column="28" />
               <folding>
-                <element signature="e#22675#32052#0#PHP" expanded="false" />
-                <element signature="e#32057#39303#0#PHP" expanded="false" />
+                <element signature="e#22676#32053#0#PHP" expanded="false" />
+                <element signature="e#32058#39304#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -856,14 +856,7 @@
       <workItem from="1595810184249" duration="2418000" />
       <workItem from="1595845746815" duration="12886000" />
       <workItem from="1595942676292" duration="1292000" />
-      <workItem from="1596027080743" duration="2780000" />
-    </task>
-    <task id="LOCAL-00714" summary="avenant dotation en nature">
-      <created>1595007154742</created>
-      <option name="number" value="00714" />
-      <option name="presentableId" value="LOCAL-00714" />
-      <option name="project" value="LOCAL" />
-      <updated>1595007154743</updated>
+      <workItem from="1596027080743" duration="3000000" />
     </task>
     <task id="LOCAL-00715" summary="avenant dotation en nature">
       <created>1595243669769</created>
@@ -1201,11 +1194,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596033876531</updated>
     </task>
-    <option name="localTasksCounter" value="763" />
+    <task id="LOCAL-00763" summary="avenant dotation en nature">
+      <created>1596034002864</created>
+      <option name="number" value="00763" />
+      <option name="presentableId" value="LOCAL-00763" />
+      <option name="project" value="LOCAL" />
+      <updated>1596034002864</updated>
+    </task>
+    <option name="localTasksCounter" value="764" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2573150000" />
+    <option name="totallyTimeSpent" value="2573370000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1721,11 +1721,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="532" column="63" selection-start-line="532" selection-start-column="63" selection-end-line="532" selection-end-column="63" />
+        <state relative-caret-position="505">
+          <caret line="536" column="28" selection-start-line="536" selection-start-column="28" selection-end-line="536" selection-end-column="28" />
           <folding>
-            <element signature="e#22675#32052#0#PHP" expanded="false" />
-            <element signature="e#32057#39303#0#PHP" expanded="false" />
+            <element signature="e#22676#32053#0#PHP" expanded="false" />
+            <element signature="e#32058#39304#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

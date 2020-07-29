@@ -534,7 +534,7 @@ class HomeController extends Controller
         $res=0;
         foreach($personne_sortie_unique as $pers):
 
-            if($pers->mois =$mois){
+            if($pers->mois ==$mois){
                 $res++;
             }
             endforeach;

@@ -761,9 +761,9 @@ class HomeController extends Controller
         /*debut du traçages*/
         $ip			= $_SERVER['REMOTE_ADDR'];
         if (isset($_SERVER['REMOTE_HOST'])){
-            $nommachine = gethostname();
+            $nommachine = $_SERVER['REMOTE_HOST'];
         }else{
-            $nommachine = $nommachine = gethostname();
+            $nommachine = gethostbyaddr($_SERVER['REMOTE_ADDR']);
         }
         Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ; Affichage du tableau de bord ', ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return view('tableau_de_bord/global',compact('qualification_contractuelle','effectifglobaux','effectifglobauxx','repartition_nationalite','repartition_service','repartition_homme_femme','entites'));

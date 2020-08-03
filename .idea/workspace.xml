@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,27 +33,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="767" column="59" selection-start-line="767" selection-start-column="59" selection-end-line="767" selection-end-column="59" />
+            <state relative-caret-position="532">
+              <caret line="766" column="9" selection-start-line="766" selection-start-column="9" selection-end-line="766" selection-end-column="9" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
                 <element signature="e#20247#20502#0#PHP" expanded="false" />
                 <element signature="e#20507#21090#0#PHP" expanded="false" />
                 <element signature="e#21095#21675#0#PHP" expanded="false" />
-                <element signature="e#31456#38702#0#PHP" expanded="false" />
+                <element signature="e#31477#38723#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3440">
-              <caret line="455" column="7" selection-start-line="455" selection-start-column="7" selection-end-line="455" selection-end-column="7" />
+            <state relative-caret-position="1848">
+              <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -207,9 +206,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
         <option value="$PROJECT_DIR$/app/Personne.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -908,14 +907,7 @@
       <workItem from="1595942676292" duration="1292000" />
       <workItem from="1596027080743" duration="3802000" />
       <workItem from="1596443249036" duration="610000" />
-      <workItem from="1596454341611" duration="11277000" />
-    </task>
-    <task id="LOCAL-00720" summary="avenant dotation en nature">
-      <created>1595269334255</created>
-      <option name="number" value="00720" />
-      <option name="presentableId" value="LOCAL-00720" />
-      <option name="project" value="LOCAL" />
-      <updated>1595269334255</updated>
+      <workItem from="1596454341611" duration="11828000" />
     </task>
     <task id="LOCAL-00721" summary="avenant dotation en nature">
       <created>1595269443723</created>
@@ -1253,11 +1245,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596458484748</updated>
     </task>
-    <option name="localTasksCounter" value="769" />
+    <task id="LOCAL-00769" summary="mise en place du systeme de tracage des information sur les demandes d'absences">
+      <created>1596470325890</created>
+      <option name="number" value="00769" />
+      <option name="presentableId" value="LOCAL-00769" />
+      <option name="project" value="LOCAL" />
+      <updated>1596470325890</updated>
+    </task>
+    <option name="localTasksCounter" value="770" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2586059000" />
+    <option name="totallyTimeSpent" value="2586610000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1348,7 +1347,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="empecher l'affichage des modal à limpression des camamberts" />
     <MESSAGE value="mise a jours nationnalite" />
     <MESSAGE value="mise a jours des adresses" />
     <MESSAGE value="total" />
@@ -1373,7 +1371,8 @@
     <MESSAGE value="correction bug sur le lien" />
     <MESSAGE value="envoie de mail fin contrat par projet." />
     <MESSAGE value="avenant dotation en nature" />
-    <option name="LAST_COMMIT_MESSAGE" value="avenant dotation en nature" />
+    <MESSAGE value="mise en place du systeme de tracage des information sur les demandes d'absences" />
+    <option name="LAST_COMMIT_MESSAGE" value="mise en place du systeme de tracage des information sur les demandes d'absences" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1761,20 +1760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="767" column="59" selection-start-line="767" selection-start-column="59" selection-end-line="767" selection-end-column="59" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
-            <element signature="e#20247#20502#0#PHP" expanded="false" />
-            <element signature="e#20507#21090#0#PHP" expanded="false" />
-            <element signature="e#21095#21675#0#PHP" expanded="false" />
-            <element signature="e#31456#38702#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/PoleDemande/pole_de_demande.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1803,9 +1788,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3440">
-          <caret line="455" column="7" selection-start-line="455" selection-start-column="7" selection-end-line="455" selection-end-column="7" />
+        <state relative-caret-position="1848">
+          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="766" column="9" selection-start-line="766" selection-start-column="9" selection-end-line="766" selection-end-column="9" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+            <element signature="e#20247#20502#0#PHP" expanded="false" />
+            <element signature="e#20507#21090#0#PHP" expanded="false" />
+            <element signature="e#21095#21675#0#PHP" expanded="false" />
+            <element signature="e#31477#38723#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

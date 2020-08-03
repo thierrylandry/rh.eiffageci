@@ -19,6 +19,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AbsenceController extends Controller
 {
@@ -32,6 +33,14 @@ class AbsenceController extends Controller
             $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $absences = Absence::where('id_users',Auth::user()->id)->get();
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;Demande dabsence', ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return view('absences/ficheAbsence',compact('entites','personnes','absences'));
     }
     public function modification($id)
@@ -47,7 +56,14 @@ class AbsenceController extends Controller
        // $contrat= Contrat::where('id')
         $contrat=Contrat::where('id_personne','=',$absence->id_personne)->where('etat','=',1)->first();
 
-
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;page de modification de Demande dabsence n°'.$id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return view('absences/ficheAbsence',compact('entites','personnes','absences','absence','contrat'));
     }
     public function ActionValider($id){
@@ -77,6 +93,14 @@ class AbsenceController extends Controller
             $this->dispatch(new EnvoiesInformationDemandeur(3,$contactdemandeur,$absence));
         }
 
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;validation de la Demande dabsence n°'.$id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return redirect()->route('absence.validation')->with('success',"La demande d'absence a été  validée avec succès");
 
     }
@@ -93,6 +117,7 @@ class AbsenceController extends Controller
         $parameters=$request->except(['_token']);
 
         $objet=$parameters['objet'];
+        $id_dmd="";
         if($objet=="absence"){
             $id_dmd=$parameters['id_dmd'];
 
@@ -113,7 +138,14 @@ class AbsenceController extends Controller
             return redirect()->back()->with('success',"La demande a été réfusé");
         }
 
-
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;rejet de la Demande dabsence n°'.$id_dmd, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return redirect()->back()->with('success',"La demande a été réfusé");
 
     }
@@ -171,6 +203,14 @@ class AbsenceController extends Controller
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation(3,$contact));
         }
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;création de Demande dabsence n°'.$absence->id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return redirect()->back()->with('success',"La demande d'absence a été  enregistrée avec succès");
 
     }
@@ -231,7 +271,14 @@ class AbsenceController extends Controller
 
 
         $absence->save();
-
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;modification de Demande dabsence n°'.$absence->id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return redirect()->back()->with('success',"La demande d'absence a été  modifiée avec succès");
 
     }
@@ -260,6 +307,15 @@ class AbsenceController extends Controller
 
         $absence->save();
 
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;précision de type de modification pour la demande dabsence n°'.$absence->id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
+
         return redirect()->back()->with('success',"La demande d'absence est prête, vous pouvez télécharger le fichier PDF");
 
     }
@@ -267,6 +323,14 @@ class AbsenceController extends Controller
         $absence= Absence::find($id);
 
         $absence->delete();
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;Suppression de demande dabsence n°'.$absence->id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
         return redirect()->back()->with('success',"La demande d'absence a été  supprimée avec succès");
     }
     public function validation_absence(){
@@ -303,7 +367,14 @@ class AbsenceController extends Controller
                 //$absences= Absence::where('etat','=',1)->get();
                 $mode="validation";
         $entites=Entite::all();
-
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;Page de validation des demandes dabsences ', ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
                 return view('absences/GestionAbsence',compact('absences','mode','entites'));
             }
     public function gestion_absence(){
@@ -318,6 +389,14 @@ class AbsenceController extends Controller
                 $mode="gestion_absence";
         $entites=Entite::all();
         $type_permissions = Type_permission::all();
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;Page de gestion de demandes dabsences ', ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
                 return view('absences/GestionAbsence',compact('absences','mode','entites','type_permissions'));
             }
     public function absences_validation_collective(Request $request){
@@ -360,12 +439,28 @@ class AbsenceController extends Controller
             }
         }
 
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;validation collective de demande dabsence '.$mavariable, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
 
     }
     public function telecharger_doc_absence($id){
 
         $absence = Absence::find($id);
         $personne= Personne_presente::find($absence->id_personne);
+        /*debut du traçages*/
+        $ip			= $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['REMOTE_HOST'])){
+            $nommachine = gethostname();
+        }else{
+            $nommachine = $nommachine = gethostname();
+        }
+        Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;téléchargement de demande dabsence n°'.$id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
        // dd($absence->personne);
         $pdf = PDF::loadView('absences.documentAbs',compact('absence','personne'));
         return $pdf->stream();

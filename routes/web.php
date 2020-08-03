@@ -845,7 +845,7 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
         'as' => 'gestion',
         'uses' => 'AbsenceController@gestion_absence',
         'roles'=>['Ressource_humaine']
-    ])->middleware('auth');
+    ])->middleware('auth')->middleware('roles');
 
     Route::post('/enregistrer',[
         'as'=>'enregistrer',

@@ -410,6 +410,7 @@ class HomeController extends Controller
         }
 
 //debut entrée
+        dd($id_entite_connecter);
         $entrees= DB::select('call proc_entrees('.$id_entite_connecter.')');
       //  $entrees= [];
         $personne_sortie= DB::select('call personne_sortie('.$id_entite_connecter.')');

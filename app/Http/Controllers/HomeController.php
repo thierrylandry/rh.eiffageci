@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function tableau_de_bord()
     {
 
-        if(isset(Auth()->user()->id_chantier_connecte)){
+        if(isset(Auth()->user()->id_chantier_connecte) && Auth()->user()->id_chantier_connecte!=0 && Auth()->user()->id_chantier_connecte!=null){
             $id_entite_connecter=Auth()->user()->id_chantier_connecte;
         }else{
             $id_entite_connecter=1;
@@ -410,7 +410,6 @@ class HomeController extends Controller
         }
 
 //debut entrée
-        dd($id_entite_connecter);
         $entrees= DB::select('call proc_entrees('.$id_entite_connecter.')');
       //  $entrees= [];
         $personne_sortie= DB::select('call personne_sortie('.$id_entite_connecter.')');

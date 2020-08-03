@@ -4,7 +4,6 @@
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="766" column="9" selection-start-line="766" selection-start-column="9" selection-end-line="766" selection-end-column="9" />
+            <state relative-caret-position="510">
+              <caret line="765" column="39" selection-start-line="765" selection-start-column="26" selection-end-line="765" selection-end-column="39" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
                 <element signature="e#20247#20502#0#PHP" expanded="false" />
@@ -49,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1848">
-              <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+            <state relative-caret-position="440">
+              <caret line="397" column="9" selection-start-line="397" selection-start-column="9" selection-end-line="397" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -207,8 +206,8 @@
         <option value="$PROJECT_DIR$/app/Personne.php" />
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
       </list>
     </option>
   </component>
@@ -907,14 +906,7 @@
       <workItem from="1595942676292" duration="1292000" />
       <workItem from="1596027080743" duration="3802000" />
       <workItem from="1596443249036" duration="610000" />
-      <workItem from="1596454341611" duration="11828000" />
-    </task>
-    <task id="LOCAL-00721" summary="avenant dotation en nature">
-      <created>1595269443723</created>
-      <option name="number" value="00721" />
-      <option name="presentableId" value="LOCAL-00721" />
-      <option name="project" value="LOCAL" />
-      <updated>1595269443723</updated>
+      <workItem from="1596454341611" duration="12415000" />
     </task>
     <task id="LOCAL-00722" summary="avenant dotation en nature">
       <created>1595269500170</created>
@@ -1252,11 +1244,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596470325890</updated>
     </task>
-    <option name="localTasksCounter" value="770" />
+    <task id="LOCAL-00770" summary="mise en place du systeme de tracage des information sur les demandes d'absences">
+      <created>1596470843199</created>
+      <option name="number" value="00770" />
+      <option name="presentableId" value="LOCAL-00770" />
+      <option name="project" value="LOCAL" />
+      <updated>1596470843199</updated>
+    </task>
+    <option name="localTasksCounter" value="771" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2586610000" />
+    <option name="totallyTimeSpent" value="2587197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1786,18 +1785,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="766" column="9" selection-start-line="766" selection-start-column="9" selection-end-line="766" selection-end-column="9" />
+        <state relative-caret-position="510">
+          <caret line="765" column="39" selection-start-line="765" selection-start-column="26" selection-end-line="765" selection-end-column="39" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
             <element signature="e#20247#20502#0#PHP" expanded="false" />
@@ -1805,6 +1796,14 @@
             <element signature="e#21095#21675#0#PHP" expanded="false" />
             <element signature="e#31477#38723#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="397" column="9" selection-start-line="397" selection-start-column="9" selection-end-line="397" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

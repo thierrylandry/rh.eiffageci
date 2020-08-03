@@ -51,8 +51,8 @@
       <file leaf-file-name="AbsenceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="392" column="51" selection-start-line="392" selection-start-column="51" selection-end-line="392" selection-end-column="51" />
+            <state relative-caret-position="308">
+              <caret line="391" column="29" selection-start-line="391" selection-start-column="29" selection-end-line="391" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -906,14 +906,7 @@
       <workItem from="1595942676292" duration="1292000" />
       <workItem from="1596027080743" duration="3802000" />
       <workItem from="1596443249036" duration="610000" />
-      <workItem from="1596454341611" duration="12926000" />
-    </task>
-    <task id="LOCAL-00723" summary="avenant dotation en nature">
-      <created>1595269650498</created>
-      <option name="number" value="00723" />
-      <option name="presentableId" value="LOCAL-00723" />
-      <option name="project" value="LOCAL" />
-      <updated>1595269650498</updated>
+      <workItem from="1596454341611" duration="12988000" />
     </task>
     <task id="LOCAL-00724" summary="avenant dotation en nature">
       <created>1595336640407</created>
@@ -1251,11 +1244,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596471431760</updated>
     </task>
-    <option name="localTasksCounter" value="772" />
+    <task id="LOCAL-00772" summary="mise en place du systeme de tracage des information sur les demandes d'absences">
+      <created>1596471941289</created>
+      <option name="number" value="00772" />
+      <option name="presentableId" value="LOCAL-00772" />
+      <option name="project" value="LOCAL" />
+      <updated>1596471941289</updated>
+    </task>
+    <option name="localTasksCounter" value="773" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2587708000" />
+    <option name="totallyTimeSpent" value="2587770000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1801,8 +1801,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="392" column="51" selection-start-line="392" selection-start-column="51" selection-end-line="392" selection-end-column="51" />
+        <state relative-caret-position="308">
+          <caret line="391" column="29" selection-start-line="391" selection-start-column="29" selection-end-line="391" selection-end-column="29" />
           <folding />
         </state>
       </provider>

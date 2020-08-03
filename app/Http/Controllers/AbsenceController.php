@@ -390,7 +390,6 @@ class AbsenceController extends Controller
         $entites=Entite::all();
         $type_permissions = Type_permission::all();
         /*debut du traçages*/
-        dd(gethostbyaddr($_SERVER['REMOTE_ADDR']));
         $ip			= $_SERVER['REMOTE_ADDR'];
         if (isset($_SERVER['REMOTE_HOST']) && gethostbyaddr($_SERVER['REMOTE_ADDR'])!=""){
             $nommachine = $_SERVER['REMOTE_HOST'];

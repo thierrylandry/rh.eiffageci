@@ -478,7 +478,7 @@ class HomeController extends Controller
                 break;
             }
         }
-       // dd($liste_name);
+        dd($liste_name);
         $effectif_par_mois= Array();
 
 

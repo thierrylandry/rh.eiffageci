@@ -491,7 +491,6 @@ class HomeController extends Controller
             $effectif_par_mois[]=$vardiagEffectif1;
         }
         $effectif_par_mois_le_plus_ressent =Array();
-dd($effectif_par_mois);
         $i=11;
         while($i>=0){
             $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-1-$i];

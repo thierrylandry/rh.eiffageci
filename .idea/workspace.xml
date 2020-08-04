@@ -35,15 +35,26 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="480" column="9" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
+            <state relative-caret-position="784">
+              <caret line="493" column="23" selection-start-line="493" selection-start-column="23" selection-end-line="493" selection-end-column="23" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
-                <element signature="e#20707#20962#0#PHP" expanded="false" />
-                <element signature="e#20967#21550#0#PHP" expanded="false" />
-                <element signature="e#21555#22135#0#PHP" expanded="false" />
-                <element signature="e#22140#31932#0#PHP" expanded="false" />
-                <element signature="e#31937#39183#0#PHP" expanded="false" />
+                <element signature="e#20730#20985#0#PHP" expanded="false" />
+                <element signature="e#22163#31955#0#PHP" expanded="false" />
+                <element signature="e#31960#39206#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonneController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+              <folding>
+                <element signature="e#652#999#0#PHP" expanded="false" />
+                <element signature="e#1004#1140#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -149,16 +160,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1364">
               <caret line="62" column="129" selection-start-line="62" selection-start-column="117" selection-end-line="62" selection-end-column="129" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18436">
-              <caret line="847" column="47" selection-start-line="847" selection-start-column="47" selection-end-line="847" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -953,14 +954,7 @@
       <workItem from="1596027080743" duration="3802000" />
       <workItem from="1596443249036" duration="610000" />
       <workItem from="1596454341611" duration="17489000" />
-      <workItem from="1596531591776" duration="10867000" />
-    </task>
-    <task id="LOCAL-00733" summary="avenant dotation en nature">
-      <created>1595374893837</created>
-      <option name="number" value="00733" />
-      <option name="presentableId" value="LOCAL-00733" />
-      <option name="project" value="LOCAL" />
-      <updated>1595374893837</updated>
+      <workItem from="1596531591776" duration="14151000" />
     </task>
     <task id="LOCAL-00734" summary="avenant dotation en nature">
       <created>1595374931532</created>
@@ -1298,11 +1292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596554680710</updated>
     </task>
-    <option name="localTasksCounter" value="782" />
+    <task id="LOCAL-00782" summary="mise en place du systeme de tracage des information sur les demandes d'absences">
+      <created>1596554751476</created>
+      <option name="number" value="00782" />
+      <option name="presentableId" value="LOCAL-00782" />
+      <option name="project" value="LOCAL" />
+      <updated>1596554751476</updated>
+    </task>
+    <option name="localTasksCounter" value="783" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2603138000" />
+    <option name="totallyTimeSpent" value="2606422000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1319,7 +1320,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2002562" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13876843" sideWeight="0.5768574" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13876843" sideWeight="0.5768574" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31740063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19167389" sideWeight="0.46883005" order="8" side_tool="false" content_ui="tabs" />
@@ -1422,7 +1423,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="31" />
+      <option name="time" value="32" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1551,16 +1552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3806">
           <caret line="173" column="94" selection-start-line="173" selection-start-column="94" selection-end-line="173" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1687">
-          <caret line="590" column="0" selection-start-line="590" selection-start-column="0" selection-end-line="590" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#62#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1837,17 +1828,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PersonneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+          <folding>
+            <element signature="e#652#999#0#PHP" expanded="false" />
+            <element signature="e#1004#1140#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="480" column="9" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
+        <state relative-caret-position="784">
+          <caret line="493" column="23" selection-start-line="493" selection-start-column="23" selection-end-line="493" selection-end-column="23" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
-            <element signature="e#20707#20962#0#PHP" expanded="false" />
-            <element signature="e#20967#21550#0#PHP" expanded="false" />
-            <element signature="e#21555#22135#0#PHP" expanded="false" />
-            <element signature="e#22140#31932#0#PHP" expanded="false" />
-            <element signature="e#31937#39183#0#PHP" expanded="false" />
+            <element signature="e#20730#20985#0#PHP" expanded="false" />
+            <element signature="e#22163#31955#0#PHP" expanded="false" />
+            <element signature="e#31960#39206#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -451,7 +451,7 @@ class HomeController extends Controller
                 $cumule_entrees[] = $vardiagCumul;
             }
         }
-       // dd($cumule_entrees);
+        dd($cumule_entrees);
         //dd($cumule_sortis);
         $months = array();
 

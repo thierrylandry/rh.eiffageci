@@ -473,7 +473,7 @@ class HomeController extends Controller
                 }
 
             }
-            $currentMonth=1;
+            $currentMonth=0;
             if ($quand_on_sort==false){
                 break;
             }

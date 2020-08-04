@@ -456,22 +456,29 @@ class HomeController extends Controller
         $months = array();
 
 
-       // dd($entrees[0]);
+      //  dd($entrees[0]->numeromois);
         $liste_name= array();
+        $currentMonth = $entrees[0]->numeromois;
+        $quand_on_sort=true;
         for ($y = $entrees[0]->annee; $y <= date('Y'); $y++) {
-            $currentMonth = $entrees[0]->numeromois;
 
-            for ($x = $currentMonth; $x < $currentMonth + 12; $x++) {
+
+            for ($x = $currentMonth; $x <= $currentMonth + (12-$currentMonth); $x++) {
 
                 $liste_name[] = date('F', mktime(0, 0, 0, $x, 1)).'-'.$y;
                 if(date('F', mktime(0, 0, 0, $x, 1)).'-'.$y==date('F').'-'.date('Y')){
                     break;
+                    $quand_on_sort=false;
+
                 }
 
             }
-
+            $currentMonth=1;
+            if ($quand_on_sort==false){
+                break;
+            }
         }
-       // dd($liste_name);
+        dd($liste_name);
         $effectif_par_mois= Array();
 
 
@@ -491,7 +498,7 @@ class HomeController extends Controller
             $i--;
         }
 
-        //dd($effectif_par_mois_le_plus_ressent);
+       // dd($effectif_par_mois);
 
 
         $entites=Entite::all();

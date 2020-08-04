@@ -1458,7 +1458,7 @@
                 zoomType:'Xy'
             },
             title: {
-                text: 'Effectif des 10 derniers mois'
+                text: 'Effectif des 12 derniers mois'
             },
             xAxis: {
                 categories: categories_le_plus_ressent,

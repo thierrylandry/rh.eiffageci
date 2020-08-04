@@ -4,6 +4,7 @@
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" afterPath="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,18 +33,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="480" column="9" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
+            <state relative-caret-position="410">
+              <caret line="494" column="13" selection-start-line="494" selection-start-column="13" selection-end-line="494" selection-end-column="13" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
-                <element signature="e#20706#20961#0#PHP" expanded="false" />
-                <element signature="e#20966#21549#0#PHP" expanded="false" />
-                <element signature="e#21554#22134#0#PHP" expanded="false" />
-                <element signature="e#22139#31931#0#PHP" expanded="false" />
-                <element signature="e#31936#39182#0#PHP" expanded="false" />
+                <element signature="e#20707#20962#0#PHP" expanded="false" />
+                <element signature="e#20967#21550#0#PHP" expanded="false" />
+                <element signature="e#21555#22135#0#PHP" expanded="false" />
+                <element signature="e#22140#31932#0#PHP" expanded="false" />
+                <element signature="e#31937#39183#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -85,20 +86,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="entiteTD.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+            <state relative-caret-position="341">
+              <caret line="1460" column="38" selection-start-line="1460" selection-start-column="38" selection-end-line="1460" selection-end-column="38" />
               <folding>
                 <element signature="e#23405#25342#0#HTML" expanded="false" />
                 <element signature="e#23499#23530#0#HTML" expanded="true" />
                 <element signature="e#24081#24100#0#HTML" expanded="true" />
                 <element signature="e#25244#25267#0#HTML" expanded="true" />
                 <element signature="e#55439#56262#0#HTML" expanded="false" />
-                <element signature="e#56327#57195#0#HTML" expanded="false" />
-                <marker date="1596545415238" expanded="false" signature="25461:25484" ph="..." />
-                <marker date="1596545415238" expanded="false" signature="26027:26038" ph="..." />
+                <marker date="1596553832884" expanded="false" signature="25461:25484" ph="..." />
+                <marker date="1596553832884" expanded="false" signature="26027:26038" ph="..." />
               </folding>
             </state>
           </provider>
@@ -231,8 +231,8 @@
         <option value="$PROJECT_DIR$/app/Personne.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbsenceController.php" />
-        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
       </list>
     </option>
   </component>
@@ -954,14 +954,7 @@
       <workItem from="1596027080743" duration="3802000" />
       <workItem from="1596443249036" duration="610000" />
       <workItem from="1596454341611" duration="17489000" />
-      <workItem from="1596531591776" duration="9857000" />
-    </task>
-    <task id="LOCAL-00727" summary="avenant dotation en nature">
-      <created>1595344185138</created>
-      <option name="number" value="00727" />
-      <option name="presentableId" value="LOCAL-00727" />
-      <option name="project" value="LOCAL" />
-      <updated>1595344185138</updated>
+      <workItem from="1596531591776" duration="9958000" />
     </task>
     <task id="LOCAL-00728" summary="avenant dotation en nature">
       <created>1595371723776</created>
@@ -1299,11 +1292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1596553704777</updated>
     </task>
-    <option name="localTasksCounter" value="776" />
+    <task id="LOCAL-00776" summary="mise en place du systeme de tracage des information sur les demandes d'absences">
+      <created>1596553740738</created>
+      <option name="number" value="00776" />
+      <option name="presentableId" value="LOCAL-00776" />
+      <option name="project" value="LOCAL" />
+      <updated>1596553740738</updated>
+    </task>
+    <option name="localTasksCounter" value="777" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2602128000" />
+    <option name="totallyTimeSpent" value="2602229000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1822,34 +1822,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="494" column="13" selection-start-line="494" selection-start-column="13" selection-end-line="494" selection-end-column="13" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+            <element signature="e#20707#20962#0#PHP" expanded="false" />
+            <element signature="e#20967#21550#0#PHP" expanded="false" />
+            <element signature="e#21555#22135#0#PHP" expanded="false" />
+            <element signature="e#22140#31932#0#PHP" expanded="false" />
+            <element signature="e#31937#39183#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+        <state relative-caret-position="341">
+          <caret line="1460" column="38" selection-start-line="1460" selection-start-column="38" selection-end-line="1460" selection-end-column="38" />
           <folding>
             <element signature="e#23405#25342#0#HTML" expanded="false" />
             <element signature="e#23499#23530#0#HTML" expanded="true" />
             <element signature="e#24081#24100#0#HTML" expanded="true" />
             <element signature="e#25244#25267#0#HTML" expanded="true" />
             <element signature="e#55439#56262#0#HTML" expanded="false" />
-            <element signature="e#56327#57195#0#HTML" expanded="false" />
-            <marker date="1596545415238" expanded="false" signature="25461:25484" ph="..." />
-            <marker date="1596545415238" expanded="false" signature="26027:26038" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="480" column="9" selection-start-line="480" selection-start-column="9" selection-end-line="480" selection-end-column="9" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
-            <element signature="e#20706#20961#0#PHP" expanded="false" />
-            <element signature="e#20966#21549#0#PHP" expanded="false" />
-            <element signature="e#21554#22134#0#PHP" expanded="false" />
-            <element signature="e#22139#31931#0#PHP" expanded="false" />
-            <element signature="e#31936#39182#0#PHP" expanded="false" />
+            <marker date="1596553832884" expanded="false" signature="25461:25484" ph="..." />
+            <marker date="1596553832884" expanded="false" signature="26027:26038" ph="..." />
           </folding>
         </state>
       </provider>

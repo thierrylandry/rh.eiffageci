@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+        <div class="col-lg-6">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="qualification_contractuelle" ></div>
@@ -493,8 +493,47 @@
             </div>
         </div>
     </div>
-
     <div class="row break">
+        <div class="col-lg-6 tableau" >
+            <div class="card" style="height: 100% !important">
+                <div class="card-body" >
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="tableperso  table-earning" id="table_employe">
+                            <thead>
+                            <tr>
+                                <?php $somme =0; ?>
+                                @foreach($effectif_par_mois_le_plus_ressent as $res)
+                                    <?php $somme = $res->y; ?>
+                                @endforeach
+                                <th style="width: 100%">Mois</th>
+                                <th>{{$somme}}</th>
+                                <th>100%</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($effectif_par_mois_le_plus_ressent as $effectif_par_mois_le_plus_ressent_tab)
+                                <tr class="tr-shadow">
+                                    <td> {{$effectif_par_mois_le_plus_ressent_tab->name}}</td>
+                                    <td> {{$effectif_par_mois_le_plus_ressent_tab->y}}</td>
+                                    <td>{{number_format(($effectif_par_mois_le_plus_ressent_tab->y/$somme)*100,1)}}%</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <div id="effectif_par_mois_le_plus_ressent" style=" margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row break">
+        <!--
         <div class="col-lg-6 tableau" >
             <div class="card" style="height: 100% !important">
                 <div class="card-body" >
@@ -524,8 +563,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-xs-6	col-sm-6	col-md-6	col-lg-6 ">
+        </div> -->
+        <div class="col-lg-12 col-xs-12	col-sm-12	col-md-12	col-lg-12 ">
             <div class="au-card m-b-30">
                 <div class="au-card-inner">
                     <div id="effectif_par_mois" style=" margin: 0 auto"></div>
@@ -620,8 +659,18 @@
             {{$res->y}},
             @endforeach
         ];
+        var effectif_par_mois_le_plus_ressent=[
+            @foreach($effectif_par_mois_le_plus_ressent as $res)
+            {{$res->y}},
+            @endforeach
+        ];
         var categories=[
             @foreach($effectif_par_mois as $res)
+                    "{{$res->name}}",
+            @endforeach
+        ];
+        var categories_le_plus_ressent=[
+            @foreach($effectif_par_mois_le_plus_ressent as $res)
                     "{{$res->name}}",
             @endforeach
         ];
@@ -1397,6 +1446,39 @@
             series: [{
                 name: 'Effectif',
                 data: effectif_par_mois
+            }]
+        });
+        Highcharts.chart('effectif_par_mois_le_plus_ressent', {
+            credits: {
+                enabled: false
+            },
+            exporting: { enabled: false },
+            chart: {
+                type: 'area',
+                zoomType:'Xy'
+            },
+            title: {
+                text: 'Effectif des 10 derniers mois'
+            },
+            xAxis: {
+                categories: categories_le_plus_ressent,
+            },
+            yAxis: {
+                title: {
+                    text: 'Durée'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Effectif',
+                data: effectif_par_mois_le_plus_ressent
             }]
         });
         // Build the chart

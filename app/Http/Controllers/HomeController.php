@@ -483,13 +483,20 @@ class HomeController extends Controller
             $vardiagEffectif1->y=$valeur;
             $effectif_par_mois[]=$vardiagEffectif1;
         }
+        $effectif_par_mois_le_plus_ressent =Array();
 
-      //  dd($effectif_par_mois);
+        $i=9;
+        while($i>=0){
+            $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-1-$i];
+            $i--;
+        }
+
+        //dd($effectif_par_mois_le_plus_ressent);
 
 
         $entites=Entite::all();
         $lentite=Entite::find($id_entite_connecter);
-        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes'));
+        return view('tableau_de_bord/entiteTD',compact('effectifglobaux','repartition_homme_femme','repartition_nationalite','repartition_tranche_age','repartition_ancienete','repartition_service','repartition_entrees','repartition_sorties','qualification_contractuelle','entites','lentite','camanberts','effectif_par_mois','repartition_homme_femme_tab','communes','effectif_par_mois_le_plus_ressent'));
 
     }
     public function compte_sortie($personne_sortie_unique,$mois){

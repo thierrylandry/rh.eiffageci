@@ -451,7 +451,7 @@ class HomeController extends Controller
                 $cumule_entrees[] = $vardiagCumul;
             }
         }
-        dd($cumule_entrees);
+       // dd($cumule_entrees);
         //dd($cumule_sortis);
         $months = array();
 
@@ -491,7 +491,7 @@ class HomeController extends Controller
             $effectif_par_mois[]=$vardiagEffectif1;
         }
         $effectif_par_mois_le_plus_ressent =Array();
-        $i=11;
+        $i=12;
         while($i>=0){
             $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-1-$i];
             $i--;

@@ -416,9 +416,9 @@ class HomeController extends Controller
         $personne_sortie= DB::select('call personne_sortie('.$id_entite_connecter.')');
         $personne_sortie_unique= Array();
         foreach($personne_sortie as $pers):
-            if(!is_null($pers->departDefinitif!=null)){
+
                 $personne_sortie_unique[$pers->id]=$pers;
-            }
+        
             endforeach;
 
         //dd($sorties);

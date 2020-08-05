@@ -489,8 +489,8 @@ $tab = Array();
             $vardiagEffectif1->name=$lelibelle;
             $vardiagEffectif1->y=$valeur;
             $effectif_par_mois[]=$vardiagEffectif1;
-            $tab[]['venu']=$this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle);
-            $tab[]['sortie']=$this->compte_sortie($personne_sortie_unique,$lelibelle);
+            $tab[][$lelibelle.' venu']=$this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle);
+            $tab[][$lelibelle.' sortie']=$this->compte_sortie($personne_sortie_unique,$lelibelle);
         }
         dd($tab);
         $effectif_par_mois_le_plus_ressent =Array();

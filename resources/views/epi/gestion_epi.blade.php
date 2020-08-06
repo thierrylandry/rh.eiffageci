@@ -6,68 +6,63 @@
     style="display: block;"
 @endsection
 @section('page')
-    <style>
-        .grey{ background-color: lightgrey !important;}
-    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="overview-wrap">
-                <h2 class="title-1">  LISTE DES EPI</h2>
+                <h2 class="title-1">GESTION DES E.P.I  @foreach($entites as $enti)
+
+                        @if($enti->id==Auth::user()->id_chantier_connecte)
+                            {{$enti->libelle=="PHB"?"EIFFAGE ".$enti->libelle:$enti->libelle}}
+                        @endif
+                    @endforeach</h2>
             </div>
         </div>
     </div>
-
-
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
             <div class="table-data__tool  pull-right">
                 <div class="table-data__tool-right">
-
-                    <a href="" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-long-arrow-return"></i>Retour</a>
-                </div>&nbsp;
-                <div class="table-data__tool-right">
-
-                    <a  class="au-btn au-btn-icon au-btn--green au-btn--small"  href="#" data-toggle="modal" data-target="#modal_add_epi">
-                        <i class="zmdi zmdi-plus"></i>AJOUTER UN EPI</a>
+                    <a href="{{route('Ajouter_personne',Auth::user()->id_chantier_connecte)}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>AJOUTER UNE PERSONNE</a>
                 </div>
             </div>
-
-            <div class="table-responsive table-responsive-data2">
-                <table class="table  table-earning" id="table_employe">
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderles" id="table_employe">
                     <thead>
                     <tr>
-                        <th>id</th>
-                        <th class="">image</th>
-                        <th class="">Libelle</th>
-                        <th>Quantite</th>
+                        <th>MATRICULE</th>
+                        <th>NOM & PRENOM</th>
+                        <th>SEXE</th>
+                        <th>NATIONALITE</th>
+                        <th>FONCTION</th>
+                        <th>ENTITE</th>
+                        <th>SOCIETE</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($equipements as $equipement)
-
-                        <tr>
+                    @foreach($personnes as $personne)
+                        <tr class="tr-shadow">
+                            <td>{{isset($personne->matricule)?$personne->matricule:''}}</td>
+                            <td>{{$personne->nom.' '.$personne->prenom}}</td>
+                            <td>{{$personne->sexe=='M'? 'Masculin':'Féminin'}}</td>
+                            <td>{{$personne->pays->nom_fr_fr}}</td>
                             <td>
-                                {{$equipement->id}}
+                                {{isset($personne->fonction()->first()->libelle)?$personne->fonction()->first()->libelle:''}}
                             </td>
-                            <td>
-                               <img  src="{{Storage::url('app/images/'.$equipement->image)}}" width="100px" height="100px"/>
+                            <td>{{ $personne->getEntiteString() }}
                             </td>
-                            <td>
-                                {{$equipement->libelle}}
-                            </td>
-                            <td>
-                                {{$equipement->qte}}
-                            </td>
-                            <td>
-                                <a href="" class="btn btn-info" title="Approvisionner"><i class="fa fa-plus"></i></a>
-                                <a href="" class="btn btn-info">Attribuer</a>
-                                <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            <td>{{ $personne->id_unite ? $personne->societe->libelleUnite : ""}}</td>
+                            <td> <div class="table-data-feature">
+                                    <a href="" class="btn btn-info" title="Approvisionner"><i class="fa fa-plus"></i></a>
+                                    <a href="" class="btn btn-info">Attribuer</a>
+                                    <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
-                        @endforeach
+                    @endforeach
+                    {{ $personnes->links() }}
                     </tbody>
                 </table>
             </div>
@@ -92,12 +87,12 @@
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#rendu_img1').attr('src', e.target.result);
+                    $('#rendu_img').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }else{
-                $('#rendu_img1').attr('src','images/user.png');
+                $('#rendu_img').attr('src','images/user.png');
             }
         }
 
@@ -109,8 +104,10 @@
         });
     </script>
     <script>
+
         $(document).ready(function() {
             var table= $('#table_employe').DataTable({
+                "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
@@ -118,10 +115,10 @@
                 language: {
                     url: "{{ asset('public/js/French.json')}}"
                 },
-                "order": [[ 1, "desc" ]],
+
                 "ordering":true,
-                "paging": false,
                 "responsive": true,
+                "paging": false,
                 "createdRow": function( row, data, dataIndex){
 
                 },
@@ -129,8 +126,19 @@
                     { responsivePriority: 1, targets: 0 },
                     { responsivePriority: 2, targets: -1 }
                 ]
-            }).column(0).visible(false);
+            });
             //table.DataTable().draw();
+
+            $('#table_employe tbody').on( 'click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
+
+            $('#button').click( function () {
+                alert( table.rows('.selected').data().length +' row(s) selected' );
+            } );
         } );
+        $(".current").click(function (){
+            alert("eee");
+        });
     </script>
 @endsection

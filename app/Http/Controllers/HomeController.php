@@ -421,7 +421,7 @@ class HomeController extends Controller
         
             endforeach;
 
-        dd($personne_sortie_unique);
+        //dd($personne_sortie_unique);
        // $sorties= [];
         $annee_moins1=date('Y')-1;
         $tab_allege= Array();

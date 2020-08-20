@@ -417,7 +417,10 @@ class HomeController extends Controller
         $personne_sortie_unique= Array();
         foreach($personne_sortie as $pers):
 
+            if($pers->departDefinitif!=""){
                 $personne_sortie_unique[$pers->id]=$pers;
+            }
+
         
             endforeach;
 

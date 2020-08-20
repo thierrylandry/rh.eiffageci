@@ -22,6 +22,8 @@ use App\Typecontrat;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ContratController extends Controller
 {
@@ -365,6 +367,25 @@ class ContratController extends Controller
 
 
         return redirect()->route('lister_contrat',['slug'=>$personne->slug])->with('success',"Le contrat  a été modifié avec succès");
+    }
+    public function upload_pj_contrat( Request $request){
+
+        $parameters=$request->except(['_token']);
+        $id=$parameters["id"];
+
+        $contrat=  Contrat::find($id);
+        $fin='';
+        if($contrat->datefinc!=""){
+            $fin='_fin_'.$contrat->datefinc;
+        }
+        $contrat->scan=Str::ascii($contrat->type_contrat->libelle.'_debut_'.$contrat->datedebutc.$fin.'.'.$request->file('pj')->getClientOriginalExtension());
+
+        $contrat->save();
+        $path = Storage::putFileAs(
+            'document'.DIRECTORY_SEPARATOR.'contrat'.DIRECTORY_SEPARATOR .$contrat->personne->slug,$request->file('pj'),$contrat->scan
+        );
+
+        return redirect()->route('lister_contrat',['slug'=>$contrat->personne->id])->with('success',"La Pièce jointe à été ajouté au contrat avec succès");
     }
     public function rupture_contrat($id){
         $contrat= Contrat::find($id);

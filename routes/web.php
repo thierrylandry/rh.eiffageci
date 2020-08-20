@@ -130,9 +130,19 @@ Route::get('/download_doc/{slug}/{pj}',[
     'uses'=>'PersonneController@download_doc',
     'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
+Route::get('/download_doc_simple/{slug}/{pj}',[
+    'as'=>'download_doc_simple',
+    'uses'=>'PersonneController@download_doc_simple',
+    'roles' => ['Gestion_rh']
+])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_doc/{slug}/{pj}{id}',[
     'as'=>'supprimer_doc',
     'uses'=>'PersonneController@supprimer_doc',
+    'roles' => ['Gestion_rh']
+])->middleware('auth')->middleware('roles');
+Route::get('/supprimer_doc_simple/{slug}/{pj}/{id}',[
+    'as'=>'supprimer_doc_simple',
+    'uses'=>'PersonneController@supprimer_doc_simple',
     'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::get('/test/{slug}',[
@@ -181,6 +191,11 @@ Route::get('/recsalairecat/{id_contrat}',[
 Route::post('/save_contrat',[
     'as'=>'save_contrat',
     'uses'=>'ContratController@save_contrat',
+    'roles' => ['Gestion_rh']
+])->middleware('auth')->middleware('roles');
+Route::post('/upload_pj_contrat',[
+    'as'=>'upload_pj_contrat',
+    'uses'=>'ContratController@upload_pj_contrat',
     'roles' => ['Gestion_rh']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_correction_contrat',[

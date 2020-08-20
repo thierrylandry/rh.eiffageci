@@ -556,6 +556,22 @@ class PersonneController extends Controller
      //   dd('document/'.$slug.'/'.$namefile);
         return Storage::download('document/'.$slug.'/'. Str::ascii($namefile,'fr'));
     }
+    public function download_doc_simple($slug,$namefile){
+      //  $namefile=str_replace('_','.',$namefile);
+        // dd($namefile);
+     //   dd('document/'.$slug.'/'.$namefile);
+        return Storage::download('document/contrat/'.$slug.'/'. Str::ascii($namefile,'fr'));
+    }
+    public function supprimer_doc_simple($slug,$namefile,$id){
+        $contrat= Contrat::find($id);
+        $contrat->scan="";
+        $contrat->save();
+        $personne =Personne::where('slug','=',$slug)->first();
+        //dd($doc);
+         Storage::delete('document/contrat/'.$slug.'/'. Str::ascii($namefile,'fr'));
+
+        return redirect()->back()->with('success',"La pj a été supprimé");
+    }
     public function supprimer_doc($slug,$namefile,$id){
         $namefile=str_replace('_','.',$namefile);
         $personne =Personne::where('slug','=',$slug)->first();
@@ -570,7 +586,7 @@ class PersonneController extends Controller
          Storage::delete('document/'.$slug.'/'. Str::ascii($namefile,'fr'));
      //   dd('document/'.$slug.'/'.$namefile);
      //   $contents = Storage::get('file.jpg');
-        return redirect()->back()->with('success',"Les documents ont été ajouté");
+        return redirect()->back()->with('success',"Le documents été supprimé");
     }
     public function test($test){
         dd($test);

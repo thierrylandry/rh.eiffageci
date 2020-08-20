@@ -88,37 +88,38 @@
 
                             <td> <div class="table-data-feature">
 
-                                    @if($contrat->etat==1)
-                                        <div class="input-group-btn">
-                                            <div class="btn-group">
-                                                <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary">Action</button>
-                                                <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
-                                                    @if($contrat->id_nature_contrat==1)
-                                                        <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                    @elseif($contrat->id_nature_contrat==2 &&  $contrat->id_type_contrat=2 || $contrat->id_type_contrat==4)
-                                                        <a href="{{route("renouvellement_contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                    @elseif($contrat->id_nature_contrat==3)
-                                                        <a href="{{route("avenant",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                    <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Plus d'info">
+                                    <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" class="item" data-toggle="tooltip" data-placement="top" title="Plus d'info">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
                                     @if($contrat->etat==1)
-                                        <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Plus d'info">
-                                            <i class="zmdi zmdi-minus-circle-outline"></i>
+                                        <a href="{{route('rupture_contrat',['id'=>$contrat->id])}}" class="item" data-toggle="tooltip" data-placement="top" style="background-color: red;color: white" title="Plus d'info">
+                                            <i class="zmdi zmdi-minus-circle-outline" style="color: whitesmoke"></i>
                                         </a>
                                     @endif
-                                    <a href="{{route('affiche_contrat',['id'=>$contrat->id])}}" onclick="if(confirm('Voulez vous supprimer?')){}else{ e.preventDefault()}" class="item" data-toggle="tooltip" data-placement="top" title="Supprimer">
-                                        <i class="zmdi zmdi-delete"></i>
-                                    </a>
-                                        @if($contrat->id_nature_contrat==1)
-                                        <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le pdf</a>
-                                        @endif
+                                    <div class="input-group-btn">
+                                        <div class="btn-group">
+                                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary"> <i class="zmdi zmdi-attachment-alt" title="document administratif"></i></button>
+                                            <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
+                                                @if($contrat->id_nature_contrat==1)
+                                                    <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le modèle pdf</a>
+                                                @endif
+                                                <form method="post" enctype="multipart/form-data" action="{{route('upload_pj_contrat')}}">
+                                                    @csrf
+                                                <button type="button" tabindex="0" class="dropdown-item"><i class="zmdi zmdi-upload"></i>&nbsp;&nbsp;<input type="file" name="pj"></button>
+                                                       <input type="hidden" name="id" value="{{$contrat->id}}" />
+                                                        <button class="btn btn-primary col-sm-12" >
+                                                            <i class="fa fa-send"></i> ENREGISTRER PJ
+                                                        </button>
+                                                    @if($contrat->scan!="")
+                                                    <a href="{{route("download_doc_simple",[$personne->slug,$contrat->scan])}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-file"></i> Télécharger la pj signé  <a href="{{route('supprimer_doc_simple',[$personne->slug,$contrat->scan,$contrat->id])}}" class="btn btn-danger" >
+                                                            <i class="fas fa-trash-alt"></i> SUPPRIMER PJ
+                                                        </a></a>
+
+                                                    @endif
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </td>

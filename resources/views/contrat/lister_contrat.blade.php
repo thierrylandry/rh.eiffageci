@@ -111,7 +111,7 @@
                                                             <i class="fa fa-send"></i> ENREGISTRER PJ
                                                         </button>
                                                     @if($contrat->scan!="")
-                                                    <a href="{{route("download_doc_simple",[$personne->slug,$contrat->scan])}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-file"></i> Télécharger la pj signé  <a href="{{route('supprimer_doc_simple',[$personne->slug,$contrat->scan,$contrat->id])}}" class="btn btn-danger" >
+                                                    <a href="{{route("download_doc_simple",[$personne->slug,$contrat->scan])}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-file"></i> Télécharger la pj signé  <a title="Supprimer la pièce jointe" href="{{route('supprimer_doc_simple',[$personne->slug,$contrat->scan,$contrat->id])}}" class="btn btn-danger" >
                                                             <i class="fas fa-trash-alt"></i> SUPPRIMER PJ
                                                         </a></a>
 

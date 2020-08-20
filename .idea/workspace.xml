@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8777393a-30f8-45db-a3b2-04ede0243114" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" afterPath="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
     </list>
     <ignored path="rh.eiffageci.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,17 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utilisateurs.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/utilisateurs/utilisateurs.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="554">
@@ -135,17 +122,30 @@
         <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="113" column="302" selection-start-line="113" selection-start-column="302" selection-end-line="113" selection-end-column="302" />
+              <caret line="113" column="206" selection-start-line="113" selection-start-column="206" selection-end-line="113" selection-end-column="206" />
               <folding>
-                <marker date="1597920682331" expanded="true" signature="8504:8892" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="8554:8800" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="8648:8731" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="8806:8882" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="8922:8971" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="8934:8970" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="9000:9081" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="9012:9080" ph="..." />
-                <marker date="1597920682331" expanded="true" signature="9137:15718" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8538:8926" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8588:8834" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8682:8765" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8840:8916" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8956:9005" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="8968:9004" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="9034:9115" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="9046:9114" ph="..." />
+                <marker date="1597921127621" expanded="true" signature="9171:15752" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="498" column="7" selection-start-line="498" selection-start-column="7" selection-end-line="498" selection-end-column="7" />
+              <folding>
+                <element signature="e#22452#32244#0#PHP" expanded="false" />
+                <element signature="e#32249#39495#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -223,12 +223,12 @@
         <option value="$PROJECT_DIR$/resources/views/tableau_de_bord/entiteTD.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EpiController.php" />
         <option value="$PROJECT_DIR$/resources/views/epi/gestion_epi.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_18_161459_add_scan_to_contrat.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContratController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PersonneController.php" />
-        <option value="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -320,28 +320,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rh.eiffageci" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personne" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -849,28 +827,7 @@
       <workItem from="1597741743725" duration="805000" />
       <workItem from="1597756980877" duration="4992000" />
       <workItem from="1597827212188" duration="18797000" />
-      <workItem from="1597912906177" duration="5158000" />
-    </task>
-    <task id="LOCAL-00749" summary="avenant dotation en nature">
-      <created>1595505234047</created>
-      <option name="number" value="00749" />
-      <option name="presentableId" value="LOCAL-00749" />
-      <option name="project" value="LOCAL" />
-      <updated>1595505234047</updated>
-    </task>
-    <task id="LOCAL-00750" summary="avenant dotation en nature">
-      <created>1595513489172</created>
-      <option name="number" value="00750" />
-      <option name="presentableId" value="LOCAL-00750" />
-      <option name="project" value="LOCAL" />
-      <updated>1595513489172</updated>
-    </task>
-    <task id="LOCAL-00751" summary="avenant dotation en nature">
-      <created>1595531631490</created>
-      <option name="number" value="00751" />
-      <option name="presentableId" value="LOCAL-00751" />
-      <option name="project" value="LOCAL" />
-      <updated>1595531631490</updated>
+      <workItem from="1597912906177" duration="7256000" />
     </task>
     <task id="LOCAL-00752" summary="avenant dotation en nature">
       <created>1595531943795</created>
@@ -1194,11 +1151,32 @@
       <option name="project" value="LOCAL" />
       <updated>1597164044891</updated>
     </task>
-    <option name="localTasksCounter" value="798" />
+    <task id="LOCAL-00798" summary="piece jointe de contrat">
+      <created>1597920990359</created>
+      <option name="number" value="00798" />
+      <option name="presentableId" value="LOCAL-00798" />
+      <option name="project" value="LOCAL" />
+      <updated>1597920990359</updated>
+    </task>
+    <task id="LOCAL-00799" summary="piece jointe de contrat">
+      <created>1597921139840</created>
+      <option name="number" value="00799" />
+      <option name="presentableId" value="LOCAL-00799" />
+      <option name="project" value="LOCAL" />
+      <updated>1597921139840</updated>
+    </task>
+    <task id="LOCAL-00800" summary="piece jointe de contrat">
+      <created>1597927001845</created>
+      <option name="number" value="00800" />
+      <option name="presentableId" value="LOCAL-00800" />
+      <option name="project" value="LOCAL" />
+      <updated>1597927001846</updated>
+    </task>
+    <option name="localTasksCounter" value="801" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2665495000" />
+    <option name="totallyTimeSpent" value="2667593000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1211,7 +1189,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2409" y="-9" width="2418" height="1318" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2292912" sideWeight="0.49242425" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
@@ -1220,7 +1198,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19167389" sideWeight="0.46883005" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13876843" sideWeight="0.4090521" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13876843" sideWeight="0.4090521" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2387339" sideWeight="0.50757575" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1289,7 +1267,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mise a jours nationnalite" />
     <MESSAGE value="mise a jours des adresses" />
     <MESSAGE value="total" />
     <MESSAGE value="mise a jour" />
@@ -1314,7 +1291,8 @@
     <MESSAGE value="envoie de mail fin contrat par projet." />
     <MESSAGE value="avenant dotation en nature" />
     <MESSAGE value="mise en place du systeme de tracage des information sur les demandes d'absences" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise en place du systeme de tracage des information sur les demandes d'absences" />
+    <MESSAGE value="piece jointe de contrat" />
+    <option name="LAST_COMMIT_MESSAGE" value="piece jointe de contrat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1627,18 +1605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="506" column="31" selection-start-line="506" selection-start-column="31" selection-end-line="506" selection-end-column="31" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="false" />
-            <element signature="e#22395#32187#0#PHP" expanded="false" />
-            <element signature="e#32192#39438#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/utilisateurs/utilisateurs.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -1651,14 +1617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1826">
           <caret line="83" column="40" selection-start-line="81" selection-start-column="36" selection-end-line="83" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/personne/menu_retour.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="62" selection-start-line="10" selection-start-column="8" selection-end-line="11" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1719,29 +1677,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="113" column="302" selection-start-line="113" selection-start-column="302" selection-end-line="113" selection-end-column="302" />
-          <folding>
-            <marker date="1597920682331" expanded="true" signature="8504:8892" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="8554:8800" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="8648:8731" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="8806:8882" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="8922:8971" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="8934:8970" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="9000:9081" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="9012:9080" ph="..." />
-            <marker date="1597920682331" expanded="true" signature="9137:15718" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="142" column="46" selection-start-line="142" selection-start-column="46" selection-end-line="142" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/personne/menu_retour.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="62" selection-start-line="10" selection-start-column="8" selection-end-line="11" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contrat/lister_contrat.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="113" column="206" selection-start-line="113" selection-start-column="206" selection-end-line="113" selection-end-column="206" />
+          <folding>
+            <marker date="1597921127621" expanded="true" signature="8538:8926" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="8588:8834" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="8682:8765" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="8840:8916" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="8956:9005" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="8968:9004" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="9034:9115" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="9046:9114" ph="..." />
+            <marker date="1597921127621" expanded="true" signature="9171:15752" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="498" column="7" selection-start-line="498" selection-start-column="7" selection-end-line="498" selection-end-column="7" />
+          <folding>
+            <element signature="e#22452#32244#0#PHP" expanded="false" />
+            <element signature="e#32249#39495#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

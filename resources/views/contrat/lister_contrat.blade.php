@@ -100,9 +100,9 @@
                                         <div class="btn-group">
                                             <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary"> <i class="zmdi zmdi-attachment-alt" title="document administratif"></i></button>
                                             <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
-                                                @if($contrat->id_nature_contrat==1)
+
                                                     <a href="{{route("contratpdf",$contrat->id)}}" target="_blank" tabindex="0" class="dropdown-item" title="Télécharger le pdf" > <i class="zmdi zmdi-collection-pdf"></i> Télécharger le modèle pdf</a>
-                                                @endif
+                                               
                                                 <form method="post" enctype="multipart/form-data" action="{{route('upload_pj_contrat')}}">
                                                     @csrf
                                                 <button type="button" tabindex="0" class="dropdown-item"><i class="zmdi zmdi-upload"></i>&nbsp;&nbsp;<input type="file" name="pj"></button>

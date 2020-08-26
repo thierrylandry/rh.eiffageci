@@ -7,6 +7,7 @@ use App\Contrat;
 use App\Entite;
 use App\Fonction;
 use App\Jobs\EnvoiesDemandeValidation;
+use App\Jobs\EnvoiesDemandeValidation_personnalise;
 use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefus;
@@ -201,7 +202,7 @@ class AbsenceController extends Controller
         endforeach;
 
         if(!empty($contact)){
-            $this->dispatch(new EnvoiesDemandeValidation(3,$contact));
+            $this->dispatch(new EnvoiesDemandeValidation_personnalise(3,$contact,$absence));
         }
         /*debut du traçages*/
         $ip			= $_SERVER['REMOTE_ADDR'];

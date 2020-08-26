@@ -7,6 +7,7 @@ use App\Conges;
 use App\Contrat;
 use App\Entite;
 use App\Jobs\EnvoiesDemandeValidation;
+use App\Jobs\EnvoiesDemandeValidation_personnalise;
 use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesInformationDemandeur;
 use App\Personne;
@@ -518,7 +519,7 @@ class CongerController extends Controller
         endforeach;
 
         if(!empty($contact)){
-         //   $this->dispatch(new EnvoiesDemandeValidation(4,$contact));
+            $this->dispatch(new EnvoiesDemandeValidation_personnalise(4,$contact,$conge));
         }
 
         return redirect()->back()->with('success',"La demande d'absconge a été  enregistrée avec succès");

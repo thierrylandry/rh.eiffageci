@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Absence;
 use App\Assurance_maladie;
 use App\Categorie;
 use App\Contrat;
@@ -10,6 +11,7 @@ use App\Entite;
 use App\Fin_contrat_traite;
 use App\Fonction;
 use App\Jobs\EnvoiesDemandeValidation;
+use App\Jobs\EnvoiesDemandeValidation_personnalise;
 use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefusRecrutement;
@@ -354,7 +356,7 @@ $j=0;
         endforeach;
 
         if(!empty($contact)){
-            $this->dispatch(new EnvoiesDemandeValidation(2,$contact));
+            $this->dispatch(new EnvoiesDemandeValidation_personnalise(2,$contact,$modification));
         }
         return redirect()->back()->with('success',"La demande de modification a été  enregistrée avec succès");
 
@@ -658,6 +660,13 @@ $j=0;
         }
 
 
+    }
+    public function voir_mail($id_modificatio){
+
+       // $demande = Modification::find($id_modificatio);
+        $demande = Absence::find($id_modificatio);
+        $typedemande=3;
+        return view('mail/information_demandeur',compact('demande','typedemande'));
     }
 
 }

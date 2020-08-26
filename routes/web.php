@@ -238,6 +238,11 @@ Route::get('/information_modification/{id}',[
     'uses'=>'ModificationController@information_modification',
     'roles' => ['Gestion_rh']
 ])->middleware('auth');
+Route::get('/voir_mail/{id}',[
+    'as'=>'voir_mail',
+    'uses'=>'ModificationController@voir_mail',
+    'roles' => ['Gestion_rh']
+])->middleware('auth');
 Route::post('/save_renouvellezment_avenant',[
     'as'=>'save_renouvellezment_avenant',
     'uses'=>'ContratController@save_renouvellezment_avenant',

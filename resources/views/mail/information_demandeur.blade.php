@@ -6,7 +6,7 @@
 </p>
 @break;
 
-@case(2) Votre demande de modification n°{{$demande->id}} du contrat du collabotrateur {{$demande->personne->nom}}  {{$demande->personne->prenom}}  portant sur :<br>
+@case(2) Votre demande de modification n°{{$demande->id}} du contrat du collaborateur {{$demande->personne->nom}}  {{$demande->personne->prenom}}  portant sur :<br>
 
 <ul>
     @foreach(json_decode($demande->list_modif) as $modif)
@@ -20,14 +20,14 @@
 
 @break;
 
-@case(3)<p>Votre demande <b>d'absence</b> concernant le collabotrateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite s'absenter du  <b><?php $date = new DateTime($demande->debut);
+@case(3)<p>Votre demande <b>d'absence</b> concernant le collaborateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite s'absenter du  <b><?php $date = new DateTime($demande->debut);
         echo $date->format('d-m-Y');?></b> au   <b><?php $date = new DateTime($demande->reprise);
         echo $date->format('d-m-Y');?></b> a été validée.<br><br>
 
 </p>
 @break;
 
-@case(4)<p>Votre demande <b>de congé</b> concernant le collabotrateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite prendre congé du  <b><?php $date = new DateTime($demande->debut);
+@case(4)<p>Votre demande <b>de congé</b> concernant le collaborateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite prendre congé du  <b><?php $date = new DateTime($demande->debut);
         echo $date->format('d-m-Y');?></b> au   <b><?php $date = new DateTime($demande->reprise);
         echo $date->format('d-m-Y');?></b> a été validée.<br><br>
 
@@ -39,7 +39,7 @@
 </p>
 @break;
 
-@case(6)<p>Votre demande <b>de congé</b> concernant le collabotrateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite prendre congé du  <b><?php $date = new DateTime($demande->debut);
+@case(6)<p>Votre demande <b>de congé</b> concernant le collaborateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite prendre congé du  <b><?php $date = new DateTime($demande->debut);
         echo $date->format('d-m-Y');?></b> au   <b><?php $date = new DateTime($demande->reprise);
         echo $date->format('d-m-Y');?></b> a été supprimée.<br><br>
 

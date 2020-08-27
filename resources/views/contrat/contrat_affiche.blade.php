@@ -721,6 +721,35 @@
                                             </div>
                                         </div>
                                     </div>
+                                        <hr width="100%" color="blue">
+                                    <div class=" form-control-label">
+                                        <label for="rubrique[]">Rubrique</label>
+                                        <div class="form-group col-sm-12">
+                                            <select type="text" name="rubrique[]"  class="type_c form-control input-field" style="width: 260px">
+                                                <?php $i=0; ?>
+                                                @if(isset($rubrique_salaires))
+                                                    @foreach($rubrique_salaires as $rubrique_salaire)
+                                                        <?php $i++?>
+                                                        @if($i==11)
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <option value="{{$rubrique_salaire->libelle}}" {{$i==5?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if(isset($contrat->valeurSalaire) && isset($libelle)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; } endforeach; }
+                                    ?>
+                                    <div class="form-control-label">
+                                        <label for="valeur[]">Valeur</label>
+                                        <div class="form-group col-sm-12">
+                                            <div class="form-line">
+                                                <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <hr width="100%" color="blue">
                                     </br>
 

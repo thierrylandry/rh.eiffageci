@@ -6,7 +6,7 @@
 </p>
 @break;
 
-@case(2) Votre demande de modification n°{{$demande->id}} du contrat du collaborateur {{$demande->personne->nom}}  {{$demande->personne->prenom}}  portant sur :<br>
+@case(2) Votre demande de modification n°{{$demande->id}} du contrat du collaborateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b> portant sur :<br>
 
 <ul>
     @foreach(json_decode($demande->list_modif) as $modif)
@@ -34,7 +34,7 @@
 </p>
 @break;
 
-@case(5)<p>Votre demande de billet d'avion n°{{$demande->id}} à été validée.<br><br>
+@case(5)<p>Votre demande de billet d'avion n°{{$demande->id}} a été validée.<br><br>
 
 </p>
 @break;

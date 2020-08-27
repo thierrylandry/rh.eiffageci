@@ -519,7 +519,7 @@ class ContratController extends Controller
         if(!empty($ancien_contrat) ){
             if($ancien_contrat->dateFinC < $dateFinC || $type_de_contrat==2){
                 $ancien_contrat->etat=2;
-                $ancien_contrat->departDefinitif=date('d-m-Y');
+                $ancien_contrat->departDefinitif=date('Y-m-d');
                 $ancien_contrat->save();
                 $personne->matricule=$matricule;
                 $personne->service=$service;
@@ -530,7 +530,7 @@ class ContratController extends Controller
                 if(!empty($ancien_contrat)){
                     $contrat->departDefinitif=$ancien_contrat->departDefinitif;
                 }else{
-                    $contrat->departDefinitif=date('d-m-Y');
+                    $contrat->departDefinitif=date('Y-m-d');
                 }
 
             }

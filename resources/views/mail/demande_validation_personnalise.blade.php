@@ -6,17 +6,14 @@
 </p>
 @break;
 
-@case(2) Vous avez une demande de modification du contrat du collabotrateur {{$demande->personne->nom}}  {{$demande->personne->prenom}}  portant sur :<br>
+@case(2) Vous avez une demande de modification du contrat du collabotrateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}}</b>  portant sur :<br>
 
 <ul>
     @foreach(json_decode($demande->list_modif) as $modif)
         <li>{{$modif}}</li>
     @endforeach
 </ul>
-
-
-
-a valider.<br><br>
+<br>
 
 @break;
 
@@ -34,7 +31,7 @@ a valider.<br><br>
 </p>
 @break;
 
-@case(5)<p>Votre demande de billet d'avion n°{{$demande->id}} à été validée.<br><br>
+@case(5)<p>Votre demande de billet d'avion n°{{$demande->id}} a été validée.<br><br>
 
 </p>
 @break;

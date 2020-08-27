@@ -496,7 +496,7 @@ class ContratController extends Controller
         $modification= Modification::find($id_recrutement_modification);
         $modification->etat=3;
         $modification->id_typeModification=$id_typeModification;
-        $modification->save();
+
 
 
 
@@ -550,6 +550,7 @@ class ContratController extends Controller
         }
         $personne->save();
         $contrat->save();
+        $modification->save();
 
         $entite=$personne->id_entite;
 

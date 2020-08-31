@@ -585,15 +585,10 @@ $j=0;
     }
     public function supprimer($slug){
 
-        $recruement = Recrutement::where('slug','=',$slug)->first();
-        $date= new DateTime(null);
+        $modification = Modification::find($slug);
+        $modification->delete();
 
-        $recruement->etat=0;
-        $recruement->id_valideur=Auth::user()->id;
-
-        $recruement->save();
-
-        return redirect()->back()->with('success',"La demande de recrutement a été supprimé avec succès");
+        return redirect()->back()->with('success',"La demande de modification a été supprimé avec succès");
 
     }
 

@@ -816,7 +816,7 @@ Route::group(['prefix' => 'modifications', 'as' => 'modification.'], function ()
     ])->middleware('roles')->middleware('auth');
     Route::get('/supprimer/{id}',[
         'as'=>'supprimer',
-        'uses'=>'ModificationController@enregistrer_modification',
+        'uses'=>'ModificationController@supprimer',
         'roles'=>['Chef_de_service']
     ])->middleware('roles')->middleware('auth');
 });

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Absconges;
 use App\Absence;
+use App\Conges;
 use App\Contrat;
 use App\Entite;
 use App\Fonction;
@@ -116,7 +118,7 @@ class AbsenceController extends Controller
     }
     public function ActionRejeter(Request $request){
         $parameters=$request->except(['_token']);
-
+//dd($parameters);
         $objet=$parameters['objet'];
         $id_dmd="";
         if($objet=="absence"){
@@ -137,6 +139,24 @@ class AbsenceController extends Controller
             }
 
             return redirect()->back()->with('success',"La demande a été réfusé");
+        }elseif($objet=="conge"){
+
+            $id_dmd=$parameters['id_dmd'];
+
+            $motif=$parameters['motif'];
+            $conge =Absconges::find($id_dmd);
+
+            $conge->etat=4;
+            $conge->id_valideur=Auth::user()->id;
+
+            $conge->save();
+
+            try{
+                $this->dispatch(new EnvoiesRefus($conge,$motif,$objet));
+            }catch(\Exception $exception){
+                return redirect()->back()->with('warning',"La demande a été réfusé avec succès mais le mail du motif n'est pas parti .");
+            }
+            return redirect()->back()->with('success',"La demande de congé a été réfusé");
         }
 
         /*debut du traçages*/

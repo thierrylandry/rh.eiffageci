@@ -248,10 +248,12 @@
 
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
-                $("#slugrecrutement").val(slug);
+                var objet="conge";
+                $("#id_dmd").val(slug);
+                $("#objet").val(objet);
             });
             $("#btn_rejeter_absence").click(function(e){
-
+//alert(test);
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
                 var objet="conge";

@@ -503,7 +503,7 @@ $tab = Array();
             $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-1-$i];
             $i--;
         }
-
+        $effectif_par_mois[sizeof($effectif_par_mois)-1]->y=$effectif_par_mois[sizeof($effectif_par_mois)-1]->y -1;
        // dd($effectif_par_mois);
 
 

@@ -485,7 +485,7 @@ class HomeController extends Controller
         $effectif_par_mois= Array();
 
 $tab = Array();
-        $valeur=-1;
+        $valeur=0;
         foreach($liste_name as $lelibelle) {
             $vardiagEffectif1 = New Vardiag();
             $valeur+=intval($this->donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$lelibelle)-$this->compte_sortie($personne_sortie_unique,$lelibelle));

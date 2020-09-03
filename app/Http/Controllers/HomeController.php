@@ -524,7 +524,7 @@ $tab = Array();
     }
     public function donne_moi_une_date_je_te_dis_qui_est_venu($cumule_entrees,$date_libelle){
         $resultat=0;
-        for ($j = 0; $j <= sizeof($cumule_entrees); $j++) {
+        for ($j = 0; $j < sizeof($cumule_entrees); $j++) {
             if($date_libelle==$cumule_entrees[$j]->name){
                 $vardiagEffectif = New Vardiag();
 
@@ -532,7 +532,7 @@ $tab = Array();
                 $vardiagEffectif->y =$cumule_entrees[$j]->y;
                // $effectif_par_mois[$i] = $vardiagEffectif;
                 $resultat= $vardiagEffectif->y;
-                break;
+               
             }
         }
         return $resultat;

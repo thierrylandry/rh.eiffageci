@@ -532,7 +532,7 @@ $tab = Array();
                 $vardiagEffectif->y =$cumule_entrees[$j]->y;
                // $effectif_par_mois[$i] = $vardiagEffectif;
                 $resultat= $vardiagEffectif->y;
-               
+                break;
             }
         }
         return $resultat;

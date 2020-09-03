@@ -655,8 +655,8 @@ $tab = Array();
             ->join('services','services.id','=','personne_presente.service')
             ->select("services.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('services.id')
-            ->toSql();
-dd($repartition_service_tab);
+            ->get();
+
         $repartition_service= Array();
         foreach ($repartition_service_tab as $group):
             $vardiag = New Vardiag();

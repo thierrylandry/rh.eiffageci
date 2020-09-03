@@ -517,7 +517,7 @@ $tab = Array();
         foreach($personne_sortie_unique as $pers):
 
             if($pers->mois ==$mois){
-                $res++;
+                ++$res;
             }
             endforeach;
         return $res;

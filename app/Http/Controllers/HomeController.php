@@ -496,7 +496,7 @@ $tab = Array();
            // $tab[][$lelibelle.' sortie']=$this->compte_sortie($personne_sortie_unique,$lelibelle);
           //  $tab[][$lelibelle.' valeur']=$valeur;
         }
-        dd($tab);
+      //  dd($tab);
         $effectif_par_mois_le_plus_ressent =Array();
         $i=11;
         while($i>=0){

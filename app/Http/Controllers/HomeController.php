@@ -517,7 +517,7 @@ $tab = Array();
         foreach($personne_sortie_unique as $pers):
 
             if($pers->mois ==$mois){
-                ++$res;
+                $res++;
             }
             endforeach;
         return $res;
@@ -655,8 +655,8 @@ $tab = Array();
             ->join('services','services.id','=','personne_presente.service')
             ->select("services.libelle",DB::raw('count(personne_presente.id) as nb'))
             ->groupBy('services.id')
-            ->get();
-
+            ->toSql();
+dd($repartition_service_tab);
         $repartition_service= Array();
         foreach ($repartition_service_tab as $group):
             $vardiag = New Vardiag();

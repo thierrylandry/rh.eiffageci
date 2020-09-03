@@ -500,7 +500,7 @@ $tab = Array();
         $effectif_par_mois_le_plus_ressent =Array();
         $i=11;
         while($i>=0){
-            $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-1-$i];
+            $effectif_par_mois_le_plus_ressent[]=$effectif_par_mois[sizeof($effectif_par_mois)-$i];
             $i--;
         }
        // $effectif_par_mois[sizeof($effectif_par_mois)-1]->y=$effectif_par_mois[sizeof($effectif_par_mois)-1]->y -1;

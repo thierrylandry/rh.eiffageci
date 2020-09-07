@@ -570,6 +570,7 @@ class ContratController extends Controller
         $couverture_maladie=$parameters["couverture_maladie"];
         $dateDebutC=$parameters["dateDebutC"];
         $date_debutc_eff=$parameters["date_debutc_eff"];
+        $departdefinitif=$parameters["departdefinitif"];
 
 
         $type_de_contrat= $parameters["type_de_contrat"];
@@ -625,6 +626,7 @@ class ContratController extends Controller
         $contrat->couvertureMaladie=$couverture_maladie;
         $contrat->dateDebutC=$dateDebutC;
         $contrat->date_debutc_eff=$date_debutc_eff;
+        $contrat->departdefinitif=$departdefinitif;
 
 
         $contrat->logement=$logement;

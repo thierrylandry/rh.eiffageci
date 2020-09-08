@@ -150,7 +150,8 @@
                 <div class="card-body" >
                     <div class="row">
                         <div class="col-sm-3">
-                            <p> Date de début : <b>{{\Carbon\Carbon::parse(isset($personne)? $personne->dateDebut:'')->format('d-m-Y')}}</b></p>
+                            <p> Date de début : <b><?php $date = new DateTime($recrutement->dateDebut);
+                                    echo $date->format('d-m-Y');?></b></p>
 
                         </div>
                         <div class="col-sm-3">

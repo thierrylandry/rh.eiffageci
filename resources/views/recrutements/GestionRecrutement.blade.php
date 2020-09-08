@@ -88,10 +88,10 @@
                                     @endif
                             </td>
                             <td>{{$recrutement->id}}</td>
-                            <td>{{$recrutement->user->nom}} {{$recrutement->user->prenoms}}</td>
-                            <td>{{$recrutement->user->entite->libelle}}</td>
-                            <td>{{$recrutement->user->service->libelle}}</td>
-                            <td>{{$recrutement->posteAPouvoir}}</td>
+                            <td>{{isset($recrutement->user->nom)?$recrutement->user->nom:''}} {{isset($recrutement->user->prenoms)?$recrutement->user->prenoms:''}}</td>
+                            <td>{{isset($recrutement->user->entite->libelle)?$recrutement->user->entite->libelle:''}}</td>
+                            <td>{{isset($recrutement->user->service->libelle)?$recrutement->user->service->libelle:''}}</td>
+                            <td>{{isset($recrutement->posteAPouvoir)?$recrutement->posteAPouvoir:''}}</td>
                             <td>{{$recrutement->type_contrat->libelle}}</td>
                             <td>
                                 {{isset($recrutement)?'budget mensuel '.$recrutement->budgetMensuel:''}}

@@ -75,7 +75,8 @@
                         <p> Nombre de personne : <b>{{isset($recrutement)? $recrutement->NbrePersonne:''}}</b></p>
                     </div>
                     <div class="col-sm-4">
-                        <p> Date de debut :  {{\Carbon\Carbon::parse(isset($personne)? $personne->dateDebut:'')->format('d-m-Y')}}</p>
+                        <p> Date de debut :  <?php $date = new DateTime($personne->dateDebut);
+                            echo $date->format('d-m-Y');?></p>
                         <p> Entité : {{isset($recrutement)?  $recrutement->entite->libelle:''}}</p>
                     </div>
                     <div class="col-sm-4">

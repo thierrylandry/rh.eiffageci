@@ -157,6 +157,129 @@
 
     </div>
     @endif
+    @if($mode=="validation")
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">CONGE - HISTORIQUES DE NOS VALIDATIONS</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+    <div class="row">
+        <div class="col-md-12" >
+            <!-- DATA TABLE -->
+            <div class="table-data__tool  pull-right">
+
+            </div>
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderles" id="table_recrutement_historique">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>STATUS</th>
+                        <th>SOLDE</th>
+                        <th>MOTIF DE LA DEMANDE</th>
+                        <th>DEMANDEUR</th>
+                        <th>TITULAIRE</th>
+                        <th>DATE DE DEPART SOUHAITE</th>
+                        <th>DATE DE FIN SOUHAITE</th>
+                        <th>DATE DE REPRISE</th>
+                        <th>NOMBRE DE JOUR</th>
+                        <th>ADRESSE PENDANT LES CONGES</th>
+                        <th>CONTACT TELEPHONIQUE</th>
+                        <th>ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($conges_valides_par_mois as $conge)
+                        <tr>
+                            <td>{{$conge->id}}</td>
+                            <td>    @if($conge->etat==1)
+                                    <i class=" fa fa-check-circle-o" style="background-color: red"></i>
+                                @elseif($conge->etat==2)
+                                    <i class=" fa fa-check-circle-o" style="background-color: orange"></i>Accepté
+                                @elseif($conge->etat==3)
+                                    <i class=" fa fa-check-circle-o" style="background-color: green"></i>traité
+                                @elseif($conge->etat==4)
+                                    <i class=" fa fa-check-circle-o" style="background-color: black"></i>réfusé
+                                @endif
+                                {{isset($conge->type_permission)?$conge->type_permission->libelle:''}}
+                            </td>
+                            <td> <label class="switch switch-text switch-success"><input type="checkbox"class="switch-input" @if($conge->solde==1)checked @endif >
+                                    <span data-on="OUI" data-off="NON" class="switch-label" style="font-weight: bold"></span></label></td>
+                            <td>{{$conge->libelle_type_conges}}</td>
+                            <td>{{$conge->nom_users}} {{$conge->prenoms_users}}</td>
+                            <td>{{isset($conge->nom)?$conge->nom:''}} {{isset($conge->prenom)?$conge->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$conge->slug])}}" target="_blank">Consulter la fiche</a></td>
+                            <td><?php $date = new DateTime($conge->debut);
+                                echo $date->format('d-m-Y');?></td>
+                            <td><?php $date = new DateTime($conge->fins);
+                                echo $date->format('d-m-Y');?></td>
+                            <td><?php $date = new DateTime($conge->reprise);
+                                echo $date->format('d-m-Y');?></td>
+                            <td>{{$conge->jour}}</td>
+                            <td>{{$conge->adresse_pd_conges}}</td>
+                            <td>{{$conge->contact_telephonique}}</td>
+                            <td>
+                                <div class="table-data-feature">
+                                    @if($conge->etat==1)
+                                        @if($mode=="validation")
+                                            <a href="{{route('conges.ActionValider',$conge->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i class="zmdi zmdi-mail-send"></i> Valider
+                                            </a>&nbsp;
+                                            <a href="#" class="btn btn-danger btn_rejeter" id="btn_rejeter_absence" data-toggle="modal" data-target="#modalrefusdemande" data-placement="top" title="Rejeter">
+                                                <i class="zmdi zmdi zmdi-close"></i> Rejeter
+                                            </a>&nbsp;
+                                        @endif
+                                        @if($mode=="validation")
+                                            <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </a>
+                                        @endif
+
+                                    @elseif($conge->etat==2)
+                                        <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                        </a>&nbsp;
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
+                                    @elseif($conge->etat==3)
+                                        <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
+                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
+                                        </a>&nbsp;
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
+                                    @elseif($conge->etat==4)
+                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+
+    @endif
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
 
@@ -211,6 +334,35 @@
 
         $(document).ready(function() {
             var table= $('#table_recrutement').DataTable({
+                "order": [[ 0, "desc" ]],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                language: {
+                    url: "{{ asset('public/js/French.json')}}"
+                },
+
+                "ordering":true,
+                "responsive": true,
+                "paging": false,
+                "createdRow": function( row, data, dataIndex){
+
+                },
+                "columnDefs": [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                            'selectRow': true
+                        }
+                    },
+                    { "width": "10%", "targets": 2 }
+                ],
+                "select": {
+                    'style': 'multi'
+                },
+            });
+            var table= $('#table_recrutement_historique').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [

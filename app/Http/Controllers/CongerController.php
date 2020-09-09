@@ -636,16 +636,39 @@ class CongerController extends Controller
                 ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absconges.etat','=',1]])
             //    ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
+
+            $conges_valides_par_mois = DB::table('absconges')
+                ->Join('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->Join('personne','personne.id','=','absconges.id_personne')
+                ->Join('contrat','personne.id','=','contrat.id_personne')
+                ->Join('users','users.id','=','absconges.id_users')
+                ->leftJoin('user_role','user_role.user_id','=','users.id')
+                ->Join('roles','user_role.role_id','=','roles.id')
+                ->whereIn('absconges.etat',[2,3,4])
+                ->where('absconges.id_valideur','=',Auth::user()->id)
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->where('roles.name','=','Chef_de_service')
+            //    ->where('personne.id','!=',Auth::user()->id_personne)
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
 //dd($conges);
         }else{
             $conges = DB::table('absconges')
                 ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
                 ->leftJoin('personne','personne.id','=','absconges.id_personne')
                 ->leftJoin('contrat','personne.id','=','contrat.id_personne')->where('contrat.etat','=',1)
-                ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
+                ->leftJoin('users','users.id','=','absconges.id_users')->whereIn('absconges.etat','=',1)
                 ->where('contrat.id_service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
+
+            $conges_valides_par_mois = DB::table('absconges')
+                ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->leftJoin('personne','personne.id','=','absconges.id_personne')
+                ->leftJoin('contrat','personne.id','=','contrat.id_personne')
+                ->leftJoin('users','users.id','=','absconges.id_users')->whereIn('absconges.etat',[2,3,4])->where('contrat.etat','=',1)
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->where('absconges.id_valideur','=',Auth::user()->id)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }
@@ -654,7 +677,7 @@ class CongerController extends Controller
         $mode="validation";
         $entites=Entite::all();
 
-        return view('conges/GestionConge',compact('conges','mode','entites'));
+        return view('conges/GestionConge',compact('conges','mode','entites','conges_valides_par_mois'));
     }
     public function telecharger_doc_conge($id){
 

@@ -194,7 +194,6 @@
                         <th>NOMBRE DE JOUR</th>
                         <th>ADRESSE PENDANT LES CONGES</th>
                         <th>CONTACT TELEPHONIQUE</th>
-                        <th>ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -226,47 +225,6 @@
                             <td>{{$conge->jour}}</td>
                             <td>{{$conge->adresse_pd_conges}}</td>
                             <td>{{$conge->contact_telephonique}}</td>
-                            <td>
-                                <div class="table-data-feature">
-                                    @if($conge->etat==1)
-                                        @if($mode=="validation")
-                                            <a href="{{route('conges.ActionValider',$conge->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i> Valider
-                                            </a>&nbsp;
-                                            <a href="#" class="btn btn-danger btn_rejeter" id="btn_rejeter_absence" data-toggle="modal" data-target="#modalrefusdemande" data-placement="top" title="Rejeter">
-                                                <i class="zmdi zmdi zmdi-close"></i> Rejeter
-                                            </a>&nbsp;
-                                        @endif
-                                        @if($mode=="validation")
-                                            <a href="{{route("conges.modification",$conge->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </a>
-                                            <a  href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </a>
-                                        @endif
-
-                                    @elseif($conge->etat==2)
-                                        <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
-                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
-                                        </a>&nbsp;
-                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </a>
-                                    @elseif($conge->etat==3)
-                                        <a href="{{route('conges.telecharger_doc_conge',$conge->id)}}" class="btn btn-error" target="_blank" title="Télécharger le document">
-                                            <i class="zmdi zmdi-collection-pdf"></i> Télécharger le document
-                                        </a>&nbsp;
-                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </a>
-                                    @elseif($conge->etat==4)
-                                        <a href="{{route("conges.supprimer",$conge->id)}}" class="item confirmons" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </a>
-                                    @endif
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
                     </tbody>

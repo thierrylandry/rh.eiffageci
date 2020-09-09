@@ -656,7 +656,7 @@ class CongerController extends Controller
                 ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
                 ->leftJoin('personne','personne.id','=','absconges.id_personne')
                 ->leftJoin('contrat','personne.id','=','contrat.id_personne')->where('contrat.etat','=',1)
-                ->leftJoin('users','users.id','=','absconges.id_users')->whereIn('absconges.etat','=',1)
+                ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
                 ->where('contrat.id_service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)

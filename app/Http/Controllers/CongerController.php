@@ -158,44 +158,6 @@ class CongerController extends Controller
 
     //
     public function conges(){
-
-        $personnes= Personne::where('id_entite','=',1)->orwhere('id_entite','=',3)->get();
-        //dd($personnes);
-         //   dd($personnes->contrat_renouvelles()->where('datedebutc','<>',null)->orderBy('datedebutc','ASC')->first()->datedebutc);
-
-        $personnesConge= Array();
-        foreach ($personnes as $personne):
-
-
-
-            if(isset($personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc)){
-
-                $VarpersonneConges= new VarpersonneConges();
-                $VarpersonneConges->personne_id=$personne->id;
-                $VarpersonneConges->nom_prenom=$personne->nom.' '.$personne->prenom;
-                $datedebutc=$personne->contrat_renouvelles()->where('datedebutc','!=',null)->orderBy('datedebutc','ASC')->first()->datedebutc;
-
-                $VarpersonneConges->nb_y=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->y;
-
-                 //   dd(date_diff(new \DateTime($datedebutc),new \DateTime('now')));
-                $VarpersonneConges->nb_m=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->m;
-                $VarpersonneConges->nb_d=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->d;
-                $VarpersonneConges->jours=(($VarpersonneConges->nb_y*12) +$VarpersonneConges->nb_m)*2.5 +$VarpersonneConges->nb_d/30  ;
-
-                if(isset($personne->jours_conges()->select("title","id_personne",DB::raw('sum(nb_days) as nb'))->groupBy('conges.id_personne','title')->get()[0]->nb)){
-                         $VarpersonneConges->jour_conges=$personne->jours_conges() ->select("title","id_personne",DB::raw('sum(nb_days) as nb'))->groupBy('conges.id_personne','title')->get()[0]->nb;
-
-                    }
-
-                $personnesConge[]=$VarpersonneConges;
-
-            }
-
-
-
-            endforeach;
-
-       
          $colors= [
             "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
             "#f205e6" ,"#1c0365" ,"#14a9ad" ,"#4ca2f9" ,"#a4e43f" ,"#d298e2" ,"#6119d0",
@@ -237,10 +199,11 @@ class CongerController extends Controller
             "#88e9b8", "#c2b0e2", "#86e98f", "#ae90e2", "#1a806b", "#436a9e", "#0ec0ff",
             "#f812b3", "#b17fc9", "#8d6c2f", "#d3277a", "#2ca1ae", "#9685eb", "#8a96c6",
             "#dba2e6", "#76fc1b", "#608fa4", "#20f6ba", "#07d7f6", "#dce77a", "#77ecca"];
-        $conges = Conges::all();
 
+        $conges = DB::table('absconges')->join('personne','personne.id','absconges.id_personne')->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)->where('etat','=',2)
+                    ->select('absconges.id','nom','prenom','debut','reprise','jour')->get();
 
-        return view('conges/conges',compact('personnesConge','colors','conges'));
+        return view('conges/conges',compact('colors','conges'));
     }
     public function conges_mastorise($id){
 

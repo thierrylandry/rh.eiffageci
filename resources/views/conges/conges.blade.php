@@ -23,42 +23,9 @@
 
     <!-- Main content -->
         <div class="row">
-            <div class="col-sm-4">
-                <div class="box box-solid">
-                    <div class="box-header with-border">
-                        <a class="btn btn-info" href="{{route('global')}}"> page d'accueil</a> <h4 class="box-title">Glissez deposer dans le calendrier</h4>
-                    </div>
-                    <div class="box-body">
-                        <!-- the events -->
-                        <div id="external-events">
-                            <table class=" table  data-table">
-                                <thead>
-                                <td>id</td>
-                                <td>personne</td>
-                                <td>jours de congé Restant</td>
-                                <td>jours de congé pris</td>
-                                </thead>
-                                <tbody>
-                                @foreach($personnesConge as $personneC)
-                                <tr>
-                                        <td>{{$personneC->personne_id}}</td>
-                                        <td> <div class="external-event"  style="background-color:
-{{isset($colors[$personneC->personne_id])?$colors[$personneC->personne_id]:'black'}};color: white">{{ isset($personneC->personne_id)?$personneC->personne_id.' '.$personneC->nom_prenom:''}}</div> </td>
-                                        <td>{{intval($personneC->jours)-intval($personneC->jour_conges)}}</td>
-                                        <td>{{$personneC->jour_conges}}</td>
-                                </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <button id="enregistrer_conges" class="btn btn-success">ENREGISTRER</button>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-
-            </div>
             <!-- /.col -->
-            <div class="col-sm-7">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->
@@ -105,9 +72,9 @@
         var tab = Array();
         //ce tableau permet d'enregster les valeurs des jours déjà pris
         var tabdejapris = Array();
-    @foreach($personnesConge as $personneC)
-          tab["{{$personneC->personne_id.' '.$personneC->nom_prenom}}"]={{intval($personneC->jours)}};
-        tabdejapris["{{$personneC->personne_id.' '.$personneC->nom_prenom}}"]=0;
+    @foreach($conges as $conge)
+          tab["{{$conge->id.' '.$conge->nom.' '.$conge->prenom}}"]={{$conge->jour}};
+        tabdejapris["{{$conge->id.' '.$conge->nom.''.$conge->prenom}}"]=0;
     @endforeach
 
 
@@ -200,14 +167,14 @@
             {
 
 
-                title          : '{{$congessss->title}}',
-                start          : '{{$congessss->startDate}}',
-                @if(isset($congessss->EndDate))
-                end          : '{{$congessss->EndDate}}',
-                valeurr         : '{{$congessss->EndDate}}',
+                title          : '{{$congessss->nom.' '.$congessss->prenom}}',
+                start          : '{{$congessss->debut}}',
+                @if(isset($congessss->reprise))
+                end          : '{{$congessss->reprise}}',
+                valeurr         : '{{$congessss->reprise}}',
                 @endif
-                backgroundColor: '{{$congessss->backgroundColor}}', //red
-                borderColor    : '{{$congessss->backgroundColor}}', //red
+                backgroundColor: '{{$colors[$congessss->id]}}', //red
+                borderColor    : '{{$colors[$congessss->id]}}', //red
                 editable  : true,
                 startEditable : true,
                 durationEditable: true,

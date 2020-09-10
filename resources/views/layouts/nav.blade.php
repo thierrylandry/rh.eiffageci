@@ -139,6 +139,10 @@
                             </li>
                             @endif
                             @endforeach
+                        <li class="">
+                            <a class="js-arrow" href="{{route('conges')}}" >
+                                <i class="fas fa-calendar"></i>récap des congés</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="@yield('pole_demande')">

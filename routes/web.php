@@ -551,8 +551,8 @@ Route::post('/modifier_user',[
 Route::get('/conges',[
     'as'=>'conges',
     'uses'=>'CongerController@conges',
-    'roles' => ['Conges']
-])->middleware('auth')->middleware('roles');
+
+])->middleware('auth');
 
 
 Route::post('/conges_save',[

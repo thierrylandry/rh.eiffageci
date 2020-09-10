@@ -38,13 +38,7 @@
             </div>
         </a>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="overview-wrap">
-                <h2 class="title-1">Abscence - LISTE DES ABSENCES</h2>
-            </div>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-md-12" >
             <!-- DATA TABLE -->
@@ -159,6 +153,88 @@
         </div>
            @endif
     </div>
+
+    @if($mode=="validation")
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="overview-wrap">
+                                <h2 class="title-1"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">ABSCENCE - HISTORIQUES DE NOS VALIDATIONS</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12" >
+                <!-- DATA TABLE -->
+                <div class="table-data__tool  pull-right">
+
+                    <div class="table-data__tool-right">
+                        <a href="{{route('absence.demande')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>DEMANDER UNE ABSENCE</a>
+                    </div>
+                </div>
+                <div class="table-responsive m-b-40">
+                    <table class="table table-borderles" id="table_recrutement_historique">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>STATUS</th>
+                            <th>DEMANDEUR</th>
+                            <th>TITULAIRE</th>
+                            <th>MOTIF</th>
+                            <th>DATE DE DEPART SOUHAITE</th>
+                            <th>DATE DE FIN SOUHAITE</th>
+                            <th>DATE DE REPRISE</th>
+                            <th>NOMBRE DE JOUR</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($absences_valides_par_mois as $absence)
+                            <tr>
+                                <td>{{$absence->id}}</td>
+                                <td>    @if($absence->etat==1)
+                                        <i class=" fa fa-check-circle-o" style="background-color: red"></i>
+                                    @elseif($absence->etat==2)
+                                        <i class=" fa fa-check-circle-o" style="background-color: orange"></i> Accepté
+                                    @elseif($absence->etat==3)
+                                        <i class=" fa fa-check-circle-o" style="background-color: green"></i> traité
+                                    @elseif($absence->etat==4)
+                                        <i class=" fa fa-check-circle-o" style="background-color: black"></i> réfuser
+                                    @endif
+
+                                    {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
+                                </td>
+                                <td>{{$absence->nom_users}} {{$absence->prenoms_users}}</td>
+                                <td>{{isset($absence->nom)?$absence->nom:''}} {{isset($absence->prenom)?$absence->prenom:''}} <a href="{{route('fiche_personnel',['slug'=>$absence->slug])}}" target="_blank">Consulter la fiche</a></td>
+                                <td>{{isset($absence->motif_perso)?$absence->motif_perso:''}}</td>
+                                <td><?php $date = new DateTime($absence->debut);
+                                    echo $date->format('d-m-Y');?></td>
+                                <td><?php $date = new DateTime($absence->fin);
+                                    echo $date->format('d-m-Y');?></td>
+                                <td><?php $date = new DateTime($absence->reprise);
+                                    echo $date->format('d-m-Y');?></td>
+                                <td>{{$absence->jour}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE -->
+
+            </div>
+
+        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+    @endif
     <script src="{{ asset("js/jquery.min.js") }}"></script>
     <script src="{{ asset("js/dataTables.min.js") }}"></script>
 
@@ -213,6 +289,35 @@
 
         $(document).ready(function() {
             var table= $('#table_recrutement').DataTable({
+                "order": [[ 0, "desc" ]],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                language: {
+                    url: "{{ asset('public/js/French.json')}}"
+                },
+
+                "ordering":true,
+                "responsive": true,
+                "paging": false,
+                "createdRow": function( row, data, dataIndex){
+
+                },
+                "columnDefs": [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                            'selectRow': true
+                        }
+                    },
+                    { "width": "10%", "targets": 2 }
+                ],
+                "select": {
+                    'style': 'multi'
+                },
+            });
+            var table= $('#table_recrutement_historique').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [

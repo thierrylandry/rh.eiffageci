@@ -23,9 +23,37 @@
 
     <!-- Main content -->
         <div class="row">
+            <div class="col-sm-4">
+                <div class="box box-solid">
+                    <div class="box-body">
+                        <!-- the events -->
+                        <div id="external-events">
+                            <table class=" table  data-table">
+                                <thead>
+                                <td>id</td>
+                                <td>personne</td>
+                                <td>depart</td>
+                                <td>retour effectif</td>
+                                </thead>
+                                <tbody>
+                                @foreach($conges as $conge)
+                                <tr>
+                                        <td>{{$conge->id}}</td>
+                                        <td> <div class="external-event"  style="background-color:{{$colors[$conge->id]}};color: white">{{ isset($conge->id)?$conge->id.' '.$conge->nom.' '.$conge->prenom:''}}</div> </td>
+                                        <td>{{$conge->debut}}</td>
+                                        <td>{{$conge->reprise}}</td>
+                                </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
             <!-- /.col -->
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
+            <div class="col-sm-7">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->

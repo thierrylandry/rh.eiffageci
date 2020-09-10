@@ -139,10 +139,6 @@
                             </li>
                             @endif
                             @endforeach
-                        <li class="">
-                            <a class="js-arrow" href="{{route('conges')}}" >
-                                <i class="fas fa-calendar"></i>récap des congés</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="@yield('pole_demande')">
@@ -191,7 +187,7 @@
                 </li>
                 @endif
                 <li class="@yield('repertoire')">
-                    <a href="{{route('repertoire')}}"><i class="fa fa-phone-square" aria-hidden="true"></i> Repertoire</a>
+                    <a href="{{route('repertoire')}}"><i class="fa fa-phone-square" aria-hidden="true"></i> REPERTOIRE</a>
                 </li>
                 @if(Auth::user() != null && Auth::user()->hasRole('Etats'))
                 <li class="@yield('fin_contrat')  has-sub">
@@ -209,6 +205,10 @@
                         </li>
                         <li class="@yield('informatique')">
                             <a href="{{route('informatique')}}"><i class="fas fa-clipboard-list" aria-hidden="true"></i>Tableau de gestion du parc informatique</a>
+                        </li>
+                        <li class="">
+                            <a class="js-arrow" href="{{route('conges')}}" >
+                                <i class="fas fa-calendar"></i>récap des congés</a>
                         </li>
                     </ul>
                 </li>

@@ -370,7 +370,6 @@ class AbsenceController extends Controller
                 ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1]])
                 ->groupBy('absence.id')
                 ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
-dd('ff');
             $absences_valides_par_mois = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
@@ -379,7 +378,9 @@ dd('ff');
                 ->leftJoin('roles','user_role.role_id','=','roles.id')
                 ->leftJoin('contrat','personne.id','=','contrat.id_personne')
 
-                ->whereIn('absence.etat',[2,3,4])->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->whereIn('absence.etat',[2,3,4])
+                ->where('absence.id_valideur','=',Auth::user()->id)
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->groupBy('absence.id')
                 ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
         }else{

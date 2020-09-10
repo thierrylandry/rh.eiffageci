@@ -647,7 +647,6 @@ class CongerController extends Controller
                 ->whereIn('absconges.etat',[2,3,4])
                 ->where('absconges.id_valideur','=',Auth::user()->id)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-                ->where('roles.name','=','Chef_de_service')
             //    ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
 //dd($conges);

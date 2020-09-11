@@ -208,7 +208,7 @@
                         </li>
                         <li class="">
                             <a class="js-arrow" href="{{route('conges')}}" >
-                                <i class="fas fa-calendar"></i>récap des congés</a>
+                                <i class="fas fa-calendar"></i>Récap des congés</a>
                         </li>
                     </ul>
                 </li>

@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('profil',['id'=>\Illuminate\Support\Facades\Auth::user()->id])}}">
                                             <i class="zmdi zmdi-account"></i>Mon compte</a>
                                     </div>
                                     

@@ -487,6 +487,14 @@ Route::get('/mailfin_contrat_service',[
     'uses'=>'EtatsController@mailfin_contrat_service',
 ]);
  //parametre création des utilisateurs
+Route::get('/profil/{id}',[
+    'as'=>'profil',
+    'uses'=>'UserController@profil',
+])->middleware('auth');
+Route::post('/modifier_user_profil',[
+    'as'=>'modifier_user_profil',
+    'uses'=>'UserController@modifier_user_profil',
+])->middleware('auth');
 Route::get('/utilisateur',[
     'as'=>'utilisateur',
     'uses'=>'UserController@utilisateur',

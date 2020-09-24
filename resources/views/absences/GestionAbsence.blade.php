@@ -317,7 +317,7 @@
                     'style': 'multi'
                 },
             });
-            var table= $('#table_recrutement_historique').DataTable({
+            var table1= $('#table_recrutement_historique').DataTable({
                 "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [

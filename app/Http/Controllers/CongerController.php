@@ -662,7 +662,7 @@ class CongerController extends Controller
         $VarpersonneConges= new VarpersonneConges();
         $VarpersonneConges->personne_id=$id;
         $VarpersonneConges->nom_prenom=$personne->nom.' '.$personne->prenom;
-        $datedebutc= Personne_presente::find($id)->datedebutc;
+        $datedebutc= Personne_presente::find($conge->id_personne)->datedebutc;
 
         $VarpersonneConges->nb_y=date_diff(new \DateTime($datedebutc),new \DateTime('now'))->y;
 

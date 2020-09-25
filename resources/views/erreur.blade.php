@@ -43,7 +43,7 @@
                 <div class="login-content">
                     <h3>Désolé</h3>
                     <h2>401</h2>
-                    <p>Permission Inssuffisante</p>
+                    <p>Permission Insuffisante</p>
                     <a href='#' onClick='javascript:history.back();'>Retour en arrière</a>
                 </div>
             </div>

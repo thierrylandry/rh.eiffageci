@@ -179,9 +179,11 @@
                         <div class="col-md-9">
                             <select class="form-control {{isset($listmodif) && in_array('Le sous service',$listmodif)?'modifie':''}}" name="id_sous_service" id="id_sous_service" required>
                                 <option value="">SELECTIONNER UN SOUS SERVICE</option>
+                                @if(isset($sous_services))
                                 @foreach($sous_services as $sous_service)
                                     <option {{isset($contrat) && $contrat->id_sous_service==$sous_service->id?'selected':''}} value="{{$sous_service->id}}">{{$sous_service->libelle}}</option>
                                 @endforeach
+                                    @endif
                             </select>
                         </div>
                     </div>

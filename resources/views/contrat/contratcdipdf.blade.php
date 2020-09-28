@@ -215,12 +215,13 @@
     <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext"><?php if(isset($contrat->periode_essaie)){
                 $datetime1 = Carbon::createFromDate($contrat->debutc);
                 $datetime2 = Carbon::createFromDate($contrat->periode_essaie);
-                $interval = $datetime1->diffInMonths($datetime2);
+                echo $datetime2;
+               // $interval = $datetime2->diffInMonths($datetime1);
               //  $nbmonth= $interval->format('%m');
                // $nbyear = $interval->format('%y');
-                $resultat=12-$interval;
+                $resultat=$interval;
                //  echo $resultat.' Mois';
-                echo '1 Mois';
+                echo '2 Mois';
             }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.

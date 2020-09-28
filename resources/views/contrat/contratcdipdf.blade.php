@@ -219,7 +219,7 @@
                // $interval = $datetime2->diffInMonths($datetime1);
               //  $nbmonth= $interval->format('%m');
                // $nbyear = $interval->format('%y');
-                $resultat=$interval;
+                //$resultat=$interval;
                //  echo $resultat.' Mois';
                 echo '2 Mois';
             }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.

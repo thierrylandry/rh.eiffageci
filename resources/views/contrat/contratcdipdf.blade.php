@@ -215,7 +215,7 @@
     <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext"><?php if(isset($contrat->periode_essaie)){
                 $datetime1 = Carbon::createFromDate($contrat->debutc);
                 $datetime2 = Carbon::createFromDate($contrat->periode_essaie);
-                echo $datetime2;
+              //  echo $datetime2;
                // $interval = $datetime2->diffInMonths($datetime1);
               //  $nbmonth= $interval->format('%m');
                // $nbyear = $interval->format('%y');

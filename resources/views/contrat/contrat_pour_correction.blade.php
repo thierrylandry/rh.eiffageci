@@ -173,6 +173,19 @@
                         </div>
                     </div>
                     <div class="row form-group">
+                        <div class="col-sm-3">
+                            <label for="text-input" class=" form-control-label">Sous service :</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-control {{isset($listmodif) && in_array('Le sous service',$listmodif)?'modifie':''}}" name="id_sous_service" id="id_sous_service" required>
+                                <option value="">SELECTIONNER UN SOUS SERVICE</option>
+                                @foreach($sous_services as $sous_service)
+                                    <option {{isset($contrat) && $contrat->id_sous_service==$sous_service->id?'selected':''}} value="{{$sous_service->id}}">{{$sous_service->libelle}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
                         <div class="col-md-3">
                             <label for="text-input" class=" form-control-label">Couverture maladie:</label>
                         </div>
@@ -325,7 +338,7 @@
                             <label for="text-input" class=" form-control-label">Gratification</label>
                             <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
                             <select class="form-control dotation_nature" name="gratification" id="gratification1">
-                                <option value="">Sélectionner une gratification</option>
+                                <option value="">Gratification de 75% du salaire brute</option>
                                 <option value="Gratification de 100% salaire net" {{isset($contrat) && $contrat->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
                             </select>
                         </div>

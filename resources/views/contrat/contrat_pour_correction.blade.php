@@ -177,7 +177,7 @@
                             <label for="text-input" class=" form-control-label">Sous service :</label>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control {{isset($listmodif) && in_array('Le sous service',$listmodif)?'modifie':''}}" name="id_sous_service" id="id_sous_service" required>
+                            <select class="form-control {{isset($listmodif) && in_array('Le sous service',$listmodif)?'modifie':''}}" name="id_sous_service" id="id_sous_service" >
                                 <option value="">SELECTIONNER UN SOUS SERVICE</option>
                                 @if(isset($sous_services))
                                 @foreach($sous_services as $sous_service)

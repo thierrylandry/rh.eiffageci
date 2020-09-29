@@ -248,7 +248,7 @@
                     }
 
                 endforeach;
-                echo $affiche;
+                echo $contrat->valeurSalaire;
             }
 
 

@@ -244,7 +244,7 @@
             if(isset($contrat->valeurSalaire)){
                 foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                     if($valeurSalaire->valeur!="" ){
-                        $affiche+=floatval($valeurSalaire->valeur);
+                        $affiche+=intval($valeurSalaire->valeur);
                     }
 
                 endforeach;

@@ -244,7 +244,7 @@
             if(isset($contrat->valeurSalaire)){
                 foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire1):
 
-                        $affiche+=floatval($valeurSalaire1->valeur);
+                        $affiche+=floatval(str_replace(' ','',$valeurSalaire1->valeur));
 
                 endforeach;
                 echo $affiche;

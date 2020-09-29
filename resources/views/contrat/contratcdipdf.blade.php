@@ -213,15 +213,18 @@
     <h1 style="padding: 0;text-align: left"><u>Article {{++$i}}</u> : Période d’essai -Visite Médicale</h1>
 
     <p>L’embauche de l’Employé ne sera définitive qu’après une période d’essai de  <b class="classtext"><?php if(isset($contrat->periode_essaie)){
-                $datetime1 = Carbon::createFromDate($contrat->debutc);
-                $datetime2 = Carbon::createFromDate($contrat->periode_essaie);
+               // $datetime1 = Carbon::createFromDate($contrat->debutc);
+               // $datetime2 = Carbon::createFromDate($contrat->periode_essaie);
               //  echo $datetime2;
                // $interval = $datetime2->diffInMonths($datetime1);
               //  $nbmonth= $interval->format('%m');
                // $nbyear = $interval->format('%y');
                 //$resultat=$interval;
                //  echo $resultat.' Mois';
-                echo '2 Mois';
+                $datetime1 = date_create($contrat->datedebutc);
+                $datetime2 = date_create($contrat->periode_essaie);
+                $diff=date_diff($datetime1,$datetime2);
+                echo $diff->format("%R%m mois");
             }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.

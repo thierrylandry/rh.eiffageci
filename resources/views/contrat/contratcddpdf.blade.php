@@ -242,12 +242,12 @@
 
     <p>L’Employé percevra conformément à sa catégorie professionnelle une rémunération mensuelle brute de <b class="classtext"><?php $affiche=0;
             if(isset($contrat->valeurSalaire)){
-                foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire1):
 
-                        $affiche+=floatval($valeurSalaire->valeur);
+                        $affiche+=floatval($valeurSalaire1->valeur);
 
                 endforeach;
-                echo $contrat->valeurSalaire;
+                echo $affiche;
             }
 
 

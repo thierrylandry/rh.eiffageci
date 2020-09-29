@@ -247,7 +247,7 @@
                         $affiche+=floatval(str_replace(' ','',$valeurSalaire1->valeur));
 
                 endforeach;
-                echo $affiche;
+                echo number_format($affiche, 0, ',', ' ');
             }
 
 

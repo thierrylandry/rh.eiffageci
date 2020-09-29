@@ -245,9 +245,9 @@
                 foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
 
                         $affiche+=floatval($valeurSalaire->valeur);
-                    echo $affiche;
-                endforeach;
 
+                endforeach;
+                echo $contrat->valeurSalaire;
             }
 
 

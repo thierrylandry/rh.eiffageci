@@ -847,12 +847,12 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
     Route::get('/ActionValider/{id}',[
         'as'=>'ActionValider',
         'uses'=>'AbsenceController@ActionValider',
-        'roles'=>['Chef_de_service']
-        ])->middleware('auth');
+        'roles'=>['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
+    ])->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'AbsenceController@validation_absence',
-        'roles'=>['Chef_de_service']
+        'roles'=>['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
     Route::post('/absences_validation_collective', [
         'as' => 'absences_validation_collective',

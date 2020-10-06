@@ -336,6 +336,7 @@
                                 <option value="Véhicule de fonction" {{isset($contrat) && $contrat->vehicule=="Véhicule de fonction"?'selected':''}}>Véhicule de fonction</option>
                             </select>
                         </div>
+                       <!--
                         <div class=" col-lg-4">
                             <label for="text-input" class=" form-control-label">Gratification</label>
                             <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
@@ -344,6 +345,7 @@
                                 <option value="Gratification de 100% salaire net" {{isset($contrat) && $contrat->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
                             </select>
                         </div>
+                        -->
                     </div>
 
                 </div>

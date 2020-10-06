@@ -34,6 +34,7 @@ class Famille extends Serializable
     public $num_p;
     public $date_exp;
     public $presence_effective;
+    public $nom_prenom_parent;
 
     public static function getFamilleLienString($name)
     {

@@ -14,6 +14,7 @@ class Personne extends Model
     public function societe(){
         return $this->belongsTo(Societe::class, "id_unite");
     }
+
     public function entite(){
         return $this->belongsTo(Entite::class, "id_entite");
     }

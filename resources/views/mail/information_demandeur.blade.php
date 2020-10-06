@@ -22,7 +22,7 @@
 
 @case(3)<p>Votre demande <b>d'absence</b> concernant le collaborateur <b>{{$demande->personne->nom}}  {{$demande->personne->prenom}} </b>qui souhaite s'absenter du  <b><?php $date = new DateTime($demande->debut);
         echo $date->format('d-m-Y');?></b> au   <b><?php $date = new DateTime($demande->reprise);
-        echo $date->format('d-m-Y');?></b> a été validée.<br><br>
+        echo $date->format('d-m-Y');?></b> a été validée  @if($demande->etat==1) par  <b>{{$demande->valideur->nom}} {{$demande->valideur->prenoms}}</b>@endif. <br><br>
 
 </p>
 @break;

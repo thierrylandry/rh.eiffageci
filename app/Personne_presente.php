@@ -13,6 +13,10 @@ class Personne_presente extends Model
 
             return $this->belongsTo('App\Services', 'service');
     }
+    public function  sous_service(){
+
+        return $this->belongsTo('App\Sous_service', 'id_sous_service');
+    }
     public function lafonction(){
 
             return $this->belongsTo('App\Fonction', 'fonction');

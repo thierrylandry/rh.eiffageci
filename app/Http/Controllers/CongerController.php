@@ -275,25 +275,78 @@ class CongerController extends Controller
     {
       //  dd(Auth()->user()->id_chantier_connecte);
         $entites = Entite::all();
-        if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::where('id_entite','=',Auth()->user()->id_chantier_connecte)->get();
-        }else{
-            $personnes = Personne_presente::where('service','=',Auth()->user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
-        }
+        $personnes= $this->personne_correspondante_role(Auth::user());
         $conges = Absconges::where('id_users',Auth()->user()->id)->get();
       //  dd($conges);
         $type_motifs= Type_conges::all();
         return view('conges/ficheConges',compact('entites','personnes','conges','type_motifs'));
     }
+    public function personne_correspondante_role($user){
+        $personnes= Array();
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+        }elseif(Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SEMELLES')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CAISSONS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_LABORATOIRE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_MAINTENANCE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SOUDEURS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_NERVURE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_BETON_PROJETE')){
+            foreach($user->roles()->get() as $role):
+                $tab_id_sous_service[]= $role->id_sous_service;
+            endforeach;
+            $personnes = Personne_presente::whereIn('id_sous_service',$tab_id_sous_service)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+        }else{
+            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
+        }
+
+        return $personnes;
+    }
+    public function en_fonction_de_tes_roles_quel_est_la_force_de_ta_demande($id_personne){
+        $etat=0;
+        $personne =Personne_presente::find($id_personne);
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            if(isset($personne) & $personne->id_sous_service==""){
+                $etat=1;
+            }else{
+                $etat=0;
+            }
+        }elseif(Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SEMELLES')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CAISSONS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_LABORATOIRE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_MAINTENANCE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SOUDEURS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_NERVURE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_BETON_PROJETE')){
+            $etat=0;
+        }else{
+            $etat=1;
+        }
+
+        return $etat;
+    }
+    public function contact_a_notifier($absence_ou_conges){
+        $contacts = Array();
+        $users=User::where('id_chantier_connecte','=',Auth::user()->id_chantier_connecte)->get();
+        $personne = Personne_presente::find($absence_ou_conges->id_personne);
+        //dd($personne);
+        if($absence_ou_conges->etat==0){
+//dd($personne->sous_service->role->name);
+            $libelle_role=$personne->sous_service->role->name;
+            foreach($users as $user):
+                if($user->hasRole($libelle_role)){
+                    $contacts[]=$user->email;
+                }
+            endforeach;
+        }elseif($absence_ou_conges->etat==1){
+            foreach($users as $user):
+
+                if($absence_ou_conges->user->hasRole('Chef_de_service') && $absence_ou_conges->user->id_personne!=$absence_ou_conges->id && $user->hasRole('Chef_de_projet')){
+                    $contacts[]=$user->email;
+                }
+                if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=Auth::user()->id_personne){
+                    $contacts[]=$user->email;
+
+                }
+
+            endforeach;
+        }
+        return $contacts;
+
+    }
     public function modification($id)
     {
         $conge= Absconges::find($id);
         $entites = Entite::all();
-        if(Auth::user()->hasRole('Ressource_humaine')){
-            $personnes = Personne_presente::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
-        }else{
-            $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
-        }
+        $personnes= $this->personne_correspondante_role(Auth::user());
         $conges = Absconges::where('id_users',Auth::user()->id)->get();
         // $contrat= Contrat::where('id')
         $contrat=Contrat::where('id_personne','=',$conge->id_personne)->where('etat','=',1)->first();
@@ -345,7 +398,11 @@ class CongerController extends Controller
     public function ActionValider($id){
         $conge = Absconges::find($id);
 
-        $conge->etat=2;
+        if($conge->etat==0){
+            $conge->etat=2;
+        }else{
+            $conge->etat=2;
+        }
         $conge->id_valideur=Auth::user()->id;
 
         $conge->save();
@@ -361,8 +418,13 @@ class CongerController extends Controller
 
         endforeach;
 
-        if(!empty($contact)){
+        if(!empty($contact) && $conge->etat==2 ){
             $this->dispatch(new EnvoiesDemandeValider(4,$contact));
+        }elseif($conge->etat==1){
+            $contact=$this->contact_a_notifier($conge);
+            if(!empty($contact)){
+                $this->dispatch(new EnvoiesDemandeValidation_personnalise(4,$contact,$conge));
+            }
         }
         $contactdemandeur[]=$conge->user()->first()->email;
         if(!empty($contactdemandeur)){
@@ -457,7 +519,7 @@ class CongerController extends Controller
         $conge->id_personne=$id_personne;
         $conge->jour=$jour;
         $conge->id_users=Auth::user()->id;
-       // $conge->etat=1;
+        $conge->etat=$this->en_fonction_de_tes_roles_quel_est_la_force_de_ta_demande($id_personne);;
         $conge->id_motif_demande=$id_motif_demande;
         $conge->adresse_pd_conges=$adresse_pd_conges;
         $conge->contact_telephonique=$contact_telephonique;
@@ -467,19 +529,7 @@ class CongerController extends Controller
         $contact=Array();
         $contactdemandeur=Array();
         $personne= Personne::find($id_personne);
-      //  dd($personne->contrat()->where('etat','=',1)->first()->id_personne);
-        foreach($users as $user):
-
-            //&& $conge->user->id_personne!=$personne->id
-            if($conge->user->hasRole('Chef_de_service')  && $user->hasRole('Chef_de_projet')){
-                $contact[]=$user->email;
-            }
-            if($user->hasRole('Chef_de_service') && $personne->contrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=Auth::user()->id_personne){
-                $contact[]=$user->email;
-
-            }
-
-        endforeach;
+        $contact=$this->contact_a_notifier($conge);
 
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation_personnalise(4,$contact,$conge));
@@ -613,7 +663,7 @@ class CongerController extends Controller
             //    ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
 //dd($conges);
-        }else{
+        }elseif(Auth::user()->hasRole('Chef_de_service')){
             $conges = DB::table('absconges')
                 ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
                 ->leftJoin('personne','personne.id','=','absconges.id_personne')
@@ -632,6 +682,33 @@ class CongerController extends Controller
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->where('absconges.id_valideur','=',Auth::user()->id)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
+
+        }else{
+            $les_sous_service= array();
+            foreach(Auth::user()->roles()->get() as $role):
+                if($role->id_sous_service!=""){
+                    $les_sous_service[]=$role->id_sous_service;
+                }
+            endforeach;
+                //,'libelle as libelle_type_conges'
+            $conges = DB::table('absconges')
+                ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->leftJoin('personne_presente','personne_presente.id','=','absconges.id_personne')
+                ->leftJoin('contrat','personne_presente.id','=','contrat.id_personne')->where('contrat.etat','=',1)
+                ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
+                ->where('contrat.id_service','=',Auth::user()->id_service)
+                ->where('personne_presente.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->WhereIn('personne_presente.id_sous_service',$les_sous_service)
+                ->select('absconges.id','jour','solde','debut','fins','reprise','type_conges.libelle as libelle_type_conges','adresse_pd_conges','contact_telephonique','absconges.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne_presente.slug','personne_presente.service','personne_presente.nom','personne_presente.prenom')->get();
+
+            $conges_valides_par_mois = DB::table('absconges')
+                ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->leftJoin('personne','personne.id','=','absconges.id_personne')
+                ->leftJoin('contrat','personne.id','=','contrat.id_personne')->where('contrat.etat','=',1)
+                ->leftJoin('users','users.id','=','absconges.id_users')->whereIn('absconges.etat',[2,3,4])
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
+                ->where('absconges.id_valideur','=',Auth::user()->id)
+                ->select('absconges.id','jour','solde','debut','fins','reprise','type_conges.libelle as libelle_type_conges','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 
         }
         // dd($conges);

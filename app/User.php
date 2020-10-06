@@ -33,7 +33,8 @@ class User extends Authenticatable
     }
     public function service(){
         return $this->belongsTo(Services::class, "id_service",'id');
-    }    public function entite(){
+    }
+    public function entite(){
         return $this->belongsTo(Entite::class, "id_entite",'id');
     }
     public function hasAnyRole($roles)
@@ -67,6 +68,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function personne_presente(){
+        return $this->belongsTo(Personne_presente::class, "id_personne");
+    }
     public function personne(){
 
         return $this->hasOne('App\Personne','id','id_personne');

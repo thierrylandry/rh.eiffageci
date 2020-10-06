@@ -13,6 +13,9 @@ class Absconges extends Model
 
         return $this->belongsTo('App\Personne', 'id_personne');
     }
+    public function valideur(){
+        return $this->belongsTo(User::class, "id_valideur");
+    }
     public function user(){
         return $this->belongsTo(User::class, "id_users");
     }

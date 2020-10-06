@@ -775,7 +775,7 @@
                                                 @if(isset($rubrique_salaires))
                                                     @foreach($rubrique_salaires as $rubrique_salaire)
                                                         <?php $i++;?>
-                                                        @if($i>=6)
+                                                        @if($i>=6 && $i!=11)
                                                             <option value="{{$rubrique_salaire->libelle}}">{{$rubrique_salaire->libelle}}</option>
                                                         @endif
                                                     @endforeach

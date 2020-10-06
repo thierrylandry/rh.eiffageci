@@ -18,6 +18,7 @@ use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Salaire;
 use App\Services;
+use App\Sous_service;
 use App\Typecontrat;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
@@ -192,6 +193,7 @@ class ContratController extends Controller
         $categories = Categorie::where('id_definition','=',$contrat->id_definition)->get();
         $personne= Personne::find($contrat->id_personne);
         $services = Services::all();
+        $sous_services= Sous_service::all();
         $definitions = Definition::all();
         $typecontrats= Typecontrat::all();
         $entites= Entite::all();
@@ -236,7 +238,7 @@ class ContratController extends Controller
 
         }
 
-        return view('contrat/contrat_pour_correction',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies','rubrique_salaires','resultat'));
+        return view('contrat/contrat_pour_correction',compact('personne','services','typecontrats','contrat','definitions','categories','entites','nature_contrats','assurance_maladies','rubrique_salaires','resultat','sous_services'));
     }
 
     public function lister_contrat($slug){
@@ -578,6 +580,7 @@ class ContratController extends Controller
             $dateFinC= $parameters["dateFinC"];
         }
         $service= $parameters["service"];
+        $id_sous_service= $parameters["id_sous_service"];
         $periode_essaie= $parameters["periode_essaie"];
         $email= $parameters["email"];
         $contact= $parameters["contact"];
@@ -663,6 +666,7 @@ class ContratController extends Controller
 
         $contrat->id_type_contrat=$type_de_contrat;
         $contrat->id_service=$service;
+        $contrat->id_sous_service=$id_sous_service;
       //  $contrat->id_nature_contrat=$id_typeModification;
         $contrat->regime=$regime;
 

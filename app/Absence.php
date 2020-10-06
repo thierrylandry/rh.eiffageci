@@ -10,6 +10,9 @@ class Absence extends Model
     protected  $table="absence";
     protected $fillable= ['*'];
 
+    public function valideur(){
+        return $this->belongsTo(User::class, "id_valideur");
+    }
     public function user(){
         return $this->belongsTo(User::class, "id_users");
     }

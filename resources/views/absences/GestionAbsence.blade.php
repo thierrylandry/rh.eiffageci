@@ -70,13 +70,15 @@
                         <tr>
                             <td>{{$absence->id}}</td>
                             <td>    @if($absence->etat==1)
-                                    <i class=" fa fa-check-circle-o" style="background-color: red"></i>
+                                    <i class=" zmdi zmdi-circle-o" style="background-color: red"></i>
                                 @elseif($absence->etat==2)
-                                    <i class=" fa fa-check-circle-o" style="background-color: orange"></i>
+                                    <i class=" zmdi zmdi-circle-o" style="background-color: orange"></i>
                                 @elseif($absence->etat==3)
-                                    <i class=" fa fa-check-circle-o" style="background-color: green"></i>
+                                    <i class=" zmdi zmdi-circle-o" style="background-color: green"></i>
                                 @elseif($absence->etat==4)
-                                    <i class=" fa fa-check-circle-o" style="background-color: black"></i>
+                                    <i class=" zmdi zmdi-circle-o" style="background-color: black"></i>
+                                @elseif($absence->etat==0)
+                                    <i class="zmdi zmdi-circle-o" style="background-color: red" ></i>(En attente validation partiel)
                                 @endif
 
                                 {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}
@@ -93,7 +95,7 @@
                             <td>{{$absence->jour}}</td>
                             <td>
                                 <div class="table-data-feature">
-                                    @if($absence->etat==1)
+                                    @if($absence->etat==1 || $absence->etat==0)
                                         @if($mode=="validation")
                                             <a href="{{route('absence.ActionValider',$absence->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                                 <i class="zmdi zmdi-mail-send"></i> Valider
@@ -205,6 +207,8 @@
                                         <i class=" fa fa-check-circle-o" style="background-color: green"></i> traité
                                     @elseif($absence->etat==4)
                                         <i class=" fa fa-check-circle-o" style="background-color: black"></i> réfuser
+                                    @elseif($absence->etat==0)
+                                        <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                     @endif
 
                                     {{isset($absence->type_permission)?$absence->type_permission->libelle:''}}

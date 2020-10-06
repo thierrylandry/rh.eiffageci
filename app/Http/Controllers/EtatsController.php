@@ -9,12 +9,17 @@ use App\Fin_contrat_traite;
 use App\Jobs\EnvoieFincontrat;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Liste_telephonique;
+use App\Metier\Json\Famille;
+use App\Metier\Json\Piece;
 use App\Personne;
 use App\Personne_contrat;
+use App\Personne_presente;
 use App\Services;
 use App\Typecontrat;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;;
+
+use FontLib\TrueType\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -206,5 +211,58 @@ $repertoires= Liste_telephonique::all();
 //return json_decode($lespersonnes);
         $entites= Entite::all();
         return view('etats/informatique',compact('lespersonnes','entites'));
+    }
+    public function liste_personne_piece(){
+        $personne_presentes= Personne_presente::all();
+        $tabpers = Array();
+
+        foreach($personne_presentes as $personne_presente):
+            $tabpers[]=$personne_presente->id;
+        endforeach;
+        //dd($tabpers);
+        $personnes = Personne::whereIn('id',$tabpers)->get();
+
+        $piece_personnes=new \Illuminate\Support\Collection();
+        $piece_familles = new \Illuminate\Support\Collection();
+
+        foreach($personnes as $personne):
+            $tabs=json_decode($personne->pieces);
+           // dd($tabs);
+        if(is_array($tabs)){
+
+            foreach($tabs as $tab):
+                $piece= new Piece();
+                $piece->nom_prenom=$personne->nom.' '.$personne->prenom;
+                $piece->matricule=$personne->matricule;
+                $piece->num_p_piece=$tab->num_p_piece;
+                $piece->type_p_piece=$piece->__get($tab->type_p_piece);
+                $piece->date_exp_piece=$tab->date_exp_piece;
+                $piece_personnes[]=$piece;
+            endforeach;
+        }
+            endforeach;
+
+        foreach($personnes as $personne):
+            $tabs=json_decode($personne->familles);
+           // dd($tabs);
+        if(is_array($tabs)){
+
+            foreach($tabs as $tab):
+                $famille= new Famille();
+
+                $famille->nom_prenom=$personne->nom.' '.$personne->prenom;
+
+                $famille->lien_parente=$tab->lien_parente;
+                $famille->type_p=$tab->type_p;
+                $famille->num_p=$tab->num_p;
+                $famille->date_exp=$tab->date_exp;
+                $famille->nom_prenom_parent=$tab->nom_prenom_parent;
+                $piece_familles[]=$famille;
+            endforeach;
+        }
+            endforeach;
+          //  dd($personne1);
+        $entites= Entite::all();
+        return view('etats/liste_pieces',compact('piece_personnes','entites'));
     }
 }

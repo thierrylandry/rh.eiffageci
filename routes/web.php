@@ -395,6 +395,11 @@ Route::post('/enregistrer_salaire',[
 ])->middleware('auth')->middleware('roles');
 //etat
 
+Route::get('/liste_personne_piece',[
+    'as'=>'liste_personne_piece',
+    'uses'=>'EtatsController@liste_personne_piece',
+]);
+
 Route::get('/repertoire',[
     'as'=>'repertoire',
     'uses'=>'EtatsController@repertoire',
@@ -857,7 +862,7 @@ Route::group(['prefix' => 'absences', 'as' => 'absence.'], function () {
     Route::post('/absences_validation_collective', [
         'as' => 'absences_validation_collective',
         'uses' => 'AbsenceController@absences_validation_collective',
-        'roles'=>['Chef_de_service','Chef_de_projet']
+        'roles'=>['Chef_de_service','Chef_de_projet','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',
@@ -903,7 +908,7 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::get('/ActionValider/{id}',[
         'as'=>'ActionValider',
         'uses'=>'CongerController@ActionValider',
-        'roles'=>['Chef_de_service']
+        'roles'=>['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
         ])->middleware('auth');
     Route::get('/telecharger_doc_conge/{id}', [
         'as' => 'telecharger_doc_conge',
@@ -912,12 +917,12 @@ Route::group(['prefix' => 'conges', 'as' => 'conges.'], function () {
     Route::post('/conges_validation_collective', [
         'as' => 'conges_validation_collective',
         'uses' => 'CongerController@conges_validation_collective',
-        'roles'=>['Chef_de_service','Chef_de_projet']
+        'roles'=>['Chef_de_service','Chef_de_projet','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
     Route::get('/validation', [
         'as' => 'validation',
         'uses' => 'CongerController@validation_conges',
-        'roles' => ['Chef_de_service'],
+        'roles' => ['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
     Route::get('/modification/{id}',[
         'as'=>'modification',

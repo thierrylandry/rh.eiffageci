@@ -16,12 +16,16 @@ class Piece
         "CC" => "CARTE CONSULAIRE",
         "PSP" => "PASSPORT",
         "CNI" => "CARTE NATIONNAL D'IDENTITE",
+        "CR" => "CARTE DE RESIDENTS",
+        "ATTN" => "ATTESTATION D'IDENTITE",
 
 
     ];
     public $type_p_piece;
     public $num_p_piece;
     public $date_exp_piece;
+    public $nom_prenom;
+    public $matricule;
 
     public static function getPieceLienString($name)
     {
@@ -41,6 +45,6 @@ class Piece
     }
     public function __get($name)
     {
-        return self::getFamilleLienString($name);
+        return self::getPieceLienString($name);
     }
 }

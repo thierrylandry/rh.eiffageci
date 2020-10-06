@@ -174,7 +174,7 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-3">
-                            <label for="text-input" class=" form-control-label">Equipe :</label>
+                            <label for="text-input" class=" form-control-label">Equipe : </label>
                         </div>
                         <div class="col-md-9">
                             <select class="form-control {{isset($listmodif) && in_array('Le sous service',$listmodif)?'modifie':''}}" name="id_sous_service" id="id_sous_service" >

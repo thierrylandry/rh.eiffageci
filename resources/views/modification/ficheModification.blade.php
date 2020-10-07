@@ -135,7 +135,7 @@
                         <div class="card-body" >
                             <div class="row">
                                 <div class=" col-lg-4">
-                                    <label for="text-input" class=" form-control-label">Fonction</label>
+                                    <label for="text-input" class=" form-control-label">Fonction <a href="{{route('fonctions')}}" target="_blank"><i class="fas fa-plus"></i></a></label>
                                     <input type="hidden" id="id_fonction1_initial" name="id_fonction1_initial"  value="">
                                     <select class="form-control {{isset($listmodif) && in_array('La fonction',$listmodif)?'modifie':''}}" name="id_fonction" id="id_fonction1"  required>
                                         <option valuue="">Selectionner une fonction</option>
@@ -143,6 +143,7 @@
                                             <option value="{{$fonction->id}}" {{isset($modification) && $modification->id_fonction==$fonction->id?"selected":""}}>{{$fonction->libelle}}</option>
                                         @endforeach
                                     </select>
+
                                 </div>
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Type de contrat</label>

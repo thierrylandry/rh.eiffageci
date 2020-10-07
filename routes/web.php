@@ -508,27 +508,27 @@ Route::get('/utilisateur',[
 Route::get('/fonctions',[
     'as'=>'fonctions',
     'uses'=>'FonctionsController@fonctions',
-    'roles' => ['Parametrage']
+    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_fonction',[
     'as'=>'save_fonction',
     'uses'=>'FonctionsController@save_fonction',
-    'roles' => ['Parametrage']
+    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::get('/pmodifier_fonction/{id}',[
     'as'=>'pmodifier_fonction',
     'uses'=>'FonctionsController@pmodifier_fonction',
-    'roles' => ['Parametrage']
+    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::post('/modifier_fonction',[
     'as'=>'modifier_fonction',
     'uses'=>'FonctionsController@modifier_fonction',
-    'roles' => ['Parametrage']
+    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_fonction/{id}',[
     'as'=>'supprimer_fonction',
     'uses'=>'FonctionsController@supprimer_fonction',
-    'roles' => ['Parametrage']
+    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::get('/voir_utilisateur',[
     'as'=>'voir_utilisateur',

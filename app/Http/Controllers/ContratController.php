@@ -209,7 +209,7 @@ class ContratController extends Controller
             foreach($salaires as $salaire ):
                 $j++;
              //   dd($rubrique_salaires_limite_5);
-                if(!in_array($salaire->libelle,$libelrubrique)) {
+                if(!in_array($salaire->libelle,$libelrubrique) && $salaire->libelle!="Prime de transport") {
                     $resultat .= "<div class='form-control-label'><label for='rubrique[]'>Rubrique</label> <div class='form-group col-sm-12'> <select type='text' name='rubrique[]' class='type_c form-control input-field'>";
 
 

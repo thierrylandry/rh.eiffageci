@@ -221,7 +221,7 @@ class ContratController extends Controller
                         foreach($rubrique_salaires as $rubrique_salaire):
                             $i++;
 
-                            if($i>5){
+                            if($i>5 && $i!=11){
                                 if($rubrique_salaire->libelle==$salaire->libelle){
                                     $selected="selected";
                                 }else{

@@ -300,6 +300,35 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Logement</label>
+                            <input type="hidden" id="dm_logement_initial" name="dm_logement_initial"  value="">
+                            <select class="form-control dotation_nature" name="logement" id="logement2">
+                                <option value="" {{isset($contrat) && $contrat->logement==""?'selected':''}}>NON</option>
+                                <option value="Logement" {{isset($contrat) && $contrat->logement=="Logement"?'selected':''}}>OUI</option>
+
+                            </select>
+                        </div>
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Vehicule</label>
+                            <input type="hidden" id="vehicule_initial"  name="vehicule_initial" value="">
+                            <select class="form-control dotation_nature" name="vehicule" id="vehicule1">
+                                <option value="">Sélectionner une dotation en vehicule</option>
+                                <option value="véhicule de service" {{isset($contrat) && $contrat->vehicule=="véhicule de service"?'selected':''}}>Véhicule de service</option>
+                                <option value="Véhicule de fonction" {{isset($contrat) && $contrat->vehicule=="Véhicule de fonction"?'selected':''}}>Véhicule de fonction</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-4">
+                            <label for="text-input" class=" form-control-label">Gratification</label>
+                            <input type="hidden" id="gratification_initial"  name="dm_budgetMensuel_initial" value="">
+                            <select class="form-control dotation_nature" name="gratification" id="gratification1">
+                                <option value="">Gratification de 75% du salaire brute</option>
+                                <option value="Gratification de 100% salaire net" {{isset($contrat) && $contrat->gratification=="Gratification de 100% salaire net"?'selected':''}}>Gratification de 100% salaire net</option>
+                            </select>
+                        </div>
+
+                    </div>
 
                 </div>
 

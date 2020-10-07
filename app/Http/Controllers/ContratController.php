@@ -745,6 +745,9 @@ class ContratController extends Controller
 
         $id_nature_contrat= $parameters["id_nature_contrat"];
         $id_recrutement= $parameters["id_recrutement"];
+        $vehicule=$parameters['vehicule'];
+        $logement=$parameters['logement'];
+        $gratification=$parameters['gratification'];
 
 
         //les rubriques du salaire
@@ -790,6 +793,9 @@ class ContratController extends Controller
         $contrat->id_nature_contrat=$id_nature_contrat;
         $contrat->regime=$regime;
         $contrat->id_recrutement=$id_recrutement;
+        $contrat->logement=$logement;
+        $contrat->vehicule=$vehicule;
+        $contrat->gratification=$gratification;
 
         $recrutement=Recrutement::find($id_recrutement);
         $recrutement->NbrePersonneEffect+=1;

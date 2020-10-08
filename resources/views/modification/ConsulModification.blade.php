@@ -120,7 +120,7 @@
                                             <td width="50%">Ancienne valeur</td>
                                         </tr>
                                         <tr>
-                                            <td style="color: #00a2e3;">{{isset($modification)?$modification->fonction()->first()->libelle:''}}</td>
+                                            <td style="color: #00a2e3;">{{isset($modification->fonction()->first()->libelle)?$modification->fonction()->first()->libelle:''}}</td>
                                             <td>{{isset($modification)?$modification->fonction_initial()->first()->libelle:''}}</td>
                                         </tr>
 

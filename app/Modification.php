@@ -32,7 +32,7 @@ class Modification extends Model
         return $this->belongsTo(Categorie::class, "id","id_categorie");
     }
     public function fonction(){
-        return $this->belongsTo(Fonction::class,"id_fonction", "id");
+        return $this->belongsTo(Fonction::class, "id","id_fonction",);
     }
     public function fonction_initial(){
         return $this->belongsTo(Fonction::class,"id_fonction_initial", "id");

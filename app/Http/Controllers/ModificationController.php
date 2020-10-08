@@ -340,7 +340,10 @@ $j=0;
 
         $modification->vehicule=$vehicule;
         $modification->logement=$logement;
-        $modification->gratification=$gratification;
+        if(isset($parameters['gratification'])){
+            $modification->gratification=$gratification;
+        }
+
 
 
 
@@ -490,7 +493,9 @@ $j=0;
 
         $modification->vehicule=$vehicule;
         $modification->logement=$logement;
-        $modification->gratification=$gratification;
+        if(isset($parameters['gratification'])){
+            $modification->gratification=$gratification;
+        }
 
 
         $modification->save();

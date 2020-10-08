@@ -121,7 +121,7 @@
                                         </tr>
                                         <tr>
                                             <td style="color: #00a2e3;">{{isset($modification->fonction()->first()->libelle)?$modification->fonction()->first()->libelle:''}}</td>
-                                            <td>{{isset($modification)?$modification->fonction_initial()->first()->libelle:''}}</td>
+                                            <td>{{isset($modification->fonction_initial()->first()->libelle)?$modification->fonction_initial()->first()->libelle:''}}</td>
                                         </tr>
 
                                         @break

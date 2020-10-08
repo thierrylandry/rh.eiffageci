@@ -285,7 +285,10 @@ $j=0;
         $budgetMensuel=$parameters['budgetMensuel'];
         $vehicule=$parameters['vehicule'];
         $logement=$parameters['logement'];
-        $gratification=$parameters['gratification'];
+        if(isset($parameters['gratification'])){
+            $gratification=$parameters['gratification'];
+        }
+
 
 
         $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
@@ -444,7 +447,9 @@ $j=0;
 
         $vehicule=$parameters['vehicule'];
         $logement=$parameters['logement'];
-        $gratification=$parameters['gratification'];
+        if(isset($parameters['gratification'])){
+            $gratification=$parameters['gratification'];
+        }
 
         $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
 

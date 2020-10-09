@@ -62,7 +62,7 @@
         <!--place ici les bouton -->
     </div>
 
-    
+
 <div class="row">
 
     <div class="col-lg-12">
@@ -193,8 +193,8 @@
                                         </tr>
                                         <tr style="color: #00a2e3;">
                                             <td>{{isset($modification)?$modification->budgetMensuel:''}}</td>
-                                            <td>{{isset($modification)?$modification->budgetMensuel_initial:''}}
-                                                <?php /*$affiche=0;
+                                            <td>
+                                                <?php $affiche=0;
                                                 if(isset($contrat->valeurSalaire)){
                                                     foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                                                         $affiche+=$valeurSalaire->valeur;
@@ -203,7 +203,7 @@
                                                 }
 
 
-                                               */ ?></td>
+                                                ?></td>
                                         </tr>
 
                                         @break

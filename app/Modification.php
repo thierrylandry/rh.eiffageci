@@ -37,6 +37,11 @@ class Modification extends Model
     public function fonction(){
         return $this->hasOne(Fonction::class, "id","id_fonction");
     }
+    public function definition()
+    {
+
+        return $this->hasOne('App\Definition','id', 'id_definition');
+    }
     public function fonction_initial(){
         return $this->belongsTo(Fonction::class,"id_fonction_initial", "id");
     }

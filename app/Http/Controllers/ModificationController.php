@@ -266,12 +266,16 @@ $j=0;
         $dm_id_categorie_initial=$parameters['dm_id_categorie_initial'];
         $regime1_initial=$parameters['regime1_initial'];
         $dm_budgetMensuel_initial=$parameters['dm_budgetMensuel_initial'];
+        $id_fonction1_initial= $parameters['id_fonction1_initial'];
+        $datefinc1_initial= $parameters['datefinc1_initial'];
+        $dm_logement_initial= $parameters['dm_logement_initial'];
+        $vehicule_initial= $parameters['vehicule_initial'];
 
         //fin des valeurs initial
         $listemodif=$parameters['listemodif'];
         $id_personne=$parameters['id_personne'];
         $service=$parameters['service'];
-        //$id_fonction=$parameters['id_fonction'];
+        $id_fonction=$parameters['id_fonction'];
         $id_type_contrat=$parameters['id_type_contrat'];
         $datefinc=$parameters['datefinc'];
         $id_definition=$parameters['id_definition'];
@@ -321,8 +325,8 @@ $j=0;
 
         }
         if(in_array ("La fonction",$tab_list_modif)){
-          //  $modification->id_fonction=$id_fonction;
-          //  $modification->id_fonction_initial=$id_fonction1_initial;
+            $modification->id_fonction=$id_fonction;
+            $modification->id_fonction_initial=$id_fonction1_initial;
         }
         if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
             $modification->budgetMensuel=$budgetMensuel;

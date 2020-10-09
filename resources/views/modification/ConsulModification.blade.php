@@ -107,7 +107,7 @@
                                         </tr>
                                         <tr>
                                             <td style="color: #00a2e3;">{{isset($modification)?$modification->regime:''}}</td>
-                                            <td>{{isset($contrat)?$contrat->regime:''}}</td>
+                                            <td>{{isset($modification)?$modification->regime_initial:''}}</td>
                                         </tr>
 
                                         @break
@@ -135,7 +135,7 @@
                                         </tr>
                                         <tr>
                                             <td style="color: #00a2e3;">{{isset($modification)?$modification->type_contrat->libelle:''}}</td>
-                                            <td>{{isset($contrat)?$contrat->type_contrat->libelle:''}}</td>
+                                            <td>{{isset($modification)?$modification->type_contrat_initial->libelle:''}}</td>
                                         </tr>
 
                                         @break
@@ -149,7 +149,7 @@
                                         </tr>
                                         <tr>
                                             <td style="color: #00a2e3;">{{isset($modification)?date("d-m-Y", strtotime($modification->dateFinC)):''}}</td>
-                                            <td>{{isset($contrat)?date("d-m-Y", strtotime($contrat->datefinc)):''}}</td>
+                                            <td>{{isset($modification)?date("d-m-Y", strtotime($modification->datefinc_initial)):''}}</td>
                                         </tr>
                                         @break
                                         @case("La définition")
@@ -176,7 +176,7 @@
                                         </tr>
                                         <tr>
                                             <td style="color: #00a2e3;">{{isset($modification)?$modification->id_categorie:''}}</td>
-                                            <td>{{isset($contrat)?$contrat->id_categorie:''}}</td>
+                                            <td>{{isset($modification)?$modification->id_categorie_initial:''}}</td>
                                         </tr>
 
                                         @break

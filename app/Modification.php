@@ -16,6 +16,9 @@ class Modification extends Model
     public function type_contrat(){
         return $this->belongsTo(Typecontrat::class,"id_type_contrat","id");
     }
+    public function type_contrat_initial(){
+        return $this->belongsTo(Typecontrat::class,"id_type_contrat_initial","id");
+    }
     public function contrat(){
         return $this->belongsTo(Contrat::class, "id_contrat","id");
     }

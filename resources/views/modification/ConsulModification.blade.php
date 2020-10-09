@@ -180,7 +180,32 @@
                                         </tr>
 
                                         @break
-                                        @case("Le budget mensuel")
+                                        @case("Les conditions de rémunérations")
+
+                                        <tr>
+                                            <td colspan="2">{{$modif}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Nouvelle valeur</td>
+                                            <td width="50%">Ancienne valeur</td>
+                                        </tr>
+                                        <tr style="color: #00a2e3;">
+                                            <td>{{isset($modification)?$modification->budgetMensuel:''}}</td>
+                                            <td>
+                                                <?php $affiche=0;
+                                                if(isset($contrat->valeurSalaire)){
+                                                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
+                                                        $affiche+=$valeurSalaire->valeur;
+                                                    endforeach;
+                                                    echo $affiche;
+                                                }
+
+
+                                                ?></td>
+                                        </tr>
+
+                                        @break
+                                            @case("Le budget mensuel")
 
                                         <tr>
                                             <td colspan="2">{{$modif}}</td>

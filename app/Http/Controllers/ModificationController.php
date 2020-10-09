@@ -14,6 +14,7 @@ use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValidation_personnalise;
 use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesInformationDemandeur;
+use App\Jobs\EnvoiesRefusModification;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Listmodifavenant;
 use App\Metier\Json\Rubrique;
@@ -555,19 +556,19 @@ $j=0;
     }
     public function ActionRejeter(Request $request){
         $parameters=$request->except(['_token']);
-        $slug=$parameters['slug'];
+        $id=$parameters['id'];
         $motif=$parameters['motif'];
-        $recrutement = Recrutement::where('slug','=',$slug)->first();
+        $modification = Modification::where('id','=',$id)->first();
         $date= new DateTime(null);
 
-        $recrutement->etat=0;
-        $recrutement->id_valideur=Auth::user()->id;
+        $modification->etat=0;
+        $modification->id_validateur=Auth::user()->id;
 
-        $recrutement->save();
+        $modification->save();
 
-        $this->dispatch(new EnvoiesRefusRecrutement($recrutement,$motif));
+        $this->dispatch(new EnvoiesRefusModification($modification,$motif));
 
-        return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été réfusé");
+        return redirect()->route('modification.validation')->with('success',"La demande de modification a été réfusé");
 
     }
 

@@ -113,7 +113,7 @@
                                             <a href="{{route('modification.ActionValider',$modification->id)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                                 <i class="zmdi zmdi-mail-send"></i> Valider
                                             </a>&nbsp;
-                                            <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd" data-placement="top" title="Rejeter">
+                                            <a href="#" class="btn btn-danger btn_rejeter" data-toggle="modal" data-target="#modalrefusdmd_modif" data-placement="top" title="Rejeter">
                                                 <i class="zmdi zmdi zmdi-close"></i> Rejeter
                                             </a>&nbsp;
                                         @endif
@@ -258,7 +258,7 @@
 
                 var data = table.row($(this).closest('tr')).data();
                 var slug=data[Object.keys(data)[0]];
-                $("#slugrecrutement").val(slug);
+                $("#idmodification").val(slug);
             });
             function vider(){
                 $("#id_definition1").val("");

@@ -718,6 +718,44 @@
     </div>
 </div>
 <!-- modal small -->
+<div class="modal fade" id="modalrefusdmd_modif" tabindex="-1" role="dialog" aria-labelledby="modalrefusdmdLaale" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalhistoriqueLabel">Refus de demande de modification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form method="POST" action="{{route("modification.ActionRejeter")}}">
+                    @csrf
+                <div class="row">
+                    <input type="hidden" name="id" id="idmodification" />
+                    <div class="col-sm-12">
+                        <label>Motif de refus</label>
+                        <textarea class="form-control" name="motif">
+
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-footer pull-right">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Réjeter la demande
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- modal small -->
 <div class="modal fade" id="modalconditionremuneration" tabindex="-1" role="dialog" aria-labelledby="modalconditionremunerationLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

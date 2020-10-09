@@ -445,7 +445,7 @@ $j=0;
         $listemodif=$parameters['listemodif'];
         //$id_personne=$parameters['id_personne'];
         $service=$parameters['service'];
-       // $id_fonction=$parameters['id_fonction'];
+        $id_fonction=$parameters['id_fonction'];
         $id_type_contrat=$parameters['id_type_contrat'];
         $datefinc=$parameters['datefinc'];
         $id_definition=$parameters['id_definition'];
@@ -486,7 +486,7 @@ $j=0;
             $modification->regime=$regime;
         }
         if(in_array ("La fonction",$tab_list_modif)){
-          //  $modification->id_fonction=$id_fonction;
+            $modification->id_fonction=$id_fonction;
         }
         if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
             $modification->budgetMensuel=$budgetMensuel;

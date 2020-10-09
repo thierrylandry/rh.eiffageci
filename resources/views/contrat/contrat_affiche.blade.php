@@ -581,7 +581,7 @@
                                                         <?php $i++;?>
 
                                                         @if($i==1)
-                                                                <?php $libelle=$rubrique_salaire->libelle;?>
+                                                            <?php $libelle=$rubrique_salaire->libelle;?>
                                                             <option value="{{$rubrique_salaire->libelle}}" {{$i==1?"selected":""}} >{{$rubrique_salaire->libelle}}</option>
                                                             @break
                                                         @endif @endforeach
@@ -598,7 +598,7 @@
                                                 if(isset($contrat->valeurSalaire) && isset($libelle)){foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire): if($valeurSalaire->libelle==$libelle) {$montant=$valeurSalaire->valeur; break;} endforeach; }
                                                 ?>
                                                 <input type="text" name="valeur[]" id="Salaire_de_base3" class="valeur_c Salaire_de_base salaire_base3 form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}"
-                                                       readonly>
+                                                       readonly><?php $montant=""; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -612,7 +612,6 @@
                                                     @foreach($rubrique_salaires as $rubrique_salaire)
                                                         <?php $i++?>
                                                         @if($i==2)
-                                                            <?php $libelle=$rubrique_salaire->libelle;?>
                                                             <?php $libelle=$rubrique_salaire->libelle;?>
                                                             <option value="{{$rubrique_salaire->libelle}}" {{$i==2?"selected":""}}>{{$rubrique_salaire->libelle}}</option>
                                                         @endif
@@ -629,7 +628,7 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Sursalaire" class="valeur_c form-control Sursalaire" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
                                     <hr width="100%" color="blue">
@@ -659,7 +658,7 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Prime_de_salissure" class="valeur_c form-control Prime_de_salissure" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
                                     <hr width="100%" color="blue">
@@ -689,7 +688,7 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Prime_de_tenue_de_travail" class="valeur_c form-control Prime_de_tenue_de_travail" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
                                     <hr width="100%" color="blue">
@@ -718,10 +717,10 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
-                                        <hr width="100%" color="blue">
+                                    <hr width="100%" color="blue">
                                     <div class=" form-control-label">
                                         <label for="rubrique[]">Rubrique</label>
                                         <div class="form-group col-sm-12">
@@ -747,7 +746,7 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" id="Prime_de_transport" class="valeur_c Prime_de_transport form-control" placeholder="Valeur" value="{{isset($montant)?$montant:''}}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
                                     <hr width="100%" color="blue">
@@ -789,7 +788,7 @@
                                         <div class="form-group col-sm-12">
                                             <div class="form-line">
                                                 <input type="text" name="valeur[]" class="valeur_c form-control" placeholder="Valeur" value="{{ old('num_p[]') }}">
-                                            </div>
+                                            </div><?php $montant=""; ?>
                                         </div>
                                     </div>
                                     <hr width="100%" color="blue">

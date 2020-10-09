@@ -167,7 +167,6 @@ class ModificationController extends Controller
         $modification = Modification::find($id);
         $personne= Personne_presente::find($modification->id_personne);
         $contrat = Contrat::find($personne->id_contrat);
-        dd($contrat);
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
         $categories = Categorie::all();

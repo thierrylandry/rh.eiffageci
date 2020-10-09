@@ -158,7 +158,7 @@ class ModificationController extends Controller
             $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
         }
         $fonctions = Fonction::all();
-        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','competences','fonctions','personnes','listmodif'));
+        return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','fonctions','personnes','listmodif'));
     }
     public function afficher($id){
 

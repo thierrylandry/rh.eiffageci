@@ -438,63 +438,96 @@ $j=0;
      */
     public function modifier_modification(Request $request){
 
-
         $parameters=$request->except(['_token']);
+        // dd($parameters);
+
+
+        //les valeurs initiales
 
         $id=$parameters['id'];
+        $service1_initial=$parameters['service1_initial'];
+        // $id_fonction1_initial=$parameters['id_fonction1_initial'];
+        $id_type_contrat1_initial=$parameters['id_type_contrat1_initial'];
+        $datefinc1_initial=$parameters['datefinc1_initial'];
+        $dm_id_definition_initial=$parameters['dm_id_definition_initial'];
+        $dm_id_categorie_initial=$parameters['dm_id_categorie_initial'];
+        $regime1_initial=$parameters['regime1_initial'];
+        $dm_budgetMensuel_initial=$parameters['dm_budgetMensuel_initial'];
+        $id_fonction1_initial= $parameters['id_fonction1_initial'];
+        $datefinc1_initial= $parameters['datefinc1_initial'];
+        $dm_logement_initial= $parameters['dm_logement_initial'];
+        $vehicule_initial= $parameters['vehicule_initial'];
+
+        //fin des valeurs initial
         $listemodif=$parameters['listemodif'];
-        //$id_personne=$parameters['id_personne'];
+        $id_personne=$parameters['id_personne'];
         $service=$parameters['service'];
         $id_fonction=$parameters['id_fonction'];
         $id_type_contrat=$parameters['id_type_contrat'];
         $datefinc=$parameters['datefinc'];
         $id_definition=$parameters['id_definition'];
-        $id_categorie=$parameters['id_categorie'];
+        if(isset($parameters['id_categorie'])){
+            $id_categorie=$parameters['id_categorie'];
+        }else{
+            $id_categorie=$dm_id_categorie_initial;
+        }
+
         $regime=$parameters['regime'];
         $budgetMensuel=$parameters['budgetMensuel'];
-
         $vehicule=$parameters['vehicule'];
         $logement=$parameters['logement'];
         if(isset($parameters['gratification'])){
             $gratification=$parameters['gratification'];
         }
 
-        $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
 
+
+        $tab_list_modif=\GuzzleHttp\json_decode($listemodif);
+        // dd($tab_list_modif);
 
 
         $modification = Modification::find($id);
         $date= new DateTime(null);
-//dd($tab_list_modif);
         $modification->id_typeModification=3;
         if(in_array ("Le type de contrat",$tab_list_modif)){
             $modification->id_type_contrat=$id_type_contrat;
-
+            $modification->id_type_contrat_initial=$id_type_contrat1_initial;
         }
         if(in_array ("La définition",$tab_list_modif)){
             $modification->id_definition=$id_definition;
+            $modification->id_definition_initial=$dm_id_definition_initial;
         }
         if(in_array ("La catégorie",$tab_list_modif)){
             $modification->id_categorie=$id_categorie;
-
+            $modification->id_categorie_initial=$dm_id_categorie_initial;
         }
         if(in_array ("La date de fin",$tab_list_modif)){
             $modification->dateFinC=$datefinc;
-            $modification->id_typeModification=3;
+            $modification->datefinc_initial=$datefinc1_initial;
+            $modification->id_typeModification=2;
         }
         if(in_array ("La durée hebdomadaire de travail",$tab_list_modif)){
             $modification->regime=$regime;
+            $modification->regime_initial=$regime1_initial;
+
         }
         if(in_array ("La fonction",$tab_list_modif)){
             $modification->id_fonction=$id_fonction;
+            $modification->id_fonction_initial=$id_fonction1_initial;
         }
         if(in_array ("Les conditions de rémunérations",$tab_list_modif)){
             $modification->budgetMensuel=$budgetMensuel;
+            $modification->budgetMensuel_initial=$dm_budgetMensuel_initial;
         }
         if(in_array ("Le service",$tab_list_modif)){
             $modification->service=$service;
+            $modification->service_initial=$service1_initial;
         }
+
         $modification->list_modif=$listemodif;
+        $modification->id_personne=$id_personne;
+        $modification->id_users=Auth::user()->id;
+        $modification->id_service=Auth::user()->service->id;
 
         $modification->vehicule=$vehicule;
         $modification->logement=$logement;

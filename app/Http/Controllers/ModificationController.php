@@ -644,6 +644,7 @@ $j=0;
         $modification = Modification::find($id);
         $personne= Personne_presente::find($modification->id_personne);
         $contrats = Contrat::find($personne->id_contrat);
+        dd($contrats);
         $categories_initials = Categorie::where('id_definition','=',$contrats->id_definition)->get();
         $tab[0]=$contrats;
 

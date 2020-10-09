@@ -164,13 +164,16 @@ class ModificationController extends Controller
 
         $modification = Modification::find($id);
        //dd(json_decode($modification->list_modif));
+        $modification = Modification::find($id);
+        $personne= Personne_presente::find($modification->id_personne);
+        $contrat = Contrat::find($personne->id_contrat);
         $entites = Entite::all();
         $typecontrats = Typecontrat::all();
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
         $modifications = Modification::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->get();
-        return view('modification/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification'));
+        return view('modification/ConsulModification',compact('entites','typecontrats','definitions','categories','services','modifications','modification','contrat'));
     }
     public function liste_salaire($slug){
 
@@ -644,7 +647,6 @@ $j=0;
         $modification = Modification::find($id);
         $personne= Personne_presente::find($modification->id_personne);
         $contrats = Contrat::find($personne->id_contrat);
-        dd($contrats);
         $categories_initials = Categorie::where('id_definition','=',$contrats->id_definition)->get();
         $tab[0]=$contrats;
 

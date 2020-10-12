@@ -193,7 +193,7 @@
                                 <div class=" col-lg-4">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
                                     <input type="hidden" id="dm_budgetMensuel_initial"  name="dm_budgetMensuel_initial" value="">
-                                    <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control {{isset($listmodif) && in_array('Le budget mensuel',$listmodif)?'modifie':''}}" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
+                                    <input type="text" name="budgetMensuel" id="dm_budgetMensuel" class="form-control {{isset($listmodif) && in_array('Les conditions de rémunérations',$listmodif)?'modifie':''}}" value="{{isset($modification)? $modification->budgetMensuel:''}}"/>
                                 </div>
 
                                 <div class=" col-lg-4">
@@ -347,7 +347,7 @@
 
 
               $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
-   
+
 
 
         // $('#service1').select2();
@@ -395,20 +395,117 @@
             $("#gratification1").val("");
             $("#gratification_initial").val("");
         }
-
-        auchangement();
-        function auchangement(){
-            vider();
+//pour récupérer les elements de la modification qui n'ont pas été touché
+        auchangement_first();
+        function auchangement_first(){
+            //vider();
             var id_personne =$('#id_personne1').val();
 
             $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
-                console.log(data);
-                listmodifavenant=    data['Listmodifavenants'][0];
-                console.log(listmodifavenant);
+               // console.log(data);
+                let listmodifavenant=    data['Listmodifavenants'][0];
+                console.log(listmodifeff);
                 $("#service1").val(data[0].service);
                 $("#service1_initial").val(data[0].service);
                 $("#matricule1").val(data[0].matricule);
-                $("#id_fonction1").val(data[0].fonction);
+                if( $.inArray('La fonction' , listmodifeff) == -1){
+                    $("#id_fonction1").val(data[0].fonction);
+                }else{
+
+                }
+                $("#id_fonction1_initial").val(data[0].fonction);
+                if( $.inArray('Le type de contrat' , listmodifeff) == -1){
+                    $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
+                }else{
+
+                }
+                $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
+                if( $.inArray('La date de fin' , listmodifeff) == -1){
+                    $("#datefinc1").val(data[0].datefinc);
+                }else{
+
+                }
+                $("#datefinc1_initial").val(data[0].datefinc);
+
+                $("#datedebutc1").val(data[0].datedebutc);
+                if( $.inArray('La durée hebdomadaire de travail' , listmodifeff) == -1){
+                    $("#regime1").val(data[0].regime);
+                }else{
+
+                }
+                $("#regime1_initial").val(data[0].regime);
+
+
+
+                if( $.inArray('La définition' , listmodifeff) == -1){
+                    $("#dm_id_definition").val(data[0].id_definition);
+                }else{
+
+                }
+                $("#dm_id_definition_initial").val(data[0].id_definition);
+
+
+                if( $.inArray('Les dotations en nature' , listmodifeff) == -1){
+                    $("#logement2").val(data[0].logement);
+                    $("#vehicule1").val(data[0].vehicule);
+                    $("#gratification1").val(data[0].gratification);
+                }else{
+
+                }
+               $("#dm_logement_initial").val(data[0].logement);
+
+
+                $("#vehicule_initial").val(data[0].vehicule);
+
+
+                $("#gratification_initial").val(data[0].gratification);
+
+                var tab= $.parseJSON(data[0].valeurSalaire);
+                var somme=0;
+                $.each(tab,function(index, value ){
+                    var x=value.valeur;
+                    somme=somme+ parseInt(x);
+                })
+
+                if( $.inArray('Les conditions de rémunérations' , listmodifeff) == -1){
+                    $("#dm_budgetMensuel").val(somme);
+                }else{
+
+                }
+
+                $("#dm_budgetMensuel_initial").val(somme);
+
+              //  var id_definition=  data[0].id_definition;
+                var id_definition=  $("#dm_id_definition").val();
+                $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+                 //   console.log(data);
+                    var lesOptions="<option value=''>Selectionner une catégorie</option>";
+                    $.each(data, function( index, value ) {
+                        lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                    });
+                    $("#dm_id_categorie").empty();
+                    $("#dm_id_categorie").append(lesOptions);
+                });
+
+                $("#dm_id_categorie_initial").val(data[0].id_categorie);
+                setTimeout(function(){ $("#dm_id_categorie").val(data[0].id_categorie); }, 1000);
+
+
+            });
+        }
+        function auchangement(){
+            //vider();
+            var id_personne =$('#id_personne1').val();
+
+            $.get('{{URL::asset('modifications/lapersonne_contrat')}}/'+id_personne,function(data){
+               // console.log(data);
+                let listmodifavenant=    data['Listmodifavenants'][0];
+                console.log(listmodifeff);
+                $("#service1").val(data[0].service);
+                $("#service1_initial").val(data[0].service);
+                $("#matricule1").val(data[0].matricule);
+
+                    $("#id_fonction1").val(data[0].fonction);
                 $("#id_fonction1_initial").val(data[0].fonction);
                 $("#id_type_contrat1").val(data['lecontrat'][0].id_type_contrat);
                 $("#id_type_contrat1_initial").val(data['lecontrat'][0].id_type_contrat);
@@ -439,7 +536,7 @@
 
                 var id_definition=  data[0].id_definition;
                 $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-                    console.log(data);
+                 //   console.log(data);
                     var lesOptions="<option value=''>Selectionner une catégorie</option>";
                     $.each(data, function( index, value ) {
                         lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
@@ -457,13 +554,14 @@
 
 
         $('#id_personne1').change(function(){
+            vider();
             auchangement();
         });
         $("#dm_id_definition").change(function (e) {
             // alert("test");
             var id_definition=  $("#dm_id_definition").val();
             $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-                console.log(data);
+              //  console.log(data);
                 var lesOptions="<option value=''>Selectionner une catégorie</option>";
                 $.each(data, function( index, value ) {
                     lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
@@ -494,7 +592,7 @@ $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
         });
         var id_personne="{{isset($modification)?$modification->id_personne:''}}";
         $.get("{{URL::asset('modifications/lapersonne_contrat')}}/"+id_personne,function(data){
-                    console.log(data);
+                   // console.log(data);
                     $("#dm_id_categorie").val(data[0].id_categorie);
                     $("#dm_id_categorie_initial").val(data[0].id_categorie);
                 }
@@ -532,7 +630,7 @@ $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                     });
                 }
             }
-            console.log(listmodifeff);
+          //  console.log(listmodifeff);
             affiche_liste_modification();
         });
         $("#service1").change(function(e){
@@ -781,7 +879,7 @@ $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
             if(variable_initial!==variable){
                 if(!$(this).hasClass("modifie")){
                     $(this).addClass("modifie");
-                    if( $.inArray('Les conditions de rémunérations' , animaux) == -1){
+                    if( $.inArray('Les conditions de rémunérations' , listmodifeff) == -1){
                         listmodifeff.push(removeItem);
                     }
 
@@ -798,7 +896,7 @@ $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
                         listmodifeff =jQuery.grep(listmodifeff, function(value) {
                             return value != "Les conditions de rémunérations";
                         });
-                        // listmodifeff.push("Les conditions de rémunérations");
+                         listmodifeff.push("Les conditions de rémunérations");
                     }
                 }
             }

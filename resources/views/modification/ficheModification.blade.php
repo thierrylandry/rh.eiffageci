@@ -345,9 +345,9 @@
         @endif
 
 
-                @if(!isset($modification) && Auth::user()->hasRole('Ressource_humaine'))
+
               $('#id_personne1').select2({ placeholder: 'Selectionner une personne'});
-        @endif
+   
 
 
         // $('#service1').select2();
@@ -355,6 +355,7 @@
         $('#forfait').select2({ placeholder: 'Selectionner un forfait'});
         $('#debit_internet').select2({ placeholder: 'Selectionner un debit internet'});
         $('#assurance_maladie').select2({ placeholder: 'Selectionner un assurance maladie'});
+       // $('#id_fonction1').select2({ placeholder: 'Selectionner une fonction'});
         var dob = new Date($('#datenaissancet').val());
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));

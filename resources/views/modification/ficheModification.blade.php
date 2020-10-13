@@ -179,6 +179,10 @@
                                     <label for="text-input" class=" form-control-label">Catégorie profesionnelle</label>
                                     <input type="hidden" id="dm_id_categorie_initial" name="dm_id_categorie_initial"  value="">
                                     <select class="form-control {{isset($listmodif) && in_array('La catégorie',$listmodif)?'modifie':''}}" name="id_categorie" id="dm_id_categorie">
+                                        <option value="">Sélectionner une catégorie</option>
+                                        @foreach($categories as $categorie)
+                                            <option value="{{$categorie->libelle}}" {{isset($modification) && $categorie->libelle==$modification->id_categorie?"selected":""}}>{{$categorie->libelle}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class=" col-lg-4">
@@ -477,18 +481,27 @@
 
               //  var id_definition=  data[0].id_definition;
                 var id_definition=  $("#dm_id_definition").val();
+              //  alert(id_definition);
+                var anciencat= $("#dm_id_categorie").val();
                 $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-                 //   console.log(data);
+
                     var lesOptions="<option value=''>Selectionner une catégorie</option>";
                     $.each(data, function( index, value ) {
                         lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
+                        console.log(lesOptions);
                     });
                     $("#dm_id_categorie").empty();
                     $("#dm_id_categorie").append(lesOptions);
                 });
 
                 $("#dm_id_categorie_initial").val(data[0].id_categorie);
-                setTimeout(function(){ $("#dm_id_categorie").val(data[0].id_categorie); }, 1000);
+                setTimeout(function(){if( $.inArray('La catégorie' , listmodifeff) == -1){
+                    $("#dm_id_categorie").val(data[0].id_categorie);
+
+                }else{
+                 //   alert(data[0].id_categorie);
+                    $("#dm_id_categorie").val(anciencat);
+                }  }, 1000);
 
 
             });
@@ -559,9 +572,10 @@
         });
         $("#dm_id_definition").change(function (e) {
             // alert("test");
+            var val= $("#dm_id_categorie").val();
             var id_definition=  $("#dm_id_definition").val();
             $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
-              //  console.log(data);
+                //  console.log(data);
                 var lesOptions="<option value=''>Selectionner une catégorie</option>";
                 $.each(data, function( index, value ) {
                     lesOptions+="<option value='"+value.libelle+"'>"+value.libelle+"</option>" ;
@@ -569,18 +583,19 @@
                 $("#dm_id_categorie").empty();
                 $("#dm_id_categorie").append(lesOptions);
             });
-
             setTimeout(function(){ $("#dm_id_categorie").val($("#dm_id_categorie_initial").val()); }, 1000);
+
 
         });
         //exécuter sa au chargement de la page
-                @if(isset($modification))
+/*
+        @if(isset($modification))
         var id_definition= "{{$modification->id_definition}}"+"ici";
-                @else
+        @else
         var id_definition="";
         @endif
 
-$.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
+        $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
 
             // console.log(data);
             var lesOptions="<option value=''>Selectionner une catégorie</option>";
@@ -592,12 +607,12 @@ $.get("{{URL::asset('listercat')}}/"+id_definition,function(data){
         });
         var id_personne="{{isset($modification)?$modification->id_personne:''}}";
         $.get("{{URL::asset('modifications/lapersonne_contrat')}}/"+id_personne,function(data){
-                   // console.log(data);
-                    $("#dm_id_categorie").val(data[0].id_categorie);
-                    $("#dm_id_categorie_initial").val(data[0].id_categorie);
-                }
+                // console.log(data);
+                $("#dm_id_categorie").val(data[0].id_categorie);
+                $("#dm_id_categorie_initial").val(data[0].id_categorie);
+            }
         );
-
+*/
 
         //fin
         function affiche_liste_modification(){

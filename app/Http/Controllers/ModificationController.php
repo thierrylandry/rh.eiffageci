@@ -471,6 +471,7 @@ $j=0;
         $id_definition=$parameters['id_definition'];
         if(isset($parameters['id_categorie'])){
             $id_categorie=$parameters['id_categorie'];
+           // dd($id_categorie);
         }else{
             $id_categorie=$dm_id_categorie_initial;
         }

@@ -441,6 +441,7 @@ class ContratController extends Controller
         $contact= $parameters["contact"];
         $position= $parameters["position"];
         $id_definition= $parameters["id_definition"];
+        $id_fonction= $parameters["id_fonction"];
         $regime= $parameters["regime"];
         $id_typeModification= $parameters["id_typeModification"];
         $id_recrutement_modification= $parameters["id_recrutement_modification"];
@@ -473,6 +474,9 @@ class ContratController extends Controller
         $contrat= new Contrat();
         $salaire= new Salaire();
 
+        $personne=Personne::find($personne->id);
+        $personne->fonction =$id_fonction;
+        $personne->save();
         $salaire->id_personne=$personne->id;
         $salaire->valeurSalaire=json_encode($rubriques->toArray());
         $salaire->save();

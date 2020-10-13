@@ -78,20 +78,23 @@
 
             qui était de <?php $affiche=0;
                 if(isset($contratprec->valeurSalaire)){
-                    foreach(json_decode($contratprec->valeurSalaire) as $valeurSalaire):
-                        $affiche+=$valeurSalaire->valeur;
-                    endforeach;
-                    echo $affiche;
-                }
+                    foreach(json_decode($contratprec->valeurSalaire) as $valeurSalaire1):
 
+                        $affiche+=floatval(str_replace(' ','',$valeurSalaire1->valeur));
+
+                    endforeach;
+                    echo number_format($affiche, 0, ',', ' ');
+                }
 
                 ?> F CFA  devient <b class="classtext"><?php $affiche=0;
-                if(isset($contrat->valeurSalaire)){
-                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
-                        $affiche+=$valeurSalaire->valeur;
-                    endforeach;
-                    echo $affiche;
-                }
+                    if(isset($contrat->valeurSalaire)){
+                        foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire1):
+
+                            $affiche+=floatval(str_replace(' ','',$valeurSalaire1->valeur));
+
+                        endforeach;
+                        echo number_format($affiche, 0, ',', ' ');
+                    }
 
 
                 ?></b>  F CFA détaillée comme suit :</p><br>

@@ -105,6 +105,18 @@
                             </td>
                             <td>
                                 <div class="table-data-feature">
+                                    <div class="input-group-btn">
+                                        <div class="btn-group">
+                                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-primary"> Action</button>
+                                            <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
+                                                <a  href="{{route('fiche_personnel',$modification->personne->slug)}}" class="dropdown-item" >Consulter la fiche</a>
+                                                <a  href="{{route('detail_personne',$modification->personne->slug)}}" class="dropdown-item">Modifier les informations</a>
+                                                <a href="{{route('document_administratif',$modification->personne->slug)}}" class="dropdown-item"> gérer les dossiers</a>
+                                                <a href="{{route('lister_contrat',$modification->personne->id)}}" class="dropdown-item">Gérer les contrats</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     @if($modification->etat==1)
                                         @if($mode=="validation")
                                             <a href="{{route("modification.consulter",$modification->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="More">

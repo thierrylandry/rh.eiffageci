@@ -59,7 +59,7 @@
         <p>- <b class="classtext"> {{"Le régime horraire"}}</b> qui était {{$contratprec->regime}} devient <b class="classtext">{{$contrat->regime}} </b> </p>
         @break
         @case("La fonction")
-        <p>- <b class="classtext"> {{$modif}}</b>  qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient <b class="classtext">{{$contrat->personne->fonction()->first()->libelle}} </b> </p>
+        <p>- <b class="classtext"> {{$modif}}</b>  qui était {{$contrat->modification->fonction_initial()->first()->libelle}} devient <b class="classtext">{{$contrat->fonction()->first()->libelle}} </b> </p>
 
         @break
         @case("Le type de contrat")

@@ -195,8 +195,8 @@
                                             <td>{{isset($modification)?$modification->budgetMensuel:''}}</td>
                                             <td>
                                                 <?php $affiche=0;
-                                                if($modification->valeurSalaire!=""){
-                                                    foreach(json_decode($modification->budgetMensuel_initial) as $valeurSalaire):
+                                                if($contrat->valeurSalaire!=""){
+                                                    foreach(json_decode($contrat->budgetMensuel_initial) as $valeurSalaire):
                                                         $affiche+=$valeurSalaire->valeur;
                                                     endforeach;
                                                     echo $affiche;

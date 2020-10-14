@@ -196,7 +196,7 @@
                                             <td>
                                                 <?php $affiche=0;
                                                 if($contrat->valeurSalaire!=""){
-                                                    foreach(json_decode($contrat->budgetMensuel_initial) as $valeurSalaire):
+                                                    foreach(json_decode($contrat->valeurSalaire) as $valeurSalaire):
                                                         $affiche+=$valeurSalaire->valeur;
                                                     endforeach;
                                                     echo $affiche;

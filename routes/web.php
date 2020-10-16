@@ -671,7 +671,7 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
     Route::get('/demande',[
         'as'=>'demande',
         'uses'=>'RecrutementController@ajouter_recrutement',
-        'roles'=>['Chef_de_service']
+        'roles'=>['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
     Route::get('/avenant_general',[
         'as'=>'avenant_general',
@@ -681,7 +681,7 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
     Route::post('/enregistrer',[
         'as'=>'enregistrer',
         'uses'=>'RecrutementController@enregistrer_recrutement',
-        'roles'=>['Chef_de_service']
+        'roles'=>['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/gestion',[
@@ -693,43 +693,43 @@ Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {
     Route::get('/validation',[
         'as'=>'validation',
         'uses'=>'RecrutementController@valider_recrutement',
-        'roles' => ['Chef_de_projet']
+        'roles' => ['Chef_de_projet','chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/ActionValider/{slug}',[
         'as'=>'ActionValider',
         'uses'=>'RecrutementController@ActionValider',
-        'roles' => ['Chef_de_projet']
+        'roles' => ['Chef_de_projet','chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::post('/ActionRejeter',[
         'as'=>'ActionRejeter',
         'uses'=>'RecrutementController@ActionRejeter',
-        'roles' => ['Chef_de_projet']
+        'roles' => ['Chef_de_projet','chef_de_service']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/modification/{slug}',[
         'as'=>'modification',
         'uses'=>'RecrutementController@modification',
-        'roles' => ['Chef_de_service']
+        'roles' => ['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
 
     Route::get('/consulter/{slug}',[
         'as'=>'consulter',
         'uses'=>'RecrutementController@afficher',
-        'roles' => ['Gestion_recrutement']
+        'roles' => ['Gestion_recrutement',]
     ])->middleware('auth');
 
     Route::get('/supprimer/{slug}',[
         'as'=>'supprimer',
         'uses'=>'RecrutementController@supprimer',
-        'roles' => ['Chef_de_service']
+        'roles' => ['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
 
     Route::post('/modifier',[
         'as'=>'modifier',
         'uses'=>'RecrutementController@modifier_recrutement',
-        'roles' => ['Chef_de_service']
+        'roles' => ['Chef_de_service','CONDUCTEUR_TRAVEAUX_SEMELLES','CONDUCTEUR_TRAVEAUX_CAISSONS','CONDUCTEUR_TRAVEAUX_LABORATOIRE','CONDUCTEUR_TRAVEAUX_MAINTENANCE','CONDUCTEUR_TRAVEAUX_SOUDEURS','CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON','CONDUCTEUR_TRAVEAUX_NERVURE','CONDUCTEUR_TRAVEAUX_BETON_PROJETE']
     ])->middleware('roles')->middleware('auth');
 
     Route::post('/ConditionRemuneration',[

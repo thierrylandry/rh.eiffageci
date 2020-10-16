@@ -14,6 +14,7 @@ use App\Jobs\EnvoiesDemandeValider;
 use App\Jobs\EnvoiesInformationDemandeur;
 use App\Jobs\EnvoiesRefusRecrutement;
 use App\Metier\Json\Rubrique;
+use App\Personne_presente;
 use App\Recrutement;
 use App\Rubrique_salaire;
 use App\Services;
@@ -43,7 +44,7 @@ class RecrutementController extends Controller
         $categories = Categorie::all();
         $services = Services::all();
         $definitions = Definition::all();
-        $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+        $recrutements = Recrutement::where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
        // dd($recrutements);
         $uniteJours=uniteJour::all();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','uniteJours'));
@@ -244,7 +245,7 @@ $j=0;
         $recruement->NbrePersonne=$nombre_personne;
         $recruement->id_uniteJour=$id_uniteJour;
         $recruement->slug=Str::slug($posteAPouvoir.$id_entite.$date->format('dmYhis'));
-
+        $recruement->etat=$this->en_fonction_de_tes_roles_quel_est_la_force_de_ta_demande(Auth::user()->id_personne);
 
         $recruement->save();
 
@@ -255,15 +256,9 @@ $j=0;
             $this->je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($mes_droits,$user->email);
         endforeach;
          */
-        $contact=Array();
-        foreach($users as $user):
-
-            if($user->hasRole('Chef_de_projet')){
-                 $contact[]=$user->email;
-
-            }
-
-        endforeach;
+        $contact=$this->contact_a_notifier($recruement);
+        //dd($contact);
+        $recruement->save();
 
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
@@ -271,6 +266,53 @@ $j=0;
 
 
         return redirect()->route('recrutement.demande')->with('success',"La demande de recrutement a été  enregistrée avec succès");
+
+    }
+    public function en_fonction_de_tes_roles_quel_est_la_force_de_ta_demande($id_personne){
+        $etat=0;
+        //dd($id_personne);
+        $personne =Personne_presente::find($id_personne);
+        if(Auth::user()->hasRole('Ressource_humaine')){
+            if(isset($personne) & $personne->id_sous_service==""){
+                $etat=1;
+            }else{
+                $etat=0;
+            }
+        }elseif(Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SEMELLES')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CAISSONS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_LABORATOIRE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_MAINTENANCE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_SOUDEURS')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_CENTRAL_A_BETON')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_NERVURE')||Auth::user()->hasRole('CONDUCTEUR_TRAVEAUX_BETON_PROJETE')){
+            $etat=0;
+        }else{
+            $etat=1;
+        }
+
+        return $etat;
+    }
+    public function contact_a_notifier($recrutement){
+        $contacts = Array();
+        $users=User::where('id_chantier_connecte','=',Auth::user()->id_chantier_connecte)->get();
+        $personne = Personne_presente::find(Auth::user()->id_personne);
+        //dd($personne);
+        if($recrutement->etat==0){
+//dd($personne->sous_service->role->name);
+            $libelle_role=$personne->sous_service->role->name;
+            foreach($users as $user):
+                if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service){
+                    $contacts[]=$user->email;
+                }
+            endforeach;
+        }elseif($recrutement->etat==1){
+            foreach($users as $user):
+
+                if($recrutement->user->id_personne!=$recrutement->id && $user->hasRole('Chef_de_projet')){
+                    $contacts[]=$user->email;
+                }
+                if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=Auth::user()->id_personne){
+                    $contacts[]=$user->email;
+
+                }
+
+            endforeach;
+        }
+        return $contacts;
 
     }
     public function je_connais_tes_droits_je_te_notifie_de_linformation_qui_te_concerne($les_droits,$email){
@@ -409,7 +451,11 @@ $j=0;
         $recruement = Recrutement::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
-        $recruement->etat=2;
+        if($recruement->etat==0){
+            $recruement->etat=1;
+        }else{
+            $recruement->etat=2;
+        }
         $recruement->id_valideur=Auth::user()->id;
 
         $recruement->save();
@@ -420,24 +466,39 @@ $j=0;
             $this->je_connais_tes_droits_je_te_notifie_pour_la_gestion($mes_droits,$user->email);
         endforeach;
         */
-        $contact=Array();
-        $contactdemandeur=Array();
-        foreach($users as $user):
+        if($recruement->etat==2){
+            $contact=Array();
+            $contactdemandeur=Array();
+            foreach($users as $user):
 
-            if($user->hasRole('Ressource_humaine')){
-                $contact[]=$user->email;
+                if($user->hasRole('Ressource_humaine')){
+                    $contact[]=$user->email;
 
+                }
+
+            endforeach;
+
+            if(!empty($contact)){
+                $this->dispatch(new EnvoiesDemandeValider(1,$contact));
             }
+            $contactdemandeur[]=$recruement->user()->first()->email;
+            if(!empty($contactdemandeur)){
+                $this->dispatch(new EnvoiesInformationDemandeur(1,$contactdemandeur,$recruement));
+            }
+        }else{
 
-        endforeach;
+            $contactdemandeur=Array();
+            $contact=$this->contact_a_notifier($recruement);
 
-        if(!empty($contact)){
-            $this->dispatch(new EnvoiesDemandeValider(1,$contact));
+            if(!empty($contact)){
+                $this->dispatch(new EnvoiesDemandeValidation(1,$contact));
+            }
+            $contactdemandeur[]=$recruement->user()->first()->email;
+            if(!empty($contactdemandeur)){
+               // $this->dispatch(new EnvoiesInformationDemandeur(1,$contactdemandeur,$recruement));
+            }
         }
-        $contactdemandeur[]=$recruement->user()->first()->email;
-        if(!empty($contactdemandeur)){
-            $this->dispatch(new EnvoiesInformationDemandeur(1,$contactdemandeur,$recruement));
-        }
+
         return redirect()->route('recrutement.validation')->with('success',"La demande de recrutement a été  validée avec succès");
 
     }
@@ -457,7 +518,7 @@ $j=0;
         $recrutement = Recrutement::where('slug','=',$slug)->first();
         $date= new DateTime(null);
 
-        $recrutement->etat=0;
+        $recrutement->etat=4;
         $recrutement->id_valideur=Auth::user()->id;
 
         $recrutement->save();
@@ -489,7 +550,22 @@ $j=0;
     public function valider_recrutement(){
 
         $entites = Entite::all();
-        $recrutements= Recrutement::where('etat','=',1)->get();
+        $tabusers= array();
+        if(Auth::user()->hasRole('Chef_de_projet') && Auth::user()->hasRole('Chef_de_service') ){
+            $recrutements= Recrutement::whereIn('etat',[1,0])->get();
+        }if(Auth::user()->hasRole('Chef_de_projet')){
+            $recrutements= Recrutement::whereIn('etat',[1])->get();
+        }else{
+            if(Auth::user()->hasRole('Chef_de_service')){
+                $users=User::where('id_service','=',Auth::user()->id_service)->get();
+                foreach ($users as $us):
+                    $tabusers[]=$us->id;
+                endforeach;
+                $recrutements= Recrutement::whereIn('etat',[0])->whereIn('id_users',$tabusers)->get();
+            }
+        }
+
+
         $mode="validation";
 
         $typecontrats = Typecontrat::all();

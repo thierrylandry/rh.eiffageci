@@ -96,7 +96,7 @@
                             <td>
                                 {{isset($recrutement)?'budget mensuel '.$recrutement->budgetMensuel:''}}
                                 <div class="table-data-feature">
-                                @if($recrutement->etat==1)
+                                @if($recrutement->etat==1 || $recrutement->etat==0)
                                         @if($mode=="validation")
                                         <a href="{{route('recrutement.ActionValider',$recrutement->slug)}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Send">
                                             <i class="zmdi zmdi-mail-send"></i> Valider

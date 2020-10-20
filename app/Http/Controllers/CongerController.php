@@ -317,7 +317,7 @@ class CongerController extends Controller
         $contacts = Array();
         $users=User::where('id_chantier_connecte','=',Auth::user()->id_chantier_connecte)->get();
         $personne = Personne_presente::find($absence_ou_conges->id_personne);
-        dd($users);
+       // dd($users);
         if($absence_ou_conges->etat==0){
 //dd($personne->sous_service->role->name);
             $libelle_role=$personne->sous_service->role->name;
@@ -334,7 +334,7 @@ class CongerController extends Controller
                 }
                 if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=Auth::user()->id_personne){
                     $contacts[]=$user->email;
-
+dd("ici");
                 }
 
             endforeach;

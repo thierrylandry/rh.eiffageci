@@ -530,7 +530,7 @@ class CongerController extends Controller
         $contactdemandeur=Array();
         $personne= Personne::find($id_personne);
         $contact=$this->contact_a_notifier($conge);
-dd($contact);
+//dd($contact);
         if(!empty($contact)){
             $this->dispatch(new EnvoiesDemandeValidation_personnalise(4,$contact,$conge));
         }

@@ -329,10 +329,10 @@ class CongerController extends Controller
         }elseif($absence_ou_conges->etat==1){
             foreach($users as $user):
 
-                if($absence_ou_conges->user->hasRole('Chef_de_service')  && $user->hasRole('Chef_de_projet')){
+                if($absence_ou_conges->user->hasRole('Chef_de_service')  && $user->hasRole('Chef_de_projet') && $personne->id!=$user->id_personne){
                     $contacts[]=$user->email;
                 }
-                if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service ){
+                if($user->hasRole('Chef_de_service') && $personne->lecontrat()->where('etat','=',1)->first()->id_service==$user->id_service && $personne->id!=$user->id_personne){
                     $contacts[]=$user->email;
             //    dd("ici");
                 }

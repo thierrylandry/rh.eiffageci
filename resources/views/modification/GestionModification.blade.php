@@ -63,12 +63,13 @@
                     <tr>
                         <th>NUMERO</th>
                         <th>STATUS</th>
+                        <th>DATE DE CREATION</th>
                         <th>TYPE MODIFICATION <MARQUEE > (Ce type peut changer au cours de la procédure à la convenance des RHs)</MARQUEE></th>
                         <th>DEMANDEUR</th>
                         <th>PERSONNE</th>
                         <th>DIRECTION</th>
                         <th>LISTE DES MODIFICATIONS</th>
-                        <th>DATE DE CREATION</th>
+
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -86,7 +87,9 @@
                                     <i class=" fa fa-check-circle-o" style="background-color: black"></i>
                                 @endif
                             </td>
-
+                            <td><?php if(isset($modification->created_at)){$date = new DateTime($modification->created_at);
+                                    echo $date->format('d-m-Y');}?>
+                            </td>
                             <td>@if(isset($modification->id_typeModification) && $modification->id_typeModification==2)
                                     <span style="background-color:#57b846; color:white">Renouvellement</span>
                                 @elseif(isset($modification->id_typeModification) && $modification->id_typeModification==3)
@@ -104,9 +107,7 @@
                                        </button>
                                    @endforeach
                             </td>
-                            <td><?php if(isset($modification->created_at)){$date = new DateTime($modification->created_at);
-                                    echo $date->format('d-m-Y');}?>
-                            </td>
+
                             <td>
                                 <div class="table-data-feature">
                                     <div class="input-group-btn">

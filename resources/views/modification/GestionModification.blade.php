@@ -104,7 +104,7 @@
                                        </button>
                                    @endforeach
                             </td>
-                            <td><?php if(isset($contrat->created_at)){$date = new DateTime($contrat->created_at);
+                            <td><?php if(isset($modification->created_at)){$date = new DateTime($modification->created_at);
                                     echo $date->format('d-m-Y');}?>
                             </td>
                             <td>

@@ -195,6 +195,7 @@
     <script src="{{ asset("js/vfs_fonts.js") }}"></script>
     <script src="{{ asset("js/buttons.html5.min.js") }}"></script>
     <script src="{{ asset("js/buttons.print.min.js") }}"></script>
+    <script src="{{ asset("js/date-euro.js") }}"></script>
     <script type="application/javascript">
         $("#addrubrique").click(function (e) {
             $($("#rubriquetemplate").html()).appendTo($("#rubriques_petit"));
@@ -238,7 +239,7 @@
 
         $(document).ready(function() {
             var table= $('#table_recrutement').DataTable({
-                "order": [[ 0, "ASC" ]],
+                "order": [[ 0, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
@@ -260,7 +261,8 @@
                             'selectRow': true
                         }
                     },
-                    { "width": "10%", "targets": 2 }
+                    { type: 'date-euro', targets: 2 },
+                    { "width": "5%", "targets": 1 }
                 ],
                 "select": {
                     'style': 'multi'

@@ -68,6 +68,7 @@
                         <th>PERSONNE</th>
                         <th>DIRECTION</th>
                         <th>LISTE DES MODIFICATIONS</th>
+                        <th>DATE DE CREATION</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -102,6 +103,9 @@
                                        <button type="button" class="btn btn-outline-primary" disabled>{{$modif}}
                                        </button>
                                    @endforeach
+                            </td>
+                            <td><?php if(isset($contrat->created_at)){$date = new DateTime($contrat->created_at);
+                                    echo $date->format('d-m-Y');}?>
                             </td>
                             <td>
                                 <div class="table-data-feature">

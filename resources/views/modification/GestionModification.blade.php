@@ -88,7 +88,9 @@
                                 @endif
                             </td>
                             <td><?php if(isset($modification->created_at)){$date = new DateTime($modification->created_at);
-                                    echo $date->format('d-m-Y');}?>
+                                    echo $date->format('Y-m-d');
+
+                            }?>
                             </td>
                             <td>@if(isset($modification->id_typeModification) && $modification->id_typeModification==2)
                                     <span style="background-color:#57b846; color:white">Renouvellement</span>

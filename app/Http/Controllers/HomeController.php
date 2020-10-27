@@ -213,7 +213,66 @@ class HomeController extends Controller
 
         $repartition_tranche_age[]=$vardiag;
         //dd($repartition_tranche_age);
+        $anciennete_contrat_moins_6_mois_ = DB::table('ancienete')
+            ->where("id_entite","=",$id_entite_connecter)
+            ->where('temps','<',6)
+            ->select("ancienete.id_personne","temps")
+            ->get();
+        $anciennete_contrat__6_a_12_mois_ = DB::table('ancienete')
+            ->where("id_entite","=",$id_entite_connecter)
+            ->where('temps','>=',6)
+            ->where('temps','<=',12)
+            ->select("ancienete.id_personne","temps")
+            ->get();
+        $anciennete_contrat__12_a_24_mois_ = DB::table('ancienete')
+            ->where("id_entite","=",$id_entite_connecter)
+            ->where('temps','>=',12)
+            ->where('temps','<=',24)
+            ->select("ancienete.id_personne","temps")
+            ->get();
 
+             $anciennete_contrat__24_a_36_mois_ = DB::table('ancienete')
+            ->where("id_entite","=",$id_entite_connecter)
+            ->where('temps','>=',24)
+            ->where('temps','<=',36)
+            ->select("ancienete.id_personne","temps")
+            ->get();
+             $anciennete_contrat_superieur_a_36_mois_ = DB::table('ancienete')
+                        ->where("id_entite","=",$id_entite_connecter)
+                        ->where('temps','>',36)
+                        ->select("ancienete.id_personne","temps")
+                        ->get();
+         $repartition_ancienete= Array();
+                $vardiag = New Vardiag();
+                $vardiag->name="< 6 mois";
+                $vardiag->y=sizeof($anciennete_contrat_moins_6_mois_);
+
+                $repartition_ancienete[]=$vardiag;
+
+                $vardiag = New Vardiag();
+                $vardiag->name="6 à 12 mois";
+                $vardiag->y=sizeof($anciennete_contrat__6_a_12_mois_);
+
+                $repartition_ancienete[]=$vardiag;
+
+                $vardiag = New Vardiag();
+                $vardiag->name="12 à 24 mois";
+                $vardiag->y=sizeof($anciennete_contrat__12_a_24_mois_);
+
+                $repartition_ancienete[]=$vardiag;
+
+                $vardiag = New Vardiag();
+                $vardiag->name="24 à 36 mois";
+                $vardiag->y=sizeof($anciennete_contrat__24_a_36_mois_);
+
+                $repartition_ancienete[]=$vardiag;
+
+                $vardiag = New Vardiag();
+                $vardiag->name="> 36 mois";
+                $vardiag->y=sizeof($anciennete_contrat_superieur_a_36_mois_);
+
+                $repartition_ancienete[]=$vardiag;
+/*
         $anciennete_contrat_moins_3_mois_ = DB::table('ancienete')
             ->where("id_entite","=",$id_entite_connecter)
             ->where('temps','<',3)
@@ -245,8 +304,6 @@ class HomeController extends Controller
             ->select("ancienete.id_personne","temps")
             ->get();
 
-
-        //->join('contrat','contrat.id_personne','=','personne.id')
         $repartition_ancienete= Array();
         $vardiag = New Vardiag();
         $vardiag->name="< 3 mois";
@@ -277,7 +334,7 @@ class HomeController extends Controller
         $vardiag->y=sizeof($anciennete_contrat_superieur_a_12_mois_);
 
         $repartition_ancienete[]=$vardiag;
-
+*/
         //repartition par service
         $repartition_service_tab = DB::table('personne_presente')
             ->where("id_entite","=",$id_entite_connecter)
@@ -421,7 +478,7 @@ class HomeController extends Controller
                 $personne_sortie_unique[$pers->id]=$pers;
             }
 
-        
+
             endforeach;
 
         //dd($personne_sortie_unique);

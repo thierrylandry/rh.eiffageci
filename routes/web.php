@@ -492,6 +492,15 @@ Route::get('/mailfin_contrat_service',[
     'uses'=>'EtatsController@mailfin_contrat_service',
 ]);
  //parametre création des utilisateurs
+Route::get('/projet',[
+    'as'=>'projet',
+    'uses'=>'ProjetController@projet',
+])->middleware('auth');
+
+Route::post('/modifier_projet',[
+    'as'=>'modifier_projet',
+    'uses'=>'ProjetController@modifier_projet',
+])->middleware('auth');
 Route::get('/profil/{id}',[
     'as'=>'profil',
     'uses'=>'UserController@profil',
@@ -508,22 +517,18 @@ Route::get('/utilisateur',[
 Route::get('/fonctions',[
     'as'=>'fonctions',
     'uses'=>'FonctionsController@fonctions',
-    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::post('/save_fonction',[
     'as'=>'save_fonction',
     'uses'=>'FonctionsController@save_fonction',
-    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::get('/pmodifier_fonction/{id}',[
     'as'=>'pmodifier_fonction',
     'uses'=>'FonctionsController@pmodifier_fonction',
-    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::post('/modifier_fonction',[
     'as'=>'modifier_fonction',
     'uses'=>'FonctionsController@modifier_fonction',
-    'roles' => ['Parametrage','Ressource_humaine']
 ])->middleware('auth')->middleware('roles');
 Route::get('/supprimer_fonction/{id}',[
     'as'=>'supprimer_fonction',

@@ -102,8 +102,7 @@
     <table style="margin: 0; padding: 0;">
         <tr>
             <td width="50%" valign="center" align="left">
-              <!--  <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}">  -->
-            
+               <img src="{{ asset("images/Eiffage_2400_01_colour_RGB.jpg") }}">
             </td>
         </tr>
     </table>

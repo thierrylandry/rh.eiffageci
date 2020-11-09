@@ -218,6 +218,9 @@
                         <a class="js-arrow" href="#">
                             <i class="zmdi zmdi-settings"></i>PARAMETRES</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('utilisateur_block')  @yield('fonction_block') @yield('lister_partenaire_block')@yield('lister_entite_block')>
+                            <li class="@yield('projet')">
+                                <a href="{{route('projet')}}">Projet</a>
+                            </li>
                             <li class="@yield('fonction')">
                                 <a href="{{route('fonctions')}}">Fonctions</a>
                             </li>

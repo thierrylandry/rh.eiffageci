@@ -23,6 +23,7 @@ use App\Typecontrat;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -924,13 +925,14 @@ class ContratController extends Controller
     }
     public function contratpdf($id){
         $contrat = Contrat::find($id);
+        $projet=Entite::find(Auth::user()->id_chantier_connecte);
             $pieces=json_decode($contrat->personne->pieces);
         if($contrat->id_type_contrat==1){
-            $pdf = PDF::loadView('contrat.contratcddpdf',compact('contrat','pieces'));
+            $pdf = PDF::loadView('contrat.contratcddpdf',compact('contrat','pieces','projet'));
         }elseif($contrat->id_type_contrat==2){
-            $pdf = PDF::loadView('contrat.contratcdipdf',compact('contrat','pieces'));
+            $pdf = PDF::loadView('contrat.contratcdipdf',compact('contrat','pieces','projet'));
         }elseif($contrat->id_type_contrat==3){
-            $pdf = PDF::loadView('contrat.convention_stage',compact('contrat','pieces'));
+            $pdf = PDF::loadView('contrat.convention_stage',compact('contrat','pieces','projet'));
         }
 
 
@@ -947,14 +949,16 @@ class ContratController extends Controller
 
         $contrat=Contrat::find($id);
         $pieces=json_decode($contrat->personne->pieces);
-        $pdf = PDF::loadView('contrat.renouvellement_contratpdf',compact('contrat','pieces'));
+        $projet=Entite::find(Auth::user()->id_chantier_connecte);
+        $pdf = PDF::loadView('contrat.renouvellement_contratpdf',compact('contrat','pieces','projet'));
 
         return $pdf->stream();
     }
     public function avenant_type_contratpdf($id){
 
         $contrat=Contrat::find($id);
-        $pdf = PDF::loadView('contrat.avenant',compact('contrat'));
+        $projet=Entite::find(Auth::user()->id_chantier_connecte);
+        $pdf = PDF::loadView('contrat.avenant',compact('contrat','projet'));
 
         return $pdf->stream();
     }
@@ -977,13 +981,15 @@ class ContratController extends Controller
         $array_diff=array_diff($listavn,$list_modif);
        // dd($listavn);
         // dd($array_intersection);
-        $pdf = PDF::loadView('contrat.avenant',compact('contrat','listmodifavenants','array_diff','array_intersection','contratprec'));
+        $projet=Entite::find(Auth::user()->id_chantier_connecte);
+        $pdf = PDF::loadView('contrat.avenant',compact('contrat','listmodifavenants','array_diff','array_intersection','contratprec','projet'));
 
         return $pdf->stream();
     }
     public function avenant_renum_contratpdf($id){
         $contrat=Contrat::find($id);
-        $pdf = PDF::loadView('contrat.avenant_renum_contratpdf',compact('contrat'));
+        $projet=Entite::find(Auth::user()->id_chantier_connecte);
+        $pdf = PDF::loadView('contrat.avenant_renum_contratpdf',compact('contrat','projet'));
 
         return $pdf->stream();
     }

@@ -42,9 +42,7 @@
 
     <h1 style="font-size: 10pt; padding: 0;text-align: left"><u>ENTRE LES SOUSSIGNES</u></h1>
 
-    <p><b>Eiffage Génie Civil Côte d’Ivoire,</b> succursale de la société française Eiffage Génie Civil,
-       sise à Avenue Lamblin Tour BIAO 8è étage, Abidjan, N°CC : 1739936Z, RCCM : CI-ABJ-2017-B22961 représenté par Monsieur Nicolas DESCAMPS,
-       son Directeur Projet.
+    <p><b>{{isset($projet)?$projet->entreprise:''}}</b> {{isset($projet)?$projet->description:''}}
     </p><br>
     <p>Etant dénommée pour la rédaction des présentes <b>« l’Employeur »,</b></p>
 

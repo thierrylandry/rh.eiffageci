@@ -568,6 +568,7 @@ class AbsenceController extends Controller
 
         $absence = Absence::find($id);
         $personne= Personne_presente::find($absence->id_personne);
+        $projet = Entite::find(Auth::user()->id_chantier_connecte);
         /*debut du traçages*/
         $ip			= $_SERVER['REMOTE_ADDR'];
         if (isset($_SERVER['REMOTE_HOST'])){
@@ -577,7 +578,7 @@ class AbsenceController extends Controller
         }
         Log::info('ip :'.$ip.'; Machine: '.$nommachine.' ;téléchargement de demande dabsence n°'.$id, ['nom et prenom' => Auth::user()->nom.' '.Auth::user()->prenom]);
        // dd($absence->personne);
-        $pdf = PDF::loadView('absences.documentAbs',compact('absence','personne'));
+        $pdf = PDF::loadView('absences.documentAbs',compact('absence','personne','projet'));
         return $pdf->stream();
       //  return view('absences/documentAbs',compact('absence','personne'));
     }

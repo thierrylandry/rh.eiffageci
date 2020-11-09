@@ -732,7 +732,7 @@ class CongerController extends Controller
         $dernierconge = Absconges::where('id_personne','=',$id)
             ->orderBy('debut','DESC')
             ->first();
-
+        $projet = Entite::find(Auth::user()->id_chantier_connecte);
         /* */
         $personne= Personne::find($conge->id_personne);
 
@@ -764,7 +764,7 @@ class CongerController extends Controller
 
         /* */
         // dd($absence->personne);
-        $pdf = PDF::loadView('conges.documentConge',compact('conge','personne','conges','tabconges'));
+        $pdf = PDF::loadView('conges.documentConge',compact('conge','personne','conges','tabconges','projet'));
         return $pdf->stream();
         //  return view('conges/documentConge',compact('conge','personne'));
     }

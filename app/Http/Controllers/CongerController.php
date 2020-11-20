@@ -789,6 +789,7 @@ class CongerController extends Controller
         $mavariable=$parameters['mavariable'];
 
         $tab_id= explode(',',$mavariable);
+        $contactdemandeur = Array();
         //   dd($tab_id);
         foreach($tab_id as $id):
             if($id!=""){

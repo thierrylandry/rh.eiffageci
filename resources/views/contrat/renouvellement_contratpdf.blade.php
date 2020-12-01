@@ -248,8 +248,8 @@
           @if(isset($contrat->valeurSalaire))
           @foreach(json_decode($contrat->valeurSalaire) as $valeur)
           <tr>
-            <td style="font-size: 12pt" width="40%">{{$valeur->libelle}}</td>
-            <td width="60%"  class="classtext" style="font-size: 12pt"><b>{{$valeur->valeur}}</b></td>
+            <td style="font-size: 12pt" width="40%">{{number_format($valeur->libelle, 0, ',', ' ')}}</td>
+            <td width="60%"  class="classtext" style="font-size: 12pt"><b>{{number_format($valeur->valeur, 0, ',', ' ')}}</b></td>
           </tr>
             @endforeach
             @endif

@@ -246,12 +246,12 @@ Route::get('/voir_mail/{id}',[
 Route::post('/save_renouvellezment_avenant',[
     'as'=>'save_renouvellezment_avenant',
     'uses'=>'ContratController@save_renouvellezment_avenant',
-    'roles' => ['Gestion_rh']
+    'roles' => ['Gestion_rh','Chef_de_projet']
 ])->middleware('auth');
 Route::post('/save_renouvellement_multiple',[
     'as'=>'save_renouvellement_multiple',
     'uses'=>'ModificationController@save_renouvellement_multiple',
-    'roles' => ['Gestion_rh']
+    'roles' => ['Gestion_rh','Chef_de_projet']
 ])->middleware('auth');
 
 Route::get('/rupture_contrat/{id}',[

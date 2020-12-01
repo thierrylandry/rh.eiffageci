@@ -475,7 +475,7 @@ Route::get('/supprimer_passage/{id}',[
 Route::get('/fin_contrat',[
     'as'=>'fin_contrat',
     'uses'=>'EtatsController@fin_contrat',
-    'roles' => ['Ressource_humaine']
+    'roles' => ['Ressource_humaine','Chef_de_projet']
 ])->middleware('auth')->middleware('roles');
 //fin contrat par service
 Route::get('/fin_contrat_service/{id_service}',[

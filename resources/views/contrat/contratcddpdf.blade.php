@@ -227,7 +227,13 @@
                 $datetime1 = date_create($contrat->datedebutc);
                 $datetime2 = date_create($contrat->periode_essaie);
                 $diff=date_diff($datetime1,$datetime2);
-                echo $diff->format("%m mois");
+
+                if($diff->format("%m mois")<=0){
+                    echo "1 mois";
+                }else{
+                    echo $diff->format("%m mois");
+                }
+
             }  ?></b>.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche
     </p><br>

@@ -222,7 +222,11 @@
                 $datetime1 = date_create($contrat->datedebutc);
                 $datetime2 = date_create($contrat->periode_essaie);
                 $diff=date_diff($datetime1,$datetime2);
-                echo $diff->format("%m mois");
+                if($diff->format("%m mois")<=0){
+                    echo "1 mois";
+                }else{
+                    echo $diff->format("%m mois");
+                }
             }  ?></b> renouvelable une fois au cours de laquelle chacune des Parties pourra rompre le contrat sans indemnités ni préavis.
         En cas de renouvellement de la période d’essai, la notification interviendra par courrier avec simple décharge du travailleur avant la fin de ladite période.
         Dans le mois de son embauche, l’Employé sera soumis à un examen médical d’embauche.

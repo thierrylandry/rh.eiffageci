@@ -235,7 +235,7 @@
                 </td>
             </tr>           <tr>
                 <td width="40%" align="left">
-                    <p style="font-size: 12pt; margin-left: 0;"><b>Nicolas DESCAMPS</b></p>
+                    <p style="font-size: 12pt; margin-left: 0;"><b>{{isset($projet)?$projet->representant:''}}}</b></p>
                 </td>
                 <td width="5%" >
                     <b class="classtext" style="font-size: 12pt;">{{$contrat->personne->nom}} {{$contrat->personne->prenom}}</b>

@@ -57,7 +57,7 @@ class ModificationController extends Controller
 
         //dd(Auth::user());
      //   dd($modifiaction);
-        $fonctions = Fonction::orderBy('libelle','desc');
+        $fonctions = Fonction::orderBy('libelle','desc')->get();
         $Listmodifavenants=Listmodifavenant::all();
         return view('modification/ficheModification',compact('entites','typecontrats','definitions','categories','services','modifications','personnes','fonctions','Listmodifavenants'));
     }

@@ -117,7 +117,7 @@ class ContratController extends Controller
         $nature_contrats= Nature_contrat::all();
         $recrutements= Recrutement::where('NbrePersonne','<>','NbrePersonneEffect')->get();
         $assurance_maladies=Assurance_maladie::all();
-        $fonctions =Fonction::all();
+        $fonctions =Fonction::orderBy('libelle','asc')->get();
 
         $resultat="";
         if(!empty($contrat->valeurSalaire)){

@@ -147,7 +147,8 @@
                 jQuery("#chantier").html(option);
 
             });
-        })
+        });
+        /*
         jQuery("#password").change(function (){
             var email=jQuery('#email').val();
             jQuery("#chantier").html('');
@@ -164,7 +165,7 @@
                 jQuery("#chantier").html(option);
 
             });
-        })
+        })*/
         jQuery("#chantier").click(function (){
 
             var email=jQuery('#email').val();

@@ -35,10 +35,24 @@ $repertoires= Liste_telephonique::all();
         return view('etats/repertoire',compact('repertoires','entites'));
     }
     public function fin_contrat(){
-        $contrats= Fin_contrat::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+
+      /*
         $entites= Entite::all();
         $typecontrats= Typecontrat::all();
         return view('etats/fin_contrat',compact('contrats','entites','typecontrats'));
+*/
+        $contrats= Fin_contrat::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
+        $fincontrat_traites = Fin_contrat_traite::where('datefinc','>=',Carbon::now()->format('Y-m-d'))
+            ->where('datefinc','<', Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'))
+            ->get();
+        //dd(Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'));
+        $list_traites= Array();
+        foreach($fincontrat_traites as $fincontrat_traite):
+            $list_traites[]=$fincontrat_traite->id_personne;
+        endforeach;
+        $entites= Entite::all();
+        $typecontrats= Typecontrat::all();
+        return view('etats/fin_contrat_all_service',compact('contrats','entites','typecontrats','fincontrat_traites','list_traites'));
     }
     public function fin_contrat_service($id_service){
         $service =Services::find($id_service);

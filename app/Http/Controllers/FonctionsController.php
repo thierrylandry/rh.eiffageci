@@ -24,7 +24,7 @@ class FonctionsController extends Controller
         $fonction=new Fonction();
         $fonction->libelle=$libelle;
         $fonction->save();
-        return redirect()->route('fonctions')->with('success',"La fonction   a été ajoutée avec succès");
+        return redirect()->back()->with('success',"La fonction   a été ajoutée avec succès");
     }
     public function modifier_fonction(Request $request){
         $parameters=$request->except(['_token']);
@@ -35,7 +35,7 @@ class FonctionsController extends Controller
         $fonction->libelle=$libelle;
         $fonction->save();
 
-        return redirect()->route('fonctions')->with('success',"La fonction   a été modifiées avec succès");
+        return redirect()->back()->with('success',"La fonction   a été modifiées avec succès");
     }
     public function pmodifier_fonction($id){
 
@@ -49,6 +49,6 @@ class FonctionsController extends Controller
         $fonction=Fonction::find($id);
 
         $fonction->delete();
-        return redirect()->route('fonctions')->with('success',"La fonction  a été supprimées avec succès");
+        return redirect()->back()->with('success',"La fonction  a été supprimées avec succès");
     }
 }

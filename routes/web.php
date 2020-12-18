@@ -253,6 +253,11 @@ Route::post('/save_renouvellement_multiple',[
     'uses'=>'ModificationController@save_renouvellement_multiple',
     'roles' => ['Gestion_rh','Chef_de_projet']
 ])->middleware('auth');
+Route::post('/refuser_renouvellement_multiple',[
+    'as'=>'refuser_renouvellement_multiple',
+    'uses'=>'ModificationController@refuser_renouvellement_multiple',
+    'roles' => ['Gestion_rh','Chef_de_projet','chef_de_service']
+])->middleware('auth');
 
 Route::get('/rupture_contrat/{id}',[
     'as'=>'rupture_contrat',

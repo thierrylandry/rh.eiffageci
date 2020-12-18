@@ -10,6 +10,7 @@ use App\Definition;
 use App\Entite;
 use App\Fin_contrat_traite;
 use App\Fonction;
+use App\Jobs\EnvoieRufusRenouvellement;
 use App\Jobs\EnvoiesDemandeValidation;
 use App\Jobs\EnvoiesDemandeValidation_personnalise;
 use App\Jobs\EnvoiesDemandeValider;
@@ -139,6 +140,55 @@ class ModificationController extends Controller
         }
 
         return redirect()->back()->with('success',"Les demandes de renouvellement ont été ajoutées avec succès");
+    }
+    public function refuser_renouvellement_multiple( Request $request){
+
+
+
+        $parameters=$request->except(['_token']);
+//dd($parameters);
+        $lesid=explode(',',$parameters["id_personne_non_renouvelle"]);
+        foreach($lesid as $id):
+            // on remplie le tableau des demandes traitées
+            $contrats= DB::select('call fin_contrat_service('.Auth::user()->service->id.','.Auth::user()->id_chantier_connecte.')');
+            $listes = array();
+            foreach($contrats as $contrat):
+                if($contrat->id_p==$id){
+                    $listes[]=$contrat;
+                    $fin_contrat_traite = new Fin_contrat_traite();
+                    $fin_contrat_traite->id_personne=$id;
+                    $fin_contrat_traite->id_service=Auth::user()->service->id;
+                    $fin_contrat_traite->nom=$contrat->nom;
+                    $fin_contrat_traite->prenom=$contrat->prenom;
+                    $fin_contrat_traite->libelle=$contrat->libelle;
+                    $fin_contrat_traite->datedebutc=$contrat->datedebutc;
+                    $fin_contrat_traite->datefinc=$contrat->datefinc;
+                    $fin_contrat_traite->etat=0;
+                    $fin_contrat_traite->save();
+                }
+
+                endforeach;
+            // fin du remplissement du tableau des demandes traitées
+        endforeach;
+
+        $users =User::all();
+        $contact=Array();
+        $contactdemandeur=Array();
+        foreach($users as $user):
+
+            if($user->hasRole('Ressource_humaine')){
+                $contact[]=$user->email;
+
+            }
+
+        endforeach;
+
+        if(!empty($contact)){
+            $this->dispatch(new EnvoieRufusRenouvellement($listes,$contact));
+        }
+
+        //return redirect()->back()->with('success',"Les refus de renouvellement ont été enregistré avec succès");
+        return 1;
     }
     public function modification($id){
 

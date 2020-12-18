@@ -60,9 +60,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-2">
             <button class="btn btn-success" data-toggle="modal" data-target="#RVmodal" id="renouveller"> Renouveller</button>
+        </div>
+        <div class="col-sm-8">
 
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-danger" id="pas_renouveller"> Ne pas Renouveller</button>
         </div>
 
     </div>
@@ -92,6 +97,7 @@
                         <th>TYPE DE CONTRAT</th>
                         <th>DATE D'EMBAUCHE</th>
                         <th>DATE FIN</th>
+                        <th>ETAT</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -103,6 +109,7 @@
                                 <td>{{$fincontrat_traite->libelle}}</td>
                                 <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datedebutc)->format('d-m-Y')}}</td>
                                 <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datefinc)->format('d-m-Y')}}</td>
+                                <td>@if($fincontrat_traite->etat==0)&#128553; Non renouvellé @else &#128525; Renouvellé@endif </td>
                             </tr>
                     @endforeach
                     </tbody>
@@ -241,6 +248,41 @@
                    // $('#RVmodal').modal('show');
                 }{
                     $("#id_personnetype_contratrenouvellement").val(mavariable);
+                }
+                //console.log(mavariable);
+            });
+
+            $('#pas_renouveller').click(function(e){
+                var rows_selected = table.column(0).checkboxes.selected();
+                console.log(rows_selected);
+                var mavariable="";
+                $.each(rows_selected, function(index, rowId){
+                    // Create a hidden element
+                  //  console.log(rowId);
+                    mavariable=mavariable+','+rowId;
+
+                });
+
+
+                if(mavariable==""){
+                    alert("Veuillez selectionner au moins un élément");
+                    location.reload(true);
+                    e.preventDefault();
+                  //  $("#RVmodal").modal('toggle');
+                   // $('#RVmodal').modal('show');
+                }{
+                var _token="{{ csrf_token() }}";
+                    $.post("../refuser_renouvellement_multiple",{id_personne_non_renouvelle:mavariable,_token:_token },
+                            function (data) {
+
+                                if(data==1){
+                                    alert('succès');
+                                    location.reload(true);
+                                }
+                            }
+                    );
+
+
                 }
                 //console.log(mavariable);
             });

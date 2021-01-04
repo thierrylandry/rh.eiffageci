@@ -137,7 +137,7 @@
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence->valeur)?(isset($competence)?$competence:''):old('competences[]') }}">
+                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence->valeur)?$competence->valeur:(isset($competence)?$competence:old('competences[]')) }}">
                                     </div>
                                 </div>
                             </div>

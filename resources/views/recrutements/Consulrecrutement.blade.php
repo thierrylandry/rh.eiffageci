@@ -103,7 +103,7 @@
                                 @if(isset($competences))
                                     @foreach($competences as $competence)
                                         @if(!empty($competence))
-                                            <li>{{$competence}}</li>
+                                            <li>{{$competence->valeur}}</li>
                                         @endif
                                     @endforeach
                                 @endif
@@ -127,7 +127,7 @@
                                 @if(isset($taches))
                                     @foreach($taches as $tache)
                                         @if(!empty($tache))
-                                            <li>{{$tache}}</li>
+                                            <li>{{$tache->valeur}}</li>
                                         @endif
                                     @endforeach
                                 @endif

@@ -63,6 +63,7 @@ class RecrutementController extends Controller
         $definitions = Definition::all();
         $recrutements = Recrutement::where('etat','<>',0)->where('id_service','=',Auth::user()->service->id)->where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
         $competences= json_decode($recrutement->competenceRecherche);
+       // dd($competences);
         $taches= json_decode($recrutement->tache);
         $uniteJours=uniteJour::all();
         return view('recrutements/ficheRecrutement',compact('entites','typecontrats','definitions','categories','debit_internets','forfaits','assurance_maladies','services','recrutements','recrutement','competences','taches','uniteJours'));

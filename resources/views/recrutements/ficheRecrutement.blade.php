@@ -133,11 +133,11 @@
                         </br>
                         <div id="competences" class="form-inline">
                             @if(isset($competences))
-                                @foreach($competences as $competence)
+                                @foreach($competences as $keyCompetence => $competence)
                             <div class="form-control-label">
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence)?$competence:old('competences[]') }}">
+                                        <input type="text" name="competences[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($competence)?$competence->valeur:old('competences[]') }}">
                                     </div>
                                 </div>
                             </div>
@@ -174,12 +174,12 @@
                         </br>
                         <div id="taches" class="form-inline">
                             @if(isset($taches))
-                                @foreach($taches as $tache)
+                                @foreach($taches as $keyTache =>$tache)
                             <div class="form-control-label">
 
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache)?$tache:old('taches[]') }}">
+                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache)?$tache->valeur:old('taches[]') }}">
                                     </div>
                                 </div>
                             </div>

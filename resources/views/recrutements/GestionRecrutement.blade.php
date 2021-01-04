@@ -179,7 +179,7 @@
 
         $(document).ready(function() {
             var table= $('#table_recrutement').DataTable({
-                "order": [[ 0, "desc" ]],
+                "order": [[ 2, "desc" ]],
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'

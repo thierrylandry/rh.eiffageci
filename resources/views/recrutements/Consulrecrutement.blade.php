@@ -103,7 +103,7 @@
                                 @if(isset($competences))
                                     @foreach($competences as $competence)
                                         @if(!empty($competence))
-                                            <li>{{$competence->valeur}}</li>
+                                            <li>{{ isset($competence->valeur)?$competence->valeur:(isset($competence)?$competence:'')}}</li>
                                         @endif
                                     @endforeach
                                 @endif
@@ -127,7 +127,7 @@
                                 @if(isset($taches))
                                     @foreach($taches as $tache)
                                         @if(!empty($tache))
-                                            <li>{{$tache->valeur}}</li>
+                                            <li>{{ isset($tache->valeur)?$tache->valeur:(isset($tache)?$tache:'')}}</li>
                                         @endif
                                     @endforeach
                                 @endif

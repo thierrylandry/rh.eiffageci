@@ -179,7 +179,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <div class="form-line">
-                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache->valeur)?$tache->valeur:old('taches[]') }}">
+                                        <input type="text" name="taches[]" class="valeur_c form-control" placeholder="Valeur" value="{{ isset($tache->valeur)?$tache->valeur:(isset($tache)?$tache:old('$taches[]')) }}">
                                     </div>
                                 </div>
                             </div>

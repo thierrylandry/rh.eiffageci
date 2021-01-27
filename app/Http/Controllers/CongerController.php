@@ -646,8 +646,7 @@ class CongerController extends Controller
                 ->where('absconges.etat','=',1)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
 
-                ->where([['contrat.id_service','=',Auth::user()->id_service]])
-                ->orWhere([['roles.name','=','Chef_de_service']])
+               
             //    ->where('personne.id','!=',Auth::user()->id_personne)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->distinct()->get();
             $conges_valides_par_mois = DB::table('absconges')

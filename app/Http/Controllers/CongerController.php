@@ -637,14 +637,14 @@ class CongerController extends Controller
 
         if(Auth::user()->hasRole('Chef_de_projet')){
             $conges = DB::table('absconges')
-                ->Join('type_conges','type_conges.id','=','absconges.id_motif_demande')
-                ->Join('personne','personne.id','=','absconges.id_personne')
-                ->Join('contrat','personne.id','=','contrat.id_personne')
-                ->Join('users','users.id','=','absconges.id_users')
+                ->leftJoin('type_conges','type_conges.id','=','absconges.id_motif_demande')
+                ->leftJoin('personne','personne.id','=','absconges.id_personne')
+                ->leftJoin('contrat','personne.id','=','contrat.id_personne')
+                ->leftJoin('users','users.id','=','absconges.id_users')
                 ->leftJoin('user_role','user_role.user_id','=','users.id')
                 ->Join('roles','user_role.role_id','=','roles.id')
                 ->where('absconges.etat','=',1)
-              
+                ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
 
 
             //    ->where('personne.id','!=',Auth::user()->id_personne)

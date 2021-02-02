@@ -674,6 +674,11 @@ Route::get('/personne_contrat',[
     'uses'=>'EtatsController@personne_contrat',
 
 ])->middleware('auth');
+Route::get('/personne_presente',[
+    'as'=>'personne_presente',
+    'uses'=>'EtatsController@personne_presente',
+
+])->middleware('auth');
 
 //recrutement
 Route::group(['prefix' => 'recrutements', 'as' => 'recrutement.'], function () {

@@ -24,6 +24,8 @@
                         <th>NOM</th>
                         <th>PRENOMS</th>
                         <th>TYPE DE CONTRAT</th>
+                        <th>DATE DE DEBUT</th>
+                        <th>DATE DE FIN</th>
 
                     </tr>
                     </thead>
@@ -38,6 +40,15 @@
                                     @else
                                     {{$contrat->libelle}}
                             @endif
+                            </td>
+                            <td>{{$contrat->datedebutc}}</td>
+                            <td>
+                                @if($contrat->libelle=="CDI")
+
+                                @else
+                                    {{$contrat->datefinc}}
+                                @endif
+
                             </td>
                         </tr>
                     @endforeach

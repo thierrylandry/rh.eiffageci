@@ -75,6 +75,11 @@ $repertoires= Liste_telephonique::all();
         $entites= Entite::all();
         return view('etats/personnecontrat',compact('contrats','entites'));
     }
+    public function personne_presente(){
+        $contrats= Personne_presente::all();
+        $entites= Entite::all();
+        return view('etats/personnecontrat',compact('contrats','entites'));
+    }
 
     public function expatrie(){
         $contrats= Fin_contrat::all();

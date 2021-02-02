@@ -23,6 +23,7 @@
                     <tr>
                         <th>NOM</th>
                         <th>PRENOMS</th>
+                        <th>SEXE</th>
                         <th>TYPE DE CONTRAT</th>
                         <th>DATE DE DEBUT</th>
                         <th>DATE DE FIN</th>
@@ -34,6 +35,7 @@
                         <tr class="tr-shadow">
                             <td>{{$contrat->nom}}</td>
                             <td>{{$contrat->prenom}}</td>
+                            <td>@if($contrat->sexe=='F') {{"Féminin"}} @else {{"Masculin"}} @endif</td>
                             <td>
                                 @if($contrat->definition=="Stagiaire")
                                     {{$contrat->Stagiaire}}

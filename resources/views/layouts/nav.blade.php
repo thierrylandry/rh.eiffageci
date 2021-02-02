@@ -198,6 +198,9 @@
                     <a class="js-arrow " href="#">
                         <i class="fa fa-list" ></i>ETATS</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list" @yield('etats')>
+                        <li class="@yield('personne_contrat')">
+                            <a href="{{route('personne_presente')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Personne présente</a>
+                        </li>
                         <li class="@yield('fin_contrat')">
                             <a href="{{route('fin_contrat')}}"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Fin de contrat</a>
                         </li>

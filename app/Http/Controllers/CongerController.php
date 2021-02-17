@@ -293,7 +293,7 @@ class CongerController extends Controller
 
         }else{
             $personnes = Personne_presente::where('service','=',Auth::user()->id_service)->where('id_entite','=',Auth::user()->id_chantier_connecte)->orderBy('nom', 'ASC')->orderBy('prenom', 'ASC')->get();
-            dd($personnes);
+           // dd($personnes);
         }
 
         return $personnes;

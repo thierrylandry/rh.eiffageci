@@ -107,8 +107,8 @@
                                 <td>{{$fincontrat_traite->nom}}</td>
                                 <td>{{$fincontrat_traite->prenom}}</td>
                                 <td>{{$fincontrat_traite->libelle}}</td>
-                                <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datedebutc)->format('d-m-Y')}}</td>
-                                <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($contrat->datefinc)->format('d-m-Y')}}</td>
+                                <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($fincontrat_traite->datedebutc)->format('d-m-Y')}}</td>
+                                <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($fincontrat_traite->datefinc)->format('d-m-Y')}}</td>
                                 <td>@if($fincontrat_traite->etat==0)&#128553; Non renouvellé @else &#128525; Renouvellé@endif </td>
                             </tr>
                     @endforeach

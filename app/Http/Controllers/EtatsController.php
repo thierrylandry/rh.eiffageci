@@ -45,7 +45,7 @@ $repertoires= Liste_telephonique::all();
         $fincontrat_traites = Fin_contrat_traite::where('datefinc','>=',Carbon::now()->format('Y-m-d'))
             ->where('datefinc','<', Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'))
             ->get();
-            dd($fincontrat_traites);
+           // dd($fincontrat_traites);
         //dd(Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'));
         $list_traites= Array();
         foreach($fincontrat_traites as $fincontrat_traite):

@@ -101,7 +101,7 @@
                                             <td>{{$fincontrat_traite->nom}}</td>
                                             <td>{{$fincontrat_traite->prenom}}</td>
                                             <td>{{$fincontrat_traite->libelle}}</td>
-                                            <td>{{$fincontrat_traite->personne->fonction->libelle}}</td>
+                                            <td>{{$fincontrat_traite->personne->lafonction->libelle}}</td>
                                             <td>{{isset($fincontrat_traite->services->libelle)?$fincontrat_traite->services->libelle:''}}</td>
                                             <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($fincontrat_traite->datedebutc)->format('d-m-Y')}}</td>
                                             <td><i class="fa fa-calendar-times-o" aria-hidden="true"></i>{{\Carbon\Carbon::parse($fincontrat_traite->datefinc)->format('d-m-Y')}}</td>

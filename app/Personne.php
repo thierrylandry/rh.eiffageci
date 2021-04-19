@@ -41,7 +41,9 @@ class Personne extends Model
     public function fonction(){
         return $this->belongsTo('App\Fonction', "fonction","id");
     }
-
+    public function lafonction(){
+        return $this->belongsTo('App\Fonction', "fonction","id");
+    }
     public function getEntiteString(){
         if($this->id_entite==1){
             return "PHB";

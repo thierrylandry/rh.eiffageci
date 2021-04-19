@@ -48,7 +48,7 @@ $repertoires= Liste_telephonique::all();
         //dd(Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'));
         $list_traites= Array();
         foreach($fincontrat_traites as $fincontrat_traite):
-            $list_traites[]=$fincontrat_traite->id_personne;
+            $list_traites[$fincontrat_traite->id_personne]=$fincontrat_traite->id_personne;
         endforeach;
         $entites= Entite::all();
         $typecontrats= Typecontrat::all();

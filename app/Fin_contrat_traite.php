@@ -12,7 +12,7 @@ class Fin_contrat_traite extends Model
     public function personne(){
         return $this->belongsTo(Personne::class, "id_personne");
     }
-    public function service(){
+    public function services(){
         return $this->belongsTo(Services::class, "id_service");
     }
 }

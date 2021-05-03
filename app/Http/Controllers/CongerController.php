@@ -643,8 +643,7 @@ class CongerController extends Controller
                 ->leftJoin('personne','personne.id','=','absconges.id_personne')
                 ->leftJoin('contrat','personne.id','=','contrat.id_personne')->where('contrat.etat','=',1)
                 ->leftJoin('users','users.id','=','absconges.id_users')->where('absconges.etat','=',1)
-                ->where('contrat.id_service','=',Auth::user()->id_service)
-                ->where('personne.id','!=',Auth::user()->id_personne)
+
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->select('absconges.id','jour','solde','debut','fins','reprise','adresse_pd_conges','contact_telephonique','absconges.etat','libelle as libelle_type_conges','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.service','personne.nom','personne.prenom')->get();
 

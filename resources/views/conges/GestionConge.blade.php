@@ -300,7 +300,7 @@
                     url: "{{ asset('public/js/French.json')}}"
                 },
 
-                "ordering":true,
+                "ordering":false,
                 "responsive": true,
                 "paging": false,
                 "createdRow": function( row, data, dataIndex){

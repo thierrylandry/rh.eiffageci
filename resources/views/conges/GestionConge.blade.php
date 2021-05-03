@@ -85,7 +85,7 @@
                                 @endif
                                 {{isset($conge->type_permission)?$conge->type_permission->libelle:''}}
                             </td>
-                            <td>{{sset($conge->created_at)?$conge->created_at:''}}</td>
+                            <td>{{isset($conge->created_at)?$conge->created_at:''}}</td>
                             <td> <label class="switch switch-text switch-success"><input type="checkbox"class="switch-input" @if($conge->solde==1)checked @endif >
                                     <span data-on="OUI" data-off="NON" class="switch-label" style="font-weight: bold"></span></label></td>
                             <td>{{$conge->libelle_type_conges}}</td>

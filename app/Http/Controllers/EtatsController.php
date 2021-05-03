@@ -42,11 +42,15 @@ $repertoires= Liste_telephonique::all();
         return view('etats/fin_contrat',compact('contrats','entites','typecontrats'));
 */
         $contrats= Fin_contrat::where('id_entite','=',Auth::user()->id_chantier_connecte)->get();
-        $fincontrat_traites = Fin_contrat_traite::where('datefinc','>=',Carbon::now()->format('Y-m-d'))
+        $fincontrat_traitesss = Fin_contrat_traite::where('datefinc','>=',Carbon::now()->format('Y-m-d'))
             ->where('datefinc','<', Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'))
             ->distinct()->get();
-            dd($fincontrat_traites);
+            //dd($fincontrat_traites);
         //dd(Carbon::parse( Carbon::now())->addDays(31)->format('Y-m-d'));
+        $fincontrat_traites= Array();
+        foreach($fincontrat_traitesss as $fincontrat_traitess):
+            $fincontrat_traites[$fincontrat_traitess->id_personne]=$fincontrat_traitess;
+        endforeach;
         $list_traites= Array();
         foreach($fincontrat_traites as $fincontrat_traite):
             $list_traites[$fincontrat_traite->id_personne]=$fincontrat_traite->id_personne;

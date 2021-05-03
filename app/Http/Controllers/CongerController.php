@@ -709,7 +709,7 @@ class CongerController extends Controller
                 ->where('contrat.id_service','=',Auth::user()->id_service)
                 ->where('personne_presente.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->WhereIn('personne_presente.id_sous_service',$les_sous_service)
-                ->select('absconges.id','jour','solde','debut','fins','reprise','type_conges.libelle as libelle_type_conges','adresse_pd_conges','contact_telephonique','absconges.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne_presente.slug','personne_presente.service','personne_presente.nom','personne_presente.prenom')
+                ->select('absconges.id','jour','solde','debut','fins','reprise','type_conges.libelle as libelle_type_conges','adresse_pd_conges','contact_telephonique','absconges.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne_presente.slug','personne_presente.service','personne_presente.nom','personne_presente.prenom','absconges.created_at')
                 ->orderBy('absconges.created_at','DESC')->get();
 
             $conges_valides_par_mois = DB::table('absconges')

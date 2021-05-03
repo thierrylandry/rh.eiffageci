@@ -57,6 +57,7 @@
                     <tr>
                         <th>ID</th>
                         <th>STATUS</th>
+                        <th>Date de demande</th>
                         <th>SOLDE</th>
                         <th>MOTIF DE LA DEMANDE</th>
                         <th>DEMANDEUR</th>

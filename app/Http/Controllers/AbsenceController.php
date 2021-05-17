@@ -418,7 +418,7 @@ class AbsenceController extends Controller
                 ->where('roles.name','=','Chef_de_service')
                 ->orwhere([['contrat.id_service','=',Auth::user()->id_service],['absence.etat','=',1]])
                 ->groupBy('absence.id')
-                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
             $absences_valides_par_mois = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
@@ -431,7 +431,7 @@ class AbsenceController extends Controller
                 ->where('absence.id_valideur','=',Auth::user()->id)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->groupBy('absence.id')
-                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','absence.etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
         }elseif(Auth::user()->hasRole('Chef_de_service')){
             //  dd('ici');
             $absences = DB::table('absence')
@@ -441,7 +441,7 @@ class AbsenceController extends Controller
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
             $absences_valides_par_mois = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
@@ -449,7 +449,7 @@ class AbsenceController extends Controller
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
 
         }else{
             //  dd('ici');
@@ -466,7 +466,7 @@ class AbsenceController extends Controller
                 ->where('personne_presente.service','=',Auth::user()->id_service)
                 ->where('personne_presente.id_entite','=',Auth::user()->id_chantier_connecte)
                 ->WhereIn('personne_presente.id_sous_service',$les_sous_service)
-                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne_presente.slug','personne_presente.nom','personne_presente.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne_presente.slug','personne_presente.nom','personne_presente.prenom')->orderBy('absence.created_at','DESC')->get();
             $absences_valides_par_mois = DB::table('absence')
                 ->leftJoin('type_permission','type_permission.id','=','absence.id_personne')
                 ->leftJoin('personne','personne.id','=','absence.id_personne')
@@ -474,7 +474,7 @@ class AbsenceController extends Controller
                 ->where('personne.service','=',Auth::user()->id_service)
                 ->where('personne.id','!=',Auth::user()->id_personne)
                 ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+                ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
 
         }
 
@@ -498,7 +498,7 @@ class AbsenceController extends Controller
             ->leftJoin('personne','personne.id','=','absence.id_personne')
             ->leftJoin('users','users.id','=','absence.id_users')->where('etat','>=',2)
             ->where('personne.id_entite','=',Auth::user()->id_chantier_connecte)
-            ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->get();
+            ->select('absence.id','jour','debut','fin','reprise','etat','users.nom as nom_users','users.prenoms as prenoms_users','personne.slug','personne.nom','personne.prenom')->orderBy('absence.created_at','DESC')->get();
 
              //  $absences= Absence::where('etat','>=',2)->get();
                 $mode="gestion_absence";

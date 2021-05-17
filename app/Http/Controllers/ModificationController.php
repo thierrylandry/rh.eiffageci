@@ -660,7 +660,7 @@ $j=0;
     }
 
     public function lister_modification(){
-        $modifications= Modification::where('etat','<>',0)->where('etat','<>',1)->get();
+        $modifications= Modification::where('etat','<>',0)->where('etat','<>',1)->orderBy('created_at','DESC')->get();
         $entites = Entite::all();
         $mode="gestion";
 

@@ -237,7 +237,7 @@
                                 </div>
                                 <div class=" col-lg-3">
                                     <label for="text-input" class=" form-control-label">Budget mensuel / FCFA</label>
-                                    <input type="text" name="budgetMensuel" class="form-control" value="{{isset($recrutement)? $recrutement->budgetMensuel:''}}"/>
+                                    <input type="number" name="budgetMensuel" class="form-control" value="{{isset($recrutement)? $recrutement->budgetMensuel:''}}"/>
                                 </div>
                             </div>
                         </div>
